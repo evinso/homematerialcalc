@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import FlooringCalculator from '../../components/calculators/FlooringCalculator';
+import AdSlot from '../../components/ui/AdSlot.astro';
+const related = [
+  { href: '/calculator/tile',    label: 'Tile Calculator' },
+  { href: '/calculator/paint',   label: 'Paint Calculator' },
+  { href: '/calculator/drywall', label: 'Drywall Calculator' },
+  { href: '/guide/how-much-flooring-do-i-need', label: 'How Much Flooring Do I Need?' },
+];
+---
+<BaseLayout
+  title="Flooring Calculator — How Many Boxes of Flooring Do I Need?"
+  description="Free flooring calculator for laminate, vinyl plank (LVP), and hardwood. Enter room size, box coverage, and lay pattern to get exact box count with waste factor."
+>
+  <div class="max-w-6xl mx-auto px-4 py-10">
+    <div class="grid lg:grid-cols-[1fr_380px] gap-10">
+      <div>
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">Flooring Calculator</h1>
+        <p class="text-gray-600 mb-6">Enter your room dimensions and your flooring product's box coverage to find out how many boxes to buy — including waste for your lay pattern.</p>
+        <FlooringCalculator client:load />
+        <AdSlot slot="after-result" className="mt-6" />
+        <div class="calculator-card mt-8">
+          <h2 class="font-bold text-gray-900 text-lg mb-3">How to measure for flooring</h2>
+          <ol class="space-y-3 text-sm text-gray-700">
+            <li class="flex gap-3"><span class="font-bold text-brand-600 flex-shrink-0">1.</span>
+              <span><strong>Measure the room:</strong> Length × width in feet for rectangular rooms. Use the Irregular option for L-shaped or complex rooms.</span></li>
+            <li class="flex gap-3"><span class="font-bold text-brand-600 flex-shrink-0">2.</span>
+              <span><strong>Find box coverage:</strong> Check the box label or product page. This is listed as "covers X sq ft" or "sq ft per carton."</span></li>
+            <li class="flex gap-3"><span class="font-bold text-brand-600 flex-shrink-0">3.</span>
+              <span><strong>Choose your pattern:</strong> Straight lay = 10% waste. Diagonal or complex rooms = 15%. The waste accounts for cuts at walls and obstacles.</span></li>
+            <li class="flex gap-3"><span class="font-bold text-brand-600 flex-shrink-0">4.</span>
+              <span><strong>Don't return leftovers:</strong> Most stores allow returns of unopened boxes. Keep 1 extra box for future repairs.</span></li>
+          </ol>
+        </div>
+        <AdSlot slot="in-content" className="mt-6" />
+        <div class="mt-6 text-sm text-gray-500 border-t pt-4">
+          <p>Formula: <em>Boxes = ceil(Area × (1 + waste%) ÷ box coverage).</em>
+          See our <a href="/methodology" class="text-brand-600 hover:underline">methodology page</a>.</p>
+        </div>
+      </div>
+      <aside class="space-y-6">
+        <div class="calculator-card">
+          <h3 class="font-semibold text-gray-900 mb-3">Common box coverages</h3>
+          <table class="w-full text-sm text-gray-700">
+            <thead><tr class="border-b"><th class="text-left pb-1">Product type</th><th class="text-right pb-1">Typical coverage</th></tr></thead>
+            <tbody class="divide-y">
+              {[['Vinyl plank (LVP)','20–23 sq ft'],['Laminate','20–25 sq ft'],['Engineered hardwood','15–25 sq ft'],].map(([t,c]) => (
+                <tr><td class="py-1">{t}</td><td class="py-1 text-right">{c}</td></tr>
+              ))}
+            </tbody>
+          </table>
+          <p class="text-xs text-gray-500 mt-2">Always use the number on your specific product label.</p>
+        </div>
+        <div class="calculator-card">
+          <h3 class="font-semibold text-gray-900 mb-3">Related calculators &amp; guides</h3>
+          <ul class="space-y-2">
+            {related.map(r => (<li><a href={r.href} class="text-sm text-brand-600 hover:underline">{r.label}</a></li>))}
+          </ul>
+        </div>
+        <AdSlot slot="sidebar" />
+      </aside>
+    </div>
+  </div>
+</BaseLayout>

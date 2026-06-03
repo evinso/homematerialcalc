@@ -1,12 +1,15 @@
 import {
   MULCH, GRAVEL, GRAVEL_DENSITIES, TOPSOIL, SAND, SAND_DENSITIES,
   SOD, CONCRETE, CONCRETE_BAGS, CONVERSIONS,
+  PAINT, PAINT_COVERAGE, FLOORING, FLOORING_WASTE,
+  TILE, TILE_SIZES, DRYWALL, DRYWALL_SHEETS,
   type GravelType, type SandType, type ConcreteBagSize,
+  type PaintSurface, type FlooringPattern, type TileSize, type DrywallSheet,
 } from './constants';
 import { computeAreaSqFt, computeVolumeCuFt, cuFtToCuYd, type ShapeInput } from './geometry';
 
 function applyWaste(qty: number, waste: number): number {
-  return qty * (1 + waste);
+  return Math.round(qty * (1 + waste) * 1e10) / 1e10;
 }
 
 function roundUp(n: number): number {
@@ -208,5 +211,144 @@ export function calcConcrete(
     bagsNeeded,
     bagSize,
     costEstimate: pricePerBag != null ? bagsNeeded * pricePerBag : undefined,
+  };
+}
+
+// ─── Paint ────────────────────────────────────────────────────────────────────
+export interface PaintResult {
+  grossWallArea: number;
+  openingArea: number;
+  netWallArea: number;
+  netWithWaste: number;
+  gallonsNeeded: number;
+  quartsNeeded: number;
+  costEstimate?: number;
+}
+
+export function calcPaint(
+  wallAreaSqFt: number,
+  doors: number = 0,
+  windows: number = 0,
+  coats: number = PAINT.DEFAULT_COATS,
+  surface: PaintSurface = PAINT.DEFAULT_SURFACE,
+  wasteFactor: number = PAINT.DEFAULT_WASTE,
+  pricePerGallon?: number,
+): PaintResult {
+  const openingArea = doors * PAINT.DOOR_SQ_FT + windows * PAINT.WINDOW_SQ_FT;
+  const netWallArea = Math.max(0, wallAreaSqFt - openingArea) * coats;
+  const netWithWaste = applyWaste(netWallArea, wasteFactor);
+  const coverage = PAINT_COVERAGE[surface];
+  const gallonsNeeded = Math.max(1, Math.ceil(netWithWaste / coverage));
+  const quartsNeeded = Math.ceil((netWithWaste / coverage) * 4);
+  return {
+    grossWallArea: wallAreaSqFt,
+    openingArea,
+    netWallArea: netWallArea / coats,
+    netWithWaste,
+    gallonsNeeded,
+    quartsNeeded,
+    costEstimate: pricePerGallon != null ? gallonsNeeded * pricePerGallon : undefined,
+  };
+}
+
+// ─── Flooring ─────────────────────────────────────────────────────────────────
+export interface FlooringResult {
+  roomSqFt: number;
+  areaWithWaste: number;
+  boxesNeeded: number;
+  boxCoverageSqFt: number;
+  costEstimate?: number;
+}
+
+export function calcFlooring(
+  shape: ShapeInput,
+  boxCoverageSqFt: number = FLOORING.DEFAULT_BOX_COVERAGE_SQ_FT,
+  pattern: FlooringPattern = FLOORING.DEFAULT_PATTERN,
+  pricePerBox?: number,
+): FlooringResult {
+  const roomSqFt = computeAreaSqFt(shape);
+  const waste = FLOORING_WASTE[pattern];
+  const areaWithWaste = applyWaste(roomSqFt, waste);
+  const boxesNeeded = roundUp(areaWithWaste / boxCoverageSqFt);
+  return {
+    roomSqFt,
+    areaWithWaste,
+    boxesNeeded,
+    boxCoverageSqFt,
+    costEstimate: pricePerBox != null ? boxesNeeded * pricePerBox : undefined,
+  };
+}
+
+// ─── Tile ─────────────────────────────────────────────────────────────────────
+export interface TileResult {
+  areaSqFt: number;
+  areaWithWaste: number;
+  tilesNeeded: number;
+  thinset50lbBags: number;
+  grout10lbBags: number;
+  costEstimate?: number;
+}
+
+export function calcTile(
+  shape: ShapeInput,
+  tileSize: TileSize = TILE.DEFAULT_SIZE,
+  diagonal = false,
+  pricePerTile?: number,
+): TileResult {
+  const areaSqFt = computeAreaSqFt(shape);
+  const waste = diagonal ? TILE.WASTE_DIAGONAL : TILE.WASTE_STRAIGHT;
+  const areaWithWaste = applyWaste(areaSqFt, waste);
+  const sqFtPerTile = TILE_SIZES[tileSize].sqFt;
+  const tilesNeeded = roundUp(areaWithWaste / sqFtPerTile);
+  const thinset50lbBags = roundUp(areaWithWaste / TILE.THINSET_50LB_SQ_FT);
+  const grout10lbBags = roundUp(areaWithWaste / TILE.GROUT_10LB_SQ_FT);
+  return {
+    areaSqFt,
+    areaWithWaste,
+    tilesNeeded,
+    thinset50lbBags,
+    grout10lbBags,
+    costEstimate: pricePerTile != null ? tilesNeeded * pricePerTile : undefined,
+  };
+}
+
+// ─── Drywall ──────────────────────────────────────────────────────────────────
+export interface DrywallResult {
+  grossWallArea: number;
+  openingArea: number;
+  netWallArea: number;
+  areaWithWaste: number;
+  sheetsNeeded: number;
+  jointCompoundGallons: number;
+  tapeRolls: number;
+  sheetSize: DrywallSheet;
+  costEstimate?: number;
+}
+
+export function calcDrywall(
+  wallAreaSqFt: number,
+  doors: number = 0,
+  windows: number = 0,
+  sheetSize: DrywallSheet = DRYWALL.DEFAULT_SHEET,
+  wasteFactor: number = DRYWALL.DEFAULT_WASTE,
+  pricePerSheet?: number,
+): DrywallResult {
+  const openingArea = doors * DRYWALL.DOOR_SQ_FT + windows * DRYWALL.WINDOW_SQ_FT;
+  const netWallArea = Math.max(0, wallAreaSqFt - openingArea);
+  const areaWithWaste = applyWaste(netWallArea, wasteFactor);
+  const sheetSqFt = DRYWALL_SHEETS[sheetSize].sqFt;
+  const sheetsNeeded = roundUp(areaWithWaste / sheetSqFt);
+  const jointCompoundGallons = roundUp(netWallArea / DRYWALL.JOINT_COMPOUND_1GAL_SQ_FT);
+  const tapeRolls = roundUp(sheetsNeeded / DRYWALL.TAPE_75FT_SHEETS_PER_ROLL);
+  return {
+    grossWallArea: wallAreaSqFt,
+    openingArea,
+    netWallArea,
+    areaWithWaste,
+    sheetsNeeded,
+    jointCompoundGallons,
+    tapeRolls,
+    sheetSize,
+    costEstimate: pricePerSheet != null ? sheetsNeeded * pricePerSheet : undefined,
   };
 }

@@ -1,0 +1,70 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+const faqs = [
+  { q: 'How many 12×12 tiles do I need for 100 square feet?', a: 'You need 110 tiles for 100 sq ft with straight lay (10% waste). Each 12×12 tile covers exactly 1 sq ft, so 100 sq ft × 1.10 = 110 tiles. For diagonal lay, use 115 tiles (15% waste).' },
+  { q: 'How do I calculate tile for a bathroom floor?', a: 'Measure the bathroom length × width in feet. Subtract the toilet flange and vanity footprint if desired. Add 10% waste for straight lay or 15% for diagonal. Divide by the sq ft per tile for your tile count.' },
+  { q: 'How many boxes of tile do I need?', a: 'It depends on how many tiles come in a box. Divide your total tile count by tiles per box, then round up. Large format tiles (18×18, 24×24) often come 3–6 per box; smaller tiles may come 20+ per box.' },
+  { q: 'How much thinset do I need?', a: 'A 50 lb bag of thinset mortar covers approximately 40 sq ft using a 3/8" notched trowel. For 100 sq ft, you need about 3 bags. Coverage varies with trowel size and substrate flatness.' },
+  { q: 'How much grout do I need for tile?', a: 'Grout coverage depends on tile size and joint width. As a rough estimate for 1/8" joints and 12×12 tiles, a 10 lb bag covers about 50 sq ft. Use sanded grout for joints wider than 1/8", unsanded for narrower.' },
+];
+const related = [
+  { href: '/calculator/tile',     label: 'Tile Calculator' },
+  { href: '/calculator/flooring', label: 'Flooring Calculator' },
+  { href: '/calculator/paint',    label: 'Paint Calculator' },
+];
+---
+<GuideLayout
+  title="How Much Tile Do I Need? — Tile Calculator Guide"
+  description="Calculate tile count, thinset, and grout for floors, bathrooms, and backsplashes. Coverage tables for all common tile sizes with straight and diagonal lay waste factors."
+  h1="How Much Tile Do I Need?"
+  intro="The number of tiles you need depends on your area, tile size, and lay pattern. Add 10% for straight lay or 15% for diagonal to account for cutting waste."
+  calculatorHref="/calculator/tile"
+  calculatorLabel="Tile Calculator — tiles, thinset, and grout for your project"
+  {faqs} {related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'How Much Tile Do I Need?' }]}
+>
+
+## The quick formula
+
+**Tiles = ceil(Area × (1 + waste%) ÷ sq ft per tile)**
+
+## Tile size reference
+
+| Tile size | Sq ft per tile | Tiles per 100 sq ft (straight) |
+|-----------|---------------|-------------------------------|
+| 4" × 4" | 0.111 | 1,109 tiles |
+| 6" × 6" | 0.250 | 440 tiles |
+| 3" × 6" subway | 0.125 | 880 tiles |
+| 12" × 12" | 1.000 | 110 tiles |
+| 18" × 18" | 2.250 | 49 tiles |
+| 24" × 24" | 4.000 | 28 tiles |
+
+*Includes 10% waste for straight lay.*
+
+## Waste by lay pattern
+
+| Pattern | Waste | When |
+|---------|-------|------|
+| Straight (parallel to walls) | **10%** | Most floors and walls |
+| Diagonal (45°) | **15%** | Feature areas, small bathrooms |
+| Herringbone / pattern | **15%** | Complex cuts at edges |
+
+## Thinset and grout estimates
+
+| Material | Coverage | Notes |
+|----------|----------|-------|
+| Thinset — 50 lb bag | ~40 sq ft | 3/8" notched trowel, flat surface |
+| Grout — 10 lb bag (sanded) | ~50 sq ft | 1/8" joint, 12×12 tile |
+
+Grout coverage drops significantly with larger joints or smaller tiles (more joint area per sq ft).
+
+## How to measure
+
+- **Floor:** length × width in feet
+- **Shower walls:** each wall separately (height × width), then add together
+- **Backsplash:** measure each section (length × height), add sections
+- **Irregular spaces:** use the Irregular shape option in the Tile Calculator
+
+Use the [Tile Calculator](/calculator/tile) for your exact area, tile size, and lay pattern.
+
+</GuideLayout>

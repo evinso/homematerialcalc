@@ -1,0 +1,70 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+const faqs = [
+  { q: 'How many square feet does a gallon of paint cover?', a: 'A gallon of standard interior paint covers approximately 350 square feet per coat on smooth walls. Premium paints can cover up to 400 sq ft per gallon. Textured or porous surfaces typically yield 250–300 sq ft per gallon.' },
+  { q: 'How much wall area does a quart of paint cover?', a: 'A quart is one-quarter of a gallon and covers roughly 87–100 sq ft per coat — about the size of one average wall. Quarts are good for accent walls, touch-ups, or testing a color.' },
+  { q: 'Does the number of coats affect coverage?', a: 'Yes. Coverage per gallon refers to one coat. For 2 coats, double your gallon estimate. A 12×12 room needs about 1.9 gallons per coat, so 4 gallons for 2 coats (before rounding up).' },
+  { q: 'Why does paint coverage vary so much?', a: 'Coverage depends on surface texture (smooth vs. textured walls), surface porosity (new drywall absorbs more paint), application method (roller vs. brush), and the paint formula (cheaper paints have lower pigment density).' },
+];
+const related = [
+  { href: '/calculator/paint', label: 'Paint Calculator' },
+  { href: '/guide/how-much-paint-do-i-need', label: 'How Much Paint Do I Need?' },
+  { href: '/calculator/drywall', label: 'Drywall Calculator' },
+];
+---
+<GuideLayout
+  title="Paint Coverage per Gallon — How Much Does a Gallon of Paint Cover?"
+  description="A gallon of standard interior paint covers 350 sq ft per coat. Full coverage table for all paint types, plus how coats and surface texture affect coverage."
+  h1="Paint Coverage per Gallon"
+  intro="A gallon of standard interior paint covers approximately 350 square feet per coat. Premium paint covers up to 400 sq ft/gallon; textured surfaces and primer cover less."
+  calculatorHref="/calculator/paint"
+  calculatorLabel="Paint Calculator — exact gallons for your room"
+  {faqs} {related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Paint Coverage per Gallon' }]}
+>
+
+## Coverage by paint type
+
+| Paint type | Coverage per gallon | Notes |
+|------------|-------------------|-------|
+| Standard interior | **350 sq ft** | Most common — Sherwin-Williams, Behr, etc. |
+| Premium / self-priming | **400 sq ft** | Higher pigment density |
+| Primer | **250 sq ft** | More absorption, surfaces vary |
+| Exterior paint | **300–400 sq ft** | Varies by surface and brand |
+| Textured walls | **250–300 sq ft** | Rough surfaces absorb more |
+
+*Source: Manufacturer averages (Sherwin-Williams, Benjamin Moore product data sheets)*
+
+## How many gallons per coat?
+
+| Room/area | Wall area | Gallons per coat |
+|-----------|-----------|-----------------|
+| 8 × 10 ft room | 288 sq ft | 1 gallon |
+| 10 × 12 ft room | 352 sq ft | 1 gallon |
+| 12 × 12 ft room | 384 sq ft | 1–2 gallons |
+| 12 × 16 ft room | 448 sq ft | 2 gallons |
+| Average house interior (~2,000 sq ft walls) | 2,000 sq ft | 6 gallons |
+
+*Gross wall area before subtracting doors and windows. Divide by 350 for standard paint.*
+
+## What a quart covers
+
+A quart = 1/4 gallon ≈ **87 sq ft per coat**.
+
+| Use case | Quart enough? |
+|----------|--------------|
+| Accent wall (one wall, ~80 sq ft) | Yes |
+| Color sample / test | Yes |
+| Touch-ups | Yes |
+| Full room (2 coats) | No — need gallons |
+
+## Factors that reduce coverage
+
+- **New drywall:** Porous surface absorbs 20–30% more — prime first
+- **Dark colors:** May need 3 coats for full coverage over a lighter color
+- **Brush vs. roller:** Rollers cover faster and more evenly; brushes use more paint
+- **Thick application:** Going too heavy reduces coverage per gallon
+
+Use the [Paint Calculator](/calculator/paint) to get the exact gallon count for your room, including door/window deductions and number of coats.
+
+</GuideLayout>

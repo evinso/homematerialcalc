@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TileCalculator from '../../components/calculators/TileCalculator';
+import AdSlot from '../../components/ui/AdSlot.astro';
+const related = [
+  { href: '/calculator/flooring', label: 'Flooring Calculator' },
+  { href: '/calculator/paint',    label: 'Paint Calculator' },
+  { href: '/guide/how-much-tile-do-i-need', label: 'How Much Tile Do I Need?' },
+];
+---
+<BaseLayout
+  title="Tile Calculator — How Many Tiles Do I Need? (with Thinset &amp; Grout)"
+  description="Free tile calculator: enter area and tile size to get tile count, thinset bags, and grout. Supports all common tile sizes and diagonal lay pattern."
+>
+  <div class="max-w-6xl mx-auto px-4 py-10">
+    <div class="grid lg:grid-cols-[1fr_380px] gap-10">
+      <div>
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">Tile Calculator</h1>
+        <p class="text-gray-600 mb-6">Calculate tile count, thinset bags, and grout for floors, bathrooms, backsplashes, and any other tiled surface.</p>
+        <TileCalculator client:load />
+        <AdSlot slot="after-result" className="mt-6" />
+        <div class="calculator-card mt-8">
+          <h2 class="font-bold text-gray-900 text-lg mb-3">How to measure for tile</h2>
+          <ol class="space-y-3 text-sm text-gray-700">
+            <li class="flex gap-3"><span class="font-bold text-brand-600 flex-shrink-0">1.</span>
+              <span><strong>Floor or wall:</strong> Measure length × width in feet. For L-shaped rooms, use the Irregular option to add sections.</span></li>
+            <li class="flex gap-3"><span class="font-bold text-brand-600 flex-shrink-0">2.</span>
+              <span><strong>Backsplash:</strong> Measure each section separately (length × height). Add them with the Irregular shape option.</span></li>
+            <li class="flex gap-3"><span class="font-bold text-brand-600 flex-shrink-0">3.</span>
+              <span><strong>Select your tile size:</strong> If your tile isn't in the list, contact us — we add new sizes regularly.</span></li>
+            <li class="flex gap-3"><span class="font-bold text-brand-600 flex-shrink-0">4.</span>
+              <span><strong>Diagonal lay:</strong> Setting tile at 45° requires 15% waste because edge cuts are larger. Check this option for diagonal patterns.</span></li>
+          </ol>
+        </div>
+        <AdSlot slot="in-content" className="mt-6" />
+        <div class="mt-6 text-sm text-gray-500 border-t pt-4">
+          <p>Thinset: 50 lb bag ≈ 40 sq ft (3/8" trowel). Grout: 10 lb bag ≈ 50 sq ft (1/8" joint, 12×12 tile).
+          See our <a href="/methodology" class="text-brand-600 hover:underline">methodology page</a>.</p>
+        </div>
+      </div>
+      <aside class="space-y-6">
+        <div class="calculator-card">
+          <h3 class="font-semibold text-gray-900 mb-3">Tile sizes &amp; sq ft per tile</h3>
+          <table class="w-full text-sm text-gray-700">
+            <thead><tr class="border-b"><th class="text-left pb-1">Size</th><th class="text-right pb-1">Sq ft/tile</th></tr></thead>
+            <tbody class="divide-y">
+              {[['4×4"','0.111'],['6×6"','0.250'],['12×12"','1.000'],['18×18"','2.250'],['24×24"','4.000'],['3×6" subway','0.125'],['4×16" subway','0.444']].map(([s,f]) => (
+                <tr><td class="py-1">{s}</td><td class="py-1 text-right">{f}</td></tr>
+              ))}
+            </tbody>
+          </table>
+          <p class="text-xs text-gray-500 mt-2">Waste: 10% straight · 15% diagonal</p>
+        </div>
+        <div class="calculator-card">
+          <h3 class="font-semibold text-gray-900 mb-3">Related calculators &amp; guides</h3>
+          <ul class="space-y-2">
+            {related.map(r => (<li><a href={r.href} class="text-sm text-brand-600 hover:underline">{r.label}</a></li>))}
+          </ul>
+        </div>
+        <AdSlot slot="sidebar" />
+      </aside>
+    </div>
+  </div>
+</BaseLayout>

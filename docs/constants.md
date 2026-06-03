@@ -211,13 +211,92 @@ their local supplier for large orders.
 
 ---
 
-## Future Materials (add here before building a calculator)
+## Indoor Materials — v2
 
-When expanding to indoor materials, add each one to this file with its constants and source
-BEFORE implementing the calculator. Planned:
-- Paint (coverage per gallon per coat, subtract openings)
-- Flooring/laminate/vinyl (box coverage, waste by pattern)
-- Tile (tile sizes, grout, thinset coverage)
-- Drywall (sheet sizes, joint compound, tape, screws)
+---
+
+### 7. Paint
+
+| Property                  | Value                          | Source                              |
+|---------------------------|--------------------------------|-------------------------------------|
+| Coverage (standard)       | 350 sq ft / gallon / coat      | Sherwin-Williams, Benjamin Moore avg|
+| Coverage (premium)        | 400 sq ft / gallon / coat      | Manufacturer specs                  |
+| Coverage (primer)         | 250 sq ft / gallon             | Manufacturer avg (more absorption)  |
+| Coverage (textured walls) | 250–300 sq ft / gallon / coat  | Industry estimate                   |
+| Default coats             | 2                              | Industry standard for full coverage |
+| Default waste             | 10%                            | Drips, touch-ups, uneven surfaces   |
+| Standard door area        | 21 sq ft (3 ft × 7 ft)        | US standard interior door           |
+| Standard window area      | 15 sq ft (3 ft × 5 ft)        | US standard window                  |
+| Purchase unit             | gallons, quarts (0.25 gal)     |                                     |
+
+**Formula:** Gallons = (Wall area − openings) × coats × (1 + waste) ÷ coverage, rounded up
+**Wall area:** perimeter × ceiling height, then subtract openings
+
+---
+
+### 8. Flooring (Laminate / Vinyl Plank / Hardwood)
+
+| Property              | Value                            | Source                          |
+|-----------------------|----------------------------------|---------------------------------|
+| Purchase unit         | boxes (coverage varies by brand) | Flooring industry standard      |
+| Waste — straight lay  | 10%                              | NWFA installation guidelines    |
+| Waste — diagonal lay  | 15%                              | NWFA installation guidelines    |
+| Waste — complex rooms | 15%                              | Multiple cuts, L-shapes         |
+
+Note: Box coverage varies by product. Common ranges:
+- Vinyl plank (LVP): 20–23 sq ft/box (e.g., LifeProof, COREtec)
+- Laminate: 20–25 sq ft/box (e.g., Pergo, Shaw)
+- Engineered hardwood: 15–25 sq ft/box
+
+User must enter their product's box coverage from the label.
+
+**Formula:** Boxes = ceil(Area × (1 + waste) ÷ box coverage)
+
+---
+
+### 9. Tile
+
+| Tile Size    | Sq ft per tile | Common use                    |
+|--------------|---------------|-------------------------------|
+| 4" × 4"      | 0.111 sq ft   | backsplash, small accent      |
+| 6" × 6"      | 0.250 sq ft   | bathroom wall                 |
+| 12" × 12"    | 1.000 sq ft   | floor, shower                 |
+| 18" × 18"    | 2.250 sq ft   | floor, large rooms            |
+| 24" × 24"    | 4.000 sq ft   | large format floor            |
+| 3" × 6"      | 0.125 sq ft   | subway tile (backsplash, wall)|
+| 4" × 16"     | 0.444 sq ft   | modern subway                 |
+
+| Property              | Value                            | Source                        |
+|-----------------------|----------------------------------|-------------------------------|
+| Waste — straight lay  | 10%                              | TCNA Handbook                 |
+| Waste — diagonal lay  | 15%                              | TCNA Handbook                 |
+| Thinset (50 lb bag)   | ~40 sq ft coverage               | Manufacturer avg, 3/8" trowel |
+| Grout (sanded, 10 lb) | ~50 sq ft (1/8" joint, 12×12)   | Laticrete / Custom Building   |
+
+**Formula:** Tiles = ceil(Area × (1 + waste) ÷ sq ft per tile)
+
+---
+
+### 10. Drywall
+
+| Sheet size  | Sq ft per sheet | Common use              |
+|-------------|----------------|--------------------------|
+| 4 × 8 ft   | 32 sq ft        | Standard (most common)  |
+| 4 × 12 ft  | 48 sq ft        | Fewer seams, pro use    |
+| 4 × 16 ft  | 64 sq ft        | Large rooms, commercial |
+
+| Property                  | Value                           | Source                        |
+|---------------------------|---------------------------------|-------------------------------|
+| Waste                     | 10–15%                          | Drywall contractor standard   |
+| Joint compound (5-gal)    | ~500 sq ft (3 coats)            | USG, National Gypsum specs    |
+| Joint compound (1-gal)    | ~100 sq ft                      |                               |
+| Drywall tape (75 ft roll) | ~1 roll per 3 sheets (4×8)     | Industry estimate             |
+| Drywall screws (1 lb)     | ~35 per 4×8 sheet               | 12" on-center spacing         |
+
+**Formula:** Sheets = ceil(Wall area × (1 + waste) ÷ sheet sq ft)
+
+---
+
+## Future Materials (not yet started)
 - Wallpaper (roll coverage, pattern repeat waste)
 - Insulation (R-value, batt/roll coverage)

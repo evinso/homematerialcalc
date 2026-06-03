@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { calcMulch, calcGravel, calcTopsoil, calcSand, calcSod, calcConcrete } from './calculators';
+import { calcMulch, calcGravel, calcTopsoil, calcSand, calcSod, calcConcrete, calcPaint, calcFlooring, calcTile, calcDrywall } from './calculators';
 import { computeAreaSqFt, cuFtToCuYd, feetInchesToFt } from './geometry';
 import { CONVERSIONS } from './constants';
 
@@ -221,5 +221,113 @@ describe('unit conversions', () => {
 
   it('concrete 40 lb: 90 bags per cu yd', () => {
     expect(Math.round(27 / 0.30)).toBe(90);
+  });
+});
+
+// ─── Paint ────────────────────────────────────────────────────────────────────
+describe('calcPaint', () => {
+  it('12×12 room, 8 ft ceiling, 2 coats, no openings, standard coverage', () => {
+    // perimeter = 4×12 = 48 ft, wall area = 48×8 = 384 sq ft
+    // net = 384 × 2 coats × 1.10 waste = 844.8 sq ft
+    // gallons = ceil(844.8 / 350) = ceil(2.41) = 3
+    const r = calcPaint(384, 0, 0, 2, 'standard', 0.10);
+    expect(r.grossWallArea).toBe(384);
+    expect(r.gallonsNeeded).toBe(3);
+  });
+
+  it('subtracts doors and windows', () => {
+    // 500 sq ft walls, 1 door (21 sqft), 2 windows (30 sqft) = 449 net × 2 coats × 1.10
+    const r = calcPaint(500, 1, 2, 2, 'standard', 0.10);
+    expect(r.openingArea).toBe(21 + 30);
+    expect(r.netWallArea).toBe(449);
+  });
+
+  it('premium paint covers more per gallon', () => {
+    const std  = calcPaint(400, 0, 0, 2, 'standard', 0);
+    const prem = calcPaint(400, 0, 0, 2, 'premium', 0);
+    expect(prem.gallonsNeeded).toBeLessThanOrEqual(std.gallonsNeeded);
+  });
+
+  it('cost estimate = gallons × price', () => {
+    const r = calcPaint(200, 0, 0, 2, 'standard', 0, 45);
+    expect(r.costEstimate).toBeCloseTo(r.gallonsNeeded * 45, 2);
+  });
+});
+
+// ─── Flooring ─────────────────────────────────────────────────────────────────
+describe('calcFlooring', () => {
+  it('200 sq ft room, 20 sq ft box, straight lay (10% waste)', () => {
+    // 200 × 1.10 = 220 sq ft → 220 / 20 = 11 boxes
+    const r = calcFlooring({ type: 'rectangle', lengthFt: 20, widthFt: 10 }, 20, 'straight');
+    expect(r.roomSqFt).toBe(200);
+    expect(r.areaWithWaste).toBeCloseTo(220, 2);
+    expect(r.boxesNeeded).toBe(11);
+  });
+
+  it('diagonal lay uses 15% waste', () => {
+    const str = calcFlooring({ type: 'rectangle', lengthFt: 10, widthFt: 10 }, 20, 'straight');
+    const dia = calcFlooring({ type: 'rectangle', lengthFt: 10, widthFt: 10 }, 20, 'diagonal');
+    expect(dia.boxesNeeded).toBeGreaterThanOrEqual(str.boxesNeeded);
+  });
+
+  it('rounds boxes up', () => {
+    // 105 sq ft × 1.10 = 115.5, / 20 = 5.775 → 6 boxes
+    const r = calcFlooring({ type: 'rectangle', lengthFt: 15, widthFt: 7 }, 20, 'straight');
+    expect(r.boxesNeeded).toBe(Math.ceil(r.areaWithWaste / 20));
+  });
+});
+
+// ─── Tile ─────────────────────────────────────────────────────────────────────
+describe('calcTile', () => {
+  it('100 sq ft with 12×12 tiles, straight lay', () => {
+    // 100 × 1.10 = 110 sq ft → 110 / 1.0 = 110 tiles
+    const r = calcTile({ type: 'rectangle', lengthFt: 10, widthFt: 10 }, '12x12', false);
+    expect(r.areaSqFt).toBe(100);
+    expect(r.tilesNeeded).toBe(110);
+  });
+
+  it('diagonal lay uses 15% waste', () => {
+    const str = calcTile({ type: 'rectangle', lengthFt: 10, widthFt: 10 }, '12x12', false);
+    const dia = calcTile({ type: 'rectangle', lengthFt: 10, widthFt: 10 }, '12x12', true);
+    expect(dia.tilesNeeded).toBeGreaterThan(str.tilesNeeded);
+  });
+
+  it('smaller tiles need more tiles per sq ft', () => {
+    const big   = calcTile({ type: 'rectangle', lengthFt: 10, widthFt: 10 }, '24x24', false);
+    const small = calcTile({ type: 'rectangle', lengthFt: 10, widthFt: 10 }, '4x4',   false);
+    expect(small.tilesNeeded).toBeGreaterThan(big.tilesNeeded);
+  });
+
+  it('thinset bags = ceil(areaWithWaste / 40)', () => {
+    const r = calcTile({ type: 'rectangle', lengthFt: 10, widthFt: 10 }, '12x12', false);
+    expect(r.thinset50lbBags).toBe(Math.ceil(r.areaWithWaste / 40));
+  });
+});
+
+// ─── Drywall ──────────────────────────────────────────────────────────────────
+describe('calcDrywall', () => {
+  it('12×12 room, 8 ft ceiling, 4 walls, no openings, 4×8 sheets', () => {
+    // wall area = perimeter × height = 48 × 8 = 384 sq ft
+    // × 1.12 waste = 430.1 sq ft → 430.1 / 32 = 13.4 → 14 sheets
+    const r = calcDrywall(384, 0, 0, '4x8', 0.12);
+    expect(r.grossWallArea).toBe(384);
+    expect(r.sheetsNeeded).toBe(Math.ceil(384 * 1.12 / 32));
+  });
+
+  it('subtracts door and window openings', () => {
+    const r = calcDrywall(400, 2, 1, '4x8', 0);
+    expect(r.openingArea).toBe(2 * 21 + 1 * 15);
+    expect(r.netWallArea).toBe(400 - 57);
+  });
+
+  it('4×12 sheets need fewer sheets than 4×8', () => {
+    const s8  = calcDrywall(500, 0, 0, '4x8',  0.12);
+    const s12 = calcDrywall(500, 0, 0, '4x12', 0.12);
+    expect(s12.sheetsNeeded).toBeLessThan(s8.sheetsNeeded);
+  });
+
+  it('joint compound gallons = ceil(netArea / 100)', () => {
+    const r = calcDrywall(300, 0, 0, '4x8', 0.12);
+    expect(r.jointCompoundGallons).toBe(Math.ceil(300 / 100));
   });
 });

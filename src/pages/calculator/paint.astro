@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PaintCalculator from '../../components/calculators/PaintCalculator';
+import AdSlot from '../../components/ui/AdSlot.astro';
+const related = [
+  { href: '/calculator/flooring', label: 'Flooring Calculator' },
+  { href: '/calculator/tile',     label: 'Tile Calculator' },
+  { href: '/calculator/drywall',  label: 'Drywall Calculator' },
+  { href: '/guide/how-much-paint-do-i-need',    label: 'How Much Paint Do I Need?' },
+  { href: '/guide/paint-coverage-per-gallon',   label: 'Paint Coverage per Gallon' },
+];
+---
+<BaseLayout
+  title="Paint Calculator — How Many Gallons of Paint Do I Need?"
+  description="Free paint calculator: enter room dimensions or wall area, number of coats, doors and windows, and instantly get gallons needed with a cost estimate."
+>
+  <div class="max-w-6xl mx-auto px-4 py-10">
+    <div class="grid lg:grid-cols-[1fr_380px] gap-10">
+      <div>
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">Paint Calculator</h1>
+        <p class="text-gray-600 mb-6">Enter your room size or total wall area to find out how many gallons of paint to buy — for any number of coats.</p>
+        <PaintCalculator client:load />
+        <AdSlot slot="after-result" className="mt-6" />
+        <div class="calculator-card mt-8">
+          <h2 class="font-bold text-gray-900 text-lg mb-3">How to measure for paint</h2>
+          <ol class="space-y-3 text-sm text-gray-700">
+            <li class="flex gap-3"><span class="font-bold text-brand-600 flex-shrink-0">1.</span>
+              <span><strong>Room dimensions:</strong> Measure the length, width, and ceiling height in feet. The calculator computes perimeter × height automatically.</span></li>
+            <li class="flex gap-3"><span class="font-bold text-brand-600 flex-shrink-0">2.</span>
+              <span><strong>Count openings:</strong> Count your standard doors and windows. The calculator subtracts 21 sq ft per door and 15 sq ft per window.</span></li>
+            <li class="flex gap-3"><span class="font-bold text-brand-600 flex-shrink-0">3.</span>
+              <span><strong>Number of coats:</strong> Most rooms need 2 coats for full coverage. Dark colors over light (or vice versa) may need 3.</span></li>
+            <li class="flex gap-3"><span class="font-bold text-brand-600 flex-shrink-0">4.</span>
+              <span><strong>Paint type:</strong> Premium paints cover up to 400 sq ft/gallon. Primers and textured walls need more paint (lower coverage).</span></li>
+          </ol>
+        </div>
+        <AdSlot slot="in-content" className="mt-6" />
+        <div class="mt-6 text-sm text-gray-500 border-t pt-4">
+          <p>Formula: <em>Gallons = (Wall area − openings) × coats × (1 + waste) ÷ coverage (sq ft/gal).</em>
+          See our <a href="/methodology" class="text-brand-600 hover:underline">methodology page</a> for all constants.</p>
+        </div>
+      </div>
+      <aside class="space-y-6">
+        <div class="calculator-card">
+          <h3 class="font-semibold text-gray-900 mb-3">Coverage quick reference</h3>
+          <table class="w-full text-sm text-gray-700">
+            <thead><tr class="border-b"><th class="text-left pb-1">Paint type</th><th class="text-right pb-1">Sq ft/gal</th></tr></thead>
+            <tbody class="divide-y">
+              {[['Standard interior','350'],['Premium / self-priming','400'],['Primer','250'],['Textured surface','275']].map(([t,c]) => (
+                <tr><td class="py-1">{t}</td><td class="py-1 text-right">{c}</td></tr>
+              ))}
+            </tbody>
+          </table>
+          <p class="text-xs text-gray-500 mt-2">Standard door: 21 sq ft · Standard window: 15 sq ft</p>
+        </div>
+        <div class="calculator-card">
+          <h3 class="font-semibold text-gray-900 mb-3">Related calculators &amp; guides</h3>
+          <ul class="space-y-2">
+            {related.map(r => (<li><a href={r.href} class="text-sm text-brand-600 hover:underline">{r.label}</a></li>))}
+          </ul>
+        </div>
+        <AdSlot slot="sidebar" />
+      </aside>
+    </div>
+  </div>
+</BaseLayout>

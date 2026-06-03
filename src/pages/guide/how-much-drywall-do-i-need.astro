@@ -1,0 +1,66 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+const faqs = [
+  { q: 'How many sheets of drywall do I need for a 12×12 room?', a: 'A 12×12 room with 8-foot ceilings has about 384 sq ft of wall area. After subtracting 1 door and 2 windows (57 sq ft), net area is 327 sq ft. With 12% waste and 4×8 sheets (32 sq ft each), you need 12 sheets. Add 3 more for the ceiling (144 sq ft ÷ 32 = 5 sheets).' },
+  { q: 'How many sheets of drywall come in a bundle?', a: 'Drywall is typically sold by the sheet individually at home improvement stores. Delivered orders may come in bundles of 2 sheets (face-to-face). You can usually order any quantity.' },
+  { q: 'Should I use 4×8 or 4×12 drywall sheets?', a: '4×8 sheets are standard and easiest to handle. 4×12 sheets create fewer seams (which means less taping and finishing work) but are heavier and harder to lift alone — especially for ceilings. Most DIYers use 4×8.' },
+  { q: 'How much joint compound do I need for drywall?', a: 'As a rough estimate, plan on about 1 gallon of joint compound per 100 sq ft of drywall for 3 coats (tape coat, filler coat, finish coat). A 5-gallon bucket covers about 500 sq ft of drywall.' },
+  { q: 'Do I subtract doors and windows from my drywall calculation?', a: 'You can, but most contractors do not make large deductions — the cutouts become usable pieces for corners and other areas. The calculator makes the deduction as an option, but add some back in for partial sheets used elsewhere.' },
+];
+const related = [
+  { href: '/calculator/drywall', label: 'Drywall Calculator' },
+  { href: '/calculator/paint',   label: 'Paint Calculator' },
+  { href: '/calculator/tile',    label: 'Tile Calculator' },
+];
+---
+<GuideLayout
+  title="How Much Drywall Do I Need? — Drywall Calculator Guide"
+  description="Calculate how many sheets of drywall you need for walls and ceilings. Includes joint compound, tape, and screw estimates. Coverage tables for 4×8 and 4×12 sheets."
+  h1="How Much Drywall Do I Need?"
+  intro="The number of drywall sheets depends on your total wall (and ceiling) area and the sheet size. A standard 4×8 sheet covers 32 sq ft — add 12% waste for cuts and edges."
+  calculatorHref="/calculator/drywall"
+  calculatorLabel="Drywall Calculator — sheets, joint compound, and tape"
+  {faqs} {related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'How Much Drywall Do I Need?' }]}
+>
+
+## The quick formula
+
+**Sheets = ceil(Net wall area × 1.12 ÷ sheet sq ft)**
+
+## Sheet size reference
+
+| Sheet size | Sq ft | Sheets per 100 sq ft (12% waste) |
+|------------|-------|----------------------------------|
+| 4 × 8 ft | 32 sq ft | **4 sheets** |
+| 4 × 12 ft | 48 sq ft | **3 sheets** |
+| 4 × 16 ft | 64 sq ft | **2 sheets** |
+
+## Sheets needed by room (4×8 sheets, 8 ft ceiling, 12% waste)
+
+| Room | Wall area | Sheets (walls only) | Add for ceiling |
+|------|-----------|---------------------|-----------------|
+| 8 × 10 ft | 288 sq ft | 10 sheets | +3 sheets |
+| 10 × 12 ft | 352 sq ft | 13 sheets | +4 sheets |
+| 12 × 12 ft | 384 sq ft | 14 sheets | +5 sheets |
+| 12 × 16 ft | 448 sq ft | 16 sheets | +7 sheets |
+
+## Supplies per 100 sq ft of drywall
+
+| Supply | Estimate |
+|--------|---------|
+| Joint compound | **1 gallon** (3 coats) |
+| Drywall tape | **1 roll** (75 ft) per 3 sheets |
+| Drywall screws (1 lb) | **~35 per 4×8 sheet** |
+
+## How to measure
+
+1. **Each wall:** length × ceiling height in feet
+2. **Add all walls:** total wall area
+3. **Add ceiling if needed:** room length × width
+4. **Subtract openings (optional):** 21 sq ft per door, 15 sq ft per window
+5. **Apply 12% waste**
+
+Use the [Drywall Calculator](/calculator/drywall) for your exact room dimensions with automatic door/window deduction.
+
+</GuideLayout>
