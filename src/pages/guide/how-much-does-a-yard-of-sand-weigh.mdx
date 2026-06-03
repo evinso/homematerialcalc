@@ -1,20 +1,18 @@
----
 import GuideLayout from '../../layouts/GuideLayout.astro';
 
-const faqs = [
+export const faqs = [
   { q: 'How much does a cubic yard of sand weigh?', a: 'All-purpose and paver sand weigh about 2,700 lbs (1.35 tons) per cubic yard. Play sand and mason sand are slightly lighter at about 2,600 lbs (1.30 tons) per cubic yard.' },
   { q: 'How many 50-lb bags of sand are in a cubic yard?', a: 'There are 54 bags of 50 lb sand in a cubic yard. Each 50 lb bag yields 0.50 cubic feet, and 27 ÷ 0.50 = 54.' },
   { q: 'How much does a 50-lb bag of sand cover?', a: 'A 50 lb bag of sand covers about 6 square feet at 1 inch deep. At 2 inches deep it covers about 3 square feet.' },
   { q: 'Is sand heavier than gravel?', a: 'Sand and most gravel types are similar in density. Typical sand weighs 1.30–1.35 tons/cu yd; pea gravel and crushed stone are about 1.35–1.40 tons/cu yd. Crushed limestone is heavier at 1.50 tons/cu yd.' },
 ];
 
-const related = [
+export const related = [
   { href: '/calculator/sand', label: 'Sand Calculator' },
   { href: '/guide/how-much-sand-do-i-need', label: 'How Much Sand Do I Need?' },
   { href: '/guide/how-much-does-a-yard-of-gravel-weigh', label: 'Gravel Weight per Yard' },
   { href: '/guide/cubic-yards-to-tons', label: 'Cubic Yards to Tons Converter' },
 ];
----
 
 <GuideLayout
   title="How Much Does a Yard of Sand Weigh? (All Sand Types)"
@@ -23,8 +21,8 @@ const related = [
   intro="A cubic yard of sand weighs between 2,600 and 2,700 lbs depending on the type. Here is the complete weight breakdown for all common sand types."
   calculatorHref="/calculator/sand"
   calculatorLabel="Sand Calculator — tons, cubic yards, and 50 lb bags"
-  {faqs}
-  {related}
+  faqs={faqs}
+  related={related}
   breadcrumbs={[{ label: 'Guides' }, { label: 'Sand Weight per Yard' }]}
 >
 

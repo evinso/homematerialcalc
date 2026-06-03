@@ -14,6 +14,7 @@
     "publish:all": "node scripts/publish-next.mjs --all"
   },
   "dependencies": {
+    "@astrojs/mdx": "^3.1.9",
     "@astrojs/react": "^3.6.0",
     "@astrojs/sitemap": "^3.2.0",
     "@astrojs/tailwind": "^5.1.0",

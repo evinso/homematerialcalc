@@ -1,30 +1,28 @@
----
 import GuideLayout from '../../layouts/GuideLayout.astro';
 
-const faqs = [
+export const faqs = [
   { q: 'How do I convert cubic yards to tons?', a: 'Multiply cubic yards by the material density in tons per cubic yard. For example, 3 cubic yards of crushed stone (1.40 t/cu yd) = 3 × 1.40 = 4.20 tons.' },
   { q: 'How many cubic yards are in 1 ton of gravel?', a: 'For gravel or crushed stone at 1.40 t/cu yd, 1 ton = 0.71 cubic yards. For heavier crushed limestone at 1.50 t/cu yd, 1 ton = 0.67 cubic yards.' },
   { q: 'Is cubic yards or tons a better way to order gravel?', a: 'Suppliers usually sell by the ton because material is weighed at the plant. Cubic yards are useful for calculating how much space the material will fill. Our calculator works in both.' },
   { q: 'Do sand, gravel, and topsoil convert at the same rate?', a: 'No — each material has a different density. Gravel is 1.35–1.50 t/cu yd; topsoil is about 1.10 t/cu yd; sand is 1.30–1.35 t/cu yd. Always use the correct material density for your conversion.' },
 ];
 
-const related = [
+export const related = [
   { href: '/calculator/gravel', label: 'Gravel Calculator' },
   { href: '/calculator/topsoil', label: 'Topsoil Calculator' },
   { href: '/calculator/sand', label: 'Sand Calculator' },
   { href: '/guide/how-much-does-a-yard-of-gravel-weigh', label: 'Gravel Weight per Yard' },
 ];
----
 
 <GuideLayout
-  title="Cubic Yards to Tons Converter — Gravel, Sand &amp; Topsoil"
+  title="Cubic Yards to Tons Converter — Gravel, Sand & Topsoil"
   description="Convert cubic yards to tons for gravel, sand, topsoil, and crushed stone. Includes density table for all common materials and a complete conversion table."
   h1="Cubic Yards to Tons Converter"
   intro="To convert cubic yards to tons, multiply by the material density. Each material has a different density, so there is no single universal answer — use the correct value for your material."
   calculatorHref="/calculator/gravel"
   calculatorLabel="Gravel Calculator — converts cubic yards to tons automatically"
-  {faqs}
-  {related}
+  faqs={faqs}
+  related={related}
   breadcrumbs={[{ label: 'Guides' }, { label: 'Cubic Yards to Tons' }]}
 >
 

@@ -1,7 +1,6 @@
----
 import GuideLayout from '../../layouts/GuideLayout.astro';
 
-const faqs = [
+export const faqs = [
   { q: 'How much gravel do I need for a 10×10 area?', a: 'A 10×10 ft area (100 sq ft) at 2 inches deep requires about 0.62 cubic yards or 0.87 tons of average-density gravel. Add 10% waste for a final order of approximately 0.95 tons.' },
   { q: 'How many tons of gravel do I need per cubic yard?', a: 'It depends on the stone type. Pea gravel and crushed stone (3/4") weigh 1.40 tons per cubic yard. Crushed limestone is 1.50 tons/cu yd. River rock and decomposed granite are about 1.35 tons/cu yd.' },
   { q: 'How deep should I put gravel?', a: '2 inches for decorative ground cover and garden paths. 3–4 inches for driveways and high-traffic walkways where you need a stable base.' },
@@ -9,13 +8,12 @@ const faqs = [
   { q: 'How much gravel do I need for a driveway?', a: 'Measure your driveway length × width in feet. At 3–4 inches deep, divide the cubic footage by 27 to get cubic yards, then multiply by the stone density for tons. Use the Gravel Calculator for the exact number.' },
 ];
 
-const related = [
+export const related = [
   { href: '/calculator/gravel', label: 'Gravel Calculator' },
   { href: '/guide/how-much-does-a-yard-of-gravel-weigh', label: 'How Much Does a Yard of Gravel Weigh?' },
   { href: '/guide/cubic-yards-to-tons', label: 'Cubic Yards to Tons Converter' },
   { href: '/calculator/sand', label: 'Sand Calculator' },
 ];
----
 
 <GuideLayout
   title="How Much Gravel Do I Need? — Gravel Calculator Guide"
@@ -24,8 +22,8 @@ const related = [
   intro="Gravel is ordered by the ton or cubic yard. The amount you need depends on your area size, the depth, and the type of stone — since density varies by stone type."
   calculatorHref="/calculator/gravel"
   calculatorLabel="Gravel Calculator — cubic yards and tons by stone type"
-  {faqs}
-  {related}
+  faqs={faqs}
+  related={related}
   breadcrumbs={[{ label: 'Guides' }, { label: 'How Much Gravel Do I Need?' }]}
 >
 

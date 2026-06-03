@@ -1,21 +1,19 @@
----
 import GuideLayout from '../../layouts/GuideLayout.astro';
 
-const faqs = [
+export const faqs = [
   { q: 'How much sand do I need for a paver base?', a: 'For a paver base, the standard depth is 1 inch of bedding sand. A 100 sq ft patio needs about 0.31 cubic yards or 0.42 tons of leveling sand. Use the Sand Calculator to get the exact amount for your area.' },
   { q: 'How many 50-lb bags of sand are in a cubic yard?', a: 'There are 54 bags of 50 lb sand in one cubic yard, because each 50 lb bag yields approximately 0.50 cubic feet and there are 27 cubic feet per cubic yard (27 ÷ 0.50 = 54).' },
-  { q: 'How much does a yard of sand weigh?', a: 'All-purpose and paver sand weigh about 2,700 lbs (1.35 tons) per cubic yard. Play sand and mason sand are slightly lighter at about 2,600 lbs (1.30 tons) per cubic yard.' },
+  { q: 'How much does a 50-lb bag of sand cover?', a: 'A 50 lb bag of sand covers about 6 square feet at 1 inch deep. At 2 inches deep it covers about 3 square feet.' },
   { q: 'How much sand do I need for a sandbox?', a: 'For a standard 6×6 ft sandbox filled 6 inches deep, you need about 1 cubic yard or 54 bags of play sand. The depth also depends on how much digging you want to allow.' },
   { q: 'What type of sand should I use for pavers?', a: 'Use paver/leveling sand (also called coarse sand or concrete sand) for the base layer under pavers. Do not use fine play sand — it is too fine to provide a stable, level surface.' },
 ];
 
-const related = [
+export const related = [
   { href: '/calculator/sand', label: 'Sand Calculator' },
   { href: '/guide/how-much-does-a-yard-of-sand-weigh', label: 'How Much Does a Yard of Sand Weigh?' },
   { href: '/calculator/gravel', label: 'Gravel Calculator' },
   { href: '/calculator/concrete', label: 'Concrete Calculator' },
 ];
----
 
 <GuideLayout
   title="How Much Sand Do I Need? — Sand Calculator Guide"
@@ -24,8 +22,8 @@ const related = [
   intro="The amount of sand you need depends on your project type. Paver bases only need 1 inch; sandboxes and fill projects need more. Sand is sold by the bag, ton, or cubic yard."
   calculatorHref="/calculator/sand"
   calculatorLabel="Sand Calculator — tons, cubic yards, and 50 lb bags"
-  {faqs}
-  {related}
+  faqs={faqs}
+  related={related}
   breadcrumbs={[{ label: 'Guides' }, { label: 'How Much Sand Do I Need?' }]}
 >
 

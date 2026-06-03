@@ -1,7 +1,6 @@
----
 import GuideLayout from '../../layouts/GuideLayout.astro';
 
-const faqs = [
+export const faqs = [
   { q: 'How many bags of mulch do I need for a 10×10 garden bed?', a: 'A 10×10 ft bed (100 sq ft) at 3 inches deep needs about 0.93 cubic yards or 13 bags (2 cu ft each), before adding a waste factor. Round up to 14 bags to be safe.' },
   { q: 'How deep should I apply mulch?', a: 'Apply 2–3 inches for existing beds that already have some mulch, or 3–4 inches for new beds or areas where weed suppression is a priority. Avoid piling mulch against plant stems.' },
   { q: 'How much does a bag of mulch cover?', a: 'A standard 2 cubic foot bag covers 24 sq ft at 1 inch deep, 12 sq ft at 2 inches, or 8 sq ft at 3 inches.' },
@@ -9,13 +8,12 @@ const faqs = [
   { q: 'Should I buy bags or bulk mulch?', a: 'Bags are convenient for small areas (under 1–2 cubic yards) or where a truck cannot access. Bulk delivery is significantly cheaper per cubic yard for larger projects.' },
 ];
 
-const related = [
+export const related = [
   { href: '/calculator/mulch', label: 'Mulch Calculator' },
   { href: '/guide/how-many-bags-of-mulch-in-a-cubic-yard', label: 'How Many Bags in a Cubic Yard?' },
   { href: '/calculator/topsoil', label: 'Topsoil Calculator' },
   { href: '/calculator/gravel', label: 'Gravel Calculator' },
 ];
----
 
 <GuideLayout
   title="How Much Mulch Do I Need? — Mulch Calculator Guide"
@@ -24,8 +22,8 @@ const related = [
   intro="The amount of mulch you need depends on the size of your garden beds and the depth you want to apply. Here's how to figure it out quickly."
   calculatorHref="/calculator/mulch"
   calculatorLabel="Mulch Calculator — get your exact bag and cubic yard count"
-  {faqs}
-  {related}
+  faqs={faqs}
+  related={related}
   breadcrumbs={[{ label: 'Guides' }, { label: 'How Much Mulch Do I Need?' }]}
 >
 
@@ -46,11 +44,11 @@ Then multiply by 13.5 to convert cubic yards to 2 cu ft bags.
 
 | Depth | Coverage per cubic yard |
 |-------|------------------------|
-| 1 inch  | 324 sq ft |
+| 1 inch | 324 sq ft |
 | 2 inches | 162 sq ft |
 | 3 inches | 108 sq ft |
-| 4 inches | 81 sq ft  |
-| 6 inches | 54 sq ft  |
+| 4 inches | 81 sq ft |
+| 6 inches | 54 sq ft |
 
 *1 cubic yard = 13.5 bags (2 cu ft each)*
 
@@ -58,10 +56,10 @@ Then multiply by 13.5 to convert cubic yards to 2 cu ft bags.
 
 | Depth | Coverage per bag |
 |-------|-----------------|
-| 1 inch  | 24 sq ft |
+| 1 inch | 24 sq ft |
 | 2 inches | 12 sq ft |
-| 3 inches | 8 sq ft  |
-| 4 inches | 6 sq ft  |
+| 3 inches | 8 sq ft |
+| 4 inches | 6 sq ft |
 
 ## How much to buy: quick examples
 

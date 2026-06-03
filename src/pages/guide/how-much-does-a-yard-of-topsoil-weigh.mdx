@@ -1,20 +1,18 @@
----
 import GuideLayout from '../../layouts/GuideLayout.astro';
 
-const faqs = [
+export const faqs = [
   { q: 'How much does a cubic yard of topsoil weigh?', a: 'A cubic yard of dry topsoil weighs approximately 2,200 lbs (1.1 tons). Wet or heavy clay topsoil can weigh significantly more — up to 3,000 lbs per cubic yard in some cases.' },
   { q: 'How many 40-lb bags of topsoil equal a cubic yard?', a: 'It takes 36 bags of 40 lb topsoil to equal one cubic yard, since each bag contains about 0.75 cubic feet (27 ÷ 0.75 = 36).' },
-  { q: 'Can I haul topsoil in a pickup truck?', a: 'A standard half-ton pickup can safely carry about 1,000 lbs — less than half a cubic yard of topsoil. A 3/4-ton or 1-ton truck can carry a full cubic yard. Always stay within your truck\'s payload rating.' },
+  { q: 'Can I haul topsoil in a pickup truck?', a: "A standard half-ton pickup can safely carry about 1,000 lbs — less than half a cubic yard of topsoil. A 3/4-ton or 1-ton truck can carry a full cubic yard. Always stay within your truck's payload rating." },
   { q: 'How many cubic yards of topsoil are in a ton?', a: 'One ton of topsoil equals about 0.91 cubic yards (1 ÷ 1.10 t/cu yd). Two tons equals about 1.82 cubic yards.' },
 ];
 
-const related = [
+export const related = [
   { href: '/calculator/topsoil', label: 'Topsoil Calculator' },
   { href: '/guide/how-much-topsoil-do-i-need', label: 'How Much Topsoil Do I Need?' },
   { href: '/guide/cubic-yards-to-tons', label: 'Cubic Yards to Tons Converter' },
   { href: '/guide/how-much-does-a-yard-of-gravel-weigh', label: 'How Much Does a Yard of Gravel Weigh?' },
 ];
----
 
 <GuideLayout
   title="How Much Does a Yard of Topsoil Weigh? (Lbs and Tons)"
@@ -23,8 +21,8 @@ const related = [
   intro="A cubic yard of topsoil weighs about 2,200 lbs (1.1 tons) when dry. Moisture content and soil composition can push the weight up or down significantly."
   calculatorHref="/calculator/topsoil"
   calculatorLabel="Topsoil Calculator — cubic yards and 40 lb bags for your project"
-  {faqs}
-  {related}
+  faqs={faqs}
+  related={related}
   breadcrumbs={[{ label: 'Guides' }, { label: 'Topsoil Weight per Yard' }]}
 >
 

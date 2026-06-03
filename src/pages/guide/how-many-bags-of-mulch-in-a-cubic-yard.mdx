@@ -1,19 +1,17 @@
----
 import GuideLayout from '../../layouts/GuideLayout.astro';
 
-const faqs = [
+export const faqs = [
   { q: 'How many 2 cubic foot bags of mulch are in a cubic yard?', a: 'There are exactly 13.5 bags of 2 cubic foot mulch in one cubic yard. Since you cannot buy half a bag, round up to 14 bags when ordering.' },
   { q: 'How many 3 cubic foot bags of mulch per yard?', a: 'There are 9 bags of 3 cubic foot mulch per cubic yard (27 ÷ 3 = 9). Three-cubic-foot bags are less common but available at some stores.' },
   { q: 'Is bulk mulch cheaper than bags?', a: 'Yes — bulk mulch delivered by the yard is almost always cheaper per cubic yard than buying individual bags, especially for orders over 2 cubic yards. The savings can be 40–60% for large orders.' },
   { q: 'How much does a cubic yard of mulch weigh?', a: 'A cubic yard of mulch weighs roughly 400–800 lbs depending on the type and moisture content. Shredded hardwood mulch is heavier than pine bark.' },
 ];
 
-const related = [
+export const related = [
   { href: '/calculator/mulch', label: 'Mulch Calculator' },
   { href: '/guide/how-much-mulch-do-i-need', label: 'How Much Mulch Do I Need?' },
   { href: '/calculator/topsoil', label: 'Topsoil Calculator' },
 ];
----
 
 <GuideLayout
   title="How Many Bags of Mulch in a Cubic Yard? (2 cu ft bags)"
@@ -22,8 +20,8 @@ const related = [
   intro="One cubic yard equals 27 cubic feet. A standard 2 cubic foot bag of mulch gives you exactly 13.5 bags per cubic yard — round up to 14 when ordering."
   calculatorHref="/calculator/mulch"
   calculatorLabel="Mulch Calculator — find how many bags you need for your beds"
-  {faqs}
-  {related}
+  faqs={faqs}
+  related={related}
   breadcrumbs={[{ label: 'Guides' }, { label: 'Bags of Mulch per Cubic Yard' }]}
 >
 

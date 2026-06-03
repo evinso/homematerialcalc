@@ -1,20 +1,18 @@
----
 import GuideLayout from '../../layouts/GuideLayout.astro';
 
-const faqs = [
+export const faqs = [
   { q: 'How many 80 lb bags of concrete for a 10x10 slab at 4 inches?', a: 'A 10×10 ft slab at 4 inches thick needs 62 bags of 80 lb concrete mix (including 10% waste). The slab volume is 33.3 cubic feet; with waste, 36.7 cu ft ÷ 0.60 cu ft/bag = 62 bags.' },
   { q: 'How many 60 lb bags of concrete for a 10x10 slab?', a: 'You need 82 bags of 60 lb concrete mix for a standard 10×10 slab at 4 inches thick with 10% waste (36.7 cu ft ÷ 0.45 cu ft/bag = 82 bags).' },
   { q: 'How many bags of concrete for a 10x10 slab at 6 inches?', a: 'At 6 inches thick, a 10×10 slab needs 50 cubic feet of concrete. With 10% waste, that is 55 cu ft. You would need 92 bags of 80 lb mix (55 ÷ 0.60) or 123 bags of 60 lb mix (55 ÷ 0.45).' },
   { q: 'Should I use ready-mix or bags for a 10x10 slab?', a: 'A 10×10 slab at 4 inches requires about 1.23 cubic yards. At that volume, bagged concrete is manageable but labor-intensive (62 bags of 80 lb mix). Ready-mix delivery is usually more economical for slabs over 1 cubic yard if a truck can access your site.' },
-  { q: 'What thickness should a 10x10 concrete slab be?', a: 'For a standard residential patio or walkway, 4 inches is the minimum. For a shed floor or area with occasional light vehicle traffic, use 5–6 inches. Structural applications require an engineer\'s specification.' },
+  { q: 'What thickness should a 10x10 concrete slab be?', a: "For a standard residential patio or walkway, 4 inches is the minimum. For a shed floor or area with occasional light vehicle traffic, use 5–6 inches. Structural applications require an engineer's specification." },
 ];
 
-const related = [
+export const related = [
   { href: '/calculator/concrete', label: 'Concrete Calculator' },
   { href: '/guide/how-much-concrete-do-i-need', label: 'How Much Concrete Do I Need?' },
   { href: '/guide/how-many-bags-of-concrete-per-cubic-yard', label: 'Bags per Cubic Yard' },
 ];
----
 
 <GuideLayout
   title="How Many Bags of Concrete for a 10×10 Slab?"
@@ -23,8 +21,8 @@ const related = [
   intro="A 10×10 ft slab at the standard 4-inch thickness needs 62 bags of 80 lb concrete mix, or 82 bags of 60 lb mix, when you include a 10% waste factor."
   calculatorHref="/calculator/concrete"
   calculatorLabel="Concrete Calculator — exact bags for any slab size and thickness"
-  {faqs}
-  {related}
+  faqs={faqs}
+  related={related}
   breadcrumbs={[{ label: 'Guides' }, { label: 'Bags for 10×10 Slab' }]}
 >
 
@@ -32,10 +30,10 @@ const related = [
 
 | Thickness | Volume (cu ft) | 80 lb bags | 60 lb bags | 40 lb bags |
 |-----------|---------------|-----------|-----------|-----------|
-| 3 inches  | 25.0 → 27.5*  | 46 | 62 | 92 |
-| 4 inches  | 33.3 → 36.7*  | **62** | **82** | **123** |
-| 5 inches  | 41.7 → 45.8*  | 77 | 102 | 153 |
-| 6 inches  | 50.0 → 55.0*  | 92 | 123 | 184 |
+| 3 inches | 25.0 → 27.5* | 46 | 62 | 92 |
+| 4 inches | 33.3 → 36.7* | **62** | **82** | **123** |
+| 5 inches | 41.7 → 45.8* | 77 | 102 | 153 |
+| 6 inches | 50.0 → 55.0* | 92 | 123 | 184 |
 
 *Includes 10% waste factor. All bag counts rounded up.*
 

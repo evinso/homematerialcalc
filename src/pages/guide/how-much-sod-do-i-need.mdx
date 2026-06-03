@@ -1,7 +1,6 @@
----
 import GuideLayout from '../../layouts/GuideLayout.astro';
 
-const faqs = [
+export const faqs = [
   { q: 'How many pallets of sod do I need for a 1,000 sq ft lawn?', a: 'A 1,000 sq ft lawn with straight edges needs about 1,050 sq ft of sod including 5% waste, which is 3 pallets (each covers 450 sq ft). Round up — you cannot return unused sod easily.' },
   { q: 'How many pieces of sod are in a pallet?', a: 'Most pallets contain approximately 170 pieces of sod. Each standard piece measures 16 × 24 inches (2.67 sq ft), so a pallet covers about 450 sq ft.' },
   { q: 'How much waste should I add when buying sod?', a: 'Add 5% for lawns with straight, simple edges. Add 10% for lawns with many curves, angles, or complex shapes where you will need to cut pieces to fit.' },
@@ -9,13 +8,12 @@ const faqs = [
   { q: 'When is the best time to lay sod?', a: 'Sod establishes best when laid in spring or early fall in most US regions. Avoid laying sod in peak summer heat or when the ground is frozen. Water immediately and keep moist for the first 2–3 weeks.' },
 ];
 
-const related = [
+export const related = [
   { href: '/calculator/sod', label: 'Sod Calculator' },
   { href: '/guide/how-many-square-feet-does-a-pallet-of-sod-cover', label: 'How Many Sq Ft Per Pallet?' },
   { href: '/calculator/topsoil', label: 'Topsoil Calculator' },
   { href: '/calculator/mulch', label: 'Mulch Calculator' },
 ];
----
 
 <GuideLayout
   title="How Much Sod Do I Need? — Sod Calculator Guide"
@@ -24,8 +22,8 @@ const related = [
   intro="Sod is sold by the piece or pallet. The amount you need depends on your lawn area and how much trimming waste to expect. Here is how to calculate it accurately."
   calculatorHref="/calculator/sod"
   calculatorLabel="Sod Calculator — pallets and pieces for your lawn area"
-  {faqs}
-  {related}
+  faqs={faqs}
+  related={related}
   breadcrumbs={[{ label: 'Guides' }, { label: 'How Much Sod Do I Need?' }]}
 >
 

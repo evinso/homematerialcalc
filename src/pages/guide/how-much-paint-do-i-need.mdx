@@ -1,19 +1,20 @@
----
 import GuideLayout from '../../layouts/GuideLayout.astro';
-const faqs = [
+
+export const faqs = [
   { q: 'How many gallons of paint for a 12×12 room?', a: 'A 12×12 room with 8-foot ceilings has about 384 sq ft of wall area. After subtracting 1 door and 2 windows (~51 sq ft), net area is 333 sq ft. At 2 coats and 350 sq ft/gallon, you need about 2 gallons. Always round up — buy 3 gallons.' },
   { q: 'How much paint do I need for a bedroom?', a: 'An average US bedroom (10×12 ft, 8 ft ceiling) has about 352 sq ft of walls. After 1 door and 2 windows, net area is roughly 301 sq ft. Two coats at 350 sq ft/gallon = about 2 gallons. Most bedrooms take 2–3 gallons for 2 coats.' },
-  { q: 'How many coats of paint do I need?', a: 'Two coats is standard for most painting projects. If painting a dark color over light (or light over dark), a third coat may be needed. Priming first reduces the coats required for dramatic color changes.' },
+  { q: 'How many coats of paint do I need?', a: 'Two coats is standard for most painting projects. If painting a dark color over light (or vice versa), a third coat may be needed. Priming first reduces the coats required for dramatic color changes.' },
   { q: 'How much does a gallon of paint cover?', a: 'Most standard interior paints cover 350–400 sq ft per gallon per coat on smooth surfaces. Textured or porous surfaces absorb more paint and may only yield 250–300 sq ft per gallon.' },
   { q: 'Should I buy a quart or a gallon of paint?', a: 'A quart covers about 87–100 sq ft per coat. For small accent walls or touch-up projects under 100 sq ft, a quart may be enough. For full rooms, gallons are more economical.' },
 ];
-const related = [
+
+export const related = [
   { href: '/calculator/paint', label: 'Paint Calculator' },
   { href: '/guide/paint-coverage-per-gallon', label: 'Paint Coverage per Gallon' },
   { href: '/calculator/drywall', label: 'Drywall Calculator' },
   { href: '/calculator/flooring', label: 'Flooring Calculator' },
 ];
----
+
 <GuideLayout
   title="How Much Paint Do I Need? — Paint Calculator Guide"
   description="Calculate how many gallons of paint you need for any room. Coverage tables for standard and premium paint, tips for counting coats, and how to measure wall area."
@@ -21,7 +22,8 @@ const related = [
   intro="The amount of paint depends on your wall area, number of coats, and paint type. Most rooms need 2 gallons for 2 coats — but your exact dimensions change everything."
   calculatorHref="/calculator/paint"
   calculatorLabel="Paint Calculator — gallons for your exact room size"
-  {faqs} {related}
+  faqs={faqs}
+  related={related}
   breadcrumbs={[{ label: 'Guides' }, { label: 'How Much Paint Do I Need?' }]}
 >
 
@@ -56,7 +58,7 @@ const related = [
 | 12 × 16 ft | 448 sq ft | 397 sq ft | 3 |
 | 14 × 20 ft | 544 sq ft | 493 sq ft | 3 |
 
-*After subtracting 1 door (21 sq ft) and 2 windows (30 sq ft). Rounded up to nearest gallon.
+*After subtracting 1 door (21 sq ft) and 2 windows (30 sq ft). Rounded up to nearest gallon.*
 
 ## Tips to avoid buying too much or too little
 

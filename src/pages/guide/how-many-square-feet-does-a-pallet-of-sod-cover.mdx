@@ -1,7 +1,6 @@
----
 import GuideLayout from '../../layouts/GuideLayout.astro';
 
-const faqs = [
+export const faqs = [
   { q: 'How many square feet does a pallet of sod cover?', a: 'A standard sod pallet covers approximately 450 square feet. Most pallets contain about 170 pieces, each measuring 16×24 inches (2.67 sq ft). Coverage can vary slightly by supplier.' },
   { q: 'How many pieces of sod come on a pallet?', a: 'A standard pallet typically contains about 170 pieces of sod, each 16×24 inches (2.67 sq ft). 170 × 2.67 = approximately 450 sq ft per pallet.' },
   { q: 'How many pallets of sod do I need for a quarter-acre lawn?', a: 'A quarter acre is 10,890 sq ft. Adding 5% waste gives 11,435 sq ft, which requires about 26 pallets. For curved or irregular lawns, add 10% waste and order 27 pallets.' },
@@ -9,12 +8,11 @@ const faqs = [
   { q: 'How long can sod sit on a pallet before installation?', a: 'Sod should be installed within 24–48 hours of delivery, or sooner in hot weather. Keep it in a cool, shaded spot and lightly moisten the rolls if there will be a delay. Never let it sit in direct sun on a pallet.' },
 ];
 
-const related = [
+export const related = [
   { href: '/calculator/sod', label: 'Sod Calculator' },
   { href: '/guide/how-much-sod-do-i-need', label: 'How Much Sod Do I Need?' },
   { href: '/calculator/topsoil', label: 'Topsoil Calculator' },
 ];
----
 
 <GuideLayout
   title="How Many Square Feet Does a Pallet of Sod Cover?"
@@ -23,8 +21,8 @@ const related = [
   intro="A standard sod pallet covers approximately 450 square feet. Coverage is determined by the number of pieces per pallet and the size of each piece."
   calculatorHref="/calculator/sod"
   calculatorLabel="Sod Calculator — pallets and pieces for your lawn"
-  {faqs}
-  {related}
+  faqs={faqs}
+  related={related}
   breadcrumbs={[{ label: 'Guides' }, { label: 'Pallet of Sod Coverage' }]}
 >
 

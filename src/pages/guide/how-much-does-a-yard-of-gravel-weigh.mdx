@@ -1,20 +1,18 @@
----
 import GuideLayout from '../../layouts/GuideLayout.astro';
 
-const faqs = [
+export const faqs = [
   { q: 'How much does a cubic yard of pea gravel weigh?', a: 'A cubic yard of pea gravel weighs approximately 2,800 lbs (1.40 tons). Weight can vary slightly with moisture content.' },
   { q: 'How much does a cubic yard of crushed limestone weigh?', a: 'Crushed limestone is one of the denser common gravels at approximately 3,000 lbs (1.50 tons) per cubic yard.' },
   { q: 'How many cubic yards are in a ton of gravel?', a: 'For most gravel (1.40 t/cu yd), 1 ton equals about 0.71 cubic yards. For denser crushed limestone (1.50 t/cu yd), 1 ton is about 0.67 cubic yards.' },
   { q: 'Why does my supplier quote gravel in tons, not yards?', a: 'Bulk aggregate suppliers typically sell by weight (tons) because gravel is weighed on a truck scale at delivery. Tons are more precise than estimating cubic yards in a pile. Our calculator converts between both.' },
 ];
 
-const related = [
+export const related = [
   { href: '/calculator/gravel', label: 'Gravel Calculator' },
   { href: '/guide/cubic-yards-to-tons', label: 'Cubic Yards to Tons Converter' },
   { href: '/guide/how-much-gravel-do-i-need', label: 'How Much Gravel Do I Need?' },
   { href: '/guide/how-much-does-a-yard-of-sand-weigh', label: 'How Much Does a Yard of Sand Weigh?' },
 ];
----
 
 <GuideLayout
   title="How Much Does a Yard of Gravel Weigh? (All Stone Types)"
@@ -23,8 +21,8 @@ const related = [
   intro="A cubic yard of most gravel types weighs between 2,700 and 3,000 lbs. The exact weight depends on the stone type — denser stone like limestone is heavier than river rock or pea gravel."
   calculatorHref="/calculator/gravel"
   calculatorLabel="Gravel Calculator — cubic yards and tons for your project"
-  {faqs}
-  {related}
+  faqs={faqs}
+  related={related}
   breadcrumbs={[{ label: 'Guides' }, { label: 'Gravel Weight per Yard' }]}
 >
 

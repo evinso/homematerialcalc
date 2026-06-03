@@ -1,7 +1,6 @@
----
 import GuideLayout from '../../layouts/GuideLayout.astro';
 
-const faqs = [
+export const faqs = [
   { q: 'How many 80 lb bags of concrete do I need for a 10×10 slab at 4 inches?', a: 'A 10×10 ft slab at 4 inches thick has a volume of 33.3 cubic feet. Adding 10% waste gives 36.7 cu ft. At 0.60 cu ft per 80 lb bag, you need 62 bags.' },
   { q: 'How many bags of concrete make a cubic yard?', a: '80 lb bags: 45 bags. 60 lb bags: 60 bags. 50 lb bags: 72 bags. 40 lb bags: 90 bags. These are based on Quikrete manufacturer specifications.' },
   { q: 'How thick should a concrete slab be?', a: 'Standard residential slabs are 4 inches thick. Driveways and areas with vehicle traffic should be 5–6 inches. Light-duty walkways can be 3–4 inches. Structural footings vary by design.' },
@@ -9,14 +8,13 @@ const faqs = [
   { q: 'How do I measure for a concrete footing?', a: 'Measure the rectangular footprint (length × width) and depth of the footing. Multiply length × width × depth (all in feet) to get cubic feet, divide by 27 for cubic yards, then divide by bag yield for bag count.' },
 ];
 
-const related = [
+export const related = [
   { href: '/calculator/concrete', label: 'Concrete Calculator' },
   { href: '/guide/how-many-bags-of-concrete-per-cubic-yard', label: 'How Many Bags per Cubic Yard?' },
   { href: '/guide/how-many-bags-of-concrete-for-10x10-slab', label: 'Bags for a 10×10 Slab' },
   { href: '/calculator/gravel', label: 'Gravel Calculator' },
   { href: '/calculator/sand', label: 'Sand Calculator' },
 ];
----
 
 <GuideLayout
   title="How Much Concrete Do I Need? — Concrete Calculator Guide"
@@ -25,8 +23,8 @@ const related = [
   intro="Concrete quantity depends on the volume of your project — length × width × thickness for slabs, or the cylinder volume for post holes. Here is how to calculate it."
   calculatorHref="/calculator/concrete"
   calculatorLabel="Concrete Calculator — bags for slabs, post holes, and footings"
-  {faqs}
-  {related}
+  faqs={faqs}
+  related={related}
   breadcrumbs={[{ label: 'Guides' }, { label: 'How Much Concrete Do I Need?' }]}
 >
 

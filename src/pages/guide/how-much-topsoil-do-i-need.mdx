@@ -1,7 +1,6 @@
----
 import GuideLayout from '../../layouts/GuideLayout.astro';
 
-const faqs = [
+export const faqs = [
   { q: 'How many cubic yards of topsoil do I need for a 10×10 garden bed at 6 inches deep?', a: 'A 10×10 ft bed (100 sq ft) at 6 inches deep needs 1.85 cubic yards. That is about 67 bags of 40 lb topsoil, or roughly 2 tons of bulk topsoil.' },
   { q: 'How many 40-lb bags of topsoil equal a cubic yard?', a: 'It takes 36 bags of 40 lb topsoil to fill one cubic yard, since each bag yields about 0.75 cubic feet and there are 27 cubic feet in a cubic yard (27 ÷ 0.75 = 36).' },
   { q: 'How much does a yard of topsoil weigh?', a: 'Topsoil typically weighs around 2,200 lbs (1.1 tons) per cubic yard. Weight varies with moisture content — wet topsoil can weigh significantly more.' },
@@ -9,13 +8,12 @@ const faqs = [
   { q: 'When should I order bulk topsoil vs. bags?', a: 'Order bulk delivery for projects over 1.5–2 cubic yards — it is much cheaper per yard. Use bags for small patches, tight-access areas, or when you only need a fraction of a yard.' },
 ];
 
-const related = [
+export const related = [
   { href: '/calculator/topsoil', label: 'Topsoil Calculator' },
   { href: '/guide/how-much-does-a-yard-of-topsoil-weigh', label: 'How Much Does a Yard of Topsoil Weigh?' },
   { href: '/calculator/mulch', label: 'Mulch Calculator' },
   { href: '/calculator/sod', label: 'Sod Calculator' },
 ];
----
 
 <GuideLayout
   title="How Much Topsoil Do I Need? — Topsoil Calculator Guide"
@@ -24,8 +22,8 @@ const related = [
   intro="The amount of topsoil you need depends on your area and intended depth. Lawn top-dressing needs just 1–2 inches; raised beds from scratch need 8–12 inches."
   calculatorHref="/calculator/topsoil"
   calculatorLabel="Topsoil Calculator — cubic yards and 40 lb bags"
-  {faqs}
-  {related}
+  faqs={faqs}
+  related={related}
   breadcrumbs={[{ label: 'Guides' }, { label: 'How Much Topsoil Do I Need?' }]}
 >
 

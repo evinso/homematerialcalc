@@ -1,18 +1,19 @@
----
 import GuideLayout from '../../layouts/GuideLayout.astro';
-const faqs = [
+
+export const faqs = [
   { q: 'How many boxes of flooring do I need for a 12×12 room?', a: 'A 12×12 room is 144 sq ft. With 10% waste for straight lay, you need 158.4 sq ft of flooring. If your box covers 20 sq ft, that is 8 boxes. If your box covers 25 sq ft, that is 7 boxes. Always confirm the box coverage on your product label.' },
   { q: 'How much extra flooring should I buy?', a: 'Buy 10% extra for straight-lay rooms and 15% extra for diagonal patterns or rooms with many cuts (L-shaped, lots of doorways). An extra 10–15% covers cutting waste, future repairs, and measurement errors.' },
   { q: 'Can I return extra flooring boxes?', a: 'Most home improvement stores accept returns of unopened boxes within 90 days. Keep your receipt. Even so, buying 1 extra box for future repairs is smart — dye lots change between manufacturing runs.' },
   { q: 'How do I calculate flooring for an L-shaped room?', a: 'Break the L-shape into two rectangles, calculate each one separately, then add them. Use the Irregular shape option in the Flooring Calculator to add multiple sections automatically.' },
   { q: 'Does flooring direction affect how much I need?', a: 'Yes. Running flooring diagonally at 45° requires 15% waste instead of 10% because the cuts at walls and corners are larger. Straight lay (parallel to walls) uses less material.' },
 ];
-const related = [
+
+export const related = [
   { href: '/calculator/flooring', label: 'Flooring Calculator' },
-  { href: '/calculator/tile',     label: 'Tile Calculator' },
-  { href: '/calculator/paint',    label: 'Paint Calculator' },
+  { href: '/calculator/tile', label: 'Tile Calculator' },
+  { href: '/calculator/paint', label: 'Paint Calculator' },
 ];
----
+
 <GuideLayout
   title="How Much Flooring Do I Need? — Flooring Calculator Guide"
   description="Calculate how many boxes of laminate, vinyl plank, or hardwood flooring you need. Includes waste factor guide, box coverage table, and tips for L-shaped rooms."
@@ -20,7 +21,8 @@ const related = [
   intro="The number of flooring boxes you need depends on your room area, the box coverage printed on your product label, and how much waste to add for your lay pattern."
   calculatorHref="/calculator/flooring"
   calculatorLabel="Flooring Calculator — exact box count for any room"
-  {faqs} {related}
+  faqs={faqs}
+  related={related}
   breadcrumbs={[{ label: 'Guides' }, { label: 'How Much Flooring Do I Need?' }]}
 >
 

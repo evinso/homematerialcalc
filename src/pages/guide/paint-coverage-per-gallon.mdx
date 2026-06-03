@@ -1,17 +1,18 @@
----
 import GuideLayout from '../../layouts/GuideLayout.astro';
-const faqs = [
+
+export const faqs = [
   { q: 'How many square feet does a gallon of paint cover?', a: 'A gallon of standard interior paint covers approximately 350 square feet per coat on smooth walls. Premium paints can cover up to 400 sq ft per gallon. Textured or porous surfaces typically yield 250–300 sq ft per gallon.' },
   { q: 'How much wall area does a quart of paint cover?', a: 'A quart is one-quarter of a gallon and covers roughly 87–100 sq ft per coat — about the size of one average wall. Quarts are good for accent walls, touch-ups, or testing a color.' },
   { q: 'Does the number of coats affect coverage?', a: 'Yes. Coverage per gallon refers to one coat. For 2 coats, double your gallon estimate. A 12×12 room needs about 1.9 gallons per coat, so 4 gallons for 2 coats (before rounding up).' },
   { q: 'Why does paint coverage vary so much?', a: 'Coverage depends on surface texture (smooth vs. textured walls), surface porosity (new drywall absorbs more paint), application method (roller vs. brush), and the paint formula (cheaper paints have lower pigment density).' },
 ];
-const related = [
+
+export const related = [
   { href: '/calculator/paint', label: 'Paint Calculator' },
   { href: '/guide/how-much-paint-do-i-need', label: 'How Much Paint Do I Need?' },
   { href: '/calculator/drywall', label: 'Drywall Calculator' },
 ];
----
+
 <GuideLayout
   title="Paint Coverage per Gallon — How Much Does a Gallon of Paint Cover?"
   description="A gallon of standard interior paint covers 350 sq ft per coat. Full coverage table for all paint types, plus how coats and surface texture affect coverage."
@@ -19,7 +20,8 @@ const related = [
   intro="A gallon of standard interior paint covers approximately 350 square feet per coat. Premium paint covers up to 400 sq ft/gallon; textured surfaces and primer cover less."
   calculatorHref="/calculator/paint"
   calculatorLabel="Paint Calculator — exact gallons for your room"
-  {faqs} {related}
+  faqs={faqs}
+  related={related}
   breadcrumbs={[{ label: 'Guides' }, { label: 'Paint Coverage per Gallon' }]}
 >
 
