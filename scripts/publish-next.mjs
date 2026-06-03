@@ -26,7 +26,7 @@ const PUBLISH_ALL = args.includes('--all');
 // ─── Load schedule ────────────────────────────────────────────────────────────
 const raw = readFileSync(SCHEDULE_PATH, 'utf-8');
 const schedule = JSON.parse(raw);
-const { pagesPerWeek, minDaysBetweenRuns } = schedule.cadence;
+const { pagesPerRun = schedule.cadence.pagesPerWeek ?? 1, minDaysBetweenRuns } = schedule.cadence;
 const today = new Date().toISOString().split('T')[0];
 
 // ─── Throttle check ───────────────────────────────────────────────────────────
@@ -43,7 +43,7 @@ if (!DRY_RUN && !PUBLISH_ALL && schedule.lastRun) {
 // ─── Find pending pages ───────────────────────────────────────────────────────
 const pages = schedule.pages.filter(p => p && p.url && p.status);
 const pending = pages.filter(p => p.status === 'pending');
-const toPublish = PUBLISH_ALL ? pending : pending.slice(0, pagesPerWeek);
+const toPublish = PUBLISH_ALL ? pending : pending.slice(0, pagesPerRun);
 
 if (toPublish.length === 0) {
   console.log('✅ No pending pages to publish.');

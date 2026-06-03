@@ -1,8 +1,8 @@
 {
-  "_comment": "Single source of truth for page publishing. Run 'npm run publish' to promote pending pages. Cadence: pagesPerWeek controls how many pending pages go live per run.",
+  "_comment": "Single source of truth for page publishing. Run 'npm run publish:next' to promote pending pages. Cadence: pagesPerRun = 1 per day via GitHub Actions.",
   "cadence": {
-    "pagesPerWeek": 3,
-    "minDaysBetweenRuns": 2
+    "pagesPerRun": 1,
+    "minDaysBetweenRuns": 1
   },
   "lastRun": null,
   "pages": [
