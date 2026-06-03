@@ -36,6 +36,15 @@ const canonical = canonicalUrl ?? siteUrl + Astro.url.pathname;
 
     <slot name="head" />
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-77PP8J7B4H"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-77PP8J7B4H');
+    </script>
+
     <!-- ============================================================
          ADSENSE: Google'dan aldığın kodu aşağıya yapıştır.
          Örnek:
