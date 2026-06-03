@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ConcreteCalculator from '../../components/calculators/ConcreteCalculator';
+import AdSlot from '../../components/ui/AdSlot.astro';
+
+const related = [
+  { href: '/calculator/gravel',  label: 'Gravel Calculator' },
+  { href: '/calculator/sand',    label: 'Sand Calculator' },
+  { href: '/guide/how-much-concrete-do-i-need',                  label: 'How Much Concrete Do I Need?' },
+  { href: '/guide/how-many-bags-of-concrete-per-cubic-yard',     label: 'How Many Bags of Concrete per Cubic Yard?' },
+  { href: '/guide/how-many-bags-of-concrete-for-10x10-slab',     label: 'How Many Bags for a 10×10 Slab?' },
+];
+---
+
+<BaseLayout
+  title="Concrete Calculator — Bag Count for Slabs, Post Holes &amp; Footings"
+  description="Free concrete calculator. Enter your slab, post hole, or footing dimensions and bag size (40, 60, or 80 lb) to instantly find out how many bags of concrete to buy."
+>
+  <div class="max-w-6xl mx-auto px-4 py-10">
+    <div class="grid lg:grid-cols-[1fr_380px] gap-10">
+      <div>
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">Concrete Calculator</h1>
+        <p class="text-gray-600 mb-6">Calculate the number of bagged concrete mix needed for slabs, post holes, and footings — for any bag size.</p>
+
+        <ConcreteCalculator client:load />
+
+        <AdSlot slot="after-result" className="mt-6" />
+
+        <div class="calculator-card mt-8">
+          <h2 class="font-bold text-gray-900 text-lg mb-3">How to measure your project</h2>
+          <ol class="space-y-3 text-sm text-gray-700">
+            <li class="flex gap-3"><span class="font-bold text-brand-600 flex-shrink-0">1.</span>
+              <span><strong>Slabs and pads:</strong> Measure length × width in feet. Standard thickness is 4" for patios and walkways, 6" for driveways.</span></li>
+            <li class="flex gap-3"><span class="font-bold text-brand-600 flex-shrink-0">2.</span>
+              <span><strong>Post holes:</strong> Measure or select the hole diameter and depth. A standard fence post hole is 6–8" diameter, 36" deep.</span></li>
+            <li class="flex gap-3"><span class="font-bold text-brand-600 flex-shrink-0">3.</span>
+              <span><strong>Footings:</strong> Measure the rectangular cross-section length × width × depth.</span></li>
+            <li class="flex gap-3"><span class="font-bold text-brand-600 flex-shrink-0">4.</span>
+              <span><strong>Bag size:</strong> 80 lb bags are the most efficient per bag but heaviest to carry. 60 lb bags balance size and yield. 40 lb bags are easiest to handle.</span></li>
+          </ol>
+        </div>
+
+        <AdSlot slot="in-content" className="mt-6" />
+
+        <div class="mt-6 text-sm text-gray-500 border-t pt-4">
+          <p>Formula: <em>Volume (cu ft) = Area × Thickness ÷ 12. Bags = Volume × (1 + waste) ÷ bag yield, rounded up.</em>
+          Bag yields per Quikrete specifications. See our <a href="/methodology" class="text-brand-600 hover:underline">methodology page</a>.</p>
+        </div>
+      </div>
+
+      <aside class="space-y-6">
+        <div class="calculator-card">
+          <h3 class="font-semibold text-gray-900 mb-3">Bag yields (Quikrete)</h3>
+          <table class="w-full text-sm text-gray-700">
+            <thead><tr class="border-b"><th class="text-left pb-1">Bag size</th><th class="text-right pb-1">Yield</th><th class="text-right pb-1">Bags/cu yd</th></tr></thead>
+            <tbody class="divide-y">
+              {[['40 lb','0.30 cu ft','90'],['50 lb','0.375 cu ft','72'],['60 lb','0.45 cu ft','60'],['80 lb','0.60 cu ft','45']].map(([b,y,bpy]) => (
+                <tr><td class="py-1">{b}</td><td class="py-1 text-right">{y}</td><td class="py-1 text-right">{bpy}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="calculator-card">
+          <h3 class="font-semibold text-gray-900 mb-3">Related calculators &amp; guides</h3>
+          <ul class="space-y-2">
+            {related.map(r => (
+              <li><a href={r.href} class="text-sm text-brand-600 hover:underline">{r.label}</a></li>
+            ))}
+          </ul>
+        </div>
+
+        <AdSlot slot="sidebar" />
+      </aside>
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,65 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+const faqs = [
+  { q: 'How many 2 cubic foot bags of mulch are in a cubic yard?', a: 'There are exactly 13.5 bags of 2 cubic foot mulch in one cubic yard. Since you cannot buy half a bag, round up to 14 bags when ordering.' },
+  { q: 'How many 3 cubic foot bags of mulch per yard?', a: 'There are 9 bags of 3 cubic foot mulch per cubic yard (27 ÷ 3 = 9). Three-cubic-foot bags are less common but available at some stores.' },
+  { q: 'Is bulk mulch cheaper than bags?', a: 'Yes — bulk mulch delivered by the yard is almost always cheaper per cubic yard than buying individual bags, especially for orders over 2 cubic yards. The savings can be 40–60% for large orders.' },
+  { q: 'How much does a cubic yard of mulch weigh?', a: 'A cubic yard of mulch weighs roughly 400–800 lbs depending on the type and moisture content. Shredded hardwood mulch is heavier than pine bark.' },
+];
+
+const related = [
+  { href: '/calculator/mulch', label: 'Mulch Calculator' },
+  { href: '/guide/how-much-mulch-do-i-need', label: 'How Much Mulch Do I Need?' },
+  { href: '/calculator/topsoil', label: 'Topsoil Calculator' },
+];
+---
+
+<GuideLayout
+  title="How Many Bags of Mulch in a Cubic Yard? (2 cu ft bags)"
+  description="There are 13.5 bags of 2 cubic foot mulch in one cubic yard. See the full conversion table for all bag sizes and learn when to buy bulk vs. bagged mulch."
+  h1="How Many Bags of Mulch in a Cubic Yard?"
+  intro="One cubic yard equals 27 cubic feet. A standard 2 cubic foot bag of mulch gives you exactly 13.5 bags per cubic yard — round up to 14 when ordering."
+  calculatorHref="/calculator/mulch"
+  calculatorLabel="Mulch Calculator — find how many bags you need for your beds"
+  {faqs}
+  {related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Bags of Mulch per Cubic Yard' }]}
+>
+
+## The answer
+
+**1 cubic yard = 13.5 bags of 2 cu ft mulch**
+
+This comes from a simple conversion: 1 cubic yard = 27 cubic feet. Divide by the bag size:
+
+> 27 cu ft ÷ 2 cu ft per bag = **13.5 bags**
+
+Since you cannot buy half a bag, always round up to **14 bags** when purchasing.
+
+## Conversion table: bags per cubic yard by bag size
+
+| Bag size | Bags per cubic yard |
+|----------|-------------------|
+| 2 cu ft (standard) | **13.5 bags** → order 14 |
+| 3 cu ft | **9 bags** |
+| 1.5 cu ft | **18 bags** |
+
+## How many cubic yards is a certain number of bags?
+
+| Bags (2 cu ft) | Cubic yards |
+|----------------|-------------|
+| 5 bags | 0.37 cu yd |
+| 10 bags | 0.74 cu yd |
+| 14 bags | 1.04 cu yd |
+| 27 bags | 2.00 cu yd |
+| 54 bags | 4.00 cu yd |
+
+## When to buy bags vs. bulk
+
+- **Bags:** Best for under 1.5 cu yd, tight-access locations, or exact color matching.
+- **Bulk delivery:** Best for over 1.5–2 cubic yards. A cubic yard of bulk mulch costs roughly the same as 10–12 bags — saving you 20–40%.
+
+Use the [Mulch Calculator](/calculator/mulch) to enter your bed dimensions and get your exact bag or cubic yard count.
+
+</GuideLayout>

@@ -1,0 +1,126 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalUrl?: string;
+  ogImage?: string;
+}
+
+const { title, description, canonicalUrl, ogImage } = Astro.props;
+const siteUrl = 'https://homematerialcalc.com';
+const canonical = canonicalUrl ?? siteUrl + Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:type" content="website" />
+    {ogImage && <meta property="og:image" content={ogImage} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>{title}</title>
+
+    <slot name="head" />
+
+    <!-- ============================================================
+         ADSENSE: Google'dan aldığın kodu aşağıya yapıştır.
+         Örnek:
+         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+         ============================================================ -->
+    <!-- ADSENSE_SCRIPT_PLACEHOLDER -->
+
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="border-b border-gray-200 bg-white sticky top-0 z-50">
+      <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+        <a href="/" class="flex items-center gap-2 font-bold text-brand-700 text-lg">
+          HomeMaterialCalc
+        </a>
+        <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-600">
+          <a href="/calculator/mulch" class="hover:text-brand-700 transition-colors">Mulch</a>
+          <a href="/calculator/gravel" class="hover:text-brand-700 transition-colors">Gravel</a>
+          <a href="/calculator/topsoil" class="hover:text-brand-700 transition-colors">Topsoil</a>
+          <a href="/calculator/sand" class="hover:text-brand-700 transition-colors">Sand</a>
+          <a href="/calculator/sod" class="hover:text-brand-700 transition-colors">Sod</a>
+          <a href="/calculator/concrete" class="hover:text-brand-700 transition-colors">Concrete</a>
+        </nav>
+        <!-- Mobile menu button placeholder -->
+        <button class="md:hidden p-2 rounded-lg text-gray-600" aria-label="Menu">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main content -->
+    <main class="flex-1">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 border-t border-gray-200 mt-16">
+      <div class="max-w-6xl mx-auto px-4 py-10">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-sm">
+          <div>
+            <p class="font-semibold text-gray-900 mb-3">Calculators</p>
+            <ul class="space-y-2 text-gray-600">
+              <li><a href="/calculator/mulch" class="hover:text-brand-700">Mulch</a></li>
+              <li><a href="/calculator/gravel" class="hover:text-brand-700">Gravel</a></li>
+              <li><a href="/calculator/topsoil" class="hover:text-brand-700">Topsoil</a></li>
+              <li><a href="/calculator/sand" class="hover:text-brand-700">Sand</a></li>
+              <li><a href="/calculator/sod" class="hover:text-brand-700">Sod</a></li>
+              <li><a href="/calculator/concrete" class="hover:text-brand-700">Concrete</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="font-semibold text-gray-900 mb-3">Guides</p>
+            <ul class="space-y-2 text-gray-600">
+              <li><a href="/guide/how-much-mulch-do-i-need" class="hover:text-brand-700">How Much Mulch</a></li>
+              <li><a href="/guide/how-much-gravel-do-i-need" class="hover:text-brand-700">How Much Gravel</a></li>
+              <li><a href="/guide/how-much-topsoil-do-i-need" class="hover:text-brand-700">How Much Topsoil</a></li>
+              <li><a href="/guide/how-much-concrete-do-i-need" class="hover:text-brand-700">How Much Concrete</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="font-semibold text-gray-900 mb-3">Reference</p>
+            <ul class="space-y-2 text-gray-600">
+              <li><a href="/guide/how-many-bags-of-mulch-in-a-cubic-yard" class="hover:text-brand-700">Mulch Bags per Yard</a></li>
+              <li><a href="/guide/how-much-does-a-yard-of-gravel-weigh" class="hover:text-brand-700">Gravel Weight per Yard</a></li>
+              <li><a href="/guide/cubic-yards-to-tons" class="hover:text-brand-700">Cubic Yards to Tons</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="font-semibold text-gray-900 mb-3">About</p>
+            <ul class="space-y-2 text-gray-600">
+              <li><a href="/methodology" class="hover:text-brand-700">Methodology</a></li>
+              <li><a href="/about" class="hover:text-brand-700">About</a></li>
+              <li><a href="/contact" class="hover:text-brand-700">Contact</a></li>
+              <li><a href="/privacy" class="hover:text-brand-700">Privacy Policy</a></li>
+              <li><a href="/terms" class="hover:text-brand-700">Terms</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="mt-8 pt-6 border-t border-gray-200 text-xs text-gray-500 text-center">
+          © {new Date().getFullYear()} HomeMaterialCalc.com — Material estimates for US homeowners & DIYers.
+          Results are estimates; confirm quantities with your local supplier.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

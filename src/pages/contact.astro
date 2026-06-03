@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Contact — HomeMaterialCalc.com"
+  description="Get in touch with HomeMaterialCalc.com. Report a calculation error, suggest a new material calculator, or ask a question."
+>
+  <div class="max-w-2xl mx-auto px-4 py-12">
+    <nav class="text-sm text-gray-500 mb-6">
+      <a href="/" class="hover:text-brand-600">Home</a> › <span class="text-gray-700">Contact</span>
+    </nav>
+
+    <h1 class="text-3xl font-bold text-gray-900 mb-3">Contact Us</h1>
+    <p class="text-gray-600 mb-8">
+      Found a calculation error? Have a suggestion for a new material or feature?
+      We read every message and respond to most within 1–2 business days.
+    </p>
+
+    <form
+      name="contact"
+      method="POST"
+      data-netlify="true"
+      action="/contact-success"
+      class="space-y-5"
+    >
+      <input type="hidden" name="form-name" value="contact" />
+
+      <div>
+        <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+        <input type="text" id="name" name="name" required
+          class="input-field" placeholder="Your name" />
+      </div>
+
+      <div>
+        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+        <input type="email" id="email" name="email" required
+          class="input-field" placeholder="you@example.com" />
+      </div>
+
+      <div>
+        <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+        <select id="subject" name="subject" class="input-field">
+          <option value="calculation-error">Calculation error or incorrect constant</option>
+          <option value="suggestion">Suggestion or feature request</option>
+          <option value="new-material">Request a new material calculator</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+        <textarea id="message" name="message" rows="5" required
+          class="input-field resize-none"
+          placeholder="Please describe the issue or suggestion in detail. For calculation errors, include the material, dimensions, and what result you expected."></textarea>
+      </div>
+
+      <button type="submit" class="btn-primary w-full">Send Message</button>
+    </form>
+
+    <div class="mt-8 text-sm text-gray-500 space-y-1">
+      <p><strong>Calculation errors:</strong> Please include the material, your dimensions, and the result you believe is incorrect. We take accuracy very seriously.</p>
+      <p><strong>New material requests:</strong> We're working on paint, flooring, tile, and drywall calculators next. Let us know what you need.</p>
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,47 @@
+{
+  "_comment": "Single source of truth for page publishing. Run 'npm run publish' to promote pending pages. Cadence: pagesPerWeek controls how many pending pages go live per run.",
+  "cadence": {
+    "pagesPerWeek": 3,
+    "minDaysBetweenRuns": 2
+  },
+  "lastRun": null,
+  "pages": [
+    { "url": "/",                                                              "label": "Home",                                  "status": "published", "publishedAt": "2026-06-04" },
+    { "url": "/calculator/mulch",                                              "label": "Mulch Calculator",                      "status": "published", "publishedAt": "2026-06-04" },
+    { "url": "/calculator/gravel",                                             "label": "Gravel Calculator",                     "status": "published", "publishedAt": "2026-06-04" },
+    { "url": "/calculator/topsoil",                                            "label": "Topsoil Calculator",                    "status": "published", "publishedAt": "2026-06-04" },
+    { "url": "/calculator/sand",                                               "label": "Sand Calculator",                       "status": "published", "publishedAt": "2026-06-04" },
+    { "url": "/calculator/sod",                                                "label": "Sod Calculator",                        "status": "published", "publishedAt": "2026-06-04" },
+    { "url": "/calculator/concrete",                                           "label": "Concrete Calculator",                   "status": "published", "publishedAt": "2026-06-04" },
+    { "url": "/guide/how-much-mulch-do-i-need",                                "label": "How Much Mulch Do I Need?",             "status": "published", "publishedAt": "2026-06-04" },
+    { "url": "/guide/how-much-gravel-do-i-need",                               "label": "How Much Gravel Do I Need?",            "status": "published", "publishedAt": "2026-06-04" },
+    { "url": "/guide/how-much-topsoil-do-i-need",                              "label": "How Much Topsoil Do I Need?",           "status": "published", "publishedAt": "2026-06-04" },
+    { "url": "/guide/how-much-sand-do-i-need",                                 "label": "How Much Sand Do I Need?",              "status": "published", "publishedAt": "2026-06-04" },
+    { "url": "/guide/how-much-sod-do-i-need",                                  "label": "How Much Sod Do I Need?",               "status": "published", "publishedAt": "2026-06-04" },
+    { "url": "/guide/how-much-concrete-do-i-need",                             "label": "How Much Concrete Do I Need?",          "status": "published", "publishedAt": "2026-06-04" },
+    { "url": "/guide/how-many-bags-of-mulch-in-a-cubic-yard",                  "label": "Bags of Mulch per Cubic Yard",          "status": "published", "publishedAt": "2026-06-04" },
+    { "url": "/guide/how-much-does-a-yard-of-gravel-weigh",                    "label": "Gravel Weight per Yard",                "status": "published", "publishedAt": "2026-06-04" },
+    { "url": "/guide/how-many-bags-of-concrete-per-cubic-yard",                "label": "Concrete Bags per Cubic Yard",          "status": "published", "publishedAt": "2026-06-04" },
+    { "url": "/guide/how-much-does-a-yard-of-topsoil-weigh",                   "label": "Topsoil Weight per Yard",               "status": "published", "publishedAt": "2026-06-04" },
+    { "url": "/guide/how-much-does-a-yard-of-sand-weigh",                      "label": "Sand Weight per Yard",                  "status": "published", "publishedAt": "2026-06-04" },
+    { "url": "/guide/cubic-yards-to-tons",                                     "label": "Cubic Yards to Tons",                   "status": "published", "publishedAt": "2026-06-04" },
+    { "url": "/guide/how-many-square-feet-does-a-pallet-of-sod-cover",         "label": "Sod Pallet Coverage",                   "status": "published", "publishedAt": "2026-06-04" },
+    { "url": "/guide/how-many-bags-of-concrete-for-10x10-slab",                "label": "Concrete Bags for 10x10 Slab",          "status": "published", "publishedAt": "2026-06-04" },
+    { "url": "/methodology",                                                   "label": "Methodology",                           "status": "published", "publishedAt": "2026-06-04" },
+    { "url": "/about",                                                         "label": "About",                                 "status": "published", "publishedAt": "2026-06-04" },
+    { "url": "/contact",                                                       "label": "Contact",                               "status": "published", "publishedAt": "2026-06-04" },
+    { "url": "/privacy",                                                       "label": "Privacy Policy",                        "status": "published", "publishedAt": "2026-06-04" },
+    { "url": "/terms",                                                         "label": "Terms of Use",                          "status": "published", "publishedAt": "2026-06-04" },
+
+    { "_section": "INDOOR EXPANSION — add .astro files before changing status to pending" },
+    { "url": "/calculator/paint",                                              "label": "Paint Calculator",                      "status": "future",   "publishedAt": null },
+    { "url": "/calculator/flooring",                                           "label": "Flooring Calculator",                   "status": "future",   "publishedAt": null },
+    { "url": "/calculator/tile",                                               "label": "Tile Calculator",                       "status": "future",   "publishedAt": null },
+    { "url": "/calculator/drywall",                                            "label": "Drywall Calculator",                    "status": "future",   "publishedAt": null },
+    { "url": "/guide/how-much-paint-do-i-need",                                "label": "How Much Paint Do I Need?",             "status": "future",   "publishedAt": null },
+    { "url": "/guide/paint-coverage-per-gallon",                               "label": "Paint Coverage per Gallon",             "status": "future",   "publishedAt": null },
+    { "url": "/guide/how-much-flooring-do-i-need",                             "label": "How Much Flooring Do I Need?",          "status": "future",   "publishedAt": null },
+    { "url": "/guide/how-much-tile-do-i-need",                                 "label": "How Much Tile Do I Need?",              "status": "future",   "publishedAt": null },
+    { "url": "/guide/how-much-drywall-do-i-need",                              "label": "How Much Drywall Do I Need?",           "status": "future",   "publishedAt": null }
+  ]
+}

@@ -1,0 +1,146 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import AdSlot from '../components/ui/AdSlot.astro';
+
+interface FAQ {
+  q: string;
+  a: string;
+}
+
+interface Breadcrumb {
+  label: string;
+  href?: string;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  h1: string;
+  intro: string;
+  canonicalUrl?: string;
+  faqs?: FAQ[];
+  breadcrumbs?: Breadcrumb[];
+  calculatorHref: string;
+  calculatorLabel: string;
+  related: { href: string; label: string }[];
+}
+
+const {
+  title, description, h1, intro, canonicalUrl,
+  faqs = [], breadcrumbs = [], calculatorHref, calculatorLabel, related,
+} = Astro.props;
+
+const site = 'https://homematerialcalc.com';
+const canonical = canonicalUrl ?? site + Astro.url.pathname;
+
+const faqSchema = faqs.length > 0 ? {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(f => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+} : null;
+
+const breadcrumbSchema = breadcrumbs.length > 0 ? {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: site },
+    ...breadcrumbs.map((b, i) => ({
+      '@type': 'ListItem',
+      position: i + 2,
+      name: b.label,
+      ...(b.href ? { item: site + b.href } : {}),
+    })),
+  ],
+} : null;
+---
+
+<BaseLayout {title} {description} {canonicalUrl}>
+  <!-- Schema.org injected via Fragment; BaseLayout renders <slot /> in <head> area separately -->
+  <Fragment slot="head">
+    {faqSchema && (
+      <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+    )}
+    {breadcrumbSchema && (
+      <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+    )}
+  </Fragment>
+
+  <div class="max-w-6xl mx-auto px-4 py-10">
+    <!-- Breadcrumbs -->
+    {breadcrumbs.length > 0 && (
+      <nav class="text-sm text-gray-500 mb-4 flex flex-wrap gap-1">
+        <a href="/" class="hover:text-brand-600">Home</a>
+        {breadcrumbs.map((b, i) => (
+          <>
+            <span>›</span>
+            {b.href
+              ? <a href={b.href} class="hover:text-brand-600">{b.label}</a>
+              : <span class="text-gray-700">{b.label}</span>
+            }
+          </>
+        ))}
+      </nav>
+    )}
+
+    <div class="grid lg:grid-cols-[1fr_320px] gap-10">
+      <!-- Main content -->
+      <article>
+        <h1 class="text-3xl font-bold text-gray-900 mb-3">{h1}</h1>
+        <p class="text-lg text-gray-600 mb-6">{intro}</p>
+
+        <!-- Calculator CTA -->
+        <a href={calculatorHref}
+          class="flex items-center gap-3 bg-brand-50 border border-brand-200 rounded-xl p-4 mb-8 hover:bg-brand-100 transition-colors group">
+          <span class="text-2xl">🧮</span>
+          <div>
+            <p class="font-semibold text-brand-700 group-hover:text-brand-800">{calculatorLabel}</p>
+            <p class="text-sm text-gray-600">Enter your exact dimensions for a personalized estimate →</p>
+          </div>
+        </a>
+
+        <AdSlot slot="header-banner" />
+
+        <!-- Page body -->
+        <div class="prose prose-gray max-w-none">
+          <slot />
+        </div>
+
+        <AdSlot slot="in-content" className="my-8" />
+
+        <!-- FAQ section -->
+        {faqs.length > 0 && (
+          <div class="mt-8">
+            <h2 class="text-xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+            <div class="space-y-4">
+              {faqs.map(f => (
+                <div class="border border-gray-200 rounded-lg p-4">
+                  <h3 class="font-semibold text-gray-900 mb-1">{f.q}</h3>
+                  <p class="text-sm text-gray-700">{f.a}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <AdSlot slot="footer-banner" className="mt-8" />
+      </article>
+
+      <!-- Sidebar -->
+      <aside class="space-y-6">
+        <div class="calculator-card sticky top-24">
+          <h3 class="font-semibold text-gray-900 mb-3">Related calculators &amp; guides</h3>
+          <ul class="space-y-2">
+            {related.map(r => (
+              <li><a href={r.href} class="text-sm text-brand-600 hover:underline">{r.label}</a></li>
+            ))}
+          </ul>
+        </div>
+        <AdSlot slot="sidebar" />
+      </aside>
+    </div>
+  </div>
+</BaseLayout>

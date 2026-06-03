@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TopsoilCalculator from '../../components/calculators/TopsoilCalculator';
+import AdSlot from '../../components/ui/AdSlot.astro';
+
+const related = [
+  { href: '/calculator/mulch',   label: 'Mulch Calculator' },
+  { href: '/calculator/sand',    label: 'Sand Calculator' },
+  { href: '/calculator/sod',     label: 'Sod Calculator' },
+  { href: '/guide/how-much-topsoil-do-i-need',          label: 'How Much Topsoil Do I Need?' },
+  { href: '/guide/how-much-does-a-yard-of-topsoil-weigh', label: 'How Much Does a Yard of Topsoil Weigh?' },
+];
+---
+
+<BaseLayout
+  title="Topsoil Calculator — Cubic Yards &amp; Bags | How Much Topsoil Do I Need?"
+  description="Free topsoil calculator. Enter your garden bed or lawn dimensions and depth to find out how many cubic yards or 40 lb bags of topsoil to buy."
+>
+  <div class="max-w-6xl mx-auto px-4 py-10">
+    <div class="grid lg:grid-cols-[1fr_380px] gap-10">
+      <div>
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">Topsoil Calculator</h1>
+        <p class="text-gray-600 mb-6">Calculate cubic yards or 40 lb bags of topsoil for lawn top-dressing, garden beds, or raised beds.</p>
+
+        <TopsoilCalculator client:load />
+
+        <AdSlot slot="after-result" className="mt-6" />
+
+        <div class="calculator-card mt-8">
+          <h2 class="font-bold text-gray-900 text-lg mb-3">How to measure your space</h2>
+          <ol class="space-y-3 text-sm text-gray-700">
+            <li class="flex gap-3"><span class="font-bold text-brand-600 flex-shrink-0">1.</span>
+              <span><strong>Lawn areas:</strong> Measure length × width in feet. For irregular lawns, break into rectangles and add them with the Irregular option.</span></li>
+            <li class="flex gap-3"><span class="font-bold text-brand-600 flex-shrink-0">2.</span>
+              <span><strong>Garden beds and raised beds:</strong> Measure interior dimensions. For raised beds being filled from scratch, measure internal length × width × planned depth.</span></li>
+            <li class="flex gap-3"><span class="font-bold text-brand-600 flex-shrink-0">3.</span>
+              <span><strong>Depth guidance:</strong> 2" to top-dress a lawn · 4–6" for new garden beds · 8–12" for raised beds filled from scratch.</span></li>
+            <li class="flex gap-3"><span class="font-bold text-brand-600 flex-shrink-0">4.</span>
+              <span><strong>Bulk vs. bags:</strong> Bulk delivery is cheaper per cubic yard for orders over 1–2 yards. Bags are convenient for small areas.</span></li>
+          </ol>
+        </div>
+
+        <AdSlot slot="in-content" className="mt-6" />
+
+        <div class="mt-6 text-sm text-gray-500 border-t pt-4">
+          <p>Formula: <em>Volume (cu yd) = Area × Depth ÷ 324. 40 lb bags = Volume (cu ft) ÷ 0.75, rounded up.</em>
+          See our <a href="/methodology" class="text-brand-600 hover:underline">methodology page</a>.</p>
+        </div>
+      </div>
+
+      <aside class="space-y-6">
+        <div class="calculator-card">
+          <h3 class="font-semibold text-gray-900 mb-3">Topsoil quick facts</h3>
+          <ul class="text-sm text-gray-700 space-y-2">
+            <li>1 cubic yard = <strong>36 bags</strong> (40 lb)</li>
+            <li>1 cubic yard weighs ~<strong>2,200 lbs (1.1 tons)</strong></li>
+            <li>40 lb bag covers ~<strong>0.75 cu ft</strong></li>
+            <li>Standard lawn top-dress: <strong>2"</strong></li>
+            <li>New garden bed: <strong>4–6"</strong></li>
+          </ul>
+        </div>
+
+        <div class="calculator-card">
+          <h3 class="font-semibold text-gray-900 mb-3">Related calculators &amp; guides</h3>
+          <ul class="space-y-2">
+            {related.map(r => (
+              <li><a href={r.href} class="text-sm text-brand-600 hover:underline">{r.label}</a></li>
+            ))}
+          </ul>
+        </div>
+
+        <AdSlot slot="sidebar" />
+      </aside>
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,83 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+const faqs = [
+  { q: 'How do I convert cubic yards to tons?', a: 'Multiply cubic yards by the material density in tons per cubic yard. For example, 3 cubic yards of crushed stone (1.40 t/cu yd) = 3 × 1.40 = 4.20 tons.' },
+  { q: 'How many cubic yards are in 1 ton of gravel?', a: 'For gravel or crushed stone at 1.40 t/cu yd, 1 ton = 0.71 cubic yards. For heavier crushed limestone at 1.50 t/cu yd, 1 ton = 0.67 cubic yards.' },
+  { q: 'Is cubic yards or tons a better way to order gravel?', a: 'Suppliers usually sell by the ton because material is weighed at the plant. Cubic yards are useful for calculating how much space the material will fill. Our calculator works in both.' },
+  { q: 'Do sand, gravel, and topsoil convert at the same rate?', a: 'No — each material has a different density. Gravel is 1.35–1.50 t/cu yd; topsoil is about 1.10 t/cu yd; sand is 1.30–1.35 t/cu yd. Always use the correct material density for your conversion.' },
+];
+
+const related = [
+  { href: '/calculator/gravel', label: 'Gravel Calculator' },
+  { href: '/calculator/topsoil', label: 'Topsoil Calculator' },
+  { href: '/calculator/sand', label: 'Sand Calculator' },
+  { href: '/guide/how-much-does-a-yard-of-gravel-weigh', label: 'Gravel Weight per Yard' },
+];
+---
+
+<GuideLayout
+  title="Cubic Yards to Tons Converter — Gravel, Sand &amp; Topsoil"
+  description="Convert cubic yards to tons for gravel, sand, topsoil, and crushed stone. Includes density table for all common materials and a complete conversion table."
+  h1="Cubic Yards to Tons Converter"
+  intro="To convert cubic yards to tons, multiply by the material density. Each material has a different density, so there is no single universal answer — use the correct value for your material."
+  calculatorHref="/calculator/gravel"
+  calculatorLabel="Gravel Calculator — converts cubic yards to tons automatically"
+  {faqs}
+  {related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Cubic Yards to Tons' }]}
+>
+
+## Formula
+
+**Tons = Cubic yards × Density (tons/cu yd)**
+
+**Cubic yards = Tons ÷ Density (tons/cu yd)**
+
+## Material densities
+
+| Material | Tons per cubic yard |
+|----------|-------------------|
+| Crushed limestone | **1.50** |
+| Pea gravel | **1.40** |
+| Crushed stone (3/4") | **1.40** |
+| All-purpose sand | **1.35** |
+| River rock | **1.35** |
+| Decomposed granite | **1.35** |
+| Play / mason sand | **1.30** |
+| Topsoil (dry) | **1.10** |
+
+## Cubic yards → tons table (crushed stone, 1.40 t/cu yd)
+
+| Cu yd | Tons |
+|-------|------|
+| 0.5 | 0.70 |
+| 1.0 | 1.40 |
+| 1.5 | 2.10 |
+| 2.0 | 2.80 |
+| 3.0 | 4.20 |
+| 5.0 | 7.00 |
+| 10.0 | 14.00 |
+
+## Tons → cubic yards table (crushed stone, 1.40 t/cu yd)
+
+| Tons | Cu yd |
+|------|-------|
+| 1 | 0.71 |
+| 2 | 1.43 |
+| 3 | 2.14 |
+| 5 | 3.57 |
+| 10 | 7.14 |
+
+## Worked examples
+
+**Example 1:** You need 3 cubic yards of pea gravel (1.40 t/cu yd).
+→ 3 × 1.40 = **4.20 tons**
+
+**Example 2:** Your supplier delivers in tons. You need to cover 200 sq ft at 3" with crushed stone.
+→ Volume = 200 × 3 ÷ 324 = 1.85 cu yd → 1.85 × 1.40 = **2.59 tons** (order 3 tons)
+
+Use the material calculators for automatic tons and cubic yard output with your exact dimensions:
+[Gravel Calculator](/calculator/gravel) · [Sand Calculator](/calculator/sand) · [Topsoil Calculator](/calculator/topsoil)
+
+</GuideLayout>

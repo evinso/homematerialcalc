@@ -1,0 +1,81 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+const faqs = [
+  { q: 'How many 80 lb bags of concrete do I need for a 10×10 slab at 4 inches?', a: 'A 10×10 ft slab at 4 inches thick has a volume of 33.3 cubic feet. Adding 10% waste gives 36.7 cu ft. At 0.60 cu ft per 80 lb bag, you need 62 bags.' },
+  { q: 'How many bags of concrete make a cubic yard?', a: '80 lb bags: 45 bags. 60 lb bags: 60 bags. 50 lb bags: 72 bags. 40 lb bags: 90 bags. These are based on Quikrete manufacturer specifications.' },
+  { q: 'How thick should a concrete slab be?', a: 'Standard residential slabs are 4 inches thick. Driveways and areas with vehicle traffic should be 5–6 inches. Light-duty walkways can be 3–4 inches. Structural footings vary by design.' },
+  { q: 'How much concrete do I need for a fence post hole?', a: 'A 6-inch diameter hole that is 36 inches deep needs about 0.59 cubic feet of concrete, or 1 bag of 80 lb Quikrete per hole. Use the Concrete Calculator with the Post Hole option for your specific dimensions.' },
+  { q: 'How do I measure for a concrete footing?', a: 'Measure the rectangular footprint (length × width) and depth of the footing. Multiply length × width × depth (all in feet) to get cubic feet, divide by 27 for cubic yards, then divide by bag yield for bag count.' },
+];
+
+const related = [
+  { href: '/calculator/concrete', label: 'Concrete Calculator' },
+  { href: '/guide/how-many-bags-of-concrete-per-cubic-yard', label: 'How Many Bags per Cubic Yard?' },
+  { href: '/guide/how-many-bags-of-concrete-for-10x10-slab', label: 'Bags for a 10×10 Slab' },
+  { href: '/calculator/gravel', label: 'Gravel Calculator' },
+  { href: '/calculator/sand', label: 'Sand Calculator' },
+];
+---
+
+<GuideLayout
+  title="How Much Concrete Do I Need? — Concrete Calculator Guide"
+  description="Calculate how many bags of concrete you need for slabs, post holes, and footings. Coverage tables for 40, 50, 60, and 80 lb bags with thickness guide."
+  h1="How Much Concrete Do I Need?"
+  intro="Concrete quantity depends on the volume of your project — length × width × thickness for slabs, or the cylinder volume for post holes. Here is how to calculate it."
+  calculatorHref="/calculator/concrete"
+  calculatorLabel="Concrete Calculator — bags for slabs, post holes, and footings"
+  {faqs}
+  {related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'How Much Concrete Do I Need?' }]}
+>
+
+## The quick formula
+
+**Slab: Volume (cu ft) = Length × Width × (Thickness ÷ 12)**
+
+**Post hole: Volume (cu ft) = π × (Radius ft)² × (Depth ÷ 12)**
+
+**Bags = Volume (cu ft) × (1 + 0.10 waste) ÷ Bag yield, rounded up**
+
+## Bag yield reference (Quikrete)
+
+| Bag size | Yield per bag | Bags per cu yd |
+|----------|--------------|----------------|
+| 40 lb | 0.30 cu ft | 90 bags |
+| 50 lb | 0.375 cu ft | 72 bags |
+| 60 lb | 0.45 cu ft | 60 bags |
+| 80 lb | 0.60 cu ft | 45 bags |
+
+## Thickness guide
+
+| Application | Thickness |
+|-------------|-----------|
+| Light-duty walkway | 3–4 inches |
+| Patio / residential slab | 4 inches |
+| Driveway | 5–6 inches |
+| Structural footing | per engineer specs |
+
+## Bags for common slab sizes (80 lb bags, 4" thick, with 10% waste)
+
+| Slab size | Cu ft | 80 lb bags | 60 lb bags |
+|-----------|-------|-----------|-----------|
+| 4 × 4 ft | 5.3 | 10 | 13 |
+| 6 × 6 ft | 12.0 | 22 | 30 |
+| 8 × 8 ft | 21.3 | 40 | 53 |
+| 10 × 10 ft | 33.3 | 62 | 82 |
+| 10 × 20 ft | 66.7 | 123 | 164 |
+| 12 × 12 ft | 48.0 | 88 | 118 |
+
+## Post hole reference (per hole, 10% waste, 80 lb bags)
+
+| Hole diameter | 24" deep | 36" deep | 48" deep |
+|---------------|----------|----------|----------|
+| 6" | 1 bag | 2 bags | 2 bags |
+| 8" | 2 bags | 3 bags | 4 bags |
+| 10" | 3 bags | 4 bags | 6 bags |
+| 12" | 4 bags | 6 bags | 8 bags |
+
+Use the [Concrete Calculator](/calculator/concrete) and choose "Post Holes" to enter your exact diameter, depth, and number of holes.
+
+</GuideLayout>

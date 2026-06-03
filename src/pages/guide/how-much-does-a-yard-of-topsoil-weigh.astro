@@ -1,0 +1,71 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+const faqs = [
+  { q: 'How much does a cubic yard of topsoil weigh?', a: 'A cubic yard of dry topsoil weighs approximately 2,200 lbs (1.1 tons). Wet or heavy clay topsoil can weigh significantly more — up to 3,000 lbs per cubic yard in some cases.' },
+  { q: 'How many 40-lb bags of topsoil equal a cubic yard?', a: 'It takes 36 bags of 40 lb topsoil to equal one cubic yard, since each bag contains about 0.75 cubic feet (27 ÷ 0.75 = 36).' },
+  { q: 'Can I haul topsoil in a pickup truck?', a: 'A standard half-ton pickup can safely carry about 1,000 lbs — less than half a cubic yard of topsoil. A 3/4-ton or 1-ton truck can carry a full cubic yard. Always stay within your truck\'s payload rating.' },
+  { q: 'How many cubic yards of topsoil are in a ton?', a: 'One ton of topsoil equals about 0.91 cubic yards (1 ÷ 1.10 t/cu yd). Two tons equals about 1.82 cubic yards.' },
+];
+
+const related = [
+  { href: '/calculator/topsoil', label: 'Topsoil Calculator' },
+  { href: '/guide/how-much-topsoil-do-i-need', label: 'How Much Topsoil Do I Need?' },
+  { href: '/guide/cubic-yards-to-tons', label: 'Cubic Yards to Tons Converter' },
+  { href: '/guide/how-much-does-a-yard-of-gravel-weigh', label: 'How Much Does a Yard of Gravel Weigh?' },
+];
+---
+
+<GuideLayout
+  title="How Much Does a Yard of Topsoil Weigh? (Lbs and Tons)"
+  description="A cubic yard of topsoil weighs approximately 2,200 lbs (1.1 tons). Learn how much topsoil weighs by bag size, and when you can safely haul it yourself."
+  h1="How Much Does a Yard of Topsoil Weigh?"
+  intro="A cubic yard of topsoil weighs about 2,200 lbs (1.1 tons) when dry. Moisture content and soil composition can push the weight up or down significantly."
+  calculatorHref="/calculator/topsoil"
+  calculatorLabel="Topsoil Calculator — cubic yards and 40 lb bags for your project"
+  {faqs}
+  {related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Topsoil Weight per Yard' }]}
+>
+
+## The answer
+
+| Unit | Weight |
+|------|--------|
+| 1 cubic yard (dry topsoil) | **~2,200 lbs (1.1 tons)** |
+| 1 cubic foot | ~81 lbs |
+| 1 cubic yard (wet/clay) | 2,500–3,000 lbs |
+| 40 lb bag (0.75 cu ft) | 40 lbs |
+
+*Source: Soil supplier industry standard. Moisture content is the biggest variable.*
+
+## Weight by volume
+
+| Volume | Weight (avg. dry) |
+|--------|------------------|
+| 0.25 cu yd | ~550 lbs |
+| 0.50 cu yd | ~1,100 lbs |
+| 1.00 cu yd | ~2,200 lbs |
+| 2.00 cu yd | ~4,400 lbs |
+| 5.00 cu yd | ~11,000 lbs |
+
+## 40 lb bags → cubic yards
+
+| Bags (40 lb) | Volume | Weight |
+|--------------|--------|--------|
+| 10 bags | 0.28 cu yd | 400 lbs |
+| 20 bags | 0.56 cu yd | 800 lbs |
+| 36 bags | 1.00 cu yd | 1,440 lbs |
+| 72 bags | 2.00 cu yd | 2,880 lbs |
+
+## Can I haul topsoil myself?
+
+- **Half-ton pickup (1/2 T):** safely carry ~1,000 lbs — under half a cubic yard
+- **3/4-ton pickup:** safely carry ~1,500 lbs — about 2/3 of a cubic yard
+- **1-ton pickup:** safely carry ~2,000 lbs — close to a full cubic yard
+
+Always stay within your truck's payload rating (listed in the door jamb sticker). Overloading damages tires, suspension, and brakes.
+
+Use the [Topsoil Calculator](/calculator/topsoil) to find exactly how many cubic yards and bags you need for your project.
+
+</GuideLayout>

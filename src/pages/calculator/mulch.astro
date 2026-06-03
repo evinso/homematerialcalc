@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import MulchCalculator from '../../components/calculators/MulchCalculator';
+import AdSlot from '../../components/ui/AdSlot.astro';
+
+const related = [
+  { href: '/calculator/topsoil',  label: 'Topsoil Calculator' },
+  { href: '/calculator/gravel',   label: 'Gravel Calculator' },
+  { href: '/calculator/sod',      label: 'Sod Calculator' },
+  { href: '/guide/how-much-mulch-do-i-need', label: 'How Much Mulch Do I Need?' },
+  { href: '/guide/how-many-bags-of-mulch-in-a-cubic-yard', label: 'Bags of Mulch per Cubic Yard' },
+];
+---
+
+<BaseLayout
+  title="Mulch Calculator — How Many Bags or Cubic Yards Do I Need?"
+  description="Free mulch calculator: enter your bed dimensions and depth to instantly find out how many 2 cu ft bags or cubic yards of mulch to buy. Includes waste factor and cost estimate."
+>
+  <div class="max-w-6xl mx-auto px-4 py-10">
+    <div class="grid lg:grid-cols-[1fr_380px] gap-10">
+
+      <!-- Left: calculator -->
+      <div>
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">Mulch Calculator</h1>
+        <p class="text-gray-600 mb-6">Enter your garden bed size and depth to find out how many bags or cubic yards of mulch you need.</p>
+
+        <MulchCalculator client:load />
+
+        <AdSlot slot="after-result" className="mt-6" />
+
+        <!-- How to measure -->
+        <div class="calculator-card mt-8">
+          <h2 class="font-bold text-gray-900 text-lg mb-3">How to measure your space</h2>
+          <ol class="space-y-3 text-sm text-gray-700">
+            <li class="flex gap-3">
+              <span class="font-bold text-brand-600 flex-shrink-0">1.</span>
+              <span><strong>Rectangle beds:</strong> Walk the length and width with a tape measure. Record in feet and inches.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="font-bold text-brand-600 flex-shrink-0">2.</span>
+              <span><strong>Curved or odd-shaped beds:</strong> Break the area into rough rectangles, measure each, and use the "Irregular" shape option to add them together.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="font-bold text-brand-600 flex-shrink-0">3.</span>
+              <span><strong>Depth:</strong> Use a ruler to check existing mulch depth. For a new bed, 2–3" is standard; for heavy weed suppression, use 3–4".</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="font-bold text-brand-600 flex-shrink-0">4.</span>
+              <span><strong>Subtract obstacles:</strong> Deduct space taken by large plants, stones, or hardscape — or just leave the small ones in and let the 5% waste factor cover it.</span>
+            </li>
+          </ol>
+        </div>
+
+        <AdSlot slot="in-content" className="mt-6" />
+
+        <!-- Methodology note -->
+        <div class="mt-6 text-sm text-gray-500 border-t pt-4">
+          <p>Formula: <em>Volume (cu ft) = Area (sq ft) × Depth (in) ÷ 12. Bags = Volume (cu yd) × 13.5, rounded up.</em>
+          See our <a href="/methodology" class="text-brand-600 hover:underline">methodology page</a> for all constants and sources.</p>
+        </div>
+      </div>
+
+      <!-- Right: sidebar -->
+      <aside class="space-y-6">
+        <div class="calculator-card">
+          <h3 class="font-semibold text-gray-900 mb-3">Quick reference</h3>
+          <table class="w-full text-sm text-gray-700">
+            <thead><tr class="border-b"><th class="text-left pb-1">Depth</th><th class="text-right pb-1">Coverage / cu yd</th></tr></thead>
+            <tbody class="divide-y">
+              {[{d:'1"',c:'324 sq ft'},{d:'2"',c:'162 sq ft'},{d:'3"',c:'108 sq ft'},{d:'4"',c:'81 sq ft'},{d:'6"',c:'54 sq ft'}].map(r => (
+                <tr><td class="py-1">{r.d}</td><td class="py-1 text-right">{r.c}</td></tr>
+              ))}
+            </tbody>
+          </table>
+          <p class="text-xs text-gray-500 mt-2">1 cu yd = 13.5 bags of 2 cu ft mulch</p>
+        </div>
+
+        <div class="calculator-card">
+          <h3 class="font-semibold text-gray-900 mb-3">Related calculators &amp; guides</h3>
+          <ul class="space-y-2">
+            {related.map(r => (
+              <li><a href={r.href} class="text-sm text-brand-600 hover:underline">{r.label}</a></li>
+            ))}
+          </ul>
+        </div>
+
+        <AdSlot slot="sidebar" />
+      </aside>
+    </div>
+  </div>
+</BaseLayout>

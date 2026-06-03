@@ -1,0 +1,76 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+const faqs = [
+  { q: 'How many square feet does a pallet of sod cover?', a: 'A standard sod pallet covers approximately 450 square feet. Most pallets contain about 170 pieces, each measuring 16×24 inches (2.67 sq ft). Coverage can vary slightly by supplier.' },
+  { q: 'How many pieces of sod come on a pallet?', a: 'A standard pallet typically contains about 170 pieces of sod, each 16×24 inches (2.67 sq ft). 170 × 2.67 = approximately 450 sq ft per pallet.' },
+  { q: 'How many pallets of sod do I need for a quarter-acre lawn?', a: 'A quarter acre is 10,890 sq ft. Adding 5% waste gives 11,435 sq ft, which requires about 26 pallets. For curved or irregular lawns, add 10% waste and order 27 pallets.' },
+  { q: 'Can I order partial pallets of sod?', a: 'Most sod farms require full pallet orders. Some landscape supply yards sell sod by the piece or in smaller quantities, but you typically pay more per square foot. Order a full extra pallet if you are close to the boundary.' },
+  { q: 'How long can sod sit on a pallet before installation?', a: 'Sod should be installed within 24–48 hours of delivery, or sooner in hot weather. Keep it in a cool, shaded spot and lightly moisten the rolls if there will be a delay. Never let it sit in direct sun on a pallet.' },
+];
+
+const related = [
+  { href: '/calculator/sod', label: 'Sod Calculator' },
+  { href: '/guide/how-much-sod-do-i-need', label: 'How Much Sod Do I Need?' },
+  { href: '/calculator/topsoil', label: 'Topsoil Calculator' },
+];
+---
+
+<GuideLayout
+  title="How Many Square Feet Does a Pallet of Sod Cover?"
+  description="A standard sod pallet covers approximately 450 square feet (170 pieces, 16×24 inches each). Includes pallet coverage table, piece count, and a free sod calculator."
+  h1="How Many Square Feet Does a Pallet of Sod Cover?"
+  intro="A standard sod pallet covers approximately 450 square feet. Coverage is determined by the number of pieces per pallet and the size of each piece."
+  calculatorHref="/calculator/sod"
+  calculatorLabel="Sod Calculator — pallets and pieces for your lawn"
+  {faqs}
+  {related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Pallet of Sod Coverage' }]}
+>
+
+## The answer
+
+| Unit | Coverage |
+|------|----------|
+| 1 piece (standard) | **2.67 sq ft** (16" × 24") |
+| 1 pallet | **~450 sq ft** |
+| Pieces per pallet | **~170 pieces** |
+
+*170 pieces × 2.67 sq ft/piece = 453.9 sq ft ≈ 450 sq ft*
+
+Coverage can vary 5–10% between sod farms. Always confirm with your supplier.
+
+## How many pallets do you need?
+
+| Lawn area | Straight edges (+5%) | Curved edges (+10%) |
+|-----------|---------------------|---------------------|
+| 450 sq ft | 2 pallets | 2 pallets |
+| 900 sq ft | 3 pallets | 3 pallets |
+| 1,350 sq ft | 4 pallets | 4 pallets |
+| 2,250 sq ft | 6 pallets | 6 pallets |
+| 4,500 sq ft | 11 pallets | 12 pallets |
+| 9,000 sq ft | 22 pallets | 23 pallets |
+
+## Piece count by lawn area (no waste)
+
+| Lawn area | Pieces needed |
+|-----------|--------------|
+| 500 sq ft | 188 pieces |
+| 1,000 sq ft | 375 pieces |
+| 2,000 sq ft | 749 pieces |
+| 5,000 sq ft | 1,873 pieces |
+
+## Before you order sod — check your base
+
+A new lawn needs 4–6 inches of quality topsoil under the sod for proper root establishment. Use the [Topsoil Calculator](/calculator/topsoil) to calculate how much topsoil you need before ordering sod.
+
+## Ordering tips
+
+1. **Confirm your supplier's pallet size** — 450 sq ft is standard but can vary ±5%.
+2. **Order by the full pallet** — most farms do not sell partial pallets.
+3. **Round up** — if you need 4.1 pallets, order 5.
+4. **Measure twice** — mistakes in area measurement are expensive with sod.
+
+Use the [Sod Calculator](/calculator/sod) to get exact pallets and pieces for your lawn dimensions.
+
+</GuideLayout>

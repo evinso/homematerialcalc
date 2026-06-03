@@ -1,0 +1,68 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+const faqs = [
+  { q: 'How much does a cubic yard of sand weigh?', a: 'All-purpose and paver sand weigh about 2,700 lbs (1.35 tons) per cubic yard. Play sand and mason sand are slightly lighter at about 2,600 lbs (1.30 tons) per cubic yard.' },
+  { q: 'How many 50-lb bags of sand are in a cubic yard?', a: 'There are 54 bags of 50 lb sand in a cubic yard. Each 50 lb bag yields 0.50 cubic feet, and 27 ÷ 0.50 = 54.' },
+  { q: 'How much does a 50-lb bag of sand cover?', a: 'A 50 lb bag of sand covers about 6 square feet at 1 inch deep. At 2 inches deep it covers about 3 square feet.' },
+  { q: 'Is sand heavier than gravel?', a: 'Sand and most gravel types are similar in density. Typical sand weighs 1.30–1.35 tons/cu yd; pea gravel and crushed stone are about 1.35–1.40 tons/cu yd. Crushed limestone is heavier at 1.50 tons/cu yd.' },
+];
+
+const related = [
+  { href: '/calculator/sand', label: 'Sand Calculator' },
+  { href: '/guide/how-much-sand-do-i-need', label: 'How Much Sand Do I Need?' },
+  { href: '/guide/how-much-does-a-yard-of-gravel-weigh', label: 'Gravel Weight per Yard' },
+  { href: '/guide/cubic-yards-to-tons', label: 'Cubic Yards to Tons Converter' },
+];
+---
+
+<GuideLayout
+  title="How Much Does a Yard of Sand Weigh? (All Sand Types)"
+  description="A cubic yard of all-purpose or paver sand weighs about 2,700 lbs (1.35 tons). Play sand is about 2,600 lbs. Full weight table for all common sand types."
+  h1="How Much Does a Yard of Sand Weigh?"
+  intro="A cubic yard of sand weighs between 2,600 and 2,700 lbs depending on the type. Here is the complete weight breakdown for all common sand types."
+  calculatorHref="/calculator/sand"
+  calculatorLabel="Sand Calculator — tons, cubic yards, and 50 lb bags"
+  {faqs}
+  {related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Sand Weight per Yard' }]}
+>
+
+## Weight by sand type
+
+| Sand type | Lbs per cu yd | Tons per cu yd |
+|-----------|--------------|----------------|
+| All-purpose / fill | 2,700 lbs | **1.35 tons** |
+| Paver / leveling | 2,700 lbs | **1.35 tons** |
+| Play sand | 2,600 lbs | **1.30 tons** |
+| Mason sand | 2,600 lbs | **1.30 tons** |
+
+*Source: Landscape supply industry standards. Dry weight. Saturated sand can weigh significantly more.*
+
+## Weight by volume
+
+| Volume | All-purpose sand | Play sand |
+|--------|-----------------|-----------|
+| 0.5 cu yd | 1,350 lbs | 1,300 lbs |
+| 1.0 cu yd | 2,700 lbs | 2,600 lbs |
+| 2.0 cu yd | 5,400 lbs | 5,200 lbs |
+
+## 50-lb bag reference
+
+| Bags (50 lb) | Volume | Weight |
+|--------------|--------|--------|
+| 10 bags | 0.19 cu yd | 500 lbs |
+| 27 bags | 0.50 cu yd | 1,350 lbs |
+| 54 bags | 1.00 cu yd | 2,700 lbs |
+
+## Coverage per 50-lb bag
+
+| Depth | Coverage per bag |
+|-------|-----------------|
+| 1 inch | 6 sq ft |
+| 2 inches | 3 sq ft |
+| 4 inches | 1.5 sq ft |
+
+Use the [Sand Calculator](/calculator/sand) to get exact tons and bag counts for your paver base, sandbox, or fill project.
+
+</GuideLayout>

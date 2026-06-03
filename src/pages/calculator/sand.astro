@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SandCalculator from '../../components/calculators/SandCalculator';
+import AdSlot from '../../components/ui/AdSlot.astro';
+
+const related = [
+  { href: '/calculator/gravel',  label: 'Gravel Calculator' },
+  { href: '/calculator/concrete',label: 'Concrete Calculator' },
+  { href: '/calculator/topsoil', label: 'Topsoil Calculator' },
+  { href: '/guide/how-much-sand-do-i-need',             label: 'How Much Sand Do I Need?' },
+  { href: '/guide/how-much-does-a-yard-of-sand-weigh',  label: 'How Much Does a Yard of Sand Weigh?' },
+];
+---
+
+<BaseLayout
+  title="Sand Calculator — Tons, Cubic Yards &amp; Bags | How Much Sand Do I Need?"
+  description="Free sand calculator for paver base, play sand, mason sand, and fill sand. Enter dimensions and depth to get cubic yards, tons, and 50 lb bag count."
+>
+  <div class="max-w-6xl mx-auto px-4 py-10">
+    <div class="grid lg:grid-cols-[1fr_380px] gap-10">
+      <div>
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">Sand Calculator</h1>
+        <p class="text-gray-600 mb-6">Calculate tons, cubic yards, or 50 lb bags of sand for paver bases, sandboxes, and fill projects.</p>
+
+        <SandCalculator client:load />
+
+        <AdSlot slot="after-result" className="mt-6" />
+
+        <div class="calculator-card mt-8">
+          <h2 class="font-bold text-gray-900 text-lg mb-3">How to measure your space</h2>
+          <ol class="space-y-3 text-sm text-gray-700">
+            <li class="flex gap-3"><span class="font-bold text-brand-600 flex-shrink-0">1.</span>
+              <span><strong>Paver base:</strong> Measure the full patio or walkway area in feet. Standard sand bed depth is 1".</span></li>
+            <li class="flex gap-3"><span class="font-bold text-brand-600 flex-shrink-0">2.</span>
+              <span><strong>Sandbox:</strong> Measure interior length × width, then decide on depth (4–6" is common for kids' sandboxes).</span></li>
+            <li class="flex gap-3"><span class="font-bold text-brand-600 flex-shrink-0">3.</span>
+              <span><strong>Fill sand:</strong> Measure length × width × depth of the area to be filled.</span></li>
+            <li class="flex gap-3"><span class="font-bold text-brand-600 flex-shrink-0">4.</span>
+              <span><strong>Sand type matters:</strong> Paver/leveling sand and all-purpose sand have the same density; play and mason sand are slightly lighter.</span></li>
+          </ol>
+        </div>
+
+        <AdSlot slot="in-content" className="mt-6" />
+
+        <div class="mt-6 text-sm text-gray-500 border-t pt-4">
+          <p>Formula: <em>Volume (cu yd) = Area × Depth ÷ 324. Tons = Volume × density. 50 lb bags = Volume (cu ft) ÷ 0.50.</em>
+          See our <a href="/methodology" class="text-brand-600 hover:underline">methodology page</a>.</p>
+        </div>
+      </div>
+
+      <aside class="space-y-6">
+        <div class="calculator-card">
+          <h3 class="font-semibold text-gray-900 mb-3">Sand quick facts</h3>
+          <ul class="text-sm text-gray-700 space-y-2">
+            <li>1 cu yd = <strong>54 bags</strong> (50 lb)</li>
+            <li>All-purpose: ~<strong>2,700 lbs/cu yd</strong></li>
+            <li>Play / mason: ~<strong>2,600 lbs/cu yd</strong></li>
+            <li>Paver base standard: <strong>1" depth</strong></li>
+            <li>50 lb bag yields ~<strong>0.50 cu ft</strong></li>
+          </ul>
+        </div>
+
+        <div class="calculator-card">
+          <h3 class="font-semibold text-gray-900 mb-3">Related calculators &amp; guides</h3>
+          <ul class="space-y-2">
+            {related.map(r => (
+              <li><a href={r.href} class="text-sm text-brand-600 hover:underline">{r.label}</a></li>
+            ))}
+          </ul>
+        </div>
+
+        <AdSlot slot="sidebar" />
+      </aside>
+    </div>
+  </div>
+</BaseLayout>

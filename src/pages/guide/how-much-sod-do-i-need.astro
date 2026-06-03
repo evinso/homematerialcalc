@@ -1,0 +1,72 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+const faqs = [
+  { q: 'How many pallets of sod do I need for a 1,000 sq ft lawn?', a: 'A 1,000 sq ft lawn with straight edges needs about 1,050 sq ft of sod including 5% waste, which is 3 pallets (each covers 450 sq ft). Round up — you cannot return unused sod easily.' },
+  { q: 'How many pieces of sod are in a pallet?', a: 'Most pallets contain approximately 170 pieces of sod. Each standard piece measures 16 × 24 inches (2.67 sq ft), so a pallet covers about 450 sq ft.' },
+  { q: 'How much waste should I add when buying sod?', a: 'Add 5% for lawns with straight, simple edges. Add 10% for lawns with many curves, angles, or complex shapes where you will need to cut pieces to fit.' },
+  { q: 'How do I measure an irregular lawn for sod?', a: 'Break your lawn into rectangles, measure each one, and add the areas together. Subtract hardscape areas like driveways, walkways, and garden beds. Then add your waste percentage.' },
+  { q: 'When is the best time to lay sod?', a: 'Sod establishes best when laid in spring or early fall in most US regions. Avoid laying sod in peak summer heat or when the ground is frozen. Water immediately and keep moist for the first 2–3 weeks.' },
+];
+
+const related = [
+  { href: '/calculator/sod', label: 'Sod Calculator' },
+  { href: '/guide/how-many-square-feet-does-a-pallet-of-sod-cover', label: 'How Many Sq Ft Per Pallet?' },
+  { href: '/calculator/topsoil', label: 'Topsoil Calculator' },
+  { href: '/calculator/mulch', label: 'Mulch Calculator' },
+];
+---
+
+<GuideLayout
+  title="How Much Sod Do I Need? — Sod Calculator Guide"
+  description="Learn how to calculate how many pallets and pieces of sod you need for your lawn. Includes waste factor guidance, measuring tips for irregular shapes, and a free sod calculator."
+  h1="How Much Sod Do I Need?"
+  intro="Sod is sold by the piece or pallet. The amount you need depends on your lawn area and how much trimming waste to expect. Here is how to calculate it accurately."
+  calculatorHref="/calculator/sod"
+  calculatorLabel="Sod Calculator — pallets and pieces for your lawn area"
+  {faqs}
+  {related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'How Much Sod Do I Need?' }]}
+>
+
+## Sod basics
+
+| Unit | Coverage |
+|------|----------|
+| 1 piece (standard) | 16" × 24" = **2.67 sq ft** |
+| 1 pallet | ~170 pieces = **~450 sq ft** |
+| Waste (straight edges) | **+5%** |
+| Waste (curved / irregular) | **+10%** |
+
+## The quick formula
+
+**Pieces needed = Area (sq ft) × (1 + waste) ÷ 2.67, rounded up**
+
+**Pallets needed = Area (sq ft) × (1 + waste) ÷ 450, rounded up**
+
+## How to measure your lawn
+
+1. **Sketch your lawn** — draw a rough outline on paper.
+2. **Break it into rectangles** — divide irregular shapes into simpler rectangular sections.
+3. **Measure each section** — length × width in feet.
+4. **Subtract hardscape** — driveways, patios, walkways, garden beds.
+5. **Add waste** — 5% for clean straight edges, 10% for curves.
+
+## Coverage table
+
+| Lawn area | Straight edges (+5%) | Curved edges (+10%) |
+|-----------|---------------------|---------------------|
+| 500 sq ft | 2 pallets | 2 pallets |
+| 1,000 sq ft | 3 pallets | 3 pallets |
+| 2,000 sq ft | 5 pallets | 5 pallets |
+| 5,000 sq ft | 12 pallets | 13 pallets |
+
+## What to order alongside sod
+
+- **Topsoil:** Prepare 4–6 inches of good topsoil before laying sod. Use the [Topsoil Calculator](/calculator/topsoil).
+- **Starter fertilizer:** Apply before laying sod for faster establishment.
+- **Irrigation:** Sod needs daily watering for the first 2 weeks.
+
+Use the [Sod Calculator](/calculator/sod) to enter your exact dimensions and get a precise pallet and piece count.
+
+</GuideLayout>

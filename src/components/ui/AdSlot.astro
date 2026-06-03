@@ -1,0 +1,51 @@
+---
+/**
+ * AdSlot — Google AdSense reklam birimi.
+ *
+ * Kullanım:
+ *   <AdSlot slot="after-result" />
+ *   <AdSlot slot="sidebar" format="rectangle" />
+ *
+ * Her slot için Google AdSense panelinden bir "Ad unit" oluştur,
+ * aldığın data-ad-client ve data-ad-slot değerlerini aşağıya yapıştır.
+ */
+
+interface Props {
+  /** Konuma göre etiket — hangi ad unit olduğunu belirtir */
+  slot?: 'after-result' | 'in-content' | 'sidebar' | 'footer-banner' | 'header-banner';
+  format?: 'auto' | 'rectangle' | 'horizontal' | 'vertical';
+  className?: string;
+}
+
+const {
+  slot = 'in-content',
+  format = 'auto',
+  className = '',
+} = Astro.props;
+
+// ============================================================
+// BURAYA Google AdSense panelinden aldığın değerleri gir:
+const ADSENSE_CLIENT = 'ca-pub-XXXXXXXXXXXXXXXX'; // data-ad-client
+const ADSENSE_SLOTS: Record<string, string> = {
+  'after-result':   'XXXXXXXXXX', // sonuç kutusunun altı
+  'in-content':     'XXXXXXXXXX', // içerik ortası
+  'sidebar':        'XXXXXXXXXX', // yan panel
+  'footer-banner':  'XXXXXXXXXX', // footer üstü
+  'header-banner':  'XXXXXXXXXX', // header altı
+};
+// ============================================================
+
+const adSlotId = ADSENSE_SLOTS[slot] ?? ADSENSE_SLOTS['in-content'];
+---
+
+<div class={`adsense-slot adsense-${slot} my-4 text-center ${className}`}>
+  <ins
+    class="adsbygoogle"
+    style="display:block"
+    data-ad-client={ADSENSE_CLIENT}
+    data-ad-slot={adSlotId}
+    data-ad-format={format}
+    data-full-width-responsive="true"
+  ></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>

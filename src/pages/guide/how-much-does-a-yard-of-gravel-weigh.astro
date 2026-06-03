@@ -1,0 +1,62 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+const faqs = [
+  { q: 'How much does a cubic yard of pea gravel weigh?', a: 'A cubic yard of pea gravel weighs approximately 2,800 lbs (1.40 tons). Weight can vary slightly with moisture content.' },
+  { q: 'How much does a cubic yard of crushed limestone weigh?', a: 'Crushed limestone is one of the denser common gravels at approximately 3,000 lbs (1.50 tons) per cubic yard.' },
+  { q: 'How many cubic yards are in a ton of gravel?', a: 'For most gravel (1.40 t/cu yd), 1 ton equals about 0.71 cubic yards. For denser crushed limestone (1.50 t/cu yd), 1 ton is about 0.67 cubic yards.' },
+  { q: 'Why does my supplier quote gravel in tons, not yards?', a: 'Bulk aggregate suppliers typically sell by weight (tons) because gravel is weighed on a truck scale at delivery. Tons are more precise than estimating cubic yards in a pile. Our calculator converts between both.' },
+];
+
+const related = [
+  { href: '/calculator/gravel', label: 'Gravel Calculator' },
+  { href: '/guide/cubic-yards-to-tons', label: 'Cubic Yards to Tons Converter' },
+  { href: '/guide/how-much-gravel-do-i-need', label: 'How Much Gravel Do I Need?' },
+  { href: '/guide/how-much-does-a-yard-of-sand-weigh', label: 'How Much Does a Yard of Sand Weigh?' },
+];
+---
+
+<GuideLayout
+  title="How Much Does a Yard of Gravel Weigh? (All Stone Types)"
+  description="A cubic yard of pea gravel or crushed stone weighs approximately 2,800 lbs (1.40 tons). Crushed limestone is about 3,000 lbs. Full table for all common gravel types."
+  h1="How Much Does a Yard of Gravel Weigh?"
+  intro="A cubic yard of most gravel types weighs between 2,700 and 3,000 lbs. The exact weight depends on the stone type — denser stone like limestone is heavier than river rock or pea gravel."
+  calculatorHref="/calculator/gravel"
+  calculatorLabel="Gravel Calculator — cubic yards and tons for your project"
+  {faqs}
+  {related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Gravel Weight per Yard' }]}
+>
+
+## Weight by stone type
+
+| Stone type | Lbs per cu yd | Tons per cu yd |
+|------------|--------------|----------------|
+| Pea gravel | 2,800 lbs | **1.40 tons** |
+| Crushed stone (3/4") | 2,800 lbs | **1.40 tons** |
+| Crushed limestone | 3,000 lbs | **1.50 tons** |
+| River rock (1–3") | 2,700 lbs | **1.35 tons** |
+| Decomposed granite | 2,700 lbs | **1.35 tons** |
+
+*Source: Aggregate industry supplier standards. Values represent dry weight; wet or compacted material may vary.*
+
+## Quick conversion: cubic yards → tons
+
+| Cu yd | Pea gravel / crushed stone (1.40) | Crushed limestone (1.50) | River rock (1.35) |
+|-------|-----------------------------------|--------------------------|-------------------|
+| 0.5 | 0.70 tons | 0.75 tons | 0.68 tons |
+| 1.0 | 1.40 tons | 1.50 tons | 1.35 tons |
+| 2.0 | 2.80 tons | 3.00 tons | 2.70 tons |
+| 5.0 | 7.00 tons | 7.50 tons | 6.75 tons |
+
+## Quick conversion: tons → cubic yards
+
+| Tons | Pea gravel / crushed (1.40) | Limestone (1.50) | River rock (1.35) |
+|------|-----------------------------|------------------|-------------------|
+| 1 ton | 0.71 cu yd | 0.67 cu yd | 0.74 cu yd |
+| 2 tons | 1.43 cu yd | 1.33 cu yd | 1.48 cu yd |
+| 5 tons | 3.57 cu yd | 3.33 cu yd | 3.70 cu yd |
+
+Use the [Gravel Calculator](/calculator/gravel) to get exact tons and cubic yards for your project dimensions and stone type.
+
+</GuideLayout>

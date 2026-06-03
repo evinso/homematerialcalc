@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import GravelCalculator from '../../components/calculators/GravelCalculator';
+import AdSlot from '../../components/ui/AdSlot.astro';
+
+const related = [
+  { href: '/calculator/sand',    label: 'Sand Calculator' },
+  { href: '/calculator/topsoil', label: 'Topsoil Calculator' },
+  { href: '/calculator/concrete',label: 'Concrete Calculator' },
+  { href: '/guide/how-much-gravel-do-i-need', label: 'How Much Gravel Do I Need?' },
+  { href: '/guide/how-much-does-a-yard-of-gravel-weigh', label: 'How Much Does a Yard of Gravel Weigh?' },
+  { href: '/guide/cubic-yards-to-tons', label: 'Cubic Yards to Tons Converter' },
+];
+---
+
+<BaseLayout
+  title="Gravel Calculator — Cubic Yards &amp; Tons | How Much Gravel Do I Need?"
+  description="Free gravel and crushed stone calculator. Enter your project area and depth to get cubic yards and tons for pea gravel, crushed stone, limestone, river rock, and decomposed granite."
+>
+  <div class="max-w-6xl mx-auto px-4 py-10">
+    <div class="grid lg:grid-cols-[1fr_380px] gap-10">
+      <div>
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">Gravel &amp; Stone Calculator</h1>
+        <p class="text-gray-600 mb-6">Enter your area, depth, and stone type to get cubic yards and tons of gravel or crushed stone.</p>
+
+        <GravelCalculator client:load />
+
+        <AdSlot slot="after-result" className="mt-6" />
+
+        <div class="calculator-card mt-8">
+          <h2 class="font-bold text-gray-900 text-lg mb-3">How to measure your space</h2>
+          <ol class="space-y-3 text-sm text-gray-700">
+            <li class="flex gap-3"><span class="font-bold text-brand-600 flex-shrink-0">1.</span>
+              <span><strong>Rectangular areas:</strong> Measure length × width in feet. For driveways, measure the total length and average width.</span></li>
+            <li class="flex gap-3"><span class="font-bold text-brand-600 flex-shrink-0">2.</span>
+              <span><strong>Paths and curved areas:</strong> Break into sections and use the Irregular shape option to add them.</span></li>
+            <li class="flex gap-3"><span class="font-bold text-brand-600 flex-shrink-0">3.</span>
+              <span><strong>Depth:</strong> 2" for decorative ground cover; 3–4" for driveways and high-traffic walkways.</span></li>
+            <li class="flex gap-3"><span class="font-bold text-brand-600 flex-shrink-0">4.</span>
+              <span><strong>Stone type:</strong> Density varies — crushed limestone is heavier than river rock. Select the right type for accurate tonnage.</span></li>
+          </ol>
+        </div>
+
+        <AdSlot slot="in-content" className="mt-6" />
+
+        <div class="mt-6 text-sm text-gray-500 border-t pt-4">
+          <p>Formula: <em>Volume (cu yd) = Area × Depth ÷ 324. Tons = Volume × density (tons/cu yd).</em>
+          See our <a href="/methodology" class="text-brand-600 hover:underline">methodology page</a> for all constants.</p>
+        </div>
+      </div>
+
+      <aside class="space-y-6">
+        <div class="calculator-card">
+          <h3 class="font-semibold text-gray-900 mb-3">Stone densities</h3>
+          <table class="w-full text-sm text-gray-700">
+            <thead><tr class="border-b"><th class="text-left pb-1">Stone type</th><th class="text-right pb-1">tons/cu yd</th></tr></thead>
+            <tbody class="divide-y">
+              {[
+                ['Pea gravel','1.40'],['Crushed stone (3/4")','1.40'],
+                ['Crushed limestone','1.50'],['River rock','1.35'],['Decomposed granite','1.35'],
+              ].map(([n,d]) => (
+                <tr><td class="py-1">{n}</td><td class="py-1 text-right">{d}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="calculator-card">
+          <h3 class="font-semibold text-gray-900 mb-3">Related calculators &amp; guides</h3>
+          <ul class="space-y-2">
+            {related.map(r => (
+              <li><a href={r.href} class="text-sm text-brand-600 hover:underline">{r.label}</a></li>
+            ))}
+          </ul>
+        </div>
+
+        <AdSlot slot="sidebar" />
+      </aside>
+    </div>
+  </div>
+</BaseLayout>

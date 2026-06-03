@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SodCalculator from '../../components/calculators/SodCalculator';
+import AdSlot from '../../components/ui/AdSlot.astro';
+
+const related = [
+  { href: '/calculator/topsoil', label: 'Topsoil Calculator' },
+  { href: '/calculator/mulch',   label: 'Mulch Calculator' },
+  { href: '/guide/how-much-sod-do-i-need',                          label: 'How Much Sod Do I Need?' },
+  { href: '/guide/how-many-square-feet-does-a-pallet-of-sod-cover', label: 'How Many Sq Ft Does a Pallet of Sod Cover?' },
+];
+---
+
+<BaseLayout
+  title="Sod Calculator — Pallets, Pieces &amp; Square Feet | How Much Sod Do I Need?"
+  description="Free sod calculator. Enter your lawn dimensions to find out how many pallets and pieces of sod to buy, with waste factor for straight or curved edges."
+>
+  <div class="max-w-6xl mx-auto px-4 py-10">
+    <div class="grid lg:grid-cols-[1fr_380px] gap-10">
+      <div>
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">Sod Calculator</h1>
+        <p class="text-gray-600 mb-6">Calculate how many pallets or pieces of sod you need for your lawn area.</p>
+
+        <SodCalculator client:load />
+
+        <AdSlot slot="after-result" className="mt-6" />
+
+        <div class="calculator-card mt-8">
+          <h2 class="font-bold text-gray-900 text-lg mb-3">How to measure your lawn</h2>
+          <ol class="space-y-3 text-sm text-gray-700">
+            <li class="flex gap-3"><span class="font-bold text-brand-600 flex-shrink-0">1.</span>
+              <span><strong>Measure the full area:</strong> Walk the perimeter and record length × width in feet for rectangular lawns.</span></li>
+            <li class="flex gap-3"><span class="font-bold text-brand-600 flex-shrink-0">2.</span>
+              <span><strong>Irregular lawns:</strong> Break the lawn into rectangles, measure each, and add with the Irregular shape option.</span></li>
+            <li class="flex gap-3"><span class="font-bold text-brand-600 flex-shrink-0">3.</span>
+              <span><strong>Subtract hardscape:</strong> Don't include driveways, patios, walkways, or garden beds in your area measurement.</span></li>
+            <li class="flex gap-3"><span class="font-bold text-brand-600 flex-shrink-0">4.</span>
+              <span><strong>Waste factor:</strong> Check "Curved or irregular edges" for lawns with lots of curves — it applies a 10% waste factor instead of 5% to account for trimming.</span></li>
+          </ol>
+        </div>
+
+        <AdSlot slot="in-content" className="mt-6" />
+
+        <div class="mt-6 text-sm text-gray-500 border-t pt-4">
+          <p>Formula: <em>Pallets = Area × (1 + waste) ÷ 450 sq ft/pallet, rounded up. Pieces = Area × (1 + waste) ÷ 2.67 sq ft/piece.</em>
+          See our <a href="/methodology" class="text-brand-600 hover:underline">methodology page</a>.</p>
+        </div>
+      </div>
+
+      <aside class="space-y-6">
+        <div class="calculator-card">
+          <h3 class="font-semibold text-gray-900 mb-3">Sod quick facts</h3>
+          <ul class="text-sm text-gray-700 space-y-2">
+            <li>1 pallet covers ~<strong>450 sq ft</strong></li>
+            <li>1 pallet ≈ <strong>170 pieces</strong></li>
+            <li>1 piece = 16" × 24" = <strong>2.67 sq ft</strong></li>
+            <li>Straight edges: <strong>5% waste</strong></li>
+            <li>Curved/irregular: <strong>10% waste</strong></li>
+          </ul>
+        </div>
+
+        <div class="calculator-card">
+          <h3 class="font-semibold text-gray-900 mb-3">Related calculators &amp; guides</h3>
+          <ul class="space-y-2">
+            {related.map(r => (
+              <li><a href={r.href} class="text-sm text-brand-600 hover:underline">{r.label}</a></li>
+            ))}
+          </ul>
+        </div>
+
+        <AdSlot slot="sidebar" />
+      </aside>
+    </div>
+  </div>
+</BaseLayout>

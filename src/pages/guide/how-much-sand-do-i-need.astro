@@ -1,0 +1,79 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+const faqs = [
+  { q: 'How much sand do I need for a paver base?', a: 'For a paver base, the standard depth is 1 inch of bedding sand. A 100 sq ft patio needs about 0.31 cubic yards or 0.42 tons of leveling sand. Use the Sand Calculator to get the exact amount for your area.' },
+  { q: 'How many 50-lb bags of sand are in a cubic yard?', a: 'There are 54 bags of 50 lb sand in one cubic yard, because each 50 lb bag yields approximately 0.50 cubic feet and there are 27 cubic feet per cubic yard (27 ÷ 0.50 = 54).' },
+  { q: 'How much does a yard of sand weigh?', a: 'All-purpose and paver sand weigh about 2,700 lbs (1.35 tons) per cubic yard. Play sand and mason sand are slightly lighter at about 2,600 lbs (1.30 tons) per cubic yard.' },
+  { q: 'How much sand do I need for a sandbox?', a: 'For a standard 6×6 ft sandbox filled 6 inches deep, you need about 1 cubic yard or 54 bags of play sand. The depth also depends on how much digging you want to allow.' },
+  { q: 'What type of sand should I use for pavers?', a: 'Use paver/leveling sand (also called coarse sand or concrete sand) for the base layer under pavers. Do not use fine play sand — it is too fine to provide a stable, level surface.' },
+];
+
+const related = [
+  { href: '/calculator/sand', label: 'Sand Calculator' },
+  { href: '/guide/how-much-does-a-yard-of-sand-weigh', label: 'How Much Does a Yard of Sand Weigh?' },
+  { href: '/calculator/gravel', label: 'Gravel Calculator' },
+  { href: '/calculator/concrete', label: 'Concrete Calculator' },
+];
+---
+
+<GuideLayout
+  title="How Much Sand Do I Need? — Sand Calculator Guide"
+  description="Calculate how much sand you need for paver bases, sandboxes, and fill. Coverage tables for paver sand, play sand, and all-purpose sand in cubic yards, tons, and 50 lb bags."
+  h1="How Much Sand Do I Need?"
+  intro="The amount of sand you need depends on your project type. Paver bases only need 1 inch; sandboxes and fill projects need more. Sand is sold by the bag, ton, or cubic yard."
+  calculatorHref="/calculator/sand"
+  calculatorLabel="Sand Calculator — tons, cubic yards, and 50 lb bags"
+  {faqs}
+  {related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'How Much Sand Do I Need?' }]}
+>
+
+## The quick formula
+
+**Volume (cu yd) = Length (ft) × Width (ft) × Depth (in) ÷ 324**
+
+**50 lb bags = Volume (cu ft) ÷ 0.50, rounded up**
+
+**Tons = Volume (cu yd) × Density (1.30–1.35 tons/cu yd)**
+
+## Depth guide by project
+
+| Project | Recommended depth |
+|---------|------------------|
+| Paver / brick base (bedding layer) | 1 inch |
+| Leveling layer under flagstones | 1–2 inches |
+| Sandbox fill | 4–6 inches |
+| Artificial turf base | 1–2 inches |
+| Fill sand | measure the void |
+
+## Coverage table — cubic yards per 100 sq ft
+
+| Depth | Cu yd | Tons (all-purpose) | 50 lb bags |
+|-------|-------|-------------------|------------|
+| 1" | 0.31 | 0.42 | 17 |
+| 2" | 0.62 | 0.84 | 34 |
+| 3" | 0.93 | 1.25 | 51 |
+| 4" | 1.23 | 1.66 | 67 |
+| 6" | 1.85 | 2.50 | 100 |
+
+## Quick examples
+
+| Project | Size | Depth | Cu Yd | 50 lb bags |
+|---------|------|-------|-------|------------|
+| Patio paver base | 10 × 12 ft | 1" | 0.37 | 21 |
+| Sandbox | 6 × 6 ft | 6" | 0.67 | 37 |
+| Play area | 10 × 10 ft | 4" | 1.23 | 67 |
+
+## Sand type comparison
+
+| Sand type | Density | Best for |
+|-----------|---------|---------|
+| All-purpose / fill | 1.35 t/cu yd | general fill, leveling |
+| Paver / leveling | 1.35 t/cu yd | patio and walkway base |
+| Play sand | 1.30 t/cu yd | sandboxes, play areas |
+| Mason sand | 1.30 t/cu yd | mortar, tiling |
+
+Use the [Sand Calculator](/calculator/sand) for your exact dimensions and preferred sand type.
+
+</GuideLayout>

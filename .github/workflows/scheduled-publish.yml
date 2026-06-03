@@ -1,0 +1,63 @@
+name: Scheduled Publish
+
+# Runs every Monday and Thursday at 10:00 UTC
+# Promotes pending pages → published, builds, and deploys to Vercel.
+# Adjust the cron schedule and deploy step for your host.
+
+on:
+  schedule:
+    - cron: '0 10 * * 1'   # Monday  10:00 UTC
+    - cron: '0 10 * * 4'   # Thursday 10:00 UTC
+  workflow_dispatch:         # also allows manual trigger from GitHub Actions UI
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write        # needed to commit the updated publish-schedule.json
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm test
+
+      - name: Promote pending pages
+        run: node scripts/publish-next.mjs
+        # This updates publish-schedule.json AND runs npm run build
+
+      - name: Commit updated schedule
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add publish-schedule.json
+          git diff --staged --quiet || git commit -m "chore: publish scheduled pages [skip ci]"
+          git push
+
+      # ── Vercel deploy ────────────────────────────────────────────────────────
+      # Uncomment and add VERCEL_TOKEN, VERCEL_ORG_ID, VERCEL_PROJECT_ID to GitHub Secrets
+      #
+      # - name: Deploy to Vercel
+      #   run: npx vercel --prod --token=${{ secrets.VERCEL_TOKEN }}
+      #   env:
+      #     VERCEL_ORG_ID:     ${{ secrets.VERCEL_ORG_ID }}
+      #     VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+      # ── Netlify deploy ───────────────────────────────────────────────────────
+      # Uncomment and add NETLIFY_AUTH_TOKEN, NETLIFY_SITE_ID to GitHub Secrets
+      #
+      # - name: Deploy to Netlify
+      #   run: npx netlify-cli deploy --prod --dir=dist
+      #   env:
+      #     NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+      #     NETLIFY_SITE_ID:    ${{ secrets.NETLIFY_SITE_ID }}
