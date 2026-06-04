@@ -1,0 +1,80 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How do I convert square feet to square yards?', a: 'Divide square feet by 9 to get square yards. For example, 81 sq ft ÷ 9 = 9 square yards.' },
+  { q: 'How many square feet are in a square yard?', a: 'There are exactly 9 square feet in 1 square yard (3 ft × 3 ft = 9 sq ft).' },
+  { q: 'How do I convert square yards to square feet?', a: 'Multiply square yards by 9. For example, 20 square yards × 9 = 180 square feet.' },
+  { q: 'Why do flooring and carpet measurements use square yards?', a: 'Carpet and some flooring types are traditionally sold in square yards because rolls are 12 feet wide, and pricing per square yard became the industry standard. Most tile and hard flooring now uses square feet.' },
+  { q: 'Is 1 linear yard the same as 1 square yard?', a: 'No — a linear yard is 1 yard (3 feet) of length in one direction. A square yard is a 1 yard × 1 yard area = 9 square feet. Linear yards measure length; square yards measure area.' },
+];
+
+export const related = [
+  { href: '/guide/how-to-calculate-square-footage', label: 'How to Calculate Square Footage' },
+  { href: '/guide/linear-feet-to-square-feet', label: 'Linear Feet to Square Feet' },
+  { href: '/calculator/flooring', label: 'Flooring Calculator' },
+  { href: '/calculator/tile', label: 'Tile Calculator' },
+];
+
+<GuideLayout
+  title="Square Feet to Square Yards — Conversion Calculator & Table"
+  description="Convert square feet to square yards instantly. Includes the formula, full conversion table from 1 to 5,000 sq ft, and common use cases like flooring and carpet."
+  h1="Square Feet to Square Yards Converter"
+  intro="To convert square feet to square yards, divide by 9. One square yard equals 9 square feet (a 3×3 foot square). Use the table below for quick conversions."
+  calculatorHref="/calculator/flooring"
+  calculatorLabel="Flooring Calculator — works in both square feet and square yards"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Square Feet to Square Yards' }]}
+>
+
+## Formula
+
+**Square yards = Square feet ÷ 9**
+
+**Square feet = Square yards × 9**
+
+## Conversion table
+
+| Square feet | Square yards |
+|------------|-------------|
+| 9 sq ft | 1 sq yd |
+| 18 sq ft | 2 sq yd |
+| 27 sq ft | 3 sq yd |
+| 36 sq ft | 4 sq yd |
+| 45 sq ft | 5 sq yd |
+| 81 sq ft | 9 sq yd |
+| 100 sq ft | 11.1 sq yd |
+| 144 sq ft | 16 sq yd |
+| 200 sq ft | 22.2 sq yd |
+| 250 sq ft | 27.8 sq yd |
+| 300 sq ft | 33.3 sq yd |
+| 400 sq ft | 44.4 sq yd |
+| 500 sq ft | 55.6 sq yd |
+| 750 sq ft | 83.3 sq yd |
+| 1,000 sq ft | 111.1 sq yd |
+| 1,500 sq ft | 166.7 sq yd |
+| 2,000 sq ft | 222.2 sq yd |
+| 2,500 sq ft | 277.8 sq yd |
+| 5,000 sq ft | 555.6 sq yd |
+
+## Common room sizes converted
+
+| Room | Approximate size | Square yards |
+|------|-----------------|-------------|
+| Small bedroom | 120 sq ft | 13.3 sq yd |
+| Standard bedroom | 144–168 sq ft | 16–18.7 sq yd |
+| Master bedroom | 200–250 sq ft | 22–27.8 sq yd |
+| Living room | 250–350 sq ft | 27.8–38.9 sq yd |
+| Kitchen | 150–200 sq ft | 16.7–22.2 sq yd |
+| Full basement | 800–1,200 sq ft | 88.9–133.3 sq yd |
+
+## When you'll see square yards
+
+- **Carpet:** sold by the square yard at most flooring stores
+- **Turf / artificial grass:** often priced per square yard
+- **Sod:** some suppliers price in square yards (1 sq yd = 9 sq ft)
+- **Landscaping fabric:** some rolls listed in square yards
+
+For tile, hardwood, and LVP, measurements are almost always in square feet. Use the [Flooring Calculator](/calculator/flooring) or [Tile Calculator](/calculator/tile) for those.
+
+</GuideLayout>

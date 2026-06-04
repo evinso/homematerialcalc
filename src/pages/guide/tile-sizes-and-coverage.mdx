@@ -1,0 +1,90 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How many tiles do I need per square foot?', a: 'It depends on tile size. A 12×12" tile covers exactly 1 sq ft (1 tile per sq ft). A 6×6" tile takes 4 tiles per sq ft. A 24×24" tile covers 4 sq ft (0.25 tiles per sq ft).' },
+  { q: 'What is the most popular tile size?', a: '12×24 inch tiles are currently the most popular floor tile size for modern interiors. For small bathrooms and showers, 12×12 and 6×6 inch tiles remain very common.' },
+  { q: 'How much extra tile should I buy?', a: 'Buy 10% extra for standard installations. Add 15% for diagonal patterns and 20% for complex patterns or irregularly shaped rooms. Small tiles (mosaics) have more joints and cuts — buy 10–15% extra.' },
+  { q: 'What grout joint size should I use?', a: 'Most floor tiles use ⅛" to ¼" joints. Rectified tiles (precisely cut) can use 1/16" joints. Wall tiles often use 1/16" to ⅛". Larger tiles typically use wider joints for alignment flexibility.' },
+  { q: 'How many boxes of tile do I need?', a: 'Find the square footage per box on the box label. Divide your total area (plus waste %) by the box coverage. For example: 150 sq ft room, 10% waste = 165 sq ft ÷ 12 sq ft/box = 14 boxes.' },
+];
+
+export const related = [
+  { href: '/calculator/tile', label: 'Tile Calculator' },
+  { href: '/guide/how-much-tile-do-i-need', label: 'How Much Tile Do I Need?' },
+  { href: '/guide/how-many-tiles-for-a-bathroom', label: 'How Many Tiles for a Bathroom?' },
+  { href: '/guide/how-to-calculate-square-footage', label: 'How to Calculate Square Footage' },
+];
+
+<GuideLayout
+  title="Tile Sizes and Coverage — Complete Reference Guide"
+  description="Compare tile sizes and coverage rates. Includes tiles per square foot, recommended waste percentages, grout joint sizes, and common room estimates."
+  h1="Tile Sizes and Coverage: Complete Reference"
+  intro="Tile coverage depends on tile size. Larger tiles cover more area per piece; smaller tiles require more cuts. Here's a complete reference for all common tile sizes and their coverage rates."
+  calculatorHref="/calculator/tile"
+  calculatorLabel="Tile Calculator — enter your room dimensions for an exact tile count"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Tile Sizes and Coverage' }]}
+>
+
+## Coverage by tile size
+
+| Tile size | Tiles per sq ft | Sq ft per tile | For 100 sq ft | For 200 sq ft |
+|----------|----------------|----------------|---------------|---------------|
+| 2×2 inch | 36 | 0.028 | 3,960 | 7,920 |
+| 4×4 inch | 9 | 0.11 | 990 | 1,980 |
+| 4×12 inch | 3 | 0.33 | 330 | 660 |
+| 6×6 inch | 4 | 0.25 | 440 | 880 |
+| 6×12 inch | 2 | 0.50 | 220 | 440 |
+| 12×12 inch | 1 | 1.0 | 110 | 220 |
+| 12×24 inch | 0.5 | 2.0 | 55 | 110 |
+| 16×16 inch | 0.56 | 1.78 | 62 | 124 |
+| 18×18 inch | 0.44 | 2.25 | 49 | 98 |
+| 24×24 inch | 0.25 | 4.0 | 28 | 56 |
+| 36×36 inch | 0.11 | 9.0 | 12 | 24 |
+
+*Counts include 10% waste factor.*
+
+## Recommended waste by pattern
+
+| Pattern | Waste to add |
+|---------|-------------|
+| Straight (grid) | 10% |
+| Running bond (brick) | 10% |
+| Diagonal (45°) | 15% |
+| Herringbone | 15% |
+| Complex / custom | 20% |
+
+## Grout joint sizes by tile type
+
+| Tile type | Recommended joint |
+|----------|------------------|
+| Mosaic (2" and smaller) | ⅛" |
+| Small field tile (4"–6") | ⅛"–3/16" |
+| Standard tile (12") | ⅛"–¼" |
+| Large format (18"+) | 3/16"–¼" |
+| Rectified tile (precision cut) | 1/16"–⅛" |
+
+## Common room tile estimates
+
+| Room | Typical size | 12×12 tile count | 12×24 tile count |
+|------|-------------|-----------------|-----------------|
+| Small bath (5×8) | 40 sq ft | 44 tiles | 22 tiles |
+| Standard bath (8×10) | 80 sq ft | 88 tiles | 44 tiles |
+| Kitchen floor | 120 sq ft | 132 tiles | 66 tiles |
+| Master bath floor | 100 sq ft | 110 tiles | 55 tiles |
+| 12×12 room | 144 sq ft | 158 tiles | 79 tiles |
+
+*All counts include 10% waste.*
+
+## How to calculate boxes
+
+1. Measure room area (sq ft)
+2. Add waste % → adjusted area
+3. Check box label for sq ft per box
+4. Divide adjusted area ÷ sq ft per box
+5. Round up to the nearest whole box
+
+Use the [Tile Calculator](/calculator/tile) to automate this calculation.
+
+</GuideLayout>

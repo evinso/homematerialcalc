@@ -1,0 +1,77 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How many coats of paint do I need for a wall?', a: 'Most walls need 2 coats of paint for even, opaque coverage. When changing from a dark to a light color, you may need 3 coats. When painting similar colors, 1–2 coats is usually enough.' },
+  { q: 'Does the first coat of paint need to dry before the second coat?', a: 'Yes — latex paint needs at least 1–2 hours of dry time between coats. Wait until the surface is dry to the touch. Do not recoat before the paint film has formed, or it will pull and leave brush marks.' },
+  { q: 'Can I do 2 coats in one day?', a: 'Yes, for latex paint. Apply the first coat in the morning and the second coat after 2–4 hours when the first coat is dry to the touch. Oil-based paint requires 24 hours between coats.' },
+  { q: 'Is one coat of paint ever enough?', a: 'One coat can work when using "paint and primer in one" over an existing similar color, or for a very light touch-up on an intact painted surface. For new drywall or significant color changes, always use 2 coats.' },
+  { q: 'Does primer count as a coat of paint?', a: 'No — primer is a separate product used for adhesion and stain blocking. After primer, you still need 2 coats of topcoat. Primer does not provide the final color or sheen.' },
+];
+
+export const related = [
+  { href: '/calculator/paint', label: 'Paint Calculator' },
+  { href: '/guide/how-much-paint-do-i-need', label: 'How Much Paint Do I Need?' },
+  { href: '/guide/paint-coverage-per-gallon', label: 'Paint Coverage per Gallon' },
+  { href: '/guide/paint-types-and-finishes', label: 'Paint Types and Finishes' },
+];
+
+<GuideLayout
+  title="How Many Coats of Paint Do You Need? — Complete Guide"
+  description="Find out how many coats of paint you need for walls, ceilings, and trim. Covers color changes, new drywall, primer use, and how to calculate total gallons for all coats."
+  h1="How Many Coats of Paint Do You Need?"
+  intro="Most painting projects need 2 coats. But the right number depends on the color change, surface condition, and paint quality. Here's the complete guide for every scenario."
+  calculatorHref="/calculator/paint"
+  calculatorLabel="Paint Calculator — calculates gallons for multiple coats automatically"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'How Many Coats of Paint' }]}
+>
+
+## Coats needed by situation
+
+| Situation | Coats of primer | Coats of paint |
+|-----------|----------------|---------------|
+| Same color or similar shade | 0 | 1–2 |
+| Light color over dark | 1 | 2–3 |
+| Dark color over light | 0 | 2 |
+| New unpainted drywall | 1 | 2 |
+| New bare wood | 1–2 | 2 |
+| Over a stain or discoloration | 1 (stain-blocking) | 2 |
+| Bare metal (indoor) | 1 (rust-inhibiting) | 2 |
+| Repainting same color | 0 | 1–2 |
+
+## Why 2 coats is almost always needed
+
+**The first coat** soaks into the surface and creates adhesion — it often looks blotchy and uneven, especially on textured surfaces.
+
+**The second coat** creates even, opaque coverage and the final sheen. Skipping it leaves thin spots that show through over time.
+
+**Exception:** Very high-quality paints with high pigment load may cover in one coat over the same color. Test a small area first.
+
+## Calculating total paint for multiple coats
+
+**Total gallons = (Wall area ÷ 350) × Number of coats**
+
+*Example: 600 sq ft of walls, 2 coats = (600 ÷ 350) × 2 = 3.43 gallons → buy 4 gallons*
+
+The [Paint Calculator](/calculator/paint) calculates this automatically — just select your number of coats.
+
+## Dry time between coats
+
+| Paint type | Dry to touch | Recoat time |
+|-----------|-------------|------------|
+| Latex / water-based | 30–60 min | 2–4 hours |
+| Oil-based | 6–8 hours | 24 hours |
+| Chalk paint | 30–60 min | 1–2 hours |
+| Spray paint (enamel) | 15–30 min | 1–2 hours |
+
+*These are minimums. Always check the label, which may specify longer recoat times.*
+
+## Tips for better coverage with fewer coats
+
+- **Apply in thin, even coats** — a thick first coat causes runs and drips without better coverage
+- **Use a quality roller** — a ¾" nap roller on textured walls holds more paint per pass
+- **Cut in before rolling** — applying edges first prevents lap marks
+- **Maintain a wet edge** — work in manageable sections to blend while paint is wet
+
+</GuideLayout>

@@ -1,0 +1,87 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How thick should a concrete driveway be?', a: 'Residential driveways should be 4 inches thick at minimum, 5–6 inches for heavier vehicles like RVs or trucks. Use 4,000 PSI concrete and place it over a 4-inch compacted gravel base.' },
+  { q: 'How thick should a concrete patio be?', a: 'A residential patio slab should be 4 inches thick. This is adequate for foot traffic, patio furniture, and grills. Increase to 5 inches if you plan to park a car on it.' },
+  { q: 'How thick should a garage slab be?', a: 'A garage floor should be at least 4 inches thick for normal vehicles, or 5–6 inches for heavy trucks or storage. Include fiber reinforcement or rebar on a 4-inch gravel base.' },
+  { q: 'Does a concrete slab need rebar?', a: 'Patios and small slabs can use fiber reinforcement or wire mesh. Driveways and load-bearing slabs benefit from #3 or #4 rebar on 18-inch centers. Thicker slabs (5"+) should always have rebar.' },
+  { q: 'How many bags of concrete do I need for a 4-inch slab?', a: 'At 4 inches thick, 1 cubic yard covers 81 square feet. For a 10×10 ft patio (100 sq ft): 100 ÷ 81 = 1.23 cubic yards = about 56 bags of 80 lb concrete mix. Use our Concrete Calculator for exact numbers.' },
+];
+
+export const related = [
+  { href: '/calculator/concrete', label: 'Concrete Calculator' },
+  { href: '/guide/how-much-concrete-do-i-need', label: 'How Much Concrete Do I Need?' },
+  { href: '/guide/how-many-bags-of-concrete-for-10x10-slab', label: 'Concrete Bags for 10×10 Slab' },
+  { href: '/guide/how-much-concrete-for-fence-posts', label: 'How Much Concrete for Fence Posts?' },
+];
+
+<GuideLayout
+  title="How Thick Should a Concrete Slab Be? — Thickness Guide"
+  description="Learn the right concrete slab thickness for driveways, patios, garage floors, and sidewalks. Includes PSI recommendations, rebar guidance, and bag estimates."
+  h1="How Thick Should a Concrete Slab Be?"
+  intro="Concrete thickness depends on what the slab needs to support. Too thin and it will crack; thicker than needed wastes material and money. Here are the standard thicknesses for every common project."
+  calculatorHref="/calculator/concrete"
+  calculatorLabel="Concrete Calculator — get bags or cubic yards for any slab"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'How Thick Should Concrete Be?' }]}
+>
+
+## Thickness by slab type
+
+| Slab type | Minimum | Recommended | PSI |
+|-----------|---------|-------------|-----|
+| Sidewalk / walkway | 3.5" | 4" | 3,000 |
+| Residential patio | 3.5" | 4" | 3,000–3,500 |
+| Garage floor | 4" | 5"–6" | 3,500–4,000 |
+| Driveway (cars) | 4" | 5" | 4,000 |
+| Driveway (trucks/RVs) | 5" | 6" | 4,000–4,500 |
+| Basketball/tennis court | 4" | 5"–6" | 4,000 |
+| Workshop / shed floor | 3.5" | 4" | 3,000 |
+| Pool deck | 4" | 4" | 3,500 |
+
+## Gravel base requirements
+
+Always place concrete over a compacted gravel base:
+
+| Slab use | Gravel base depth |
+|----------|------------------|
+| Patio, sidewalk | 4" compacted |
+| Garage floor | 4"–6" compacted |
+| Driveway | 4"–6" compacted |
+| Heavy-duty | 6"–8" compacted |
+
+*Never pour concrete on soft, unstable, or organic soil.*
+
+## Reinforcement guidelines
+
+| Slab | Reinforcement |
+|------|-------------|
+| Small patio (under 100 sq ft) | Fiber additive or none |
+| Standard patio / sidewalk | 6×6 wire mesh or fiber |
+| Garage floor | #3 rebar @ 18" centers |
+| Driveway | #4 rebar @ 18" centers |
+| Structural slab | Engineer-specified rebar |
+
+## Concrete quantities at different thicknesses
+
+*Coverage per cubic yard:*
+
+| Thickness | Coverage per cu yd |
+|-----------|-------------------|
+| 3" | 108 sq ft |
+| 3.5" | 92 sq ft |
+| 4" | 81 sq ft |
+| 5" | 65 sq ft |
+| 6" | 54 sq ft |
+
+Use the [Concrete Calculator](/calculator/concrete) with your exact dimensions to get bags or ready-mix yards.
+
+## Pro tips
+
+- **Add control joints** every 8–12 feet to direct cracking
+- **Cure properly** — keep the slab moist for 3–7 days after pouring
+- **Don't pour in freezing temperatures** — concrete won't hydrate properly below 40°F
+- **Slope for drainage** — minimum ¼ inch per foot away from structures
+
+</GuideLayout>

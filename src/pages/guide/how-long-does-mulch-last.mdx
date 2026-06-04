@@ -1,0 +1,72 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How often should I replace mulch?', a: 'Most organic mulches need to be topped up every 1–2 years. You do not need to remove old mulch entirely — check the depth. If the existing layer is under 2 inches, add 1–2 inches on top. Fully replace if the mulch has compacted or become matted.' },
+  { q: 'What type of mulch lasts the longest?', a: 'Cypress and cedar mulch last 2–3 years due to natural oils that resist decay. Rubber mulch lasts 10+ years but provides no soil benefit. Straw and shredded leaves break down in one season.' },
+  { q: 'Does colored mulch fade faster?', a: 'Yes — dyed mulch loses color within 1–3 months of sun exposure. Some dyed mulches are re-dyed during processing to last longer, but all will fade. The underlying wood decomposes at a normal rate.' },
+  { q: 'How do I know when mulch needs replacing?', a: 'Signs it is time to add more: mulch is under 2 inches deep, the color is grey and washed out, it has compacted into a mat, or you see soil through the surface. Also replace if you smell a sour or sulfur-like odor (anaerobic decomposition).' },
+  { q: 'Does old mulch need to be removed before adding new?', a: 'Only if the old layer is 4+ inches deep (risk of smothering plant roots) or it has turned sour and slimy. Otherwise, simply fluff and top up to 3 inches total.' },
+];
+
+export const related = [
+  { href: '/calculator/mulch', label: 'Mulch Calculator' },
+  { href: '/guide/types-of-mulch', label: 'Types of Mulch' },
+  { href: '/guide/how-much-mulch-do-i-need', label: 'How Much Mulch Do I Need?' },
+  { href: '/guide/how-much-mulch-for-a-garden-bed', label: 'How Much Mulch for a Garden Bed?' },
+];
+
+<GuideLayout
+  title="How Long Does Mulch Last? — Mulch Lifespan Guide"
+  description="Find out how long different types of mulch last, when to replace it, and how to extend its lifespan. Includes wood, bark, straw, cedar, and rubber mulch."
+  h1="How Long Does Mulch Last?"
+  intro="Most organic mulches last 1–2 years before needing to be topped up. Lifespan varies widely by mulch type, climate, and whether it was dyed. Here's what to expect."
+  calculatorHref="/calculator/mulch"
+  calculatorLabel="Mulch Calculator — find out how much to buy for your top-up"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'How Long Does Mulch Last?' }]}
+>
+
+## Mulch lifespan by type
+
+| Mulch type | Color retention | Structural lifespan | Notes |
+|-----------|----------------|---------------------|-------|
+| Shredded hardwood | 1–3 months | 1–2 years | Most popular type |
+| Double-ground bark | 2–4 months | 1–2 years | Finer; breaks down slightly faster |
+| Cedar mulch | 3–6 months | 2–3 years | Natural oils slow decay |
+| Cypress mulch | 3–6 months | 2–3 years | Good moisture retention |
+| Pine bark nuggets | 2–4 months | 2–3 years | Larger chunks last longer |
+| Pine straw | N/A | 1–2 years | Matts down; top up annually |
+| Straw | N/A | 4–6 months | Great for vegetable gardens |
+| Shredded leaves | N/A | 6–12 months | Free; improves soil quickly |
+| Dyed wood mulch | Fades in 1–3 months | 1–2 years | Color fades faster than structure |
+| Rubber mulch | Doesn't fade | 10–15 years | No soil benefit; expensive |
+
+## Factors that speed up decomposition
+
+- **Hot, humid climates** — mulch breaks down 2× faster than cool, dry regions
+- **Frequent rain** — keeps mulch moist and active for microbes
+- **Fine texture** — finely shredded material breaks down faster than large chips
+- **Hardwood vs. softwood** — hardwood lasts longer than softwood species
+
+## When to top up vs. fully replace
+
+### Top up (add 1–2 inches):
+- Layer depth is under 2 inches
+- Mulch looks faded but is still loose
+- No pest or disease problems
+
+### Fully replace:
+- Mulch has compacted into a mat (prevents water penetration)
+- You smell sour/sulfur odors (sour mulch syndrome)
+- Mulch has turned completely grey and brittle
+- Layer is 4+ inches deep (risk of oxygen deprivation to roots)
+
+## How to extend mulch life
+
+1. **Apply at the correct depth** — 2–3 inches, not 4–6 inches
+2. **Keep it away from stems** — 3–6 inches clearance around trunks
+3. **Fluff it annually** — rake the surface to break up matting and restore air pockets
+4. **Avoid burying it** — don't mow shredded grass into the mulch, which accelerates decay
+
+</GuideLayout>

@@ -1,0 +1,77 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How much gravel does a French drain need?', a: 'A typical 4-inch pipe French drain in a 12-inch wide × 18-inch deep trench needs about 1.1 cubic yards of gravel per 100 linear feet. Use washed clean stone (¾" or #57 stone).' },
+  { q: 'What type of gravel is best for a French drain?', a: 'Use washed, angular clean stone — ¾" crushed stone or #57 stone are the most common. Avoid pea gravel (too round, allows fines to migrate) and stone dust (clogs quickly).' },
+  { q: 'How deep should a French drain be?', a: 'Residential French drains are typically 18–24 inches deep and 12 inches wide. The pipe sits at the bottom surrounded by gravel. Slope the trench at least ½ inch per 8 feet toward the outlet.' },
+  { q: 'Do I need filter fabric for a French drain?', a: 'Yes — line the trench with landscape filter fabric before filling with gravel. This prevents soil from migrating into the gravel and clogging the drain over time. Wrap the fabric around the pipe and gravel.' },
+  { q: 'How long does a French drain last?', a: 'A properly installed French drain with filter fabric lasts 30–40 years. Without fabric or with fine-grain gravel, expect 5–15 years before clogging becomes an issue.' },
+];
+
+export const related = [
+  { href: '/calculator/gravel', label: 'Gravel Calculator' },
+  { href: '/guide/how-much-gravel-do-i-need', label: 'How Much Gravel Do I Need?' },
+  { href: '/guide/how-much-gravel-for-a-driveway', label: 'How Much Gravel for a Driveway?' },
+  { href: '/guide/how-deep-should-gravel-be', label: 'How Deep Should Gravel Be?' },
+];
+
+<GuideLayout
+  title="How Much Gravel for a French Drain? — Gravel Calculator Guide"
+  description="Calculate how much gravel you need for a French drain. Includes trench dimensions, gravel type guide, and cubic yard estimates per 100 linear feet."
+  h1="How Much Gravel for a French Drain?"
+  intro="French drain gravel volume depends on your trench dimensions and pipe size. The standard residential French drain uses about 1 cubic yard of clean stone per 75–100 linear feet of trench."
+  calculatorHref="/calculator/gravel"
+  calculatorLabel="Gravel Calculator — enter trench dimensions for an exact estimate"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'How Much Gravel for a French Drain?' }]}
+>
+
+## The formula
+
+**Volume (cu yd) = Trench width (ft) × Trench depth (ft) × Length (ft) ÷ 27**
+
+Subtract the pipe volume for a precise result (usually less than 5% of total — safe to ignore).
+
+## Standard trench dimensions
+
+| Trench type | Width | Depth | Gravel per 100 lin ft |
+|------------|-------|-------|-----------------------|
+| Narrow residential | 8" | 16" | 0.62 cu yd |
+| Standard residential | 12" | 18" | 0.83 cu yd |
+| Wide residential | 12" | 24" | 1.11 cu yd |
+| Heavy-duty | 18" | 24" | 1.67 cu yd |
+
+## Gravel needed by drain length
+
+*Assuming standard 12" × 18" trench:*
+
+| Drain length | Cubic yards | Tons (1.40 t/cu yd) |
+|-------------|-------------|---------------------|
+| 25 ft | 0.21 | 0.29 |
+| 50 ft | 0.42 | 0.58 |
+| 75 ft | 0.62 | 0.87 |
+| 100 ft | 0.83 | 1.16 |
+| 150 ft | 1.25 | 1.75 |
+| 200 ft | 1.67 | 2.33 |
+
+## Best gravel types for French drains
+
+| Stone type | Description | Rating |
+|-----------|-------------|--------|
+| #57 crushed stone | ¾" angular — best drainage, widely available | ★★★★★ |
+| ¾" clean crushed stone | Similar to #57 | ★★★★★ |
+| 1" clean stone | Good for large pipes or heavy flow | ★★★★ |
+| Pea gravel | Round — allows fines in, avoid if possible | ★★★ |
+| River rock | Decorative surface layer only | ★★ |
+| Stone dust / crusher run | Clogs quickly — do NOT use | ✗ |
+
+## Installation tips
+
+1. **Slope the trench** — Minimum ½" drop per 8 feet toward the outlet point
+2. **Line with fabric first** — Unroll geotextile filter fabric into the trench before adding gravel
+3. **Fill gravel around pipe** — Cover pipe with 3–4" of gravel on all sides
+4. **Fold fabric over top** — Wrap the fabric over the gravel, then backfill with soil
+5. **Mark the outlet** — Install a pop-up emitter or daylight outlet to prevent backflow
+
+</GuideLayout>

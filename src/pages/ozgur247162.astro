@@ -24,7 +24,23 @@ const pendingWithETA = pending.map((p, i) => ({
   eta: addDays(baseDate, i + 1),
 }));
 
-// Group published by date
+// Group helpers
+function byType(list: any[], type: string) {
+  return list.filter(p => p.type === type);
+}
+
+// Published stats
+const pubCalcs     = byType(published, 'calculator');
+const pubGuides    = byType(published, 'guide');
+const pubRefs      = byType(published, 'reference');
+const pubStatic    = byType(published, 'static');
+
+// Pending groups
+const pendCalcs    = byType(pendingWithETA, 'calculator');
+const pendGuides   = byType(pendingWithETA, 'guide');
+const pendRefs     = byType(pendingWithETA, 'reference');
+
+// Published grouped by date
 const byDate: Record<string, typeof published> = {};
 for (const p of published) {
   const d = p.publishedAt ?? 'unknown';
@@ -32,10 +48,6 @@ for (const p of published) {
   byDate[d].push(p);
 }
 const sortedDates = Object.keys(byDate).sort((a,b) => b.localeCompare(a));
-
-const calcs  = published.filter(p => p.url.startsWith('/calculator'));
-const guides  = published.filter(p => p.url.startsWith('/guide'));
-const static_ = published.filter(p => !p.url.startsWith('/calculator') && !p.url.startsWith('/guide'));
 ---
 
 <!doctype html>
@@ -48,30 +60,45 @@ const static_ = published.filter(p => !p.url.startsWith('/calculator') && !p.url
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: system-ui, sans-serif; background: #0f172a; color: #e2e8f0; min-height: 100vh; padding: 2rem 1rem; }
-    .wrap { max-width: 900px; margin: 0 auto; }
+    .wrap { max-width: 960px; margin: 0 auto; }
     h1 { font-size: 1.5rem; font-weight: 700; color: #f8fafc; margin-bottom: 0.25rem; }
     .subtitle { font-size: 0.85rem; color: #64748b; margin-bottom: 2rem; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.75rem; margin-bottom: 2rem; }
     .stat { background: #1e293b; border-radius: 10px; padding: 1rem; }
-    .stat-n { font-size: 2rem; font-weight: 800; color: #38bdf8; }
-    .stat-l { font-size: 0.75rem; color: #94a3b8; margin-top: 0.25rem; }
+    .stat-n { font-size: 1.75rem; font-weight: 800; color: #38bdf8; }
+    .stat-l { font-size: 0.72rem; color: #94a3b8; margin-top: 0.25rem; }
     .section { margin-bottom: 2rem; }
-    .section-title { font-size: 0.85rem; font-weight: 600; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem; border-bottom: 1px solid #1e293b; padding-bottom: 0.5rem; }
-    .row { display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 0.75rem; border-radius: 6px; margin-bottom: 0.25rem; font-size: 0.85rem; }
+    .section-header { font-size: 0.82rem; font-weight: 600; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; border-bottom: 1px solid #1e293b; padding-bottom: 0.4rem; display: flex; align-items: center; justify-content: space-between; }
+    .type-block { margin-bottom: 1.25rem; }
+    .type-label { font-size: 0.73rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.4rem; padding: 0 0.5rem; }
+    .row { display: flex; align-items: center; justify-content: space-between; padding: 0.45rem 0.75rem; border-radius: 6px; margin-bottom: 0.2rem; font-size: 0.82rem; }
     .row:hover { background: #1e293b; }
-    .row-url { color: #cbd5e1; font-family: monospace; font-size: 0.8rem; }
-    .row-label { color: #94a3b8; font-size: 0.75rem; }
-    .row-date { color: #64748b; font-size: 0.75rem; white-space: nowrap; margin-left: 1rem; }
-    .badge { display: inline-block; padding: 0.15rem 0.55rem; border-radius: 999px; font-size: 0.7rem; font-weight: 600; }
+    .row-url { color: #cbd5e1; font-family: monospace; font-size: 0.78rem; }
+    .row-label { color: #94a3b8; font-size: 0.72rem; }
+    .row-date { color: #64748b; font-size: 0.72rem; white-space: nowrap; margin-left: 1rem; }
+    .badge { display: inline-block; padding: 0.12rem 0.5rem; border-radius: 999px; font-size: 0.68rem; font-weight: 600; }
     .badge-pub  { background: #14532d; color: #4ade80; }
     .badge-pend { background: #1c3148; color: #38bdf8; }
     .badge-fut  { background: #1e1a2e; color: #818cf8; }
-    .date-group { color: #475569; font-size: 0.75rem; padding: 0.5rem 0.75rem 0.25rem; font-weight: 600; }
-    .info-bar { background: #1e293b; border-radius: 10px; padding: 1rem 1.25rem; display: flex; flex-wrap: wrap; gap: 1.5rem; font-size: 0.8rem; color: #94a3b8; margin-bottom: 2rem; }
+    .badge-type-calc { background: #1c2a3e; color: #7dd3fc; }
+    .badge-type-guide { background: #1a2e1a; color: #86efac; }
+    .badge-type-ref  { background: #2e2a1a; color: #fcd34d; }
+    .date-group { color: #475569; font-size: 0.73rem; padding: 0.45rem 0.75rem 0.2rem; font-weight: 700; }
+    .info-bar { background: #1e293b; border-radius: 10px; padding: 0.9rem 1.1rem; display: flex; flex-wrap: wrap; gap: 1.25rem; font-size: 0.78rem; color: #94a3b8; margin-bottom: 2rem; }
     .info-bar strong { color: #e2e8f0; }
     a { color: #38bdf8; text-decoration: none; }
     a:hover { text-decoration: underline; }
-    .empty { color: #475569; font-size: 0.8rem; padding: 0.5rem 0.75rem; }
+    .empty { color: #475569; font-size: 0.78rem; padding: 0.4rem 0.75rem; }
+    .tabs { display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
+    .tab { font-size: 0.75rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 999px; cursor: default; }
+    .tab-calc  { background: #1c2a3e; color: #7dd3fc; }
+    .tab-guide { background: #1a2e1a; color: #86efac; }
+    .tab-ref   { background: #2e2a1a; color: #fcd34d; }
+    .tab-static { background: #1e293b; color: #94a3b8; }
+    .countdown { background: #1e293b; border-radius: 10px; padding: 0.9rem 1.1rem; margin-bottom: 2rem; }
+    .next-label { font-size: 0.72rem; color: #64748b; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+    .next-page { font-size: 0.88rem; color: #e2e8f0; font-family: monospace; }
+    .next-date { font-size: 0.78rem; color: #38bdf8; margin-top: 0.2rem; }
   </style>
 </head>
 <body>
@@ -83,23 +110,23 @@ const static_ = published.filter(p => !p.url.startsWith('/calculator') && !p.url
     <div class="grid">
       <div class="stat">
         <div class="stat-n">{published.length}</div>
-        <div class="stat-l">Yayında</div>
+        <div class="stat-l">Toplam yayında</div>
       </div>
       <div class="stat">
-        <div class="stat-n">{pending.length}</div>
+        <div class="stat-n" style="color:#7dd3fc">{pubCalcs.length}</div>
+        <div class="stat-l">Calculator canlı</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n" style="color:#86efac">{pubGuides.length}</div>
+        <div class="stat-l">Guide canlı</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n" style="color:#fcd34d">{pubRefs.length}</div>
+        <div class="stat-l">Reference canlı</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n" style="color:#f472b6">{pending.length}</div>
         <div class="stat-l">Sırada (pending)</div>
-      </div>
-      <div class="stat">
-        <div class="stat-n">{future.length}</div>
-        <div class="stat-l">Planlanmış (future)</div>
-      </div>
-      <div class="stat">
-        <div class="stat-n">{calcs.length}</div>
-        <div class="stat-l">Calculator sayfası</div>
-      </div>
-      <div class="stat">
-        <div class="stat-n">{guides.length}</div>
-        <div class="stat-l">Guide sayfası</div>
       </div>
       <div class="stat">
         <div class="stat-n">{pagesPerRun}/gün</div>
@@ -113,33 +140,86 @@ const static_ = published.filter(p => !p.url.startsWith('/calculator') && !p.url
       <span>Bugün: <strong>{today}</strong></span>
       <span>GitHub Actions: <strong>Her gün 09:00 UTC</strong></span>
       <span>Canlı site: <a href="https://www.homematerialcalc.com" target="_blank">homematerialcalc.com</a></span>
-      <span>Sitemap: <a href="https://www.homematerialcalc.com/sitemap.xml" target="_blank">sitemap.xml</a> ({published.filter(p => !['/privacy','/terms','/contact','/contact-success'].includes(p.url)).length} URL)</span>
+      <span>Toplam URL: <strong>{published.filter(p => !['/privacy','/terms','/contact','/contact-success'].includes(p.url)).length}</strong></span>
     </div>
 
-    <!-- Pending — sıradakiler -->
+    <!-- Next up -->
+    {pendingWithETA.length > 0 && (
+      <div class="countdown">
+        <div class="next-label">Sonraki yayın</div>
+        <div class="next-page">{pendingWithETA[0].url}</div>
+        <div class="next-date">Tahmini tarih: {pendingWithETA[0].eta} — {pendingWithETA[0].label}</div>
+      </div>
+    )}
+
+    <!-- Pending — grouped by type -->
     <div class="section">
-      <div class="section-title">⏳ Sırada — {pending.length} sayfa (tahmini tarihler)</div>
-      {pendingWithETA.length === 0
-        ? <p class="empty">Sırada sayfa yok.</p>
-        : pendingWithETA.map(p => (
-          <div class="row">
-            <div>
-              <div class="row-url">{p.url}</div>
-              <div class="row-label">{p.label}</div>
+      <div class="section-header">
+        <span>⏳ Sırada — {pending.length} sayfa</span>
+        <span style="font-size:0.7rem;font-weight:400;color:#475569">{pendCalcs.length} calc · {pendGuides.length} guide · {pendRefs.length} ref</span>
+      </div>
+
+      {pendCalcs.length > 0 && (
+        <div class="type-block">
+          <div class="type-label">🔧 Calculators ({pendCalcs.length})</div>
+          {pendCalcs.map(p => (
+            <div class="row">
+              <div>
+                <div class="row-url">{p.url}</div>
+                <div class="row-label">{p.label}</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:0.6rem;">
+                <span class="badge badge-type-calc">calc</span>
+                <span class="row-date">~{p.eta}</span>
+              </div>
             </div>
-            <div style="display:flex;align-items:center;gap:0.75rem;">
-              <span class="badge badge-pend">pending</span>
-              <span class="row-date">~{p.eta}</span>
+          ))}
+        </div>
+      )}
+
+      {pendGuides.length > 0 && (
+        <div class="type-block">
+          <div class="type-label">📖 Guides ({pendGuides.length})</div>
+          {pendGuides.map(p => (
+            <div class="row">
+              <div>
+                <div class="row-url">{p.url}</div>
+                <div class="row-label">{p.label}</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:0.6rem;">
+                <span class="badge badge-type-guide">guide</span>
+                <span class="row-date">~{p.eta}</span>
+              </div>
             </div>
-          </div>
-        ))
-      }
+          ))}
+        </div>
+      )}
+
+      {pendRefs.length > 0 && (
+        <div class="type-block">
+          <div class="type-label">📋 Reference ({pendRefs.length})</div>
+          {pendRefs.map(p => (
+            <div class="row">
+              <div>
+                <div class="row-url">{p.url}</div>
+                <div class="row-label">{p.label}</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:0.6rem;">
+                <span class="badge badge-type-ref">ref</span>
+                <span class="row-date">~{p.eta}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {pending.length === 0 && <p class="empty">Sırada sayfa yok.</p>}
     </div>
 
     <!-- Future -->
     {future.length > 0 && (
       <div class="section">
-        <div class="section-title">🔮 Planlanmış — {future.length} sayfa (henüz yazılmamış)</div>
+        <div class="section-header">🔮 Planlanmış — {future.length} sayfa (henüz yazılmamış)</div>
         {future.map(p => (
           <div class="row">
             <div>
@@ -152,13 +232,26 @@ const static_ = published.filter(p => !p.url.startsWith('/calculator') && !p.url
       </div>
     )}
 
-    <!-- Published — tarihe göre gruplu -->
+    <!-- Published — grouped by type, then by date -->
     <div class="section">
-      <div class="section-title">✅ Yayında — {published.length} sayfa</div>
-      {sortedDates.map(date => (
-        <>
-          <div class="date-group">{date}</div>
-          {byDate[date].map(p => (
+      <div class="section-header">
+        <span>✅ Yayında — {published.length} sayfa</span>
+        <span style="font-size:0.7rem;font-weight:400;color:#475569">{pubCalcs.length} calc · {pubGuides.length} guide · {pubRefs.length} ref · {pubStatic.length} static</span>
+      </div>
+
+      <!-- Type legend -->
+      <div class="tabs" style="margin-bottom:1rem;">
+        <span class="tab tab-calc">🔧 Calculators ({pubCalcs.length})</span>
+        <span class="tab tab-guide">📖 Guides ({pubGuides.length})</span>
+        <span class="tab tab-ref">📋 Reference ({pubRefs.length})</span>
+        <span class="tab tab-static">📄 Static ({pubStatic.length})</span>
+      </div>
+
+      <!-- Published Calculators -->
+      {pubCalcs.length > 0 && (
+        <div class="type-block">
+          <div class="type-label">🔧 Calculators</div>
+          {pubCalcs.map(p => (
             <div class="row">
               <div>
                 <div class="row-url">
@@ -166,11 +259,74 @@ const static_ = published.filter(p => !p.url.startsWith('/calculator') && !p.url
                 </div>
                 <div class="row-label">{p.label}</div>
               </div>
-              <span class="badge badge-pub">published</span>
+              <div style="display:flex;align-items:center;gap:0.6rem;">
+                <span class="badge badge-type-calc">calc</span>
+                <span class="badge badge-pub">live</span>
+              </div>
             </div>
           ))}
-        </>
-      ))}
+        </div>
+      )}
+
+      <!-- Published Guides -->
+      {pubGuides.length > 0 && (
+        <div class="type-block">
+          <div class="type-label">📖 Guides</div>
+          {pubGuides.map(p => (
+            <div class="row">
+              <div>
+                <div class="row-url">
+                  <a href={`https://www.homematerialcalc.com${p.url}`} target="_blank">{p.url}</a>
+                </div>
+                <div class="row-label">{p.label}</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:0.6rem;">
+                <span class="badge badge-type-guide">guide</span>
+                <span class="badge badge-pub">live</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      <!-- Published Reference -->
+      {pubRefs.length > 0 && (
+        <div class="type-block">
+          <div class="type-label">📋 Reference</div>
+          {pubRefs.map(p => (
+            <div class="row">
+              <div>
+                <div class="row-url">
+                  <a href={`https://www.homematerialcalc.com${p.url}`} target="_blank">{p.url}</a>
+                </div>
+                <div class="row-label">{p.label}</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:0.6rem;">
+                <span class="badge badge-type-ref">ref</span>
+                <span class="badge badge-pub">live</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      <!-- Published Static pages -->
+      {pubStatic.length > 0 && (
+        <div class="type-block">
+          <div class="type-label">📄 Static</div>
+          {pubStatic.map(p => (
+            <div class="row">
+              <div>
+                <div class="row-url">
+                  <a href={`https://www.homematerialcalc.com${p.url}`} target="_blank">{p.url}</a>
+                </div>
+                <div class="row-label">{p.label}</div>
+              </div>
+              <span class="badge badge-pub">live</span>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   </div>
 </body>

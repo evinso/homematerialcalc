@@ -1,0 +1,84 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'What is the best type of mulch for flower beds?', a: 'Shredded hardwood bark or double-ground hardwood mulch is the most popular choice for flower beds — it looks clean, decomposes slowly, and stays in place well. Cedar mulch adds natural pest-repellent properties.' },
+  { q: 'What type of mulch lasts the longest?', a: 'Cypress mulch and cedar mulch last the longest due to their natural oils that resist decomposition. Rubber mulch lasts even longer (10+ years) but does not add nutrients to the soil.' },
+  { q: 'What mulch is best for vegetable gardens?', a: 'Straw mulch is excellent for vegetable gardens — it is cheap, allows good air and water flow, and decomposes into organic matter. Pine straw and shredded leaves are also good options.' },
+  { q: 'Does the color of mulch matter?', a: 'Color (red, brown, black) is mostly aesthetic. Dyed mulches use non-toxic iron oxide (red/brown) or carbon black dye. The dye does not harm plants, though very dark mulch absorbs more heat in summer.' },
+  { q: 'Should I remove old mulch before adding new?', a: 'Not usually — if the old layer is less than 2 inches deep, just top up to 3 inches total. If the old layer is 4+ inches, rake it out first to prevent moisture problems and mulch disease (sour mulch).' },
+];
+
+export const related = [
+  { href: '/calculator/mulch', label: 'Mulch Calculator' },
+  { href: '/guide/how-much-mulch-do-i-need', label: 'How Much Mulch Do I Need?' },
+  { href: '/guide/how-long-does-mulch-last', label: 'How Long Does Mulch Last?' },
+  { href: '/guide/how-much-mulch-for-a-garden-bed', label: 'How Much Mulch for a Garden Bed?' },
+];
+
+<GuideLayout
+  title="Types of Mulch — Which Is Best for Your Garden?"
+  description="Compare wood chip, bark, straw, rubber, and other mulch types. Learn which mulch is best for flower beds, vegetable gardens, playgrounds, and more."
+  h1="Types of Mulch: Which Is Best for Your Yard?"
+  intro="There are more than a dozen common mulch types, from shredded bark to rubber chips. Each has different lifespans, appearances, and ideal uses. Here's how to choose."
+  calculatorHref="/calculator/mulch"
+  calculatorLabel="Mulch Calculator — find how many bags or cubic yards you need"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Types of Mulch' }]}
+>
+
+## Mulch comparison chart
+
+| Type | Lifespan | Cost | Best for | Notes |
+|------|---------|------|---------|-------|
+| Shredded hardwood | 1–2 yrs | $$ | Flower beds, trees | Most popular; stays in place |
+| Double-ground bark | 1–2 yrs | $$ | All landscape beds | Finer texture than shredded |
+| Cedar mulch | 2–3 yrs | $$$ | Near structures | Repels some insects |
+| Cypress mulch | 2–3 yrs | $$$ | Slopes, wet areas | Stays moist longer |
+| Pine bark nuggets | 2–3 yrs | $$ | Flower beds, hills | Can float in heavy rain |
+| Pine straw | 1–2 yrs | $ | Slopes, evergreens | Great for drainage |
+| Straw | 4–6 months | $ | Vegetable gardens | Best for veggie rows |
+| Shredded leaves | 6–12 months | Free | Any bed | Excellent soil builder |
+| Wood chips | 2–3 yrs | Free–$ | Paths, trees | Not for annual beds |
+| Rubber mulch | 10+ yrs | $$$$ | Playgrounds | No soil benefit |
+| Gravel / river rock | Permanent | $$$$ | Xeriscape, succulents | No decomposition |
+
+## Organic vs. inorganic mulch
+
+**Organic mulch** (bark, straw, leaves) breaks down over time, adding nutrients and improving soil structure. Needs to be topped up every 1–3 years.
+
+**Inorganic mulch** (rubber, gravel, landscape fabric) does not decompose. Low maintenance but provides no soil benefits and can trap heat.
+
+## Best mulch by use case
+
+### Flower beds and shrubs
+**Shredded hardwood** or **double-ground bark** — looks clean, stays in place, widely available.
+
+### Vegetable gardens
+**Straw** or **shredded leaves** — cheap, promotes soil health, easy to turn in at season end.
+
+### Slopes and hills
+**Pine straw** or **cypress** — interlock well, resist washing away in rain.
+
+### Tree rings
+**Wood chips** (3–4 inch depth) — best long-term soil health for trees. Keep mulch 3–6 inches away from the trunk.
+
+### Playgrounds and play areas
+**Rubber mulch** or **engineered wood fiber (EWF)** — meets CPSC fall-attenuation guidelines for playground safety.
+
+### Hot, dry climates (xeriscape)
+**Gravel** or **decomposed granite** — reflects heat, lasts permanently, no watering needed.
+
+## How deep to apply mulch
+
+| Situation | Depth |
+|-----------|-------|
+| Annual top-up (existing beds) | 1–2 inches |
+| New beds, weed suppression | 3–4 inches |
+| Tree rings | 3–4 inches |
+| Vegetable rows | 2–3 inches |
+| Maximum depth | 4 inches (more smothers roots) |
+
+Never pile mulch against plant stems or tree trunks ("volcano mulching") — it causes rot.
+
+</GuideLayout>

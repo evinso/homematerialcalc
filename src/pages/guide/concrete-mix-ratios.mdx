@@ -1,0 +1,94 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'What is the standard concrete mix ratio?', a: 'The standard mix ratio for general-purpose concrete is 1:2:3 — one part cement, two parts sand, three parts aggregate (gravel). This produces approximately 3,000 PSI concrete suitable for driveways and slabs.' },
+  { q: 'What mix ratio do I use for footings and foundations?', a: 'Use a 1:1.5:3 ratio (stronger mix) or specify 3,500–4,000 PSI ready-mix for footings and foundations. Adding more cement than the standard ratio increases strength.' },
+  { q: 'How much water do I add to concrete mix?', a: 'The water-to-cement ratio should be 0.45–0.55 by weight for most applications. For a 50 lb bag, that is about 3.5–4.5 pints of water. Always add water gradually — too much water weakens the mix significantly.' },
+  { q: 'Can I add gravel to bagged concrete mix?', a: 'Some bagged products (like "concrete mix") already contain aggregate. "Mortar mix" and "sand mix" do not. Read the bag label — only add aggregate to products designed for it.' },
+  { q: 'What PSI concrete do I need?', a: '2,500 PSI for light foot traffic, 3,000 PSI for standard driveways and slabs, 3,500–4,000 PSI for heavy vehicles, 4,000+ PSI for commercial or structural applications.' },
+];
+
+export const related = [
+  { href: '/calculator/concrete', label: 'Concrete Calculator' },
+  { href: '/guide/how-much-concrete-do-i-need', label: 'How Much Concrete Do I Need?' },
+  { href: '/guide/how-thick-should-concrete-slab-be', label: 'How Thick Should Concrete Be?' },
+  { href: '/guide/how-much-concrete-for-a-slab', label: 'How Much Concrete for a Slab?' },
+];
+
+<GuideLayout
+  title="Concrete Mix Ratios — PSI Guide for Slabs, Footings & Repairs"
+  description="Learn concrete mix ratios for different applications. Includes 1:2:3 standard mix, PSI guide for driveways, footings, and repairs, and water-to-cement ratio guidance."
+  h1="Concrete Mix Ratios: The Complete Guide"
+  intro="The right mix ratio depends on the application. Too little cement produces weak concrete; too much wastes money. Here are the standard ratios for every common residential project."
+  calculatorHref="/calculator/concrete"
+  calculatorLabel="Concrete Calculator — get bags or cubic yards for your project"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Concrete Mix Ratios' }]}
+>
+
+## Standard mix ratios
+
+| Mix | Cement : Sand : Aggregate | PSI result | Best for |
+|-----|--------------------------|------------|---------|
+| Lean mix | 1 : 3 : 6 | ~2,000 | Fill, blinding layer |
+| Standard | 1 : 2 : 3 | ~3,000 | General slabs, sidewalks |
+| Strong mix | 1 : 1.5 : 3 | ~3,500 | Driveways, footings |
+| Rich mix | 1 : 1 : 2 | ~4,000+ | Structural, heavy duty |
+| Mortar (no aggregate) | 1 : 3 | N/A | Brickwork, joints |
+
+## PSI requirements by application
+
+| Application | Minimum PSI | Recommended PSI |
+|-------------|------------|----------------|
+| Sidewalks, paths | 2,500 | 3,000 |
+| Patio slabs | 2,500 | 3,000–3,500 |
+| Residential driveway | 3,000 | 4,000 |
+| Garage floor | 3,500 | 4,000 |
+| Footings | 2,500 | 3,500 |
+| Foundation walls | 3,000 | 4,000 |
+| Heavy truck driveway | 4,000 | 4,500 |
+
+## Water-to-cement ratio
+
+The most important factor in concrete strength is the water-to-cement (W/C) ratio.
+
+| W/C ratio | Strength | Workability |
+|-----------|---------|------------|
+| 0.40 | Very high | Stiff / hard to work |
+| 0.45 | High | Moderate |
+| 0.50 | Standard | Good |
+| 0.55 | Moderate | Easy |
+| 0.60+ | Weak | Very workable |
+
+**Rule:** Every extra splash of water weakens the concrete. Add the minimum needed for workability.
+
+## Bagged concrete products (US)
+
+| Product name | Contains aggregate? | Best use |
+|-------------|--------------------|---------| 
+| Concrete mix (Quikrete 80 lb) | Yes | General slabs, footings |
+| Fast-setting concrete | Yes | Posts, no-mix option |
+| 5000 Plus (Quikrete) | Yes | High-strength applications |
+| Sand/topping mix | No (sand only) | Repairs, screeds |
+| Mortar mix | No (sand only) | Brick and block work |
+| Hydraulic cement | N/A | Stopping water leaks |
+
+## How many bags do I need?
+
+- 80 lb bag = ~0.022 cubic yards = ~0.60 cubic feet
+- 1 cubic yard = ~45 bags of 80 lb concrete
+
+Use the [Concrete Calculator](/calculator/concrete) to get the exact bag count for your slab dimensions.
+
+## Fiber reinforcement vs. rebar
+
+| Option | Best for | Notes |
+|--------|---------|-------|
+| No reinforcement | Thin patio, small walkways | Under 50 sq ft |
+| Fiber additive | Patio, garage floor | Reduces surface cracking |
+| Wire mesh (WWF) | Standard slabs | Cheap; moderate control |
+| #3 rebar @ 18" | Driveways, footings | Best structural reinforcement |
+| #4 rebar @ 12" | Heavy loads | Required for trucks/RVs |
+
+</GuideLayout>

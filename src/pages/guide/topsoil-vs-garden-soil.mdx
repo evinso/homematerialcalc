@@ -1,0 +1,73 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'What is the difference between topsoil and garden soil?', a: 'Topsoil is the natural upper layer of soil — mostly mineral particles with some organic matter. Garden soil is a manufactured blend, typically topsoil mixed with compost, aged bark, and amendments to improve drainage and fertility for planting.' },
+  { q: 'Can I use topsoil for raised garden beds?', a: 'Pure topsoil alone is not ideal for raised beds — it tends to compact and drain poorly. Mix topsoil with compost (50/50 ratio) or use a garden soil blend labeled for raised beds.' },
+  { q: 'Is topsoil or garden soil better for filling low spots in a lawn?', a: 'Use topsoil (not garden soil) for grading and filling low spots in a lawn. Garden soil contains organic matter that settles and compresses unevenly, causing new depressions.' },
+  { q: 'How much does topsoil cost vs. garden soil?', a: 'Bulk topsoil typically costs $15–$35 per cubic yard delivered. Bagged garden soil runs $5–$12 per 1 cubic foot bag. For large areas, bulk topsoil is significantly cheaper.' },
+  { q: 'What is the best soil for vegetable gardens?', a: 'A mix of 40% topsoil, 40% compost, and 20% perlite or coarse sand works well for most vegetables. Look for raised bed mixes labeled "Mel\'s Mix" or similar at garden centers.' },
+];
+
+export const related = [
+  { href: '/calculator/topsoil', label: 'Topsoil Calculator' },
+  { href: '/guide/how-much-topsoil-do-i-need', label: 'How Much Topsoil Do I Need?' },
+  { href: '/guide/how-much-topsoil-for-raised-bed', label: 'How Much Topsoil for a Raised Bed?' },
+  { href: '/guide/how-much-does-a-yard-of-topsoil-weigh', label: 'How Much Does a Yard of Topsoil Weigh?' },
+];
+
+<GuideLayout
+  title="Topsoil vs Garden Soil — What's the Difference & When to Use Each"
+  description="Understand the difference between topsoil and garden soil. Learn when to use each, how they compare for raised beds, lawns, and planting, and how much to buy."
+  h1="Topsoil vs. Garden Soil: What's the Difference?"
+  intro="Topsoil and garden soil look similar but serve different purposes. Choosing the wrong one can lead to compaction, poor drainage, or wasted money. Here's how to pick the right one."
+  calculatorHref="/calculator/topsoil"
+  calculatorLabel="Topsoil Calculator — get cubic yards and bags for any area"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Topsoil vs Garden Soil' }]}
+>
+
+## At a glance
+
+| Feature | Topsoil | Garden Soil |
+|---------|---------|-------------|
+| What it is | Natural ground soil, screened | Manufactured blend with compost & amendments |
+| Texture | Varies (clay, loam, sandy) | Usually loamy, amended for drainage |
+| Organic matter | Low to moderate | High |
+| Drainage | Can be poor (clay topsoil) | Improved with amendments |
+| Cost (bagged) | $3–$6 / cu ft | $5–$12 / cu ft |
+| Cost (bulk) | $15–$35 / cu yd | $25–$55 / cu yd |
+| Best for | Grading, lawn filling, large areas | Raised beds, containers, planting holes |
+
+## When to use topsoil
+
+✓ **Filling low spots in a lawn** — Topsoil matches the surrounding soil and settles consistently  
+✓ **Grading around a foundation** — Bulk topsoil is cost-effective for large volumes  
+✓ **Seeding a new lawn** — Spread 4–6 inches over bare ground before seeding  
+✓ **Large-scale landscaping** — Best cost-per-yard for filling, berming, and grading  
+✗ **Avoid for raised beds** — Compacts in containers; drain poorly alone
+
+## When to use garden soil
+
+✓ **Raised garden beds** — Lightweight mix drains well and supports plant roots  
+✓ **Mixing into native soil** — Improves clay or sandy in-ground beds  
+✓ **New planting areas** — Ready-to-plant with nutrients included  
+✓ **Flower borders and vegetable gardens**  
+✗ **Avoid for grading** — Organic matter settles unevenly, creating new depressions
+
+## Best mix for raised beds
+
+The most popular raised bed recipe:
+- **⅓ compost** (finished, fine-textured)
+- **⅓ topsoil or loam**
+- **⅓ coarse sand or perlite**
+
+This gives good drainage, fertility, and weight that prevents beds from being too light (which can tip or shift).
+
+## How much to buy
+
+- **New 4×8×12" raised bed:** ~0.13 cubic yards (about 3.5 cu ft)
+- **Filling low spots (lawn):** 1 cubic yard covers ~160 sq ft at 2" deep
+- See the [Topsoil Calculator](/calculator/topsoil) for your exact dimensions
+
+</GuideLayout>

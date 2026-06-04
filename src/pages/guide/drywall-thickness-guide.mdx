@@ -1,0 +1,84 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'What thickness drywall should I use for walls?', a: '½ inch (5/8" for fire-rated) is standard for most interior walls. Use ⅜" only for curved walls or patching. Ceiling drywall is also ½" with ½" sag-resistant panels for long joist spans.' },
+  { q: 'What is the difference between ½" and 5/8" drywall?', a: '½" is the standard for residential walls. 5/8" (Type X) provides a one-hour fire rating and is required between an attached garage and living space, or in commercial buildings. It is also heavier and more impact-resistant.' },
+  { q: 'How many sheets of drywall do I need?', a: 'Each 4×8 sheet covers 32 square feet. Divide your total wall area by 32, then add 10–15% for waste and cuts. Use our Drywall Calculator for rooms with multiple walls and openings.' },
+  { q: 'What size drywall sheets are available?', a: 'Standard sheets are 4 feet wide and come in 8, 9, 10, and 12 foot lengths. The most common is 4×8 (32 sq ft). 4×12 sheets are used to reduce seam count on tall walls or ceilings.' },
+  { q: 'Do I need moisture-resistant drywall in bathrooms?', a: 'Yes — use moisture-resistant (MR) or greenboard in bathrooms and laundry rooms, especially near showers. Behind tile, use cement board or waterproof backer board instead.' },
+];
+
+export const related = [
+  { href: '/calculator/drywall', label: 'Drywall Calculator' },
+  { href: '/guide/how-much-drywall-do-i-need', label: 'How Much Drywall Do I Need?' },
+  { href: '/guide/how-many-sheets-of-drywall-for-a-room', label: 'Sheets of Drywall for a Room' },
+  { href: '/guide/how-to-calculate-square-footage', label: 'How to Calculate Square Footage' },
+];
+
+<GuideLayout
+  title="Drywall Thickness Guide — Which Type and Size to Use"
+  description="Learn which drywall thickness to use for walls, ceilings, garages, and bathrooms. Includes 1/2 inch, 5/8 inch, moisture-resistant, and fire-rated drywall comparisons."
+  h1="Drywall Thickness Guide"
+  intro="Choosing the right drywall thickness depends on where it's going — standard walls, ceilings, garages, and wet areas all have different requirements. Here's the complete reference."
+  calculatorHref="/calculator/drywall"
+  calculatorLabel="Drywall Calculator — get sheet count for your project"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Drywall Thickness Guide' }]}
+>
+
+## Thickness by application
+
+| Thickness | Type | Best for |
+|----------|------|---------|
+| ¼ inch (6mm) | Flex board | Curved walls only |
+| ⅜ inch (9.5mm) | Standard | Patching, thin applications |
+| ½ inch (12.7mm) | Standard | Most interior walls and ceilings |
+| ½ inch | Sag-resistant | Ceilings with 24" joist spacing |
+| 5/8 inch (15.9mm) | Type X | Garage walls, fire-rated assemblies |
+| ½ inch | Moisture-resistant | Bathrooms, laundry rooms |
+| ¼ inch cement board | Backer | Behind shower tile |
+
+## Application guide
+
+| Location | Recommended thickness | Notes |
+|----------|-----------------------|-------|
+| Interior walls | ½" | Standard for all walls |
+| Ceiling (16" OC joists) | ½" | Can also use ½" sag-resistant |
+| Ceiling (24" OC joists) | ½" sag-resistant | Prevents sagging |
+| Garage walls (to house) | 5/8" Type X | Fire code requirement |
+| Bathroom walls | ½" MR (green board) | Not for wet areas |
+| Behind shower tile | ¼" cement board | Waterproof backer required |
+| Curved walls | ¼" flex drywall | Bend to shape; install in layers |
+
+## Drywall types
+
+| Type | Description |
+|------|-------------|
+| Regular (whiteboard) | Standard ½" for most applications |
+| Moisture-resistant (MR) | Green or purple face; for humid rooms |
+| Type X (fire-rated) | 5/8"; 1-hr fire rating; required for garages |
+| Type C | Enhanced fire resistance; used in commercial |
+| Soundproof (STC) | Denser core; reduces sound transmission |
+| Sag-resistant | Extra-dense; for horizontal ceiling applications |
+| Flex | ¼" thin; for curved/arched walls |
+
+## Sheet sizes and coverage
+
+| Sheet size | Square feet | Common use |
+|-----------|------------|------------|
+| 4×8 ft | 32 sq ft | Standard walls |
+| 4×9 ft | 36 sq ft | 9-foot ceilings |
+| 4×10 ft | 40 sq ft | 10-foot ceilings |
+| 4×12 ft | 48 sq ft | Reduces seams; large rooms |
+
+Use the [Drywall Calculator](/calculator/drywall) to get the exact sheet count for your room.
+
+## Fasteners and coverage
+
+- **Screws:** 1-1/4" Type S screws for ½" drywall, 1-5/8" for 5/8"
+- **Nails:** Not recommended — screws resist popping
+- **Screws per 4×8 sheet (walls):** approximately 28–32 screws
+- **Joint compound (mud):** roughly 1 gallon per 100 sq ft of drywall for tape and finish coats
+
+</GuideLayout>

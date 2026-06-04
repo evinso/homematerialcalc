@@ -135,6 +135,47 @@ export const TILE = {
   GROUT_10LB_SQ_FT:   50,  // sanded, 1/8" joint, 12×12 tile
 } as const;
 
+// ─── Lumber ───────────────────────────────────────────────────────────────────
+export const LUMBER = {
+  DEFAULT_WASTE: 0.10,
+  STUDS_SPACING_IN: 16,       // on-center stud spacing
+  WALL_HEIGHT_FT: 8,          // standard wall height
+  PLATES_PER_WALL: 3,         // 2 bottom + 1 top plate
+} as const;
+
+// nominal size → actual dimensions (thickness × width in inches)
+export const LUMBER_NOMINAL_SIZES = {
+  '2x4':  { thickness: 1.5,  width: 3.5,  label: '2×4'  },
+  '2x6':  { thickness: 1.5,  width: 5.5,  label: '2×6'  },
+  '2x8':  { thickness: 1.5,  width: 7.25, label: '2×8'  },
+  '2x10': { thickness: 1.5,  width: 9.25, label: '2×10' },
+  '2x12': { thickness: 1.5,  width: 11.25,label: '2×12' },
+  '1x4':  { thickness: 0.75, width: 3.5,  label: '1×4'  },
+  '1x6':  { thickness: 0.75, width: 5.5,  label: '1×6'  },
+  '4x4':  { thickness: 3.5,  width: 3.5,  label: '4×4'  },
+} as const;
+
+export type LumberSize = keyof typeof LUMBER_NOMINAL_SIZES;
+
+// ─── Paver ────────────────────────────────────────────────────────────────────
+export const PAVER = {
+  DEFAULT_WASTE: 0.10,
+  SAND_BASE_DEPTH_IN: 1,      // 1" bedding sand
+  GRAVEL_BASE_DEPTH_IN: 4,    // 4" compacted gravel
+} as const;
+
+export const PAVER_SIZES = {
+  '4x8':   { widthIn: 4,  lengthIn: 8,  label: '4" × 8" (brick)'   },
+  '6x6':   { widthIn: 6,  lengthIn: 6,  label: '6" × 6"'            },
+  '6x9':   { widthIn: 6,  lengthIn: 9,  label: '6" × 9"'            },
+  '12x12': { widthIn: 12, lengthIn: 12, label: '12" × 12"'           },
+  '16x16': { widthIn: 16, lengthIn: 16, label: '16" × 16"'           },
+  '12x24': { widthIn: 12, lengthIn: 24, label: '12" × 24"'           },
+  '24x24': { widthIn: 24, lengthIn: 24, label: '24" × 24"'           },
+} as const;
+
+export type PaverSize = keyof typeof PAVER_SIZES;
+
 // ─── Drywall ──────────────────────────────────────────────────────────────────
 export type DrywallSheet = keyof typeof DRYWALL_SHEETS;
 export const DRYWALL_SHEETS = {

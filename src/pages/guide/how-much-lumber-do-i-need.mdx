@@ -1,0 +1,84 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How do I calculate board feet of lumber?', a: 'Board feet = (Thickness in inches × Width in inches × Length in feet) ÷ 12. For example, a 2×4 that is 8 feet long = (2 × 4 × 8) ÷ 12 = 5.33 board feet.' },
+  { q: 'How much lumber do I need for a deck?', a: 'For a simple deck, multiply the deck area by 1.15 to account for waste and joist spacing. A 12×16 ft deck (192 sq ft) needs roughly 220 board feet of decking plus framing lumber for the structure.' },
+  { q: 'What is the difference between nominal and actual lumber size?', a: 'Nominal size is the name (e.g., 2×4), while actual size is smaller after milling and drying. A nominal 2×4 is actually 1.5" × 3.5". Always use actual dimensions when calculating coverage.' },
+  { q: 'How many 2x4s do I need for a wall?', a: 'A standard 8-foot wall needs one 2×4 every 16 inches on center. For a 12-foot long wall: 12 ÷ 1.33 = 9 studs, plus 3 plates (2 bottom plates + 1 top plate = 36 linear feet). Add 10–15% for waste and corners.' },
+  { q: 'How much does lumber cost per board foot?', a: 'Dimensional lumber (2×4, 2×6) typically runs $0.80–$2.00 per board foot at big-box stores, depending on wood species and current prices. Cedar and pressure-treated lumber costs more.' },
+];
+
+export const related = [
+  { href: '/guide/how-to-calculate-square-footage', label: 'How to Calculate Square Footage' },
+  { href: '/guide/linear-feet-to-square-feet', label: 'Linear Feet to Square Feet' },
+  { href: '/calculator/concrete', label: 'Concrete Calculator' },
+  { href: '/calculator/paint', label: 'Paint Calculator' },
+];
+
+<GuideLayout
+  title="How Much Lumber Do I Need? — Board Feet Calculator Guide"
+  description="Learn how to calculate how much lumber you need for any project. Includes board feet formula, wall framing guide, deck lumber estimates, and coverage tables."
+  h1="How Much Lumber Do I Need?"
+  intro="The amount of lumber you need depends on the project type and lumber dimensions. Here's how to calculate board feet and estimate quantities for common DIY projects."
+  calculatorHref="/calculator/lumber"
+  calculatorLabel="Lumber Calculator — get your board feet instantly"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'How Much Lumber Do I Need?' }]}
+>
+
+## The board feet formula
+
+**Board feet = (Thickness in inches × Width in inches × Length in feet) ÷ 12**
+
+Board foot is the standard unit for buying lumber in the US. One board foot = 1 inch thick × 12 inches wide × 12 inches long.
+
+## Common lumber sizes — actual vs nominal
+
+| Nominal size | Actual size | Board feet per 8' piece |
+|-------------|-------------|------------------------|
+| 1×4 | 0.75" × 3.5" | 2.67 bf |
+| 1×6 | 0.75" × 5.5" | 4.00 bf |
+| 2×4 | 1.5" × 3.5" | 5.33 bf |
+| 2×6 | 1.5" × 5.5" | 8.00 bf |
+| 2×8 | 1.5" × 7.25" | 10.67 bf |
+| 2×10 | 1.5" × 9.25" | 13.33 bf |
+| 4×4 | 3.5" × 3.5" | 10.67 bf |
+
+## How to estimate lumber for common projects
+
+### Framing a wall (16" on center)
+1. Wall length ÷ 1.33 = number of studs
+2. Add 1 stud per corner + 1 per door/window opening
+3. Add 3 plates: 2× bottom plate + 1× top plate (all = wall length × 3)
+4. Add 10–15% waste
+
+**Example:** 10-foot wall → 8 studs + 30 linear feet of plate lumber
+
+### Decking
+- Area (sq ft) × 1.15 for 10% waste + spacing gaps
+- Divide by the width of your deck boards to get the linear feet needed
+
+### Fencing (6-ft privacy fence)
+- Number of panels × 7 boards per panel (for 6" boards)
+- Add posts every 8 feet: (total length ÷ 8) + 1
+
+## Quick project estimates
+
+| Project | Typical lumber needed |
+|---------|-----------------------|
+| 8×8 ft shed | 200–300 board feet |
+| 12×16 ft deck | 400–600 board feet |
+| 8-ft fence (100 lin ft) | 500–700 board feet |
+| Single door frame | 20 board feet |
+| Interior wall (10 ft) | 50–70 board feet |
+
+*Add 10–15% for waste on all projects.*
+
+## Tips for buying lumber
+
+- **Buy in bulk for larger projects** — lumber yards offer better per-board-foot pricing than big-box stores for 20+ pieces.
+- **Check for pressure-treated lumber** for any outdoor or ground-contact use.
+- **Let lumber acclimate** — store indoors 48–72 hours before use to minimize warping.
+
+</GuideLayout>

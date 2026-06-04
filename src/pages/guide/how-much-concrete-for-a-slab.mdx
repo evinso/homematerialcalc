@@ -1,0 +1,89 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How much concrete do I need for a 10x10 slab at 4 inches thick?', a: 'A 10×10 ft slab at 4 inches thick needs 1.23 cubic yards, or about 56 bags of 80 lb ready-mix concrete. Always order 5–10% extra for waste and spillage.' },
+  { q: 'Should I use ready-mix bags or order truck concrete for a slab?', a: 'For slabs under 1 cubic yard (about 80 sq ft at 4"), bagged concrete is feasible. For larger slabs, order ready-mix truck delivery — it is cheaper per cubic yard and faster to pour.' },
+  { q: 'How thick should a concrete slab be?', a: 'Most residential slabs are 4 inches thick. Driveways need 5 inches minimum for passenger cars. See our concrete thickness guide for more detail by application.' },
+  { q: 'How long does a concrete slab take to dry?', a: 'Concrete reaches walking strength in 24–48 hours. Light vehicle traffic in 7 days. Full cure (design strength) in 28 days. Keep the slab moist for the first 7 days for best results.' },
+  { q: 'Do I need gravel under a concrete slab?', a: 'Yes — a 4-inch compacted gravel base is required under all slabs to improve drainage and prevent settling. Use ¾" crusher run or #57 stone, compacted in 2-inch lifts.' },
+];
+
+export const related = [
+  { href: '/calculator/concrete', label: 'Concrete Calculator' },
+  { href: '/guide/how-much-concrete-do-i-need', label: 'How Much Concrete Do I Need?' },
+  { href: '/guide/how-thick-should-concrete-slab-be', label: 'How Thick Should a Concrete Slab Be?' },
+  { href: '/guide/how-many-bags-of-concrete-for-10x10-slab', label: 'Concrete Bags for 10×10 Slab' },
+];
+
+<GuideLayout
+  title="How Much Concrete for a Slab? — Slab Volume Calculator Guide"
+  description="Calculate how much concrete you need for any slab size. Includes bag counts and cubic yard estimates at 3, 4, 5, and 6 inch depths for common slab dimensions."
+  h1="How Much Concrete for a Slab?"
+  intro="Concrete volume depends on the slab's length, width, and thickness. At 4 inches thick, 1 cubic yard covers 81 square feet. Here's the formula and full reference table for all common slab sizes."
+  calculatorHref="/calculator/concrete"
+  calculatorLabel="Concrete Calculator — get bags or cubic yards for your exact slab"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'How Much Concrete for a Slab?' }]}
+>
+
+## The formula
+
+**Volume (cu yd) = Length (ft) × Width (ft) × Thickness (in) ÷ 324**
+
+**Bags (80 lb) = Volume (cu yd) × 45**
+
+Always add 5–10% for waste.
+
+## Concrete needed by slab size — 4 inch thick
+
+| Slab size | Square feet | Cubic yards | 80-lb bags |
+|----------|------------|-------------|------------|
+| 4×4 ft | 16 | 0.20 | 9 |
+| 6×6 ft | 36 | 0.44 | 20 |
+| 8×8 ft | 64 | 0.79 | 36 |
+| 8×10 ft | 80 | 0.99 | 44 |
+| 10×10 ft | 100 | 1.23 | 56 |
+| 10×12 ft | 120 | 1.48 | 67 |
+| 12×12 ft | 144 | 1.78 | 80 |
+| 12×16 ft | 192 | 2.37 | 107 |
+| 14×20 ft | 280 | 3.46 | 156 |
+| 16×20 ft | 320 | 3.95 | 178 |
+| 20×20 ft | 400 | 4.94 | 222 |
+
+*Add 10% to all quantities. Bags rounded up to nearest whole bag.*
+
+## Concrete by thickness (100 sq ft area)
+
+| Thickness | Cubic yards | 80-lb bags |
+|-----------|------------|------------|
+| 3" | 0.93 | 42 |
+| 3.5" | 1.08 | 49 |
+| 4" | 1.23 | 56 |
+| 5" | 1.54 | 69 |
+| 6" | 1.85 | 83 |
+
+## Bags vs. ready-mix: which to choose
+
+| Project size | Best choice | Why |
+|-------------|------------|-----|
+| Under 0.5 cu yd (40 sq ft @ 4") | Bagged | No truck minimum order |
+| 0.5–1.0 cu yd | Either | Bag cost ≈ delivery cost |
+| Over 1.0 cu yd | Ready-mix truck | Faster, cheaper, better mix |
+
+**Ready-mix pricing:** $130–$175 per cubic yard (includes delivery)  
+**80 lb bag pricing:** $5–$7 each ($225–$315 per cu yd equivalent)
+
+For any slab larger than a sidewalk section, order ready-mix truck delivery — it's faster and cheaper.
+
+## Step-by-step for a DIY patio slab
+
+1. **Excavate** 8 inches (4" gravel + 4" concrete)
+2. **Compact gravel base** to 4 inches
+3. **Set forms** at desired height with ¼"/ft slope
+4. **Lay rebar** or wire mesh if reinforcing
+5. **Order concrete** — always add 10% to calculated volume
+6. **Pour and finish** — screed, float, and edge while workable
+7. **Cure** — keep moist with plastic sheeting for 7 days
+
+</GuideLayout>

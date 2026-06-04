@@ -1,0 +1,99 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import LumberCalculator from '../../components/calculators/LumberCalculator';
+import AdSlot from '../../components/ui/AdSlot.astro';
+
+const related = [
+  { href: '/guide/how-much-lumber-do-i-need',   label: 'How Much Lumber Do I Need?' },
+  { href: '/guide/linear-feet-to-square-feet',   label: 'Linear Feet to Square Feet' },
+  { href: '/calculator/concrete',                label: 'Concrete Calculator' },
+  { href: '/calculator/drywall',                 label: 'Drywall Calculator' },
+  { href: '/calculator/paint',                   label: 'Paint Calculator' },
+];
+---
+
+<BaseLayout
+  title="Lumber Calculator — Board Feet & Cost Estimator"
+  description="Free lumber calculator: enter piece count, nominal size, and length to instantly find board feet, waste-adjusted totals, and cost estimates for any framing or carpentry project."
+>
+  <div class="max-w-6xl mx-auto px-4 py-10">
+    <div class="grid lg:grid-cols-[1fr_380px] gap-10">
+
+      <!-- Left: calculator -->
+      <div>
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">Lumber Calculator</h1>
+        <p class="text-gray-600 mb-6">Enter the number of pieces, nominal size, and length to calculate total board feet and estimate your cost.</p>
+
+        <LumberCalculator client:load />
+
+        <AdSlot slot="after-result" className="mt-6" />
+
+        <!-- How board feet work -->
+        <div class="calculator-card mt-8">
+          <h2 class="font-bold text-gray-900 text-lg mb-3">How board feet are calculated</h2>
+          <p class="text-sm text-gray-700 mb-3">
+            <strong>Board feet = (Thickness × Width × Length) ÷ 12</strong><br/>
+            All dimensions in inches × inches × feet.
+          </p>
+          <table class="w-full text-sm text-gray-700">
+            <thead><tr class="border-b"><th class="text-left pb-1">Size</th><th class="text-right pb-1">bf per 8-ft piece</th><th class="text-right pb-1">bf per 12-ft piece</th></tr></thead>
+            <tbody class="divide-y">
+              {[
+                { size: '2×4', bf8: '5.3', bf12: '8.0' },
+                { size: '2×6', bf8: '8.0', bf12: '12.0' },
+                { size: '2×8', bf8: '10.7', bf12: '16.0' },
+                { size: '2×10', bf8: '13.3', bf12: '20.0' },
+                { size: '1×6', bf8: '4.0', bf12: '6.0' },
+              ].map(r => (
+                <tr>
+                  <td class="py-1">{r.size}</td>
+                  <td class="py-1 text-right">{r.bf8}</td>
+                  <td class="py-1 text-right">{r.bf12}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <AdSlot slot="in-content" className="mt-6" />
+
+        <div class="mt-6 text-sm text-gray-500 border-t pt-4">
+          <p>Formula: <em>Board feet = (Thickness" × Width" × Length ft) ÷ 12. Waste applied to total board feet.</em>
+          See our <a href="/methodology" class="text-brand-600 hover:underline">methodology page</a> for all constants.</p>
+        </div>
+      </div>
+
+      <!-- Right: sidebar -->
+      <aside class="space-y-6">
+        <div class="calculator-card">
+          <h3 class="font-semibold text-gray-900 mb-3">Nominal vs. actual size</h3>
+          <table class="w-full text-sm text-gray-700">
+            <thead><tr class="border-b"><th class="text-left pb-1">Nominal</th><th class="text-right pb-1">Actual</th></tr></thead>
+            <tbody class="divide-y">
+              {[
+                { nom: '2×4', act: '1.5" × 3.5"' },
+                { nom: '2×6', act: '1.5" × 5.5"' },
+                { nom: '2×8', act: '1.5" × 7.25"' },
+                { nom: '1×6', act: '0.75" × 5.5"' },
+                { nom: '4×4', act: '3.5" × 3.5"' },
+              ].map(r => (
+                <tr><td class="py-1">{r.nom}</td><td class="py-1 text-right">{r.act}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="calculator-card">
+          <h3 class="font-semibold text-gray-900 mb-3">Related calculators &amp; guides</h3>
+          <ul class="space-y-2">
+            {related.map(r => (
+              <li><a href={r.href} class="text-sm text-brand-600 hover:underline">{r.label}</a></li>
+            ))}
+          </ul>
+        </div>
+
+        <AdSlot slot="sidebar" />
+      </aside>
+    </div>
+  </div>
+</BaseLayout>

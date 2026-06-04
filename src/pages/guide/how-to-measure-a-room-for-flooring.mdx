@@ -1,0 +1,91 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How do I measure a room for flooring?', a: 'Measure the longest length and widest width of the room in feet. Multiply them to get the square footage. Add 10% for waste and cuts. For L-shaped rooms, measure each rectangle separately and add them together.' },
+  { q: 'Should I measure to the wall or to the baseboard?', a: 'Measure to the wall (not the baseboard face). Flooring goes under or up to the baseboard, which will be covered by new or reinstalled trim. Always measure the full floor area.' },
+  { q: 'How much extra flooring should I buy for waste?', a: 'Buy 10% extra for straight or running bond installations. Add 15% for diagonal patterns. Buy 15% extra for rooms with many angles or cutouts. Always buy from the same dye lot.' },
+  { q: 'Do I need to include closets in my flooring measurement?', a: 'Yes — always include closets, alcoves, and any other areas that will receive the same flooring. Measure them separately and add to the total room square footage.' },
+  { q: 'How do I measure for flooring in an L-shaped room?', a: 'Divide the L-shape into two rectangles. Measure each rectangle separately (L×W for each), calculate both areas, then add them together. Add 10–15% waste to the total.' },
+];
+
+export const related = [
+  { href: '/calculator/flooring', label: 'Flooring Calculator' },
+  { href: '/guide/how-much-flooring-do-i-need', label: 'How Much Flooring Do I Need?' },
+  { href: '/guide/how-many-boxes-of-flooring-for-a-room', label: 'Flooring Boxes per Room' },
+  { href: '/guide/how-to-calculate-square-footage', label: 'How to Calculate Square Footage' },
+];
+
+<GuideLayout
+  title="How to Measure a Room for Flooring — Step-by-Step Guide"
+  description="Learn how to measure a room for flooring correctly. Includes how to handle closets, L-shaped rooms, waste factor, and how many boxes to buy."
+  h1="How to Measure a Room for Flooring"
+  intro="Accurate flooring measurements prevent costly mistakes — running out mid-install or buying too much. Here's how to measure any room shape correctly and calculate how many boxes to buy."
+  calculatorHref="/calculator/flooring"
+  calculatorLabel="Flooring Calculator — enter dimensions and get box count instantly"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'How to Measure a Room for Flooring' }]}
+>
+
+## Step-by-step measuring guide
+
+### Step 1: Gather your tools
+- Tape measure (25 ft works for most rooms)
+- Pencil and paper (or phone notes)
+- Optional: laser distance measurer for large rooms
+
+### Step 2: Sketch the floor plan
+Draw a rough outline of the room — closets, alcoves, and irregular shapes included.
+
+### Step 3: Measure length and width
+- Measure at the widest and longest points of the room
+- Measure at floor level (not at countertop height)
+- Record in feet and inches (e.g., "12 ft 4 in")
+
+### Step 4: Convert to decimal feet
+Divide inches by 12: 12 ft 4 in = 12 + (4/12) = 12.33 ft
+
+### Step 5: Calculate area
+**Area = Length × Width**
+
+### Step 6: Measure irregularities separately
+For L-shapes, closets, and alcoves: measure each section and add all areas together.
+
+### Step 7: Add waste factor
+**Total with waste = Area × 1.10** (for 10% waste)
+
+## Common room measurement examples
+
+| Room | Measurement | Area | With 10% waste |
+|------|-------------|------|----------------|
+| Bedroom 10×12 | 10 × 12 | 120 sq ft | 132 sq ft |
+| Living room 14×16 | 14 × 16 | 224 sq ft | 246 sq ft |
+| Kitchen 10×14 | 10 × 14 | 140 sq ft | 154 sq ft |
+| Hallway 3×20 | 3 × 20 | 60 sq ft | 66 sq ft |
+
+## Boxes per square footage
+
+Flooring boxes list the coverage on the label. Divide your adjusted area by that number:
+
+| Box coverage | For 100 sq ft | For 200 sq ft | For 300 sq ft |
+|-------------|--------------|--------------|--------------|
+| 15 sq ft/box | 7 boxes | 14 boxes | 20 boxes |
+| 20 sq ft/box | 5 boxes | 10 boxes | 15 boxes |
+| 22 sq ft/box | 5 boxes | 10 boxes | 14 boxes |
+| 25 sq ft/box | 4 boxes | 8 boxes | 12 boxes |
+| 30 sq ft/box | 4 boxes | 7 boxes | 10 boxes |
+
+*Always buy from the same dye lot — colors can vary between production runs.*
+
+## What to measure for different flooring types
+
+| Flooring type | Measure | Waste to add |
+|--------------|---------|-------------|
+| Hardwood (straight) | Floor area | 10% |
+| Hardwood (diagonal) | Floor area | 15% |
+| Laminate / LVP | Floor area | 10% |
+| Tile | Floor area | 10–15% |
+| Carpet | Floor area (in sq yd) | 10% |
+| Sheet vinyl | Widest L × widest W | Minimal |
+
+</GuideLayout>

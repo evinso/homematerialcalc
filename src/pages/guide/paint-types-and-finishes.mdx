@@ -1,0 +1,83 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'What is the difference between flat and eggshell paint?', a: 'Flat paint has no sheen and hides surface imperfections well, but is hard to clean. Eggshell has a slight sheen (5–10%), is more washable, and is the most popular choice for living rooms and bedrooms.' },
+  { q: 'What sheen is best for kitchen and bathroom walls?', a: 'Satin or semi-gloss are best for kitchens and bathrooms. Both resist moisture and can be wiped clean. Semi-gloss is more durable and is often used for tile-like surfaces near sinks and stoves.' },
+  { q: 'Should I use latex or oil-based paint?', a: 'Latex (water-based) paint is best for most interior walls — it dries quickly, cleans up with water, and has low odor. Oil-based paint offers superior hardness for trim, doors, and high-wear surfaces but takes longer to dry and requires mineral spirits for cleanup.' },
+  { q: 'Do I need primer before painting?', a: 'Primer is needed when painting over dark colors, bare drywall, stains, or a significantly different color. "Paint + primer in one" products reduce but don\'t eliminate the need for a separate primer coat on difficult surfaces.' },
+  { q: 'How many gallons do I need to paint a room?', a: 'One gallon covers 350–400 sq ft per coat. Add up all wall areas and divide by 350 for a two-coat job. Use the Paint Calculator to enter room dimensions for an accurate estimate including doors and windows.' },
+];
+
+export const related = [
+  { href: '/calculator/paint', label: 'Paint Calculator' },
+  { href: '/guide/how-much-paint-do-i-need', label: 'How Much Paint Do I Need?' },
+  { href: '/guide/paint-coverage-per-gallon', label: 'Paint Coverage per Gallon' },
+  { href: '/guide/how-many-gallons-of-paint-for-a-bedroom', label: 'Gallons of Paint for a Bedroom' },
+];
+
+<GuideLayout
+  title="Paint Types and Finishes — Complete Guide for Interior & Exterior"
+  description="Compare paint sheens (flat, eggshell, satin, semi-gloss, gloss) and types (latex vs oil). Learn which finish to use for walls, trim, kitchens, and bathrooms."
+  h1="Paint Types and Finishes: Which Do You Need?"
+  intro="Choosing the right paint finish is as important as the color. The sheen level affects durability, washability, and how imperfections appear on your walls. Here's the complete guide."
+  calculatorHref="/calculator/paint"
+  calculatorLabel="Paint Calculator — get exact gallons for your room"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Paint Types and Finishes' }]}
+>
+
+## Paint sheen comparison
+
+| Sheen level | LRV (gloss) | Washability | Hides imperfections | Best for |
+|------------|------------|-------------|---------------------|---------|
+| Flat / Matte | 0–5% | Poor | Excellent | Ceilings, low-traffic rooms |
+| Eggshell | 5–20% | Good | Good | Living rooms, bedrooms |
+| Satin | 25–35% | Very good | Moderate | Hallways, family rooms, kids' rooms |
+| Semi-gloss | 50–65% | Excellent | Poor | Kitchens, baths, trim, cabinets |
+| Gloss | 70–90% | Excellent | Very poor | Trim, doors, furniture |
+
+*Higher sheen = more durable and washable, but shows surface flaws more.*
+
+## Room-by-room recommendations
+
+| Room | Best wall finish | Best trim finish |
+|------|----------------|-----------------|
+| Living room | Eggshell | Semi-gloss |
+| Bedroom | Flat or eggshell | Semi-gloss |
+| Kitchen | Satin or semi-gloss | Semi-gloss |
+| Bathroom | Satin or semi-gloss | Semi-gloss |
+| Hallway | Satin | Semi-gloss |
+| Ceiling | Flat ceiling white | N/A |
+| Garage | Eggshell or satin | Semi-gloss |
+
+## Latex vs. oil-based paint
+
+| Feature | Latex (water-based) | Oil-based |
+|---------|--------------------|-----------| 
+| Dry time | 1–2 hours | 8–24 hours |
+| Cleanup | Soap and water | Mineral spirits |
+| Odor | Low | Strong |
+| Durability | Good | Excellent |
+| Flexibility | Good (won't crack) | Moderate |
+| Best for | Walls, ceilings, interior | Trim, doors, metal, high wear |
+
+## Interior vs. exterior paint
+
+**Interior paint** is formulated to resist scrubbing, stains, and normal household wear. It is not UV-stable.
+
+**Exterior paint** contains UV inhibitors, mildewcides, and binders that remain flexible through temperature changes. Never use interior paint outside.
+
+## How many coats do I need?
+
+| Situation | Coats needed |
+|-----------|-------------|
+| Same color or similar | 1–2 coats |
+| Dark to light color | 2–3 coats (or use primer) |
+| Light to dark color | 2 coats |
+| New drywall | 1 primer + 2 paint coats |
+| Over stains or damage | 1 stain-blocking primer + 2 paint |
+
+Use the [Paint Calculator](/calculator/paint) to estimate total gallons for all coats.
+
+</GuideLayout>

@@ -60,14 +60,80 @@ const canonical = canonicalUrl ?? siteUrl + Astro.url.pathname;
         <a href="/" class="flex items-center gap-2 font-bold text-brand-700 text-lg">
           HomeMaterialCalc
         </a>
-        <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-600">
-          <a href="/calculator/mulch" class="hover:text-brand-700 transition-colors">Mulch</a>
-          <a href="/calculator/gravel" class="hover:text-brand-700 transition-colors">Gravel</a>
-          <a href="/calculator/topsoil" class="hover:text-brand-700 transition-colors">Topsoil</a>
-          <a href="/calculator/sand" class="hover:text-brand-700 transition-colors">Sand</a>
-          <a href="/calculator/sod" class="hover:text-brand-700 transition-colors">Sod</a>
-          <a href="/calculator/concrete" class="hover:text-brand-700 transition-colors">Concrete</a>
+        <nav class="hidden md:flex items-center gap-1 text-sm font-medium text-gray-600">
+          <!-- Calculators dropdown -->
+          <div class="relative group">
+            <button class="flex items-center gap-1 px-3 py-2 rounded-lg hover:text-brand-700 hover:bg-gray-50 transition-colors">
+              Calculators
+              <svg class="w-3.5 h-3.5 opacity-60 transition-transform group-hover:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+              </svg>
+            </button>
+            <div class="absolute top-full left-0 mt-1 w-52 bg-white border border-gray-200 rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+              <div class="p-2 grid grid-cols-2 gap-0.5">
+                {[
+                  { href: '/calculator/mulch',     label: 'Mulch' },
+                  { href: '/calculator/gravel',    label: 'Gravel' },
+                  { href: '/calculator/topsoil',   label: 'Topsoil' },
+                  { href: '/calculator/sand',      label: 'Sand' },
+                  { href: '/calculator/sod',       label: 'Sod' },
+                  { href: '/calculator/concrete',  label: 'Concrete' },
+                  { href: '/calculator/paint',     label: 'Paint' },
+                  { href: '/calculator/flooring',  label: 'Flooring' },
+                  { href: '/calculator/tile',      label: 'Tile' },
+                  { href: '/calculator/drywall',   label: 'Drywall' },
+                  { href: '/calculator/lumber',    label: 'Lumber' },
+                  { href: '/calculator/paver',     label: 'Pavers' },
+                ].map(item => (
+                  <a href={item.href} class="px-3 py-2 text-sm text-gray-700 rounded-lg hover:bg-brand-50 hover:text-brand-700 transition-colors">
+                    {item.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <!-- Guides dropdown -->
+          <div class="relative group">
+            <button class="flex items-center gap-1 px-3 py-2 rounded-lg hover:text-brand-700 hover:bg-gray-50 transition-colors">
+              Guides
+              <svg class="w-3.5 h-3.5 opacity-60 transition-transform group-hover:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+              </svg>
+            </button>
+            <div class="absolute top-full left-0 mt-1 w-64 bg-white border border-gray-200 rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+              <div class="p-2">
+                <p class="px-3 py-1 text-xs font-semibold text-gray-400 uppercase tracking-wide">How Much Do I Need?</p>
+                {[
+                  { href: '/guide/how-much-mulch-do-i-need',    label: 'How Much Mulch?' },
+                  { href: '/guide/how-much-gravel-do-i-need',   label: 'How Much Gravel?' },
+                  { href: '/guide/how-much-concrete-do-i-need', label: 'How Much Concrete?' },
+                  { href: '/guide/how-much-paint-do-i-need',    label: 'How Much Paint?' },
+                  { href: '/guide/how-much-lumber-do-i-need',   label: 'How Much Lumber?' },
+                ].map(item => (
+                  <a href={item.href} class="block px-3 py-2 text-sm text-gray-700 rounded-lg hover:bg-brand-50 hover:text-brand-700 transition-colors">
+                    {item.label}
+                  </a>
+                ))}
+                <div class="border-t border-gray-100 my-1.5"></div>
+                <p class="px-3 py-1 text-xs font-semibold text-gray-400 uppercase tracking-wide">Reference</p>
+                {[
+                  { href: '/guide/cubic-yards-to-tons',          label: 'Cubic Yards to Tons' },
+                  { href: '/guide/square-feet-to-square-yards',  label: 'Sq Ft to Sq Yards' },
+                  { href: '/guide/types-of-mulch',               label: 'Types of Mulch' },
+                  { href: '/guide/gravel-vs-crushed-stone',      label: 'Gravel vs Crushed Stone' },
+                ].map(item => (
+                  <a href={item.href} class="block px-3 py-2 text-sm text-gray-700 rounded-lg hover:bg-brand-50 hover:text-brand-700 transition-colors">
+                    {item.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <a href="/about" class="px-3 py-2 rounded-lg hover:text-brand-700 hover:bg-gray-50 transition-colors">About</a>
         </nav>
+
         <!-- Mobile menu button placeholder -->
         <button class="md:hidden p-2 rounded-lg text-gray-600" aria-label="Menu">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -84,48 +150,90 @@ const canonical = canonicalUrl ?? siteUrl + Astro.url.pathname;
 
     <!-- Footer -->
     <footer class="bg-gray-50 border-t border-gray-200 mt-16">
-      <div class="max-w-6xl mx-auto px-4 py-10">
+      <div class="max-w-6xl mx-auto px-4 py-12">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-sm">
+
+          <!-- Calculators -->
           <div>
             <p class="font-semibold text-gray-900 mb-3">Calculators</p>
             <ul class="space-y-2 text-gray-600">
-              <li><a href="/calculator/mulch" class="hover:text-brand-700">Mulch</a></li>
-              <li><a href="/calculator/gravel" class="hover:text-brand-700">Gravel</a></li>
-              <li><a href="/calculator/topsoil" class="hover:text-brand-700">Topsoil</a></li>
-              <li><a href="/calculator/sand" class="hover:text-brand-700">Sand</a></li>
-              <li><a href="/calculator/sod" class="hover:text-brand-700">Sod</a></li>
+              <li><a href="/calculator/mulch"    class="hover:text-brand-700">Mulch</a></li>
+              <li><a href="/calculator/gravel"   class="hover:text-brand-700">Gravel</a></li>
+              <li><a href="/calculator/topsoil"  class="hover:text-brand-700">Topsoil</a></li>
+              <li><a href="/calculator/sand"     class="hover:text-brand-700">Sand</a></li>
+              <li><a href="/calculator/sod"      class="hover:text-brand-700">Sod</a></li>
               <li><a href="/calculator/concrete" class="hover:text-brand-700">Concrete</a></li>
+              <li><a href="/calculator/paint"    class="hover:text-brand-700">Paint</a></li>
+              <li><a href="/calculator/flooring" class="hover:text-brand-700">Flooring</a></li>
+              <li><a href="/calculator/tile"     class="hover:text-brand-700">Tile</a></li>
+              <li><a href="/calculator/drywall"  class="hover:text-brand-700">Drywall</a></li>
+              <li><a href="/calculator/lumber"   class="hover:text-brand-700">Lumber</a></li>
+              <li><a href="/calculator/paver"    class="hover:text-brand-700">Pavers</a></li>
             </ul>
           </div>
+
+          <!-- Guides -->
           <div>
             <p class="font-semibold text-gray-900 mb-3">Guides</p>
             <ul class="space-y-2 text-gray-600">
-              <li><a href="/guide/how-much-mulch-do-i-need" class="hover:text-brand-700">How Much Mulch</a></li>
-              <li><a href="/guide/how-much-gravel-do-i-need" class="hover:text-brand-700">How Much Gravel</a></li>
-              <li><a href="/guide/how-much-topsoil-do-i-need" class="hover:text-brand-700">How Much Topsoil</a></li>
-              <li><a href="/guide/how-much-concrete-do-i-need" class="hover:text-brand-700">How Much Concrete</a></li>
+              <li><a href="/guide/how-much-mulch-do-i-need"      class="hover:text-brand-700">How Much Mulch</a></li>
+              <li><a href="/guide/how-much-gravel-do-i-need"     class="hover:text-brand-700">How Much Gravel</a></li>
+              <li><a href="/guide/how-much-topsoil-do-i-need"    class="hover:text-brand-700">How Much Topsoil</a></li>
+              <li><a href="/guide/how-much-sand-do-i-need"       class="hover:text-brand-700">How Much Sand</a></li>
+              <li><a href="/guide/how-much-concrete-do-i-need"   class="hover:text-brand-700">How Much Concrete</a></li>
+              <li><a href="/guide/how-much-paint-do-i-need"      class="hover:text-brand-700">How Much Paint</a></li>
+              <li><a href="/guide/how-much-lumber-do-i-need"     class="hover:text-brand-700">How Much Lumber</a></li>
+              <li><a href="/guide/how-many-pavers-do-i-need"     class="hover:text-brand-700">How Many Pavers</a></li>
+              <li><a href="/guide/how-much-gravel-for-a-driveway" class="hover:text-brand-700">Gravel for a Driveway</a></li>
+              <li><a href="/guide/how-much-topsoil-for-raised-bed" class="hover:text-brand-700">Topsoil for Raised Bed</a></li>
+              <li><a href="/guide/how-much-concrete-for-a-slab"  class="hover:text-brand-700">Concrete for a Slab</a></li>
+              <li><a href="/guide/how-much-sand-for-a-sandbox"   class="hover:text-brand-700">Sand for a Sandbox</a></li>
             </ul>
           </div>
+
+          <!-- Reference -->
           <div>
             <p class="font-semibold text-gray-900 mb-3">Reference</p>
             <ul class="space-y-2 text-gray-600">
-              <li><a href="/guide/how-many-bags-of-mulch-in-a-cubic-yard" class="hover:text-brand-700">Mulch Bags per Yard</a></li>
-              <li><a href="/guide/how-much-does-a-yard-of-gravel-weigh" class="hover:text-brand-700">Gravel Weight per Yard</a></li>
-              <li><a href="/guide/cubic-yards-to-tons" class="hover:text-brand-700">Cubic Yards to Tons</a></li>
+              <li><a href="/guide/cubic-yards-to-tons"               class="hover:text-brand-700">Cubic Yards to Tons</a></li>
+              <li><a href="/guide/cubic-feet-to-cubic-yards"         class="hover:text-brand-700">Cu Ft to Cu Yards</a></li>
+              <li><a href="/guide/square-feet-to-square-yards"       class="hover:text-brand-700">Sq Ft to Sq Yards</a></li>
+              <li><a href="/guide/linear-feet-to-square-feet"        class="hover:text-brand-700">Lin Ft to Sq Ft</a></li>
+              <li><a href="/guide/how-to-calculate-square-footage"   class="hover:text-brand-700">Calculate Sq Footage</a></li>
+              <li><a href="/guide/topsoil-vs-garden-soil"            class="hover:text-brand-700">Topsoil vs Garden Soil</a></li>
+              <li><a href="/guide/types-of-mulch"                    class="hover:text-brand-700">Types of Mulch</a></li>
+              <li><a href="/guide/gravel-vs-crushed-stone"           class="hover:text-brand-700">Gravel vs Crushed Stone</a></li>
+              <li><a href="/guide/how-deep-should-gravel-be"         class="hover:text-brand-700">How Deep Should Gravel Be</a></li>
+              <li><a href="/guide/how-thick-should-concrete-slab-be" class="hover:text-brand-700">Concrete Slab Thickness</a></li>
+              <li><a href="/guide/concrete-mix-ratios"               class="hover:text-brand-700">Concrete Mix Ratios</a></li>
+              <li><a href="/guide/paint-types-and-finishes"          class="hover:text-brand-700">Paint Types &amp; Finishes</a></li>
             </ul>
           </div>
+
+          <!-- About -->
           <div>
-            <p class="font-semibold text-gray-900 mb-3">About</p>
+            <p class="font-semibold text-gray-900 mb-3">More Guides</p>
+            <ul class="space-y-2 text-gray-600">
+              <li><a href="/guide/how-long-does-mulch-last"              class="hover:text-brand-700">How Long Does Mulch Last</a></li>
+              <li><a href="/guide/how-many-bags-of-mulch-in-a-cubic-yard" class="hover:text-brand-700">Mulch Bags per Cu Yard</a></li>
+              <li><a href="/guide/how-many-bags-of-sand-in-a-cubic-yard"  class="hover:text-brand-700">Sand Bags per Cu Yard</a></li>
+              <li><a href="/guide/how-much-gravel-for-a-french-drain"    class="hover:text-brand-700">Gravel for French Drain</a></li>
+              <li><a href="/guide/tile-sizes-and-coverage"               class="hover:text-brand-700">Tile Sizes &amp; Coverage</a></li>
+              <li><a href="/guide/drywall-thickness-guide"               class="hover:text-brand-700">Drywall Thickness Guide</a></li>
+              <li><a href="/guide/how-many-coats-of-paint"               class="hover:text-brand-700">How Many Coats of Paint</a></li>
+              <li><a href="/guide/how-to-measure-a-room-for-flooring"    class="hover:text-brand-700">Measure Room for Flooring</a></li>
+            </ul>
+            <p class="font-semibold text-gray-900 mt-5 mb-3">About</p>
             <ul class="space-y-2 text-gray-600">
               <li><a href="/methodology" class="hover:text-brand-700">Methodology</a></li>
-              <li><a href="/about" class="hover:text-brand-700">About</a></li>
-              <li><a href="/contact" class="hover:text-brand-700">Contact</a></li>
-              <li><a href="/privacy" class="hover:text-brand-700">Privacy Policy</a></li>
-              <li><a href="/terms" class="hover:text-brand-700">Terms</a></li>
+              <li><a href="/about"       class="hover:text-brand-700">About</a></li>
+              <li><a href="/contact"     class="hover:text-brand-700">Contact</a></li>
+              <li><a href="/privacy"     class="hover:text-brand-700">Privacy Policy</a></li>
+              <li><a href="/terms"       class="hover:text-brand-700">Terms</a></li>
             </ul>
           </div>
         </div>
-        <div class="mt-8 pt-6 border-t border-gray-200 text-xs text-gray-500 text-center">
+        <div class="mt-10 pt-6 border-t border-gray-200 text-xs text-gray-500 text-center">
           © {new Date().getFullYear()} HomeMaterialCalc.com — Material estimates for US homeowners & DIYers.
           Results are estimates; confirm quantities with your local supplier.
         </div>

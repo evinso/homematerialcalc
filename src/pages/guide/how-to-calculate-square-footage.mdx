@@ -1,0 +1,92 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How do I calculate square footage of a room?', a: 'For a rectangular room, multiply length (ft) × width (ft). For example, a 12×15 ft room = 180 square feet. For L-shaped or irregular rooms, break the space into rectangles, calculate each, and add them together.' },
+  { q: 'How do I calculate square footage with inches?', a: 'Convert inches to feet first by dividing by 12. For example, a room that is 11 ft 6 in × 14 ft 3 in = 11.5 × 14.25 = 163.9 square feet.' },
+  { q: 'How do I calculate square footage of an L-shaped room?', a: 'Divide the L-shape into two rectangles. Measure each rectangle and multiply length × width. Then add the two areas together. Example: 10×12 ft + 8×6 ft = 120 + 48 = 168 sq ft.' },
+  { q: 'How do I calculate square footage for flooring?', a: 'Measure the room length and width, multiply them, and add 5–10% for waste and cuts. For multiple rooms, calculate each one separately and add. Use our Flooring Calculator to do this automatically.' },
+  { q: 'How many square feet is a 10x10 room?', a: 'A 10×10 room is exactly 100 square feet. A 12×12 room is 144 sq ft, a 15×15 is 225 sq ft, and a 20×20 is 400 sq ft.' },
+];
+
+export const related = [
+  { href: '/guide/square-feet-to-square-yards', label: 'Square Feet to Square Yards' },
+  { href: '/guide/linear-feet-to-square-feet', label: 'Linear Feet to Square Feet' },
+  { href: '/calculator/flooring', label: 'Flooring Calculator' },
+  { href: '/calculator/paint', label: 'Paint Calculator' },
+];
+
+<GuideLayout
+  title="How to Calculate Square Footage — Room & Area Measurement Guide"
+  description="Learn how to calculate square footage for any room shape. Includes rectangle, L-shape, triangle, and circle formulas, plus examples for flooring, paint, and tile projects."
+  h1="How to Calculate Square Footage"
+  intro="Square footage is the area of a flat surface measured in square feet. For rectangular rooms, it's simply length × width. For irregular shapes, break the space into simpler shapes and add them up."
+  calculatorHref="/calculator/flooring"
+  calculatorLabel="Flooring Calculator — enter room dimensions for instant square footage"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'How to Calculate Square Footage' }]}
+>
+
+## Formula by shape
+
+### Rectangle or square
+**Area = Length × Width**  
+*Example: 12 ft × 15 ft = 180 sq ft*
+
+### L-shaped room
+**Area = Rectangle 1 + Rectangle 2**  
+Split into two rectangles, calculate each, add together.
+
+### Triangle
+**Area = (Base × Height) ÷ 2**  
+*Example: 8 ft base × 6 ft height ÷ 2 = 24 sq ft*
+
+### Circle
+**Area = π × radius²** (π ≈ 3.14159)  
+*Example: 5 ft radius → 3.14159 × 25 = 78.5 sq ft*
+
+## Quick reference — common room sizes
+
+| Room dimensions | Square footage |
+|----------------|---------------|
+| 8×10 ft | 80 sq ft |
+| 10×10 ft | 100 sq ft |
+| 10×12 ft | 120 sq ft |
+| 12×12 ft | 144 sq ft |
+| 12×14 ft | 168 sq ft |
+| 12×15 ft | 180 sq ft |
+| 14×16 ft | 224 sq ft |
+| 15×20 ft | 300 sq ft |
+| 20×20 ft | 400 sq ft |
+
+## How to convert feet and inches
+
+When your measurements include inches, convert to decimal feet:
+
+| Inches | Decimal feet |
+|--------|-------------|
+| 3" | 0.25 |
+| 4" | 0.33 |
+| 6" | 0.50 |
+| 8" | 0.67 |
+| 9" | 0.75 |
+| 10" | 0.83 |
+
+*Example: 11 ft 6 in × 14 ft 9 in = 11.5 × 14.75 = 169.6 sq ft*
+
+## Step-by-step for a full house
+
+1. **Sketch each room** — rough floor plan with all dimensions
+2. **Measure each room** — length and width in feet and inches
+3. **Calculate each room** — length × width
+4. **Add all rooms together** — total square footage
+5. **Add waste factor** — 10% for flooring, 15% for tile
+
+## Subtract doors and windows for paint
+
+For painting, measure wall area (not floor area):
+- Wall area = Perimeter × Wall height
+- Subtract: each door ≈ 20 sq ft, each window ≈ 15 sq ft
+- Use the [Paint Calculator](/calculator/paint) to automate this calculation
+
+</GuideLayout>

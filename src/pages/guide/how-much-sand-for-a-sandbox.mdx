@@ -1,0 +1,83 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How much sand does a sandbox need?', a: 'Most sandboxes need 6–8 inches of sand depth, leaving 2–4 inches of clearance at the top. A 4×4 ft sandbox at 6" deep needs about 0.30 cubic yards or 6 bags (50 lb each) of play sand.' },
+  { q: 'What type of sand should I use in a sandbox?', a: 'Use play sand — it is washed, screened, and free of sharp edges. Avoid construction sand, masonry sand, or beach sand, which may contain impurities or be too coarse for children.' },
+  { q: 'How deep should sandbox sand be?', a: '6 to 8 inches is the standard depth. Less than 5 inches makes digging and castle-building difficult; more than 10 inches is unnecessary and wasteful for a typical backyard sandbox.' },
+  { q: 'How many 50-lb bags of play sand do I need?', a: 'One 50 lb bag of play sand fills about 0.5 cubic feet. For a 4×4 ft sandbox at 6" deep (8 cu ft), you need about 16 bags. Use the formula: volume in cubic feet ÷ 0.5 = bags needed.' },
+  { q: 'How do I keep sandbox sand clean?', a: 'Cover the sandbox when not in use to keep out cats, insects, and rain. Replace or refresh sand every 1–2 years. Rake the sand regularly to prevent matting and check for debris.' },
+];
+
+export const related = [
+  { href: '/calculator/sand', label: 'Sand Calculator' },
+  { href: '/guide/how-much-sand-do-i-need', label: 'How Much Sand Do I Need?' },
+  { href: '/guide/how-much-sand-for-paver-base', label: 'How Much Sand for a Paver Base?' },
+  { href: '/guide/how-many-bags-of-sand-in-a-cubic-yard', label: 'Bags of Sand per Cubic Yard' },
+];
+
+<GuideLayout
+  title="How Much Sand for a Sandbox? — Sandbox Sand Calculator"
+  description="Calculate how much sand you need to fill a sandbox. Includes sandbox sizes, depth guide, and how many 50-lb bags of play sand to buy."
+  h1="How Much Sand for a Sandbox?"
+  intro="The amount of sand for a sandbox depends on the dimensions and desired depth. Most sandboxes need 6–8 inches of play sand for good digging and building depth."
+  calculatorHref="/calculator/sand"
+  calculatorLabel="Sand Calculator — enter sandbox dimensions for an exact count"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'How Much Sand for a Sandbox?' }]}
+>
+
+## The formula
+
+**Volume (cu ft) = Length (ft) × Width (ft) × Depth (in) ÷ 12**
+
+**Bags needed = Volume (cu ft) ÷ 0.5** (for 50 lb bags of play sand)
+
+## How much sand by sandbox size
+
+| Sandbox size | Depth | Volume (cu ft) | 50-lb bags |
+|-------------|-------|----------------|------------|
+| 3×3 ft | 6" | 4.5 | 9 bags |
+| 4×4 ft | 6" | 8.0 | 16 bags |
+| 4×6 ft | 6" | 12.0 | 24 bags |
+| 4×8 ft | 6" | 16.0 | 32 bags |
+| 5×5 ft | 6" | 12.5 | 25 bags |
+| 6×6 ft | 6" | 18.0 | 36 bags |
+| 4×4 ft | 8" | 10.7 | 22 bags |
+| 4×6 ft | 8" | 16.0 | 32 bags |
+
+*50 lb bag of play sand ≈ 0.5 cu ft. Round up to the nearest bag.*
+
+## How deep should sandbox sand be?
+
+| Depth | Best for |
+|-------|---------|
+| 4–5 inches | Toddlers (under 3) — less to swallow, still playable |
+| 6 inches | Most children — good for digging and sand castles |
+| 8 inches | Older kids who like deep digging projects |
+| 10+ inches | Usually unnecessary — adds cost without play benefit |
+
+## What type of sand to use
+
+**Play sand** (also called "sandbox sand" or "washed play sand"):
+- Washed and screened to remove sharp particles
+- Fine grain — easy to mold and sift
+- Available at all hardware and garden stores
+
+**Avoid:**
+- Construction sand — too coarse, may contain debris
+- Masonry sand — fine but not washed for skin contact
+- Beach/river sand — may contain salt, shells, or bacteria
+- Silica sand — fine for industrial use but dusty and not recommended for children
+
+## Cost estimate
+
+| Product | Price range | Coverage |
+|---------|-------------|----------|
+| 50 lb bag play sand | $5–$8 | ~0.5 cu ft |
+| 60 lb bag play sand | $7–$10 | ~0.6 cu ft |
+| Bulk play sand (cu yd) | $30–$60 | 27 cu ft |
+
+For a 4×4 sandbox at 6" deep (16 bags), budget **$80–$130** for play sand.
+
+</GuideLayout>

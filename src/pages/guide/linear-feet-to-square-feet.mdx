@@ -1,0 +1,80 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How do I convert linear feet to square feet?', a: 'Multiply linear feet by the width in feet. For example, 100 linear feet of 12-inch wide flooring = 100 × 1 ft = 100 sq ft.' },
+  { q: 'Are linear feet and square feet the same?', a: 'No — linear feet measure length in one direction only. Square feet measure area (length × width). You need the width of the material to convert between them.' },
+  { q: 'How many linear feet of flooring do I need for 200 square feet?', a: 'For 3-inch wide planks: 200 sq ft ÷ 0.25 ft wide = 800 linear feet. For 5-inch wide planks: 200 ÷ 0.417 = 480 linear feet. Add 10% waste.' },
+  { q: 'How do I convert board feet to linear feet?', a: 'Linear feet = Board feet × 12 ÷ (Thickness in inches × Width in inches). For a 1×6 board: 10 board feet × 12 ÷ (1 × 6) = 20 linear feet.' },
+  { q: 'What does "linear foot" mean for fencing?', a: 'For fencing, linear feet refers to the total length of the fence line (perimeter). The square footage of fencing material depends on the fence height.' },
+];
+
+export const related = [
+  { href: '/guide/square-feet-to-square-yards', label: 'Square Feet to Square Yards' },
+  { href: '/guide/how-to-calculate-square-footage', label: 'How to Calculate Square Footage' },
+  { href: '/calculator/flooring', label: 'Flooring Calculator' },
+  { href: '/guide/how-much-lumber-do-i-need', label: 'How Much Lumber Do I Need?' },
+];
+
+<GuideLayout
+  title="Linear Feet to Square Feet — Conversion Guide & Formula"
+  description="Convert linear feet to square feet for flooring, lumber, and fencing. Includes formula, width conversion table, and examples for common materials."
+  h1="Linear Feet to Square Feet Converter"
+  intro="Linear feet measure length; square feet measure area. To convert, you need the width of the material. Multiply linear feet by width (in feet) to get square feet."
+  calculatorHref="/calculator/flooring"
+  calculatorLabel="Flooring Calculator — works in square feet for any plank width"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Linear Feet to Square Feet' }]}
+>
+
+## The formula
+
+**Square feet = Linear feet × Width (ft)**
+
+**Linear feet = Square feet ÷ Width (ft)**
+
+*Width must be in feet — divide inches by 12 first.*
+
+## Flooring: linear feet by plank width
+
+| Plank width | Linear feet per 100 sq ft | Linear feet per 200 sq ft |
+|------------|--------------------------|--------------------------|
+| 2.25" (⅛) | 533 lin ft | 1,067 lin ft |
+| 3" (¼) | 400 lin ft | 800 lin ft |
+| 3.5" | 343 lin ft | 686 lin ft |
+| 4" (⅓) | 300 lin ft | 600 lin ft |
+| 5" | 240 lin ft | 480 lin ft |
+| 6" (½) | 200 lin ft | 400 lin ft |
+| 7.5" | 160 lin ft | 320 lin ft |
+
+*Add 10% for waste.*
+
+## Fencing: linear feet vs. board feet
+
+For a 6-foot tall privacy fence with 6-inch boards:
+
+| Fence length | Boards needed | Linear feet of boards |
+|-------------|--------------|----------------------|
+| 50 lin ft | 50 × 12 boards/section | 600 linear feet |
+| 100 lin ft | 200 boards | 1,200 linear feet |
+
+## Baseboard and trim
+
+Linear feet of trim = Room perimeter (ft) minus door openings (typically 3 ft each)
+
+For a 12×14 ft room:
+Perimeter = (12+14) × 2 = 52 ft
+Minus 2 doors = 52 − 6 = **46 linear feet of baseboard**
+
+## Lumber: linear feet to board feet
+
+**Board feet = Linear feet × Thickness (in) × Width (in) ÷ 12**
+
+| Board | 10 lin ft | 20 lin ft |
+|-------|----------|----------|
+| 1×4 | 3.3 bf | 6.7 bf |
+| 2×4 | 6.7 bf | 13.3 bf |
+| 2×6 | 10 bf | 20 bf |
+| 2×8 | 13.3 bf | 26.7 bf |
+
+</GuideLayout>

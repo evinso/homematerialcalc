@@ -1,0 +1,83 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'What is the difference between gravel and crushed stone?', a: 'Gravel is naturally formed — it has rounded edges from water erosion. Crushed stone is mechanically broken rock with angular edges. Crushed stone compacts better and is used for driveways and bases; gravel is common for drainage and decorative use.' },
+  { q: 'Is pea gravel the same as crushed stone?', a: 'No — pea gravel is a type of naturally rounded gravel, about ¼" to ½" in size. Crushed stone is man-made with angular edges. They behave very differently for compaction and drainage.' },
+  { q: 'What is #57 stone?', a: '#57 stone is a crushed limestone or granite aggregate, roughly ¾" in size. It is the most widely used gravel size for drainage, French drains, and base material. It does not compact like crusher run.' },
+  { q: 'What type of gravel is best for a driveway?', a: 'A compacting base of crusher run (also called "road base" or "item 4") topped with 1½" to ¾" crushed stone is the best driveway surface. Pea gravel and river rock are decorative and shift underfoot — not recommended for driveways.' },
+  { q: 'How much does crushed stone cost vs. gravel?', a: 'Prices are similar. Crushed stone runs $25–$50 per ton; pea gravel and river rock are often $30–$65 per ton due to handling. Costs vary by region and supplier.' },
+];
+
+export const related = [
+  { href: '/calculator/gravel', label: 'Gravel Calculator' },
+  { href: '/guide/how-much-gravel-do-i-need', label: 'How Much Gravel Do I Need?' },
+  { href: '/guide/how-much-gravel-for-a-driveway', label: 'How Much Gravel for a Driveway?' },
+  { href: '/guide/how-deep-should-gravel-be', label: 'How Deep Should Gravel Be?' },
+];
+
+<GuideLayout
+  title="Gravel vs. Crushed Stone — Which Should You Use?"
+  description="Compare gravel and crushed stone for driveways, drainage, and landscaping. Includes #57 stone, pea gravel, crusher run, and river rock comparisons."
+  h1="Gravel vs. Crushed Stone: Which Do You Need?"
+  intro="Gravel and crushed stone are often used interchangeably, but they behave very differently. Rounded gravel drains well but shifts. Angular crushed stone compacts for solid bases. Here's how to choose."
+  calculatorHref="/calculator/gravel"
+  calculatorLabel="Gravel Calculator — get cubic yards and tons for any project"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Gravel vs Crushed Stone' }]}
+>
+
+## Key differences
+
+| Feature | Natural Gravel | Crushed Stone |
+|---------|---------------|--------------|
+| Edge shape | Rounded (smooth) | Angular (sharp) |
+| How it's made | Natural water erosion | Machine-crushed rock |
+| Compaction | Poor — shifts and moves | Good — locks together |
+| Drainage | Excellent | Good |
+| Best use | Drainage, decorative, French drains | Driveways, base layers, paths |
+
+## Common types and their uses
+
+| Name | Type | Size | Best used for |
+|------|------|------|--------------|
+| Pea gravel | Natural | ¼"–½" | Paths, playgrounds, landscaping |
+| River rock | Natural | ½"–4" | Drainage, decorative, dry creek beds |
+| #57 stone | Crushed | ¾" | Drainage, French drains, base layer |
+| #67 stone | Crushed | ¾"–1" | Drainage, pipe bedding |
+| Crusher run | Crushed | 0"–¾" | Driveway base, compacting sub-base |
+| Decomposed granite | Crushed | Fine | Paths, patios, xeriscape |
+| Washed clean stone | Crushed | ½"–1" | French drains, under slabs |
+
+## What to use for each project
+
+### Driveway
+**Layer 1 (base):** 4–6 inches of crusher run, compacted  
+**Layer 2 (surface):** 2–3 inches of 1½" or ¾" crushed stone  
+Avoid pea gravel or river rock on driveways — they don't compact and will rut.
+
+### French drain
+**#57 washed stone or ¾" clean crushed stone.** Angular edges prevent migration into the drain pipe while allowing maximum water flow.
+
+### Walkways and paths
+**Pea gravel or decomposed granite** — comfortable underfoot, visually appealing.
+
+### Under pavers or concrete slabs
+**Crusher run or #57 stone** — compacts to form a stable, level base.
+
+### Decorative landscaping
+**River rock or pea gravel** — looks natural, available in many colors and sizes.
+
+## Cost comparison
+
+| Material | Price per ton | Price per cu yd |
+|----------|-------------|----------------|
+| Pea gravel | $35–$65 | $35–$55 |
+| River rock | $40–$75 | $40–$65 |
+| #57 crushed stone | $25–$45 | $30–$50 |
+| Crusher run | $20–$35 | $25–$40 |
+| Decomposed granite | $30–$55 | $35–$55 |
+
+*Prices vary by region and delivery distance.*
+
+</GuideLayout>

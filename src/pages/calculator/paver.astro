@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PaverCalculator from '../../components/calculators/PaverCalculator';
+import AdSlot from '../../components/ui/AdSlot.astro';
+
+const related = [
+  { href: '/guide/how-many-pavers-do-i-need',     label: 'How Many Pavers Do I Need?' },
+  { href: '/guide/how-much-sand-for-paver-base',   label: 'How Much Sand for a Paver Base?' },
+  { href: '/calculator/sand',                      label: 'Sand Calculator' },
+  { href: '/calculator/gravel',                    label: 'Gravel Calculator' },
+  { href: '/guide/gravel-vs-crushed-stone',        label: 'Gravel vs Crushed Stone' },
+];
+---
+
+<BaseLayout
+  title="Paver Calculator — How Many Pavers Do I Need?"
+  description="Free paver calculator: enter your patio or walkway dimensions and paver size to get the exact number of pavers, sand base, and gravel base needed."
+>
+  <div class="max-w-6xl mx-auto px-4 py-10">
+    <div class="grid lg:grid-cols-[1fr_380px] gap-10">
+
+      <!-- Left: calculator -->
+      <div>
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">Paver Calculator</h1>
+        <p class="text-gray-600 mb-6">Enter your patio or walkway dimensions and paver size to get the exact paver count, sand bedding, and gravel base quantities.</p>
+
+        <PaverCalculator client:load />
+
+        <AdSlot slot="after-result" className="mt-6" />
+
+        <!-- Installation guide -->
+        <div class="calculator-card mt-8">
+          <h2 class="font-bold text-gray-900 text-lg mb-3">Patio installation layers</h2>
+          <ol class="space-y-3 text-sm text-gray-700">
+            <li class="flex gap-3">
+              <span class="font-bold text-brand-600 flex-shrink-0">1.</span>
+              <span><strong>Excavate 8–10 inches</strong> — allows for gravel base + sand bed + paver thickness.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="font-bold text-brand-600 flex-shrink-0">2.</span>
+              <span><strong>Compact subgrade</strong> — use a plate compactor on native soil.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="font-bold text-brand-600 flex-shrink-0">3.</span>
+              <span><strong>Add 4" compacted gravel</strong> — use ¾" crusher run or #57 stone. Compact in 2" lifts.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="font-bold text-brand-600 flex-shrink-0">4.</span>
+              <span><strong>Spread 1" coarse sand</strong> — screed to a level, even bed. Do not compact.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="font-bold text-brand-600 flex-shrink-0">5.</span>
+              <span><strong>Lay pavers</strong> — place with ⅛"–¼" joint spacing. Use a mallet and level.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="font-bold text-brand-600 flex-shrink-0">6.</span>
+              <span><strong>Polymeric sand joints</strong> — sweep in, mist with water to activate the binder.</span>
+            </li>
+          </ol>
+        </div>
+
+        <AdSlot slot="in-content" className="mt-6" />
+
+        <div class="mt-6 text-sm text-gray-500 border-t pt-4">
+          <p>Formula: <em>Pavers = Area (sq in) ÷ Paver area (sq in) × waste factor. Sand = area × 1" depth; Gravel = area × 4" depth.</em>
+          See our <a href="/methodology" class="text-brand-600 hover:underline">methodology page</a> for all constants.</p>
+        </div>
+      </div>
+
+      <!-- Right: sidebar -->
+      <aside class="space-y-6">
+        <div class="calculator-card">
+          <h3 class="font-semibold text-gray-900 mb-3">Pavers per sq ft by size</h3>
+          <table class="w-full text-sm text-gray-700">
+            <thead><tr class="border-b"><th class="text-left pb-1">Size</th><th class="text-right pb-1">Per sq ft</th></tr></thead>
+            <tbody class="divide-y">
+              {[
+                { size: '4"×8" brick', qty: '4.5' },
+                { size: '6"×6"', qty: '4.0' },
+                { size: '12"×12"', qty: '1.0' },
+                { size: '16"×16"', qty: '0.56' },
+                { size: '12"×24"', qty: '0.50' },
+                { size: '24"×24"', qty: '0.25' },
+              ].map(r => (
+                <tr><td class="py-1">{r.size}</td><td class="py-1 text-right">{r.qty}</td></tr>
+              ))}
+            </tbody>
+          </table>
+          <p class="text-xs text-gray-500 mt-2">Includes 10% waste factor</p>
+        </div>
+
+        <div class="calculator-card">
+          <h3 class="font-semibold text-gray-900 mb-3">Related calculators &amp; guides</h3>
+          <ul class="space-y-2">
+            {related.map(r => (
+              <li><a href={r.href} class="text-sm text-brand-600 hover:underline">{r.label}</a></li>
+            ))}
+          </ul>
+        </div>
+
+        <AdSlot slot="sidebar" />
+      </aside>
+    </div>
+  </div>
+</BaseLayout>

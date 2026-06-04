@@ -1,0 +1,79 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How deep should gravel be for a driveway?', a: 'A residential driveway needs 4–6 inches of compacted gravel base plus 2–3 inches of surface gravel, for a total of 6–9 inches. High-traffic or heavy vehicle areas need 8–12 inches of base.' },
+  { q: 'How deep should gravel be under a patio?', a: 'For a paver or flagstone patio, use a 4-inch compacted gravel base plus a 1-inch sand layer. For a concrete patio, use 4–6 inches of compacted gravel sub-base.' },
+  { q: 'How deep should pea gravel be for a path?', a: 'Landscape paths with pea gravel should be 2–3 inches deep for decorative use. For a more stable, weed-resistant path, use 3–4 inches over landscape fabric.' },
+  { q: 'How much gravel do I need to fill a hole?', a: 'Volume (cu yd) = Length (ft) × Width (ft) × Depth (ft) ÷ 27. Use the Gravel Calculator with the exact dimensions for an instant result in cubic yards and tons.' },
+  { q: 'Does gravel depth affect drainage?', a: 'Yes — deeper gravel provides better drainage and load-bearing capacity. Under slabs and driveways, inadequate depth is the most common cause of settling and cracking.' },
+];
+
+export const related = [
+  { href: '/calculator/gravel', label: 'Gravel Calculator' },
+  { href: '/guide/how-much-gravel-do-i-need', label: 'How Much Gravel Do I Need?' },
+  { href: '/guide/how-much-gravel-for-a-driveway', label: 'How Much Gravel for a Driveway?' },
+  { href: '/guide/gravel-vs-crushed-stone', label: 'Gravel vs. Crushed Stone' },
+];
+
+<GuideLayout
+  title="How Deep Should Gravel Be? — Depth Guide by Project Type"
+  description="Learn how deep gravel should be for driveways, patios, paths, French drains, and drainage projects. Includes depth guide and cubic yard calculator."
+  h1="How Deep Should Gravel Be?"
+  intro="Gravel depth depends on the load it needs to support and its purpose. Too thin and it shifts or sinks; too thick wastes money. Here are the correct depths for every common project."
+  calculatorHref="/calculator/gravel"
+  calculatorLabel="Gravel Calculator — enter your depth and area for exact quantities"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'How Deep Should Gravel Be?' }]}
+>
+
+## Depth guide by project
+
+| Project | Minimum depth | Recommended depth |
+|---------|--------------|-------------------|
+| Decorative landscape path | 2" | 3" |
+| Pedestrian walkway | 3" | 4" |
+| Patio base (pavers) | 4" compacted + 1" sand | 5" + 1" sand |
+| Patio base (concrete) | 4" | 6" |
+| Residential driveway | 6" | 8" (base + surface) |
+| Commercial driveway | 8" | 12" |
+| French drain | Fill trench | 12"–18" deep trench |
+| Around foundation | 3" slope away | 4" with fabric |
+| Horse arena / paddock | 3" | 4"–6" |
+
+## Why depth matters
+
+### For driveways
+Insufficient base depth is the leading cause of driveway ruts and potholes. The gravel compacts under traffic and displaces laterally. A minimum 4-inch compacted base absorbs load and resists movement.
+
+### For patios and pavers
+A 4-inch compacted gravel base prevents settling and frost heave. Skip this and your pavers will shift after the first winter freeze-thaw cycle.
+
+### For drainage
+Depth increases the volume of void space that stores and moves water. Shallow gravel in a drainage trench fills up faster and fails sooner.
+
+## How to calculate gravel volume
+
+**Volume (cu yd) = Length (ft) × Width (ft) × Depth (in) ÷ 324**
+
+Or use the [Gravel Calculator](/calculator/gravel) — enter your dimensions and depth, and it outputs cubic yards, tons, and bags.
+
+## Coverage at different depths
+
+| Depth | 1 cubic yard covers |
+|-------|-------------------|
+| 2" | 162 sq ft |
+| 3" | 108 sq ft |
+| 4" | 81 sq ft |
+| 6" | 54 sq ft |
+| 8" | 40 sq ft |
+| 12" | 27 sq ft |
+
+## Compaction factor
+
+Gravel compacts 10–15% after installation. Order 10–15% extra for projects requiring compacted depth:
+- Driveways: order 12% extra
+- Patio bases: order 10% extra
+- Paths: usually not necessary
+
+</GuideLayout>

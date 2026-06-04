@@ -1,0 +1,82 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How many bags of sand are in a cubic yard?', a: 'There are 54 bags of 50 lb sand in one cubic yard, or 36 bags of 80 lb sand. A cubic yard of sand weighs approximately 2,700 lbs (about 1.35 tons).' },
+  { q: 'How many cubic feet are in a bag of sand?', a: 'A 50 lb bag of sand is about 0.5 cubic feet. An 80 lb bag is about 0.6 cubic feet. A cubic yard = 27 cubic feet.' },
+  { q: 'How much does a bag of sand weigh?', a: 'Sand bags are sold in 50 lb, 60 lb, and 80 lb sizes at most hardware stores. A 50 lb bag covers about 0.5 cubic feet, perfect for small paver and joint projects.' },
+  { q: 'When should I buy bulk sand vs bags?', a: 'Buy bags for less than 0.5 cubic yards (27 bags). For more than that, bulk delivery from a supplier is usually cheaper per cubic yard. Bulk also saves time and packaging waste.' },
+  { q: 'How many bags of sand do I need for a 10×10 area?', a: 'For a 10×10 ft area at 1 inch deep, you need 8.3 cubic feet = about 17 bags (50 lb). At 2 inches deep, double it to 34 bags. Use the Sand Calculator for any depth.' },
+];
+
+export const related = [
+  { href: '/calculator/sand', label: 'Sand Calculator' },
+  { href: '/guide/how-much-sand-do-i-need', label: 'How Much Sand Do I Need?' },
+  { href: '/guide/how-much-sand-for-paver-base', label: 'How Much Sand for a Paver Base?' },
+  { href: '/guide/cubic-yards-to-tons', label: 'Cubic Yards to Tons' },
+];
+
+<GuideLayout
+  title="How Many Bags of Sand in a Cubic Yard? — Sand Reference Guide"
+  description="Find out how many bags of sand are in a cubic yard. Includes bag count for 50 lb and 80 lb bags, weight per cubic yard, and conversion table."
+  h1="How Many Bags of Sand in a Cubic Yard?"
+  intro="One cubic yard of sand contains 54 bags of 50 lb sand or 36 bags of 80 lb sand. Here's the full conversion table and everything you need to buy the right amount."
+  calculatorHref="/calculator/sand"
+  calculatorLabel="Sand Calculator — enter your area and depth for an exact bag count"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Bags of Sand per Cubic Yard' }]}
+>
+
+## Quick answer
+
+| Bag size | Bags per cubic yard |
+|----------|-------------------|
+| 50 lb bag | **54 bags** |
+| 60 lb bag | **45 bags** |
+| 80 lb bag | **36 bags** |
+
+*1 cubic yard of sand ≈ 2,700 lbs ≈ 1.35 tons*
+
+## How this works
+
+1 cubic yard = 27 cubic feet
+1 bag of 50 lb sand ≈ 0.5 cubic feet
+27 ÷ 0.5 = **54 bags**
+
+## Bags needed by project size
+
+*Assuming 50 lb bags (0.5 cu ft each):*
+
+| Area | Depth | Cubic yards | 50-lb bags |
+|------|-------|-------------|------------|
+| 10×10 ft | 1" | 0.31 | 17 |
+| 10×10 ft | 2" | 0.62 | 33 |
+| 10×10 ft | 4" | 1.23 | 67 |
+| 20×20 ft | 1" | 1.23 | 67 |
+| 20×20 ft | 2" | 2.47 | 133 |
+| 100 lin ft paver base (1") | 1" | 0.31 | 17 |
+
+## Bags vs. bulk sand: when to switch
+
+| Amount needed | Best to buy |
+|--------------|-------------|
+| Under 0.25 cu yd (13 bags) | Bags — convenient, no minimum order |
+| 0.25–0.75 cu yd | Either — compare price |
+| Over 0.75 cu yd | Bulk delivery usually saves money |
+
+**Average pricing:**
+- 50 lb bag: $5–$9 at hardware stores
+- Bulk washed sand: $25–$45 per cubic yard delivered
+
+At 54 bags × $7 = $378 vs. bulk at $45/cu yd — bulk is far cheaper for large projects.
+
+## Sand types and weights
+
+| Sand type | Lbs per cubic yard |
+|----------|-------------------|
+| Concrete / all-purpose sand | 2,700 lbs |
+| Mason sand | 2,700 lbs |
+| Play sand | 2,500 lbs |
+| Fill sand (compacted) | 3,000 lbs |
+
+</GuideLayout>

@@ -3,8 +3,10 @@ import {
   SOD, CONCRETE, CONCRETE_BAGS, CONVERSIONS,
   PAINT, PAINT_COVERAGE, FLOORING, FLOORING_WASTE,
   TILE, TILE_SIZES, DRYWALL, DRYWALL_SHEETS,
+  LUMBER, LUMBER_NOMINAL_SIZES, PAVER, PAVER_SIZES,
   type GravelType, type SandType, type ConcreteBagSize,
   type PaintSurface, type FlooringPattern, type TileSize, type DrywallSheet,
+  type LumberSize, type PaverSize,
 } from './constants';
 import { computeAreaSqFt, computeVolumeCuFt, cuFtToCuYd, type ShapeInput } from './geometry';
 
@@ -350,5 +352,66 @@ export function calcDrywall(
     tapeRolls,
     sheetSize,
     costEstimate: pricePerSheet != null ? sheetsNeeded * pricePerSheet : undefined,
+  };
+}
+
+// ─── Lumber ───────────────────────────────────────────────────────────────────
+export interface LumberResult {
+  boardFeet: number;
+  boardFeetWithWaste: number;
+  piecesNeeded: number;
+  lengthFt: number;
+  costEstimate?: number;
+}
+
+export function calcLumber(
+  pieces: number,
+  size: LumberSize,
+  lengthFt: number,
+  wasteFactor: number = LUMBER.DEFAULT_WASTE,
+  pricePerBoardFt?: number,
+): LumberResult {
+  const { thickness, width } = LUMBER_NOMINAL_SIZES[size];
+  const boardFeet = (pieces * thickness * width * lengthFt) / 12;
+  const boardFeetWithWaste = applyWaste(boardFeet, wasteFactor);
+  return {
+    boardFeet,
+    boardFeetWithWaste,
+    piecesNeeded: pieces,
+    lengthFt,
+    costEstimate: pricePerBoardFt != null ? boardFeetWithWaste * pricePerBoardFt : undefined,
+  };
+}
+
+// ─── Paver ────────────────────────────────────────────────────────────────────
+export interface PaverResult {
+  areaSqFt: number;
+  areaWithWaste: number;
+  paversNeeded: number;
+  sandCuYd: number;
+  gravelCuYd: number;
+  costEstimate?: number;
+}
+
+export function calcPaver(
+  shape: ShapeInput,
+  paverSize: PaverSize,
+  wasteFactor: number = PAVER.DEFAULT_WASTE,
+  pricePerPaver?: number,
+): PaverResult {
+  const areaSqFt = computeAreaSqFt(shape);
+  const areaWithWaste = applyWaste(areaSqFt, wasteFactor);
+  const { widthIn, lengthIn } = PAVER_SIZES[paverSize];
+  const paverSqFt = (widthIn * lengthIn) / 144;
+  const paversNeeded = roundUp(areaWithWaste / paverSqFt);
+  const sandCuYd = cuFtToCuYd(computeVolumeCuFt(areaWithWaste, PAVER.SAND_BASE_DEPTH_IN));
+  const gravelCuYd = cuFtToCuYd(computeVolumeCuFt(areaWithWaste, PAVER.GRAVEL_BASE_DEPTH_IN));
+  return {
+    areaSqFt,
+    areaWithWaste,
+    paversNeeded,
+    sandCuYd,
+    gravelCuYd,
+    costEstimate: pricePerPaver != null ? paversNeeded * pricePerPaver : undefined,
   };
 }
