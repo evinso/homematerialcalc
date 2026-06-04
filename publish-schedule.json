@@ -5,6 +5,7 @@
     "minDaysBetweenRuns": 1
   },
   "lastRun": null,
+  "runs": [],
   "pages": [
     { "url": "/",                                                              "label": "Home",                                  "type": "static",     "status": "published", "publishedAt": "2026-06-04" },
     { "url": "/calculator/mulch",                                              "label": "Mulch Calculator",                      "type": "calculator", "status": "published", "publishedAt": "2026-06-04" },

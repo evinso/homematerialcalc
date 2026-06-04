@@ -11,6 +11,27 @@ const today = new Date().toISOString().split('T')[0];
 const lastRun = schedule.lastRun ?? '—';
 const pagesPerRun = (schedule.cadence as any).pagesPerRun ?? 1;
 
+// Run history — newest first, max 30 entries shown
+const runs = ((schedule as any).runs ?? []) as any[];
+const recentRuns = runs.slice(0, 30);
+
+// Days until queue is empty
+const daysLeft = pending.length;
+const emptyDate = (() => {
+  if (!daysLeft) return null;
+  const base = lastRun !== '—' ? lastRun : today;
+  const d = new Date(base);
+  d.setDate(d.getDate() + daysLeft);
+  return d.toISOString().split('T')[0];
+})();
+
+// Trigger label helper
+function triggerLabel(t: string) {
+  if (t === 'scheduled') return '⏰ Otomatik';
+  if (t === 'manual_dispatch') return '▶️ Manuel (Actions)';
+  return '💻 Local';
+}
+
 // Estimate publish dates for pending pages (1 per day starting tomorrow)
 function addDays(dateStr: string, n: number) {
   const d = new Date(dateStr);
@@ -99,6 +120,28 @@ const sortedDates = Object.keys(byDate).sort((a,b) => b.localeCompare(a));
     .next-label { font-size: 0.72rem; color: #64748b; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
     .next-page { font-size: 0.88rem; color: #e2e8f0; font-family: monospace; }
     .next-date { font-size: 0.78rem; color: #38bdf8; margin-top: 0.2rem; }
+    /* run history */
+    .run-card { background: #1e293b; border-radius: 10px; padding: 1rem 1.2rem; margin-bottom: 0.75rem; border-left: 3px solid #334155; }
+    .run-card.run-auto { border-left-color: #38bdf8; }
+    .run-card.run-manual { border-left-color: #818cf8; }
+    .run-card.run-local  { border-left-color: #64748b; }
+    .run-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem; }
+    .run-date { font-size: 0.85rem; font-weight: 700; color: #e2e8f0; }
+    .run-meta { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
+    .run-trigger { font-size: 0.7rem; font-weight: 600; padding: 0.15rem 0.5rem; border-radius: 999px; }
+    .run-trigger-auto   { background: #1c3148; color: #38bdf8; }
+    .run-trigger-manual { background: #1e1a2e; color: #818cf8; }
+    .run-trigger-local  { background: #1e293b; color: #64748b; }
+    .run-by { font-size: 0.7rem; color: #475569; }
+    .run-ts { font-size: 0.68rem; color: #334155; font-family: monospace; }
+    .run-pages { display: flex; flex-direction: column; gap: 0.3rem; }
+    .run-page { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; }
+    .run-page-url { color: #94a3b8; font-family: monospace; font-size: 0.77rem; }
+    .run-page-label { color: #64748b; font-size: 0.72rem; }
+    .run-stats { font-size: 0.72rem; color: #475569; margin-top: 0.4rem; border-top: 1px solid #0f172a; padding-top: 0.4rem; }
+    .run-empty { color: #334155; font-size: 0.8rem; padding: 1rem; text-align: center; background: #1e293b; border-radius: 10px; margin-bottom: 2rem; }
+    .queue-info { background: #1e293b; border-radius: 10px; padding: 0.8rem 1.1rem; display: flex; flex-wrap: wrap; gap: 1.5rem; font-size: 0.78rem; color: #94a3b8; margin-bottom: 2rem; }
+    .queue-info strong { color: #e2e8f0; }
   </style>
 </head>
 <body>
@@ -143,6 +186,14 @@ const sortedDates = Object.keys(byDate).sort((a,b) => b.localeCompare(a));
       <span>Toplam URL: <strong>{published.filter(p => !['/privacy','/terms','/contact','/contact-success'].includes(p.url)).length}</strong></span>
     </div>
 
+    <!-- Queue projection -->
+    <div class="queue-info">
+      <span>Sırada: <strong>{pending.length} sayfa</strong></span>
+      <span>Tahmini bitiş: <strong>{emptyDate ?? '—'}</strong></span>
+      <span>Toplam çalışma: <strong>{runs.length} kez</strong></span>
+      <span>Son çalışma türü: <strong>{runs[0]?.trigger ? triggerLabel(runs[0].trigger) : '—'}</strong></span>
+    </div>
+
     <!-- Next up -->
     {pendingWithETA.length > 0 && (
       <div class="countdown">
@@ -151,6 +202,59 @@ const sortedDates = Object.keys(byDate).sort((a,b) => b.localeCompare(a));
         <div class="next-date">Tahmini tarih: {pendingWithETA[0].eta} — {pendingWithETA[0].label}</div>
       </div>
     )}
+
+    <!-- ─── Run History ─────────────────────────────────────────────────── -->
+    <div class="section">
+      <div class="section-header">
+        <span>🕐 Yayın Geçmişi — {runs.length} çalışma</span>
+        <span style="font-size:0.7rem;font-weight:400;color:#475569">En yeni üstte · max 30 gösterilir</span>
+      </div>
+
+      {recentRuns.length === 0 && (
+        <div class="run-empty">
+          Henüz hiç otomatik yayın çalışmadı.<br/>
+          GitHub Actions her gün 09:00 UTC'de çalışır ve burayı günceller.
+        </div>
+      )}
+
+      {recentRuns.map((run: any) => {
+        const triggerClass =
+          run.trigger === 'scheduled' ? 'run-auto' :
+          run.trigger === 'manual_dispatch' ? 'run-manual' : 'run-local';
+        const triggerBadgeClass =
+          run.trigger === 'scheduled' ? 'run-trigger-auto' :
+          run.trigger === 'manual_dispatch' ? 'run-trigger-manual' : 'run-trigger-local';
+        return (
+          <div class={`run-card ${triggerClass}`}>
+            <div class="run-header">
+              <span class="run-date">{run.date}</span>
+              <div class="run-meta">
+                <span class={`run-trigger ${triggerBadgeClass}`}>{triggerLabel(run.trigger)}</span>
+                {run.runBy && run.runBy !== 'local' && <span class="run-by">by {run.runBy}</span>}
+                <span class="run-ts">{run.timestamp?.replace('T', ' ').replace(/\.\d{3}Z$/, ' UTC') ?? ''}</span>
+              </div>
+            </div>
+            <div class="run-pages">
+              {(run.pagesPublished ?? []).map((p: any) => (
+                <div class="run-page">
+                  <span class={`badge ${
+                    p.type === 'calculator' ? 'badge-type-calc' :
+                    p.type === 'guide' ? 'badge-type-guide' : 'badge-type-ref'
+                  }`}>{p.type ?? '?'}</span>
+                  <span class="run-page-url">
+                    <a href={`https://www.homematerialcalc.com${p.url}`} target="_blank">{p.url}</a>
+                  </span>
+                  <span class="run-page-label">— {p.label}</span>
+                </div>
+              ))}
+            </div>
+            <div class="run-stats">
+              Önce {run.pendingBefore} pending · Sonra {run.pendingAfter} pending
+            </div>
+          </div>
+        );
+      })}
+    </div>
 
     <!-- Pending — grouped by type -->
     <div class="section">

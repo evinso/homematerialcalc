@@ -73,22 +73,42 @@ if (DRY_RUN) {
 }
 
 // ─── Apply changes ────────────────────────────────────────────────────────────
-let updated = raw;
+// Parse as object for structured updates (runs log + status changes)
+const scheduleObj = JSON.parse(raw);
 
+// Promote pages
 for (const page of toPublish) {
-  // Update status and publishedAt in the JSON string (preserve formatting)
-  updated = updated.replace(
-    new RegExp(`("url":\\s*"${page.url.replace(/\//g, '\\/')}",.*?"status":\\s*)"pending"(.*?"publishedAt":\\s*)null`, 's'),
-    `$1"published"$2"${today}"`
-  );
+  const entry = scheduleObj.pages.find(p => p && p.url === page.url);
+  if (entry) {
+    entry.status = 'published';
+    entry.publishedAt = today;
+  }
 }
 
-// Update lastRun
-updated = updated.replace(/"lastRun":\s*null/, `"lastRun": "${today}"`);
-updated = updated.replace(/"lastRun":\s*"[^"]*"/, `"lastRun": "${today}"`);
+// Record this run in the runs history
+const runRecord = {
+  date: today,
+  timestamp: new Date().toISOString(),
+  pagesPublished: toPublish.map(p => ({ url: p.url, label: p.label, type: p.type ?? 'unknown' })),
+  pendingBefore: pending.length,
+  pendingAfter: pending.length - toPublish.length,
+  trigger: process.env.GITHUB_ACTIONS === 'true'
+    ? (process.env.GITHUB_EVENT_NAME === 'schedule' ? 'scheduled' : 'manual_dispatch')
+    : 'local',
+  runBy: process.env.GITHUB_ACTOR ?? 'local',
+};
 
-writeFileSync(SCHEDULE_PATH, updated, 'utf-8');
+if (!Array.isArray(scheduleObj.runs)) scheduleObj.runs = [];
+scheduleObj.runs.unshift(runRecord); // newest first
+
+// Update lastRun
+scheduleObj.lastRun = today;
+
+// Write back with consistent formatting
+const serialized = JSON.stringify(scheduleObj, null, 2);
+writeFileSync(SCHEDULE_PATH, serialized + '\n', 'utf-8');
 console.log(`\n✅ publish-schedule.json updated.`);
+console.log(`   Run recorded: ${today} · trigger: ${runRecord.trigger} · by: ${runRecord.runBy}`);
 
 // ─── Build ────────────────────────────────────────────────────────────────────
 console.log('\n🔨 Running build…\n');
