@@ -44,6 +44,20 @@
     { "url": "/calculator/drywall",                  "label": "Drywall Calculator",           "status": "pending", "publishedAt": null },
     { "url": "/guide/how-much-drywall-do-i-need",    "label": "How Much Drywall Do I Need?",  "status": "pending", "publishedAt": null },
 
+    { "_section": "BATCH 3 — Project-specific & reference pages" },
+    { "url": "/guide/how-much-gravel-for-a-driveway",          "label": "How Much Gravel for a Driveway?",          "status": "pending", "publishedAt": null },
+    { "url": "/guide/how-much-topsoil-for-raised-bed",         "label": "How Much Topsoil for a Raised Bed?",       "status": "pending", "publishedAt": null },
+    { "url": "/guide/how-much-sand-for-paver-base",            "label": "How Much Sand for a Paver Base?",         "status": "pending", "publishedAt": null },
+    { "url": "/guide/how-much-concrete-for-fence-posts",       "label": "How Much Concrete for Fence Posts?",      "status": "pending", "publishedAt": null },
+    { "url": "/guide/cubic-feet-to-cubic-yards",               "label": "Cubic Feet to Cubic Yards",               "status": "pending", "publishedAt": null },
+    { "url": "/guide/how-much-mulch-for-100-square-feet",      "label": "Mulch for 100 Square Feet",               "status": "pending", "publishedAt": null },
+    { "url": "/guide/how-much-mulch-for-a-garden-bed",         "label": "How Much Mulch for a Garden Bed?",        "status": "pending", "publishedAt": null },
+    { "url": "/guide/how-many-gallons-of-paint-for-a-bedroom", "label": "Gallons of Paint for a Bedroom",          "status": "pending", "publishedAt": null },
+    { "url": "/guide/how-many-tiles-for-a-bathroom",           "label": "How Many Tiles for a Bathroom?",          "status": "pending", "publishedAt": null },
+    { "url": "/guide/how-many-sheets-of-drywall-for-a-room",   "label": "Drywall Sheets for a Room",               "status": "pending", "publishedAt": null },
+    { "url": "/guide/how-many-boxes-of-flooring-for-a-room",   "label": "Flooring Boxes per Room",                 "status": "pending", "publishedAt": null },
+    { "url": "/guide/what-is-a-cubic-yard",                    "label": "What Is a Cubic Yard?",                   "status": "pending", "publishedAt": null },
+
     { "_section": "FUTURE — not yet written" }
   ]
 }

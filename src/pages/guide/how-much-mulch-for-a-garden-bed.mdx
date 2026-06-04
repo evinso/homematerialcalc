@@ -1,0 +1,67 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How much mulch do I need for a 4×8 garden bed?', a: 'A 4×8 ft bed (32 sq ft) at 3 inches deep needs about 0.30 cubic yards or 4–5 bags of 2 cu ft mulch. At 2 inches deep, you need 3 bags.' },
+  { q: 'How much mulch for a 10×10 garden bed?', a: 'A 10×10 ft bed (100 sq ft) at 3 inches deep needs about 14 bags (2 cu ft each) or 1 cubic yard of bulk mulch. At 2 inches: 10 bags.' },
+  { q: 'How many bags of mulch for a 4×4 raised bed?', a: 'A 4×4 ft raised bed (16 sq ft) at 3 inches of mulch on top needs about 2 bags. Mulch on top of a raised bed is a light layer — 2–3 inches is standard for weed suppression.' },
+  { q: 'How often should I add mulch to garden beds?', a: 'Top-dress garden beds with 1–2 inches of fresh mulch each spring. After the first application (2–3 inches), annual maintenance only needs 1–2 inches to replenish what has decomposed.' },
+  { q: 'What depth of mulch is best for garden beds?', a: '2–3 inches is ideal for most garden beds. This suppresses weeds, retains moisture, and regulates soil temperature. Avoid more than 4 inches — too-thick mulch can prevent water penetration and harm plant roots.' },
+];
+
+export const related = [
+  { href: '/calculator/mulch', label: 'Mulch Calculator' },
+  { href: '/guide/how-much-mulch-do-i-need', label: 'How Much Mulch Do I Need?' },
+  { href: '/guide/how-many-bags-of-mulch-in-a-cubic-yard', label: 'Bags per Cubic Yard' },
+  { href: '/guide/how-much-mulch-for-100-square-feet', label: 'Mulch for 100 Sq Ft' },
+];
+
+<GuideLayout
+  title="How Much Mulch for a Garden Bed? — By Bed Size"
+  description="How many bags of mulch for a 4×8, 4×4, or 10×10 garden bed? Complete mulch table for common garden bed sizes at 2, 3, and 4 inch depths."
+  h1="How Much Mulch for a Garden Bed?"
+  intro="The amount of mulch for a garden bed depends on the bed's size and how deep you apply it. A standard 3-inch application is ideal for weed suppression and moisture retention."
+  calculatorHref="/calculator/mulch"
+  calculatorLabel="Mulch Calculator — bags and cubic yards for any bed shape"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Mulch for a Garden Bed' }]}
+>
+
+## Bags needed by garden bed size (2 cu ft bags, with 5% waste)
+
+| Bed size | Sq ft | At 2" | At 3" | At 4" |
+|----------|-------|-------|-------|-------|
+| 3 × 6 ft | 18 sq ft | 2 bags | 3 bags | 4 bags |
+| 4 × 4 ft | 16 sq ft | 2 bags | 3 bags | 3 bags |
+| 4 × 8 ft | 32 sq ft | 3 bags | 5 bags | 7 bags |
+| 4 × 12 ft | 48 sq ft | 5 bags | 7 bags | 10 bags |
+| 6 × 8 ft | 48 sq ft | 5 bags | 7 bags | 10 bags |
+| 8 × 10 ft | 80 sq ft | 8 bags | 11 bags | 15 bags |
+| 10 × 10 ft | 100 sq ft | 10 bags | 14 bags | 18 bags |
+| 10 × 20 ft | 200 sq ft | 19 bags | 27 bags | 36 bags |
+
+## Cubic yards by bed size (for bulk mulch ordering)
+
+| Bed size | At 2" | At 3" | At 4" |
+|----------|-------|-------|-------|
+| 4 × 8 ft | 0.22 cu yd | 0.33 cu yd | 0.44 cu yd |
+| 8 × 10 ft | 0.55 cu yd | 0.82 cu yd | 1.10 cu yd |
+| 10 × 10 ft | 0.68 cu yd | 1.02 cu yd | 1.37 cu yd |
+| 10 × 20 ft | 1.37 cu yd | 2.06 cu yd | 2.74 cu yd |
+
+## Multiple beds: add them together
+
+If you have several beds, measure each one separately and add the totals. Use the [Mulch Calculator](/calculator/mulch) with the Irregular shape option to enter all beds at once.
+
+**Example:** Three beds — 4×8 + 4×12 + 6×8 = 32 + 48 + 48 = 128 sq ft total. At 3 inches, you need about 1.25 cubic yards (18 bags).
+
+## Depth guide for garden beds
+
+| Situation | Depth |
+|-----------|-------|
+| Annual refresh (existing mulch present) | 1–2 inches |
+| New bed, standard | 2–3 inches |
+| Heavy weed suppression | 3–4 inches |
+| Around trees / shrubs | 3–4 inches (keep away from trunk) |
+
+</GuideLayout>

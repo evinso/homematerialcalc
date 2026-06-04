@@ -1,0 +1,65 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How much sand do I need for a paver base?', a: 'The standard bedding sand layer under pavers is 1 inch deep. For a 10×12 ft patio (120 sq ft), you need 0.37 cubic yards or about 0.50 tons of paver sand, which is 21 bags of 50 lb sand.' },
+  { q: 'What type of sand goes under pavers?', a: 'Use coarse concrete sand (also called sharp sand or paver sand) for the bedding layer. Do not use fine play sand or polymeric sand for the base — they are too fine and will not provide a stable, level surface.' },
+  { q: 'How deep should the sand layer be for pavers?', a: 'The bedding sand layer should be exactly 1 inch (25 mm) deep — no more. Thicker sand beds are unstable and cause pavers to shift. The bulk of your base should be compacted gravel, not sand.' },
+  { q: 'Do I need gravel under the sand for pavers?', a: 'Yes. A proper paver base is: 4–6 inches of compacted gravel base, then 1 inch of bedding sand, then the pavers. The sand is for leveling only — the gravel provides the actual support.' },
+  { q: 'How many 50 lb bags of paver sand per square foot?', a: 'At 1 inch deep, you need about 1 bag of 50 lb paver sand per 6 sq ft. For a 100 sq ft patio: 100 ÷ 6 = 17 bags.' },
+];
+
+export const related = [
+  { href: '/calculator/sand', label: 'Sand Calculator' },
+  { href: '/calculator/gravel', label: 'Gravel Calculator' },
+  { href: '/guide/how-much-sand-do-i-need', label: 'How Much Sand Do I Need?' },
+  { href: '/guide/how-much-gravel-for-a-driveway', label: 'How Much Gravel for a Driveway?' },
+];
+
+<GuideLayout
+  title="How Much Sand for a Paver Base? — Bedding Sand Calculator"
+  description="Calculate how much paver sand you need for a patio or walkway base. Standard depth is 1 inch. Coverage table for all common patio sizes in bags, cubic yards, and tons."
+  h1="How Much Sand for a Paver Base?"
+  intro="The bedding sand layer under pavers should be exactly 1 inch deep. Here is how much sand you need for any patio or walkway size — in bags, cubic yards, and tons."
+  calculatorHref="/calculator/sand"
+  calculatorLabel="Sand Calculator — bags and tons for your paver project"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Sand for Paver Base' }]}
+>
+
+## The quick formula (1 inch bedding sand)
+
+**Cu yd = Length (ft) × Width (ft) ÷ 324**
+
+**50 lb bags = Cu yd × 54** (50 lb bag = 0.50 cu ft)
+
+## Paver sand by patio size (at 1 inch deep)
+
+| Patio size | Sq ft | Cu yards | 50 lb bags | Tons |
+|------------|-------|----------|------------|------|
+| 8 × 10 ft | 80 sq ft | 0.25 | 14 bags | 0.33 |
+| 10 × 10 ft | 100 sq ft | 0.31 | 17 bags | 0.42 |
+| 10 × 12 ft | 120 sq ft | 0.37 | 21 bags | 0.50 |
+| 12 × 16 ft | 192 sq ft | 0.59 | 33 bags | 0.80 |
+| 16 × 20 ft | 320 sq ft | 0.99 | 54 bags | 1.34 |
+| 20 × 20 ft | 400 sq ft | 1.23 | 68 bags | 1.67 |
+
+## Complete paver base: gravel + sand
+
+A proper paver installation needs both gravel base and sand bedding:
+
+| Layer | Depth | Purpose |
+|-------|-------|---------|
+| Compacted gravel (crushed stone) | 4–6 inches | Structural base, drainage |
+| Bedding sand (coarse/concrete sand) | **1 inch** | Leveling only |
+| Pavers | varies | Surface |
+
+For the gravel layer, use the [Gravel Calculator](/calculator/gravel) — a 10×12 ft patio at 4" deep needs about 1.5 tons.
+
+## Why only 1 inch of sand?
+
+Thicker sand beds compress unevenly when loaded, causing pavers to sink and become unlevel. The 1-inch rule ensures the sand can be screeded flat and holds its shape under the pavers. The gravel base, not the sand, provides the structural support.
+
+Use the [Sand Calculator](/calculator/sand) for your exact patio dimensions.
+
+</GuideLayout>

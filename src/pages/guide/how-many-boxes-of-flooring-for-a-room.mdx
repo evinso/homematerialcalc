@@ -1,0 +1,69 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How many boxes of flooring for a 12×12 room?', a: 'A 12×12 room is 144 sq ft. With 10% waste, you need 158.4 sq ft. If each box covers 20 sq ft, that is 8 boxes. If each box covers 25 sq ft, that is 7 boxes. Check your specific product label.' },
+  { q: 'How many boxes of laminate flooring for a 10×12 room?', a: 'A 10×12 room is 120 sq ft. With 10% waste: 132 sq ft. At 20 sq ft per box: 7 boxes. At 25 sq ft per box: 6 boxes.' },
+  { q: 'How do I find the box coverage for my flooring?', a: 'The box coverage (or "carton coverage") is printed on the box label, usually in the format "covers X sq ft per carton" or "X sq ft per box." It varies by product, brand, and board width.' },
+  { q: 'How many extra boxes of flooring should I buy?', a: 'Always buy at least 10% extra for waste cuts. Additionally, keep 1 unopened box for future repairs — flooring dye lots change between production runs, making it difficult to match later.' },
+  { q: 'Can I use leftover flooring in another room?', a: 'Yes, if the rooms use the same product. This is another reason to overbuy slightly — extra flooring from a first room can be used in a closet or small area later.' },
+];
+
+export const related = [
+  { href: '/calculator/flooring', label: 'Flooring Calculator' },
+  { href: '/guide/how-much-flooring-do-i-need', label: 'How Much Flooring Do I Need?' },
+  { href: '/calculator/tile', label: 'Tile Calculator' },
+];
+
+<GuideLayout
+  title="How Many Boxes of Flooring for a Room? (All Room Sizes)"
+  description="A 12×12 room needs 7–9 boxes of flooring depending on box coverage. Exact box counts for 20 and 25 sq ft boxes for all common room sizes."
+  h1="How Many Boxes of Flooring for a Room?"
+  intro="The number of flooring boxes depends on your room size and the box coverage on your product label. With 10% waste, a 12×12 room needs 7–8 boxes at typical box coverages."
+  calculatorHref="/calculator/flooring"
+  calculatorLabel="Flooring Calculator — enter your box coverage for exact count"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Flooring Boxes per Room' }]}
+>
+
+## Boxes needed by room size (straight lay, 10% waste)
+
+### With 20 sq ft per box (common vinyl plank / LVP)
+
+| Room size | Sq ft | With waste | Boxes (20 sq ft) |
+|-----------|-------|------------|-----------------|
+| 8 × 10 ft | 80 sq ft | 88 sq ft | **5 boxes** |
+| 10 × 10 ft | 100 sq ft | 110 sq ft | **6 boxes** |
+| 10 × 12 ft | 120 sq ft | 132 sq ft | **7 boxes** |
+| 12 × 12 ft | 144 sq ft | 158 sq ft | **8 boxes** |
+| 12 × 14 ft | 168 sq ft | 185 sq ft | **10 boxes** |
+| 12 × 16 ft | 192 sq ft | 211 sq ft | **11 boxes** |
+| 16 × 20 ft | 320 sq ft | 352 sq ft | **18 boxes** |
+
+### With 25 sq ft per box (common laminate)
+
+| Room size | Sq ft | With waste | Boxes (25 sq ft) |
+|-----------|-------|------------|-----------------|
+| 10 × 10 ft | 100 sq ft | 110 sq ft | **5 boxes** |
+| 10 × 12 ft | 120 sq ft | 132 sq ft | **6 boxes** |
+| 12 × 12 ft | 144 sq ft | 158 sq ft | **7 boxes** |
+| 12 × 16 ft | 192 sq ft | 211 sq ft | **9 boxes** |
+| 16 × 20 ft | 320 sq ft | 352 sq ft | **15 boxes** |
+
+## For diagonal lay (15% waste)
+
+| Room size | Boxes (20 sq ft) | Boxes (25 sq ft) |
+|-----------|-----------------|-----------------|
+| 12 × 12 ft | 9 boxes | 7 boxes |
+| 12 × 16 ft | 12 boxes | 10 boxes |
+
+## How to find your box coverage
+
+The coverage is printed on the box. Look for:
+- "Coverage: X sq ft per carton"
+- "X sq ft per box"
+- Or calculate: (board length × board width × boards per box) ÷ 144
+
+Use the [Flooring Calculator](/calculator/flooring) and enter your product's exact box coverage for a precise count.
+
+</GuideLayout>

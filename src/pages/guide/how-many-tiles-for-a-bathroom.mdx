@@ -1,0 +1,75 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How many 12×12 tiles for a 5×8 bathroom?', a: 'A 5×8 ft bathroom floor is 40 sq ft. With 10% waste, you need 44 sq ft. Since each 12×12 tile = 1 sq ft, you need 44 tiles.' },
+  { q: 'How many tiles for a 10×10 bathroom floor?', a: 'A 10×10 ft floor is 100 sq ft. With 10% waste (straight lay), you need 110 tiles of 12×12 inch tile. For 18×18 tiles (2.25 sq ft each): 49 tiles.' },
+  { q: 'How many subway tiles for a bathroom backsplash?', a: 'A standard 3×6 subway tile covers 0.125 sq ft per tile. For a 5-foot wide, 18-inch tall backsplash (7.5 sq ft + 10% waste = 8.25 sq ft), you need about 66 tiles.' },
+  { q: 'Should I use 10% or 15% waste for bathroom tile?', a: 'Use 10% for simple rectangular bathrooms with straight tile layout. Use 15% for diagonal patterns, L-shaped bathrooms, or bathrooms with many cuts around the toilet, vanity, and tub.' },
+  { q: 'How many boxes of tile for a bathroom?', a: 'Divide your total tile count by the tiles per box. Large format tiles (18×18, 24×24) often come 3–6 per box; smaller tiles may come 10–15 per box. Check the box label for exact count.' },
+];
+
+export const related = [
+  { href: '/calculator/tile', label: 'Tile Calculator' },
+  { href: '/guide/how-much-tile-do-i-need', label: 'How Much Tile Do I Need?' },
+  { href: '/calculator/flooring', label: 'Flooring Calculator' },
+];
+
+<GuideLayout
+  title="How Many Tiles for a Bathroom? (Floor & Shower Wall)"
+  description="Calculate how many tiles you need for a bathroom floor, shower walls, or backsplash. Tile count table for 12×12, 18×18, and subway tiles for all common bathroom sizes."
+  h1="How Many Tiles for a Bathroom?"
+  intro="The number of tiles depends on your bathroom's square footage and the tile size. Add 10% for straight lay or 15% for diagonal patterns and complex bathrooms."
+  calculatorHref="/calculator/tile"
+  calculatorLabel="Tile Calculator — exact tile count for any size and layout"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Tiles for a Bathroom' }]}
+>
+
+## Bathroom floor tile count (straight lay, 10% waste)
+
+### 12×12 tiles (1 sq ft per tile)
+
+| Bathroom size | Sq ft | 12×12 tiles |
+|---------------|-------|------------|
+| 4 × 6 ft | 24 sq ft | 27 tiles |
+| 5 × 7 ft | 35 sq ft | 39 tiles |
+| 5 × 8 ft | 40 sq ft | 44 tiles |
+| 6 × 8 ft | 48 sq ft | 53 tiles |
+| 8 × 10 ft | 80 sq ft | 88 tiles |
+| 10 × 10 ft | 100 sq ft | 110 tiles |
+
+### 18×18 tiles (2.25 sq ft per tile)
+
+| Bathroom size | 18×18 tiles |
+|---------------|------------|
+| 5 × 8 ft | 20 tiles |
+| 8 × 10 ft | 40 tiles |
+| 10 × 10 ft | 49 tiles |
+
+### 3×6 subway tiles (0.125 sq ft per tile)
+
+| Area | Subway tiles needed |
+|------|-------------------|
+| 20 sq ft (small backsplash) | 176 tiles |
+| 40 sq ft (bathroom floor) | 352 tiles |
+| 60 sq ft (shower walls) | 528 tiles |
+
+## Shower wall tile estimate
+
+For a standard 36×36 inch shower with 8-foot ceilings:
+- 3 walls × (3 ft wide × 8 ft tall) = 72 sq ft (approx, before door/window deductions)
+- With 15% waste: ~83 sq ft
+- In 12×12 tiles: **83 tiles**
+
+## Thinset and grout for bathroom tile
+
+| Bathroom size | Thinset (50 lb bags) | Grout (10 lb bags) |
+|---------------|---------------------|--------------------|
+| 5 × 8 ft | 2 bags | 1 bag |
+| 8 × 10 ft | 2 bags | 2 bags |
+| 10 × 10 ft | 3 bags | 2 bags |
+
+Use the [Tile Calculator](/calculator/tile) to enter your exact bathroom dimensions and get tile count, thinset, and grout for your project.
+
+</GuideLayout>

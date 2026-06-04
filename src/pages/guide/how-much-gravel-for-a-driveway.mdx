@@ -1,0 +1,71 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How many tons of gravel do I need for a driveway?', a: 'A typical 10×40 ft driveway at 4 inches deep needs about 4.94 cubic yards, which equals about 6.9 tons of crushed stone (at 1.40 t/cu yd). Add 10% waste for a final order of about 7.6 tons.' },
+  { q: 'How deep should gravel be on a driveway?', a: 'A well-built gravel driveway has two layers: a 4-inch base layer of larger crushed stone (like #57 or #2 stone), and a 2-inch top layer of smaller crushed gravel. Total depth: 4–6 inches for standard driveways, 6–8 inches for heavy vehicles.' },
+  { q: 'What type of gravel is best for driveways?', a: 'Crushed stone (3/4" or #57 stone) is the most common driveway gravel — it compacts well and stays in place. Pea gravel is less stable and shifts under traffic. Crushed limestone is a dense, economical option in regions where it is available.' },
+  { q: 'How much does a ton of driveway gravel cover?', a: 'One ton of crushed stone (1.40 t/cu yd) covers about 100 sq ft at 2 inches deep, or about 50 sq ft at 4 inches deep.' },
+  { q: 'How do I calculate gravel for an irregular driveway?', a: 'Break the driveway into rectangular sections, measure each one, and add the areas together. Use the Gravel Calculator with the Irregular shape option. For curved driveways, measure the average width along the path length.' },
+];
+
+export const related = [
+  { href: '/calculator/gravel', label: 'Gravel Calculator' },
+  { href: '/guide/how-much-gravel-do-i-need', label: 'How Much Gravel Do I Need?' },
+  { href: '/guide/how-much-does-a-yard-of-gravel-weigh', label: 'How Much Does a Yard of Gravel Weigh?' },
+  { href: '/guide/cubic-yards-to-tons', label: 'Cubic Yards to Tons Converter' },
+];
+
+<GuideLayout
+  title="How Much Gravel Do I Need for a Driveway?"
+  description="Calculate how many tons and cubic yards of gravel you need for a driveway. Includes depth guide, coverage table by driveway size, and stone type recommendations."
+  h1="How Much Gravel for a Driveway?"
+  intro="The amount of gravel for a driveway depends on your driveway's length, width, and intended depth. Most residential driveways need 4–6 inches of crushed stone."
+  calculatorHref="/calculator/gravel"
+  calculatorLabel="Gravel Calculator — exact tons for your driveway dimensions"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Gravel for a Driveway' }]}
+>
+
+## The quick formula
+
+**Volume (cu yd) = Length (ft) × Width (ft) × Depth (in) ÷ 324**
+
+**Tons = Volume (cu yd) × 1.40** (for crushed stone)
+
+## Driveway gravel by size (crushed stone, 1.40 t/cu yd, with 10% waste)
+
+| Driveway size | At 2" deep | At 4" deep | At 6" deep |
+|---------------|-----------|-----------|-----------|
+| 8 × 20 ft | 1.0 tons | 2.0 tons | 3.1 tons |
+| 10 × 30 ft | 1.9 tons | 3.9 tons | 5.8 tons |
+| 10 × 40 ft | 2.6 tons | 5.2 tons | 7.7 tons |
+| 12 × 50 ft | 3.8 tons | 7.7 tons | 11.5 tons |
+| 12 × 100 ft | 7.7 tons | 15.4 tons | 23.1 tons |
+
+## Recommended depth by use
+
+| Use | Depth |
+|-----|-------|
+| Decorative / light foot traffic | 2 inches |
+| Standard residential driveway | 4 inches |
+| Heavy use / occasional trucks | 6 inches |
+| Two-layer installation (base + top) | 4" base + 2" top = 6" total |
+
+## Best gravel types for driveways
+
+| Stone type | Notes | Density |
+|------------|-------|---------|
+| Crushed stone (3/4") | Best all-around — compacts well, stays put | 1.40 t/cu yd |
+| Crushed limestone | Dense, economical, good drainage | 1.50 t/cu yd |
+| Pea gravel | Decorative only — shifts under traffic | 1.40 t/cu yd |
+| Decomposed granite | Good for mild climates, compacts firm | 1.35 t/cu yd |
+
+## How to measure your driveway
+
+1. Measure length and average width in feet
+2. For curved or irregular driveways: walk a tape measure along the center line for length; measure width at several points and average them
+3. Decide on depth (4" is standard for passenger vehicles)
+4. Use the [Gravel Calculator](/calculator/gravel) to get tons and cubic yards
+
+</GuideLayout>

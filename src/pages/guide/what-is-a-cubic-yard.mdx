@@ -1,0 +1,81 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How big is a cubic yard?', a: 'A cubic yard is a cube that measures 3 feet on each side (3 ft × 3 ft × 3 ft = 27 cubic feet). Imagine a cube about the size of a standard washing machine.' },
+  { q: 'How many cubic feet are in a cubic yard?', a: 'There are exactly 27 cubic feet in one cubic yard. This comes from: 1 yard = 3 feet, so 1 cubic yard = 3 × 3 × 3 = 27 cubic feet.' },
+  { q: 'How much is a cubic yard of mulch?', a: 'A cubic yard of bulk mulch typically costs $25–$60 depending on your region and mulch type. It covers 108 sq ft at 3 inches deep, or 162 sq ft at 2 inches deep.' },
+  { q: 'How many wheelbarrows in a cubic yard?', a: 'A standard contractor wheelbarrow holds about 3 cubic feet. So 1 cubic yard = 27 cu ft ÷ 3 cu ft per load = 9 wheelbarrow loads.' },
+  { q: 'How heavy is a cubic yard of soil?', a: 'A cubic yard of topsoil weighs approximately 2,200 lbs (1.1 tons) when dry. Gravel is heavier at 2,700–3,000 lbs per cubic yard. Mulch is lighter at 400–800 lbs per cubic yard.' },
+];
+
+export const related = [
+  { href: '/guide/cubic-feet-to-cubic-yards', label: 'Cubic Feet to Cubic Yards' },
+  { href: '/guide/cubic-yards-to-tons', label: 'Cubic Yards to Tons' },
+  { href: '/calculator/mulch', label: 'Mulch Calculator' },
+  { href: '/calculator/topsoil', label: 'Topsoil Calculator' },
+];
+
+<GuideLayout
+  title="What Is a Cubic Yard? Size, Weight & Coverage Explained"
+  description="A cubic yard is 3 ft × 3 ft × 3 ft = 27 cubic feet. Learn how big a cubic yard is, how much it weighs for different materials, and how much area it covers."
+  h1="What Is a Cubic Yard?"
+  intro="A cubic yard is a cube measuring 3 feet on each side — 27 cubic feet total. It is the standard unit for ordering mulch, topsoil, gravel, sand, and concrete in the US."
+  calculatorHref="/calculator/mulch"
+  calculatorLabel="Mulch Calculator — see exactly how many cubic yards you need"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'What Is a Cubic Yard?' }]}
+>
+
+## The basics
+
+| Fact | Value |
+|------|-------|
+| 1 cubic yard | 3 ft × 3 ft × 3 ft |
+| 1 cubic yard | **27 cubic feet** |
+| 1 cubic yard | 46,656 cubic inches |
+| 1 cubic yard | 0.7646 cubic meters |
+
+Think of it as a cube about the size of a standard washing machine or a large dresser.
+
+## How much does a cubic yard weigh?
+
+| Material | Weight per cubic yard |
+|----------|----------------------|
+| Mulch (shredded) | 400–800 lbs |
+| Topsoil (dry) | ~2,200 lbs (1.1 tons) |
+| Sand | 2,600–2,700 lbs (1.30–1.35 tons) |
+| Gravel / crushed stone | 2,700–3,000 lbs (1.35–1.50 tons) |
+| Concrete (wet mix) | ~4,050 lbs (2.0 tons) |
+
+## How much area does a cubic yard cover?
+
+| Material | Depth | Coverage |
+|----------|-------|---------|
+| Mulch | 2 inches | 162 sq ft |
+| Mulch | 3 inches | 108 sq ft |
+| Topsoil | 4 inches | 81 sq ft |
+| Gravel | 2 inches | 162 sq ft |
+| Gravel | 4 inches | 81 sq ft |
+
+**Formula:** Coverage (sq ft) = 324 ÷ Depth (in)
+
+## How many bags equal a cubic yard?
+
+| Material | Bag size | Bags per cubic yard |
+|----------|----------|-------------------|
+| Mulch | 2 cu ft | 13.5 bags |
+| Topsoil | 40 lb (0.75 cu ft) | 36 bags |
+| Sand | 50 lb (0.50 cu ft) | 54 bags |
+| Concrete | 80 lb (0.60 cu ft) | 45 bags |
+
+## Visualizing a cubic yard
+
+- **9 wheelbarrow loads** (standard 3 cu ft contractor barrow)
+- A cube **3 feet tall × 3 feet wide × 3 feet deep**
+- About the size of a **standard washing machine**
+- A pickup truck bed holds roughly **1–2 cubic yards** (depending on truck size and material density)
+
+Use our calculators to find exactly how many cubic yards you need for your project — no guesswork required.
+
+</GuideLayout>

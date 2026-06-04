@@ -1,0 +1,64 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How many bags of mulch for 100 square feet at 3 inches?', a: 'For 100 sq ft at 3 inches deep, you need 0.93 cubic yards of mulch, which equals 13 bags (2 cu ft each) before waste. With a 5% waste factor, round up to 14 bags.' },
+  { q: 'How many cubic yards of mulch for 100 square feet?', a: '100 sq ft at 3 inches deep = 100 × 3 ÷ 324 = 0.93 cubic yards. At 2 inches: 0.62 cu yd. At 4 inches: 1.23 cu yd.' },
+  { q: 'How much mulch do I need for 100 sq ft at 2 inches?', a: 'At 2 inches deep, 100 sq ft needs 0.62 cubic yards (17 cu ft), which equals 9 bags of 2 cu ft mulch. Add 5% waste for 10 bags.' },
+  { q: 'Is 1 cubic yard of mulch enough for 100 square feet?', a: 'Yes — 1 cubic yard covers 108 sq ft at 3 inches deep, 162 sq ft at 2 inches, or 81 sq ft at 4 inches. For 100 sq ft at 3 inches, you need slightly less than 1 cubic yard.' },
+];
+
+export const related = [
+  { href: '/calculator/mulch', label: 'Mulch Calculator' },
+  { href: '/guide/how-much-mulch-do-i-need', label: 'How Much Mulch Do I Need?' },
+  { href: '/guide/how-many-bags-of-mulch-in-a-cubic-yard', label: 'Bags per Cubic Yard' },
+];
+
+<GuideLayout
+  title="How Much Mulch for 100 Square Feet? (Bags & Cubic Yards)"
+  description="For 100 sq ft at 3 inches deep, you need about 14 bags or 0.93 cubic yards of mulch. Full table for all depths from 1 to 6 inches."
+  h1="How Much Mulch for 100 Square Feet?"
+  intro="For 100 square feet at 3 inches deep — the most common mulch depth — you need just under 1 cubic yard, which is 13 to 14 bags of 2 cu ft mulch."
+  calculatorHref="/calculator/mulch"
+  calculatorLabel="Mulch Calculator — enter any area and depth for exact bag count"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Mulch for 100 Sq Ft' }]}
+>
+
+## The answer at a glance — 100 sq ft
+
+| Depth | Cu ft | Cu yards | 2 cu ft bags (w/ 5% waste) |
+|-------|-------|----------|---------------------------|
+| 1 inch | 8.3 | 0.31 | 5 bags |
+| 2 inches | 16.7 | 0.62 | 10 bags |
+| **3 inches** | **25.0** | **0.93** | **14 bags** |
+| 4 inches | 33.3 | 1.23 | 18 bags |
+| 6 inches | 50.0 | 1.85 | 27 bags |
+
+## How we calculated it
+
+For 100 sq ft at 3 inches:
+1. Volume = 100 × 3 ÷ 12 = 25 cu ft
+2. Cu yd = 25 ÷ 27 = 0.926 cu yd
+3. Bags = 0.926 × 13.5 = 12.5 → **13 bags** (without waste)
+4. With 5% waste: 12.5 × 1.05 = 13.1 → **14 bags**
+
+## For other area sizes
+
+| Area | At 2" depth | At 3" depth | At 4" depth |
+|------|------------|------------|------------|
+| 50 sq ft | 5 bags | 7 bags | 9 bags |
+| 100 sq ft | 10 bags | **14 bags** | 18 bags |
+| 200 sq ft | 19 bags | 27 bags | 36 bags |
+| 300 sq ft | 28 bags | 40 bags | 54 bags |
+| 500 sq ft | 46 bags | 67 bags | 90 bags |
+
+*All bag counts include 5% waste, rounded up.*
+
+## When to buy bulk vs. bags
+
+For 100 sq ft at 3 inches (14 bags), buying bags is convenient. At 13.5 bags per cubic yard, you need just under 1 full yard — buying bags from a garden center is easier than ordering a partial yard of bulk mulch. If you have multiple beds totaling 200+ sq ft, compare bulk delivery prices.
+
+Use the [Mulch Calculator](/calculator/mulch) for your exact bed dimensions and depth.
+
+</GuideLayout>

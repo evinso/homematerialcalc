@@ -1,0 +1,86 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How many cubic feet are in a cubic yard?', a: 'There are exactly 27 cubic feet in one cubic yard (3 ft × 3 ft × 3 ft = 27 cu ft). This is an exact mathematical identity.' },
+  { q: 'How do I convert cubic feet to cubic yards?', a: 'Divide cubic feet by 27. Example: 54 cubic feet ÷ 27 = 2 cubic yards. To go the other way (cubic yards to cubic feet), multiply by 27.' },
+  { q: 'How many bags of mulch are in a cubic foot?', a: 'A standard 2 cu ft bag of mulch contains 2 cubic feet. One cubic yard = 27 cu ft = 13.5 bags of 2 cu ft mulch.' },
+  { q: 'Why is a cubic yard 27 cubic feet?', a: '1 yard = 3 feet. A cubic yard is 3 ft × 3 ft × 3 ft = 27 cubic feet. It is a mathematical identity from the unit definition.' },
+];
+
+export const related = [
+  { href: '/guide/cubic-yards-to-tons', label: 'Cubic Yards to Tons Converter' },
+  { href: '/calculator/mulch', label: 'Mulch Calculator' },
+  { href: '/calculator/topsoil', label: 'Topsoil Calculator' },
+  { href: '/calculator/gravel', label: 'Gravel Calculator' },
+];
+
+<GuideLayout
+  title="Cubic Feet to Cubic Yards Converter — Quick Reference"
+  description="1 cubic yard = 27 cubic feet. Complete conversion table for cubic feet to cubic yards with examples for mulch bags, topsoil, and concrete."
+  h1="Cubic Feet to Cubic Yards Converter"
+  intro="To convert cubic feet to cubic yards, divide by 27. To convert cubic yards to cubic feet, multiply by 27. This is an exact relationship: 1 yard = 3 feet, so 1 cu yd = 3³ = 27 cu ft."
+  calculatorHref="/calculator/mulch"
+  calculatorLabel="Mulch Calculator — enter dimensions, get cubic yards instantly"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Cubic Feet to Cubic Yards' }]}
+>
+
+## The conversion
+
+**1 cubic yard = 27 cubic feet (exact)**
+
+**Cu yd = Cu ft ÷ 27**
+
+**Cu ft = Cu yd × 27**
+
+## Cubic feet → cubic yards table
+
+| Cubic feet | Cubic yards |
+|------------|-------------|
+| 1 cu ft | 0.037 cu yd |
+| 3 cu ft | 0.111 cu yd |
+| 5 cu ft | 0.185 cu yd |
+| 9 cu ft | 0.333 cu yd |
+| 13.5 cu ft | 0.500 cu yd |
+| 27 cu ft | **1.000 cu yd** |
+| 40 cu ft | 1.481 cu yd |
+| 54 cu ft | 2.000 cu yd |
+| 81 cu ft | 3.000 cu yd |
+| 135 cu ft | 5.000 cu yd |
+
+## Cubic yards → cubic feet table
+
+| Cubic yards | Cubic feet |
+|-------------|------------|
+| 0.25 cu yd | 6.75 cu ft |
+| 0.50 cu yd | 13.5 cu ft |
+| 0.75 cu yd | 20.25 cu ft |
+| 1.00 cu yd | **27 cu ft** |
+| 1.50 cu yd | 40.5 cu ft |
+| 2.00 cu yd | 54 cu ft |
+| 3.00 cu yd | 81 cu ft |
+| 5.00 cu yd | 135 cu ft |
+
+## Practical examples
+
+| Material | Bag / unit | Cu ft per unit | Units per cu yd |
+|----------|-----------|----------------|-----------------|
+| Mulch | 2 cu ft bag | 2 | **13.5 bags** |
+| Topsoil | 40 lb bag | 0.75 | **36 bags** |
+| Sand | 50 lb bag | 0.50 | **54 bags** |
+| Concrete | 80 lb bag | 0.60 | **45 bags** |
+
+## How to calculate volume from area + depth
+
+If you know area (sq ft) and depth (inches):
+
+**Cu ft = Area (sq ft) × Depth (in) ÷ 12**
+
+**Cu yd = Cu ft ÷ 27 = Area × Depth (in) ÷ 324**
+
+Example: 100 sq ft at 3 inches = 100 × 3 ÷ 324 = **0.93 cubic yards**
+
+Use any of our material calculators to skip the math — enter your dimensions and get cubic yards, bags, or tons instantly.
+
+</GuideLayout>

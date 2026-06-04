@@ -1,0 +1,62 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How many gallons of paint for an average bedroom?', a: 'An average US bedroom (10×12 ft, 8 ft ceiling) has about 352 sq ft of wall area. After 1 door and 2 windows (~51 sq ft), net area is 301 sq ft. At 2 coats and 350 sq ft/gallon, you need 2 gallons. Buy 3 to be safe.' },
+  { q: 'How many gallons of paint for a 12×12 bedroom?', a: 'A 12×12 ft room with 8-foot ceilings has 384 sq ft of walls. Subtract 1 door (21 sq ft) and 2 windows (30 sq ft): net 333 sq ft. Two coats at 350 sq ft/gal = 1.9 gallons. Buy 2–3 gallons.' },
+  { q: 'How many gallons of paint for a 10×10 room?', a: 'A 10×10 ft room with 8 ft ceilings has 320 sq ft of walls. After 1 door and 1 window (~36 sq ft), net area is 284 sq ft. Two coats at 350 sq ft/gal = 1.6 gallons. Buy 2 gallons.' },
+  { q: 'Do I need to paint the ceiling separately?', a: 'Yes — ceiling paint is typically a different product (flat white) and sold separately. A 10×12 ceiling is 120 sq ft, which takes about 1 quart for one coat or 1 gallon for two coats.' },
+  { q: 'How much does it cost to paint a bedroom?', a: 'Paint alone typically costs $25–$60 per gallon (2–3 gallons for most bedrooms = $50–$180). Primer adds another $20–$30 per gallon. Labor for a professional painter averages $200–$400 per room.' },
+];
+
+export const related = [
+  { href: '/calculator/paint', label: 'Paint Calculator' },
+  { href: '/guide/how-much-paint-do-i-need', label: 'How Much Paint Do I Need?' },
+  { href: '/guide/paint-coverage-per-gallon', label: 'Paint Coverage per Gallon' },
+];
+
+<GuideLayout
+  title="How Many Gallons of Paint for a Bedroom? (All Sizes)"
+  description="Most bedrooms need 2–3 gallons of paint for 2 coats. Exact gallon counts for 10×10, 10×12, 12×12, and 12×16 bedrooms with standard 8 ft ceilings."
+  h1="How Many Gallons of Paint for a Bedroom?"
+  intro="Most bedrooms need 2–3 gallons of wall paint for two coats. The exact amount depends on room size, ceiling height, and how many doors and windows you are painting around."
+  calculatorHref="/calculator/paint"
+  calculatorLabel="Paint Calculator — exact gallons for your bedroom dimensions"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Gallons of Paint for a Bedroom' }]}
+>
+
+## Gallons needed by bedroom size (2 coats, 8 ft ceiling, standard paint)
+
+| Room size | Wall area | Doors | Windows | Net area | Gallons |
+|-----------|-----------|-------|---------|----------|---------|
+| 10 × 10 ft | 320 sq ft | 1 | 1 | 284 sq ft | **2 gal** |
+| 10 × 12 ft | 352 sq ft | 1 | 2 | 301 sq ft | **2 gal** |
+| 12 × 12 ft | 384 sq ft | 1 | 2 | 333 sq ft | **2–3 gal** |
+| 12 × 14 ft | 416 sq ft | 1 | 2 | 365 sq ft | **3 gal** |
+| 12 × 16 ft | 448 sq ft | 1 | 2 | 397 sq ft | **3 gal** |
+| 14 × 16 ft | 480 sq ft | 1 | 2 | 429 sq ft | **3 gal** |
+
+*Net area = wall area minus 21 sq ft per door and 15 sq ft per window. Gallons rounded up.*
+
+## With 9 or 10 ft ceilings
+
+Taller ceilings add significant wall area — roughly 12–15% more per foot of extra height.
+
+| Room | 8 ft ceiling | 9 ft ceiling | 10 ft ceiling |
+|------|-------------|-------------|--------------|
+| 10 × 12 ft | 2 gal | 2–3 gal | 3 gal |
+| 12 × 12 ft | 2–3 gal | 3 gal | 3 gal |
+| 12 × 16 ft | 3 gal | 3–4 gal | 4 gal |
+
+## Don't forget: what else to buy
+
+| Item | Quantity for average bedroom |
+|------|----------------------------|
+| Primer | 1 quart (new drywall) or 1 gallon (dramatic color change) |
+| Trim paint | 1 quart (semi-gloss or satin) |
+| Ceiling paint | 1 quart (1 coat) or 1 gallon (2 coats) |
+
+Use the [Paint Calculator](/calculator/paint) with your exact room dimensions, door count, and window count for a precise gallon estimate.
+
+</GuideLayout>
