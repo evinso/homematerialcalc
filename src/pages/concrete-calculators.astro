@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const calcs = [
+  { href: '/calculator/concrete', label: 'Concrete Calculator', desc: 'Bags (40, 60, 80 lb) or cubic yards for slabs, footings, and post holes.' },
+];
+
+const guides = [
+  { href: '/guide/how-much-concrete-do-i-need',         label: 'How Much Concrete Do I Need?' },
+  { href: '/guide/how-much-concrete-for-fence-posts',   label: 'How Much Concrete for Fence Posts?' },
+  { href: '/guide/how-much-concrete-for-a-slab',        label: 'How Much Concrete for a Slab?' },
+  { href: '/guide/how-many-bags-of-concrete-for-10x10-slab', label: 'Concrete Bags for a 10×10 Slab' },
+];
+
+const refs = [
+  { href: '/guide/how-many-bags-of-concrete-per-cubic-yard', label: 'Concrete Bags per Cubic Yard' },
+  { href: '/guide/how-thick-should-concrete-slab-be',        label: 'How Thick Should a Concrete Slab Be?' },
+  { href: '/guide/concrete-mix-ratios',                      label: 'Concrete Mix Ratios' },
+  { href: '/guide/cubic-yards-to-tons',                      label: 'Cubic Yards to Tons' },
+];
+---
+
+<BaseLayout
+  title="Concrete Calculators — Bags, Cubic Yards, Slabs & Footings"
+  description="Free concrete calculators for slabs, footings, post holes, and steps. Get exact bag counts (40, 60, 80 lb) or cubic yards for any concrete project."
+>
+  <div class="max-w-5xl mx-auto px-4 py-12">
+    <nav class="text-sm text-gray-500 mb-6 flex flex-wrap gap-1">
+      <a href="/" class="hover:text-brand-600">Home</a>
+      <span>›</span>
+      <span class="text-gray-700">Concrete Calculators</span>
+    </nav>
+
+    <h1 class="text-3xl font-bold text-gray-900 mb-3">Concrete Calculators</h1>
+    <p class="text-gray-600 mb-10 text-lg max-w-2xl">Calculate how many bags of concrete you need for any slab, footing, or post hole — or find out how many cubic yards to order from a ready-mix supplier.</p>
+
+    <section class="mb-12">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Calculators</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {calcs.map(c => (
+          <a href={c.href} class="calculator-card hover:border-brand-300 hover:shadow-sm transition-all group block">
+            <p class="font-semibold text-gray-900 group-hover:text-brand-700 mb-1">{c.label}</p>
+            <p class="text-sm text-gray-600">{c.desc}</p>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Project Guides</h2>
+      <ul class="grid sm:grid-cols-2 gap-2 text-sm">
+        {guides.map(g => (
+          <li><a href={g.href} class="text-brand-600 hover:underline">{g.label}</a></li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Reference</h2>
+      <ul class="grid sm:grid-cols-2 gap-2 text-sm">
+        {refs.map(r => (
+          <li><a href={r.href} class="text-brand-600 hover:underline">{r.label}</a></li>
+        ))}
+      </ul>
+    </section>
+
+    <div class="border-t pt-6 text-sm text-gray-600 flex flex-wrap gap-4">
+      <a href="/landscaping-calculators" class="text-brand-600 hover:underline">Landscaping Calculators →</a>
+      <a href="/interior-calculators" class="text-brand-600 hover:underline">Interior Calculators →</a>
+    </div>
+  </div>
+</BaseLayout>

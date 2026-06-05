@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import MulchCalculator from '../../components/calculators/MulchCalculator';
 import AdSlot from '../../components/ui/AdSlot.astro';
+import CalcSchema from '../../components/ui/CalcSchema.astro';
 
 const related = [
   { href: '/calculator/topsoil',  label: 'Topsoil Calculator' },
@@ -16,6 +17,10 @@ const related = [
   title="Mulch Calculator — How Many Bags or Cubic Yards Do I Need?"
   description="Free mulch calculator: enter your bed dimensions and depth to instantly find out how many 2 cu ft bags or cubic yards of mulch to buy. Includes waste factor and cost estimate."
 >
+
+  <Fragment slot="head">
+    <CalcSchema name="Mulch Calculator" description="Free mulch calculator for bags, cubic yards and cost" url="/calculator/mulch" />
+  </Fragment>
   <div class="max-w-6xl mx-auto px-4 py-10">
     <div class="grid lg:grid-cols-[1fr_380px] gap-10">
 

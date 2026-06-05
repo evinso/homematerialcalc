@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const calcs = [
+  { href: '/calculator/mulch',   label: 'Mulch Calculator',   desc: 'Bags or cubic yards for any bed size and depth.' },
+  { href: '/calculator/gravel',  label: 'Gravel Calculator',  desc: 'Cubic yards and tons for driveways, paths, and beds.' },
+  { href: '/calculator/topsoil', label: 'Topsoil Calculator', desc: 'Cubic yards or 40 lb bags for lawn and garden projects.' },
+  { href: '/calculator/sand',    label: 'Sand Calculator',    desc: 'Cubic yards and bags for paver bases, sandboxes, and fill.' },
+  { href: '/calculator/sod',     label: 'Sod Calculator',     desc: 'Pieces and pallets for any lawn shape, with waste factor.' },
+  { href: '/calculator/paver',   label: 'Paver Calculator',   desc: 'Paver count, sand base, and gravel base for patios and paths.' },
+];
+
+const guides = [
+  { href: '/guide/how-much-mulch-do-i-need',       label: 'How Much Mulch Do I Need?' },
+  { href: '/guide/how-much-gravel-do-i-need',      label: 'How Much Gravel Do I Need?' },
+  { href: '/guide/how-much-topsoil-do-i-need',     label: 'How Much Topsoil Do I Need?' },
+  { href: '/guide/how-much-sand-do-i-need',        label: 'How Much Sand Do I Need?' },
+  { href: '/guide/how-much-sod-do-i-need',         label: 'How Much Sod Do I Need?' },
+  { href: '/guide/how-many-pavers-do-i-need',      label: 'How Many Pavers Do I Need?' },
+  { href: '/guide/how-much-gravel-for-a-driveway', label: 'How Much Gravel for a Driveway?' },
+  { href: '/guide/how-much-topsoil-for-raised-bed',label: 'How Much Topsoil for a Raised Bed?' },
+  { href: '/guide/how-much-sand-for-paver-base',   label: 'How Much Sand for a Paver Base?' },
+  { href: '/guide/how-much-sand-for-a-sandbox',    label: 'How Much Sand for a Sandbox?' },
+  { href: '/guide/how-much-gravel-for-a-french-drain', label: 'Gravel for a French Drain' },
+];
+
+const refs = [
+  { href: '/guide/cubic-yards-to-tons',               label: 'Cubic Yards to Tons' },
+  { href: '/guide/cubic-feet-to-cubic-yards',         label: 'Cubic Feet to Cubic Yards' },
+  { href: '/guide/how-many-bags-of-mulch-in-a-cubic-yard', label: 'Mulch Bags per Cubic Yard' },
+  { href: '/guide/how-many-bags-of-sand-in-a-cubic-yard',  label: 'Sand Bags per Cubic Yard' },
+  { href: '/guide/topsoil-vs-garden-soil',            label: 'Topsoil vs Garden Soil' },
+  { href: '/guide/types-of-mulch',                    label: 'Types of Mulch' },
+  { href: '/guide/gravel-vs-crushed-stone',           label: 'Gravel vs Crushed Stone' },
+  { href: '/guide/how-deep-should-gravel-be',         label: 'How Deep Should Gravel Be?' },
+  { href: '/guide/how-long-does-mulch-last',          label: 'How Long Does Mulch Last?' },
+];
+---
+
+<BaseLayout
+  title="Landscaping Calculators — Mulch, Gravel, Topsoil, Sand, Sod & Pavers"
+  description="Free landscaping calculators for mulch, gravel, topsoil, sand, sod, and pavers. Get exact bags, cubic yards, tons, and pallets for any outdoor project."
+>
+  <div class="max-w-5xl mx-auto px-4 py-12">
+    <nav class="text-sm text-gray-500 mb-6 flex flex-wrap gap-1">
+      <a href="/" class="hover:text-brand-600">Home</a>
+      <span>›</span>
+      <span class="text-gray-700">Landscaping Calculators</span>
+    </nav>
+
+    <h1 class="text-3xl font-bold text-gray-900 mb-3">Landscaping Calculators</h1>
+    <p class="text-gray-600 mb-10 text-lg max-w-2xl">Outdoor material calculators for mulch, gravel, topsoil, sand, sod, and paving projects. Enter your dimensions and get exact quantities in the units your supplier uses.</p>
+
+    <!-- Calculators grid -->
+    <section class="mb-12">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Calculators</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {calcs.map(c => (
+          <a href={c.href} class="calculator-card hover:border-brand-300 hover:shadow-sm transition-all group block">
+            <p class="font-semibold text-gray-900 group-hover:text-brand-700 mb-1">{c.label}</p>
+            <p class="text-sm text-gray-600">{c.desc}</p>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Guides -->
+    <section class="mb-12">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">How-Much Guides</h2>
+      <ul class="grid sm:grid-cols-2 gap-2 text-sm">
+        {guides.map(g => (
+          <li><a href={g.href} class="text-brand-600 hover:underline">{g.label}</a></li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- Reference -->
+    <section class="mb-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Reference & Conversions</h2>
+      <ul class="grid sm:grid-cols-2 gap-2 text-sm">
+        {refs.map(r => (
+          <li><a href={r.href} class="text-brand-600 hover:underline">{r.label}</a></li>
+        ))}
+      </ul>
+    </section>
+
+    <div class="border-t pt-6 text-sm text-gray-600 flex flex-wrap gap-4">
+      <a href="/concrete-calculators" class="text-brand-600 hover:underline">Concrete Calculators →</a>
+      <a href="/interior-calculators" class="text-brand-600 hover:underline">Interior Calculators →</a>
+    </div>
+  </div>
+</BaseLayout>

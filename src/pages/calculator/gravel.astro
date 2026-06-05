@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import GravelCalculator from '../../components/calculators/GravelCalculator';
 import AdSlot from '../../components/ui/AdSlot.astro';
+import CalcSchema from '../../components/ui/CalcSchema.astro';
 
 const related = [
   { href: '/calculator/sand',    label: 'Sand Calculator' },
@@ -17,6 +18,10 @@ const related = [
   title="Gravel Calculator — Cubic Yards &amp; Tons | How Much Gravel Do I Need?"
   description="Free gravel and crushed stone calculator. Enter your project area and depth to get cubic yards and tons for pea gravel, crushed stone, limestone, river rock, and decomposed granite."
 >
+
+  <Fragment slot="head">
+    <CalcSchema name="Gravel Calculator" description="Free gravel calculator for cubic yards, tons and cost" url="/calculator/gravel" />
+  </Fragment>
   <div class="max-w-6xl mx-auto px-4 py-10">
     <div class="grid lg:grid-cols-[1fr_380px] gap-10">
       <div>

@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PaintCalculator from '../../components/calculators/PaintCalculator';
 import AdSlot from '../../components/ui/AdSlot.astro';
+import CalcSchema from '../../components/ui/CalcSchema.astro';
 const related = [
   { href: '/calculator/flooring', label: 'Flooring Calculator' },
   { href: '/calculator/tile',     label: 'Tile Calculator' },
@@ -14,6 +15,10 @@ const related = [
   title="Paint Calculator — How Many Gallons of Paint Do I Need?"
   description="Free paint calculator: enter room dimensions or wall area, number of coats, doors and windows, and instantly get gallons needed with a cost estimate."
 >
+
+  <Fragment slot="head">
+    <CalcSchema name="Paint Calculator" description="Free paint calculator for gallons, quarts and cost" url="/calculator/paint" />
+  </Fragment>
   <div class="max-w-6xl mx-auto px-4 py-10">
     <div class="grid lg:grid-cols-[1fr_380px] gap-10">
       <div>

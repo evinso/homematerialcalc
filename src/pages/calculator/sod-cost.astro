@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SodCalculator from '../../components/calculators/SodCalculator';
+import AdSlot from '../../components/ui/AdSlot.astro';
+import CalcSchema from '../../components/ui/CalcSchema.astro';
+---
+
+<BaseLayout
+  title="Sod Cost Calculator — Estimate Your Total Project Cost"
+  description="Free sod cost calculator: enter your lawn area and price per pallet to estimate your total sod installation cost."
+>
+  <Fragment slot="head">
+    <CalcSchema name="Sod Cost Calculator" description="Free sod cost calculator: enter your lawn area and price per pallet to estimate your total sod installation cost." url="/calculator/sod-cost" />
+  </Fragment>
+
+  <div class="max-w-6xl mx-auto px-4 py-10">
+    <nav class="text-sm text-gray-500 mb-4 flex gap-1">
+      <a href="/" class="hover:text-brand-600">Home</a><span>›</span>
+      <a href="/landscaping-calculators" class="hover:text-brand-600">Landscaping</a><span>›</span>
+      <span class="text-gray-700">Sod Cost Calculator</span>
+    </nav>
+    <div class="grid lg:grid-cols-[1fr_360px] gap-10">
+      <div>
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">Sod Cost Calculator</h1>
+        <p class="text-gray-600 mb-2">Enter your lawn dimensions and local price per pallet to calculate your total sod cost.</p>
+        <p class="text-sm text-gray-500 mb-6" set:html="Enter your price in the <strong>"Price per pallet"</strong> field to get a cost estimate."></p>
+
+        <SodCalculator client:load />
+        <AdSlot slot="after-result" className="mt-6" />
+
+        <div class="calculator-card mt-8">
+          <h2 class="font-bold text-gray-900 text-lg mb-3">Typical prices (US)</h2>
+          <table class="w-full text-sm text-gray-700">
+            <thead><tr class="border-b"><th class="text-left pb-1">Product</th><th class="text-right pb-1">Typical price</th></tr></thead>
+            <tbody class="divide-y">
+              <tr><td class="py-1.5">Bermuda sod (per pallet)</td><td class="py-1.5 text-right font-medium">$150–$350</td></tr>
+              <tr><td class="py-1.5">Zoysia sod (per pallet)</td><td class="py-1.5 text-right font-medium">$200–$450</td></tr>
+              <tr><td class="py-1.5">Fescue sod (per pallet)</td><td class="py-1.5 text-right font-medium">$150–$300</td></tr>
+              <tr><td class="py-1.5">St. Augustine (per pallet)</td><td class="py-1.5 text-right font-medium">$175–$400</td></tr>
+            </tbody>
+          </table>
+          <p class="text-xs text-gray-500 mt-2">Prices vary by region. Enter your actual local price above for an accurate estimate.</p>
+        </div>
+
+        <div class="mt-6 text-sm text-gray-500 border-t pt-4">
+          Quantity-only? Use the <a href="/calculator/sod" class="text-brand-600 hover:underline">Sod Calculator</a>
+        </div>
+      </div>
+
+      <aside class="space-y-6">
+        <div class="calculator-card">
+          <h3 class="font-semibold text-gray-900 mb-3">Related</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/calculator/sod" class="text-brand-600 hover:underline">Sod Calculator (quantity only)</a></li>
+            <li><a href="/guide/how-much-sod-do-i-need" class="text-brand-600 hover:underline">How Much Sod Do I Need?</a></li>
+            <li><a href="/guide/how-many-square-feet-does-a-pallet-of-sod-cover" class="text-brand-600 hover:underline">Sod Pallet Coverage</a></li>
+            <li><a href="/calculator/topsoil-cost" class="text-brand-600 hover:underline">Topsoil Cost Calculator</a></li>
+          </ul>
+        </div>
+        <AdSlot slot="sidebar" />
+      </aside>
+    </div>
+  </div>
+</BaseLayout>

@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import LumberCalculator from '../../components/calculators/LumberCalculator';
 import AdSlot from '../../components/ui/AdSlot.astro';
+import CalcSchema from '../../components/ui/CalcSchema.astro';
 
 const related = [
   { href: '/guide/how-much-lumber-do-i-need',   label: 'How Much Lumber Do I Need?' },
@@ -16,6 +17,10 @@ const related = [
   title="Lumber Calculator — Board Feet & Cost Estimator"
   description="Free lumber calculator: enter piece count, nominal size, and length to instantly find board feet, waste-adjusted totals, and cost estimates for any framing or carpentry project."
 >
+
+  <Fragment slot="head">
+    <CalcSchema name="Lumber Calculator" description="Free lumber calculator for board feet and cost" url="/calculator/lumber" />
+  </Fragment>
   <div class="max-w-6xl mx-auto px-4 py-10">
     <div class="grid lg:grid-cols-[1fr_380px] gap-10">
 

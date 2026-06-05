@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import MulchCalculator from '../../components/calculators/MulchCalculator';
+import AdSlot from '../../components/ui/AdSlot.astro';
+import CalcSchema from '../../components/ui/CalcSchema.astro';
+---
+
+<BaseLayout
+  title="Mulch Cost Calculator — Estimate Your Total Project Cost"
+  description="Free mulch cost calculator: enter your bed size, depth, and local price per bag or cubic yard to get your total mulch cost instantly."
+>
+  <Fragment slot="head">
+    <CalcSchema name="Mulch Cost Calculator" description="Free mulch cost calculator for bags and cubic yards" url="/calculator/mulch-cost" />
+  </Fragment>
+
+  <div class="max-w-6xl mx-auto px-4 py-10">
+    <nav class="text-sm text-gray-500 mb-4 flex gap-1">
+      <a href="/" class="hover:text-brand-600">Home</a><span>›</span>
+      <a href="/landscaping-calculators" class="hover:text-brand-600">Landscaping</a><span>›</span>
+      <span class="text-gray-700">Mulch Cost Calculator</span>
+    </nav>
+    <div class="grid lg:grid-cols-[1fr_360px] gap-10">
+      <div>
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">Mulch Cost Calculator</h1>
+        <p class="text-gray-600 mb-2">Enter your bed dimensions, depth, and the price you pay per bag or cubic yard to get a complete cost estimate.</p>
+        <p class="text-sm text-gray-500 mb-6">Enter your local price in the <strong>"Price per bag"</strong> field below to calculate total cost. Leave it blank for quantity-only results.</p>
+
+        <MulchCalculator client:load />
+        <AdSlot slot="after-result" className="mt-6" />
+
+        <div class="calculator-card mt-8">
+          <h2 class="font-bold text-gray-900 text-lg mb-3">Typical mulch prices (US)</h2>
+          <table class="w-full text-sm text-gray-700">
+            <thead><tr class="border-b"><th class="text-left pb-1">Product</th><th class="text-right pb-1">Typical price</th></tr></thead>
+            <tbody class="divide-y">
+              {[
+                ['2 cu ft bag (store)', '$4–$8'],
+                ['Bulk delivery (per cu yd)', '$25–$55'],
+                ['Premium dyed mulch (bag)', '$6–$10'],
+                ['Cedar mulch (bag)', '$7–$12'],
+              ].map(([p, v]) => (
+                <tr><td class="py-1.5">{p}</td><td class="py-1.5 text-right font-medium">{v}</td></tr>
+              ))}
+            </tbody>
+          </table>
+          <p class="text-xs text-gray-500 mt-2">Prices vary by region and season. Enter your actual local price above for an accurate estimate.</p>
+        </div>
+
+        <div class="mt-6 text-sm text-gray-500 border-t pt-4">
+          Quantity-only? Use the <a href="/calculator/mulch" class="text-brand-600 hover:underline">Mulch Calculator</a> ·
+          See also: <a href="/guide/how-much-mulch-do-i-need" class="text-brand-600 hover:underline">How Much Mulch Do I Need?</a>
+        </div>
+      </div>
+
+      <aside class="space-y-6">
+        <div class="calculator-card">
+          <h3 class="font-semibold text-gray-900 mb-3">Bags vs. bulk: cost comparison</h3>
+          <p class="text-sm text-gray-700">For projects over 1.5 cubic yards (~20 bags), bulk delivery is almost always cheaper. At $6/bag that's $81/cu yd vs. $35/cu yd bulk — less than half the price.</p>
+        </div>
+        <div class="calculator-card">
+          <h3 class="font-semibold text-gray-900 mb-3">Related</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/calculator/mulch" class="text-brand-600 hover:underline">Mulch Calculator (quantity only)</a></li>
+            <li><a href="/guide/how-much-mulch-do-i-need" class="text-brand-600 hover:underline">How Much Mulch Do I Need?</a></li>
+            <li><a href="/calculator/topsoil-cost" class="text-brand-600 hover:underline">Topsoil Cost Calculator</a></li>
+            <li><a href="/calculator/gravel-cost" class="text-brand-600 hover:underline">Gravel Cost Calculator</a></li>
+          </ul>
+        </div>
+        <AdSlot slot="sidebar" />
+      </aside>
+    </div>
+  </div>
+</BaseLayout>

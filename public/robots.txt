@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /ozgur247162
+
+Sitemap: https://www.homematerialcalc.com/sitemap.xml

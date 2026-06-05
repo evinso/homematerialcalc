@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const calcs = [
+  { href: '/calculator/paint',    label: 'Paint Calculator',    desc: 'Gallons for any room — accounts for doors, windows, and coats.' },
+  { href: '/calculator/flooring', label: 'Flooring Calculator', desc: 'Boxes of hardwood, laminate, or LVP with waste factor.' },
+  { href: '/calculator/tile',     label: 'Tile Calculator',     desc: 'Tile count, thinset, and grout for any room or surface.' },
+  { href: '/calculator/drywall',  label: 'Drywall Calculator',  desc: 'Sheets, joint compound, and tape for walls and ceilings.' },
+  { href: '/calculator/lumber',   label: 'Lumber Calculator',   desc: 'Board feet for framing, decking, and carpentry projects.' },
+];
+
+const guides = [
+  { href: '/guide/how-much-paint-do-i-need',           label: 'How Much Paint Do I Need?' },
+  { href: '/guide/how-much-flooring-do-i-need',        label: 'How Much Flooring Do I Need?' },
+  { href: '/guide/how-much-tile-do-i-need',            label: 'How Much Tile Do I Need?' },
+  { href: '/guide/how-much-drywall-do-i-need',         label: 'How Much Drywall Do I Need?' },
+  { href: '/guide/how-much-lumber-do-i-need',          label: 'How Much Lumber Do I Need?' },
+  { href: '/guide/how-many-gallons-of-paint-for-a-bedroom', label: 'Gallons of Paint for a Bedroom' },
+  { href: '/guide/how-many-tiles-for-a-bathroom',      label: 'How Many Tiles for a Bathroom?' },
+  { href: '/guide/how-many-sheets-of-drywall-for-a-room', label: 'Sheets of Drywall for a Room' },
+  { href: '/guide/how-many-boxes-of-flooring-for-a-room', label: 'Flooring Boxes per Room' },
+  { href: '/guide/how-to-measure-a-room-for-flooring', label: 'How to Measure a Room for Flooring' },
+];
+
+const refs = [
+  { href: '/guide/paint-coverage-per-gallon',    label: 'Paint Coverage per Gallon' },
+  { href: '/guide/paint-types-and-finishes',     label: 'Paint Types & Finishes' },
+  { href: '/guide/how-many-coats-of-paint',      label: 'How Many Coats of Paint?' },
+  { href: '/guide/tile-sizes-and-coverage',      label: 'Tile Sizes & Coverage' },
+  { href: '/guide/drywall-thickness-guide',      label: 'Drywall Thickness Guide' },
+  { href: '/guide/square-feet-to-square-yards',  label: 'Square Feet to Square Yards' },
+  { href: '/guide/linear-feet-to-square-feet',   label: 'Linear Feet to Square Feet' },
+  { href: '/guide/how-to-calculate-square-footage', label: 'How to Calculate Square Footage' },
+];
+---
+
+<BaseLayout
+  title="Interior Calculators — Paint, Flooring, Tile, Drywall & Lumber"
+  description="Free interior material calculators for paint, flooring, tile, drywall, and lumber. Get exact quantities in gallons, boxes, sheets, and board feet."
+>
+  <div class="max-w-5xl mx-auto px-4 py-12">
+    <nav class="text-sm text-gray-500 mb-6 flex flex-wrap gap-1">
+      <a href="/" class="hover:text-brand-600">Home</a>
+      <span>›</span>
+      <span class="text-gray-700">Interior Calculators</span>
+    </nav>
+
+    <h1 class="text-3xl font-bold text-gray-900 mb-3">Interior Calculators</h1>
+    <p class="text-gray-600 mb-10 text-lg max-w-2xl">Calculators for paint, flooring, tile, drywall, and lumber. Enter your room or project dimensions and get exact quantities in the units you buy — no guesswork.</p>
+
+    <section class="mb-12">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Calculators</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {calcs.map(c => (
+          <a href={c.href} class="calculator-card hover:border-brand-300 hover:shadow-sm transition-all group block">
+            <p class="font-semibold text-gray-900 group-hover:text-brand-700 mb-1">{c.label}</p>
+            <p class="text-sm text-gray-600">{c.desc}</p>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">How-Much Guides</h2>
+      <ul class="grid sm:grid-cols-2 gap-2 text-sm">
+        {guides.map(g => (
+          <li><a href={g.href} class="text-brand-600 hover:underline">{g.label}</a></li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Reference</h2>
+      <ul class="grid sm:grid-cols-2 gap-2 text-sm">
+        {refs.map(r => (
+          <li><a href={r.href} class="text-brand-600 hover:underline">{r.label}</a></li>
+        ))}
+      </ul>
+    </section>
+
+    <div class="border-t pt-6 text-sm text-gray-600 flex flex-wrap gap-4">
+      <a href="/landscaping-calculators" class="text-brand-600 hover:underline">Landscaping Calculators →</a>
+      <a href="/concrete-calculators" class="text-brand-600 hover:underline">Concrete Calculators →</a>
+    </div>
+  </div>
+</BaseLayout>

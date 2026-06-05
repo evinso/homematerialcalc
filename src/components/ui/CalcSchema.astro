@@ -1,0 +1,27 @@
+---
+interface Props {
+  name: string;
+  description: string;
+  url: string;
+}
+const { name, description, url } = Astro.props;
+const siteUrl = 'https://www.homematerialcalc.com';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name,
+  description,
+  url: `${siteUrl}${url}`,
+  applicationCategory: 'UtilitiesApplication',
+  operatingSystem: 'Web',
+  browserRequirements: 'Requires JavaScript',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+  creator: {
+    '@type': 'Organization',
+    name: 'HomeMaterialCalc',
+    url: siteUrl,
+  },
+};
+---
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

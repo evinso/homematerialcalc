@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const updated = '2026-06-05';
+---
+
+<BaseLayout
+  title="Cookie Policy — HomeMaterialCalc"
+  description="Learn what cookies HomeMaterialCalc uses, why we use them, and how to control them."
+>
+  <div class="max-w-3xl mx-auto px-4 py-12">
+    <h1 class="text-3xl font-bold text-gray-900 mb-2">Cookie Policy</h1>
+    <p class="text-sm text-gray-500 mb-8">Last updated: {updated}</p>
+
+    <div class="prose prose-gray max-w-none space-y-6 text-gray-700">
+      <section>
+        <h2 class="text-xl font-bold text-gray-900 mb-2">What are cookies?</h2>
+        <p>Cookies are small text files stored on your device by your web browser when you visit a website. They help websites remember your preferences and understand how you use the site.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-gray-900 mb-2">Cookies we use</h2>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="border-b-2 border-gray-200">
+                <th class="text-left py-2 pr-4 font-semibold text-gray-900">Cookie</th>
+                <th class="text-left py-2 pr-4 font-semibold text-gray-900">Type</th>
+                <th class="text-left py-2 pr-4 font-semibold text-gray-900">Purpose</th>
+                <th class="text-left py-2 font-semibold text-gray-900">Duration</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100">
+              <tr>
+                <td class="py-2 pr-4 font-mono text-xs">_ga, _ga_*</td>
+                <td class="py-2 pr-4">Analytics</td>
+                <td class="py-2 pr-4">Google Analytics 4 — tracks page views and user behaviour to help us understand how the site is used. No personally identifiable information is stored.</td>
+                <td class="py-2">2 years</td>
+              </tr>
+              <tr>
+                <td class="py-2 pr-4 font-mono text-xs">_gid</td>
+                <td class="py-2 pr-4">Analytics</td>
+                <td class="py-2 pr-4">Google Analytics — distinguishes users.</td>
+                <td class="py-2">24 hours</td>
+              </tr>
+              <tr>
+                <td class="py-2 pr-4 font-mono text-xs">IDE, DSID</td>
+                <td class="py-2 pr-4">Advertising</td>
+                <td class="py-2 pr-4">Google AdSense — used to show relevant ads and measure ad performance. Set only after you give consent (EEA/UK visitors).</td>
+                <td class="py-2">Up to 13 months</td>
+              </tr>
+              <tr>
+                <td class="py-2 pr-4 font-mono text-xs">hmc_consent</td>
+                <td class="py-2 pr-4">Functional</td>
+                <td class="py-2 pr-4">Remembers your cookie preference so we don't ask again.</td>
+                <td class="py-2">1 year</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-gray-900 mb-2">Essential vs. non-essential cookies</h2>
+        <p><strong>Essential cookies</strong> are necessary for the site to function and cannot be turned off.</p>
+        <p class="mt-2"><strong>Non-essential cookies</strong> (analytics, advertising) are only set after you give consent. If you are visiting from the EEA, UK, or Switzerland, we will ask for your consent before placing these cookies.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-gray-900 mb-2">How to control cookies</h2>
+        <p>You can control and delete cookies through your browser settings:</p>
+        <ul class="list-disc list-inside mt-2 space-y-1">
+          <li><strong>Chrome:</strong> Settings → Privacy and Security → Cookies and other site data</li>
+          <li><strong>Firefox:</strong> Settings → Privacy & Security → Cookies and Site Data</li>
+          <li><strong>Safari:</strong> Preferences → Privacy → Manage Website Data</li>
+          <li><strong>Edge:</strong> Settings → Cookies and site permissions</li>
+        </ul>
+        <p class="mt-2">You can also opt out of Google Analytics at <a href="https://tools.google.com/dlpage/gaoptout" class="text-brand-600 hover:underline" target="_blank" rel="noopener">tools.google.com/dlpage/gaoptout</a> and manage Google ad preferences at <a href="https://adssettings.google.com" class="text-brand-600 hover:underline" target="_blank" rel="noopener">adssettings.google.com</a>.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-gray-900 mb-2">Changes to this policy</h2>
+        <p>We may update this Cookie Policy when we add new features or change our service providers. The "last updated" date at the top will reflect any changes.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-gray-900 mb-2">Contact</h2>
+        <p>Questions about cookies? <a href="/contact" class="text-brand-600 hover:underline">Contact us</a>.</p>
+      </section>
+    </div>
+  </div>
+</BaseLayout>

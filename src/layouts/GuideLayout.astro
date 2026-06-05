@@ -30,7 +30,7 @@ const {
   faqs = [], breadcrumbs = [], calculatorHref, calculatorLabel, related,
 } = Astro.props;
 
-const site = 'https://homematerialcalc.com';
+const site = 'https://www.homematerialcalc.com';
 const canonical = canonicalUrl ?? site + Astro.url.pathname;
 
 const faqSchema = faqs.length > 0 ? {
@@ -56,11 +56,28 @@ const breadcrumbSchema = breadcrumbs.length > 0 ? {
     })),
   ],
 } : null;
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: h1,
+  description,
+  url: canonical,
+  publisher: {
+    '@type': 'Organization',
+    name: 'HomeMaterialCalc',
+    url: site,
+    logo: { '@type': 'ImageObject', url: `${site}/og-default.png` },
+  },
+  author: { '@type': 'Organization', name: 'HomeMaterialCalc' },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
+};
 ---
 
 <BaseLayout {title} {description} {canonicalUrl}>
   <!-- Schema.org injected via Fragment; BaseLayout renders <slot /> in <head> area separately -->
   <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
     {faqSchema && (
       <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
     )}

@@ -1,0 +1,6 @@
+# ads.txt — required for Google AdSense
+# After AdSense approval, replace the line below with the exact line from your AdSense dashboard.
+# Format: google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+#
+# PLACEHOLDER — replace after AdSense approval:
+# google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0

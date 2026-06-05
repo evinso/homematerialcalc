@@ -9,8 +9,20 @@ interface Props {
 }
 
 const { title, description, canonicalUrl, ogImage } = Astro.props;
-const siteUrl = 'https://homematerialcalc.com';
+const siteUrl = 'https://www.homematerialcalc.com';
 const canonical = canonicalUrl ?? siteUrl + Astro.url.pathname;
+const ogImageUrl = ogImage ?? `${siteUrl}/og-default.png`;
+const isHome = Astro.url.pathname === '/';
+
+const orgSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'HomeMaterialCalc',
+  url: siteUrl,
+  logo: `${siteUrl}/og-default.png`,
+  description: 'Free material calculators and guides for US homeowners and DIYers.',
+  contactPoint: { '@type': 'ContactPoint', contactType: 'customer support', url: `${siteUrl}/contact` },
+};
 ---
 
 <!doctype html>
@@ -20,12 +32,31 @@ const canonical = canonicalUrl ?? siteUrl + Astro.url.pathname;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+
+    <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:type" content="website" />
-    {ogImage && <meta property="og:image" content={ogImage} />}
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="HomeMaterialCalc" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <!-- Search Console verification — replace XXXX with your token -->
+    <!-- <meta name="google-site-verification" content="REPLACE_WITH_SEARCH_CONSOLE_TOKEN" /> -->
+
+    <!-- Organization schema (homepage only) -->
+    {isHome && (
+      <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
+    )}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -36,24 +67,84 @@ const canonical = canonicalUrl ?? siteUrl + Astro.url.pathname;
 
     <slot name="head" />
 
-    <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) — consent-aware -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-77PP8J7B4H"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
+      // Default consent state — analytics/ads blocked until user accepts
+      gtag('consent', 'default', {
+        analytics_storage: 'denied',
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        wait_for_update: 500,
+      });
       gtag('js', new Date());
       gtag('config', 'G-77PP8J7B4H');
     </script>
 
     <!-- ============================================================
-         ADSENSE: Google'dan aldığın kodu aşağıya yapıştır.
+         ADSENSE: AdSense onayından sonra kodu buraya yapıştır.
          Örnek:
          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
          ============================================================ -->
     <!-- ADSENSE_SCRIPT_PLACEHOLDER -->
 
+    <!-- ============================================================
+         GOOGLE CONSENT MANAGEMENT (AdSense onayından sonra)
+         Funding Choices / Google CMP script buraya gelir.
+         ============================================================ -->
+    <!-- CONSENT_MANAGEMENT_PLACEHOLDER -->
+
   </head>
   <body class="min-h-screen flex flex-col">
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-banner" class="hidden fixed bottom-0 left-0 right-0 z-50 bg-gray-900 text-white border-t border-gray-700 px-4 py-4">
+      <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-start sm:items-center gap-4">
+        <p class="text-sm text-gray-300 flex-1">
+          We use cookies to analyse site traffic and (after approval) show relevant ads.
+          See our <a href="/cookie-policy" class="underline hover:text-white">Cookie Policy</a>.
+        </p>
+        <div class="flex gap-2 flex-shrink-0">
+          <button id="cookie-reject" class="px-4 py-2 text-sm rounded-lg border border-gray-600 text-gray-300 hover:border-gray-400 transition-colors">
+            Reject non-essential
+          </button>
+          <button id="cookie-accept" class="px-4 py-2 text-sm rounded-lg bg-brand-600 text-white hover:bg-brand-700 transition-colors font-medium">
+            Accept all
+          </button>
+        </div>
+      </div>
+    </div>
+    <script>
+      (function() {
+        const STORAGE_KEY = 'hmc_consent';
+        const banner = document.getElementById('cookie-banner');
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (!saved) { banner && banner.classList.remove('hidden'); }
+        function setConsent(granted) {
+          localStorage.setItem(STORAGE_KEY, granted ? 'all' : 'essential');
+          banner && banner.classList.add('hidden');
+          if (typeof gtag === 'function') {
+            gtag('consent', 'update', {
+              analytics_storage: granted ? 'granted' : 'denied',
+              ad_storage: granted ? 'granted' : 'denied',
+              ad_user_data: granted ? 'granted' : 'denied',
+              ad_personalization: granted ? 'granted' : 'denied',
+            });
+          }
+        }
+        if (saved === 'all') {
+          if (typeof gtag === 'function') {
+            gtag('consent', 'update', { analytics_storage: 'granted', ad_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted' });
+          }
+        }
+        document.getElementById('cookie-accept')?.addEventListener('click', () => setConsent(true));
+        document.getElementById('cookie-reject')?.addEventListener('click', () => setConsent(false));
+      })();
+    </script>
+
     <!-- Header -->
     <header class="border-b border-gray-200 bg-white sticky top-0 z-50">
       <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
@@ -151,6 +242,40 @@ const canonical = canonicalUrl ?? siteUrl + Astro.url.pathname;
     <!-- Footer -->
     <footer class="bg-gray-50 border-t border-gray-200 mt-16">
       <div class="max-w-6xl mx-auto px-4 py-12">
+
+        <!-- Newsletter strip -->
+        <div class="bg-brand-50 border border-brand-200 rounded-xl px-5 py-4 mb-10 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+          <div class="flex-1">
+            <p class="font-semibold text-brand-800 text-sm">Get new calculators & project tips</p>
+            <p class="text-xs text-brand-600 mt-0.5">No spam. Unsubscribe anytime.</p>
+          </div>
+          <form
+            action="https://buttondown.com/api/emails/embed-subscribe/homematerialcalc"
+            method="post"
+            target="_blank"
+            class="flex gap-2 flex-shrink-0"
+          >
+            <input
+              type="email"
+              name="email"
+              required
+              placeholder="your@email.com"
+              class="px-3 py-1.5 text-sm border border-brand-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 bg-white w-48"
+              aria-label="Email address"
+            />
+            <button type="submit" class="px-4 py-1.5 text-sm font-semibold bg-brand-600 text-white rounded-lg hover:bg-brand-700 transition-colors">
+              Subscribe →
+            </button>
+          </form>
+        </div>
+
+        <!-- Category hubs -->
+        <div class="flex flex-wrap gap-3 mb-8">
+          <a href="/landscaping-calculators" class="px-4 py-2 bg-white border border-gray-200 rounded-lg text-sm font-medium text-gray-700 hover:border-brand-400 hover:text-brand-700 transition-colors">🌿 Landscaping Calculators</a>
+          <a href="/concrete-calculators"    class="px-4 py-2 bg-white border border-gray-200 rounded-lg text-sm font-medium text-gray-700 hover:border-brand-400 hover:text-brand-700 transition-colors">🏗️ Concrete Calculators</a>
+          <a href="/interior-calculators"    class="px-4 py-2 bg-white border border-gray-200 rounded-lg text-sm font-medium text-gray-700 hover:border-brand-400 hover:text-brand-700 transition-colors">🏠 Interior Calculators</a>
+        </div>
+
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-sm">
 
           <!-- Calculators -->
@@ -210,7 +335,7 @@ const canonical = canonicalUrl ?? siteUrl + Astro.url.pathname;
             </ul>
           </div>
 
-          <!-- About -->
+          <!-- About + Trust -->
           <div>
             <p class="font-semibold text-gray-900 mb-3">More Guides</p>
             <ul class="space-y-2 text-gray-600">
@@ -225,11 +350,19 @@ const canonical = canonicalUrl ?? siteUrl + Astro.url.pathname;
             </ul>
             <p class="font-semibold text-gray-900 mt-5 mb-3">About</p>
             <ul class="space-y-2 text-gray-600">
-              <li><a href="/methodology" class="hover:text-brand-700">Methodology</a></li>
-              <li><a href="/about"       class="hover:text-brand-700">About</a></li>
-              <li><a href="/contact"     class="hover:text-brand-700">Contact</a></li>
-              <li><a href="/privacy"     class="hover:text-brand-700">Privacy Policy</a></li>
-              <li><a href="/terms"       class="hover:text-brand-700">Terms</a></li>
+              <li><a href="/methodology"   class="hover:text-brand-700">Methodology</a></li>
+              <li><a href="/about"         class="hover:text-brand-700">About</a></li>
+              <li><a href="/contact"       class="hover:text-brand-700">Contact</a></li>
+              <li><a href="/privacy"       class="hover:text-brand-700">Privacy Policy</a></li>
+              <li><a href="/terms"         class="hover:text-brand-700">Terms</a></li>
+              <li><a href="/cookie-policy" class="hover:text-brand-700">Cookie Policy</a></li>
+              <li><a href="/accessibility" class="hover:text-brand-700">Accessibility</a></li>
+            </ul>
+            <p class="font-semibold text-gray-900 mt-5 mb-3">Trust &amp; Transparency</p>
+            <ul class="space-y-2 text-gray-600">
+              <li><a href="/data-sources"            class="hover:text-brand-700">Data Sources</a></li>
+              <li><a href="/how-it-works"             class="hover:text-brand-700">How It Works</a></li>
+              <li><a href="/calculation-assumptions"  class="hover:text-brand-700">Calculation Assumptions</a></li>
             </ul>
           </div>
         </div>

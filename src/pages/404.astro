@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Page Not Found — HomeMaterialCalc"
+  description="The page you're looking for doesn't exist. Find the right calculator or guide below."
+>
+  <div class="max-w-3xl mx-auto px-4 py-20 text-center">
+    <div class="text-7xl font-black text-brand-100 mb-4 select-none">404</div>
+    <h1 class="text-3xl font-bold text-gray-900 mb-4">That page doesn't exist</h1>
+    <p class="text-gray-600 mb-10 text-lg">But here's what you're probably looking for:</p>
+
+    <div class="grid sm:grid-cols-2 gap-4 text-left mb-12">
+      <div class="calculator-card">
+        <p class="font-semibold text-gray-900 mb-3">Popular Calculators</p>
+        <ul class="space-y-2 text-sm">
+          {[
+            ['/calculator/mulch',    'Mulch Calculator'],
+            ['/calculator/gravel',   'Gravel Calculator'],
+            ['/calculator/concrete', 'Concrete Calculator'],
+            ['/calculator/paint',    'Paint Calculator'],
+            ['/calculator/topsoil',  'Topsoil Calculator'],
+            ['/calculator/sand',     'Sand Calculator'],
+          ].map(([href, label]) => (
+            <li><a href={href} class="text-brand-600 hover:underline">{label}</a></li>
+          ))}
+        </ul>
+      </div>
+      <div class="calculator-card">
+        <p class="font-semibold text-gray-900 mb-3">Popular Guides</p>
+        <ul class="space-y-2 text-sm">
+          {[
+            ['/guide/how-much-mulch-do-i-need',    'How Much Mulch Do I Need?'],
+            ['/guide/how-much-gravel-do-i-need',   'How Much Gravel Do I Need?'],
+            ['/guide/cubic-yards-to-tons',         'Cubic Yards to Tons'],
+            ['/guide/how-much-concrete-do-i-need', 'How Much Concrete Do I Need?'],
+            ['/guide/types-of-mulch',              'Types of Mulch'],
+            ['/guide/gravel-vs-crushed-stone',     'Gravel vs Crushed Stone'],
+          ].map(([href, label]) => (
+            <li><a href={href} class="text-brand-600 hover:underline">{label}</a></li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <div class="flex flex-col sm:flex-row gap-3 justify-center">
+      <a href="/" class="btn-primary px-6 py-3 rounded-xl font-semibold text-sm">
+        ← Back to Homepage
+      </a>
+      <a href="/landscaping-calculators" class="px-6 py-3 rounded-xl font-semibold text-sm border border-gray-300 text-gray-700 hover:border-brand-400 hover:text-brand-700 transition-colors">
+        Browse All Calculators
+      </a>
+    </div>
+  </div>
+</BaseLayout>

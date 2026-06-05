@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SandCalculator from '../../components/calculators/SandCalculator';
+import AdSlot from '../../components/ui/AdSlot.astro';
+import CalcSchema from '../../components/ui/CalcSchema.astro';
+---
+
+<BaseLayout
+  title="Sand Cost Calculator — Estimate Your Total Project Cost"
+  description="Free sand cost calculator: enter your area, depth, and price per ton or bag to estimate your total sand cost."
+>
+  <Fragment slot="head">
+    <CalcSchema name="Sand Cost Calculator" description="Free sand cost calculator: enter your area, depth, and price per ton or bag to estimate your total sand cost." url="/calculator/sand-cost" />
+  </Fragment>
+
+  <div class="max-w-6xl mx-auto px-4 py-10">
+    <nav class="text-sm text-gray-500 mb-4 flex gap-1">
+      <a href="/" class="hover:text-brand-600">Home</a><span>›</span>
+      <a href="/landscaping-calculators" class="hover:text-brand-600">Landscaping</a><span>›</span>
+      <span class="text-gray-700">Sand Cost Calculator</span>
+    </nav>
+    <div class="grid lg:grid-cols-[1fr_360px] gap-10">
+      <div>
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">Sand Cost Calculator</h1>
+        <p class="text-gray-600 mb-2">Enter your project dimensions and local price per ton to calculate your total sand cost.</p>
+        <p class="text-sm text-gray-500 mb-6" set:html="Enter your price in the <strong>"Price per ton"</strong> field to get a cost estimate."></p>
+
+        <SandCalculator client:load />
+        <AdSlot slot="after-result" className="mt-6" />
+
+        <div class="calculator-card mt-8">
+          <h2 class="font-bold text-gray-900 text-lg mb-3">Typical prices (US)</h2>
+          <table class="w-full text-sm text-gray-700">
+            <thead><tr class="border-b"><th class="text-left pb-1">Product</th><th class="text-right pb-1">Typical price</th></tr></thead>
+            <tbody class="divide-y">
+              <tr><td class="py-1.5">Bulk all-purpose sand (per ton)</td><td class="py-1.5 text-right font-medium">$25–$50</td></tr>
+              <tr><td class="py-1.5">50 lb bag</td><td class="py-1.5 text-right font-medium">$5–$9</td></tr>
+              <tr><td class="py-1.5">Play sand (50 lb bag)</td><td class="py-1.5 text-right font-medium">$5–$8</td></tr>
+              <tr><td class="py-1.5">Paver/leveling sand (bag)</td><td class="py-1.5 text-right font-medium">$6–$10</td></tr>
+            </tbody>
+          </table>
+          <p class="text-xs text-gray-500 mt-2">Prices vary by region. Enter your actual local price above for an accurate estimate.</p>
+        </div>
+
+        <div class="mt-6 text-sm text-gray-500 border-t pt-4">
+          Quantity-only? Use the <a href="/calculator/sand" class="text-brand-600 hover:underline">Sand Calculator</a>
+        </div>
+      </div>
+
+      <aside class="space-y-6">
+        <div class="calculator-card">
+          <h3 class="font-semibold text-gray-900 mb-3">Related</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/calculator/sand" class="text-brand-600 hover:underline">Sand Calculator (quantity only)</a></li>
+            <li><a href="/guide/how-much-sand-do-i-need" class="text-brand-600 hover:underline">How Much Sand Do I Need?</a></li>
+            <li><a href="/guide/how-many-bags-of-sand-in-a-cubic-yard" class="text-brand-600 hover:underline">Sand Bags per Cubic Yard</a></li>
+            <li><a href="/calculator/gravel-cost" class="text-brand-600 hover:underline">Gravel Cost Calculator</a></li>
+          </ul>
+        </div>
+        <AdSlot slot="sidebar" />
+      </aside>
+    </div>
+  </div>
+</BaseLayout>

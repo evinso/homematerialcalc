@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SandCalculator from '../../components/calculators/SandCalculator';
 import AdSlot from '../../components/ui/AdSlot.astro';
+import CalcSchema from '../../components/ui/CalcSchema.astro';
 
 const related = [
   { href: '/calculator/gravel',  label: 'Gravel Calculator' },
@@ -16,6 +17,10 @@ const related = [
   title="Sand Calculator — Tons, Cubic Yards &amp; Bags | How Much Sand Do I Need?"
   description="Free sand calculator for paver base, play sand, mason sand, and fill sand. Enter dimensions and depth to get cubic yards, tons, and 50 lb bag count."
 >
+
+  <Fragment slot="head">
+    <CalcSchema name="Sand Calculator" description="Free sand calculator for cubic yards, bags and cost" url="/calculator/sand" />
+  </Fragment>
   <div class="max-w-6xl mx-auto px-4 py-10">
     <div class="grid lg:grid-cols-[1fr_380px] gap-10">
       <div>

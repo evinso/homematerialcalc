@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Calculation Assumptions & Defaults — HomeMaterialCalc"
+  description="Every default value and assumption used in HomeMaterialCalc calculators: depths, waste percentages, densities, rounding rules, and why each was chosen."
+>
+  <div class="max-w-3xl mx-auto px-4 py-12">
+    <nav class="text-sm text-gray-500 mb-6 flex flex-wrap gap-1">
+      <a href="/" class="hover:text-brand-600">Home</a>
+      <span>›</span>
+      <span class="text-gray-700">Calculation Assumptions</span>
+    </nav>
+
+    <h1 class="text-3xl font-bold text-gray-900 mb-3">Calculation Assumptions & Defaults</h1>
+    <p class="text-gray-600 mb-8">Every default value in our calculators was chosen based on industry guidelines and common practice. You can adjust all of these on the calculator pages. Here's what each default is and why we chose it.</p>
+
+    <div class="space-y-8 text-sm text-gray-700">
+
+      <section>
+        <h2 class="text-xl font-bold text-gray-900 mb-3">Rounding rules</h2>
+        <p>We <strong>always round up</strong> to the nearest whole bag, box, pallet, or sheet. You cannot buy fractions of a unit, and running short mid-project forces an extra trip to the store. The waste factor already accounts for over-ordering; the rounding-up is an additional safety margin of at most one unit.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-gray-900 mb-3">Default depths</h2>
+        <table class="w-full border-collapse">
+          <thead><tr class="border-b-2 border-gray-200 text-left"><th class="py-2 pr-4 font-semibold text-gray-900">Material</th><th class="py-2 pr-4 font-semibold text-gray-900">Default depth</th><th class="py-2 font-semibold text-gray-900">Why</th></tr></thead>
+          <tbody class="divide-y divide-gray-100">
+            <tr><td class="py-2 pr-4">Mulch</td><td class="py-2 pr-4">3 inches</td><td class="py-2">University extension service recommends 2–3" for established beds; 3" is sufficient for weed suppression without smothering roots</td></tr>
+            <tr><td class="py-2 pr-4">Gravel (decorative)</td><td class="py-2 pr-4">2 inches</td><td class="py-2">Minimum depth for stable decorative coverage; most landscape paths use 2–3"</td></tr>
+            <tr><td class="py-2 pr-4">Topsoil</td><td class="py-2 pr-4">4 inches</td><td class="py-2">Standard for new garden beds; enough to support annual plant growth</td></tr>
+            <tr><td class="py-2 pr-4">Sand (paver base)</td><td class="py-2 pr-4">1 inch</td><td class="py-2">Industry standard bedding layer for paver installation (ICPI guidelines)</td></tr>
+            <tr><td class="py-2 pr-4">Concrete slab</td><td class="py-2 pr-4">4 inches</td><td class="py-2">IRC minimum for residential slabs (driveways, patios, walkways)</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-gray-900 mb-3">Default waste factors</h2>
+        <table class="w-full border-collapse">
+          <thead><tr class="border-b-2 border-gray-200 text-left"><th class="py-2 pr-4 font-semibold text-gray-900">Material / pattern</th><th class="py-2 pr-4 font-semibold text-gray-900">Default waste</th><th class="py-2 font-semibold text-gray-900">Why</th></tr></thead>
+          <tbody class="divide-y divide-gray-100">
+            <tr><td class="py-2 pr-4">Mulch (straight beds)</td><td class="py-2 pr-4">5%</td><td class="py-2">Minimal waste for regular shapes; accounts for slight unevenness</td></tr>
+            <tr><td class="py-2 pr-4">Gravel, sand</td><td class="py-2 pr-4">10%</td><td class="py-2">Accounts for compaction, spillage, and irregular edges</td></tr>
+            <tr><td class="py-2 pr-4">Concrete</td><td class="py-2 pr-4">10%</td><td class="py-2">Accounts for spillage, pump waste, and uneven subgrade</td></tr>
+            <tr><td class="py-2 pr-4">Flooring (straight)</td><td class="py-2 pr-4">10%</td><td class="py-2">NWFA guideline for straight-layout hardwood and laminate</td></tr>
+            <tr><td class="py-2 pr-4">Flooring (diagonal)</td><td class="py-2 pr-4">15%</td><td class="py-2">NWFA guideline; more cuts at room edges increase waste</td></tr>
+            <tr><td class="py-2 pr-4">Tile (straight)</td><td class="py-2 pr-4">10%</td><td class="py-2">TCNA Handbook recommendation for straight-grid tile</td></tr>
+            <tr><td class="py-2 pr-4">Tile (diagonal)</td><td class="py-2 pr-4">15%</td><td class="py-2">TCNA Handbook; more corner cuts needed</td></tr>
+            <tr><td class="py-2 pr-4">Drywall</td><td class="py-2 pr-4">12%</td><td class="py-2">Accounts for outlet/switch cutouts, door/window trimming, and breakage</td></tr>
+            <tr><td class="py-2 pr-4">Paint</td><td class="py-2 pr-4">10%</td><td class="py-2">Accounts for roller/brush waste and touch-ups</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-gray-900 mb-3">Door and window deductions (paint & drywall)</h2>
+        <table class="w-full border-collapse">
+          <thead><tr class="border-b-2 border-gray-200 text-left"><th class="py-2 pr-4 font-semibold text-gray-900">Opening</th><th class="py-2 pr-4 font-semibold text-gray-900">Deduction</th><th class="py-2 font-semibold text-gray-900">Why</th></tr></thead>
+          <tbody class="divide-y divide-gray-100">
+            <tr><td class="py-2 pr-4">Standard door (3 × 7 ft)</td><td class="py-2 pr-4">21 sq ft</td><td class="py-2">Exact: 3 × 7 = 21</td></tr>
+            <tr><td class="py-2 pr-4">Standard window (3 × 5 ft)</td><td class="py-2 pr-4">15 sq ft</td><td class="py-2">Exact: 3 × 5 = 15</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-gray-900 mb-3">Important caveats</h2>
+        <ul class="list-disc list-inside space-y-2">
+          <li>All calculations are estimates. Material densities vary with moisture content and compaction.</li>
+          <li>Coverage rates for paint depend on surface texture, porosity, and application method.</li>
+          <li>For large orders, always confirm quantities with your local supplier before buying.</li>
+          <li>Regional product variations (bag sizes, pallet standards) may differ from our defaults.</li>
+        </ul>
+      </section>
+
+    </div>
+
+    <div class="mt-10 pt-6 border-t border-gray-200 flex flex-wrap gap-4 text-sm">
+      <a href="/data-sources" class="text-brand-600 hover:underline">Data Sources →</a>
+      <a href="/how-it-works" class="text-brand-600 hover:underline">How It Works →</a>
+      <a href="/methodology" class="text-brand-600 hover:underline">Methodology →</a>
+    </div>
+  </div>
+</BaseLayout>

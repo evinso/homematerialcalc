@@ -1,0 +1,106 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="How Our Calculators Work — Formulas, Inputs & Outputs"
+  description="Understand exactly how HomeMaterialCalc calculators work: area and volume formulas, material constants, waste factors, unit conversions, and cost estimates — with worked examples."
+>
+  <div class="max-w-3xl mx-auto px-4 py-12">
+    <nav class="text-sm text-gray-500 mb-6 flex flex-wrap gap-1">
+      <a href="/" class="hover:text-brand-600">Home</a>
+      <span>›</span>
+      <span class="text-gray-700">How It Works</span>
+    </nav>
+
+    <h1 class="text-3xl font-bold text-gray-900 mb-3">How Our Calculators Work</h1>
+    <p class="text-gray-600 mb-8">Every calculator on HomeMaterialCalc follows the same logical process: measure your area → calculate volume → apply the material constant → add a waste factor → convert to purchase units. Here's how each step works.</p>
+
+    <div class="space-y-10 text-gray-700 text-sm">
+
+      <section>
+        <h2 class="text-xl font-bold text-gray-900 mb-3">Step 1 — Measure your area</h2>
+        <p class="mb-3">Enter the length and width of your project in feet (and inches for precision). The calculator supports four shapes:</p>
+        <ul class="list-disc list-inside space-y-1 mb-4">
+          <li><strong>Rectangle:</strong> Area = Length × Width</li>
+          <li><strong>Circle:</strong> Area = π × radius²</li>
+          <li><strong>Triangle:</strong> Area = 0.5 × base × height</li>
+          <li><strong>Irregular:</strong> Add multiple sub-areas together (useful for L-shaped or complex spaces)</li>
+        </ul>
+        <div class="bg-brand-50 border border-brand-100 rounded-lg p-4">
+          <p><strong>Example:</strong> A garden bed that is 20 ft × 15 ft has an area of <strong>300 sq ft</strong>.</p>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-gray-900 mb-3">Step 2 — Calculate volume (bulk materials)</h2>
+        <p class="mb-3">For bulk materials (mulch, gravel, topsoil, sand, concrete), volume is calculated from area × depth:</p>
+        <p class="font-mono bg-gray-50 rounded px-3 py-2 mb-3">Volume (cu ft) = Area (sq ft) × Depth (in) ÷ 12</p>
+        <p class="font-mono bg-gray-50 rounded px-3 py-2 mb-3">Volume (cu yd) = Volume (cu ft) ÷ 27</p>
+        <div class="bg-brand-50 border border-brand-100 rounded-lg p-4">
+          <p><strong>Example:</strong> 300 sq ft at 3 inches deep = 300 × 3 ÷ 12 = <strong>75 cu ft</strong> = 75 ÷ 27 = <strong>2.78 cu yd</strong></p>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-gray-900 mb-3">Step 3 — Apply the material constant</h2>
+        <p class="mb-3">Each material has a constant that converts volume to a purchasable unit:</p>
+        <ul class="list-disc list-inside space-y-1 mb-4">
+          <li><strong>Mulch:</strong> 1 cu yd = 13.5 bags (2 cu ft each)</li>
+          <li><strong>Gravel:</strong> weight (tons) = volume (cu yd) × density (tons/cu yd)</li>
+          <li><strong>Concrete:</strong> bags = volume (cu ft) ÷ bag yield (cu ft per bag)</li>
+          <li><strong>Paint:</strong> gallons = wall area (sq ft) ÷ coverage (sq ft/gallon)</li>
+        </ul>
+        <div class="bg-brand-50 border border-brand-100 rounded-lg p-4">
+          <p><strong>Example (mulch):</strong> 2.78 cu yd × 13.5 bags/cu yd = <strong>37.5 → 38 bags</strong> (rounded up)</p>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-gray-900 mb-3">Step 4 — Add a waste factor</h2>
+        <p class="mb-3">We always apply a waste/overage factor before rounding up. This accounts for irregular shapes, trimming, spills, and uneven ground.</p>
+        <p class="font-mono bg-gray-50 rounded px-3 py-2 mb-3">Adjusted quantity = base quantity × (1 + waste %)</p>
+        <p class="mb-3">Default waste factors per material:</p>
+        <ul class="list-disc list-inside space-y-1">
+          <li>Mulch: 5% (regular beds), 10% (irregular)</li>
+          <li>Gravel, sand: 10%</li>
+          <li>Concrete: 10%</li>
+          <li>Flooring (straight): 10% · (diagonal): 15%</li>
+          <li>Tile (straight): 10% · (diagonal): 15%</li>
+          <li>Drywall: 12%</li>
+          <li>Paint: 10%</li>
+        </ul>
+        <p class="mt-3 text-gray-500">You can adjust the waste factor using the slider on each calculator page.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-gray-900 mb-3">Step 5 — Round up to whole units</h2>
+        <p>We always round UP to the next whole bag, box, or pallet. You can't buy a fraction of a bag, and running short mid-project is far more costly than buying one extra.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-gray-900 mb-3">Step 6 — Optional cost estimate</h2>
+        <p>Enter your local price per unit (bag, cubic yard, ton, gallon) and the calculator multiplies by the quantity to give a total cost estimate. Prices vary by region and supplier — we use your entered price, not a national average.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-gray-900 mb-4">Full worked example — mulch for a garden</h2>
+        <div class="bg-gray-50 rounded-xl p-5 space-y-2">
+          <p><strong>Project:</strong> Mulch a 20 × 30 ft garden bed to 3 inches deep.</p>
+          <p>1. Area = 20 × 30 = <strong>600 sq ft</strong></p>
+          <p>2. Volume = 600 × 3 ÷ 12 = <strong>150 cu ft</strong> = 150 ÷ 27 = <strong>5.56 cu yd</strong></p>
+          <p>3. Bags (no waste) = 5.56 × 13.5 = <strong>75 bags</strong></p>
+          <p>4. With 5% waste = 75 × 1.05 = 78.8 → <strong>79 bags</strong></p>
+          <p>5. Cost at $5/bag = 79 × $5 = <strong>$395</strong></p>
+        </div>
+      </section>
+
+    </div>
+
+    <div class="mt-10 pt-6 border-t border-gray-200 flex flex-wrap gap-4 text-sm">
+      <a href="/data-sources" class="text-brand-600 hover:underline">Data Sources →</a>
+      <a href="/calculation-assumptions" class="text-brand-600 hover:underline">Calculation Assumptions →</a>
+      <a href="/methodology" class="text-brand-600 hover:underline">Methodology →</a>
+    </div>
+  </div>
+</BaseLayout>

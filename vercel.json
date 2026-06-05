@@ -2,5 +2,25 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "installCommand": "npm install",
-  "framework": null
+  "framework": null,
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "homematerialcalc.com" }],
+      "destination": "https://www.homematerialcalc.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "http://www.homematerialcalc.com" }],
+      "destination": "https://www.homematerialcalc.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "http://homematerialcalc.com" }],
+      "destination": "https://www.homematerialcalc.com/:path*",
+      "permanent": true
+    }
+  ]
 }

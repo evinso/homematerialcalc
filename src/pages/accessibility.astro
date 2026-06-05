@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const updated = '2026-06-05';
+---
+
+<BaseLayout
+  title="Accessibility Statement — HomeMaterialCalc"
+  description="HomeMaterialCalc's commitment to web accessibility. We aim for WCAG 2.1 AA compliance so every user can get accurate material estimates."
+>
+  <div class="max-w-3xl mx-auto px-4 py-12">
+    <h1 class="text-3xl font-bold text-gray-900 mb-2">Accessibility Statement</h1>
+    <p class="text-sm text-gray-500 mb-8">Last updated: {updated}</p>
+
+    <div class="prose prose-gray max-w-none space-y-6 text-gray-700">
+      <section>
+        <h2 class="text-xl font-bold text-gray-900 mb-2">Our commitment</h2>
+        <p>HomeMaterialCalc is committed to making our calculators and guides accessible to everyone, including people with disabilities. We aim to conform to the <strong>Web Content Accessibility Guidelines (WCAG) 2.1, Level AA</strong>.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-gray-900 mb-2">What we do</h2>
+        <ul class="list-disc list-inside space-y-2">
+          <li>All calculator form inputs have descriptive labels</li>
+          <li>Color contrast meets WCAG AA standards (minimum 4.5:1 for body text)</li>
+          <li>The site is keyboard-navigable without a mouse</li>
+          <li>Headings are structured logically (H1 → H2 → H3)</li>
+          <li>Interactive elements have visible focus indicators</li>
+          <li>Images used for decoration have empty alt attributes; informative images have descriptive alt text</li>
+          <li>The site is responsive and works on all screen sizes</li>
+          <li>Results are presented as text, not image-only, so they work with screen readers</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-gray-900 mb-2">Known limitations</h2>
+        <p>We are an ongoing project. The following areas are under continuous improvement:</p>
+        <ul class="list-disc list-inside space-y-1 mt-2">
+          <li>Some data tables in guide pages may not have full screen-reader row/column headers yet</li>
+          <li>Mobile menu keyboard trap prevention is being refined</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-gray-900 mb-2">Feedback</h2>
+        <p>If you experience any accessibility barrier while using HomeMaterialCalc, please <a href="/contact" class="text-brand-600 hover:underline">contact us</a>. We will do our best to address the issue promptly and provide the information you need in an alternative format.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-gray-900 mb-2">Technical approach</h2>
+        <p>This site is built with Astro (static HTML), React for interactive calculators, and Tailwind CSS. Pages are statically generated for fast load times and use semantic HTML5 elements throughout.</p>
+      </section>
+    </div>
+  </div>
+</BaseLayout>

@@ -1,6 +1,6 @@
 import { getPublishedPages } from '../lib/publishing';
 
-const SITE = 'https://homematerialcalc.com';
+const SITE = 'https://www.homematerialcalc.com';
 
 const PRIORITY: Record<string, string> = {
   '/': '1.0',

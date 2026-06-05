@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import TileCalculator from '../../components/calculators/TileCalculator';
 import AdSlot from '../../components/ui/AdSlot.astro';
+import CalcSchema from '../../components/ui/CalcSchema.astro';
 const related = [
   { href: '/calculator/flooring', label: 'Flooring Calculator' },
   { href: '/calculator/paint',    label: 'Paint Calculator' },
@@ -12,6 +13,10 @@ const related = [
   title="Tile Calculator — How Many Tiles Do I Need? (with Thinset &amp; Grout)"
   description="Free tile calculator: enter area and tile size to get tile count, thinset bags, and grout. Supports all common tile sizes and diagonal lay pattern."
 >
+
+  <Fragment slot="head">
+    <CalcSchema name="Tile Calculator" description="Free tile calculator for tile count, boxes and cost" url="/calculator/tile" />
+  </Fragment>
   <div class="max-w-6xl mx-auto px-4 py-10">
     <div class="grid lg:grid-cols-[1fr_380px] gap-10">
       <div>
