@@ -23,103 +23,620 @@
     }
   ],
   "pages": [
-    { "url": "/",                                                              "label": "Home",                                  "type": "static",     "status": "published", "publishedAt": "2026-06-04" },
-    { "url": "/calculator/mulch",                                              "label": "Mulch Calculator",                      "type": "calculator", "status": "published", "publishedAt": "2026-06-04" },
-    { "url": "/calculator/gravel",                                             "label": "Gravel Calculator",                     "type": "calculator", "status": "published", "publishedAt": "2026-06-04" },
-    { "url": "/calculator/topsoil",                                            "label": "Topsoil Calculator",                    "type": "calculator", "status": "published", "publishedAt": "2026-06-04" },
-    { "url": "/calculator/sand",                                               "label": "Sand Calculator",                       "type": "calculator", "status": "published", "publishedAt": "2026-06-04" },
-    { "url": "/calculator/sod",                                                "label": "Sod Calculator",                        "type": "calculator", "status": "published", "publishedAt": "2026-06-04" },
-    { "url": "/calculator/concrete",                                           "label": "Concrete Calculator",                   "type": "calculator", "status": "published", "publishedAt": "2026-06-04" },
-    { "url": "/guide/how-much-mulch-do-i-need",                                "label": "How Much Mulch Do I Need?",             "type": "guide",      "status": "published", "publishedAt": "2026-06-04" },
-    { "url": "/guide/how-much-gravel-do-i-need",                               "label": "How Much Gravel Do I Need?",            "type": "guide",      "status": "published", "publishedAt": "2026-06-04" },
-    { "url": "/guide/how-much-topsoil-do-i-need",                              "label": "How Much Topsoil Do I Need?",           "type": "guide",      "status": "published", "publishedAt": "2026-06-04" },
-    { "url": "/guide/how-much-sand-do-i-need",                                 "label": "How Much Sand Do I Need?",              "type": "guide",      "status": "published", "publishedAt": "2026-06-04" },
-    { "url": "/guide/how-much-sod-do-i-need",                                  "label": "How Much Sod Do I Need?",               "type": "guide",      "status": "published", "publishedAt": "2026-06-04" },
-    { "url": "/guide/how-much-concrete-do-i-need",                             "label": "How Much Concrete Do I Need?",          "type": "guide",      "status": "published", "publishedAt": "2026-06-04" },
-    { "url": "/guide/how-many-bags-of-mulch-in-a-cubic-yard",                  "label": "Bags of Mulch per Cubic Yard",          "type": "reference",  "status": "published", "publishedAt": "2026-06-04" },
-    { "url": "/guide/how-much-does-a-yard-of-gravel-weigh",                    "label": "Gravel Weight per Yard",                "type": "reference",  "status": "published", "publishedAt": "2026-06-04" },
-    { "url": "/guide/how-many-bags-of-concrete-per-cubic-yard",                "label": "Concrete Bags per Cubic Yard",          "type": "reference",  "status": "published", "publishedAt": "2026-06-04" },
-    { "url": "/guide/how-much-does-a-yard-of-topsoil-weigh",                   "label": "Topsoil Weight per Yard",               "type": "reference",  "status": "published", "publishedAt": "2026-06-04" },
-    { "url": "/guide/how-much-does-a-yard-of-sand-weigh",                      "label": "Sand Weight per Yard",                  "type": "reference",  "status": "published", "publishedAt": "2026-06-04" },
-    { "url": "/guide/cubic-yards-to-tons",                                     "label": "Cubic Yards to Tons",                   "type": "reference",  "status": "published", "publishedAt": "2026-06-04" },
-    { "url": "/guide/how-many-square-feet-does-a-pallet-of-sod-cover",         "label": "Sod Pallet Coverage",                   "type": "reference",  "status": "published", "publishedAt": "2026-06-04" },
-    { "url": "/guide/how-many-bags-of-concrete-for-10x10-slab",                "label": "Concrete Bags for 10x10 Slab",          "type": "reference",  "status": "published", "publishedAt": "2026-06-04" },
-    { "url": "/methodology",                                                   "label": "Methodology",                           "type": "static",     "status": "published", "publishedAt": "2026-06-04" },
-    { "url": "/about",                                                         "label": "About",                                 "type": "static",     "status": "published", "publishedAt": "2026-06-04" },
-    { "url": "/contact",                                                       "label": "Contact",                               "type": "static",     "status": "published", "publishedAt": "2026-06-04" },
-    { "url": "/privacy",                                                       "label": "Privacy Policy",                        "type": "static",     "status": "published", "publishedAt": "2026-06-04" },
-    { "url": "/terms",                                                         "label": "Terms of Use",                          "type": "static",     "status": "published", "publishedAt": "2026-06-04" },
-
-    { "_section": "INDOOR EXPANSION — v2 (files written, drip publishing)" },
-    { "url": "/calculator/paint",                    "label": "Paint Calculator",             "type": "calculator", "status": "pending", "publishedAt": null },
-    { "url": "/guide/how-much-paint-do-i-need",      "label": "How Much Paint Do I Need?",    "type": "guide",      "status": "pending", "publishedAt": null },
-    { "url": "/guide/paint-coverage-per-gallon",     "label": "Paint Coverage per Gallon",    "type": "reference",  "status": "pending", "publishedAt": null },
-    { "url": "/calculator/flooring",                 "label": "Flooring Calculator",          "type": "calculator", "status": "pending", "publishedAt": null },
-    { "url": "/guide/how-much-flooring-do-i-need",   "label": "How Much Flooring Do I Need?", "type": "guide",      "status": "pending", "publishedAt": null },
-    { "url": "/calculator/tile",                     "label": "Tile Calculator",              "type": "calculator", "status": "pending", "publishedAt": null },
-    { "url": "/guide/how-much-tile-do-i-need",       "label": "How Much Tile Do I Need?",     "type": "guide",      "status": "pending", "publishedAt": null },
-    { "url": "/calculator/drywall",                  "label": "Drywall Calculator",           "type": "calculator", "status": "pending", "publishedAt": null },
-    { "url": "/guide/how-much-drywall-do-i-need",    "label": "How Much Drywall Do I Need?",  "type": "guide",      "status": "pending", "publishedAt": null },
-
-    { "_section": "BATCH 3 — Project-specific & reference pages" },
-    { "url": "/guide/how-much-gravel-for-a-driveway",          "label": "How Much Gravel for a Driveway?",          "type": "guide",     "status": "pending", "publishedAt": null },
-    { "url": "/guide/how-much-topsoil-for-raised-bed",         "label": "How Much Topsoil for a Raised Bed?",       "type": "guide",     "status": "pending", "publishedAt": null },
-    { "url": "/guide/how-much-sand-for-paver-base",            "label": "How Much Sand for a Paver Base?",          "type": "guide",     "status": "pending", "publishedAt": null },
-    { "url": "/guide/how-much-concrete-for-fence-posts",       "label": "How Much Concrete for Fence Posts?",       "type": "guide",     "status": "pending", "publishedAt": null },
-    { "url": "/guide/cubic-feet-to-cubic-yards",               "label": "Cubic Feet to Cubic Yards",                "type": "reference", "status": "pending", "publishedAt": null },
-    { "url": "/guide/how-much-mulch-for-100-square-feet",      "label": "Mulch for 100 Square Feet",                "type": "guide",     "status": "pending", "publishedAt": null },
-    { "url": "/guide/how-much-mulch-for-a-garden-bed",         "label": "How Much Mulch for a Garden Bed?",         "type": "guide",     "status": "pending", "publishedAt": null },
-    { "url": "/guide/how-many-gallons-of-paint-for-a-bedroom", "label": "Gallons of Paint for a Bedroom",           "type": "guide",     "status": "pending", "publishedAt": null },
-    { "url": "/guide/how-many-tiles-for-a-bathroom",           "label": "How Many Tiles for a Bathroom?",           "type": "guide",     "status": "pending", "publishedAt": null },
-    { "url": "/guide/how-many-sheets-of-drywall-for-a-room",   "label": "Drywall Sheets for a Room",                "type": "reference", "status": "pending", "publishedAt": null },
-    { "url": "/guide/how-many-boxes-of-flooring-for-a-room",   "label": "Flooring Boxes per Room",                  "type": "reference", "status": "pending", "publishedAt": null },
-    { "url": "/guide/what-is-a-cubic-yard",                    "label": "What Is a Cubic Yard?",                    "type": "reference", "status": "pending", "publishedAt": null },
-
-    { "_section": "BATCH 4 — New calculators (lumber + paver)" },
-    { "url": "/calculator/lumber",                    "label": "Lumber Calculator",                    "type": "calculator", "status": "pending", "publishedAt": null },
-    { "url": "/guide/how-much-lumber-do-i-need",      "label": "How Much Lumber Do I Need?",           "type": "guide",      "status": "pending", "publishedAt": null },
-    { "url": "/calculator/paver",                     "label": "Paver Calculator",                     "type": "calculator", "status": "pending", "publishedAt": null },
-    { "url": "/guide/how-many-pavers-do-i-need",      "label": "How Many Pavers Do I Need?",           "type": "guide",      "status": "pending", "publishedAt": null },
-
-    { "_section": "BATCH 5 — New guide & reference pages" },
-    { "url": "/guide/how-much-sand-for-a-sandbox",          "label": "How Much Sand for a Sandbox?",          "type": "guide",     "status": "pending", "publishedAt": null },
-    { "url": "/guide/how-much-gravel-for-a-french-drain",   "label": "How Much Gravel for a French Drain?",   "type": "guide",     "status": "pending", "publishedAt": null },
-    { "url": "/guide/how-many-bags-of-sand-in-a-cubic-yard","label": "Bags of Sand per Cubic Yard",           "type": "reference", "status": "pending", "publishedAt": null },
-    { "url": "/guide/square-feet-to-square-yards",          "label": "Square Feet to Square Yards",           "type": "reference", "status": "pending", "publishedAt": null },
-    { "url": "/guide/linear-feet-to-square-feet",           "label": "Linear Feet to Square Feet",            "type": "reference", "status": "pending", "publishedAt": null },
-    { "url": "/guide/topsoil-vs-garden-soil",               "label": "Topsoil vs Garden Soil",                "type": "reference", "status": "pending", "publishedAt": null },
-    { "url": "/guide/types-of-mulch",                       "label": "Types of Mulch",                        "type": "reference", "status": "pending", "publishedAt": null },
-    { "url": "/guide/gravel-vs-crushed-stone",              "label": "Gravel vs Crushed Stone",               "type": "reference", "status": "pending", "publishedAt": null },
-    { "url": "/guide/how-deep-should-gravel-be",            "label": "How Deep Should Gravel Be?",            "type": "reference", "status": "pending", "publishedAt": null },
-    { "url": "/guide/how-thick-should-concrete-slab-be",    "label": "How Thick Should Concrete Slab Be?",    "type": "reference", "status": "pending", "publishedAt": null },
-    { "url": "/guide/how-long-does-mulch-last",             "label": "How Long Does Mulch Last?",             "type": "reference", "status": "pending", "publishedAt": null },
-    { "url": "/guide/paint-types-and-finishes",             "label": "Paint Types and Finishes",              "type": "reference", "status": "pending", "publishedAt": null },
-    { "url": "/guide/how-to-calculate-square-footage",      "label": "How to Calculate Square Footage",       "type": "reference", "status": "pending", "publishedAt": null },
-    { "url": "/guide/tile-sizes-and-coverage",              "label": "Tile Sizes and Coverage",               "type": "reference", "status": "pending", "publishedAt": null },
-    { "url": "/guide/drywall-thickness-guide",              "label": "Drywall Thickness Guide",               "type": "reference", "status": "pending", "publishedAt": null },
-    { "url": "/guide/how-much-concrete-for-a-slab",         "label": "How Much Concrete for a Slab?",         "type": "guide",     "status": "pending", "publishedAt": null },
-    { "url": "/guide/how-many-coats-of-paint",              "label": "How Many Coats of Paint?",              "type": "reference", "status": "pending", "publishedAt": null },
-    { "url": "/guide/how-to-measure-a-room-for-flooring",   "label": "How to Measure a Room for Flooring",    "type": "reference", "status": "pending", "publishedAt": null },
-    { "url": "/guide/concrete-mix-ratios",                  "label": "Concrete Mix Ratios",                   "type": "reference", "status": "pending", "publishedAt": null },
-
-    { "_section": "BATCH 6 — Cost calculators" },
-    { "url": "/calculator/mulch-cost",    "label": "Mulch Cost Calculator",    "type": "calculator", "status": "pending", "publishedAt": null },
-    { "url": "/calculator/gravel-cost",   "label": "Gravel Cost Calculator",   "type": "calculator", "status": "pending", "publishedAt": null },
-    { "url": "/calculator/topsoil-cost",  "label": "Topsoil Cost Calculator",  "type": "calculator", "status": "pending", "publishedAt": null },
-    { "url": "/calculator/sand-cost",     "label": "Sand Cost Calculator",     "type": "calculator", "status": "pending", "publishedAt": null },
-    { "url": "/calculator/sod-cost",      "label": "Sod Cost Calculator",      "type": "calculator", "status": "pending", "publishedAt": null },
-    { "url": "/calculator/concrete-cost", "label": "Concrete Cost Calculator", "type": "calculator", "status": "pending", "publishedAt": null },
-
-    { "_section": "BATCH 7 — EEAT + hub + technical pages" },
-    { "url": "/data-sources",              "label": "Data Sources",              "type": "static", "status": "pending", "publishedAt": null },
-    { "url": "/how-it-works",              "label": "How It Works",              "type": "static", "status": "pending", "publishedAt": null },
-    { "url": "/calculation-assumptions",   "label": "Calculation Assumptions",   "type": "static", "status": "pending", "publishedAt": null },
-    { "url": "/landscaping-calculators",   "label": "Landscaping Calculators Hub","type": "static", "status": "pending", "publishedAt": null },
-    { "url": "/concrete-calculators",      "label": "Concrete Calculators Hub",  "type": "static", "status": "pending", "publishedAt": null },
-    { "url": "/interior-calculators",      "label": "Interior Calculators Hub",  "type": "static", "status": "pending", "publishedAt": null },
-    { "url": "/cookie-policy",             "label": "Cookie Policy",             "type": "static", "status": "pending", "publishedAt": null },
-    { "url": "/accessibility",             "label": "Accessibility Statement",   "type": "static", "status": "pending", "publishedAt": null },
-
-    { "_section": "FUTURE — not yet written" }
+    {
+      "url": "/",
+      "label": "Home",
+      "type": "static",
+      "status": "published",
+      "publishedAt": "2026-06-04"
+    },
+    {
+      "url": "/calculator/mulch",
+      "label": "Mulch Calculator",
+      "type": "calculator",
+      "status": "published",
+      "publishedAt": "2026-06-04"
+    },
+    {
+      "url": "/calculator/gravel",
+      "label": "Gravel Calculator",
+      "type": "calculator",
+      "status": "published",
+      "publishedAt": "2026-06-04"
+    },
+    {
+      "url": "/calculator/topsoil",
+      "label": "Topsoil Calculator",
+      "type": "calculator",
+      "status": "published",
+      "publishedAt": "2026-06-04"
+    },
+    {
+      "url": "/calculator/sand",
+      "label": "Sand Calculator",
+      "type": "calculator",
+      "status": "published",
+      "publishedAt": "2026-06-04"
+    },
+    {
+      "url": "/calculator/sod",
+      "label": "Sod Calculator",
+      "type": "calculator",
+      "status": "published",
+      "publishedAt": "2026-06-04"
+    },
+    {
+      "url": "/calculator/concrete",
+      "label": "Concrete Calculator",
+      "type": "calculator",
+      "status": "published",
+      "publishedAt": "2026-06-04"
+    },
+    {
+      "url": "/guide/how-much-mulch-do-i-need",
+      "label": "How Much Mulch Do I Need?",
+      "type": "guide",
+      "status": "published",
+      "publishedAt": "2026-06-04"
+    },
+    {
+      "url": "/guide/how-much-gravel-do-i-need",
+      "label": "How Much Gravel Do I Need?",
+      "type": "guide",
+      "status": "published",
+      "publishedAt": "2026-06-04"
+    },
+    {
+      "url": "/guide/how-much-topsoil-do-i-need",
+      "label": "How Much Topsoil Do I Need?",
+      "type": "guide",
+      "status": "published",
+      "publishedAt": "2026-06-04"
+    },
+    {
+      "url": "/guide/how-much-sand-do-i-need",
+      "label": "How Much Sand Do I Need?",
+      "type": "guide",
+      "status": "published",
+      "publishedAt": "2026-06-04"
+    },
+    {
+      "url": "/guide/how-much-sod-do-i-need",
+      "label": "How Much Sod Do I Need?",
+      "type": "guide",
+      "status": "published",
+      "publishedAt": "2026-06-04"
+    },
+    {
+      "url": "/guide/how-much-concrete-do-i-need",
+      "label": "How Much Concrete Do I Need?",
+      "type": "guide",
+      "status": "published",
+      "publishedAt": "2026-06-04"
+    },
+    {
+      "url": "/guide/how-many-bags-of-mulch-in-a-cubic-yard",
+      "label": "Bags of Mulch per Cubic Yard",
+      "type": "reference",
+      "status": "published",
+      "publishedAt": "2026-06-04"
+    },
+    {
+      "url": "/guide/how-much-does-a-yard-of-gravel-weigh",
+      "label": "Gravel Weight per Yard",
+      "type": "reference",
+      "status": "published",
+      "publishedAt": "2026-06-04"
+    },
+    {
+      "url": "/guide/how-many-bags-of-concrete-per-cubic-yard",
+      "label": "Concrete Bags per Cubic Yard",
+      "type": "reference",
+      "status": "published",
+      "publishedAt": "2026-06-04"
+    },
+    {
+      "url": "/guide/how-much-does-a-yard-of-topsoil-weigh",
+      "label": "Topsoil Weight per Yard",
+      "type": "reference",
+      "status": "published",
+      "publishedAt": "2026-06-04"
+    },
+    {
+      "url": "/guide/how-much-does-a-yard-of-sand-weigh",
+      "label": "Sand Weight per Yard",
+      "type": "reference",
+      "status": "published",
+      "publishedAt": "2026-06-04"
+    },
+    {
+      "url": "/guide/cubic-yards-to-tons",
+      "label": "Cubic Yards to Tons",
+      "type": "reference",
+      "status": "published",
+      "publishedAt": "2026-06-04"
+    },
+    {
+      "url": "/guide/how-many-square-feet-does-a-pallet-of-sod-cover",
+      "label": "Sod Pallet Coverage",
+      "type": "reference",
+      "status": "published",
+      "publishedAt": "2026-06-04"
+    },
+    {
+      "url": "/guide/how-many-bags-of-concrete-for-10x10-slab",
+      "label": "Concrete Bags for 10x10 Slab",
+      "type": "reference",
+      "status": "published",
+      "publishedAt": "2026-06-04"
+    },
+    {
+      "url": "/methodology",
+      "label": "Methodology",
+      "type": "static",
+      "status": "published",
+      "publishedAt": "2026-06-04"
+    },
+    {
+      "url": "/about",
+      "label": "About",
+      "type": "static",
+      "status": "published",
+      "publishedAt": "2026-06-04"
+    },
+    {
+      "url": "/contact",
+      "label": "Contact",
+      "type": "static",
+      "status": "published",
+      "publishedAt": "2026-06-04"
+    },
+    {
+      "url": "/privacy",
+      "label": "Privacy Policy",
+      "type": "static",
+      "status": "published",
+      "publishedAt": "2026-06-04"
+    },
+    {
+      "url": "/terms",
+      "label": "Terms of Use",
+      "type": "static",
+      "status": "published",
+      "publishedAt": "2026-06-04"
+    },
+    {
+      "_section": "INDOOR EXPANSION \u2014 v2 (files written, drip publishing)"
+    },
+    {
+      "url": "/calculator/paint",
+      "label": "Paint Calculator",
+      "type": "calculator",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/how-much-paint-do-i-need",
+      "label": "How Much Paint Do I Need?",
+      "type": "guide",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/paint-coverage-per-gallon",
+      "label": "Paint Coverage per Gallon",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/calculator/flooring",
+      "label": "Flooring Calculator",
+      "type": "calculator",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/how-much-flooring-do-i-need",
+      "label": "How Much Flooring Do I Need?",
+      "type": "guide",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/calculator/tile",
+      "label": "Tile Calculator",
+      "type": "calculator",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/how-much-tile-do-i-need",
+      "label": "How Much Tile Do I Need?",
+      "type": "guide",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/calculator/drywall",
+      "label": "Drywall Calculator",
+      "type": "calculator",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/how-much-drywall-do-i-need",
+      "label": "How Much Drywall Do I Need?",
+      "type": "guide",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "_section": "BATCH 3 \u2014 Project-specific & reference pages"
+    },
+    {
+      "url": "/guide/how-much-gravel-for-a-driveway",
+      "label": "How Much Gravel for a Driveway?",
+      "type": "guide",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/how-much-topsoil-for-raised-bed",
+      "label": "How Much Topsoil for a Raised Bed?",
+      "type": "guide",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/how-much-sand-for-paver-base",
+      "label": "How Much Sand for a Paver Base?",
+      "type": "guide",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/how-much-concrete-for-fence-posts",
+      "label": "How Much Concrete for Fence Posts?",
+      "type": "guide",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/cubic-feet-to-cubic-yards",
+      "label": "Cubic Feet to Cubic Yards",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/how-much-mulch-for-100-square-feet",
+      "label": "Mulch for 100 Square Feet",
+      "type": "guide",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/how-much-mulch-for-a-garden-bed",
+      "label": "How Much Mulch for a Garden Bed?",
+      "type": "guide",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/how-many-gallons-of-paint-for-a-bedroom",
+      "label": "Gallons of Paint for a Bedroom",
+      "type": "guide",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/how-many-tiles-for-a-bathroom",
+      "label": "How Many Tiles for a Bathroom?",
+      "type": "guide",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/how-many-sheets-of-drywall-for-a-room",
+      "label": "Drywall Sheets for a Room",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/how-many-boxes-of-flooring-for-a-room",
+      "label": "Flooring Boxes per Room",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/what-is-a-cubic-yard",
+      "label": "What Is a Cubic Yard?",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "_section": "BATCH 4 \u2014 New calculators (lumber + paver)"
+    },
+    {
+      "url": "/calculator/lumber",
+      "label": "Lumber Calculator",
+      "type": "calculator",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/how-much-lumber-do-i-need",
+      "label": "How Much Lumber Do I Need?",
+      "type": "guide",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/calculator/paver",
+      "label": "Paver Calculator",
+      "type": "calculator",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/how-many-pavers-do-i-need",
+      "label": "How Many Pavers Do I Need?",
+      "type": "guide",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "_section": "BATCH 5 \u2014 New guide & reference pages"
+    },
+    {
+      "url": "/guide/how-much-sand-for-a-sandbox",
+      "label": "How Much Sand for a Sandbox?",
+      "type": "guide",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/how-much-gravel-for-a-french-drain",
+      "label": "How Much Gravel for a French Drain?",
+      "type": "guide",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/how-many-bags-of-sand-in-a-cubic-yard",
+      "label": "Bags of Sand per Cubic Yard",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/square-feet-to-square-yards",
+      "label": "Square Feet to Square Yards",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/linear-feet-to-square-feet",
+      "label": "Linear Feet to Square Feet",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/topsoil-vs-garden-soil",
+      "label": "Topsoil vs Garden Soil",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/types-of-mulch",
+      "label": "Types of Mulch",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/gravel-vs-crushed-stone",
+      "label": "Gravel vs Crushed Stone",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/how-deep-should-gravel-be",
+      "label": "How Deep Should Gravel Be?",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/how-thick-should-concrete-slab-be",
+      "label": "How Thick Should Concrete Slab Be?",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/how-long-does-mulch-last",
+      "label": "How Long Does Mulch Last?",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/paint-types-and-finishes",
+      "label": "Paint Types and Finishes",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/how-to-calculate-square-footage",
+      "label": "How to Calculate Square Footage",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/tile-sizes-and-coverage",
+      "label": "Tile Sizes and Coverage",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/drywall-thickness-guide",
+      "label": "Drywall Thickness Guide",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/how-much-concrete-for-a-slab",
+      "label": "How Much Concrete for a Slab?",
+      "type": "guide",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/how-many-coats-of-paint",
+      "label": "How Many Coats of Paint?",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/how-to-measure-a-room-for-flooring",
+      "label": "How to Measure a Room for Flooring",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/concrete-mix-ratios",
+      "label": "Concrete Mix Ratios",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "_section": "BATCH 6 \u2014 Cost calculators"
+    },
+    {
+      "url": "/calculator/mulch-cost",
+      "label": "Mulch Cost Calculator",
+      "type": "calculator",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/calculator/gravel-cost",
+      "label": "Gravel Cost Calculator",
+      "type": "calculator",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/calculator/topsoil-cost",
+      "label": "Topsoil Cost Calculator",
+      "type": "calculator",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/calculator/sand-cost",
+      "label": "Sand Cost Calculator",
+      "type": "calculator",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/calculator/sod-cost",
+      "label": "Sod Cost Calculator",
+      "type": "calculator",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/calculator/concrete-cost",
+      "label": "Concrete Cost Calculator",
+      "type": "calculator",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "_section": "BATCH 7 \u2014 EEAT + hub + technical pages"
+    },
+    {
+      "url": "/data-sources",
+      "label": "Data Sources",
+      "type": "static",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/how-it-works",
+      "label": "How It Works",
+      "type": "static",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/calculation-assumptions",
+      "label": "Calculation Assumptions",
+      "type": "static",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/landscaping-calculators",
+      "label": "Landscaping Calculators Hub",
+      "type": "static",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/concrete-calculators",
+      "label": "Concrete Calculators Hub",
+      "type": "static",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/interior-calculators",
+      "label": "Interior Calculators Hub",
+      "type": "static",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/cookie-policy",
+      "label": "Cookie Policy",
+      "type": "static",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/accessibility",
+      "label": "Accessibility Statement",
+      "type": "static",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "_section": "BATCH 6 \u2014 Cost calculators"
+    },
+    {
+      "_section": "BATCH 7 \u2014 EEAT + hub + technical pages"
+    },
+    {
+      "_section": "FUTURE \u2014 not yet written"
+    }
   ]
 }
