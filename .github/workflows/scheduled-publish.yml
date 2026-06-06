@@ -54,16 +54,13 @@ jobs:
         run: |
           KEY="dae47b15efa6b6e64898c96d698ad54d"
           HOST="www.homematerialcalc.com"
-          URLS=$(node -e "
-            const s = require('./publish-schedule.json');
-            const run = s.runs && s.runs[0];
-            if (!run || !run.pagesPublished || run.pagesPublished.length === 0) process.exit(0);
-            const urls = run.pagesPublished.map(p => 'https://${HOST}' + p.url);
-            console.log(JSON.stringify(urls));
-          ")
-          if [ -z "\$URLS" ]; then echo "No new pages — skipping IndexNow"; exit 0; fi
-          echo "Pinging IndexNow for: \$URLS"
+          URLS=$(node -e "const s=require('./publish-schedule.json');const r=s.runs&&s.runs[0];if(!r||!r.pagesPublished||!r.pagesPublished.length)process.exit(0);console.log(JSON.stringify(r.pagesPublished.map(p=>'https://www.homematerialcalc.com'+p.url)));")
+          if [ -z "$URLS" ]; then
+            echo "No new pages — skipping IndexNow"
+            exit 0
+          fi
+          echo "Pinging IndexNow for: $URLS"
           curl -sf -X POST "https://api.indexnow.org/indexnow" \
             -H "Content-Type: application/json; charset=utf-8" \
-            -d "{\"host\":\"${HOST}\",\"key\":\"${KEY}\",\"keyLocation\":\"https://${HOST}/${KEY}.txt\",\"urlList\":\${URLS}}" \
+            -d "{\"host\":\"$HOST\",\"key\":\"$KEY\",\"keyLocation\":\"https://$HOST/$KEY.txt\",\"urlList\":$URLS}" \
             && echo "IndexNow OK" || echo "IndexNow failed (non-fatal)"
