@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { getPendingPages } from '../lib/publishing';
 
 interface Props {
   title: string;
@@ -13,6 +14,15 @@ const siteUrl = 'https://www.homematerialcalc.com';
 const canonical = canonicalUrl ?? siteUrl + Astro.url.pathname;
 const ogImageUrl = ogImage ?? `${siteUrl}/og-default.svg`;
 const isHome = Astro.url.pathname === '/';
+
+// Normalise trailing slash so /calculator/paint/ and /calculator/paint both match
+const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
+
+// Pending pages → noindex,nofollow until the daily Action publishes them.
+// Once published (status flips to "published" in publish-schedule.json and
+// the build runs), this Set no longer contains the URL → robots meta removed.
+const pendingUrls = new Set(getPendingPages().map(p => p.url));
+const isPending = pendingUrls.has(pathname);
 
 const orgSchema = {
   '@context': 'https://schema.org',
@@ -31,6 +41,10 @@ const orgSchema = {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    {isPending
+      ? <meta name="robots" content="noindex, nofollow" />
+      : <meta name="robots" content="index, follow" />
+    }
     <link rel="canonical" href={canonical} />
 
     <!-- Open Graph -->
