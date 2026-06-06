@@ -8,6 +8,21 @@
   "runs": [
     {
       "date": "2026-06-06",
+      "timestamp": "2026-06-06T01:54:55.774Z",
+      "pagesPublished": [
+        {
+          "url": "/guide/how-long-does-concrete-take-to-dry",
+          "label": "How Long Does Concrete Take to Dry?",
+          "type": "reference"
+        }
+      ],
+      "pendingBefore": 68,
+      "pendingAfter": 67,
+      "trigger": "manual_dispatch",
+      "runBy": "evinso"
+    },
+    {
+      "date": "2026-06-06",
       "timestamp": "2026-06-06T00:33:39.255Z",
       "pagesPublished": [
         {
@@ -239,8 +254,8 @@
       "url": "/guide/how-long-does-concrete-take-to-dry",
       "label": "How Long Does Concrete Take to Dry?",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-06"
     },
     {
       "url": "/guide/mulch-vs-rock-landscaping",
@@ -320,7 +335,7 @@
       "publishedAt": null
     },
     {
-      "_section": "INDOOR EXPANSION \u2014 v2 (files written, drip publishing)"
+      "_section": "INDOOR EXPANSION — v2 (files written, drip publishing)"
     },
     {
       "url": "/calculator/paint",
@@ -386,7 +401,7 @@
       "publishedAt": null
     },
     {
-      "_section": "BATCH 3 \u2014 Project-specific & reference pages"
+      "_section": "BATCH 3 — Project-specific & reference pages"
     },
     {
       "url": "/guide/how-much-gravel-for-a-driveway",
@@ -473,7 +488,7 @@
       "publishedAt": null
     },
     {
-      "_section": "BATCH 4 \u2014 New calculators (lumber + paver)"
+      "_section": "BATCH 4 — New calculators (lumber + paver)"
     },
     {
       "url": "/calculator/lumber",
@@ -504,7 +519,7 @@
       "publishedAt": null
     },
     {
-      "_section": "BATCH 5 \u2014 New guide & reference pages"
+      "_section": "BATCH 5 — New guide & reference pages"
     },
     {
       "url": "/guide/how-much-sand-for-a-sandbox",
@@ -640,7 +655,7 @@
       "publishedAt": null
     },
     {
-      "_section": "BATCH 6 \u2014 Cost calculators"
+      "_section": "BATCH 6 — Cost calculators"
     },
     {
       "url": "/calculator/mulch-cost",
@@ -685,7 +700,7 @@
       "publishedAt": null
     },
     {
-      "_section": "BATCH 7 \u2014 EEAT + hub + technical pages"
+      "_section": "BATCH 7 — EEAT + hub + technical pages"
     },
     {
       "url": "/data-sources",
@@ -744,13 +759,13 @@
       "publishedAt": null
     },
     {
-      "_section": "BATCH 6 \u2014 Cost calculators"
+      "_section": "BATCH 6 — Cost calculators"
     },
     {
-      "_section": "BATCH 7 \u2014 EEAT + hub + technical pages"
+      "_section": "BATCH 7 — EEAT + hub + technical pages"
     },
     {
-      "_section": "FUTURE \u2014 not yet written"
+      "_section": "FUTURE — not yet written"
     }
   ]
 }
