@@ -52,7 +52,7 @@ const breadcrumbSchema = breadcrumbs.length > 0 ? {
       '@type': 'ListItem',
       position: i + 2,
       name: b.label,
-      ...(b.href ? { item: site + b.href } : {}),
+      item: b.href ? site + b.href : canonical,
     })),
   ],
 } : null;

@@ -32,7 +32,7 @@ const breadcrumbSchema = crumbs.length > 0 ? {
       '@type': 'ListItem',
       position: i + 2,
       name: c.label,
-      ...(c.href ? { item: siteUrl + c.href } : {}),
+      item: c.href ? siteUrl + c.href : siteUrl + url,
     })),
   ],
 } : null;
