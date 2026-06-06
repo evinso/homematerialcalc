@@ -6,432 +6,595 @@ const pages = (schedule.pages as any[]).filter(p => p && p.url && p.status);
 const published = pages.filter(p => p.status === 'published').sort((a,b) => b.publishedAt?.localeCompare(a.publishedAt ?? '') ?? 0);
 const pending   = pages.filter(p => p.status === 'pending');
 const future    = pages.filter(p => p.status === 'future');
+const total     = published.length + pending.length;
+const progressPct = total > 0 ? Math.round((published.length / total) * 100) : 0;
 
-const today = new Date().toISOString().split('T')[0];
-const lastRun = schedule.lastRun ?? '—';
+const today      = new Date().toISOString().split('T')[0];
+const lastRun    = (schedule as any).lastRun ?? '—';
+const runsPerDay = 4;   // 4 cron triggers per day
 const pagesPerRun = (schedule.cadence as any).pagesPerRun ?? 1;
+const pagesPerDay = runsPerDay * pagesPerRun;
 
-// Run history — newest first, max 30 entries shown
 const runs = ((schedule as any).runs ?? []) as any[];
-const recentRuns = runs.slice(0, 30);
+const recentRuns = runs.slice(0, 50);
 
-// Days until queue is empty
-const daysLeft = pending.length;
-const emptyDate = (() => {
-  if (!daysLeft) return null;
-  const base = lastRun !== '—' ? lastRun : today;
-  const d = new Date(base);
-  d.setDate(d.getDate() + daysLeft);
-  return d.toISOString().split('T')[0];
-})();
-
-// Trigger label helper
-function triggerLabel(t: string) {
-  if (t === 'scheduled') return '⏰ Otomatik';
-  if (t === 'manual_dispatch') return '▶️ Manuel (Actions)';
-  return '💻 Local';
-}
-
-// Estimate publish dates for pending pages (1 per day starting tomorrow)
+// ETA: 4 pages/day — page i (0-indexed) is published after ceil((i+1)/4) days
 function addDays(dateStr: string, n: number) {
-  const d = new Date(dateStr);
-  d.setDate(d.getDate() + n);
+  const d = new Date(dateStr + 'T00:00:00Z');
+  d.setUTCDate(d.getUTCDate() + n);
   return d.toISOString().split('T')[0];
 }
 
 const baseDate = lastRun !== '—' ? lastRun : today;
 const pendingWithETA = pending.map((p, i) => ({
   ...p,
-  eta: addDays(baseDate, i + 1),
+  eta: addDays(baseDate, Math.ceil((i + 1) / pagesPerDay)),
+  slot: ((i % pagesPerDay) + 1),  // which run slot (1-4)
 }));
 
-// Group helpers
-function byType(list: any[], type: string) {
-  return list.filter(p => p.type === type);
-}
+const emptyDate = pending.length > 0
+  ? addDays(baseDate, Math.ceil(pending.length / pagesPerDay))
+  : null;
 
-// Published stats
-const pubCalcs     = byType(published, 'calculator');
-const pubGuides    = byType(published, 'guide');
-const pubRefs      = byType(published, 'reference');
-const pubStatic    = byType(published, 'static');
-
-// Pending groups
-const pendCalcs    = byType(pendingWithETA, 'calculator');
-const pendGuides   = byType(pendingWithETA, 'guide');
-const pendRefs     = byType(pendingWithETA, 'reference');
+// Type grouping
+const byType = (list: any[], type: string) => list.filter(p => p.type === type);
+const pubCalcs  = byType(published, 'calculator');
+const pubGuides = byType(published, 'guide');
+const pubRefs   = byType(published, 'reference');
+const pubStatic = byType(published, 'static');
+const pendCalcs = byType(pendingWithETA, 'calculator');
+const pendGuides= byType(pendingWithETA, 'guide');
+const pendRefs  = byType(pendingWithETA, 'reference');
 
 // Published grouped by date
-const byDate: Record<string, typeof published> = {};
+const byDate: Record<string, any[]> = {};
 for (const p of published) {
   const d = p.publishedAt ?? 'unknown';
   if (!byDate[d]) byDate[d] = [];
   byDate[d].push(p);
 }
 const sortedDates = Object.keys(byDate).sort((a,b) => b.localeCompare(a));
+
+// Run stats
+const totalPagesPublishedByRuns = runs.reduce((s, r) => s + (r.pagesPublished?.length ?? 0), 0);
+const autoRuns   = runs.filter(r => r.trigger === 'scheduled').length;
+const manualRuns = runs.filter(r => r.trigger !== 'scheduled').length;
+
+function triggerLabel(t: string) {
+  if (t === 'scheduled')       return '⏰ Otomatik';
+  if (t === 'manual_dispatch') return '▶️ Manuel';
+  return '💻 Local';
+}
+function typeBadge(type: string) {
+  if (type === 'calculator') return 'badge-calc';
+  if (type === 'guide')      return 'badge-guide';
+  if (type === 'reference')  return 'badge-ref';
+  return 'badge-static';
+}
+function typeLabel(type: string) {
+  if (type === 'calculator') return 'calc';
+  if (type === 'guide')      return 'guide';
+  if (type === 'reference')  return 'ref';
+  return 'static';
+}
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="tr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Admin Dashboard — HomeMaterialCalc</title>
+  <title>Admin — HomeMaterialCalc</title>
   <meta name="robots" content="noindex, nofollow" />
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: system-ui, sans-serif; background: #0f172a; color: #e2e8f0; min-height: 100vh; padding: 2rem 1rem; }
-    .wrap { max-width: 960px; margin: 0 auto; }
-    h1 { font-size: 1.5rem; font-weight: 700; color: #f8fafc; margin-bottom: 0.25rem; }
-    .subtitle { font-size: 0.85rem; color: #64748b; margin-bottom: 2rem; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.75rem; margin-bottom: 2rem; }
-    .stat { background: #1e293b; border-radius: 10px; padding: 1rem; }
-    .stat-n { font-size: 1.75rem; font-weight: 800; color: #38bdf8; }
-    .stat-l { font-size: 0.72rem; color: #94a3b8; margin-top: 0.25rem; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:      #0b1120;
+      --surface: #131f35;
+      --border:  #1e2d45;
+      --muted:   #3d5470;
+      --text:    #cdd8e8;
+      --bright:  #f0f6ff;
+      --blue:    #38bdf8;
+      --green:   #4ade80;
+      --yellow:  #fcd34d;
+      --purple:  #a78bfa;
+      --pink:    #f472b6;
+      --teal:    #2dd4bf;
+    }
+    body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); min-height:100vh; padding: 2rem 1rem 4rem; font-size: 14px; }
+    .wrap { max-width: 1020px; margin: 0 auto; }
+
+    /* ── header ── */
+    .header { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.25rem; }
+    h1 { font-size: 1.4rem; font-weight: 800; color: var(--bright); }
+    .sub { font-size: 0.78rem; color: var(--muted); margin-bottom: 2rem; }
+
+    /* ── stat grid ── */
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px,1fr)); gap: 0.75rem; margin-bottom: 1.5rem; }
+    .stat { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1rem 0.75rem; }
+    .stat-n { font-size: 2rem; font-weight: 800; line-height: 1; color: var(--blue); }
+    .stat-l { font-size: 0.7rem; color: var(--muted); margin-top: 0.3rem; text-transform: uppercase; letter-spacing: 0.04em; }
+
+    /* ── progress bar ── */
+    .progress-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; }
+    .progress-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.6rem; }
+    .progress-title { font-size: 0.78rem; font-weight: 600; color: var(--text); }
+    .progress-pct { font-size: 1.1rem; font-weight: 800; color: var(--blue); }
+    .bar-bg { background: var(--border); border-radius: 999px; height: 8px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, #0ea5e9, #38bdf8); transition: width 0.3s; }
+    .progress-meta { display: flex; gap: 1.5rem; margin-top: 0.6rem; flex-wrap: wrap; }
+    .progress-meta span { font-size: 0.72rem; color: var(--muted); }
+    .progress-meta strong { color: var(--text); }
+
+    /* ── two-col layout ── */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+    @media (max-width: 620px) { .two-col { grid-template-columns: 1fr; } }
+
+    /* ── card ── */
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.25rem; }
+    .card-title { font-size: 0.72rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.75rem; }
+    .card-row { display: flex; justify-content: space-between; font-size: 0.78rem; padding: 0.25rem 0; border-bottom: 1px solid var(--border); }
+    .card-row:last-child { border-bottom: none; }
+    .card-row-label { color: var(--muted); }
+    .card-row-val { color: var(--bright); font-weight: 600; }
+
+    /* ── cron schedule ── */
+    .cron-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; }
+    .cron-item { background: var(--border); border-radius: 8px; padding: 0.5rem; text-align: center; }
+    .cron-tr { font-size: 1rem; font-weight: 800; color: var(--blue); }
+    .cron-utc { font-size: 0.65rem; color: var(--muted); margin-top: 0.15rem; }
+
+    /* ── quick links ── */
+    .links-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px,1fr)); gap: 0.5rem; margin-bottom: 1.5rem; }
+    .link-btn { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 0.65rem 0.9rem; display: flex; align-items: center; gap: 0.5rem; font-size: 0.78rem; color: var(--text); text-decoration: none; transition: border-color 0.15s, color 0.15s; }
+    .link-btn:hover { border-color: var(--blue); color: var(--blue); }
+    .link-btn .ico { font-size: 1rem; flex-shrink: 0; }
+
+    /* ── section ── */
     .section { margin-bottom: 2rem; }
-    .section-header { font-size: 0.82rem; font-weight: 600; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; border-bottom: 1px solid #1e293b; padding-bottom: 0.4rem; display: flex; align-items: center; justify-content: space-between; }
-    .type-block { margin-bottom: 1.25rem; }
-    .type-label { font-size: 0.73rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.4rem; padding: 0 0.5rem; }
-    .row { display: flex; align-items: center; justify-content: space-between; padding: 0.45rem 0.75rem; border-radius: 6px; margin-bottom: 0.2rem; font-size: 0.82rem; }
-    .row:hover { background: #1e293b; }
-    .row-url { color: #cbd5e1; font-family: monospace; font-size: 0.78rem; }
-    .row-label { color: #94a3b8; font-size: 0.72rem; }
-    .row-date { color: #64748b; font-size: 0.72rem; white-space: nowrap; margin-left: 1rem; }
-    .badge { display: inline-block; padding: 0.12rem 0.5rem; border-radius: 999px; font-size: 0.68rem; font-weight: 600; }
-    .badge-pub  { background: #14532d; color: #4ade80; }
-    .badge-pend { background: #1c3148; color: #38bdf8; }
-    .badge-fut  { background: #1e1a2e; color: #818cf8; }
-    .badge-type-calc { background: #1c2a3e; color: #7dd3fc; }
-    .badge-type-guide { background: #1a2e1a; color: #86efac; }
-    .badge-type-ref  { background: #2e2a1a; color: #fcd34d; }
-    .date-group { color: #475569; font-size: 0.73rem; padding: 0.45rem 0.75rem 0.2rem; font-weight: 700; }
-    .info-bar { background: #1e293b; border-radius: 10px; padding: 0.9rem 1.1rem; display: flex; flex-wrap: wrap; gap: 1.25rem; font-size: 0.78rem; color: #94a3b8; margin-bottom: 2rem; }
-    .info-bar strong { color: #e2e8f0; }
-    a { color: #38bdf8; text-decoration: none; }
+    .sec-header { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; margin-bottom: 0.75rem; }
+    .sec-title { font-size: 0.8rem; font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: 0.05em; }
+    .sec-sub { font-size: 0.7rem; color: var(--muted); }
+
+    /* ── next-up strip ── */
+    .next-strip { background: linear-gradient(135deg, #0c1c2e, #0f2540); border: 1px solid #1a3a5c; border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; }
+    .next-label { font-size: 0.68rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem; }
+    .next-pages { display: flex; flex-direction: column; gap: 0.35rem; }
+    .next-page-row { display: flex; align-items: center; gap: 0.6rem; font-size: 0.8rem; }
+    .next-slot { font-size: 0.65rem; color: var(--muted); min-width: 3rem; }
+    .next-url { color: var(--blue); font-family: monospace; font-size: 0.77rem; }
+    .next-lbl { color: var(--muted); font-size: 0.72rem; }
+
+    /* ── run history ── */
+    .run-card { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--border); border-radius: 10px; padding: 0.85rem 1rem; margin-bottom: 0.6rem; }
+    .run-card.auto   { border-left-color: var(--blue); }
+    .run-card.manual { border-left-color: var(--purple); }
+    .run-card.local  { border-left-color: var(--muted); }
+    .run-top { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.5rem; }
+    .run-date { font-size: 0.82rem; font-weight: 700; color: var(--bright); }
+    .run-meta-row { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
+    .run-ts { font-size: 0.67rem; color: var(--muted); font-family: monospace; }
+    .run-pages-list { display: flex; flex-direction: column; gap: 0.25rem; }
+    .run-page { display: flex; align-items: center; gap: 0.5rem; font-size: 0.78rem; }
+    .run-page-url { color: var(--text); font-family: monospace; font-size: 0.75rem; }
+    .run-page-lbl { color: var(--muted); font-size: 0.7rem; }
+    .run-footer { font-size: 0.68rem; color: var(--muted); margin-top: 0.4rem; padding-top: 0.4rem; border-top: 1px solid var(--border); }
+
+    /* ── rows ── */
+    .row { display: flex; align-items: center; justify-content: space-between; padding: 0.4rem 0.6rem; border-radius: 7px; }
+    .row:hover { background: rgba(255,255,255,0.03); }
+    .row-left { min-width: 0; }
+    .row-url { color: var(--text); font-family: monospace; font-size: 0.76rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .row-lbl { color: var(--muted); font-size: 0.69rem; margin-top: 0.1rem; }
+    .row-right { display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0; margin-left: 0.75rem; }
+    .row-eta { font-size: 0.69rem; color: var(--muted); white-space: nowrap; }
+
+    /* ── type blocks ── */
+    .type-block { margin-bottom: 1rem; }
+    .type-lbl { font-size: 0.68rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; padding: 0 0.6rem; margin-bottom: 0.3rem; }
+
+    /* ── badges ── */
+    .badge { display: inline-block; padding: 0.1rem 0.45rem; border-radius: 999px; font-size: 0.65rem; font-weight: 700; white-space: nowrap; }
+    .badge-calc   { background: #0c2240; color: #7dd3fc; }
+    .badge-guide  { background: #0c2214; color: #86efac; }
+    .badge-ref    { background: #2a2008; color: #fcd34d; }
+    .badge-static { background: #1e293b; color: #94a3b8; }
+    .badge-live   { background: #052e16; color: #4ade80; }
+    .badge-pend   { background: #0c2240; color: #60a5fa; }
+    .badge-auto   { background: #0c2240; color: var(--blue); }
+    .badge-manual { background: #1a1040; color: var(--purple); }
+    .badge-local  { background: var(--border); color: var(--muted); }
+
+    /* ── misc ── */
+    a { color: var(--blue); text-decoration: none; }
     a:hover { text-decoration: underline; }
-    .empty { color: #475569; font-size: 0.78rem; padding: 0.4rem 0.75rem; }
-    .tabs { display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
-    .tab { font-size: 0.75rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 999px; cursor: default; }
-    .tab-calc  { background: #1c2a3e; color: #7dd3fc; }
-    .tab-guide { background: #1a2e1a; color: #86efac; }
-    .tab-ref   { background: #2e2a1a; color: #fcd34d; }
-    .tab-static { background: #1e293b; color: #94a3b8; }
-    .countdown { background: #1e293b; border-radius: 10px; padding: 0.9rem 1.1rem; margin-bottom: 2rem; }
-    .next-label { font-size: 0.72rem; color: #64748b; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
-    .next-page { font-size: 0.88rem; color: #e2e8f0; font-family: monospace; }
-    .next-date { font-size: 0.78rem; color: #38bdf8; margin-top: 0.2rem; }
-    /* run history */
-    .run-card { background: #1e293b; border-radius: 10px; padding: 1rem 1.2rem; margin-bottom: 0.75rem; border-left: 3px solid #334155; }
-    .run-card.run-auto { border-left-color: #38bdf8; }
-    .run-card.run-manual { border-left-color: #818cf8; }
-    .run-card.run-local  { border-left-color: #64748b; }
-    .run-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem; }
-    .run-date { font-size: 0.85rem; font-weight: 700; color: #e2e8f0; }
-    .run-meta { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
-    .run-trigger { font-size: 0.7rem; font-weight: 600; padding: 0.15rem 0.5rem; border-radius: 999px; }
-    .run-trigger-auto   { background: #1c3148; color: #38bdf8; }
-    .run-trigger-manual { background: #1e1a2e; color: #818cf8; }
-    .run-trigger-local  { background: #1e293b; color: #64748b; }
-    .run-by { font-size: 0.7rem; color: #475569; }
-    .run-ts { font-size: 0.68rem; color: #334155; font-family: monospace; }
-    .run-pages { display: flex; flex-direction: column; gap: 0.3rem; }
-    .run-page { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; }
-    .run-page-url { color: #94a3b8; font-family: monospace; font-size: 0.77rem; }
-    .run-page-label { color: #64748b; font-size: 0.72rem; }
-    .run-stats { font-size: 0.72rem; color: #475569; margin-top: 0.4rem; border-top: 1px solid #0f172a; padding-top: 0.4rem; }
-    .run-empty { color: #334155; font-size: 0.8rem; padding: 1rem; text-align: center; background: #1e293b; border-radius: 10px; margin-bottom: 2rem; }
-    .queue-info { background: #1e293b; border-radius: 10px; padding: 0.8rem 1.1rem; display: flex; flex-wrap: wrap; gap: 1.5rem; font-size: 0.78rem; color: #94a3b8; margin-bottom: 2rem; }
-    .queue-info strong { color: #e2e8f0; }
+    .empty { color: var(--muted); font-size: 0.78rem; padding: 0.75rem 0.6rem; }
+    .checklist { display: flex; flex-direction: column; gap: 0.35rem; }
+    .check-row { display: flex; align-items: center; gap: 0.5rem; font-size: 0.78rem; }
+    .check-icon { font-size: 0.85rem; flex-shrink: 0; }
+    .check-done { color: var(--text); }
+    .check-todo { color: var(--muted); }
+    .divider { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <h1>📊 HomeMaterialCalc — Admin Dashboard</h1>
-    <p class="subtitle">Yayın durumu · Sadece sen görüyorsun (noindex)</p>
+<div class="wrap">
 
-    <!-- Stats -->
-    <div class="grid">
-      <div class="stat">
-        <div class="stat-n">{published.length}</div>
-        <div class="stat-l">Toplam yayında</div>
+  <div class="header">
+    <h1>HomeMaterialCalc · Admin</h1>
+    <span style="font-size:0.75rem;color:var(--muted)">Bugün: <strong style="color:var(--text)">{today}</strong></span>
+  </div>
+  <p class="sub">Yayın durumu · noindex · sadece sen görüyorsun</p>
+
+  <!-- ─── STAT GRID ─────────────────────────────────────────────────── -->
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-n">{published.length}</div>
+      <div class="stat-l">Canlı sayfa</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n" style="color:var(--pink)">{pending.length}</div>
+      <div class="stat-l">Sırada</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n" style="color:var(--blue)">{pubCalcs.length}</div>
+      <div class="stat-l">Calculator</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n" style="color:var(--green)">{pubGuides.length}</div>
+      <div class="stat-l">Guide</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n" style="color:var(--yellow)">{pubRefs.length}</div>
+      <div class="stat-l">Reference</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n" style="color:var(--teal)">{runs.length}</div>
+      <div class="stat-l">Toplam run</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">{pagesPerDay}</div>
+      <div class="stat-l">Sayfa / gün</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n" style="color:var(--purple)">{emptyDate ? emptyDate.slice(5) : '—'}</div>
+      <div class="stat-l">Kuyruk biter</div>
+    </div>
+  </div>
+
+  <!-- ─── PROGRESS BAR ───────────────────────────────────────────────── -->
+  <div class="progress-wrap">
+    <div class="progress-header">
+      <span class="progress-title">Yayın İlerlemesi — {published.length} / {total} sayfa</span>
+      <span class="progress-pct">{progressPct}%</span>
+    </div>
+    <div class="bar-bg">
+      <div class="bar-fill" style={`width:${progressPct}%`}></div>
+    </div>
+    <div class="progress-meta">
+      <span>🔧 <strong>{pubCalcs.length}</strong> calculator</span>
+      <span>📖 <strong>{pubGuides.length}</strong> guide</span>
+      <span>📋 <strong>{pubRefs.length}</strong> reference</span>
+      <span>📄 <strong>{pubStatic.length}</strong> static</span>
+      <span>⏳ <strong>{pending.length}</strong> pending</span>
+      <span>Son yayın: <strong>{lastRun}</strong></span>
+    </div>
+  </div>
+
+  <!-- ─── TWO-COL: Cron Schedule + Run Stats ──────────────────────────── -->
+  <div class="two-col">
+    <div class="card">
+      <div class="card-title">⏰ Yayın Saatleri (Türkiye)</div>
+      <div class="cron-grid">
+        {[['04:00','01:00'],['10:00','07:00'],['16:00','13:00'],['22:00','19:00']].map(([tr,utc]) => (
+          <div class="cron-item">
+            <div class="cron-tr">{tr}</div>
+            <div class="cron-utc">{utc} UTC</div>
+          </div>
+        ))}
       </div>
-      <div class="stat">
-        <div class="stat-n" style="color:#7dd3fc">{pubCalcs.length}</div>
-        <div class="stat-l">Calculator canlı</div>
-      </div>
-      <div class="stat">
-        <div class="stat-n" style="color:#86efac">{pubGuides.length}</div>
-        <div class="stat-l">Guide canlı</div>
-      </div>
-      <div class="stat">
-        <div class="stat-n" style="color:#fcd34d">{pubRefs.length}</div>
-        <div class="stat-l">Reference canlı</div>
-      </div>
-      <div class="stat">
-        <div class="stat-n" style="color:#f472b6">{pending.length}</div>
-        <div class="stat-l">Sırada (pending)</div>
-      </div>
-      <div class="stat">
-        <div class="stat-n">{pagesPerRun}/gün</div>
-        <div class="stat-l">Yayın hızı</div>
+      <div style="margin-top:0.75rem;font-size:0.72rem;color:var(--muted)">
+        Her çalışma 1 sayfa yayınlar → günde 4 sayfa
       </div>
     </div>
-
-    <!-- Info bar -->
-    <div class="info-bar">
-      <span>Son çalışma: <strong>{lastRun}</strong></span>
-      <span>Bugün: <strong>{today}</strong></span>
-      <span>GitHub Actions: <strong>Her gün 09:00 UTC</strong></span>
-      <span>Canlı site: <a href="https://www.homematerialcalc.com" target="_blank">homematerialcalc.com</a></span>
-      <span>Toplam URL: <strong>{published.filter(p => !['/privacy','/terms','/contact','/contact-success'].includes(p.url)).length}</strong></span>
+    <div class="card">
+      <div class="card-title">📊 Run İstatistikleri</div>
+      <div class="card-row"><span class="card-row-label">Toplam run</span><span class="card-row-val">{runs.length}</span></div>
+      <div class="card-row"><span class="card-row-label">⏰ Otomatik</span><span class="card-row-val">{autoRuns}</span></div>
+      <div class="card-row"><span class="card-row-label">▶️ Manuel</span><span class="card-row-val">{manualRuns}</span></div>
+      <div class="card-row"><span class="card-row-label">Toplam yayınlanan (run'dan)</span><span class="card-row-val">{totalPagesPublishedByRuns}</span></div>
+      <div class="card-row"><span class="card-row-label">Kalan gün (tahmini)</span><span class="card-row-val">{Math.ceil(pending.length / pagesPerDay)}</span></div>
+      <div class="card-row"><span class="card-row-label">Kuyruk biter</span><span class="card-row-val">{emptyDate ?? '—'}</span></div>
     </div>
+  </div>
 
-    <!-- Queue projection -->
-    <div class="queue-info">
-      <span>Sırada: <strong>{pending.length} sayfa</strong></span>
-      <span>Tahmini bitiş: <strong>{emptyDate ?? '—'}</strong></span>
-      <span>Toplam çalışma: <strong>{runs.length} kez</strong></span>
-      <span>Son çalışma türü: <strong>{runs[0]?.trigger ? triggerLabel(runs[0].trigger) : '—'}</strong></span>
-    </div>
+  <!-- ─── QUICK LINKS ─────────────────────────────────────────────────── -->
+  <div class="links-grid">
+    <a href="https://www.homematerialcalc.com" target="_blank" class="link-btn"><span class="ico">🌐</span> Canlı site</a>
+    <a href="https://vercel.com/ozgurs-projects-26c5cbf1/homematerialcalc" target="_blank" class="link-btn"><span class="ico">▲</span> Vercel</a>
+    <a href="https://github.com/evinso/homematerialcalc/actions" target="_blank" class="link-btn"><span class="ico">⚙️</span> GitHub Actions</a>
+    <a href="https://search.google.com/search-console" target="_blank" class="link-btn"><span class="ico">🔍</span> Search Console</a>
+    <a href="https://analytics.google.com" target="_blank" class="link-btn"><span class="ico">📈</span> Google Analytics</a>
+    <a href="https://www.google.com/adsense" target="_blank" class="link-btn"><span class="ico">💰</span> AdSense</a>
+    <a href="https://www.homematerialcalc.com/sitemap.xml" target="_blank" class="link-btn"><span class="ico">🗺️</span> Sitemap</a>
+    <a href="https://search.google.com/test/rich-results" target="_blank" class="link-btn"><span class="ico">🧪</span> Rich Results Test</a>
+  </div>
 
-    <!-- Next up -->
-    {pendingWithETA.length > 0 && (
-      <div class="countdown">
-        <div class="next-label">Sonraki yayın</div>
-        <div class="next-page">{pendingWithETA[0].url}</div>
-        <div class="next-date">Tahmini tarih: {pendingWithETA[0].eta} — {pendingWithETA[0].label}</div>
+  <!-- ─── ADSENSE CHECKLIST ─────────────────────────────────────────────── -->
+  <div class="two-col" style="margin-bottom:1.5rem;">
+    <div class="card">
+      <div class="card-title">✅ AdSense Başvuru Kontrolü</div>
+      <div class="checklist">
+        {[
+          [true,  'robots.txt canlı'],
+          [true,  'sitemap.xml canlı (www-https)'],
+          [true,  'Canonical tag her sayfada'],
+          [true,  '301 redirect non-www → www'],
+          [true,  'Privacy Policy + Terms sayfaları'],
+          [true,  'About + Contact sayfaları'],
+          [true,  'Methodology + Data Sources (EEAT)'],
+          [true,  'Cookie Policy + consent banner'],
+          [true,  'GA4 aktif'],
+          [true,  `${published.length} canlı sayfa (25+ gerek)`],
+          [true,  'ads.txt oluşturuldu'],
+          [false, 'ads.txt içine publisher ID ekle (onaydan sonra)'],
+          [false, 'AdSense başvurusu gönder'],
+        ].map(([done, label]) => (
+          <div class="check-row">
+            <span class="check-icon">{done ? '✅' : '⬜'}</span>
+            <span class={done ? 'check-done' : 'check-todo'}>{label as string}</span>
+          </div>
+        ))}
       </div>
+    </div>
+    <div class="card">
+      <div class="card-title">🔧 Teknik SEO Durumu</div>
+      <div class="checklist">
+        {[
+          [true,  'WebApplication schema (tüm calculator)'],
+          [true,  'Article + FAQ + BreadcrumbList (guides)'],
+          [true,  'Organization schema (homepage)'],
+          [true,  'BreadcrumbList schema (calculators)'],
+          [true,  'OG / Twitter Card meta (tüm sayfalar)'],
+          [true,  'Search Console doğrulama meta'],
+          [true,  'Custom 404 sayfası'],
+          [true,  'Accessibility sayfası'],
+          [true,  'Cookie consent banner'],
+          [true,  'Mobile menu çalışıyor'],
+          [true,  'Newsletter signup (footer)'],
+          [true,  'Category hub sayfaları (3 adet)'],
+          [false, 'OG default PNG oluştur (SVG var)'],
+        ].map(([done, label]) => (
+          <div class="check-row">
+            <span class="check-icon">{done ? '✅' : '⬜'}</span>
+            <span class={done ? 'check-done' : 'check-todo'}>{label as string}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── NEXT UP ──────────────────────────────────────────────────────── -->
+  {pendingWithETA.length > 0 && (
+    <div class="next-strip">
+      <div class="next-label">Sonraki {Math.min(pendingWithETA.length, 8)} yayın</div>
+      <div class="next-pages">
+        {pendingWithETA.slice(0, 8).map((p, i) => (
+          <div class="next-page-row">
+            <span class="next-slot">#{i+1} · {p.eta}</span>
+            <span class={`badge badge-${p.type === 'calculator' ? 'calc' : p.type === 'guide' ? 'guide' : p.type === 'reference' ? 'ref' : 'static'}`}>
+              {typeLabel(p.type)}
+            </span>
+            <span class="next-url">{p.url}</span>
+            <span class="next-lbl">— {p.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  )}
+
+  <!-- ─── RUN HISTORY ──────────────────────────────────────────────────── -->
+  <div class="section">
+    <div class="sec-header">
+      <span class="sec-title">🕐 Yayın Geçmişi ({runs.length} run)</span>
+      <span class="sec-sub">En yeni üstte</span>
+    </div>
+
+    {recentRuns.length === 0 && (
+      <p class="empty">Henüz hiç run kaydedilmedi. İlk otomatik çalışmada burada görünecek.</p>
     )}
 
-    <!-- ─── Run History ─────────────────────────────────────────────────── -->
-    <div class="section">
-      <div class="section-header">
-        <span>🕐 Yayın Geçmişi — {runs.length} çalışma</span>
-        <span style="font-size:0.7rem;font-weight:400;color:#475569">En yeni üstte · max 30 gösterilir</span>
-      </div>
-
-      {recentRuns.length === 0 && (
-        <div class="run-empty">
-          Henüz hiç otomatik yayın çalışmadı.<br/>
-          GitHub Actions her gün 09:00 UTC'de çalışır ve burayı günceller.
-        </div>
-      )}
-
-      {recentRuns.map((run: any) => {
-        const triggerClass =
-          run.trigger === 'scheduled' ? 'run-auto' :
-          run.trigger === 'manual_dispatch' ? 'run-manual' : 'run-local';
-        const triggerBadgeClass =
-          run.trigger === 'scheduled' ? 'run-trigger-auto' :
-          run.trigger === 'manual_dispatch' ? 'run-trigger-manual' : 'run-trigger-local';
-        return (
-          <div class={`run-card ${triggerClass}`}>
-            <div class="run-header">
-              <span class="run-date">{run.date}</span>
-              <div class="run-meta">
-                <span class={`run-trigger ${triggerBadgeClass}`}>{triggerLabel(run.trigger)}</span>
-                {run.runBy && run.runBy !== 'local' && <span class="run-by">by {run.runBy}</span>}
-                <span class="run-ts">{run.timestamp?.replace('T', ' ').replace(/\.\d{3}Z$/, ' UTC') ?? ''}</span>
-              </div>
-            </div>
-            <div class="run-pages">
-              {(run.pagesPublished ?? []).map((p: any) => (
-                <div class="run-page">
-                  <span class={`badge ${
-                    p.type === 'calculator' ? 'badge-type-calc' :
-                    p.type === 'guide' ? 'badge-type-guide' : 'badge-type-ref'
-                  }`}>{p.type ?? '?'}</span>
-                  <span class="run-page-url">
-                    <a href={`https://www.homematerialcalc.com${p.url}`} target="_blank">{p.url}</a>
-                  </span>
-                  <span class="run-page-label">— {p.label}</span>
-                </div>
-              ))}
-            </div>
-            <div class="run-stats">
-              Önce {run.pendingBefore} pending · Sonra {run.pendingAfter} pending
+    {recentRuns.map((run: any) => {
+      const cls = run.trigger === 'scheduled' ? 'auto' : run.trigger === 'manual_dispatch' ? 'manual' : 'local';
+      const badgeCls = run.trigger === 'scheduled' ? 'badge-auto' : run.trigger === 'manual_dispatch' ? 'badge-manual' : 'badge-local';
+      return (
+        <div class={`run-card ${cls}`}>
+          <div class="run-top">
+            <span class="run-date">{run.timestamp?.replace('T',' ').replace(/\.\d{3}Z$/,' UTC') ?? run.date}</span>
+            <div class="run-meta-row">
+              <span class={`badge ${badgeCls}`}>{triggerLabel(run.trigger)}</span>
+              {run.runBy && run.runBy !== 'local' && (
+                <span style="font-size:0.68rem;color:var(--muted)">by {run.runBy}</span>
+              )}
+              <span style="font-size:0.68rem;color:var(--muted)">{run.pendingBefore} → {run.pendingAfter} pending</span>
             </div>
           </div>
-        );
-      })}
+          <div class="run-pages-list">
+            {(run.pagesPublished ?? []).map((p: any) => (
+              <div class="run-page">
+                <span class={`badge badge-${p.type === 'calculator' ? 'calc' : p.type === 'guide' ? 'guide' : p.type === 'reference' ? 'ref' : 'static'}`}>
+                  {typeLabel(p.type)}
+                </span>
+                <a href={`https://www.homematerialcalc.com${p.url}`} target="_blank" class="run-page-url">{p.url}</a>
+                <span class="run-page-lbl">— {p.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      );
+    })}
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ─── PENDING BY TYPE ─────────────────────────────────────────────── -->
+  <div class="section">
+    <div class="sec-header">
+      <span class="sec-title">⏳ Sırada ({pending.length} sayfa)</span>
+      <span class="sec-sub">{pendCalcs.length} calc · {pendGuides.length} guide · {pendRefs.length} ref</span>
     </div>
 
-    <!-- Pending — grouped by type -->
-    <div class="section">
-      <div class="section-header">
-        <span>⏳ Sırada — {pending.length} sayfa</span>
-        <span style="font-size:0.7rem;font-weight:400;color:#475569">{pendCalcs.length} calc · {pendGuides.length} guide · {pendRefs.length} ref</span>
-      </div>
+    {pending.length === 0 && <p class="empty">Sırada sayfa yok — tüm sayfalar yayında!</p>}
 
-      {pendCalcs.length > 0 && (
-        <div class="type-block">
-          <div class="type-label">🔧 Calculators ({pendCalcs.length})</div>
-          {pendCalcs.map(p => (
-            <div class="row">
-              <div>
-                <div class="row-url">{p.url}</div>
-                <div class="row-label">{p.label}</div>
-              </div>
-              <div style="display:flex;align-items:center;gap:0.6rem;">
-                <span class="badge badge-type-calc">calc</span>
-                <span class="row-date">~{p.eta}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-
-      {pendGuides.length > 0 && (
-        <div class="type-block">
-          <div class="type-label">📖 Guides ({pendGuides.length})</div>
-          {pendGuides.map(p => (
-            <div class="row">
-              <div>
-                <div class="row-url">{p.url}</div>
-                <div class="row-label">{p.label}</div>
-              </div>
-              <div style="display:flex;align-items:center;gap:0.6rem;">
-                <span class="badge badge-type-guide">guide</span>
-                <span class="row-date">~{p.eta}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-
-      {pendRefs.length > 0 && (
-        <div class="type-block">
-          <div class="type-label">📋 Reference ({pendRefs.length})</div>
-          {pendRefs.map(p => (
-            <div class="row">
-              <div>
-                <div class="row-url">{p.url}</div>
-                <div class="row-label">{p.label}</div>
-              </div>
-              <div style="display:flex;align-items:center;gap:0.6rem;">
-                <span class="badge badge-type-ref">ref</span>
-                <span class="row-date">~{p.eta}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-
-      {pending.length === 0 && <p class="empty">Sırada sayfa yok.</p>}
-    </div>
-
-    <!-- Future -->
-    {future.length > 0 && (
-      <div class="section">
-        <div class="section-header">🔮 Planlanmış — {future.length} sayfa (henüz yazılmamış)</div>
-        {future.map(p => (
+    {pendCalcs.length > 0 && (
+      <div class="type-block">
+        <div class="type-lbl">🔧 Calculators ({pendCalcs.length})</div>
+        {pendCalcs.map((p: any) => (
           <div class="row">
-            <div>
+            <div class="row-left">
               <div class="row-url">{p.url}</div>
-              <div class="row-label">{p.label}</div>
+              <div class="row-lbl">{p.label}</div>
             </div>
-            <span class="badge badge-fut">future</span>
+            <div class="row-right">
+              <span class="badge badge-calc">calc</span>
+              <span class="row-eta">{p.eta}</span>
+            </div>
           </div>
         ))}
       </div>
     )}
 
-    <!-- Published — grouped by type, then by date -->
-    <div class="section">
-      <div class="section-header">
-        <span>✅ Yayında — {published.length} sayfa</span>
-        <span style="font-size:0.7rem;font-weight:400;color:#475569">{pubCalcs.length} calc · {pubGuides.length} guide · {pubRefs.length} ref · {pubStatic.length} static</span>
+    {pendGuides.length > 0 && (
+      <div class="type-block">
+        <div class="type-lbl">📖 Guides ({pendGuides.length})</div>
+        {pendGuides.map((p: any) => (
+          <div class="row">
+            <div class="row-left">
+              <div class="row-url">{p.url}</div>
+              <div class="row-lbl">{p.label}</div>
+            </div>
+            <div class="row-right">
+              <span class="badge badge-guide">guide</span>
+              <span class="row-eta">{p.eta}</span>
+            </div>
+          </div>
+        ))}
       </div>
+    )}
 
-      <!-- Type legend -->
-      <div class="tabs" style="margin-bottom:1rem;">
-        <span class="tab tab-calc">🔧 Calculators ({pubCalcs.length})</span>
-        <span class="tab tab-guide">📖 Guides ({pubGuides.length})</span>
-        <span class="tab tab-ref">📋 Reference ({pubRefs.length})</span>
-        <span class="tab tab-static">📄 Static ({pubStatic.length})</span>
+    {pendRefs.length > 0 && (
+      <div class="type-block">
+        <div class="type-lbl">📋 Reference ({pendRefs.length})</div>
+        {pendRefs.map((p: any) => (
+          <div class="row">
+            <div class="row-left">
+              <div class="row-url">{p.url}</div>
+              <div class="row-lbl">{p.label}</div>
+            </div>
+            <div class="row-right">
+              <span class="badge badge-ref">ref</span>
+              <span class="row-eta">{p.eta}</span>
+            </div>
+          </div>
+        ))}
       </div>
-
-      <!-- Published Calculators -->
-      {pubCalcs.length > 0 && (
-        <div class="type-block">
-          <div class="type-label">🔧 Calculators</div>
-          {pubCalcs.map(p => (
-            <div class="row">
-              <div>
-                <div class="row-url">
-                  <a href={`https://www.homematerialcalc.com${p.url}`} target="_blank">{p.url}</a>
-                </div>
-                <div class="row-label">{p.label}</div>
-              </div>
-              <div style="display:flex;align-items:center;gap:0.6rem;">
-                <span class="badge badge-type-calc">calc</span>
-                <span class="badge badge-pub">live</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-
-      <!-- Published Guides -->
-      {pubGuides.length > 0 && (
-        <div class="type-block">
-          <div class="type-label">📖 Guides</div>
-          {pubGuides.map(p => (
-            <div class="row">
-              <div>
-                <div class="row-url">
-                  <a href={`https://www.homematerialcalc.com${p.url}`} target="_blank">{p.url}</a>
-                </div>
-                <div class="row-label">{p.label}</div>
-              </div>
-              <div style="display:flex;align-items:center;gap:0.6rem;">
-                <span class="badge badge-type-guide">guide</span>
-                <span class="badge badge-pub">live</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-
-      <!-- Published Reference -->
-      {pubRefs.length > 0 && (
-        <div class="type-block">
-          <div class="type-label">📋 Reference</div>
-          {pubRefs.map(p => (
-            <div class="row">
-              <div>
-                <div class="row-url">
-                  <a href={`https://www.homematerialcalc.com${p.url}`} target="_blank">{p.url}</a>
-                </div>
-                <div class="row-label">{p.label}</div>
-              </div>
-              <div style="display:flex;align-items:center;gap:0.6rem;">
-                <span class="badge badge-type-ref">ref</span>
-                <span class="badge badge-pub">live</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-
-      <!-- Published Static pages -->
-      {pubStatic.length > 0 && (
-        <div class="type-block">
-          <div class="type-label">📄 Static</div>
-          {pubStatic.map(p => (
-            <div class="row">
-              <div>
-                <div class="row-url">
-                  <a href={`https://www.homematerialcalc.com${p.url}`} target="_blank">{p.url}</a>
-                </div>
-                <div class="row-label">{p.label}</div>
-              </div>
-              <span class="badge badge-pub">live</span>
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
+    )}
   </div>
+
+  <hr class="divider" />
+
+  <!-- ─── PUBLISHED BY TYPE ────────────────────────────────────────────── -->
+  <div class="section">
+    <div class="sec-header">
+      <span class="sec-title">✅ Yayında ({published.length} sayfa)</span>
+      <span class="sec-sub">{pubCalcs.length} calc · {pubGuides.length} guide · {pubRefs.length} ref · {pubStatic.length} static</span>
+    </div>
+
+    {pubCalcs.length > 0 && (
+      <div class="type-block">
+        <div class="type-lbl">🔧 Calculators</div>
+        {pubCalcs.map((p: any) => (
+          <div class="row">
+            <div class="row-left">
+              <div class="row-url">
+                <a href={`https://www.homematerialcalc.com${p.url}`} target="_blank">{p.url}</a>
+              </div>
+              <div class="row-lbl">{p.label}</div>
+            </div>
+            <div class="row-right">
+              <span class="badge badge-calc">calc</span>
+              <span class="badge badge-live">live</span>
+              <span class="row-eta">{p.publishedAt}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    )}
+
+    {pubGuides.length > 0 && (
+      <div class="type-block">
+        <div class="type-lbl">📖 Guides</div>
+        {pubGuides.map((p: any) => (
+          <div class="row">
+            <div class="row-left">
+              <div class="row-url">
+                <a href={`https://www.homematerialcalc.com${p.url}`} target="_blank">{p.url}</a>
+              </div>
+              <div class="row-lbl">{p.label}</div>
+            </div>
+            <div class="row-right">
+              <span class="badge badge-guide">guide</span>
+              <span class="badge badge-live">live</span>
+              <span class="row-eta">{p.publishedAt}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    )}
+
+    {pubRefs.length > 0 && (
+      <div class="type-block">
+        <div class="type-lbl">📋 Reference</div>
+        {pubRefs.map((p: any) => (
+          <div class="row">
+            <div class="row-left">
+              <div class="row-url">
+                <a href={`https://www.homematerialcalc.com${p.url}`} target="_blank">{p.url}</a>
+              </div>
+              <div class="row-lbl">{p.label}</div>
+            </div>
+            <div class="row-right">
+              <span class="badge badge-ref">ref</span>
+              <span class="badge badge-live">live</span>
+              <span class="row-eta">{p.publishedAt}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    )}
+
+    {pubStatic.length > 0 && (
+      <div class="type-block">
+        <div class="type-lbl">📄 Static</div>
+        {pubStatic.map((p: any) => (
+          <div class="row">
+            <div class="row-left">
+              <div class="row-url">
+                <a href={`https://www.homematerialcalc.com${p.url}`} target="_blank">{p.url}</a>
+              </div>
+              <div class="row-lbl">{p.label}</div>
+            </div>
+            <div class="row-right">
+              <span class="badge badge-static">static</span>
+              <span class="badge badge-live">live</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
+
+</div>
 </body>
 </html>
