@@ -1,12 +1,11 @@
 name: Scheduled Publish
 
-# Runs every Monday and Thursday at 10:00 UTC
-# Promotes pending pages → published, builds, and deploys to Vercel.
-# Adjust the cron schedule and deploy step for your host.
+# Promotes 1 pending page → published every day at 09:00 UTC (12:00 Turkey).
+# Builds and deploys to Vercel automatically.
 
 on:
   schedule:
-    - cron: '0 9 * * *'    # Every day at 09:00 UTC
+    - cron: '0 9 * * *'    # Every day at 09:00 UTC = 12:00 Turkey (UTC+3)
   workflow_dispatch:         # manual trigger from GitHub Actions UI
 
 jobs:
@@ -22,7 +21,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'npm'
 
       - name: Install dependencies
@@ -33,7 +32,6 @@ jobs:
 
       - name: Promote pending pages
         run: node scripts/publish-next.mjs
-        # This updates publish-schedule.json AND runs npm run build
 
       - name: Commit updated schedule
         run: |
@@ -43,7 +41,6 @@ jobs:
           git diff --staged --quiet || git commit -m "chore: publish scheduled pages [skip ci]"
           git push
 
-      # ── Vercel deploy ────────────────────────────────────────────────────────
       - name: Deploy to Vercel
         run: npx vercel --prod --yes --token=${{ secrets.VERCEL_TOKEN }}
         env:
