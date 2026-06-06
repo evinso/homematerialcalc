@@ -1,0 +1,82 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How long does concrete take to dry?', a: 'Concrete is walkable after 24–48 hours and reaches full design strength (cure) at 28 days. "Dry" and "cured" are different — concrete gains 70% of its strength by 7 days but continues hardening for years.' },
+  { q: 'Can I drive on concrete after 3 days?', a: 'Passenger cars can drive on concrete after 7 days. Heavy trucks and equipment should wait the full 28-day cure period. Driving too soon can cause surface damage and cracking.' },
+  { q: 'How can I speed up concrete drying?', a: 'Use a lower water-to-cement ratio, add accelerating admixtures (calcium chloride), pour in warmer weather (60–80°F), and keep the slab covered with plastic to retain heat. Avoid using heat guns or propane heaters, which dry the surface too fast and cause cracking.' },
+  { q: 'What happens if concrete gets wet before it cures?', a: 'Light rain on freshly poured concrete can weaken the surface layer. Heavy rain can wash out cement paste, leaving a rough, weak surface. Cover fresh concrete immediately if rain is expected within 24 hours of pouring.' },
+  { q: 'How do I know if concrete is fully cured?', a: 'Concrete is fully cured at 28 days. You can test surface hardness by pressing a nail — fully cured concrete will not dent. For structural applications, professional core tests measure actual compressive strength.' },
+];
+
+export const related = [
+  { href: '/calculator/concrete', label: 'Concrete Calculator' },
+  { href: '/guide/how-much-concrete-do-i-need', label: 'How Much Concrete Do I Need?' },
+  { href: '/guide/how-thick-should-concrete-slab-be', label: 'How Thick Should Concrete Be?' },
+  { href: '/guide/concrete-mix-ratios', label: 'Concrete Mix Ratios' },
+];
+
+<GuideLayout
+  title="How Long Does Concrete Take to Dry? — Cure Time Guide"
+  description="Concrete is walkable in 24–48 hours, ready for vehicles in 7 days, and fully cured at 28 days. Complete drying and curing timeline for slabs, driveways, and footings."
+  h1="How Long Does Concrete Take to Dry?"
+  intro="Concrete doesn't just 'dry' — it cures through a chemical reaction called hydration. Here's the complete timeline for when you can walk on it, drive on it, and load it."
+  calculatorHref="/calculator/concrete"
+  calculatorLabel="Concrete Calculator — get bags or cubic yards for your project"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'How Long Does Concrete Take to Dry?' }]}
+>
+
+## Concrete drying vs. curing — the difference
+
+**Drying** = surface moisture evaporating (hours to days)
+**Curing** = chemical hardening reaction that builds strength (days to weeks)
+
+You want *curing*, not just drying. Concrete that dries too fast (in hot, dry, windy weather) is actually weaker — the hydration reaction needs moisture to complete.
+
+## Complete cure timeline
+
+| Time after pour | Strength reached | What you can do |
+|----------------|-----------------|-----------------|
+| 24–48 hours | ~20% | Walk on it carefully |
+| 3 days | ~40% | Light foot traffic OK |
+| 7 days | ~70% | Passenger cars OK |
+| 14 days | ~90% | Most normal loads |
+| 28 days | 100% | Full design strength — all loads |
+
+*These are approximate averages at 70°F with standard portland cement mix.*
+
+## How temperature affects cure time
+
+| Temperature | Effect |
+|------------|--------|
+| Above 90°F | Cures faster but risk of cracking — mist with water |
+| 60–80°F | Ideal curing conditions |
+| 40–60°F | Cures slowly — keep covered |
+| Below 40°F | Curing nearly stops — must protect from freezing |
+| Below 32°F | Do NOT pour — water in mix freezes, ruins the slab |
+
+## Curing methods to get full strength
+
+1. **Wet curing** — Keep the slab continuously moist for 7 days with burlap or plastic sheeting. Best for maximum strength.
+2. **Plastic sheeting** — Cover immediately after finishing; seal edges. Easy for DIY projects.
+3. **Curing compound** — Spray-on membrane that retains moisture. Used on large commercial pours.
+4. **Nothing** — The weakest option. Air-cured concrete loses significant strength on the surface.
+
+## When to remove forms
+
+| Form type | Remove after |
+|-----------|-------------|
+| Wall forms (vertical) | 24–48 hours |
+| Slab edge forms | 24–48 hours |
+| Elevated slab (load-bearing) | 7–14 days minimum |
+| Arch forms | 21–28 days |
+
+## Key rules
+
+- **Keep it moist, not wet** — Surface cracking happens when moisture evaporates faster than curing produces it
+- **No heavy loads for 7 days minimum** — Premature loading is the #1 cause of slab failure
+- **Don't seal too early** — Wait 28 days before applying concrete sealer
+- **Freeze protection** — If freezing temps are possible in the first 7 days, use insulating blankets
+
+</GuideLayout>

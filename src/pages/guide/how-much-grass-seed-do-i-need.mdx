@@ -1,0 +1,81 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How much grass seed do I need per square foot?', a: 'Coverage rates vary by grass type: fescue and ryegrass need 6–8 lbs per 1,000 sq ft for new lawns; Kentucky bluegrass needs 2–3 lbs per 1,000 sq ft. For overseeding existing lawns, use half the new lawn rate.' },
+  { q: 'How many pounds of grass seed for 1/4 acre?', a: 'One quarter acre is 10,890 sq ft. At 6 lbs per 1,000 sq ft (tall fescue), you need about 65 lbs. At 2 lbs per 1,000 sq ft (Kentucky bluegrass), you need about 22 lbs. Buy 10% extra for coverage gaps.' },
+  { q: 'Is it better to overseed or reseed a lawn?', a: 'Overseeding (applying seed to existing thin turf) is cheaper and preserves the lawn. Full reseeding (tilling and starting fresh) is better if more than 50% of the lawn is dead or bare. New seed over bare soil establishes faster.' },
+  { q: 'When is the best time to seed a lawn?', a: 'For cool-season grasses, early fall (August–October) is best — soil is warm and air is cool. Spring seeding also works but competes with weed germination. Warm-season grasses should be seeded in late spring when soil temps exceed 65°F.' },
+  { q: 'Do I need to till before seeding?', a: 'For bare soil, till to 2–4 inches depth, level, and apply starter fertilizer before seeding. For overseeding an existing lawn, mow low, dethatch if needed, then seed directly — no tilling required.' },
+];
+
+export const related = [
+  { href: '/calculator/sod', label: 'Sod Calculator' },
+  { href: '/guide/sod-vs-seed', label: 'Sod vs Seed' },
+  { href: '/guide/how-much-sod-do-i-need', label: 'How Much Sod Do I Need?' },
+  { href: '/guide/how-much-topsoil-do-i-need', label: 'How Much Topsoil Do I Need?' },
+];
+
+<GuideLayout
+  title="How Much Grass Seed Do I Need? — Coverage Calculator Guide"
+  description="Calculate how much grass seed you need by grass type and lawn size. Coverage rates for fescue, bluegrass, ryegrass, bermuda, and zoysia for new lawns and overseeding."
+  h1="How Much Grass Seed Do I Need?"
+  intro="The amount of grass seed you need depends on the grass type, whether you are seeding bare ground or overseeding, and the size of your lawn. Here are the coverage rates you need to calculate it correctly."
+  calculatorHref="/calculator/sod"
+  calculatorLabel="Sod Calculator — compare sod square footage and cost"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'How Much Grass Seed Do I Need?' }]}
+>
+
+## Seeding rates by grass type
+
+| Grass type | New lawn (per 1,000 sq ft) | Overseeding (per 1,000 sq ft) |
+|------------|--------------------------|-------------------------------|
+| Tall fescue | 6–8 lbs | 3–4 lbs |
+| Fine fescue | 4–5 lbs | 2–3 lbs |
+| Kentucky bluegrass | 2–3 lbs | 1–1.5 lbs |
+| Perennial ryegrass | 6–8 lbs | 3–4 lbs |
+| Bermudagrass | 1–2 lbs (hulled) | 0.5–1 lb |
+| Zoysia | 1–2 lbs | 0.5–1 lb |
+| Buffalograss | 1–2 lbs | 0.5–1 lb |
+
+*Buy 10% more than calculated to account for uneven coverage.*
+
+## How to calculate your seed needs
+
+**Step 1:** Measure your lawn area in square feet.
+
+**Step 2:** Divide by 1,000.
+
+**Step 3:** Multiply by the seeding rate for your grass type.
+
+**Example:** 5,000 sq ft lawn, tall fescue, new lawn
+5,000 ÷ 1,000 = 5 × 7 lbs = **35 lbs of seed**
+
+## Quick reference table
+
+| Lawn size | Tall fescue | Kentucky bluegrass | Bermudagrass |
+|-----------|-------------|-------------------|--------------|
+| 500 sq ft | 3–4 lbs | 1–2 lbs | 1 lb |
+| 1,000 sq ft | 6–8 lbs | 2–3 lbs | 1–2 lbs |
+| 2,500 sq ft | 15–20 lbs | 5–8 lbs | 3–5 lbs |
+| 5,000 sq ft | 30–40 lbs | 10–15 lbs | 5–10 lbs |
+| 10,000 sq ft | 60–80 lbs | 20–30 lbs | 10–20 lbs |
+| 1 acre (43,560 sq ft) | 260–350 lbs | 85–130 lbs | 43–87 lbs |
+
+## What to buy — mix or single variety?
+
+**Single variety:** Maximum uniformity and predictability. Best for replacing an existing lawn of that type.
+
+**Grass seed mix:** More resilient — different types cover sun, shade, and drought conditions in one blend. Most common for cool-season lawns in the eastern US.
+
+**Seed + fertilizer blends:** Convenient but harder to control the seeding rate. The fertilizer is sometimes too concentrated for thin soils.
+
+## Success tips
+
+- **Soil temperature matters more than air temperature** — cool-season seeds germinate best at 50–65°F soil temp
+- **Rake lightly after seeding** — seed needs soil contact, not burial (1/4 inch max depth)
+- **Water 2–3× daily for 2 weeks** — the top 1/4 inch of soil must not dry out until germination
+- **Stay off new grass** — wait until the lawn is 3–4 inches tall before the first mow
+
+</GuideLayout>

@@ -1,0 +1,101 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How deep should I dig for pavers?', a: 'Dig 6–8 inches deep for a typical patio: 4 inches of compacted gravel base, 1 inch of bedding sand, and 2.5 inches for the paver itself. In cold climates with frost, use 6 inches of gravel base to prevent heaving.' },
+  { q: 'Do pavers need a sand base?', a: 'Yes. A 1-inch layer of coarse bedding sand (concrete sand or ASTM C33 sand) goes directly under the pavers. It allows small adjustments for leveling and provides cushion. Do not use fine play sand — it washes out too easily.' },
+  { q: 'How many pavers do I need per square foot?', a: 'It depends on paver size. 4×8 inch pavers require about 4.5 per sq ft. 6×6 inch pavers need 4 per sq ft. 12×12 inch pavers need 1 per sq ft. Add 5–10% for cuts and breakage.' },
+  { q: 'Can I lay pavers directly on soil?', a: 'No. Pavers laid on native soil will shift, sink, and allow weeds to grow through joints within 1–2 seasons. Always excavate and install a compacted gravel base. It is the single most important step for a lasting installation.' },
+  { q: 'What is polymeric sand and do I need it?', a: 'Polymeric sand is joint sand mixed with a polymer binder that hardens when wet. It is more expensive than regular joint sand ($30–$60 per bag) but resists weeds, ants, and washing out much better. Worth using for permanent installations.' },
+];
+
+export const related = [
+  { href: '/calculator/paver', label: 'Paver Calculator' },
+  { href: '/guide/how-many-pavers-do-i-need', label: 'How Many Pavers Do I Need?' },
+  { href: '/guide/how-much-sand-for-paver-base', label: 'How Much Sand for a Paver Base' },
+  { href: '/guide/how-much-gravel-do-i-need', label: 'How Much Gravel Do I Need?' },
+];
+
+<GuideLayout
+  title="How to Lay Pavers — Step-by-Step Installation Guide"
+  description="How to lay pavers for a patio, path, or driveway: excavation depth, gravel base, sand layer, paver installation, and joint sand. Materials list and tips for a lasting result."
+  h1="How to Lay Pavers"
+  intro="Laying pavers is a DIY-friendly project, but the base preparation is everything. A well-built base lasts 20+ years. A poor one heaves and sinks in 2–3 seasons. Here is how to do it right."
+  calculatorHref="/calculator/paver"
+  calculatorLabel="Paver Calculator — count pavers and estimate base materials"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'How to Lay Pavers' }]}
+>
+
+## Materials you will need
+
+- Pavers (add 5–10% overage for cuts)
+- Compactable gravel base (road base or crushed stone)
+- Coarse bedding sand (concrete sand)
+- Polymeric joint sand
+- Landscape fabric (optional — goes below gravel)
+- Edge restraints (plastic or aluminum)
+- Plate compactor (rental ~$80–$120/day)
+- Rubber mallet
+- Level, tape measure, string line
+- Masonry saw or chisel for cuts
+
+## Step-by-step installation
+
+### Step 1 — Plan and mark the area
+
+Stake out the perimeter with string. Mark any slopes for drainage: pavers should slope away from the house at 1/8–1/4 inch per foot (1% grade minimum).
+
+### Step 2 — Excavate
+
+Dig down to the correct depth:
+
+| Use case | Total excavation depth |
+|----------|----------------------|
+| Pedestrian patio | 6–7 inches |
+| Driveway (light vehicles) | 9–12 inches |
+| Cold climate (frost zone) | 8–10 inches |
+
+*Depth = gravel base + 1" sand + paver thickness*
+
+### Step 3 — Compact the subgrade
+
+Compact the native soil with a plate compactor before adding base material. Two passes in opposite directions. Do not skip this — loose soil under the base causes settling.
+
+### Step 4 — Add and compact gravel base
+
+Add compactable gravel (road base / crusher run) in 2-inch lifts, compacting each layer. A standard patio needs 4 inches of compacted gravel. Driveways need 6+ inches.
+
+### Step 5 — Screed the sand bed
+
+Add 1 inch of coarse concrete sand and screed it level using 1-inch diameter pipes as guides. Pull a 2×4 across the pipes to create a flat, smooth surface. Do not compact the sand — leave it loose for the pavers to settle into.
+
+### Step 6 — Lay the pavers
+
+Start at a 90° corner and work outward. Lay pavers with consistent spacing (typically 1/8 inch gaps for polymeric sand). Use a rubber mallet to seat each paver; check level frequently. Do not step on screeded sand.
+
+### Step 7 — Cut edge pavers
+
+Use a masonry saw, angle grinder with diamond blade, or chisel for cuts. Cut pavers should be at least 1/3 of a full paver — smaller pieces shift more easily.
+
+### Step 8 — Install edge restraints
+
+Nail or stake edge restraints along all open edges before compacting. This holds the pattern together and prevents pavers from sliding outward over time.
+
+### Step 9 — Compact the pavers
+
+Run the plate compactor over the finished surface (use a rubber pad to protect the paver surface). This seats the pavers firmly into the sand and locks the pattern.
+
+### Step 10 — Apply joint sand
+
+Spread polymeric sand over the surface and sweep it into the joints. Compact again. Sweep off excess. Lightly mist with water to activate the polymer binder. Keep foot traffic off for 24 hours.
+
+## Common mistakes to avoid
+
+- **Skipping base compaction** — the #1 cause of sinking and heaving
+- **Using play sand for bedding** — washes out and allows weeds
+- **No edge restraints** — pattern fans out over time
+- **Poor drainage slope** — water pools on the surface or flows toward the house
+- **Too thin a base** — 2 inches is not enough in any climate
+
+</GuideLayout>

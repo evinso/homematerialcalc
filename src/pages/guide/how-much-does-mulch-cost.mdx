@@ -1,0 +1,81 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How much does mulch cost per yard?', a: 'Bulk mulch delivered costs $25–$60 per cubic yard depending on type and region. Hardwood bark runs $30–$50/yd, cedar $40–$75/yd, and colored/dyed mulch $35–$65/yd. Delivery charges add $30–$75 per load.' },
+  { q: 'Is it cheaper to buy mulch in bags or bulk?', a: 'Bulk is cheaper for quantities over 2 cubic yards. A 2 cu ft bag typically costs $4–$8 at big-box stores, which equals $70–$140 per cubic yard. Bulk delivery runs $25–$60 per cubic yard — roughly half the bagged price.' },
+  { q: 'How much does it cost to have mulch installed?', a: 'Professional mulch installation costs $40–$85 per cubic yard including labor. A typical 3-cubic-yard front yard refresh runs $120–$255 in labor. Most landscapers charge a minimum trip fee of $75–$150.' },
+  { q: 'How much mulch do I need for a typical yard?', a: 'A small front yard with three beds (~300 sq ft total) needs about 3 cubic yards at 3 inches deep. A larger property with 600 sq ft of beds needs about 6 cubic yards. Use the Mulch Calculator to get your exact quantity.' },
+  { q: 'What is the cheapest type of mulch?', a: 'Wood chip mulch from tree services is the cheapest — sometimes free if you call local arborists. Straw mulch is also inexpensive ($5–$8 per bale covering ~50 sq ft). For purchased mulch, pine fines and wood chips are the lowest-cost organic options.' },
+];
+
+export const related = [
+  { href: '/calculator/mulch', label: 'Mulch Calculator' },
+  { href: '/guide/how-much-mulch-do-i-need', label: 'How Much Mulch Do I Need?' },
+  { href: '/guide/types-of-mulch', label: 'Types of Mulch' },
+  { href: '/guide/best-mulch-for-flower-beds', label: 'Best Mulch for Flower Beds' },
+];
+
+<GuideLayout
+  title="How Much Does Mulch Cost? — 2026 Price Guide"
+  description="Mulch cost by type and quantity: bulk delivery vs bagged, installation labor, and cost per cubic yard for hardwood, cedar, pine, and colored mulch in 2026."
+  h1="How Much Does Mulch Cost?"
+  intro="Mulch prices vary significantly by type, quantity, and whether you buy in bags or bulk. Here is a full breakdown of what to expect for materials and installation in 2026."
+  calculatorHref="/calculator/mulch"
+  calculatorLabel="Mulch Calculator — get exact bags or cubic yards for your project"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'How Much Does Mulch Cost?' }]}
+>
+
+## Bulk mulch prices by type
+
+| Mulch type | Cost per cubic yard (bulk) |
+|------------|---------------------------|
+| Wood chips (basic) | $20–$35 |
+| Shredded hardwood bark | $30–$50 |
+| Dyed / colored mulch | $35–$65 |
+| Cedar mulch | $40–$75 |
+| Pine bark nuggets | $35–$55 |
+| Pine straw (per bale) | $5–$8 / bale |
+| Rubber mulch (playground) | $80–$160 |
+
+*Bulk prices are for pick-up at landscape supply yards. Add $30–$75 for delivery.*
+
+## Bagged mulch prices (big-box stores)
+
+| Bag size | Price range | Cost per cubic yard equivalent |
+|----------|-------------|-------------------------------|
+| 2 cu ft bag | $4–$8 | $70–$140 / cu yd |
+| 3 cu ft bag | $6–$12 | $70–$130 / cu yd |
+
+**Conclusion:** Bags cost 2–3× more per cubic yard than bulk. Buy bulk for any order over 2 yards.
+
+## Professional installation costs
+
+| Service | Cost range |
+|---------|-----------|
+| Labor only (per yard installed) | $20–$35 |
+| Materials + labor (per yard) | $55–$95 |
+| Minimum job fee | $75–$200 |
+| Full yard mulching (3 cu yd job) | $150–$400 |
+
+## Total cost examples
+
+| Job size | DIY (bulk) | Professional |
+|----------|-----------|-------------|
+| Small yard — 2 yards | $60–$120 + delivery | $120–$200 |
+| Medium yard — 4 yards | $120–$240 + delivery | $220–$380 |
+| Large yard — 8 yards | $240–$480 + delivery | $440–$760 |
+
+## How to save on mulch
+
+1. **Order direct from a landscape supply yard** — avoid the retail markup on bagged mulch
+2. **Call local tree services** — many give away fresh wood chips at no charge (check ChipDrop.com)
+3. **Buy in fall** — many suppliers discount overstock mulch in late October and November
+4. **Share a bulk delivery** — split a 10-yard delivery with a neighbor to share the delivery fee
+
+## How much mulch do you need?
+
+Enter your bed dimensions into the [Mulch Calculator](/calculator/mulch) to get the cubic yard total and cost estimate.
+
+</GuideLayout>

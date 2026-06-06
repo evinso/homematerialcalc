@@ -1,0 +1,83 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'What is the best mulch for flower beds?', a: 'Shredded hardwood bark mulch is the most popular choice for flower beds — it breaks down slowly, stays in place, and gives a clean, dark appearance. Pine straw is better for acid-loving plants. Cedar mulch adds pest-repelling properties.' },
+  { q: 'How deep should mulch be in flower beds?', a: 'Apply 2–3 inches in established beds and 3–4 inches in new beds. Never pile mulch against plant stems or tree trunks — leave a 2–3 inch gap. Too little mulch lets weeds through; too much can suffocate roots.' },
+  { q: 'Does mulch color matter?', a: 'Color affects appearance and heat absorption. Black mulch absorbs the most heat — good for cold climates, but can overheat roots in hot weather. Brown is neutral. Red dyed mulch is often pine bark and fades faster than natural dyed mulches.' },
+  { q: 'Is wood chip mulch good for flower beds?', a: 'Fresh wood chips from tree removal are better suited for pathways than flower beds — they can temporarily tie up nitrogen as they decompose, stressing plants. Aged wood chips (composted for 6–12 months) are fine in flower beds.' },
+  { q: 'How often should I replace mulch in flower beds?', a: 'Organic mulch breaks down and needs topping off annually. Add 1–2 inches each spring to maintain a 2–3 inch depth. Remove old mulch entirely every 3–5 years to prevent excess buildup.' },
+];
+
+export const related = [
+  { href: '/calculator/mulch', label: 'Mulch Calculator' },
+  { href: '/guide/types-of-mulch', label: 'Types of Mulch' },
+  { href: '/guide/how-much-mulch-do-i-need', label: 'How Much Mulch Do I Need?' },
+  { href: '/guide/mulch-vs-rock-landscaping', label: 'Mulch vs Rock Landscaping' },
+];
+
+<GuideLayout
+  title="Best Mulch for Flower Beds — Types, Depth, and Application"
+  description="Choose the best mulch for flower beds: shredded hardwood, cedar, pine straw, and compost compared. Correct depth, application tips, and what to avoid around flowers."
+  h1="Best Mulch for Flower Beds"
+  intro="The right mulch retains moisture, suppresses weeds, and improves soil as it breaks down. The wrong choice can suffocate roots, acidify soil, or attract pests. Here is how to pick the best option for your beds."
+  calculatorHref="/calculator/mulch"
+  calculatorLabel="Mulch Calculator — get bags or cubic yards for your flower beds"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Best Mulch for Flower Beds' }]}
+>
+
+## Top mulch types for flower beds
+
+### Shredded hardwood bark — best all-around
+
+The most widely used option for residential flower beds. Breaks down over 2–3 years, adding organic matter to the soil. Dark color looks clean and professional. Stays in place on slopes better than wood chips.
+
+**Best for:** Mixed flower borders, shrub beds, perennial gardens
+
+### Cedar mulch — best for pest control
+
+Cedar naturally repels insects including moths, fleas, ticks, and some beetles. Has a pleasant scent that lasts through the first season. Slightly more expensive than basic hardwood mulch.
+
+**Best for:** Beds near patios or high-traffic areas where pests are a concern
+
+### Pine straw (pine needles) — best for acid-loving plants
+
+Pine straw is lightweight, cheap in pine-heavy regions, and slightly acidifies soil as it breaks down. Does not compact, allowing excellent air and water movement.
+
+**Best for:** Azaleas, rhododendrons, blueberries, hydrangeas, holly — any acid-loving plant
+
+### Compost mulch — best for soil improvement
+
+Composted wood, leaves, or manure adds significant nutrients as it breaks down. Should not be used more than 2 inches deep to avoid suffocating roots, and weed seeds may be present if not fully composted.
+
+**Best for:** Annual beds and vegetable-adjacent flower beds
+
+### Pine bark nuggets — best for heavy rain areas
+
+Chunky pine bark nuggets are slow to decompose (3–5 years) and resist washing away in rain better than shredded mulch. The large chunks stay visible and decorative over time.
+
+**Best for:** Sloped beds in rainy climates
+
+## Mulch types to avoid in flower beds
+
+- **Fresh wood chips from recent tree removal** — tie up nitrogen as they decompose, stressing annuals and shallow-rooted plants
+- **Dyed rubber mulch** — does not decompose, does not improve soil, may leach chemicals
+- **Straw (hay)** — often contains weed seeds; appropriate for vegetable gardens but not ornamental beds
+- **Stone or gravel** — appropriate for low-water plants, but permanent and hard to adjust
+
+## Application guide
+
+1. **Clear the bed** — remove weeds, debris, and old mulch if buildup is over 4 inches deep
+2. **Edge the bed** — crisp edges keep mulch in place and define the bed cleanly
+3. **Apply 2–3 inches** — measure depth; do not guess
+4. **Pull back from stems** — 2–3 inch gap around plant bases to prevent crown rot
+5. **Water after applying** — settles the mulch and starts moisture retention immediately
+
+## How much mulch do you need?
+
+Use the [Mulch Calculator](/calculator/mulch) to enter your bed dimensions and get the exact bag or cubic yard count.
+
+A quick rule of thumb: **1 cubic yard covers 108 sq ft at 3 inches deep** (or 162 sq ft at 2 inches).
+
+</GuideLayout>

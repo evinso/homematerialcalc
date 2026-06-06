@@ -1,0 +1,89 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How many square feet are in an acre?', a: 'There are exactly 43,560 square feet in one acre. This is derived from the chain-furlong system: 1 acre = 1 chain × 1 furlong = 66 ft × 660 ft = 43,560 sq ft.' },
+  { q: 'How many square feet are in a half acre?', a: 'Half an acre is 21,780 square feet. A quarter acre is 10,890 sq ft. These are common residential lot sizes — a typical suburban lot in the US is 0.15–0.25 acres (6,534–10,890 sq ft).' },
+  { q: 'How big is an acre visually?', a: 'One acre is slightly smaller than an American football field (which is 48,000 sq ft including end zones, or 57,600 sq ft with end zones). An acre is roughly 208 × 209 feet as a square, or 100 × 435 feet as a long rectangle.' },
+  { q: 'How many acres is a typical house lot?', a: 'The median US residential lot is about 0.22 acres (9,583 sq ft) in suburban areas. Urban lots are often 0.05–0.1 acres (2,000–4,400 sq ft). Rural properties range from 1 acre to hundreds of acres.' },
+  { q: 'How do I convert square feet to acres?', a: 'Divide square feet by 43,560 to get acres. For example, 87,120 sq ft ÷ 43,560 = 2 acres. To go the other way, multiply acres × 43,560 to get square feet.' },
+];
+
+export const related = [
+  { href: '/guide/how-to-calculate-square-footage', label: 'How to Calculate Square Footage' },
+  { href: '/guide/square-feet-to-square-yards', label: 'Square Feet to Square Yards' },
+  { href: '/calculator/sod', label: 'Sod Calculator' },
+  { href: '/guide/how-much-grass-seed-do-i-need', label: 'How Much Grass Seed Do I Need?' },
+];
+
+<GuideLayout
+  title="How Many Square Feet in an Acre? — Conversion Reference"
+  description="There are exactly 43,560 square feet in one acre. Quick reference table for acres to square feet, fraction conversions, and practical examples for lawn and land planning."
+  h1="How Many Square Feet in an Acre?"
+  intro="One acre equals exactly 43,560 square feet. Here is a quick reference guide with conversions, visual comparisons, and practical examples for landscaping and property planning."
+  calculatorHref="/calculator/sod"
+  calculatorLabel="Sod Calculator — estimate materials for large lawn areas"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'How Many Square Feet in an Acre?' }]}
+>
+
+## The exact conversion
+
+**1 acre = 43,560 square feet**
+
+**1 acre = 4,840 square yards**
+
+**1 acre = 0.405 hectares**
+
+## Acres to square feet — quick reference
+
+| Acres | Square feet |
+|-------|-------------|
+| 0.1 | 4,356 |
+| 0.25 | 10,890 |
+| 0.5 | 21,780 |
+| 1 | 43,560 |
+| 2 | 87,120 |
+| 5 | 217,800 |
+| 10 | 435,600 |
+| 40 | 1,742,400 |
+| 100 | 4,356,000 |
+
+## Formulas
+
+**Acres → square feet:** Acres × 43,560 = sq ft
+
+**Square feet → acres:** Sq ft ÷ 43,560 = acres
+
+**Example:** A 2.5 acre parcel = 2.5 × 43,560 = **108,900 sq ft**
+
+## What does an acre look like?
+
+| Shape | Dimensions |
+|-------|-----------|
+| Square (most compact) | 208.7 ft × 208.7 ft |
+| Rectangle (typical lot) | 100 ft × 435.6 ft |
+| Rectangle (narrow) | 50 ft × 871.2 ft |
+| Football field (ref) | 53.3 ft × 300 ft = 16,000 sq ft (0.37 acres) |
+
+A standard football field (including end zones) is about 48,000 sq ft — slightly larger than one acre.
+
+## Common lot sizes in acres
+
+| Lot description | Approximate size |
+|----------------|-----------------|
+| City / urban lot | 0.05–0.1 acres |
+| Suburban quarter-acre | 10,890 sq ft |
+| Half-acre lot | 21,780 sq ft |
+| 1-acre rural lot | 43,560 sq ft |
+| Small farm / homestead | 5–10 acres |
+
+## Using this for landscaping
+
+If you are seeding or sodding a large lawn, you need to know your area in square feet. Measure with a GPS app (most phones have one) or multiply the rough dimensions.
+
+**Example:** A 1.5-acre lawn = 1.5 × 43,560 = 65,340 sq ft
+
+At 7 lbs of tall fescue seed per 1,000 sq ft: 65,340 ÷ 1,000 × 7 = **457 lbs of seed**
+
+</GuideLayout>

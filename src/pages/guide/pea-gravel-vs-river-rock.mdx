@@ -1,0 +1,81 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'What is the difference between pea gravel and river rock?', a: 'Pea gravel is small (3/8 inch), uniform, rounded stones typically used for paths, playgrounds, and garden beds. River rock is larger (1–5 inches), polished, and used for drainage, dry creek beds, and decorative borders.' },
+  { q: 'Which is cheaper — pea gravel or river rock?', a: 'Pea gravel is generally cheaper at $30–$55 per cubic yard bulk. River rock costs $45–$130 per cubic yard depending on size and finish. Both are sold by the ton at landscape supply yards.' },
+  { q: 'Is pea gravel good for drainage?', a: 'Pea gravel drains well, but river rock (larger stones) drains faster. For French drains and deep drainage trenches, river rock or crushed stone is preferred. Pea gravel works well for surface drainage on paths and patios.' },
+  { q: 'Does pea gravel shift underfoot?', a: 'Yes — pea gravel is loose and moves underfoot, which some find uncomfortable. River rock is more stable for walkways because the larger stones interlock better. For high-traffic paths, consider compacted crushed gravel instead.' },
+  { q: 'Can I use river rock around a pool?', a: 'Yes. River rock is a popular pool surround because the smooth, round stones are comfortable underfoot and do not scratch bare feet. Use a weed barrier underneath to keep it clean.' },
+];
+
+export const related = [
+  { href: '/calculator/gravel', label: 'Gravel Calculator' },
+  { href: '/guide/gravel-vs-crushed-stone', label: 'Gravel vs Crushed Stone' },
+  { href: '/guide/how-deep-should-gravel-be', label: 'How Deep Should Gravel Be?' },
+  { href: '/guide/mulch-vs-rock-landscaping', label: 'Mulch vs Rock Landscaping' },
+];
+
+<GuideLayout
+  title="Pea Gravel vs River Rock — Which Should You Choose?"
+  description="Compare pea gravel and river rock for driveways, paths, drainage, and landscaping. Size, cost, drainage, and best uses for each type of decorative stone."
+  h1="Pea Gravel vs River Rock"
+  intro="Both pea gravel and river rock are smooth, rounded stones — but they differ in size, cost, drainage, and best applications. Here is a direct comparison to help you pick the right one."
+  calculatorHref="/calculator/gravel"
+  calculatorLabel="Gravel Calculator — get cubic yards and tons for any area"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Pea Gravel vs River Rock' }]}
+>
+
+## Quick comparison
+
+| Factor | Pea Gravel | River Rock |
+|--------|-----------|------------|
+| Size | 3/8 inch (pea-sized) | 1–5 inches |
+| Shape | Round, smooth | Round, polished |
+| Cost (bulk) | $30–$55 / cu yd | $45–$130 / cu yd |
+| Drainage | Good | Excellent |
+| Stability | Low (shifts) | Moderate |
+| Best for | Paths, playgrounds, mulch replacement | Drainage, dry creeks, pool surrounds |
+
+## Pea gravel — best uses
+
+- **Playground ground cover** — soft, cushioning, safe for falls
+- **Garden paths** — good drainage, comfortable on bare feet
+- **Dog runs** — does not compact or get muddy
+- **Vegetable garden mulch replacement** — keeps weeds down without decomposing
+- **Patio base filler** — fills gaps between stepping stones
+
+## River rock — best uses
+
+- **Dry creek beds** — large stones mimic a natural stream look
+- **French drain topping** — improves drainage channel appearance
+- **Pool surrounds** — smooth surface, comfortable underfoot
+- **Erosion control on slopes** — heavy enough to stay put in rain
+- **Foundation drainage** — directs water away from house footings
+
+## How much do you need?
+
+Both materials are measured in cubic yards. Use this formula:
+
+**Volume (cu yd) = Length (ft) × Width (ft) × Depth (in) ÷ 324**
+
+Typical depths: 2–3 inches for decorative coverage, 4–6 inches for drainage.
+
+Use the [Gravel Calculator](/calculator/gravel) to get exact quantities and ton estimates.
+
+## Coverage per ton
+
+| Material | Coverage at 2" deep | Coverage at 3" deep |
+|----------|--------------------|--------------------|
+| Pea gravel | ~100 sq ft / ton | ~65 sq ft / ton |
+| River rock (small, 1") | ~80 sq ft / ton | ~55 sq ft / ton |
+| River rock (large, 3–5") | ~60 sq ft / ton | ~40 sq ft / ton |
+
+*Coverage varies by exact size and bulk density.*
+
+## Can you mix them?
+
+Yes — pea gravel and river rock are sometimes layered. River rock on top for aesthetics, pea gravel below for drainage. For French drains, larger river rock around the pipe and smaller pea gravel backfill on top is a common combination.
+
+</GuideLayout>

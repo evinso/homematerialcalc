@@ -1,0 +1,81 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How much does gravel cost per cubic yard?', a: 'Bulk gravel costs $15–$75 per cubic yard depending on type. Crushed stone (3/4 inch) runs $15–$30/yd, pea gravel $30–$55/yd, river rock $45–$130/yd, and decomposed granite $40–$70/yd. Delivery adds $50–$150 per load.' },
+  { q: 'How much does gravel cost per ton?', a: 'Crushed limestone and base gravel run $10–$20 per ton. Pea gravel costs $25–$45 per ton. Decorative river rock costs $45–$100+ per ton. One ton of gravel covers approximately 65–80 sq ft at 3 inches deep.' },
+  { q: 'How much gravel do I need for a driveway?', a: 'A standard 2-car driveway (12 ft × 50 ft = 600 sq ft) at 4 inches deep needs about 7.4 cubic yards or roughly 10 tons of gravel. Budget $200–$600 for materials plus $200–$600 for delivery and spreading.' },
+  { q: 'Is it cheaper to buy gravel by the bag or bulk?', a: 'Bulk is always cheaper for gravel. A 50 lb bag covers about 3–4 sq ft at 2 inches — roughly $6–$12 per bag. That translates to $150–$300+ per cubic yard equivalent. Bulk gravel runs $15–$75 per cubic yard, making bulk 3–10× cheaper.' },
+  { q: 'What is the cheapest type of gravel?', a: 'Crushed limestone, recycled concrete aggregate (RCA), and basic road base gravel are the cheapest options at $10–$20 per ton. These are best for driveways and base layers, not decorative landscaping.' },
+];
+
+export const related = [
+  { href: '/calculator/gravel', label: 'Gravel Calculator' },
+  { href: '/guide/how-much-gravel-do-i-need', label: 'How Much Gravel Do I Need?' },
+  { href: '/guide/how-much-gravel-for-a-driveway', label: 'How Much Gravel for a Driveway' },
+  { href: '/guide/pea-gravel-vs-river-rock', label: 'Pea Gravel vs River Rock' },
+];
+
+<GuideLayout
+  title="How Much Does Gravel Cost? — 2026 Price Guide"
+  description="Gravel cost per cubic yard and per ton in 2026: crushed stone, pea gravel, river rock, and decorative gravel compared. Driveway and landscaping cost estimates included."
+  h1="How Much Does Gravel Cost?"
+  intro="Gravel prices range from $10 per ton for basic crushed stone to $130+ per cubic yard for premium decorative river rock. Here is a full breakdown by type so you can budget accurately."
+  calculatorHref="/calculator/gravel"
+  calculatorLabel="Gravel Calculator — get cubic yards and tons for your project"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'How Much Does Gravel Cost?' }]}
+>
+
+## Gravel prices by type
+
+| Gravel type | Per ton | Per cubic yard |
+|-------------|---------|----------------|
+| Crushed limestone | $10–$20 | $15–$30 |
+| Road base / crusher run | $10–$22 | $15–$32 |
+| Pea gravel | $25–$45 | $30–$55 |
+| Decomposed granite | $30–$50 | $40–$70 |
+| River rock (small, 1") | $40–$75 | $45–$100 |
+| River rock (large, 3–5") | $50–$90 | $60–$130 |
+| Lava rock | $75–$150 | $100–$200 |
+| Pea gravel (bagged, 50 lb) | — | $6–$12 / bag |
+
+## Delivery costs
+
+Most landscape supply yards charge $50–$150 for delivery within 20–30 miles. Minimum delivery orders are typically 3–5 tons or 2–4 cubic yards.
+
+| Order size | Typical delivery fee |
+|------------|---------------------|
+| Under 3 tons | $75–$150 |
+| 3–10 tons | $50–$100 |
+| 10+ tons | Often included or $50 flat |
+
+## Driveway gravel cost examples
+
+| Driveway size | Gravel needed | Crushed stone cost | Pea gravel cost |
+|---------------|--------------|-------------------|----------------|
+| 10 × 20 ft | 2.5 cu yd | $40–$75 | $75–$140 |
+| 12 × 50 ft | 7.5 cu yd | $115–$225 | $225–$415 |
+| 14 × 100 ft | 17 cu yd | $255–$510 | $510–$935 |
+
+*At 4-inch depth. Add delivery fee.*
+
+## Landscaping gravel cost examples
+
+| Bed size | Gravel (2" deep) | Crushed stone | River rock |
+|----------|-----------------|--------------|-----------|
+| 100 sq ft | 0.6 cu yd | $10–$20 | $30–$80 |
+| 250 sq ft | 1.5 cu yd | $25–$50 | $70–$195 |
+| 500 sq ft | 3 cu yd | $50–$100 | $135–$390 |
+
+## How to save on gravel
+
+- **Pick up vs delivery** — most yards let you pick up in a pickup truck (0.5 ton max), saving the delivery fee
+- **Crushed concrete aggregate** — recycled material costs 30–50% less than virgin crushed stone; nearly identical performance
+- **Buy base layer cheap, top layer premium** — use cheap road base for the bottom 3 inches; only the top 1–2 inches needs decorative gravel
+
+## Calculate how much you need
+
+Use the [Gravel Calculator](/calculator/gravel) to enter your dimensions and get the exact cubic yard and ton estimate for your project.
+
+</GuideLayout>

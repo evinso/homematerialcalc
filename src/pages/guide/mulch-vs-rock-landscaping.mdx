@@ -1,0 +1,76 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'Is mulch or rock better for landscaping?', a: 'It depends on the goal. Mulch is better for plant health — it retains moisture, enriches soil, and regulates temperature. Rock is better for low-maintenance, high-heat areas like driveways, slopes, and desert landscapes where you want permanent coverage.' },
+  { q: 'Does rock or mulch last longer?', a: 'Rock lasts indefinitely — it never breaks down. Mulch needs replacing every 1–3 years as it decomposes. Over 10 years, the cumulative cost of mulch usually exceeds the one-time cost of rock.' },
+  { q: 'Does rock mulch kill plants?', a: 'Rock mulch can overheat plant roots in hot climates, raising soil temperatures above 120°F. It is suitable for drought-tolerant and succulent plants, but can damage moisture-loving shrubs and perennials.' },
+  { q: 'Can I put rock over mulch?', a: 'You can, but it is not recommended. Mulch below rock will still decompose, creating a messy mix that is hard to clean. Remove old mulch before installing rock, or use a fabric weed barrier between them.' },
+  { q: 'Which is cheaper — mulch or rock?', a: 'Mulch is cheaper upfront ($25–$60 per cubic yard bulk). Rock costs more initially ($50–$150 per cubic yard) but does not need annual replacement, making it cheaper over time for permanent beds.' },
+];
+
+export const related = [
+  { href: '/calculator/mulch', label: 'Mulch Calculator' },
+  { href: '/calculator/gravel', label: 'Gravel Calculator' },
+  { href: '/guide/types-of-mulch', label: 'Types of Mulch' },
+  { href: '/guide/pea-gravel-vs-river-rock', label: 'Pea Gravel vs River Rock' },
+];
+
+<GuideLayout
+  title="Mulch vs Rock Landscaping — Which Is Better for Your Yard?"
+  description="Compare mulch and rock landscaping side by side: cost, maintenance, plant health, drainage, and when to choose each for beds, slopes, and driveways."
+  h1="Mulch vs Rock Landscaping"
+  intro="Mulch and decorative rock both suppress weeds and improve curb appeal — but they work very differently. Here is a straight comparison so you can choose the right material for each area of your yard."
+  calculatorHref="/calculator/mulch"
+  calculatorLabel="Mulch Calculator — estimate how much you need"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Mulch vs Rock Landscaping' }]}
+>
+
+## Quick comparison
+
+| Factor | Mulch | Rock / Gravel |
+|--------|-------|---------------|
+| Upfront cost | $25–$60 / cu yd | $50–$150 / cu yd |
+| Lifespan | 1–3 years | Permanent |
+| Moisture retention | Excellent | Poor |
+| Soil health | Improves over time | Neutral |
+| Weed suppression | Good (3" depth) | Good (with barrier) |
+| Heat absorption | Low | High |
+| Best for | Plant beds, gardens | Slopes, driveways, desert |
+
+## When to choose mulch
+
+- **Flower beds and garden borders** — retains moisture so plants need less watering
+- **Tree rings** — insulates roots from temperature extremes
+- **Vegetable gardens** — organic mulch breaks down into compost
+- **Slopes** — wood chip or shredded mulch holds soil better than rock on gentle slopes
+- **Shaded areas** — stays cooler, preventing root damage
+
+## When to choose rock
+
+- **Driveways and paths** — handles foot and vehicle traffic without shifting
+- **Steep slopes** — gravel and river rock will not wash away in heavy rain
+- **Desert landscaping (xeriscaping)** — suits drought-tolerant plants
+- **Foundation beds** — rock discourages pests that shelter under decomposing mulch
+- **Fire-wise landscaping** — rock does not burn; required near some structures in wildfire zones
+
+## Cost over 10 years
+
+Assume a 200 sq ft bed at 3 inch depth:
+
+**Mulch:** ~0.6 cu yd per year × $50/yd = $30/yr = **$300 over 10 years**
+
+**Rock:** 0.6 cu yd one-time × $100/yd = **$60 one-time** + weed barrier $30 = **$90 total**
+
+Rock wins long-term in most cases — unless you value the annual refresh cycle for curb appeal.
+
+## Moisture and drainage
+
+Organic mulch absorbs water and releases it slowly, reducing evaporation by up to 25–50%. Rock, by contrast, sheds water rapidly — good for drainage around foundations, bad for drought-sensitive plants.
+
+## The hybrid approach
+
+Many landscapers use both: mulch in planted beds, rock along driveways and paths, and a mix at border transitions. Use a plastic or fabric weed barrier under rock to prevent it from mixing into the soil over time.
+
+</GuideLayout>

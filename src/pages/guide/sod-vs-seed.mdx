@@ -1,0 +1,81 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'Is sod or seed cheaper?', a: 'Grass seed is significantly cheaper — $0.05–$0.30 per sq ft vs $0.40–$0.80 per sq ft for sod installed. For a 1,000 sq ft lawn, seed costs $50–$300 vs sod at $400–$800 plus installation labor.' },
+  { q: 'How long does sod take to root?', a: 'Sod roots within 2–6 weeks in good conditions. You can walk on it lightly after 2 weeks and mow after 3–4 weeks. Full deep rooting takes 6–8 weeks.' },
+  { q: 'How long does grass seed take to grow?', a: 'Most grass seeds germinate in 7–21 days. A full, established lawn takes 2–3 months for cool-season grasses and 2–4 months for warm-season. You cannot use the lawn normally for 6–8 weeks.' },
+  { q: 'Can I lay sod in summer?', a: 'Yes, but sod needs extra watering in summer heat — twice daily for the first two weeks is common. Early fall or spring are ideal. Avoid laying sod during a heat wave (above 90°F) if possible.' },
+  { q: 'What is better for repairing bare spots — sod or seed?', a: 'For small bare spots (under 1 sq ft), seed is fine and cheaper. For large bare areas (over 10 sq ft), sod gives faster, more consistent results. Sod is also better if you need a usable lawn quickly.' },
+];
+
+export const related = [
+  { href: '/calculator/sod', label: 'Sod Calculator' },
+  { href: '/guide/how-much-sod-do-i-need', label: 'How Much Sod Do I Need?' },
+  { href: '/guide/how-much-grass-seed-do-i-need', label: 'How Much Grass Seed Do I Need?' },
+  { href: '/guide/how-much-topsoil-do-i-need', label: 'How Much Topsoil Do I Need?' },
+];
+
+<GuideLayout
+  title="Sod vs Seed — Which Is Better for Your Lawn?"
+  description="Compare sod and grass seed for cost, timeline, quality, and best use cases. When to lay sod vs seed your lawn, and how to choose for your climate and budget."
+  h1="Sod vs Seed — Which Is Better?"
+  intro="Sod gives you an instant lawn. Seed costs a fraction of the price. Both work — the right choice depends on your budget, timeline, and how the area will be used. Here is a complete comparison."
+  calculatorHref="/calculator/sod"
+  calculatorLabel="Sod Calculator — estimate square footage and cost"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Sod vs Seed' }]}
+>
+
+## Quick comparison
+
+| Factor | Sod | Seed |
+|--------|-----|------|
+| Cost (material only) | $0.40–$0.80 / sq ft | $0.05–$0.30 / sq ft |
+| Installation time | 1 day | 1 day to seed |
+| Usable lawn | 4–6 weeks | 8–12 weeks |
+| Grass variety selection | Limited | Wide |
+| Failure risk | Low | Moderate |
+| Water needs (first 2 wks) | Very high | Very high |
+| Best for | Immediate use, slopes | Large areas, budget |
+
+## Cost comparison for 1,000 sq ft
+
+| | Sod | Seed |
+|-|-----|------|
+| Materials | $400–$800 | $50–$300 |
+| Professional install | $400–$1,200 | $150–$500 |
+| **Total** | **$800–$2,000** | **$200–$800** |
+
+*Sod costs 3–5× more than seeding — but delivers results weeks faster.*
+
+## Choose sod when:
+
+- You need the lawn usable within 6 weeks (before a party, sale, or season)
+- The area is on a slope where seed would wash away
+- You are replacing a lawn, not starting from scratch on bare soil
+- Weed pressure is high and you want the grass to outcompete weeds immediately
+
+## Choose seed when:
+
+- You have a large area (over 2,000 sq ft) where cost matters
+- You want a specific grass variety not available in sod form
+- You are starting in spring or fall with 8–12 weeks before heavy use
+- Budget is the primary concern
+
+## Timing matters for both
+
+**Best times to lay sod or seed:**
+
+| Grass type | Best season |
+|------------|-------------|
+| Cool-season (fescue, bluegrass, rye) | Early fall or early spring |
+| Warm-season (bermuda, zoysia, St. Augustine) | Late spring to early summer |
+
+Both sod and seed need consistent moisture for the first 2–3 weeks. Plan your water schedule before you start.
+
+## The bottom line
+
+Sod wins on speed and convenience. Seed wins on cost and variety. For most budget-conscious homeowners seeding a large lawn in fall, seed is the clear choice. For small areas, slopes, or situations where you need a presentable lawn fast, sod is worth the premium.
+
+</GuideLayout>

@@ -1,0 +1,83 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'Is asphalt or concrete cheaper for a driveway?', a: 'Asphalt is cheaper upfront at $3–$5 per sq ft installed. Concrete costs $5–$10 per sq ft. For a 600 sq ft driveway, asphalt runs $1,800–$3,000 vs concrete at $3,000–$6,000. However, concrete lasts longer and needs less maintenance.' },
+  { q: 'Which lasts longer — asphalt or concrete?', a: 'Concrete typically lasts 30–50 years. Asphalt lasts 20–30 years with proper maintenance. However, asphalt is easier and cheaper to repair, so total lifecycle costs can be similar.' },
+  { q: 'Does asphalt crack in cold weather?', a: 'Asphalt is actually more flexible than concrete and handles freeze-thaw cycles better. Concrete is more prone to cracking from frost heave. In cold climates, asphalt is often preferred for this reason.' },
+  { q: 'Does concrete crack in heat?', a: 'Concrete can crack if expansion joints are not installed every 8–12 feet. Without proper jointing, thermal expansion from summer heat causes concrete slabs to crack. Asphalt softens in extreme heat (above 120°F) but rarely cracks.' },
+  { q: 'Which requires more maintenance?', a: 'Asphalt needs sealing every 3–5 years ($0.10–$0.25 per sq ft) to prevent oxidation and cracking. Concrete needs sealing every 5–10 years and occasional joint caulking. Asphalt repairs are cheaper and easier to patch invisibly.' },
+];
+
+export const related = [
+  { href: '/guide/how-much-gravel-for-a-driveway', label: 'How Much Gravel for a Driveway' },
+  { href: '/calculator/concrete', label: 'Concrete Calculator' },
+  { href: '/calculator/gravel', label: 'Gravel Calculator' },
+  { href: '/guide/how-much-concrete-do-i-need', label: 'How Much Concrete Do I Need?' },
+];
+
+<GuideLayout
+  title="Asphalt vs Concrete Driveway — Cost, Durability, and Maintenance"
+  description="Compare asphalt and concrete driveways on cost per square foot, lifespan, climate performance, maintenance, and resale value. Which is right for your home?"
+  h1="Asphalt vs Concrete Driveway"
+  intro="Choosing between asphalt and concrete comes down to budget, climate, and how long you plan to stay in your home. Here is a complete side-by-side comparison."
+  calculatorHref="/calculator/concrete"
+  calculatorLabel="Concrete Calculator — estimate bags or yards for your project"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Asphalt vs Concrete Driveway' }]}
+>
+
+## Quick comparison
+
+| Factor | Asphalt | Concrete |
+|--------|---------|---------|
+| Installation cost | $3–$5 / sq ft | $5–$10 / sq ft |
+| Lifespan | 20–30 years | 30–50 years |
+| Maintenance | Seal every 3–5 years | Seal every 5–10 years |
+| Cold climate | Excellent | Fair (may crack) |
+| Hot climate | Fair (can soften) | Excellent |
+| Repair ease | Easy, invisible | Difficult to match |
+| Curb appeal | Gray/black | Gray, or decorative |
+| Resale value | Moderate | Higher |
+
+## Cost for a typical driveway
+
+For a **500 sq ft driveway** (2-car, standard):
+
+| | Low | High |
+|--|-----|------|
+| Asphalt | $1,500 | $2,500 |
+| Concrete | $2,500 | $5,000 |
+
+*Prices vary widely by region, base preparation needed, and contractor.*
+
+## Climate is the deciding factor
+
+**Cold climates (freeze-thaw zones):** Asphalt is the better choice. It flexes with frost heave rather than cracking. Concrete expansion joints can fail in severe winters.
+
+**Hot, dry climates:** Concrete outperforms. Asphalt can soften, rut, and track in extreme heat above 115–120°F. In Phoenix, AZ or Las Vegas, NV, most driveways are concrete for this reason.
+
+**Moderate climates:** Either works well — budget usually decides.
+
+## Maintenance schedule
+
+**Asphalt:**
+- Year 1: Wait 6–12 months before first sealcoat
+- Every 3–5 years: Apply sealcoat ($0.10–$0.25/sq ft DIY)
+- As needed: Fill cracks with asphalt crack filler ($5–$15 per tube)
+
+**Concrete:**
+- Every 5–10 years: Apply penetrating concrete sealer
+- Every 5–7 years: Recaulk expansion joints
+- Avoid deicing salts — sodium chloride pits and spalls concrete surfaces
+
+## Which adds more home value?
+
+Decorative concrete (stamped, exposed aggregate, or colored) adds measurably more curb appeal and resale value. Plain asphalt is utilitarian — it reads as functional, not premium. If appearance matters for resale, concrete is the better investment.
+
+## Bottom line
+
+- **Choose asphalt** if: you have a tight budget, live in a cold climate, or want easy future repairs.
+- **Choose concrete** if: you plan to stay long-term, want curb appeal, or live in a hot climate.
+
+</GuideLayout>

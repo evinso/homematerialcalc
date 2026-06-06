@@ -1,0 +1,91 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How much does concrete cost per cubic yard?', a: 'Ready-mix concrete costs $120–$200 per cubic yard delivered in 2026. Standard residential mixes (3,000–4,000 PSI) run $130–$160/yd. High-strength mixes (5,000 PSI+) cost $160–$200/yd. Most suppliers have a short-load fee for orders under 5–7 yards.' },
+  { q: 'How much does a concrete slab cost?', a: 'A 10×10 ft concrete slab (4 inches thick, about 1.2 cubic yards) costs $400–$800 including materials and labor. A 20×20 ft slab costs $1,500–$3,500. Labor accounts for 40–60% of the total cost.' },
+  { q: 'How much does a concrete driveway cost?', a: 'A standard 2-car concrete driveway (12 × 50 ft = 600 sq ft) costs $2,500–$6,000 installed. That is $4–$10 per square foot including sub-base prep, forming, pouring, and finishing. Stamped or colored concrete adds $4–$15 per sq ft.' },
+  { q: 'Is it cheaper to use bagged concrete mix or ready-mix?', a: 'Bagged mix is cheaper for small jobs under 0.5 cubic yards (about 10 bags). For anything larger, ready-mix delivery is almost always less expensive — a cubic yard of bagged concrete costs $150–$200 in bags vs $130–$160 delivered in a ready-mix truck.' },
+  { q: 'What is the short-load fee for concrete?', a: 'Most ready-mix suppliers charge a short-load fee of $50–$200 for orders less than 5–7 cubic yards. This fee compensates for the partial truckload. For small jobs (1–3 yards), you may pay as much in fees as in concrete.' },
+];
+
+export const related = [
+  { href: '/calculator/concrete', label: 'Concrete Calculator' },
+  { href: '/guide/how-much-concrete-do-i-need', label: 'How Much Concrete Do I Need?' },
+  { href: '/guide/how-many-bags-of-concrete-per-cubic-yard', label: 'How Many Bags per Cubic Yard?' },
+  { href: '/guide/asphalt-vs-concrete-driveway', label: 'Asphalt vs Concrete Driveway' },
+];
+
+<GuideLayout
+  title="How Much Does Concrete Cost? — 2026 Price Guide"
+  description="Concrete cost per cubic yard, per slab, and per square foot in 2026. Ready-mix vs bagged pricing, driveway and patio cost estimates, and labor breakdown."
+  h1="How Much Does Concrete Cost?"
+  intro="Concrete pricing depends on whether you buy ready-mix or bagged, the PSI strength, and how much labor is involved. Here is a complete 2026 cost breakdown for common projects."
+  calculatorHref="/calculator/concrete"
+  calculatorLabel="Concrete Calculator — get cubic yards and bag count for your project"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'How Much Does Concrete Cost?' }]}
+>
+
+## Ready-mix concrete cost per cubic yard
+
+| Strength (PSI) | Cost per cubic yard | Common uses |
+|----------------|--------------------|----|
+| 2,500 PSI | $120–$145 | Sidewalks, light slabs |
+| 3,000 PSI | $130–$155 | Residential slabs, driveways |
+| 4,000 PSI | $145–$175 | Garages, commercial slabs |
+| 5,000 PSI | $165–$200 | Industrial, structural |
+
+*Plus short-load fee if under 5–7 yards. Plus $30–$75 pump truck if access is limited.*
+
+## Bagged concrete cost
+
+| Bag size | Price range | Yield |
+|----------|-------------|-------|
+| 40 lb | $4–$6 | 0.30 cu ft |
+| 60 lb | $5–$8 | 0.45 cu ft |
+| 80 lb | $6–$10 | 0.60 cu ft |
+
+**Cost per cubic yard (bagged):** ~$140–$200 — bagged is only competitive for small patch jobs under 0.5 cu yd.
+
+## Project cost examples
+
+### Concrete slab costs
+
+| Slab size | Thickness | Yards needed | DIY materials | Professional |
+|-----------|-----------|-------------|--------------|-------------|
+| 10 × 10 ft | 4 in | 1.2 yd | $160–$200 | $400–$800 |
+| 12 × 12 ft | 4 in | 1.8 yd | $235–$290 | $600–$1,100 |
+| 20 × 20 ft | 4 in | 5 yd | $650–$800 | $1,500–$3,500 |
+| 20 × 30 ft | 4 in | 7.4 yd | $960–$1,180 | $2,200–$5,000 |
+
+### Driveway costs
+
+| Driveway size | Cost range (installed) |
+|---------------|----------------------|
+| 1-car, 10 × 20 ft | $1,000–$2,500 |
+| 2-car, 12 × 50 ft | $2,500–$6,000 |
+| 3-car, 18 × 50 ft | $4,000–$9,000 |
+
+## What drives labor costs?
+
+Labor accounts for 40–60% of a concrete project. Key factors:
+
+- **Site access** — tight spaces require a pump truck ($250–$800/day), adding cost
+- **Excavation** — removing existing material or grading adds $50–$200 per hour
+- **Reinforcement** — rebar adds $0.75–$2.00 per sq ft; wire mesh is less ($0.20–$0.50)
+- **Finishing** — broom finish is standard; exposed aggregate, stamp, or color adds $4–$15/sq ft
+- **Curing time** — longer cure specs increase contractor overhead
+
+## How to save on concrete
+
+1. **Size your project in round numbers** — avoid short-load fees by reaching the 5-yard minimum
+2. **Do the forming yourself** — setting forms is a DIY-friendly task that saves $0.50–$1.50/sq ft
+3. **Get 3 quotes** — concrete contractor prices vary 30–50% within the same city
+4. **Schedule off-peak** — late fall and winter often bring lower labor quotes
+
+## Calculate your concrete needs
+
+Enter your slab dimensions into the [Concrete Calculator](/calculator/concrete) to get the cubic yard total and bag count.
+
+</GuideLayout>
