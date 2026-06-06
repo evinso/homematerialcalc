@@ -216,9 +216,33 @@ function typeLabel(type: string) {
     .check-done { color: var(--text); }
     .check-todo { color: var(--muted); }
     .divider { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+
+    /* ── password gate ── */
+    #gate { position:fixed; inset:0; z-index:9999; background:var(--bg); display:flex; align-items:center; justify-content:center; }
+    .login-card { background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:2rem 2.5rem; width:100%; max-width:340px; }
+    .login-title { font-size:1rem; font-weight:800; color:var(--bright); margin-bottom:0.25rem; text-align:center; }
+    .login-sub { font-size:0.72rem; color:var(--muted); text-align:center; margin-bottom:1.5rem; }
+    .login-input { width:100%; background:var(--bg); border:1px solid var(--border); border-radius:8px; color:var(--text); font-size:0.9rem; padding:0.65rem 0.85rem; outline:none; transition:border-color .15s; }
+    .login-input:focus { border-color:var(--blue); }
+    .login-btn { width:100%; margin-top:0.75rem; background:var(--blue); color:#000; font-weight:700; font-size:0.85rem; border:none; border-radius:8px; padding:0.7rem; cursor:pointer; transition:background .15s; }
+    .login-btn:hover { background:#7dd3fc; }
+    .login-err { color:#f87171; font-size:0.75rem; margin-top:0.6rem; text-align:center; display:none; }
+    #content { display:none; }
   </style>
 </head>
 <body>
+
+<div id="gate">
+  <div class="login-card">
+    <div class="login-title">HomeMaterialCalc · Admin</div>
+    <div class="login-sub">Devam etmek için şifrenizi girin</div>
+    <input class="login-input" type="password" id="pw" placeholder="Şifre" autocomplete="current-password" autofocus />
+    <button class="login-btn" id="btn">Giriş</button>
+    <p class="login-err" id="err">Hatalı şifre</p>
+  </div>
+</div>
+
+<div id="content">
 <div class="wrap">
 
   <div class="header">
@@ -596,5 +620,38 @@ function typeLabel(type: string) {
   </div>
 
 </div>
+</div><!-- #content -->
+
+<script>
+(function () {
+  const H = '5783c0fda1e566f33a95ed37274968f4c5b6fc2c9a70ad0ba2ff08555a43e6f2';
+  async function digest(s) {
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s));
+    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+  }
+  function unlock() {
+    document.getElementById('gate').style.display = 'none';
+    document.getElementById('content').style.display = 'block';
+  }
+  async function attempt() {
+    const val = document.getElementById('pw').value;
+    if (!val) return;
+    if (await digest(val) === H) {
+      sessionStorage.setItem('_ak', H);
+      unlock();
+    } else {
+      const err = document.getElementById('err');
+      err.style.display = 'block';
+      setTimeout(() => { err.style.display = 'none'; }, 2500);
+      document.getElementById('pw').value = '';
+      document.getElementById('pw').focus();
+    }
+  }
+  document.getElementById('btn').addEventListener('click', attempt);
+  document.getElementById('pw').addEventListener('keydown', e => { if (e.key === 'Enter') attempt(); });
+  if (sessionStorage.getItem('_ak') === H) unlock();
+})();
+</script>
+
 </body>
 </html>
