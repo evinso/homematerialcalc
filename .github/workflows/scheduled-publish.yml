@@ -49,3 +49,9 @@ jobs:
         env:
           VERCEL_ORG_ID:     ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+      - name: Ping search engines
+        run: |
+          SITEMAP="https://www.homematerialcalc.com/sitemap.xml"
+          curl -fsS "https://www.bing.com/ping?sitemap=${SITEMAP}" && echo "Bing pinged" || echo "Bing ping failed (non-fatal)"
+          curl -fsS "https://www.google.com/ping?sitemap=${SITEMAP}" && echo "Google pinged" || echo "Google ping failed (non-fatal)"
