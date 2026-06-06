@@ -13,19 +13,20 @@ const related = [
 ];
 ---
 <BaseLayout
-  title="Paint Calculator — How Many Gallons of Paint Do I Need?"
-  description="Free paint calculator: enter room dimensions or wall area, number of coats, doors and windows, and instantly get gallons needed with a cost estimate."
+  title="Paint Calculator — Gallons for Any Room | Free"
+  description="Free paint calculator: enter room dimensions, number of coats, doors, and windows to get exact gallons. Covers walls, ceilings, and trim in any room size."
 >
 
   <Fragment slot="head">
     <CalcSchema name="Paint Calculator" crumbs={[{ label: "Interior Calculators", href: "/interior-calculators" }, { label: "Paint Calculator" }]} description="Free paint calculator for gallons, quarts and cost" url="/calculator/paint" />
   </Fragment>
   <div class="max-w-6xl mx-auto px-4 py-10">
+    <script type="application/ld+json" set:html={JSON.stringify({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How many gallons of paint do I need for a 12\u00d712 room?", "acceptedAnswer": {"@type": "Answer", "text": "A standard 12\u00d712 ft room with 8 ft ceilings needs about 1.5 gallons per coat \u2014 so 3 gallons for 2 coats. Subtract area for 2 standard doors (~42 sq ft) and 2 windows (~30 sq ft)."}}, {"@type": "Question", "name": "How many square feet does a gallon of paint cover?", "acceptedAnswer": {"@type": "Answer", "text": "One gallon of standard latex paint covers 350\u2013400 sq ft per coat on a smooth surface. Primer covers about 250 sq ft. Textured surfaces cover closer to 275 sq ft per gallon."}}, {"@type": "Question", "name": "How many coats of paint do I need?", "acceptedAnswer": {"@type": "Answer", "text": "Most projects need 2 coats. Going from a dark color to a light color may need 3 coats. New unpainted drywall needs 1 coat of primer plus 2 coats of paint."}}, {"@type": "Question", "name": "How do I calculate paint for a room?", "acceptedAnswer": {"@type": "Answer", "text": "Wall area = 2 \u00d7 (Length + Width) \u00d7 Height. Subtract ~21 sq ft per door and ~15 sq ft per window. Divide by 350 (coverage per gallon) and multiply by number of coats."}}]})} />
     <CalcBreadcrumbs crumbs={[{ label: "Interior Calculators", href: "/interior-calculators" }, { label: "Paint Calculator" }]} />
     <div class="grid lg:grid-cols-[1fr_380px] gap-10">
       <div>
         <h1 class="text-3xl font-bold text-gray-900 mb-2">Paint Calculator</h1>
-        <p class="text-gray-600 mb-6">Enter your room size or total wall area to find out how many gallons of paint to buy — for any number of coats.</p>
+        <p class="text-gray-600 mb-6">Enter your room length, width, and ceiling height to find out how many gallons of paint you need — including waste and multiple coats.</p>
         <PaintCalculator client:load />
         <AdSlot slot="after-result" className="mt-6" />
         <div class="calculator-card mt-8">
@@ -40,6 +41,26 @@ const related = [
             <li class="flex gap-3"><span class="font-bold text-brand-600 flex-shrink-0">4.</span>
               <span><strong>Paint type:</strong> Premium paints cover up to 400 sq ft/gallon. Primers and textured walls need more paint (lower coverage).</span></li>
           </ol>
+        </div>
+        <!-- FAQ -->
+        <div class="calculator-card mt-8">
+          <h2 class="font-bold text-gray-900 text-lg mb-1">Frequently Asked Questions</h2>
+        <div class="border border-gray-200 rounded-xl p-4 mt-4">
+          <h3 class="font-semibold text-gray-900 mb-1 text-sm">How many gallons of paint do I need for a 12×12 room?</h3>
+          <p class="text-sm text-gray-700">A standard 12×12 ft room with 8 ft ceilings needs about 1.5 gallons per coat — so 3 gallons for 2 coats. Subtract area for 2 standard doors (~42 sq ft) and 2 windows (~30 sq ft).</p>
+        </div>
+        <div class="border border-gray-200 rounded-xl p-4 mt-4">
+          <h3 class="font-semibold text-gray-900 mb-1 text-sm">How many square feet does a gallon of paint cover?</h3>
+          <p class="text-sm text-gray-700">One gallon of standard latex paint covers 350–400 sq ft per coat on a smooth surface. Primer covers about 250 sq ft. Textured surfaces cover closer to 275 sq ft per gallon.</p>
+        </div>
+        <div class="border border-gray-200 rounded-xl p-4 mt-4">
+          <h3 class="font-semibold text-gray-900 mb-1 text-sm">How many coats of paint do I need?</h3>
+          <p class="text-sm text-gray-700">Most projects need 2 coats. Going from a dark color to a light color may need 3 coats. New unpainted drywall needs 1 coat of primer plus 2 coats of paint.</p>
+        </div>
+        <div class="border border-gray-200 rounded-xl p-4 mt-4">
+          <h3 class="font-semibold text-gray-900 mb-1 text-sm">How do I calculate paint for a room?</h3>
+          <p class="text-sm text-gray-700">Wall area = 2 × (Length + Width) × Height. Subtract ~21 sq ft per door and ~15 sq ft per window. Divide by 350 (coverage per gallon) and multiply by number of coats.</p>
+        </div>
         </div>
         <AdSlot slot="in-content" className="mt-6" />
         <div class="mt-6 text-sm text-gray-500 border-t pt-4">

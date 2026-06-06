@@ -11,19 +11,20 @@ const related = [
 ];
 ---
 <BaseLayout
-  title="Tile Calculator — How Many Tiles Do I Need? (with Thinset &amp; Grout)"
-  description="Free tile calculator: enter area and tile size to get tile count, thinset bags, and grout. Supports all common tile sizes and diagonal lay pattern."
+  title="Tile Calculator — How Many Tiles Do I Need? | Free"
+  description="Free tile calculator: enter area and tile size to get tile count, thinset bags, and grout amount. Covers all tile sizes and diagonal lay pattern."
 >
 
   <Fragment slot="head">
     <CalcSchema name="Tile Calculator" crumbs={[{ label: "Interior Calculators", href: "/interior-calculators" }, { label: "Tile Calculator" }]} description="Free tile calculator for tile count, boxes and cost" url="/calculator/tile" />
   </Fragment>
   <div class="max-w-6xl mx-auto px-4 py-10">
+    <script type="application/ld+json" set:html={JSON.stringify({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How many 12\u00d712 tiles do I need for a 100 sq ft floor?", "acceptedAnswer": {"@type": "Answer", "text": "A 100 sq ft floor with 10% waste needs 110 sq ft of tile. At 1 tile per sq ft (12\u00d712 inches), that's 110 tiles. Always round up to whole boxes."}}, {"@type": "Question", "name": "How do I calculate how many tiles I need?", "acceptedAnswer": {"@type": "Answer", "text": "Divide your total area (in sq ft) by the square footage of one tile, then multiply by 1.10 for 10% waste (or 1.15 for diagonal patterns). Round up to full boxes."}}, {"@type": "Question", "name": "How much thinset do I need for tile?", "acceptedAnswer": {"@type": "Answer", "text": "One 50 lb bag of thinset covers approximately 40 sq ft with a 3/8-inch notched trowel. For large-format tiles (18\u00d718 and bigger), use a larger notch \u2014 coverage may be less."}}, {"@type": "Question", "name": "What tile size is best for a small bathroom?", "acceptedAnswer": {"@type": "Answer", "text": "12\u00d712 or 12\u00d724 tiles work well in most bathrooms \u2014 larger tiles create fewer grout lines and make the space feel bigger. 6\u00d76 tiles suit small shower floors where slip resistance matters."}}]})} />
     <CalcBreadcrumbs crumbs={[{ label: "Interior Calculators", href: "/interior-calculators" }, { label: "Tile Calculator" }]} />
     <div class="grid lg:grid-cols-[1fr_380px] gap-10">
       <div>
         <h1 class="text-3xl font-bold text-gray-900 mb-2">Tile Calculator</h1>
-        <p class="text-gray-600 mb-6">Calculate tile count, thinset bags, and grout for floors, bathrooms, backsplashes, and any other tiled surface.</p>
+        <p class="text-gray-600 mb-6">Enter your floor or wall area and choose your tile size to get the exact tile count, thinset bags, and grout amount.</p>
         <TileCalculator client:load />
         <AdSlot slot="after-result" className="mt-6" />
         <div class="calculator-card mt-8">
@@ -38,6 +39,26 @@ const related = [
             <li class="flex gap-3"><span class="font-bold text-brand-600 flex-shrink-0">4.</span>
               <span><strong>Diagonal lay:</strong> Setting tile at 45° requires 15% waste because edge cuts are larger. Check this option for diagonal patterns.</span></li>
           </ol>
+        </div>
+        <!-- FAQ -->
+        <div class="calculator-card mt-8">
+          <h2 class="font-bold text-gray-900 text-lg mb-1">Frequently Asked Questions</h2>
+        <div class="border border-gray-200 rounded-xl p-4 mt-4">
+          <h3 class="font-semibold text-gray-900 mb-1 text-sm">How many 12×12 tiles do I need for a 100 sq ft floor?</h3>
+          <p class="text-sm text-gray-700">A 100 sq ft floor with 10% waste needs 110 sq ft of tile. At 1 tile per sq ft (12×12 inches), that's 110 tiles. Always round up to whole boxes.</p>
+        </div>
+        <div class="border border-gray-200 rounded-xl p-4 mt-4">
+          <h3 class="font-semibold text-gray-900 mb-1 text-sm">How do I calculate how many tiles I need?</h3>
+          <p class="text-sm text-gray-700">Divide your total area (in sq ft) by the square footage of one tile, then multiply by 1.10 for 10% waste (or 1.15 for diagonal patterns). Round up to full boxes.</p>
+        </div>
+        <div class="border border-gray-200 rounded-xl p-4 mt-4">
+          <h3 class="font-semibold text-gray-900 mb-1 text-sm">How much thinset do I need for tile?</h3>
+          <p class="text-sm text-gray-700">One 50 lb bag of thinset covers approximately 40 sq ft with a 3/8-inch notched trowel. For large-format tiles (18×18 and bigger), use a larger notch — coverage may be less.</p>
+        </div>
+        <div class="border border-gray-200 rounded-xl p-4 mt-4">
+          <h3 class="font-semibold text-gray-900 mb-1 text-sm">What tile size is best for a small bathroom?</h3>
+          <p class="text-sm text-gray-700">12×12 or 12×24 tiles work well in most bathrooms — larger tiles create fewer grout lines and make the space feel bigger. 6×6 tiles suit small shower floors where slip resistance matters.</p>
+        </div>
         </div>
         <AdSlot slot="in-content" className="mt-6" />
         <div class="mt-6 text-sm text-gray-500 border-t pt-4">

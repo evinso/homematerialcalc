@@ -12,19 +12,20 @@ const related = [
 ];
 ---
 <BaseLayout
-  title="Flooring Calculator — How Many Boxes of Flooring Do I Need?"
-  description="Free flooring calculator for laminate, vinyl plank (LVP), and hardwood. Enter room size, box coverage, and lay pattern to get exact box count with waste factor."
+  title="Flooring Calculator — Boxes of Laminate, LVP or Hardwood | Free"
+  description="Free flooring calculator: enter room size, box coverage, and lay pattern to get exact box count with waste factor. Works for laminate, vinyl plank, and hardwood."
 >
 
   <Fragment slot="head">
     <CalcSchema name="Flooring Calculator" crumbs={[{ label: "Interior Calculators", href: "/interior-calculators" }, { label: "Flooring Calculator" }]} description="Free flooring calculator for square feet, boxes and cost" url="/calculator/flooring" />
   </Fragment>
   <div class="max-w-6xl mx-auto px-4 py-10">
+    <script type="application/ld+json" set:html={JSON.stringify({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How many boxes of flooring do I need for a 12\u00d712 room?", "acceptedAnswer": {"@type": "Answer", "text": "A 12\u00d712 ft room (144 sq ft) with 10% waste needs 158 sq ft of flooring. If each box covers 20 sq ft, you need 8 boxes. If 25 sq ft per box: 7 boxes."}}, {"@type": "Question", "name": "How much extra flooring should I buy for waste?", "acceptedAnswer": {"@type": "Answer", "text": "Buy 10% extra for straight-lay patterns and 15% extra for diagonal patterns. Always buy from the same dye lot to ensure color consistency."}}, {"@type": "Question", "name": "How do I calculate flooring for a room?", "acceptedAnswer": {"@type": "Answer", "text": "Measure length \u00d7 width in feet to get square footage. Add 10% for waste. Divide by box coverage (found on the box label) and round up to whole boxes."}}, {"@type": "Question", "name": "What is the waste factor for diagonal flooring?", "acceptedAnswer": {"@type": "Answer", "text": "Diagonal (45\u00b0) flooring patterns require 15% extra material for cuts. Straight-lay and running-bond patterns need 10% extra. Always round up to full boxes."}}]})} />
     <CalcBreadcrumbs crumbs={[{ label: "Interior Calculators", href: "/interior-calculators" }, { label: "Flooring Calculator" }]} />
     <div class="grid lg:grid-cols-[1fr_380px] gap-10">
       <div>
         <h1 class="text-3xl font-bold text-gray-900 mb-2">Flooring Calculator</h1>
-        <p class="text-gray-600 mb-6">Enter your room dimensions and your flooring product's box coverage to find out how many boxes to buy — including waste for your lay pattern.</p>
+        <p class="text-gray-600 mb-6">Enter your room dimensions and the square footage per box to find out how many boxes of flooring to buy, with the right waste factor for your lay pattern.</p>
         <FlooringCalculator client:load />
         <AdSlot slot="after-result" className="mt-6" />
         <div class="calculator-card mt-8">
@@ -39,6 +40,26 @@ const related = [
             <li class="flex gap-3"><span class="font-bold text-brand-600 flex-shrink-0">4.</span>
               <span><strong>Don't return leftovers:</strong> Most stores allow returns of unopened boxes. Keep 1 extra box for future repairs.</span></li>
           </ol>
+        </div>
+        <!-- FAQ -->
+        <div class="calculator-card mt-8">
+          <h2 class="font-bold text-gray-900 text-lg mb-1">Frequently Asked Questions</h2>
+        <div class="border border-gray-200 rounded-xl p-4 mt-4">
+          <h3 class="font-semibold text-gray-900 mb-1 text-sm">How many boxes of flooring do I need for a 12×12 room?</h3>
+          <p class="text-sm text-gray-700">A 12×12 ft room (144 sq ft) with 10% waste needs 158 sq ft of flooring. If each box covers 20 sq ft, you need 8 boxes. If 25 sq ft per box: 7 boxes.</p>
+        </div>
+        <div class="border border-gray-200 rounded-xl p-4 mt-4">
+          <h3 class="font-semibold text-gray-900 mb-1 text-sm">How much extra flooring should I buy for waste?</h3>
+          <p class="text-sm text-gray-700">Buy 10% extra for straight-lay patterns and 15% extra for diagonal patterns. Always buy from the same dye lot to ensure color consistency.</p>
+        </div>
+        <div class="border border-gray-200 rounded-xl p-4 mt-4">
+          <h3 class="font-semibold text-gray-900 mb-1 text-sm">How do I calculate flooring for a room?</h3>
+          <p class="text-sm text-gray-700">Measure length × width in feet to get square footage. Add 10% for waste. Divide by box coverage (found on the box label) and round up to whole boxes.</p>
+        </div>
+        <div class="border border-gray-200 rounded-xl p-4 mt-4">
+          <h3 class="font-semibold text-gray-900 mb-1 text-sm">What is the waste factor for diagonal flooring?</h3>
+          <p class="text-sm text-gray-700">Diagonal (45°) flooring patterns require 15% extra material for cuts. Straight-lay and running-bond patterns need 10% extra. Always round up to full boxes.</p>
+        </div>
         </div>
         <AdSlot slot="in-content" className="mt-6" />
         <div class="mt-6 text-sm text-gray-500 border-t pt-4">

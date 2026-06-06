@@ -15,19 +15,20 @@ const related = [
 ---
 
 <BaseLayout
-  title="Topsoil Calculator — Cubic Yards &amp; Bags | How Much Topsoil Do I Need?"
-  description="Free topsoil calculator. Enter your garden bed or lawn dimensions and depth to find out how many cubic yards or 40 lb bags of topsoil to buy."
+  title="Topsoil Calculator — Cubic Yards & 40 lb Bags | Free"
+  description="Free topsoil calculator: enter area and depth to get cubic yards, tons, and 40 lb bag count. Covers lawn seeding, raised beds, and garden projects."
 >
 
   <Fragment slot="head">
     <CalcSchema name="Topsoil Calculator" crumbs={[{ label: "Landscaping Calculators", href: "/landscaping-calculators" }, { label: "Topsoil Calculator" }]} description="Free topsoil calculator for cubic yards, bags and cost" url="/calculator/topsoil" />
   </Fragment>
   <div class="max-w-6xl mx-auto px-4 py-10">
+    <script type="application/ld+json" set:html={JSON.stringify({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How many cubic yards of topsoil do I need?", "acceptedAnswer": {"@type": "Answer", "text": "Volume (cu yd) = Length (ft) \u00d7 Width (ft) \u00d7 Depth (in) \u00f7 324. For a 20\u00d720 ft area at 4 inches deep: 4.9 cubic yards. Use the Topsoil Calculator for any size."}}, {"@type": "Question", "name": "How much does a cubic yard of topsoil weigh?", "acceptedAnswer": {"@type": "Answer", "text": "A cubic yard of topsoil weighs approximately 2,200 lbs (1.10 tons). Moist or clay-heavy topsoil can weigh up to 2,700 lbs per cubic yard."}}, {"@type": "Question", "name": "How deep should topsoil be for a lawn?", "acceptedAnswer": {"@type": "Answer", "text": "For overseeding an existing lawn: 1\u20132 inches. For a new lawn from scratch: 4\u20136 inches. For raised garden beds: 8\u201312 inches."}}, {"@type": "Question", "name": "How many 40 lb bags of topsoil per cubic yard?", "acceptedAnswer": {"@type": "Answer", "text": "There are 36 bags of 40 lb topsoil in one cubic yard (27 cu ft \u00f7 0.75 cu ft per bag = 36 bags). For large areas, bulk delivery is much cheaper."}}]})} />
     <CalcBreadcrumbs crumbs={[{ label: "Landscaping Calculators", href: "/landscaping-calculators" }, { label: "Topsoil Calculator" }]} />
     <div class="grid lg:grid-cols-[1fr_380px] gap-10">
       <div>
         <h1 class="text-3xl font-bold text-gray-900 mb-2">Topsoil Calculator</h1>
-        <p class="text-gray-600 mb-6">Calculate cubic yards or 40 lb bags of topsoil for lawn top-dressing, garden beds, or raised beds.</p>
+        <p class="text-gray-600 mb-6">Enter your lawn or garden dimensions and desired depth to find out how many cubic yards or 40 lb bags of topsoil to buy.</p>
 
         <TopsoilCalculator client:load />
 
@@ -47,6 +48,26 @@ const related = [
           </ol>
         </div>
 
+        <!-- FAQ -->
+        <div class="calculator-card mt-8">
+          <h2 class="font-bold text-gray-900 text-lg mb-1">Frequently Asked Questions</h2>
+        <div class="border border-gray-200 rounded-xl p-4 mt-4">
+          <h3 class="font-semibold text-gray-900 mb-1 text-sm">How many cubic yards of topsoil do I need?</h3>
+          <p class="text-sm text-gray-700">Volume (cu yd) = Length (ft) × Width (ft) × Depth (in) ÷ 324. For a 20×20 ft area at 4 inches deep: 4.9 cubic yards. Use the Topsoil Calculator for any size.</p>
+        </div>
+        <div class="border border-gray-200 rounded-xl p-4 mt-4">
+          <h3 class="font-semibold text-gray-900 mb-1 text-sm">How much does a cubic yard of topsoil weigh?</h3>
+          <p class="text-sm text-gray-700">A cubic yard of topsoil weighs approximately 2,200 lbs (1.10 tons). Moist or clay-heavy topsoil can weigh up to 2,700 lbs per cubic yard.</p>
+        </div>
+        <div class="border border-gray-200 rounded-xl p-4 mt-4">
+          <h3 class="font-semibold text-gray-900 mb-1 text-sm">How deep should topsoil be for a lawn?</h3>
+          <p class="text-sm text-gray-700">For overseeding an existing lawn: 1–2 inches. For a new lawn from scratch: 4–6 inches. For raised garden beds: 8–12 inches.</p>
+        </div>
+        <div class="border border-gray-200 rounded-xl p-4 mt-4">
+          <h3 class="font-semibold text-gray-900 mb-1 text-sm">How many 40 lb bags of topsoil per cubic yard?</h3>
+          <p class="text-sm text-gray-700">There are 36 bags of 40 lb topsoil in one cubic yard (27 cu ft ÷ 0.75 cu ft per bag = 36 bags). For large areas, bulk delivery is much cheaper.</p>
+        </div>
+        </div>
         <AdSlot slot="in-content" className="mt-6" />
 
         <div class="mt-6 text-sm text-gray-500 border-t pt-4">

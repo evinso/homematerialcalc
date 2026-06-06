@@ -3,67 +3,91 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout
-  title="About HomeMaterialCalc.com — Free Material Estimators for US Homeowners"
-  description="HomeMaterialCalc.com helps US homeowners and DIYers calculate how much material to buy — in real purchasable units — before heading to the store."
+  title="About HomeMaterialCalc — Free Material Calculators for US Homeowners"
+  description="HomeMaterialCalc provides free material calculators for mulch, gravel, concrete, paint, flooring, tile, and more — giving US homeowners exact bag, yard, and gallon counts."
 >
   <div class="max-w-3xl mx-auto px-4 py-12">
-    <nav class="text-sm text-gray-500 mb-6">
-      <a href="/" class="hover:text-brand-600">Home</a> › <span class="text-gray-700">About</span>
+    <nav class="text-sm text-gray-500 mb-6 flex flex-wrap gap-1">
+      <a href="/" class="hover:text-brand-600">Home</a>
+      <span>›</span>
+      <span class="text-gray-700">About</span>
     </nav>
 
-    <h1 class="text-3xl font-bold text-gray-900 mb-6">About HomeMaterialCalc.com</h1>
+    <h1 class="text-3xl font-bold text-gray-900 mb-3">About HomeMaterialCalc</h1>
+    <p class="text-gray-600 mb-8">Free material calculators for US homeowners — mulch, gravel, concrete, paint, flooring, tile, drywall, lumber, and more.</p>
 
-    <div class="prose prose-gray max-w-none">
-      <p>
-        HomeMaterialCalc.com is a free collection of material estimators built for US homeowners
-        and DIYers who are planning a landscaping or construction project and want to know
-        <em>exactly how much to buy</em> before they head to the store or call a supplier.
-      </p>
+    <div class="prose prose-gray max-w-none space-y-6 text-gray-700">
 
-      <h2>What we do</h2>
-      <p>
-        Our calculators take your actual project dimensions — length, width, depth, and shape —
-        and instantly convert them into real purchasable units: bags, cubic yards, tons, pallets,
-        or pieces. No guessing, no rounding to some number that feels about right.
-      </p>
-      <p>
-        Every result also shows you the step-by-step calculation breakdown so you can verify the
-        math yourself or explain it to a supplier.
-      </p>
+      <section>
+        <h2 class="text-xl font-bold text-gray-900 mb-2">What is HomeMaterialCalc?</h2>
+        <p>
+          HomeMaterialCalc is a free collection of material calculators built for US homeowners and DIYers.
+          Enter your project dimensions and get an instant, accurate quantity in the unit your supplier actually sells —
+          bags, cubic yards, tons, gallons, boxes, or pallets. No guessing, no unit conversions, no wasted trips to the store.
+        </p>
+        <p>
+          We cover <strong>12 materials</strong> across landscaping, concrete, and interior projects:
+          mulch, gravel, topsoil, sand, sod, concrete, paint, flooring, tile, drywall, lumber, and pavers.
+        </p>
+      </section>
 
-      <h2>Why we built this</h2>
-      <p>
-        Material estimating is one of those tasks that sounds simple but trips up a lot of people.
-        How many bags of mulch do you need for a bed that is 15 feet wide and not quite a
-        rectangle? How many pallets of sod for a lawn with an irregular shape? How many 80-pound
-        bags of Quikrete for a slab that is 4 inches thick?
-      </p>
-      <p>
-        The math is straightforward — area, volume, a few constants — but pulling it all together
-        in your head while standing in a parking lot is error-prone. We built clean, fast
-        calculators so you can get an accurate answer in seconds.
-      </p>
+      <section>
+        <h2 class="text-xl font-bold text-gray-900 mb-2">Who it's for</h2>
+        <ul class="list-disc list-inside space-y-1">
+          <li><strong>Homeowners</strong> planning a landscaping or remodeling project</li>
+          <li><strong>DIYers</strong> who want to buy the right amount before heading to the store</li>
+          <li><strong>Landscapers and contractors</strong> who need a quick estimate on the go</li>
+          <li>Anyone who has Googled "how much mulch do I need" or "how many bags of concrete for a 10×10 slab"</li>
+        </ul>
+      </section>
 
-      <h2>Our commitment to accuracy</h2>
-      <p>
-        Calculation accuracy is the entire point of this site. We use a single source-of-truth
-        constants file that is documented with sources on our <a href="/methodology">Methodology page</a>.
-        We run automated tests on every formula so a code change cannot silently break the math.
-        If you find an error, please <a href="/contact">let us know</a> — we take it seriously.
-      </p>
+      <section>
+        <h2 class="text-xl font-bold text-gray-900 mb-2">How the calculators work</h2>
+        <p>
+          Every calculator follows the same logic: measure your area, pick a depth (for bulk materials), apply the
+          correct material constant, add a waste factor, and convert to the purchase unit. The math is explained
+          step-by-step on each result page so you can verify it yourself.
+        </p>
+        <p>
+          All material constants — concrete bag yields, gravel densities, paint coverage rates, mulch bag yields —
+          are sourced from manufacturer specifications and industry standards. They're documented with citations on our
+          <a href="/data-sources" class="text-brand-600 hover:underline">Data Sources</a> page.
+        </p>
+      </section>
 
-      <h2>What's next</h2>
-      <p>
-        The current site covers the most-requested outdoor materials: mulch, gravel, topsoil,
-        sand, sod, and concrete. We plan to expand to indoor materials — flooring, tile, paint,
-        drywall, and insulation — once the outdoor section is well-established.
-      </p>
+      <section>
+        <h2 class="text-xl font-bold text-gray-900 mb-2">Our commitment to accuracy</h2>
+        <p>
+          Calculation accuracy is the entire point of this site. We maintain a single source-of-truth constants file,
+          document every formula on our <a href="/methodology" class="text-brand-600 hover:underline">Methodology</a> page,
+          and run automated tests on every formula so a code change cannot silently break the math.
+          If you find an error, <a href="/contact" class="text-brand-600 hover:underline">contact us</a> — we take it seriously.
+        </p>
+      </section>
 
-      <h2>Contact</h2>
-      <p>
-        Questions, corrections, or suggestions? Use our <a href="/contact">contact form</a>.
-        We read every message.
-      </p>
+      <section>
+        <h2 class="text-xl font-bold text-gray-900 mb-2">Free to use</h2>
+        <p>
+          All calculators are completely free, with no signup or registration required. Results include a
+          step-by-step breakdown and optional cost estimate when you enter your local price.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-gray-900 mb-2">Contact</h2>
+        <p>
+          Questions, corrections, or suggestions? Use our <a href="/contact" class="text-brand-600 hover:underline">contact form</a>.
+          We read every message.
+        </p>
+      </section>
+
+    </div>
+
+    <div class="mt-10 pt-6 border-t border-gray-200 flex flex-wrap gap-4 text-sm">
+      <a href="/data-sources"           class="text-brand-600 hover:underline">Data Sources →</a>
+      <a href="/how-it-works"           class="text-brand-600 hover:underline">How It Works →</a>
+      <a href="/calculation-assumptions" class="text-brand-600 hover:underline">Calculation Assumptions →</a>
+      <a href="/methodology"            class="text-brand-600 hover:underline">Methodology →</a>
     </div>
   </div>
 </BaseLayout>

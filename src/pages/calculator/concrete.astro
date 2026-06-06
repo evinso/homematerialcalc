@@ -15,19 +15,20 @@ const related = [
 ---
 
 <BaseLayout
-  title="Concrete Calculator — Bag Count for Slabs, Post Holes &amp; Footings"
-  description="Free concrete calculator. Enter your slab, post hole, or footing dimensions and bag size (40, 60, or 80 lb) to instantly find out how many bags of concrete to buy."
+  title="Concrete Calculator — Bag Count for Slabs & Post Holes | Free"
+  description="Free concrete calculator: enter slab dimensions or post hole size and bag weight (40, 60, or 80 lb) to get exact bag count. Covers slabs, footings, and post holes."
 >
 
   <Fragment slot="head">
     <CalcSchema name="Concrete Calculator" crumbs={[{ label: "Concrete Calculators", href: "/concrete-calculators" }, { label: "Concrete Calculator" }]} description="Free concrete calculator for bags, cubic yards and cost" url="/calculator/concrete" />
   </Fragment>
   <div class="max-w-6xl mx-auto px-4 py-10">
+    <script type="application/ld+json" set:html={JSON.stringify({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How many bags of concrete do I need for a 10\u00d710 slab?", "acceptedAnswer": {"@type": "Answer", "text": "At 4 inches thick, a 10\u00d710 slab needs 1.23 cubic yards \u2014 about 56 bags of 80 lb concrete, 74 bags of 60 lb, or 111 bags of 40 lb. Always add 10% extra."}}, {"@type": "Question", "name": "How many bags of 80 lb concrete in a cubic yard?", "acceptedAnswer": {"@type": "Answer", "text": "45 bags of 80 lb concrete make one cubic yard. Each 80 lb bag yields 0.60 cubic feet (27 cu ft \u00f7 0.60 = 45). For 60 lb bags: 60 per yard. For 40 lb: 90 per yard."}}, {"@type": "Question", "name": "How thick should a concrete slab be?", "acceptedAnswer": {"@type": "Answer", "text": "4 inches is standard for patios, sidewalks, and garage floors. Driveways need 5\u20136 inches. Post holes for fence posts typically need 6\u20138 inches of concrete."}}, {"@type": "Question", "name": "Should I use bags or ready-mix concrete?", "acceptedAnswer": {"@type": "Answer", "text": "For projects under 1 cubic yard (about 80 sq ft at 4 inches thick), bagged concrete is practical. For larger slabs, ready-mix truck delivery is significantly cheaper and faster."}}]})} />
     <CalcBreadcrumbs crumbs={[{ label: "Concrete Calculators", href: "/concrete-calculators" }, { label: "Concrete Calculator" }]} />
     <div class="grid lg:grid-cols-[1fr_380px] gap-10">
       <div>
         <h1 class="text-3xl font-bold text-gray-900 mb-2">Concrete Calculator</h1>
-        <p class="text-gray-600 mb-6">Calculate the number of bagged concrete mix needed for slabs, post holes, and footings — for any bag size.</p>
+        <p class="text-gray-600 mb-6">Enter your slab dimensions or post hole size to find out how many bags of concrete to buy. Choose your bag size — 40, 60, or 80 lb.</p>
 
         <ConcreteCalculator client:load />
 
@@ -47,6 +48,26 @@ const related = [
           </ol>
         </div>
 
+        <!-- FAQ -->
+        <div class="calculator-card mt-8">
+          <h2 class="font-bold text-gray-900 text-lg mb-1">Frequently Asked Questions</h2>
+        <div class="border border-gray-200 rounded-xl p-4 mt-4">
+          <h3 class="font-semibold text-gray-900 mb-1 text-sm">How many bags of concrete do I need for a 10×10 slab?</h3>
+          <p class="text-sm text-gray-700">At 4 inches thick, a 10×10 slab needs 1.23 cubic yards — about 56 bags of 80 lb concrete, 74 bags of 60 lb, or 111 bags of 40 lb. Always add 10% extra.</p>
+        </div>
+        <div class="border border-gray-200 rounded-xl p-4 mt-4">
+          <h3 class="font-semibold text-gray-900 mb-1 text-sm">How many bags of 80 lb concrete in a cubic yard?</h3>
+          <p class="text-sm text-gray-700">45 bags of 80 lb concrete make one cubic yard. Each 80 lb bag yields 0.60 cubic feet (27 cu ft ÷ 0.60 = 45). For 60 lb bags: 60 per yard. For 40 lb: 90 per yard.</p>
+        </div>
+        <div class="border border-gray-200 rounded-xl p-4 mt-4">
+          <h3 class="font-semibold text-gray-900 mb-1 text-sm">How thick should a concrete slab be?</h3>
+          <p class="text-sm text-gray-700">4 inches is standard for patios, sidewalks, and garage floors. Driveways need 5–6 inches. Post holes for fence posts typically need 6–8 inches of concrete.</p>
+        </div>
+        <div class="border border-gray-200 rounded-xl p-4 mt-4">
+          <h3 class="font-semibold text-gray-900 mb-1 text-sm">Should I use bags or ready-mix concrete?</h3>
+          <p class="text-sm text-gray-700">For projects under 1 cubic yard (about 80 sq ft at 4 inches thick), bagged concrete is practical. For larger slabs, ready-mix truck delivery is significantly cheaper and faster.</p>
+        </div>
+        </div>
         <AdSlot slot="in-content" className="mt-6" />
 
         <div class="mt-6 text-sm text-gray-500 border-t pt-4">

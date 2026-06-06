@@ -14,19 +14,20 @@ const related = [
 ---
 
 <BaseLayout
-  title="Sod Calculator — Pallets, Pieces &amp; Square Feet | How Much Sod Do I Need?"
-  description="Free sod calculator. Enter your lawn dimensions to find out how many pallets and pieces of sod to buy, with waste factor for straight or curved edges."
+  title="Sod Calculator — Pallets, Pieces & Square Feet | Free"
+  description="Free sod calculator: enter lawn dimensions to get pieces, pallets, and square footage with waste factor for straight or curved edges."
 >
 
   <Fragment slot="head">
     <CalcSchema name="Sod Calculator" crumbs={[{ label: "Landscaping Calculators", href: "/landscaping-calculators" }, { label: "Sod Calculator" }]} description="Free sod calculator for pieces, pallets and cost" url="/calculator/sod" />
   </Fragment>
   <div class="max-w-6xl mx-auto px-4 py-10">
+    <script type="application/ld+json" set:html={JSON.stringify({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How many square feet does a pallet of sod cover?", "acceptedAnswer": {"@type": "Answer", "text": "A standard pallet covers approximately 450 square feet (about 170 pieces at 16\u00d724 inches each). Coverage varies by supplier \u2014 confirm with your local sod farm."}}, {"@type": "Question", "name": "How do I calculate how much sod I need?", "acceptedAnswer": {"@type": "Answer", "text": "Measure your lawn area in square feet (length \u00d7 width for rectangular sections). Add areas together for odd shapes. Add 5% waste for straight edges, 10% for curves."}}, {"@type": "Question", "name": "How many pieces of sod are in a pallet?", "acceptedAnswer": {"@type": "Answer", "text": "Most pallets hold approximately 170 pieces (2.67 sq ft each), totaling about 450 sq ft. Some suppliers sell 500 sq ft pallets \u2014 check the product listing."}}, {"@type": "Question", "name": "What is the best time to lay sod?", "acceptedAnswer": {"@type": "Answer", "text": "Spring and early fall are ideal for most US regions \u2014 moderate temperatures help sod root before summer heat or winter frost. Avoid laying during extreme heat or drought."}}]})} />
     <CalcBreadcrumbs crumbs={[{ label: "Landscaping Calculators", href: "/landscaping-calculators" }, { label: "Sod Calculator" }]} />
     <div class="grid lg:grid-cols-[1fr_380px] gap-10">
       <div>
         <h1 class="text-3xl font-bold text-gray-900 mb-2">Sod Calculator</h1>
-        <p class="text-gray-600 mb-6">Calculate how many pallets or pieces of sod you need for your lawn area.</p>
+        <p class="text-gray-600 mb-6">Enter your lawn area to find out how many pieces and pallets of sod to buy, with the correct waste factor for your lawn's shape.</p>
 
         <SodCalculator client:load />
 
@@ -46,6 +47,26 @@ const related = [
           </ol>
         </div>
 
+        <!-- FAQ -->
+        <div class="calculator-card mt-8">
+          <h2 class="font-bold text-gray-900 text-lg mb-1">Frequently Asked Questions</h2>
+        <div class="border border-gray-200 rounded-xl p-4 mt-4">
+          <h3 class="font-semibold text-gray-900 mb-1 text-sm">How many square feet does a pallet of sod cover?</h3>
+          <p class="text-sm text-gray-700">A standard pallet covers approximately 450 square feet (about 170 pieces at 16×24 inches each). Coverage varies by supplier — confirm with your local sod farm.</p>
+        </div>
+        <div class="border border-gray-200 rounded-xl p-4 mt-4">
+          <h3 class="font-semibold text-gray-900 mb-1 text-sm">How do I calculate how much sod I need?</h3>
+          <p class="text-sm text-gray-700">Measure your lawn area in square feet (length × width for rectangular sections). Add areas together for odd shapes. Add 5% waste for straight edges, 10% for curves.</p>
+        </div>
+        <div class="border border-gray-200 rounded-xl p-4 mt-4">
+          <h3 class="font-semibold text-gray-900 mb-1 text-sm">How many pieces of sod are in a pallet?</h3>
+          <p class="text-sm text-gray-700">Most pallets hold approximately 170 pieces (2.67 sq ft each), totaling about 450 sq ft. Some suppliers sell 500 sq ft pallets — check the product listing.</p>
+        </div>
+        <div class="border border-gray-200 rounded-xl p-4 mt-4">
+          <h3 class="font-semibold text-gray-900 mb-1 text-sm">What is the best time to lay sod?</h3>
+          <p class="text-sm text-gray-700">Spring and early fall are ideal for most US regions — moderate temperatures help sod root before summer heat or winter frost. Avoid laying during extreme heat or drought.</p>
+        </div>
+        </div>
         <AdSlot slot="in-content" className="mt-6" />
 
         <div class="mt-6 text-sm text-gray-500 border-t pt-4">

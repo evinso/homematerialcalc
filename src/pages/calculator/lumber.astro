@@ -15,21 +15,22 @@ const related = [
 ---
 
 <BaseLayout
-  title="Lumber Calculator — Board Feet & Cost Estimator"
-  description="Free lumber calculator: enter piece count, nominal size, and length to instantly find board feet, waste-adjusted totals, and cost estimates for any framing or carpentry project."
+  title="Lumber Calculator — Board Feet & Cost Estimator | Free"
+  description="Free lumber calculator: enter piece count, nominal size, and length to get total board feet and cost estimate. Works for framing, decking, and all carpentry projects."
 >
 
   <Fragment slot="head">
     <CalcSchema name="Lumber Calculator" crumbs={[{ label: "Interior Calculators", href: "/interior-calculators" }, { label: "Lumber Calculator" }]} description="Free lumber calculator for board feet and cost" url="/calculator/lumber" />
   </Fragment>
   <div class="max-w-6xl mx-auto px-4 py-10">
+    <script type="application/ld+json" set:html={JSON.stringify({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I calculate board feet of lumber?", "acceptedAnswer": {"@type": "Answer", "text": "Board feet = (Thickness in inches \u00d7 Width in inches \u00d7 Length in feet) \u00f7 12. For example, a 2\u00d76 that is 8 feet long = (2 \u00d7 6 \u00d7 8) \u00f7 12 = 8 board feet."}}, {"@type": "Question", "name": "How much lumber do I need to frame a wall?", "acceptedAnswer": {"@type": "Answer", "text": "For a 10 ft wall at 16-inch stud spacing: about 8 studs + 30 linear feet of plate lumber (2 bottom plates + 1 top plate). Add 10\u201315% waste for corners and openings."}}, {"@type": "Question", "name": "What is the actual size of a 2\u00d74?", "acceptedAnswer": {"@type": "Answer", "text": "A nominal 2\u00d74 is actually 1.5 inches \u00d7 3.5 inches. The nominal size is the rough-cut size; the actual size is smaller after drying and planing. Always use actual dimensions for coverage calculations."}}, {"@type": "Question", "name": "How many board feet do I need for a deck?", "acceptedAnswer": {"@type": "Answer", "text": "For a 12\u00d716 ft deck (192 sq ft), plan for 400\u2013600 board feet of decking boards plus framing lumber. Add 10\u201315% for waste and spacing gaps between boards."}}]})} />
     <CalcBreadcrumbs crumbs={[{ label: "Interior Calculators", href: "/interior-calculators" }, { label: "Lumber Calculator" }]} />
     <div class="grid lg:grid-cols-[1fr_380px] gap-10">
 
       <!-- Left: calculator -->
       <div>
         <h1 class="text-3xl font-bold text-gray-900 mb-2">Lumber Calculator</h1>
-        <p class="text-gray-600 mb-6">Enter the number of pieces, nominal size, and length to calculate total board feet and estimate your cost.</p>
+        <p class="text-gray-600 mb-6">Enter the number of pieces, nominal size (2×4, 2×6, etc.), and length to calculate total board feet and your project cost.</p>
 
         <LumberCalculator client:load />
 
@@ -62,6 +63,26 @@ const related = [
           </table>
         </div>
 
+        <!-- FAQ -->
+        <div class="calculator-card mt-8">
+          <h2 class="font-bold text-gray-900 text-lg mb-1">Frequently Asked Questions</h2>
+        <div class="border border-gray-200 rounded-xl p-4 mt-4">
+          <h3 class="font-semibold text-gray-900 mb-1 text-sm">How do I calculate board feet of lumber?</h3>
+          <p class="text-sm text-gray-700">Board feet = (Thickness in inches × Width in inches × Length in feet) ÷ 12. For example, a 2×6 that is 8 feet long = (2 × 6 × 8) ÷ 12 = 8 board feet.</p>
+        </div>
+        <div class="border border-gray-200 rounded-xl p-4 mt-4">
+          <h3 class="font-semibold text-gray-900 mb-1 text-sm">How much lumber do I need to frame a wall?</h3>
+          <p class="text-sm text-gray-700">For a 10 ft wall at 16-inch stud spacing: about 8 studs + 30 linear feet of plate lumber (2 bottom plates + 1 top plate). Add 10–15% waste for corners and openings.</p>
+        </div>
+        <div class="border border-gray-200 rounded-xl p-4 mt-4">
+          <h3 class="font-semibold text-gray-900 mb-1 text-sm">What is the actual size of a 2×4?</h3>
+          <p class="text-sm text-gray-700">A nominal 2×4 is actually 1.5 inches × 3.5 inches. The nominal size is the rough-cut size; the actual size is smaller after drying and planing. Always use actual dimensions for coverage calculations.</p>
+        </div>
+        <div class="border border-gray-200 rounded-xl p-4 mt-4">
+          <h3 class="font-semibold text-gray-900 mb-1 text-sm">How many board feet do I need for a deck?</h3>
+          <p class="text-sm text-gray-700">For a 12×16 ft deck (192 sq ft), plan for 400–600 board feet of decking boards plus framing lumber. Add 10–15% for waste and spacing gaps between boards.</p>
+        </div>
+        </div>
         <AdSlot slot="in-content" className="mt-6" />
 
         <div class="mt-6 text-sm text-gray-500 border-t pt-4">

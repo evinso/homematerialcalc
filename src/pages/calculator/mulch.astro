@@ -15,21 +15,22 @@ const related = [
 ---
 
 <BaseLayout
-  title="Mulch Calculator — How Many Bags or Cubic Yards Do I Need?"
-  description="Free mulch calculator: enter your bed dimensions and depth to instantly find out how many 2 cu ft bags or cubic yards of mulch to buy. Includes waste factor and cost estimate."
+  title="Mulch Calculator — Bags, Cubic Yards & Cost | Free"
+  description="Free mulch calculator: enter bed size and depth to get exact bag count, cubic yards, and cost estimate. Covers 2 cu ft bags, bulk yards, and all depths."
 >
 
   <Fragment slot="head">
     <CalcSchema name="Mulch Calculator" crumbs={[{ label: "Landscaping Calculators", href: "/landscaping-calculators" }, { label: "Mulch Calculator" }]} description="Free mulch calculator for bags, cubic yards and cost" url="/calculator/mulch" />
   </Fragment>
   <div class="max-w-6xl mx-auto px-4 py-10">
+    <script type="application/ld+json" set:html={JSON.stringify({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How many bags of mulch do I need for 100 square feet?", "acceptedAnswer": {"@type": "Answer", "text": "At 3 inches deep, 100 sq ft needs 0.93 cubic yards \u2014 about 13 bags of 2 cu ft mulch. Round up to 14. At 2 inches: 9 bags. The Mulch Calculator computes this instantly for any size."}}, {"@type": "Question", "name": "How deep should I apply mulch?", "acceptedAnswer": {"@type": "Answer", "text": "Apply 2\u20133 inches for existing beds, 3\u20134 inches for new beds or heavy weed suppression. Never pile mulch more than 4 inches deep or against plant stems."}}, {"@type": "Question", "name": "How many bags of mulch are in a cubic yard?", "acceptedAnswer": {"@type": "Answer", "text": "There are 13.5 standard 2-cubic-foot bags in one cubic yard. If you need more than 2\u20133 yards, bulk delivery is usually cheaper than buying bags."}}, {"@type": "Question", "name": "How much does a cubic yard of mulch cover?", "acceptedAnswer": {"@type": "Answer", "text": "At 3 inches deep, 1 cubic yard covers 108 sq ft. At 2 inches: 162 sq ft. At 1 inch: 324 sq ft."}}]})} />
     <CalcBreadcrumbs crumbs={[{ label: "Landscaping Calculators", href: "/landscaping-calculators" }, { label: "Mulch Calculator" }]} />
     <div class="grid lg:grid-cols-[1fr_380px] gap-10">
 
       <!-- Left: calculator -->
       <div>
         <h1 class="text-3xl font-bold text-gray-900 mb-2">Mulch Calculator</h1>
-        <p class="text-gray-600 mb-6">Enter your garden bed size and depth to find out how many bags or cubic yards of mulch you need.</p>
+        <p class="text-gray-600 mb-6">Enter your garden bed dimensions and depth to find out how many bags or cubic yards of mulch to buy.</p>
 
         <MulchCalculator client:load />
 
@@ -58,6 +59,26 @@ const related = [
           </ol>
         </div>
 
+        <!-- FAQ -->
+        <div class="calculator-card mt-8">
+          <h2 class="font-bold text-gray-900 text-lg mb-1">Frequently Asked Questions</h2>
+        <div class="border border-gray-200 rounded-xl p-4 mt-4">
+          <h3 class="font-semibold text-gray-900 mb-1 text-sm">How many bags of mulch do I need for 100 square feet?</h3>
+          <p class="text-sm text-gray-700">At 3 inches deep, 100 sq ft needs 0.93 cubic yards — about 13 bags of 2 cu ft mulch. Round up to 14. At 2 inches: 9 bags. The Mulch Calculator computes this instantly for any size.</p>
+        </div>
+        <div class="border border-gray-200 rounded-xl p-4 mt-4">
+          <h3 class="font-semibold text-gray-900 mb-1 text-sm">How deep should I apply mulch?</h3>
+          <p class="text-sm text-gray-700">Apply 2–3 inches for existing beds, 3–4 inches for new beds or heavy weed suppression. Never pile mulch more than 4 inches deep or against plant stems.</p>
+        </div>
+        <div class="border border-gray-200 rounded-xl p-4 mt-4">
+          <h3 class="font-semibold text-gray-900 mb-1 text-sm">How many bags of mulch are in a cubic yard?</h3>
+          <p class="text-sm text-gray-700">There are 13.5 standard 2-cubic-foot bags in one cubic yard. If you need more than 2–3 yards, bulk delivery is usually cheaper than buying bags.</p>
+        </div>
+        <div class="border border-gray-200 rounded-xl p-4 mt-4">
+          <h3 class="font-semibold text-gray-900 mb-1 text-sm">How much does a cubic yard of mulch cover?</h3>
+          <p class="text-sm text-gray-700">At 3 inches deep, 1 cubic yard covers 108 sq ft. At 2 inches: 162 sq ft. At 1 inch: 324 sq ft.</p>
+        </div>
+        </div>
         <AdSlot slot="in-content" className="mt-6" />
 
         <!-- Methodology note -->

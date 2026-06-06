@@ -1,45 +1,107 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
+const siteUrl = 'https://www.homematerialcalc.com';
+
 const calculators = [
-  { slug: 'mulch',    label: 'Mulch',         icon: '🌿', desc: 'Cubic yards, bags, depth' },
-  { slug: 'gravel',   label: 'Gravel & Stone', icon: '🪨', desc: 'Cubic yards, tons, stone type' },
-  { slug: 'topsoil',  label: 'Topsoil',        icon: '🌱', desc: 'Cubic yards, 40 lb bags' },
-  { slug: 'sand',     label: 'Sand',           icon: '⏳', desc: 'Cubic yards, tons, 50 lb bags' },
-  { slug: 'sod',      label: 'Sod',            icon: '🌾', desc: 'Sq ft, pieces, pallets' },
-  { slug: 'concrete', label: 'Concrete',       icon: '🏗️', desc: 'Bag count by size, slabs & post holes' },
+  { slug: 'mulch',         label: 'Mulch Calculator',     icon: '🌿', desc: 'Bags, cubic yards & cost for any bed size and depth' },
+  { slug: 'gravel',        label: 'Gravel Calculator',    icon: '🪨', desc: 'Cubic yards & tons for pea gravel, crushed stone & more' },
+  { slug: 'topsoil',       label: 'Topsoil Calculator',   icon: '🌱', desc: 'Cubic yards and 40 lb bags for lawns and garden beds' },
+  { slug: 'sand',          label: 'Sand Calculator',      icon: '⏳', desc: 'Tons, cubic yards & bags for paver base, sandbox & fill' },
+  { slug: 'sod',           label: 'Sod Calculator',       icon: '🌾', desc: 'Pieces, pallets & square feet with waste factor' },
+  { slug: 'concrete',      label: 'Concrete Calculator',  icon: '🏗️', desc: 'Bag count (40–80 lb) for slabs, post holes & footings' },
+  { slug: 'paint',         label: 'Paint Calculator',     icon: '🖌️', desc: 'Gallons per room — accounts for doors, windows & coats' },
+  { slug: 'flooring',      label: 'Flooring Calculator',  icon: '🪵', desc: 'Boxes of hardwood, LVP or laminate with waste factor' },
+  { slug: 'tile',          label: 'Tile Calculator',      icon: '⬜', desc: 'Tile count, thinset bags & grout for floors and walls' },
+  { slug: 'drywall',       label: 'Drywall Calculator',   icon: '🔲', desc: 'Sheets, joint compound & tape for walls and ceilings' },
+  { slug: 'lumber',        label: 'Lumber Calculator',    icon: '🪚', desc: 'Board feet for framing, decking & carpentry projects' },
+  { slug: 'paver',         label: 'Paver Calculator',     icon: '🧱', desc: 'Paver count, sand bed & gravel base for patios & paths' },
 ];
+
+const guides = [
+  { href: '/guide/how-much-mulch-do-i-need',    label: 'How Much Mulch Do I Need?' },
+  { href: '/guide/how-much-gravel-do-i-need',   label: 'How Much Gravel Do I Need?' },
+  { href: '/guide/how-much-topsoil-do-i-need',  label: 'How Much Topsoil Do I Need?' },
+  { href: '/guide/how-much-concrete-do-i-need', label: 'How Much Concrete Do I Need?' },
+  { href: '/guide/how-much-paint-do-i-need',    label: 'How Much Paint Do I Need?' },
+  { href: '/guide/cubic-yards-to-tons',          label: 'Cubic Yards to Tons' },
+  { href: '/guide/types-of-mulch',               label: 'Types of Mulch' },
+  { href: '/guide/gravel-vs-crushed-stone',      label: 'Gravel vs. Crushed Stone' },
+  { href: '/guide/how-to-calculate-square-footage', label: 'How to Calculate Square Footage' },
+];
+
+const faqs = [
+  { q: 'How do I calculate how much mulch I need?', a: 'Multiply your bed length (ft) × width (ft) × depth (in) ÷ 324 to get cubic yards. Then multiply by 13.5 for 2 cu ft bags. Use the free Mulch Calculator for an instant result.' },
+  { q: 'How many cubic yards of gravel do I need?', a: 'Volume (cu yd) = Length (ft) × Width (ft) × Depth (in) ÷ 324. For a 20×20 ft area at 3 inches deep: 20 × 20 × 3 ÷ 324 = 3.7 cubic yards. Our Gravel Calculator converts to tons automatically.' },
+  { q: 'How many bags of concrete do I need for a 10×10 slab?', a: 'At 4 inches thick, a 10×10 ft slab needs 1.23 cubic yards — about 56 bags of 80 lb concrete (with 10% waste). Use the Concrete Calculator for any size and bag combination.' },
+  { q: 'How many gallons of paint do I need for a room?', a: 'For a standard 12×12 ft room with 8 ft ceilings and 2 coats: approximately 2 gallons. One gallon covers 350–400 sq ft per coat. The Paint Calculator accounts for doors, windows, and coats automatically.' },
+  { q: 'Are these calculators free to use?', a: 'Yes — all calculators on HomeMaterialCalc are completely free, with no signup required. Every result includes a step-by-step breakdown so you can verify the math.' },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(f => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
+const webSiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'HomeMaterialCalc',
+  url: siteUrl,
+  description: 'Free material calculators for US homeowners — mulch, gravel, concrete, paint, flooring, tile, drywall, lumber and more.',
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: { '@type': 'EntryPoint', urlTemplate: `${siteUrl}/landscaping-calculators` },
+    'query-input': 'required name=search_term_string',
+  },
+};
 ---
 
 <BaseLayout
-  title="Home Material Calculator — How Much Do I Need?"
-  description="Free material estimators for US homeowners. Calculate mulch, gravel, topsoil, sand, sod, and concrete in real purchasable units — bags, cubic yards, tons, and pallets."
+  title="Material Calculator — Mulch, Gravel, Concrete, Paint & More | Free"
+  description="Free material calculators for US homeowners. Calculate mulch, gravel, concrete, paint, flooring, tile & more in real purchasable units — bags, cubic yards, gallons, instantly."
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(webSiteSchema)} />
+  </Fragment>
+
   <!-- Hero -->
   <section class="bg-gradient-to-b from-brand-50 to-white py-16 px-4">
     <div class="max-w-3xl mx-auto text-center">
       <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
-        How Much Material Do You Need?
+        Free Material Calculators for Your Home Project
       </h1>
-      <p class="mt-4 text-lg text-gray-600 max-w-xl mx-auto">
+      <p class="mt-4 text-xl text-gray-600 max-w-2xl mx-auto">
         Enter your project dimensions and get an instant estimate in real purchasable units —
-        bags, cubic yards, tons, or pallets. No guessing, no waste.
+        bags, cubic yards, tons, gallons, or pallets. Built for US homeowners and DIYers.
       </p>
+      <div class="mt-6 flex flex-wrap justify-center gap-3">
+        <a href="/landscaping-calculators" class="px-5 py-2.5 bg-brand-600 text-white rounded-xl font-semibold text-sm hover:bg-brand-700 transition-colors">🌿 Landscaping</a>
+        <a href="/concrete-calculators"    class="px-5 py-2.5 bg-white border border-brand-200 text-brand-700 rounded-xl font-semibold text-sm hover:bg-brand-50 transition-colors">🏗️ Concrete</a>
+        <a href="/interior-calculators"    class="px-5 py-2.5 bg-white border border-brand-200 text-brand-700 rounded-xl font-semibold text-sm hover:bg-brand-50 transition-colors">🏠 Interior</a>
+      </div>
     </div>
   </section>
 
-  <!-- Calculator grid -->
+  <!-- All calculators -->
   <section class="max-w-6xl mx-auto px-4 py-12">
-    <h2 class="text-2xl font-bold text-gray-900 mb-6">Material Calculators</h2>
+    <h2 class="text-2xl font-bold text-gray-900 mb-2">All Material Calculators</h2>
+    <p class="text-gray-500 text-sm mb-6">12 free calculators — enter dimensions, get exact quantities in the units your supplier uses.</p>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
       {calculators.map(({ slug, label, icon, desc }) => (
         <a
           href={`/calculator/${slug}`}
           class="calculator-card hover:border-brand-400 hover:shadow-md transition-all group"
         >
-          <div class="text-3xl mb-3">{icon}</div>
-          <h3 class="font-semibold text-gray-900 text-lg group-hover:text-brand-700 transition-colors">
-            {label} Calculator
+          <div class="text-2xl mb-2">{icon}</div>
+          <h3 class="font-semibold text-gray-900 group-hover:text-brand-700 transition-colors">
+            {label}
           </h3>
           <p class="text-sm text-gray-500 mt-1">{desc}</p>
         </a>
@@ -50,12 +112,13 @@ const calculators = [
   <!-- How it works -->
   <section class="bg-gray-50 py-12 px-4">
     <div class="max-w-3xl mx-auto">
-      <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">How It Works</h2>
+      <h2 class="text-2xl font-bold text-gray-900 mb-2 text-center">How Our Calculators Work</h2>
+      <p class="text-gray-500 text-sm text-center mb-8">Every result uses verified material constants — no guessing, no generic formulas.</p>
       <ol class="space-y-4">
         {[
-          ['Measure your area', 'Enter the length and width of your project in feet, or use the circle/irregular shape options.'],
-          ['Pick your material & depth', 'Select the material type and depth (for bulk materials like mulch or gravel).'],
-          ['Get your quantity', 'The calculator instantly shows how many bags, cubic yards, tons, or pallets to buy — with an optional cost estimate.'],
+          ['Measure your project area', 'Enter length and width in feet (and depth for bulk materials like mulch or gravel). Use the circle or irregular shape option for non-rectangular areas.'],
+          ['Select your material', 'Each calculator uses the correct density, coverage rate, or yield for your material — automatically converting to the purchase unit your supplier uses.'],
+          ['Get your exact quantity', 'See bags, cubic yards, tons, gallons, boxes, or pallets — with a waste factor already included. Enter your local price for an instant cost estimate.'],
         ].map(([step, detail], i) => (
           <li class="flex gap-4">
             <span class="flex-shrink-0 w-8 h-8 bg-brand-600 text-white rounded-full flex items-center justify-center font-bold text-sm">
@@ -68,6 +131,57 @@ const calculators = [
           </li>
         ))}
       </ol>
+    </div>
+  </section>
+
+  <!-- Guides -->
+  <section class="max-w-6xl mx-auto px-4 py-12">
+    <h2 class="text-2xl font-bold text-gray-900 mb-2">Material Guides & Reference</h2>
+    <p class="text-gray-500 text-sm mb-6">Detailed answers to the most common home project material questions.</p>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+      {guides.map(({ href, label }) => (
+        <a href={href} class="flex items-center gap-2 px-4 py-3 bg-white border border-gray-200 rounded-xl text-sm text-gray-700 hover:border-brand-400 hover:text-brand-700 transition-colors">
+          <span class="text-brand-500">→</span>
+          {label}
+        </a>
+      ))}
+    </div>
+    <div class="mt-4 flex gap-4 text-sm">
+      <a href="/landscaping-calculators" class="text-brand-600 hover:underline">All landscaping guides →</a>
+      <a href="/interior-calculators"    class="text-brand-600 hover:underline">All interior guides →</a>
+    </div>
+  </section>
+
+  <!-- Why use HomeMaterialCalc -->
+  <section class="bg-brand-50 py-12 px-4">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">Why Use These Calculators?</h2>
+      <div class="grid sm:grid-cols-3 gap-6 text-center">
+        {[
+          ['📐', 'Accurate formulas', 'Every calculation uses verified material constants — concrete bag yields from Quikrete specs, gravel densities from industry standards, paint coverage from manufacturer data.'],
+          ['🛒', 'Real purchase units', 'Results show what you actually buy: bags, cubic yards, pallets, gallons — not abstract measurements you have to convert yourself.'],
+          ['💰', 'Cost estimates', 'Enter your local price and get a total cost estimate. No national averages — your price, your project.'],
+        ].map(([icon, title, text]) => (
+          <div>
+            <div class="text-3xl mb-3">{icon}</div>
+            <h3 class="font-semibold text-gray-900 mb-2">{title}</h3>
+            <p class="text-sm text-gray-600">{text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="max-w-3xl mx-auto px-4 py-12">
+    <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+    <div class="space-y-4">
+      {faqs.map(f => (
+        <div class="border border-gray-200 rounded-xl p-5">
+          <h3 class="font-semibold text-gray-900 mb-2">{f.q}</h3>
+          <p class="text-sm text-gray-700">{f.a}</p>
+        </div>
+      ))}
     </div>
   </section>
 </BaseLayout>
