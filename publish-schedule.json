@@ -4,8 +4,23 @@
     "pagesPerRun": 1,
     "minDaysBetweenRuns": 1
   },
-  "lastRun": "2026-06-05",
+  "lastRun": "2026-06-06",
   "runs": [
+    {
+      "date": "2026-06-06",
+      "timestamp": "2026-06-06T00:33:39.255Z",
+      "pagesPublished": [
+        {
+          "url": "/guide/how-much-paint-do-i-need",
+          "label": "How Much Paint Do I Need?",
+          "type": "guide"
+        }
+      ],
+      "pendingBefore": 57,
+      "pendingAfter": 56,
+      "trigger": "manual_dispatch",
+      "runBy": "evinso"
+    },
     {
       "date": "2026-06-05",
       "timestamp": "2026-06-05T12:14:28.881Z",
@@ -234,8 +249,8 @@
       "url": "/guide/how-much-paint-do-i-need",
       "label": "How Much Paint Do I Need?",
       "type": "guide",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-06"
     },
     {
       "url": "/guide/paint-coverage-per-gallon",
