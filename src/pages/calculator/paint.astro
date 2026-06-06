@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PaintCalculator from '../../components/calculators/PaintCalculator';
 import AdSlot from '../../components/ui/AdSlot.astro';
 import CalcSchema from '../../components/ui/CalcSchema.astro';
+import CalcBreadcrumbs from '../../components/ui/CalcBreadcrumbs.astro';
 const related = [
   { href: '/calculator/flooring', label: 'Flooring Calculator' },
   { href: '/calculator/tile',     label: 'Tile Calculator' },
@@ -17,9 +18,10 @@ const related = [
 >
 
   <Fragment slot="head">
-    <CalcSchema name="Paint Calculator" description="Free paint calculator for gallons, quarts and cost" url="/calculator/paint" />
+    <CalcSchema name="Paint Calculator" crumbs={[{ label: "Interior Calculators", href: "/interior-calculators" }, { label: "Paint Calculator" }]} description="Free paint calculator for gallons, quarts and cost" url="/calculator/paint" />
   </Fragment>
   <div class="max-w-6xl mx-auto px-4 py-10">
+    <CalcBreadcrumbs crumbs={[{ label: "Interior Calculators", href: "/interior-calculators" }, { label: "Paint Calculator" }]} />
     <div class="grid lg:grid-cols-[1fr_380px] gap-10">
       <div>
         <h1 class="text-3xl font-bold text-gray-900 mb-2">Paint Calculator</h1>

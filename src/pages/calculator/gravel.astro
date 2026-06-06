@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import GravelCalculator from '../../components/calculators/GravelCalculator';
 import AdSlot from '../../components/ui/AdSlot.astro';
 import CalcSchema from '../../components/ui/CalcSchema.astro';
+import CalcBreadcrumbs from '../../components/ui/CalcBreadcrumbs.astro';
 
 const related = [
   { href: '/calculator/sand',    label: 'Sand Calculator' },
@@ -20,9 +21,10 @@ const related = [
 >
 
   <Fragment slot="head">
-    <CalcSchema name="Gravel Calculator" description="Free gravel calculator for cubic yards, tons and cost" url="/calculator/gravel" />
+    <CalcSchema name="Gravel Calculator" crumbs={[{ label: "Landscaping Calculators", href: "/landscaping-calculators" }, { label: "Gravel Calculator" }]} description="Free gravel calculator for cubic yards, tons and cost" url="/calculator/gravel" />
   </Fragment>
   <div class="max-w-6xl mx-auto px-4 py-10">
+    <CalcBreadcrumbs crumbs={[{ label: "Landscaping Calculators", href: "/landscaping-calculators" }, { label: "Gravel Calculator" }]} />
     <div class="grid lg:grid-cols-[1fr_380px] gap-10">
       <div>
         <h1 class="text-3xl font-bold text-gray-900 mb-2">Gravel &amp; Stone Calculator</h1>

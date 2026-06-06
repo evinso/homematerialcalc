@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0f4c81"/>
+  <rect x="0" y="0" width="1200" height="8" fill="#2d9cdb"/>
+  <text x="600" y="260" font-family="system-ui, -apple-system, sans-serif" font-size="64" font-weight="800" fill="white" text-anchor="middle">HomeMaterialCalc</text>
+  <text x="600" y="340" font-family="system-ui, -apple-system, sans-serif" font-size="30" font-weight="400" fill="#93c5fd" text-anchor="middle">Free Material Calculators for US Homeowners</text>
+  <text x="600" y="410" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="400" fill="#60a5fa" text-anchor="middle">Mulch · Gravel · Concrete · Paint · Flooring · Tile · Lumber + More</text>
+  <text x="600" y="570" font-family="system-ui, -apple-system, sans-serif" font-size="20" fill="#3b82f6" text-anchor="middle">www.homematerialcalc.com</text>
+</svg>

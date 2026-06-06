@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import FlooringCalculator from '../../components/calculators/FlooringCalculator';
 import AdSlot from '../../components/ui/AdSlot.astro';
 import CalcSchema from '../../components/ui/CalcSchema.astro';
+import CalcBreadcrumbs from '../../components/ui/CalcBreadcrumbs.astro';
 const related = [
   { href: '/calculator/tile',    label: 'Tile Calculator' },
   { href: '/calculator/paint',   label: 'Paint Calculator' },
@@ -16,9 +17,10 @@ const related = [
 >
 
   <Fragment slot="head">
-    <CalcSchema name="Flooring Calculator" description="Free flooring calculator for square feet, boxes and cost" url="/calculator/flooring" />
+    <CalcSchema name="Flooring Calculator" crumbs={[{ label: "Interior Calculators", href: "/interior-calculators" }, { label: "Flooring Calculator" }]} description="Free flooring calculator for square feet, boxes and cost" url="/calculator/flooring" />
   </Fragment>
   <div class="max-w-6xl mx-auto px-4 py-10">
+    <CalcBreadcrumbs crumbs={[{ label: "Interior Calculators", href: "/interior-calculators" }, { label: "Flooring Calculator" }]} />
     <div class="grid lg:grid-cols-[1fr_380px] gap-10">
       <div>
         <h1 class="text-3xl font-bold text-gray-900 mb-2">Flooring Calculator</h1>

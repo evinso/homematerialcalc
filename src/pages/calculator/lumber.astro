@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import LumberCalculator from '../../components/calculators/LumberCalculator';
 import AdSlot from '../../components/ui/AdSlot.astro';
 import CalcSchema from '../../components/ui/CalcSchema.astro';
+import CalcBreadcrumbs from '../../components/ui/CalcBreadcrumbs.astro';
 
 const related = [
   { href: '/guide/how-much-lumber-do-i-need',   label: 'How Much Lumber Do I Need?' },
@@ -19,9 +20,10 @@ const related = [
 >
 
   <Fragment slot="head">
-    <CalcSchema name="Lumber Calculator" description="Free lumber calculator for board feet and cost" url="/calculator/lumber" />
+    <CalcSchema name="Lumber Calculator" crumbs={[{ label: "Interior Calculators", href: "/interior-calculators" }, { label: "Lumber Calculator" }]} description="Free lumber calculator for board feet and cost" url="/calculator/lumber" />
   </Fragment>
   <div class="max-w-6xl mx-auto px-4 py-10">
+    <CalcBreadcrumbs crumbs={[{ label: "Interior Calculators", href: "/interior-calculators" }, { label: "Lumber Calculator" }]} />
     <div class="grid lg:grid-cols-[1fr_380px] gap-10">
 
       <!-- Left: calculator -->

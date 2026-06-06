@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ConcreteCalculator from '../../components/calculators/ConcreteCalculator';
 import AdSlot from '../../components/ui/AdSlot.astro';
 import CalcSchema from '../../components/ui/CalcSchema.astro';
+import CalcBreadcrumbs from '../../components/ui/CalcBreadcrumbs.astro';
 ---
 
 <BaseLayout
@@ -10,7 +11,7 @@ import CalcSchema from '../../components/ui/CalcSchema.astro';
   description="Free concrete cost calculator: enter your slab size, thickness, and price per bag or cubic yard to estimate total concrete cost."
 >
   <Fragment slot="head">
-    <CalcSchema name="Concrete Cost Calculator" description="Free concrete cost calculator: enter your slab size, thickness, and price per bag or cubic yard to estimate total concrete cost." url="/calculator/concrete-cost" />
+    <CalcSchema name="Concrete Cost Calculator" crumbs={[{ label: "Concrete Calculators", href: "/concrete-calculators" }, { label: "Concrete Cost Calculator" }]} description="Free concrete cost calculator: enter your slab size, thickness, and price per bag or cubic yard to estimate total concrete cost." url="/calculator/concrete-cost" />
   </Fragment>
 
   <div class="max-w-6xl mx-auto px-4 py-10">
@@ -19,6 +20,7 @@ import CalcSchema from '../../components/ui/CalcSchema.astro';
       <a href="/concrete-calculators" class="hover:text-brand-600">Concrete</a><span>›</span>
       <span class="text-gray-700">Concrete Cost Calculator</span>
     </nav>
+    <CalcBreadcrumbs crumbs={[{ label: "Concrete Calculators", href: "/concrete-calculators" }, { label: "Concrete Cost Calculator" }]} />
     <div class="grid lg:grid-cols-[1fr_360px] gap-10">
       <div>
         <h1 class="text-3xl font-bold text-gray-900 mb-2">Concrete Cost Calculator</h1>

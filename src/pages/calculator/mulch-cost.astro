@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import MulchCalculator from '../../components/calculators/MulchCalculator';
 import AdSlot from '../../components/ui/AdSlot.astro';
 import CalcSchema from '../../components/ui/CalcSchema.astro';
+import CalcBreadcrumbs from '../../components/ui/CalcBreadcrumbs.astro';
 ---
 
 <BaseLayout
@@ -10,7 +11,7 @@ import CalcSchema from '../../components/ui/CalcSchema.astro';
   description="Free mulch cost calculator: enter your bed size, depth, and local price per bag or cubic yard to get your total mulch cost instantly."
 >
   <Fragment slot="head">
-    <CalcSchema name="Mulch Cost Calculator" description="Free mulch cost calculator for bags and cubic yards" url="/calculator/mulch-cost" />
+    <CalcSchema name="Mulch Cost Calculator" crumbs={[{ label: "Landscaping Calculators", href: "/landscaping-calculators" }, { label: "Mulch Cost Calculator" }]} description="Free mulch cost calculator for bags and cubic yards" url="/calculator/mulch-cost" />
   </Fragment>
 
   <div class="max-w-6xl mx-auto px-4 py-10">
@@ -19,6 +20,7 @@ import CalcSchema from '../../components/ui/CalcSchema.astro';
       <a href="/landscaping-calculators" class="hover:text-brand-600">Landscaping</a><span>›</span>
       <span class="text-gray-700">Mulch Cost Calculator</span>
     </nav>
+    <CalcBreadcrumbs crumbs={[{ label: "Landscaping Calculators", href: "/landscaping-calculators" }, { label: "Mulch Cost Calculator" }]} />
     <div class="grid lg:grid-cols-[1fr_360px] gap-10">
       <div>
         <h1 class="text-3xl font-bold text-gray-900 mb-2">Mulch Cost Calculator</h1>

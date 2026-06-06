@@ -1,13 +1,16 @@
 ---
+const siteUrl = 'https://www.homematerialcalc.com';
+
+interface Crumb { label: string; href?: string; }
 interface Props {
   name: string;
   description: string;
   url: string;
+  crumbs?: Crumb[];
 }
-const { name, description, url } = Astro.props;
-const siteUrl = 'https://www.homematerialcalc.com';
+const { name, description, url, crumbs = [] } = Astro.props;
 
-const schema = {
+const webAppSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebApplication',
   name,
@@ -17,11 +20,24 @@ const schema = {
   operatingSystem: 'Web',
   browserRequirements: 'Requires JavaScript',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-  creator: {
-    '@type': 'Organization',
-    name: 'HomeMaterialCalc',
-    url: siteUrl,
-  },
+  creator: { '@type': 'Organization', name: 'HomeMaterialCalc', url: siteUrl },
 };
+
+const breadcrumbSchema = crumbs.length > 0 ? {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+    ...crumbs.map((c, i) => ({
+      '@type': 'ListItem',
+      position: i + 2,
+      name: c.label,
+      ...(c.href ? { item: siteUrl + c.href } : {}),
+    })),
+  ],
+} : null;
 ---
-<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+<script type="application/ld+json" set:html={JSON.stringify(webAppSchema)} />
+{breadcrumbSchema && (
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+)}

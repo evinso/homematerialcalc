@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import SodCalculator from '../../components/calculators/SodCalculator';
 import AdSlot from '../../components/ui/AdSlot.astro';
 import CalcSchema from '../../components/ui/CalcSchema.astro';
+import CalcBreadcrumbs from '../../components/ui/CalcBreadcrumbs.astro';
 ---
 
 <BaseLayout
@@ -10,7 +11,7 @@ import CalcSchema from '../../components/ui/CalcSchema.astro';
   description="Free sod cost calculator: enter your lawn area and price per pallet to estimate your total sod installation cost."
 >
   <Fragment slot="head">
-    <CalcSchema name="Sod Cost Calculator" description="Free sod cost calculator: enter your lawn area and price per pallet to estimate your total sod installation cost." url="/calculator/sod-cost" />
+    <CalcSchema name="Sod Cost Calculator" crumbs={[{ label: "Landscaping Calculators", href: "/landscaping-calculators" }, { label: "Sod Cost Calculator" }]} description="Free sod cost calculator: enter your lawn area and price per pallet to estimate your total sod installation cost." url="/calculator/sod-cost" />
   </Fragment>
 
   <div class="max-w-6xl mx-auto px-4 py-10">
@@ -19,6 +20,7 @@ import CalcSchema from '../../components/ui/CalcSchema.astro';
       <a href="/landscaping-calculators" class="hover:text-brand-600">Landscaping</a><span>›</span>
       <span class="text-gray-700">Sod Cost Calculator</span>
     </nav>
+    <CalcBreadcrumbs crumbs={[{ label: "Landscaping Calculators", href: "/landscaping-calculators" }, { label: "Sod Cost Calculator" }]} />
     <div class="grid lg:grid-cols-[1fr_360px] gap-10">
       <div>
         <h1 class="text-3xl font-bold text-gray-900 mb-2">Sod Cost Calculator</h1>

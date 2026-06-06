@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import TopsoilCalculator from '../../components/calculators/TopsoilCalculator';
 import AdSlot from '../../components/ui/AdSlot.astro';
 import CalcSchema from '../../components/ui/CalcSchema.astro';
+import CalcBreadcrumbs from '../../components/ui/CalcBreadcrumbs.astro';
 ---
 
 <BaseLayout
@@ -10,7 +11,7 @@ import CalcSchema from '../../components/ui/CalcSchema.astro';
   description="Free topsoil cost calculator: enter your area, depth, and price per cubic yard or bag to estimate your total topsoil cost."
 >
   <Fragment slot="head">
-    <CalcSchema name="Topsoil Cost Calculator" description="Free topsoil cost calculator: enter your area, depth, and price per cubic yard or bag to estimate your total topsoil cost." url="/calculator/topsoil-cost" />
+    <CalcSchema name="Topsoil Cost Calculator" crumbs={[{ label: "Landscaping Calculators", href: "/landscaping-calculators" }, { label: "Topsoil Cost Calculator" }]} description="Free topsoil cost calculator: enter your area, depth, and price per cubic yard or bag to estimate your total topsoil cost." url="/calculator/topsoil-cost" />
   </Fragment>
 
   <div class="max-w-6xl mx-auto px-4 py-10">
@@ -19,6 +20,7 @@ import CalcSchema from '../../components/ui/CalcSchema.astro';
       <a href="/landscaping-calculators" class="hover:text-brand-600">Landscaping</a><span>›</span>
       <span class="text-gray-700">Topsoil Cost Calculator</span>
     </nav>
+    <CalcBreadcrumbs crumbs={[{ label: "Landscaping Calculators", href: "/landscaping-calculators" }, { label: "Topsoil Cost Calculator" }]} />
     <div class="grid lg:grid-cols-[1fr_360px] gap-10">
       <div>
         <h1 class="text-3xl font-bold text-gray-900 mb-2">Topsoil Cost Calculator</h1>
