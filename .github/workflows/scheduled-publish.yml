@@ -5,7 +5,10 @@ name: Scheduled Publish
 
 on:
   schedule:
-    - cron: '0 9 * * *'    # Every day at 09:00 UTC = 12:00 Turkey (UTC+3)
+    - cron: '0  1 * * *'   # 04:00 Turkey (UTC+3)
+    - cron: '0  7 * * *'   # 10:00 Turkey (UTC+3)
+    - cron: '0 13 * * *'   # 16:00 Turkey (UTC+3)
+    - cron: '0 19 * * *'   # 22:00 Turkey (UTC+3)
   workflow_dispatch:         # manual trigger from GitHub Actions UI
 
 jobs:

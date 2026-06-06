@@ -1,8 +1,8 @@
 {
-  "_comment": "Single source of truth for page publishing. Run 'npm run publish:next' to promote pending pages. Cadence: pagesPerRun = 1 per day via GitHub Actions.",
+  "_comment": "Single source of truth for page publishing. pagesPerRun = 1 per run, 4 runs/day = 4 pages/day via GitHub Actions.",
   "cadence": {
     "pagesPerRun": 1,
-    "minDaysBetweenRuns": 1
+    "minDaysBetweenRuns": 0
   },
   "lastRun": "2026-06-06",
   "runs": [
