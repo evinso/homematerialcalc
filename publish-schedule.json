@@ -8,6 +8,21 @@
   "runs": [
     {
       "date": "2026-06-06",
+      "timestamp": "2026-06-06T10:18:39.261Z",
+      "pagesPublished": [
+        {
+          "url": "/guide/asphalt-vs-concrete-driveway",
+          "label": "Asphalt vs Concrete Driveway",
+          "type": "reference"
+        }
+      ],
+      "pendingBefore": 65,
+      "pendingAfter": 64,
+      "trigger": "scheduled",
+      "runBy": "evinso"
+    },
+    {
+      "date": "2026-06-06",
       "timestamp": "2026-06-06T06:01:23.157Z",
       "pagesPublished": [
         {
@@ -305,8 +320,8 @@
       "url": "/guide/asphalt-vs-concrete-driveway",
       "label": "Asphalt vs Concrete Driveway",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-06"
     },
     {
       "url": "/guide/sod-vs-seed",
