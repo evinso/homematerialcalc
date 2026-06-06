@@ -67,19 +67,11 @@ const orgSchema = {
 
     <slot name="head" />
 
-    <!-- Google tag (gtag.js) — consent-aware -->
+    <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-77PP8J7B4H"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      // Default consent state — analytics/ads blocked until user accepts
-      gtag('consent', 'default', {
-        analytics_storage: 'denied',
-        ad_storage: 'denied',
-        ad_user_data: 'denied',
-        ad_personalization: 'denied',
-        wait_for_update: 500,
-      });
       gtag('js', new Date());
       gtag('config', 'G-77PP8J7B4H');
     </script>
@@ -126,19 +118,6 @@ const orgSchema = {
         function setConsent(granted) {
           localStorage.setItem(STORAGE_KEY, granted ? 'all' : 'essential');
           banner && banner.classList.add('hidden');
-          if (typeof gtag === 'function') {
-            gtag('consent', 'update', {
-              analytics_storage: granted ? 'granted' : 'denied',
-              ad_storage: granted ? 'granted' : 'denied',
-              ad_user_data: granted ? 'granted' : 'denied',
-              ad_personalization: granted ? 'granted' : 'denied',
-            });
-          }
-        }
-        if (saved === 'all') {
-          if (typeof gtag === 'function') {
-            gtag('consent', 'update', { analytics_storage: 'granted', ad_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted' });
-          }
         }
         document.getElementById('cookie-accept')?.addEventListener('click', () => setConsent(true));
         document.getElementById('cookie-reject')?.addEventListener('click', () => setConsent(false));
