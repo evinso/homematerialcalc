@@ -203,14 +203,89 @@ const orgSchema = {
           <a href="/about" class="px-3 py-2 rounded-lg hover:text-brand-700 hover:bg-gray-50 transition-colors">About</a>
         </nav>
 
-        <!-- Mobile menu button placeholder -->
-        <button class="md:hidden p-2 rounded-lg text-gray-600" aria-label="Menu">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <!-- Mobile hamburger button -->
+        <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors" aria-label="Open menu" aria-expanded="false">
+          <svg id="icon-hamburger" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg id="icon-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
       </div>
+
+      <!-- Mobile menu panel -->
+      <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white px-4 pb-4">
+        <div class="pt-3">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">Calculators</p>
+          <div class="grid grid-cols-3 gap-1 mb-4">
+            {[
+              ['/calculator/mulch',    'Mulch'],
+              ['/calculator/gravel',   'Gravel'],
+              ['/calculator/topsoil',  'Topsoil'],
+              ['/calculator/sand',     'Sand'],
+              ['/calculator/sod',      'Sod'],
+              ['/calculator/concrete', 'Concrete'],
+              ['/calculator/paint',    'Paint'],
+              ['/calculator/flooring', 'Flooring'],
+              ['/calculator/tile',     'Tile'],
+              ['/calculator/drywall',  'Drywall'],
+              ['/calculator/lumber',   'Lumber'],
+              ['/calculator/paver',    'Pavers'],
+            ].map(([href, label]) => (
+              <a href={href} class="px-2 py-2 text-sm text-gray-700 rounded-lg hover:bg-brand-50 hover:text-brand-700 text-center transition-colors">
+                {label}
+              </a>
+            ))}
+          </div>
+
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">Guides</p>
+          <div class="flex flex-col gap-1 mb-4">
+            {[
+              ['/guide/how-much-mulch-do-i-need',    'How Much Mulch?'],
+              ['/guide/how-much-gravel-do-i-need',   'How Much Gravel?'],
+              ['/guide/how-much-concrete-do-i-need', 'How Much Concrete?'],
+              ['/guide/how-much-paint-do-i-need',    'How Much Paint?'],
+              ['/guide/types-of-mulch',              'Types of Mulch'],
+              ['/guide/gravel-vs-crushed-stone',     'Gravel vs Crushed Stone'],
+              ['/guide/cubic-yards-to-tons',         'Cubic Yards to Tons'],
+            ].map(([href, label]) => (
+              <a href={href} class="px-3 py-2 text-sm text-gray-700 rounded-lg hover:bg-brand-50 hover:text-brand-700 transition-colors">
+                {label}
+              </a>
+            ))}
+          </div>
+
+          <div class="border-t border-gray-100 pt-3 flex flex-wrap gap-1">
+            {[
+              ['/landscaping-calculators', '🌿 Landscaping'],
+              ['/concrete-calculators',    '🏗️ Concrete'],
+              ['/interior-calculators',    '🏠 Interior'],
+              ['/about',                   'About'],
+              ['/contact',                 'Contact'],
+            ].map(([href, label]) => (
+              <a href={href} class="px-3 py-2 text-sm text-gray-600 rounded-lg hover:bg-gray-50 transition-colors">
+                {label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
     </header>
+
+    <script>
+      const btn = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      const iconHam = document.getElementById('icon-hamburger');
+      const iconX = document.getElementById('icon-close');
+      btn?.addEventListener('click', () => {
+        const open = !menu?.classList.contains('hidden');
+        menu?.classList.toggle('hidden', open);
+        iconHam?.classList.toggle('hidden', !open);
+        iconX?.classList.toggle('hidden', open);
+        btn?.setAttribute('aria-expanded', String(!open));
+      });
+    </script>
 
     <!-- Main content -->
     <main class="flex-1">
