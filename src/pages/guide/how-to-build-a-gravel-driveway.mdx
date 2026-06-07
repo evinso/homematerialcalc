@@ -16,7 +16,6 @@ export const related = [
 ];
 
 
-export const howToSchema = {"@context":"https://schema.org","@type":"HowTo","name":"How to Build a Gravel Driveway","description":"Step-by-step guide to building a 3-layer gravel driveway with proper base, middle, and surface layers.","totalTime":"PT8H","url":"https://www.homematerialcalc.com/guide/how-to-build-a-gravel-driveway/","step":[{"@type":"HowToStep","position":1,"name":"Mark and excavate","text":"Mark driveway edges with stakes. Excavate 12 inches of soil. Ensure proper crown (center higher than edges) and slope for drainage."},{"@type":"HowToStep","position":2,"name":"Install base layer","text":"Spread 6 inches of #3 crushed stone (large aggregate) and compact with a plate compactor. This is your structural base layer."},{"@type":"HowToStep","position":3,"name":"Add middle layer","text":"Spread 4 inches of #57 crushed stone over the base. Compact thoroughly. This layer fills gaps and provides additional stability."},{"@type":"HowToStep","position":4,"name":"Install surface layer","text":"Spread 2 inches of pea gravel or crushed stone screenings on top. Rake smooth and compact. This is your finished driving surface."},{"@type":"HowToStep","position":5,"name":"Install edge restraints and drainage","text":"Add gravel driveway edging to contain material. Install culvert pipe at low points. Check crown and slope, adjust as needed."}]};
 <GuideLayout
   title="How to Build a Gravel Driveway — Materials, Layers & Cost Guide"
   description="Complete gravel driveway guide: 3-layer system explained, how much stone per layer, total tons and cubic yards for any driveway size, plus cost breakdown and drainage tips."
@@ -27,6 +26,8 @@ export const howToSchema = {"@context":"https://schema.org","@type":"HowTo","nam
   faqs={faqs}
   related={related}
   breadcrumbs={[{ label: 'Guides' }, { label: 'How to Build a Gravel Driveway' }]}
+  howToSteps={[{"name":"Mark and excavate","text":"Mark driveway edges with stakes. Excavate 12 inches of soil. Ensure proper crown and slope for drainage."},{"name":"Install base layer","text":"Spread 6 inches of #3 crushed stone and compact with a plate compactor. This is your structural base layer."},{"name":"Add middle layer","text":"Spread 4 inches of #57 crushed stone over the base. Compact thoroughly."},{"name":"Install surface layer","text":"Spread 2 inches of pea gravel or crushed stone screenings on top. Rake smooth and compact."},{"name":"Install edge restraints and drainage","text":"Add gravel driveway edging. Install culvert pipe at low points. Check crown and slope."}]}
+  howToTotalTime="PT8H"
 >
 
 ## The 3-layer system

@@ -1,0 +1,237 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+// 20 target states (high-population, high search volume)
+const STATES = [
+  { slug: 'texas',          name: 'Texas',          abbr: 'TX' },
+  { slug: 'florida',        name: 'Florida',        abbr: 'FL' },
+  { slug: 'california',     name: 'California',     abbr: 'CA' },
+  { slug: 'new-york',       name: 'New York',       abbr: 'NY' },
+  { slug: 'georgia',        name: 'Georgia',        abbr: 'GA' },
+  { slug: 'north-carolina', name: 'North Carolina', abbr: 'NC' },
+  { slug: 'ohio',           name: 'Ohio',           abbr: 'OH' },
+  { slug: 'michigan',       name: 'Michigan',       abbr: 'MI' },
+  { slug: 'pennsylvania',   name: 'Pennsylvania',   abbr: 'PA' },
+  { slug: 'illinois',       name: 'Illinois',       abbr: 'IL' },
+  { slug: 'arizona',        name: 'Arizona',        abbr: 'AZ' },
+  { slug: 'washington',     name: 'Washington',     abbr: 'WA' },
+  { slug: 'tennessee',      name: 'Tennessee',      abbr: 'TN' },
+  { slug: 'indiana',        name: 'Indiana',        abbr: 'IN' },
+  { slug: 'missouri',       name: 'Missouri',       abbr: 'MO' },
+  { slug: 'colorado',       name: 'Colorado',       abbr: 'CO' },
+  { slug: 'virginia',       name: 'Virginia',       abbr: 'VA' },
+  { slug: 'maryland',       name: 'Maryland',       abbr: 'MD' },
+  { slug: 'oregon',         name: 'Oregon',         abbr: 'OR' },
+  { slug: 'wisconsin',      name: 'Wisconsin',      abbr: 'WI' },
+];
+
+const MATERIALS: Record<string, {
+  label: string; unit: string;
+  bagPrice: [number, number]; bulkPrice: [number, number]; bulkUnit: string;
+  calcHref: string; costCalcHref: string; guideHref: string;
+  relatedCalcs: { href: string; label: string }[];
+  faqs: (state: string) => { q: string; a: string }[];
+  intro: (state: string) => string;
+  breakdown: (state: string) => { label: string; low: string; high: string }[];
+}> = {
+  mulch: {
+    label: 'Mulch', unit: 'cubic yard / bag',
+    bagPrice: [4, 9], bulkPrice: [25, 65], bulkUnit: 'cubic yard',
+    calcHref: '/calculator/mulch/', costCalcHref: '/calculator/mulch-cost/',
+    guideHref: '/guide/how-much-mulch-do-i-need/',
+    relatedCalcs: [
+      { href: '/calculator/mulch/', label: 'Mulch Calculator' },
+      { href: '/calculator/mulch-cost/', label: 'Mulch Cost Calculator' },
+      { href: '/calculator/topsoil-cost/', label: 'Topsoil Cost Calculator' },
+    ],
+    faqs: (state) => [
+      { q: `How much does mulch cost in ${state}?`, a: `In ${state}, bagged mulch typically runs $4–$9 per 2 cu ft bag. Bulk mulch delivered runs $25–$65 per cubic yard. Prices vary by county, supplier, and type (hardwood, cedar, dyed).` },
+      { q: `Is bulk mulch cheaper than bags in ${state}?`, a: `Yes — for any project over 1.5 cubic yards (~20 bags), bulk delivery is almost always cheaper. At $7/bag that's $95/cu yd vs. $35–$50/cu yd in bulk from a local ${state} supplier.` },
+      { q: `What's the cheapest type of mulch in ${state}?`, a: `Shredded hardwood and wood chip mulch are typically the least expensive at $25–$40/cu yd bulk in ${state}. Cedar and dyed mulch cost $35–$65/cu yd. Pine bark is mid-range.` },
+      { q: `When is the best time to buy mulch in ${state}?`, a: `Late fall and early winter often have the lowest mulch prices in ${state} as demand drops. Spring (March–May) sees peak pricing. Buying in bulk before spring rush can save 15–25%.` },
+    ],
+    intro: (state) => `Mulch prices in ${state} depend on material type, purchase volume (bags vs. bulk), and your distance from local suppliers. This guide covers current price ranges, where to buy, and how to calculate exactly how much you need.`,
+    breakdown: (state) => [
+      { label: '2 cu ft bag (store)', low: '$4', high: '$9' },
+      { label: 'Bulk hardwood (per cu yd)', low: '$25', high: '$45' },
+      { label: 'Bulk cedar (per cu yd)', low: '$35', high: '$65' },
+      { label: 'Bulk dyed (per cu yd)', low: '$30', high: '$55' },
+      { label: 'Delivery fee', low: '$50', high: '$150' },
+    ],
+  },
+  gravel: {
+    label: 'Gravel', unit: 'ton / cubic yard',
+    bagPrice: [4, 8], bulkPrice: [30, 80], bulkUnit: 'ton',
+    calcHref: '/calculator/gravel/', costCalcHref: '/calculator/gravel-cost/',
+    guideHref: '/guide/how-much-gravel-do-i-need/',
+    relatedCalcs: [
+      { href: '/calculator/gravel/', label: 'Gravel Calculator' },
+      { href: '/calculator/gravel-cost/', label: 'Gravel Cost Calculator' },
+      { href: '/calculator/sand-cost/', label: 'Sand Cost Calculator' },
+    ],
+    faqs: (state) => [
+      { q: `How much does gravel cost in ${state}?`, a: `In ${state}, bulk gravel (pea gravel, crushed stone) runs $30–$80 per ton delivered depending on stone type and distance. Bagged gravel is $4–$8 per 50 lb bag at home improvement stores.` },
+      { q: `How much does a gravel driveway cost in ${state}?`, a: `A standard 12×50 ft driveway at 6 inches deep needs about 13 tons. In ${state}, that's roughly $400–$1,000 in materials plus $150–$300 delivery — before any grading work.` },
+      { q: `What type of gravel is best for driveways in ${state}?`, a: `For most ${state} driveways, #57 crushed stone for the base and pea gravel or limestone screenings for the surface is standard. In freeze-thaw climates, angular crushed stone locks together better than round stone.` },
+      { q: `Where can I buy gravel in ${state}?`, a: `Local quarries and landscape supply companies typically offer the best bulk prices in ${state}. Home Depot and Lowe's carry bagged gravel. For large orders, get quotes from 2–3 suppliers — prices vary significantly by location.` },
+    ],
+    intro: (state) => `Gravel prices in ${state} vary by stone type, quantity, and your distance from local quarries. This guide covers current bulk and bagged gravel prices, what to order for common projects, and how to calculate your exact tonnage.`,
+    breakdown: (state) => [
+      { label: 'Pea gravel (per ton)', low: '$35', high: '$65' },
+      { label: 'Crushed stone 3/4" (per ton)', low: '$25', high: '$50' },
+      { label: 'Crushed limestone (per ton)', low: '$25', high: '$45' },
+      { label: 'River rock (per ton)', low: '$40', high: '$80' },
+      { label: 'Delivery fee', low: '$50', high: '$200' },
+    ],
+  },
+  topsoil: {
+    label: 'Topsoil', unit: 'cubic yard / bag',
+    bagPrice: [3, 8], bulkPrice: [25, 60], bulkUnit: 'cubic yard',
+    calcHref: '/calculator/topsoil/', costCalcHref: '/calculator/topsoil-cost/',
+    guideHref: '/guide/how-much-topsoil-do-i-need/',
+    relatedCalcs: [
+      { href: '/calculator/topsoil/', label: 'Topsoil Calculator' },
+      { href: '/calculator/topsoil-cost/', label: 'Topsoil Cost Calculator' },
+      { href: '/calculator/mulch-cost/', label: 'Mulch Cost Calculator' },
+    ],
+    faqs: (state) => [
+      { q: `How much does topsoil cost in ${state}?`, a: `In ${state}, bagged topsoil runs $3–$8 per 40 lb bag. Bulk topsoil delivered costs $25–$60 per cubic yard. Screened or premium topsoil can reach $65/cu yd from specialty suppliers.` },
+      { q: `How much topsoil do I need for a new lawn in ${state}?`, a: `For a new lawn in ${state}, apply 4–6 inches of topsoil. A 1,000 sq ft area at 6 inches needs about 18.5 cubic yards — roughly $550–$1,100 in bulk plus delivery.` },
+      { q: `Where do I buy bulk topsoil in ${state}?`, a: `Landscape supply yards, garden centers, and some quarries sell bulk topsoil in ${state}. Call 2–3 suppliers for quotes. Prices vary by soil quality (unscreened, screened, or blended with compost).` },
+      { q: `What's the difference between topsoil and garden soil in ${state}?`, a: `Topsoil is natural in-ground soil, good for fill and new lawns. Garden or raised bed soil is enriched with compost for planting. Both are available from ${state} landscape suppliers; garden soil costs slightly more.` },
+    ],
+    intro: (state) => `Topsoil prices in ${state} depend on quality (screened vs. unscreened), quantity, and delivery distance from local suppliers. This guide covers current price ranges, how much to order for common projects, and what to ask suppliers.`,
+    breakdown: (state) => [
+      { label: '40 lb bag (store)', low: '$3', high: '$8' },
+      { label: 'Bulk topsoil (per cu yd)', low: '$25', high: '$50' },
+      { label: 'Screened/premium topsoil', low: '$40', high: '$65/cu yd' },
+      { label: 'Compost blend', low: '$45', high: '$70/cu yd' },
+      { label: 'Delivery fee', low: '$50', high: '$150' },
+    ],
+  },
+  sand: {
+    label: 'Sand', unit: 'ton / bag',
+    bagPrice: [4, 8], bulkPrice: [25, 55], bulkUnit: 'ton',
+    calcHref: '/calculator/sand/', costCalcHref: '/calculator/sand-cost/',
+    guideHref: '/guide/how-much-sand-do-i-need/',
+    relatedCalcs: [
+      { href: '/calculator/sand/', label: 'Sand Calculator' },
+      { href: '/calculator/sand-cost/', label: 'Sand Cost Calculator' },
+      { href: '/calculator/gravel-cost/', label: 'Gravel Cost Calculator' },
+    ],
+    faqs: (state) => [
+      { q: `How much does sand cost in ${state}?`, a: `In ${state}, bagged sand runs $4–$8 per 50 lb bag. Bulk sand delivered costs $25–$55 per ton depending on sand type. Fill sand is cheapest; masonry and play sand cost more.` },
+      { q: `How much sand do I need for a paver base in ${state}?`, a: `A 200 sq ft patio needs about 0.6 cubic yards (roughly 0.8 tons) of bedding sand at 1 inch deep. In ${state}, that's $25–$50 in bulk plus delivery, or about 16 bags at a home improvement store.` },
+      { q: `What type of sand should I use in ${state}?`, a: `For paver bedding in ${state}, use coarse concrete sand or washed torpedo sand. For children's sandboxes, use screened play sand. For mixing concrete, use sharp sand or all-purpose sand. Avoid fine beach sand for structural uses.` },
+      { q: `Where can I buy bulk sand in ${state}?`, a: `Landscape supply yards, masonry supply companies, and some quarries sell bulk sand in ${state}. For large paver projects, buying bulk is much cheaper than bags — $25–$55/ton vs. $200+/ton in bags.` },
+    ],
+    intro: (state) => `Sand prices in ${state} vary by type (fill, masonry, concrete, play) and quantity ordered. This guide covers current price ranges for bagged and bulk sand in ${state}, what type to use for each project, and how to calculate your exact needs.`,
+    breakdown: (state) => [
+      { label: '50 lb bag (store)', low: '$4', high: '$8' },
+      { label: 'Fill/construction sand (per ton)', low: '$20', high: '$35' },
+      { label: 'Masonry/concrete sand (per ton)', low: '$25', high: '$45' },
+      { label: 'Play sand 50 lb bag', low: '$6', high: '$12' },
+      { label: 'Delivery fee', low: '$50', high: '$150' },
+    ],
+  },
+};
+
+export function getStaticPaths() {
+  const states = [
+    { slug: 'texas',          name: 'Texas',          abbr: 'TX' },
+    { slug: 'florida',        name: 'Florida',        abbr: 'FL' },
+    { slug: 'california',     name: 'California',     abbr: 'CA' },
+    { slug: 'new-york',       name: 'New York',       abbr: 'NY' },
+    { slug: 'georgia',        name: 'Georgia',        abbr: 'GA' },
+    { slug: 'north-carolina', name: 'North Carolina', abbr: 'NC' },
+    { slug: 'ohio',           name: 'Ohio',           abbr: 'OH' },
+    { slug: 'michigan',       name: 'Michigan',       abbr: 'MI' },
+    { slug: 'pennsylvania',   name: 'Pennsylvania',   abbr: 'PA' },
+    { slug: 'illinois',       name: 'Illinois',       abbr: 'IL' },
+    { slug: 'arizona',        name: 'Arizona',        abbr: 'AZ' },
+    { slug: 'washington',     name: 'Washington',     abbr: 'WA' },
+    { slug: 'tennessee',      name: 'Tennessee',      abbr: 'TN' },
+    { slug: 'indiana',        name: 'Indiana',        abbr: 'IN' },
+    { slug: 'missouri',       name: 'Missouri',       abbr: 'MO' },
+    { slug: 'colorado',       name: 'Colorado',       abbr: 'CO' },
+    { slug: 'virginia',       name: 'Virginia',       abbr: 'VA' },
+    { slug: 'maryland',       name: 'Maryland',       abbr: 'MD' },
+    { slug: 'oregon',         name: 'Oregon',         abbr: 'OR' },
+    { slug: 'wisconsin',      name: 'Wisconsin',      abbr: 'WI' },
+  ];
+  const materialSlugs = ['mulch', 'gravel', 'topsoil', 'sand'];
+  const paths = [];
+  for (const state of states) {
+    for (const mat of materialSlugs) {
+      paths.push({ params: { material: mat, state: state.slug }, props: { stateName: state.name, stateAbbr: state.abbr } });
+    }
+  }
+  return paths;
+}
+
+const { material, state: stateSlug } = Astro.params;
+const { stateName, stateAbbr } = Astro.props as { stateName: string; stateAbbr: string };
+const mat = MATERIALS[material as keyof typeof MATERIALS];
+
+const faqs = mat.faqs(stateName);
+const breakdown = mat.breakdown(stateName);
+const title = `${mat.label} Cost in ${stateName} — 2026 Price Guide`;
+const description = `Current ${mat.label.toLowerCase()} prices in ${stateName} (${stateAbbr}): bagged and bulk rates, best suppliers, and how much to order for your project. Updated 2026.`;
+---
+
+<GuideLayout
+  {title}
+  {description}
+  h1={`${mat.label} Cost in ${stateName} — 2026 Prices`}
+  intro={mat.intro(stateName)}
+  calculatorHref={mat.calcHref}
+  calculatorLabel={`${mat.label} Calculator — enter your dimensions for an exact quantity`}
+  faqs={faqs}
+  related={mat.relatedCalcs}
+  breadcrumbs={[{ label: 'Guides' }, { label: `${mat.label} Cost in ${stateName}` }]}
+>
+
+<h2>2026 {mat.label} Price Ranges in {stateName}</h2>
+
+<table>
+  <thead>
+    <tr><th>Product</th><th>Typical price</th></tr>
+  </thead>
+  <tbody>
+    {breakdown.map(row => (
+      <tr>
+        <td>{row.label}</td>
+        <td><strong>{row.low}–{row.high}</strong></td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+<p><em>Prices are typical ranges for {stateName}. Actual prices vary by county, supplier, and current market conditions. Always get 2–3 quotes for bulk orders.</em></p>
+
+<h2>Bags vs. Bulk in {stateName}</h2>
+
+<p>
+  For small projects (under 1–2 {mat.bulkUnit === 'ton' ? 'tons' : 'cubic yards'}), bags from Home Depot or Lowe's are convenient. For larger projects, bulk delivery from a local {stateName} landscape supply company is significantly cheaper — often 50–70% less per unit than buying bags.
+</p>
+
+<p>
+  Call 2–3 local suppliers in {stateName} for quotes. Ask about minimum order sizes (usually 2–5 {mat.bulkUnit === 'ton' ? 'tons' : 'yards'}) and delivery areas. Many suppliers charge extra for deliveries over 30–50 miles.
+</p>
+
+<h2>How Much {mat.label} Do You Need?</h2>
+
+<p>
+  Use the <a href={mat.calcHref}>{mat.label} Calculator</a> to enter your dimensions and get an exact quantity in {mat.unit}. Then use the <a href={mat.costCalcHref}>{mat.label} Cost Calculator</a> to enter your {stateName} local price and get a total cost estimate including delivery.
+</p>
+
+<h2>Finding {mat.label} Suppliers in {stateName}</h2>
+
+<ul>
+  <li><strong>Local landscape supply yards</strong> — Best bulk prices, wide selection. Search "[your city] landscape supply" for local options.</li>
+  <li><strong>Home Depot / Lowe's</strong> — Convenient for bagged {mat.label.toLowerCase()}, consistent pricing, no minimums.</li>
+  <li><strong>Quarries and gravel pits</strong> — Lowest prices if you can haul yourself (pickup truck or trailer).</li>
+  <li><strong>Online marketplaces</strong> — Facebook Marketplace and Craigslist sometimes have free or cheap {mat.label.toLowerCase()} from excess landscaping projects.</li>
+</ul>
+
+</GuideLayout>

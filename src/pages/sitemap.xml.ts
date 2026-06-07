@@ -25,6 +25,12 @@ const PROGRAMMATIC_PAGES: string[] = [
   ...[50,100,200,300,500,1000,2000].map(a => `/guide/how-much-topsoil-for-${a}-sq-ft/`),
   ...[50,100,200,300,500].map(a => `/guide/how-much-sand-for-${a}-sq-ft/`),
   ...['8x8','10x10','10x12','10x14','12x12','12x14','12x15','12x20','14x14','15x15','20x20'].map(s => `/guide/how-much-paint-for-${s}-room/`),
+  // State × material pages (20 states × 4 materials = 80 pages)
+  ...['mulch','gravel','topsoil','sand'].flatMap(m =>
+    ['texas','florida','california','new-york','georgia','north-carolina','ohio','michigan',
+     'pennsylvania','illinois','arizona','washington','tennessee','indiana','missouri',
+     'colorado','virginia','maryland','oregon','wisconsin'].map(s => `/guide/${m}-cost-in-${s}/`)
+  ),
 ];
 
 // Ensure trailing slash on URL (homepage stays /)

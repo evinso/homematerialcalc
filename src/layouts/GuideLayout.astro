@@ -12,6 +12,8 @@ interface Breadcrumb {
   href?: string;
 }
 
+interface HowToStep { name: string; text: string; }
+
 interface Props {
   title: string;
   description: string;
@@ -23,11 +25,14 @@ interface Props {
   calculatorHref: string;
   calculatorLabel: string;
   related: { href: string; label: string }[];
+  howToSteps?: HowToStep[];
+  howToTotalTime?: string;
 }
 
 const {
   title, description, h1, intro, canonicalUrl,
   faqs = [], breadcrumbs = [], calculatorHref, calculatorLabel, related,
+  howToSteps, howToTotalTime,
 } = Astro.props;
 
 const site = 'https://www.homematerialcalc.com';
@@ -72,6 +77,21 @@ const articleSchema = {
   author: { '@type': 'Organization', name: 'HomeMaterialCalc' },
   mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
 };
+
+const howToSchema = howToSteps && howToSteps.length > 0 ? {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: h1,
+  description,
+  url: canonical,
+  ...(howToTotalTime ? { totalTime: howToTotalTime } : {}),
+  step: howToSteps.map((s, i) => ({
+    '@type': 'HowToStep',
+    position: i + 1,
+    name: s.name,
+    text: s.text,
+  })),
+} : null;
 ---
 
 <BaseLayout {title} {description} {canonicalUrl}>
@@ -83,6 +103,9 @@ const articleSchema = {
     )}
     {breadcrumbSchema && (
       <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+    )}
+    {howToSchema && (
+      <script type="application/ld+json" set:html={JSON.stringify(howToSchema)} />
     )}
   </Fragment>
 
