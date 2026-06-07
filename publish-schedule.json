@@ -680,7 +680,189 @@
       "publishedAt": null
     },
     {
-      "_section": "INDOOR EXPANSION — v2 (files written, drip publishing)"
+      "url": "/calculator/grass-seed",
+      "label": "Grass Seed Calculator",
+      "type": "calculator",
+      "status": "published",
+      "publishedAt": "2026-06-07"
+    },
+    {
+      "url": "/calculator/fence",
+      "label": "Fence Calculator",
+      "type": "calculator",
+      "status": "published",
+      "publishedAt": "2026-06-07"
+    },
+    {
+      "url": "/calculator/deck",
+      "label": "Deck Calculator",
+      "type": "calculator",
+      "status": "published",
+      "publishedAt": "2026-06-07"
+    },
+    {
+      "url": "/calculator/asphalt",
+      "label": "Asphalt Calculator",
+      "type": "calculator",
+      "status": "published",
+      "publishedAt": "2026-06-07"
+    },
+    {
+      "url": "/calculator/insulation",
+      "label": "Insulation Calculator",
+      "type": "calculator",
+      "status": "published",
+      "publishedAt": "2026-06-07"
+    },
+    {
+      "url": "/embed",
+      "label": "Embed a Calculator",
+      "type": "static",
+      "status": "published",
+      "publishedAt": "2026-06-07"
+    },
+    {
+      "url": "/guide/concrete-cost-ohio",
+      "label": "Concrete Cost in Ohio",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/concrete-cost-georgia",
+      "label": "Concrete Cost in Georgia",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/concrete-cost-north-carolina",
+      "label": "Concrete Cost in North Carolina",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/concrete-cost-michigan",
+      "label": "Concrete Cost in Michigan",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/concrete-cost-arizona",
+      "label": "Concrete Cost in Arizona",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/concrete-cost-washington",
+      "label": "Concrete Cost in Washington",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/concrete-cost-tennessee",
+      "label": "Concrete Cost in Tennessee",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/concrete-cost-indiana",
+      "label": "Concrete Cost in Indiana",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/concrete-cost-missouri",
+      "label": "Concrete Cost in Missouri",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/concrete-cost-colorado",
+      "label": "Concrete Cost in Colorado",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/concrete-cost-wisconsin",
+      "label": "Concrete Cost in Wisconsin",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/concrete-cost-minnesota",
+      "label": "Concrete Cost in Minnesota",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/concrete-cost-south-carolina",
+      "label": "Concrete Cost in South Carolina",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/concrete-cost-virginia",
+      "label": "Concrete Cost in Virginia",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/concrete-cost-maryland",
+      "label": "Concrete Cost in Maryland",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/concrete-cost-louisiana",
+      "label": "Concrete Cost in Louisiana",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/concrete-cost-kentucky",
+      "label": "Concrete Cost in Kentucky",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/concrete-cost-oregon",
+      "label": "Concrete Cost in Oregon",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/concrete-cost-oklahoma",
+      "label": "Concrete Cost in Oklahoma",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/concrete-cost-nevada",
+      "label": "Concrete Cost in Nevada",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "_section": "INDOOR EXPANSION \u2014 v2 (files written, drip publishing)"
     },
     {
       "url": "/calculator/paint",
@@ -746,7 +928,7 @@
       "publishedAt": null
     },
     {
-      "_section": "BATCH 3 — Project-specific & reference pages"
+      "_section": "BATCH 3 \u2014 Project-specific & reference pages"
     },
     {
       "url": "/guide/how-much-gravel-for-a-driveway",
@@ -833,7 +1015,7 @@
       "publishedAt": null
     },
     {
-      "_section": "BATCH 4 — New calculators (lumber + paver)"
+      "_section": "BATCH 4 \u2014 New calculators (lumber + paver)"
     },
     {
       "url": "/calculator/lumber",
@@ -864,7 +1046,7 @@
       "publishedAt": null
     },
     {
-      "_section": "BATCH 5 — New guide & reference pages"
+      "_section": "BATCH 5 \u2014 New guide & reference pages"
     },
     {
       "url": "/guide/how-much-sand-for-a-sandbox",
@@ -1000,7 +1182,7 @@
       "publishedAt": null
     },
     {
-      "_section": "BATCH 6 — Cost calculators"
+      "_section": "BATCH 6 \u2014 Cost calculators"
     },
     {
       "url": "/calculator/mulch-cost",
@@ -1045,7 +1227,7 @@
       "publishedAt": null
     },
     {
-      "_section": "BATCH 7 — EEAT + hub + technical pages"
+      "_section": "BATCH 7 \u2014 EEAT + hub + technical pages"
     },
     {
       "url": "/data-sources",
@@ -1104,13 +1286,13 @@
       "publishedAt": null
     },
     {
-      "_section": "BATCH 6 — Cost calculators"
+      "_section": "BATCH 6 \u2014 Cost calculators"
     },
     {
-      "_section": "BATCH 7 — EEAT + hub + technical pages"
+      "_section": "BATCH 7 \u2014 EEAT + hub + technical pages"
     },
     {
-      "_section": "FUTURE — not yet written"
+      "_section": "FUTURE \u2014 not yet written"
     }
   ]
 }

@@ -17,6 +17,8 @@ interface SubArea {
 
 interface Props {
   onChange: (shape: EngineShape) => void;
+  initLFt?: number;
+  initWFt?: number;
 }
 
 let nextId = 1;
@@ -35,10 +37,10 @@ function emptySubArea(): SubArea {
   return { id: nextId++, type: 'rectangle', l: [0,0], w: [0,0], r: [0,0], b: [0,0], h: [0,0] };
 }
 
-export default function ShapeInput({ onChange }: Props) {
+export default function ShapeInput({ onChange, initLFt = 0, initWFt = 0 }: Props) {
   const [shapeType, setShapeType] = useState<ShapeType>('rectangle');
-  const [l, setL] = useState<[number,number]>([0,0]);
-  const [w, setW] = useState<[number,number]>([0,0]);
+  const [l, setL] = useState<[number,number]>([initLFt, 0]);
+  const [w, setW] = useState<[number,number]>([initWFt, 0]);
   const [r, setR] = useState<[number,number]>([0,0]);
   const [b, setB] = useState<[number,number]>([0,0]);
   const [h, setH] = useState<[number,number]>([0,0]);

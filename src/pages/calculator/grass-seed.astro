@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import GrassSeedCalculator from '../../components/calculators/GrassSeedCalculator';
+import AdSlot from '../../components/ui/AdSlot.astro';
+import CalcBreadcrumbs from '../../components/ui/CalcBreadcrumbs.astro';
+
+const related = [
+  { href: '/calculator/sod',                    label: 'Sod Calculator' },
+  { href: '/calculator/topsoil',                label: 'Topsoil Calculator' },
+  { href: '/guide/how-much-grass-seed-do-i-need', label: 'How Much Grass Seed Do I Need?' },
+  { href: '/guide/sod-vs-seed',                 label: 'Sod vs Seed' },
+  { href: '/guide/how-to-reseed-a-lawn',        label: 'How to Reseed a Lawn' },
+];
+---
+
+<BaseLayout
+  title="Grass Seed Calculator — How Many Pounds Do I Need? | Free"
+  description="Free grass seed calculator: enter lawn size and grass type to get exact pounds needed for new lawns and overseeding. Covers fescue, bluegrass, ryegrass, bermuda, and zoysia."
+>
+  <div class="max-w-6xl mx-auto px-4 py-10">
+    <CalcBreadcrumbs crumbs={[{ label: 'Landscaping Calculators', href: '/landscaping-calculators' }, { label: 'Grass Seed Calculator' }]} />
+    <div class="grid lg:grid-cols-[1fr_320px] gap-10">
+      <div>
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">Grass Seed Calculator</h1>
+        <p class="text-gray-600 mb-6">Enter your lawn dimensions and grass type to find out exactly how many pounds of seed you need — for new lawns or overseeding thin turf.</p>
+        <GrassSeedCalculator client:load />
+        <AdSlot slot="after-result" className="mt-6" />
+        <div class="calculator-card mt-8">
+          <h2 class="font-semibold text-gray-900 mb-3">Seeding rate reference</h2>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead><tr class="border-b border-gray-200 text-left">
+                <th class="py-2 font-medium text-gray-500">Grass type</th>
+                <th class="py-2 font-medium text-gray-500 text-right">New lawn</th>
+                <th class="py-2 font-medium text-gray-500 text-right">Overseed</th>
+              </tr></thead>
+              <tbody class="divide-y divide-gray-100 text-gray-700">
+                {[
+                  ['Tall Fescue','6–8 lbs','3–4 lbs'],
+                  ['Fine Fescue','4–5 lbs','2–3 lbs'],
+                  ['Kentucky Bluegrass','2–3 lbs','1–1.5 lbs'],
+                  ['Perennial Ryegrass','6–8 lbs','3–4 lbs'],
+                  ['Bermudagrass','1–2 lbs','0.5–1 lb'],
+                  ['Zoysia','1–2 lbs','0.5–1 lb'],
+                ].map(([g,n,o]) => (
+                  <tr><td class="py-2">{g}</td><td class="py-2 text-right">{n}/1,000 sq ft</td><td class="py-2 text-right">{o}/1,000 sq ft</td></tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <aside class="space-y-6">
+        <div class="calculator-card sticky top-24">
+          <h3 class="font-semibold text-gray-900 mb-3">Related</h3>
+          <ul class="space-y-2">
+            {related.map(r => (
+              <li><a href={r.href} class="text-sm text-brand-600 hover:underline">{r.label}</a></li>
+            ))}
+          </ul>
+        </div>
+        <AdSlot slot="sidebar" />
+      </aside>
+    </div>
+  </div>
+</BaseLayout>

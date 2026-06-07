@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import FenceCalculator from '../../components/calculators/FenceCalculator';
+import AdSlot from '../../components/ui/AdSlot.astro';
+import CalcBreadcrumbs from '../../components/ui/CalcBreadcrumbs.astro';
+
+const related = [
+  { href: '/calculator/concrete',  label: 'Concrete Calculator' },
+  { href: '/calculator/project',   label: 'Project Calculator' },
+  { href: '/guide/how-much-concrete-for-fence-posts', label: 'Concrete for Fence Posts' },
+];
+---
+
+<BaseLayout
+  title="Fence Calculator — Posts, Rails, Pickets & Concrete | Free"
+  description="Free fence materials calculator: enter fence length and type to get exact post count, rails, pickets, and concrete bags. Covers wood, vinyl, and chain link fences."
+>
+  <div class="max-w-6xl mx-auto px-4 py-10">
+    <CalcBreadcrumbs crumbs={[{ label: 'Fence Calculator' }]} />
+    <div class="grid lg:grid-cols-[1fr_320px] gap-10">
+      <div>
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">Fence Calculator</h1>
+        <p class="text-gray-600 mb-6">Enter your fence length and type to get the complete materials list — posts, rails, pickets, concrete, and post caps. Standard 8-foot post spacing assumed.</p>
+        <FenceCalculator client:load />
+        <AdSlot slot="after-result" className="mt-6" />
+        <div class="calculator-card mt-8">
+          <h2 class="font-semibold text-gray-900 mb-3">Fence materials guide</h2>
+          <div class="space-y-3 text-sm text-gray-700">
+            <div><p class="font-medium text-gray-900">Post depth</p><p class="text-gray-600">Set posts 1/3 of their length in the ground. A 6-ft fence post should be 8–9 ft total — 2–3 ft in the ground. Use 2 bags of 50 lb concrete per post.</p></div>
+            <div><p class="font-medium text-gray-900">Post spacing</p><p class="text-gray-600">Standard: 8 ft on-center for most privacy fences. Vinyl fences often use 6 ft. Gate posts should be within 12 ft of each other.</p></div>
+            <div><p class="font-medium text-gray-900">Call 811</p><p class="text-gray-600 text-red-600 font-medium">Always call 811 before digging — free utility line marking service.</p></div>
+          </div>
+        </div>
+      </div>
+      <aside class="space-y-6">
+        <div class="calculator-card sticky top-24">
+          <h3 class="font-semibold text-gray-900 mb-3">Related</h3>
+          <ul class="space-y-2">
+            {related.map(r => (
+              <li><a href={r.href} class="text-sm text-brand-600 hover:underline">{r.label}</a></li>
+            ))}
+          </ul>
+        </div>
+        <AdSlot slot="sidebar" />
+      </aside>
+    </div>
+  </div>
+</BaseLayout>

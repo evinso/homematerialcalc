@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import ShapeInput from '../ui/ShapeInput';
 import WasteSlider from '../ui/WasteSlider';
+import ShareButton from '../ui/ShareButton';
 import { calcGravel } from '../../lib/engine/calculators';
 import { GRAVEL, GRAVEL_DENSITIES } from '../../lib/engine/constants';
 import { useLocalStorage } from '../../lib/useLocalStorage';
+import { getUrlParam, setUrlParams } from '../../lib/useUrlParams';
 import type { GravelType } from '../../lib/engine/constants';
 import type { ShapeInput as EngineShape } from '../../lib/engine/geometry';
 
@@ -18,20 +20,31 @@ const STONE_LABELS: Record<GravelType, string> = {
 const DEPTH_OPTIONS = [1, 2, 3, 4, 6];
 
 export default function GravelCalculator() {
-  const [shape, setShape] = useState<EngineShape>({ type: 'rectangle', lengthFt: 0, widthFt: 0 });
-  const [depthIn, setDepthIn] = useLocalStorage('gravel_depth', GRAVEL.DEFAULT_DEPTH_IN);
-  const [stoneType, setStoneType] = useLocalStorage<GravelType>('gravel_type', GRAVEL.DEFAULT_TYPE);
-  const [waste, setWaste] = useLocalStorage('gravel_waste', GRAVEL.DEFAULT_WASTE);
-  const [pricePerTon, setPricePerTon] = useLocalStorage('gravel_price', '');
+  const initL = Number(getUrlParam('l') ?? 0);
+  const initW = Number(getUrlParam('w') ?? 0);
+
+  const [shape, setShape] = useState<EngineShape>({ type: 'rectangle', lengthFt: initL, widthFt: initW });
+  const [depthIn, setDepthIn] = useLocalStorage('gravel_depth', Number(getUrlParam('d') ?? GRAVEL.DEFAULT_DEPTH_IN));
+  const [stoneType, setStoneType] = useLocalStorage<GravelType>('gravel_type', (getUrlParam('t') as GravelType | null) ?? GRAVEL.DEFAULT_TYPE);
+  const [waste, setWaste] = useLocalStorage('gravel_waste', Number(getUrlParam('waste') ?? GRAVEL.DEFAULT_WASTE));
+  const [pricePerTon, setPricePerTon] = useLocalStorage('gravel_price', getUrlParam('price') ?? '');
 
   const result = calcGravel(shape, depthIn, stoneType, waste, pricePerTon ? Number(pricePerTon) : undefined);
   const hasArea = result.areaSqFt > 0;
+
+  const isFirstRender = useRef(true);
+  useEffect(() => {
+    if (isFirstRender.current) { isFirstRender.current = false; return; }
+    if (!hasArea) return;
+    const s = shape as any;
+    setUrlParams({ l: s.lengthFt ?? 0, w: s.widthFt ?? 0, d: depthIn, t: stoneType, waste, ...(pricePerTon ? { price: pricePerTon } : {}) });
+  }, [shape, depthIn, stoneType, waste, pricePerTon]);
 
   return (
     <div className="space-y-6">
       <div className="calculator-card">
         <h2 className="font-semibold text-gray-900 mb-4">1. Measure your area</h2>
-        <ShapeInput onChange={setShape} />
+        <ShapeInput onChange={setShape} initLFt={initL} initWFt={initW} />
       </div>
 
       <div className="calculator-card">
@@ -82,7 +95,10 @@ export default function GravelCalculator() {
 
       {hasArea && (
         <div className="result-box">
-          <h2 className="font-bold text-brand-800 text-lg mb-3">Your Gravel Estimate</h2>
+          <div className="flex items-start justify-between mb-3 gap-3">
+            <h2 className="font-bold text-brand-800 text-lg">Your Gravel Estimate</h2>
+            <ShareButton />
+          </div>
           <div className="grid grid-cols-2 gap-4 mb-4">
             <div className="bg-white rounded-lg p-4 text-center shadow-sm">
               <p className="text-3xl font-bold text-brand-700">{result.tons.toFixed(2)}</p>

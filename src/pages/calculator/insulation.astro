@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import InsulationCalculator from '../../components/calculators/InsulationCalculator';
+import AdSlot from '../../components/ui/AdSlot.astro';
+import CalcBreadcrumbs from '../../components/ui/CalcBreadcrumbs.astro';
+
+const related = [
+  { href: '/calculator/project',  label: 'Project Calculator' },
+  { href: '/guide/winter-landscaping-prep', label: 'Winter Prep Guide' },
+];
+---
+
+<BaseLayout
+  title="Insulation Calculator — Bags, Rolls & R-Value | Free"
+  description="Free insulation calculator: enter area and location (attic, wall, crawlspace) to get bags or rolls needed. Covers fiberglass batts, blown-in cellulose, and mineral wool."
+>
+  <div class="max-w-6xl mx-auto px-4 py-10">
+    <CalcBreadcrumbs crumbs={[{ label: 'Insulation Calculator' }]} />
+    <div class="grid lg:grid-cols-[1fr_320px] gap-10">
+      <div>
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">Insulation Calculator</h1>
+        <p class="text-gray-600 mb-6">Enter your area and location to find out how many bags or rolls of insulation you need to reach the recommended R-value. Covers attics, walls, crawlspaces, and basements.</p>
+        <InsulationCalculator client:load />
+        <AdSlot slot="after-result" className="mt-6" />
+        <div class="calculator-card mt-8">
+          <h2 class="font-semibold text-gray-900 mb-3">Recommended R-values by zone</h2>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead><tr class="border-b border-gray-200 text-left">
+                <th class="py-2 font-medium text-gray-500">Location</th>
+                <th class="py-2 font-medium text-gray-500 text-right">Cold (Zones 5–8)</th>
+                <th class="py-2 font-medium text-gray-500 text-right">Mild (Zones 3–4)</th>
+              </tr></thead>
+              <tbody class="divide-y divide-gray-100 text-gray-700">
+                {[
+                  ['Attic','R-49 to R-60','R-38 to R-49'],
+                  ['Walls (2×4)','R-15 to R-21','R-13 to R-15'],
+                  ['Crawlspace','R-25 to R-30','R-19 to R-25'],
+                  ['Basement walls','R-15 to R-19','R-11 to R-15'],
+                ].map(([l,c,m]) => (
+                  <tr><td class="py-2">{l}</td><td class="py-2 text-right">{c}</td><td class="py-2 text-right text-gray-500">{m}</td></tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p class="text-xs text-gray-400 mt-2">Source: DOE / IECC recommendations. Check local building codes for required minimums.</p>
+        </div>
+      </div>
+      <aside class="space-y-6">
+        <div class="calculator-card sticky top-24">
+          <h3 class="font-semibold text-gray-900 mb-3">Related</h3>
+          <ul class="space-y-2">
+            {related.map(r => (
+              <li><a href={r.href} class="text-sm text-brand-600 hover:underline">{r.label}</a></li>
+            ))}
+          </ul>
+        </div>
+        <AdSlot slot="sidebar" />
+      </aside>
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,46 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How much does concrete cost per yard in Michigan?', a: 'Ready-mix concrete in Michigan costs $132–$162 per cubic yard for standard 3,000–4,000 PSI mixes. Prices vary by region within the state and by season.' },
+  { q: 'How much does a concrete driveway cost in Michigan?', a: 'A standard 2-car concrete driveway (600 sq ft) in Michigan costs $810–$1140 installed, or $5–$15 per sq ft depending on finish and contractor.' },
+  { q: 'When can I pour concrete in Michigan?', a: 'Michigan allows concrete pours for much of the year. Avoid pouring when temperatures drop below 40°F or rise above 90°F without special precautions. Check local weather forecasts before scheduling a pour.' },
+]
+
+export const related = [
+  { href: '/calculator/concrete', label: 'Concrete Calculator' },
+  { href: '/guide/how-much-does-concrete-cost', label: 'How Much Does Concrete Cost?' },
+  { href: '/guide/asphalt-vs-concrete-driveway', label: 'Asphalt vs Concrete Driveway' },
+  { href: '/guide/how-long-does-concrete-take-to-dry', label: 'How Long Does Concrete Take to Dry?' },
+];
+
+<GuideLayout
+  title="Concrete Cost in Michigan — 2026 Price Guide"
+  description="Concrete prices in Michigan 2026: ready-mix cost $132–$162 per cubic yard. Driveway, patio, and slab cost estimates for Michigan homeowners."
+  h1="Concrete Cost in Michigan — 2026 Price Guide"
+  intro="Here are current concrete material and installation costs for Michigan, with project estimates for driveways, patios, and slabs."
+  calculatorHref="/calculator/concrete"
+  calculatorLabel="Concrete Calculator — get cubic yards for your Michigan project"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Concrete Cost in Michigan' }]}
+>
+
+## Ready-mix concrete prices in Michigan (2026)
+
+| Strength | Price per cubic yard |
+|----------|---------------------|
+| 2,500 PSI | $122–$137 |
+| 3,000 PSI | $132–$162 |
+| 4,000 PSI | $147–$182 |
+
+## Project cost estimates
+
+| Project | Materials | Installed |
+|---------|-----------|-----------|
+| Sidewalk (3×20 ft) | $98–$120 | $300–$600 |
+| Patio (12×16 ft) | $313–$384 | $1056–$2112 |
+| Driveway (12×50 ft) | $978–$1200 | $3000–$6000 |
+
+*Prices are estimates. Get 3 local quotes for accurate pricing in your area.*
+
+</GuideLayout>

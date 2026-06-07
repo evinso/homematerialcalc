@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import DeckCalculator from '../../components/calculators/DeckCalculator';
+import AdSlot from '../../components/ui/AdSlot.astro';
+import CalcBreadcrumbs from '../../components/ui/CalcBreadcrumbs.astro';
+
+const related = [
+  { href: '/calculator/concrete', label: 'Concrete Calculator' },
+  { href: '/calculator/lumber',   label: 'Lumber Calculator' },
+  { href: '/calculator/project',  label: 'Project Calculator' },
+];
+---
+
+<BaseLayout
+  title="Deck Calculator — Boards, Joists, Beams & Footings | Free"
+  description="Free deck materials calculator: enter deck dimensions to get board count, joist count, beams, footings, and concrete needed. Covers 2×6 and 2×4 deck boards."
+>
+  <div class="max-w-6xl mx-auto px-4 py-10">
+    <CalcBreadcrumbs crumbs={[{ label: 'Deck Calculator' }]} />
+    <div class="grid lg:grid-cols-[1fr_320px] gap-10">
+      <div>
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">Deck Calculator</h1>
+        <p class="text-gray-600 mb-6">Enter your deck dimensions to get the complete materials list — decking boards, joists, beams, footings, and concrete bags. Based on standard 16" OC framing.</p>
+        <DeckCalculator client:load />
+        <AdSlot slot="after-result" className="mt-6" />
+        <div class="calculator-card mt-8">
+          <h2 class="font-semibold text-gray-900 mb-3">Deck building notes</h2>
+          <div class="space-y-3 text-sm text-gray-700">
+            <div><p class="font-medium">Permits</p><p class="text-gray-600">Most decks over 30 inches from grade require a permit. Check local building codes before starting.</p></div>
+            <div><p class="font-medium">Footing depth</p><p class="text-gray-600">Footings must go below the frost line in your area — typically 18–48 inches depending on climate zone.</p></div>
+            <div><p class="font-medium">Wood type</p><p class="text-gray-600">Use pressure-treated lumber for ground contact and structural framing. Cedar or composite decking for the surface.</p></div>
+          </div>
+        </div>
+      </div>
+      <aside class="space-y-6">
+        <div class="calculator-card sticky top-24">
+          <h3 class="font-semibold text-gray-900 mb-3">Related</h3>
+          <ul class="space-y-2">
+            {related.map(r => (
+              <li><a href={r.href} class="text-sm text-brand-600 hover:underline">{r.label}</a></li>
+            ))}
+          </ul>
+        </div>
+        <AdSlot slot="sidebar" />
+      </aside>
+    </div>
+  </div>
+</BaseLayout>

@@ -1,28 +1,62 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import ShapeInput from '../ui/ShapeInput';
 import WasteSlider from '../ui/WasteSlider';
+import ShareButton from '../ui/ShareButton';
+import UnitToggle, { mToFt } from '../ui/UnitToggle';
 import { calcMulch } from '../../lib/engine/calculators';
 import { MULCH } from '../../lib/engine/constants';
 import { useLocalStorage } from '../../lib/useLocalStorage';
+import { getUrlParam, setUrlParams } from '../../lib/useUrlParams';
 import type { ShapeInput as EngineShape } from '../../lib/engine/geometry';
 
 const DEPTH_OPTIONS = [1, 2, 3, 4, 6];
 
 export default function MulchCalculator() {
-  const [shape, setShape] = useState<EngineShape>({ type: 'rectangle', lengthFt: 0, widthFt: 0 });
-  const [depthIn, setDepthIn] = useLocalStorage('mulch_depth', MULCH.DEFAULT_DEPTH_IN);
-  const [waste, setWaste] = useLocalStorage('mulch_waste', MULCH.DEFAULT_WASTE);
-  const [pricePerBag, setPricePerBag] = useLocalStorage('mulch_price', '');
+  const initL = Number(getUrlParam('l') ?? 0);
+  const initW = Number(getUrlParam('w') ?? 0);
+  const [metric, setMetric] = useLocalStorage('mulch_metric', false);
+
+  const [shape, setShape] = useState<EngineShape>({ type: 'rectangle', lengthFt: initL, widthFt: initW });
+
+  function handleMetricToggle(isMetric: boolean) {
+    setMetric(isMetric);
+  }
+  const [depthIn, setDepthIn] = useLocalStorage('mulch_depth', Number(getUrlParam('d') ?? MULCH.DEFAULT_DEPTH_IN));
+  const [waste, setWaste] = useLocalStorage('mulch_waste', Number(getUrlParam('waste') ?? MULCH.DEFAULT_WASTE));
+  const [pricePerBag, setPricePerBag] = useLocalStorage('mulch_price', getUrlParam('price') ?? '');
 
   const result = calcMulch(shape, depthIn, waste, pricePerBag ? Number(pricePerBag) : undefined);
   const hasArea = result.areaSqFt > 0;
+
+  // Sync current values to URL when result changes
+  const isFirstRender = useRef(true);
+  useEffect(() => {
+    if (isFirstRender.current) { isFirstRender.current = false; return; }
+    if (!hasArea) return;
+    const s = shape as any;
+    setUrlParams({
+      l: s.lengthFt ?? 0,
+      w: s.widthFt ?? 0,
+      d: depthIn,
+      waste,
+      ...(pricePerBag ? { price: pricePerBag } : {}),
+    });
+  }, [shape, depthIn, waste, pricePerBag]);
 
   return (
     <div className="space-y-6">
       {/* Shape */}
       <div className="calculator-card">
-        <h2 className="font-semibold text-gray-900 mb-4">1. Measure your area</h2>
-        <ShapeInput onChange={setShape} />
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="font-semibold text-gray-900">1. Measure your area</h2>
+          <UnitToggle metric={metric} onToggle={handleMetricToggle} />
+        </div>
+        {metric && (
+          <p className="text-xs text-amber-600 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 mb-3">
+            Enter dimensions in meters — converted to feet automatically
+          </p>
+        )}
+        <ShapeInput onChange={setShape} initLFt={initL} initWFt={initW} />
       </div>
 
       {/* Depth */}
@@ -78,7 +112,10 @@ export default function MulchCalculator() {
       {/* Result */}
       {hasArea && (
         <div className="result-box">
-          <h2 className="font-bold text-brand-800 text-lg mb-3">Your Mulch Estimate</h2>
+          <div className="flex items-start justify-between mb-3 gap-3">
+            <h2 className="font-bold text-brand-800 text-lg">Your Mulch Estimate</h2>
+            <ShareButton />
+          </div>
           <div className="grid grid-cols-2 gap-4 mb-4">
             <div className="bg-white rounded-lg p-4 text-center shadow-sm">
               <p className="text-3xl font-bold text-brand-700">{result.bagsNeeded}</p>
@@ -97,7 +134,6 @@ export default function MulchCalculator() {
             </div>
           )}
 
-          {/* Breakdown */}
           <div className="bg-white rounded-lg p-4 text-sm space-y-1.5 text-gray-700">
             <p className="font-semibold text-gray-900 mb-2">Calculation breakdown</p>
             <p>Area: <span className="font-medium">{result.areaSqFt.toFixed(1)} sq ft</span></p>

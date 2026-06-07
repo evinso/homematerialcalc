@@ -1,0 +1,46 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How much does concrete cost per yard in Arizona?', a: 'Ready-mix concrete in Arizona costs $135–$165 per cubic yard for standard 3,000–4,000 PSI mixes. Prices vary by region within the state and by season.' },
+  { q: 'How much does a concrete driveway cost in Arizona?', a: 'A standard 2-car concrete driveway (600 sq ft) in Arizona costs $825–$1170 installed, or $5–$15 per sq ft depending on finish and contractor.' },
+  { q: 'When can I pour concrete in Arizona?', a: 'Arizona allows concrete pours for much of the year. Avoid pouring when temperatures drop below 40°F or rise above 90°F without special precautions. Check local weather forecasts before scheduling a pour.' },
+]
+
+export const related = [
+  { href: '/calculator/concrete', label: 'Concrete Calculator' },
+  { href: '/guide/how-much-does-concrete-cost', label: 'How Much Does Concrete Cost?' },
+  { href: '/guide/asphalt-vs-concrete-driveway', label: 'Asphalt vs Concrete Driveway' },
+  { href: '/guide/how-long-does-concrete-take-to-dry', label: 'How Long Does Concrete Take to Dry?' },
+];
+
+<GuideLayout
+  title="Concrete Cost in Arizona — 2026 Price Guide"
+  description="Concrete prices in Arizona 2026: ready-mix cost $135–$165 per cubic yard. Driveway, patio, and slab cost estimates for Arizona homeowners."
+  h1="Concrete Cost in Arizona — 2026 Price Guide"
+  intro="Here are current concrete material and installation costs for Arizona, with project estimates for driveways, patios, and slabs."
+  calculatorHref="/calculator/concrete"
+  calculatorLabel="Concrete Calculator — get cubic yards for your Arizona project"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Concrete Cost in Arizona' }]}
+>
+
+## Ready-mix concrete prices in Arizona (2026)
+
+| Strength | Price per cubic yard |
+|----------|---------------------|
+| 2,500 PSI | $125–$140 |
+| 3,000 PSI | $135–$165 |
+| 4,000 PSI | $150–$185 |
+
+## Project cost estimates
+
+| Project | Materials | Installed |
+|---------|-----------|-----------|
+| Sidewalk (3×20 ft) | $100–$122 | $300–$600 |
+| Patio (12×16 ft) | $320–$391 | $1056–$2112 |
+| Driveway (12×50 ft) | $1000–$1222 | $3000–$6000 |
+
+*Prices are estimates. Get 3 local quotes for accurate pricing in your area.*
+
+</GuideLayout>

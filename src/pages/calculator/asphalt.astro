@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AsphaltCalculator from '../../components/calculators/AsphaltCalculator';
+import AdSlot from '../../components/ui/AdSlot.astro';
+import CalcBreadcrumbs from '../../components/ui/CalcBreadcrumbs.astro';
+
+const related = [
+  { href: '/calculator/gravel',   label: 'Gravel Calculator' },
+  { href: '/calculator/concrete', label: 'Concrete Calculator' },
+  { href: '/guide/asphalt-vs-concrete-driveway', label: 'Asphalt vs Concrete Driveway' },
+  { href: '/guide/how-to-build-a-gravel-driveway', label: 'How to Build a Gravel Driveway' },
+];
+---
+
+<BaseLayout
+  title="Asphalt Calculator — Tons, Cubic Yards & Cost | Free"
+  description="Free asphalt calculator: enter driveway or parking area dimensions to get tons and cubic yards of hot mix asphalt needed, plus base gravel estimate."
+>
+  <div class="max-w-6xl mx-auto px-4 py-10">
+    <CalcBreadcrumbs crumbs={[{ label: 'Asphalt Calculator' }]} />
+    <div class="grid lg:grid-cols-[1fr_320px] gap-10">
+      <div>
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">Asphalt Calculator</h1>
+        <p class="text-gray-600 mb-6">Enter your driveway, path, or parking area dimensions to calculate tons and cubic yards of asphalt needed — plus the gravel base estimate for new installations.</p>
+        <AsphaltCalculator client:load />
+        <AdSlot slot="after-result" className="mt-6" />
+        <div class="calculator-card mt-8">
+          <h2 class="font-semibold text-gray-900 mb-3">Asphalt quick reference</h2>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead><tr class="border-b border-gray-200 text-left">
+                <th class="py-2 font-medium text-gray-500">Thickness</th>
+                <th class="py-2 font-medium text-gray-500 text-right">Coverage / ton</th>
+                <th class="py-2 font-medium text-gray-500 text-right">Best for</th>
+              </tr></thead>
+              <tbody class="divide-y divide-gray-100 text-gray-700">
+                {[
+                  ['2 inches','~80 sq ft','Overlay/resurfacing'],
+                  ['3 inches','~55 sq ft','Residential driveway'],
+                  ['4 inches','~40 sq ft','Heavy-use driveway'],
+                  ['6 inches','~27 sq ft','Commercial parking'],
+                ].map(([t,c,u]) => (
+                  <tr><td class="py-2">{t}</td><td class="py-2 text-right">{c}</td><td class="py-2 text-right text-gray-500">{u}</td></tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <aside class="space-y-6">
+        <div class="calculator-card sticky top-24">
+          <h3 class="font-semibold text-gray-900 mb-3">Related</h3>
+          <ul class="space-y-2">
+            {related.map(r => (
+              <li><a href={r.href} class="text-sm text-brand-600 hover:underline">{r.label}</a></li>
+            ))}
+          </ul>
+        </div>
+        <AdSlot slot="sidebar" />
+      </aside>
+    </div>
+  </div>
+</BaseLayout>

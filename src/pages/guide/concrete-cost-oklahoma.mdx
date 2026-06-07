@@ -1,0 +1,46 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How much does concrete cost per yard in Oklahoma?', a: 'Ready-mix concrete in Oklahoma costs $118–$145 per cubic yard for standard 3,000–4,000 PSI mixes. Prices vary by region within the state and by season.' },
+  { q: 'How much does a concrete driveway cost in Oklahoma?', a: 'A standard 2-car concrete driveway (600 sq ft) in Oklahoma costs $725–$1032 installed, or $4–$13 per sq ft depending on finish and contractor.' },
+  { q: 'When can I pour concrete in Oklahoma?', a: 'Oklahoma allows concrete pours for much of the year. Avoid pouring when temperatures drop below 40°F or rise above 90°F without special precautions. Check local weather forecasts before scheduling a pour.' },
+]
+
+export const related = [
+  { href: '/calculator/concrete', label: 'Concrete Calculator' },
+  { href: '/guide/how-much-does-concrete-cost', label: 'How Much Does Concrete Cost?' },
+  { href: '/guide/asphalt-vs-concrete-driveway', label: 'Asphalt vs Concrete Driveway' },
+  { href: '/guide/how-long-does-concrete-take-to-dry', label: 'How Long Does Concrete Take to Dry?' },
+];
+
+<GuideLayout
+  title="Concrete Cost in Oklahoma — 2026 Price Guide"
+  description="Concrete prices in Oklahoma 2026: ready-mix cost $118–$145 per cubic yard. Driveway, patio, and slab cost estimates for Oklahoma homeowners."
+  h1="Concrete Cost in Oklahoma — 2026 Price Guide"
+  intro="Here are current concrete material and installation costs for Oklahoma, with project estimates for driveways, patios, and slabs."
+  calculatorHref="/calculator/concrete"
+  calculatorLabel="Concrete Calculator — get cubic yards for your Oklahoma project"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Concrete Cost in Oklahoma' }]}
+>
+
+## Ready-mix concrete prices in Oklahoma (2026)
+
+| Strength | Price per cubic yard |
+|----------|---------------------|
+| 2,500 PSI | $108–$123 |
+| 3,000 PSI | $118–$145 |
+| 4,000 PSI | $133–$165 |
+
+## Project cost estimates
+
+| Project | Materials | Installed |
+|---------|-----------|-----------|
+| Sidewalk (3×20 ft) | $87–$107 | $300–$600 |
+| Patio (12×16 ft) | $280–$344 | $1056–$2112 |
+| Driveway (12×50 ft) | $874–$1074 | $3000–$6000 |
+
+*Prices are estimates. Get 3 local quotes for accurate pricing in your area.*
+
+</GuideLayout>

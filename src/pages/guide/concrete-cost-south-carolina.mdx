@@ -1,0 +1,46 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How much does concrete cost per yard in South Carolina?', a: 'Ready-mix concrete in South Carolina costs $122–$150 per cubic yard for standard 3,000–4,000 PSI mixes. Prices vary by region within the state and by season.' },
+  { q: 'How much does a concrete driveway cost in South Carolina?', a: 'A standard 2-car concrete driveway (600 sq ft) in South Carolina costs $750–$1068 installed, or $4–$14 per sq ft depending on finish and contractor.' },
+  { q: 'When can I pour concrete in South Carolina?', a: 'South Carolina allows concrete pours for much of the year. Avoid pouring when temperatures drop below 40°F or rise above 90°F without special precautions. Check local weather forecasts before scheduling a pour.' },
+]
+
+export const related = [
+  { href: '/calculator/concrete', label: 'Concrete Calculator' },
+  { href: '/guide/how-much-does-concrete-cost', label: 'How Much Does Concrete Cost?' },
+  { href: '/guide/asphalt-vs-concrete-driveway', label: 'Asphalt vs Concrete Driveway' },
+  { href: '/guide/how-long-does-concrete-take-to-dry', label: 'How Long Does Concrete Take to Dry?' },
+];
+
+<GuideLayout
+  title="Concrete Cost in South Carolina — 2026 Price Guide"
+  description="Concrete prices in South Carolina 2026: ready-mix cost $122–$150 per cubic yard. Driveway, patio, and slab cost estimates for South Carolina homeowners."
+  h1="Concrete Cost in South Carolina — 2026 Price Guide"
+  intro="Here are current concrete material and installation costs for South Carolina, with project estimates for driveways, patios, and slabs."
+  calculatorHref="/calculator/concrete"
+  calculatorLabel="Concrete Calculator — get cubic yards for your South Carolina project"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Concrete Cost in South Carolina' }]}
+>
+
+## Ready-mix concrete prices in South Carolina (2026)
+
+| Strength | Price per cubic yard |
+|----------|---------------------|
+| 2,500 PSI | $112–$127 |
+| 3,000 PSI | $122–$150 |
+| 4,000 PSI | $137–$170 |
+
+## Project cost estimates
+
+| Project | Materials | Installed |
+|---------|-----------|-----------|
+| Sidewalk (3×20 ft) | $90–$111 | $300–$600 |
+| Patio (12×16 ft) | $289–$356 | $1056–$2112 |
+| Driveway (12×50 ft) | $904–$1111 | $3000–$6000 |
+
+*Prices are estimates. Get 3 local quotes for accurate pricing in your area.*
+
+</GuideLayout>

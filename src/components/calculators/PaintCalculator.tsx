@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import WasteSlider from '../ui/WasteSlider';
+import ShareButton from '../ui/ShareButton';
 import { calcPaint } from '../../lib/engine/calculators';
 import { PAINT, PAINT_COVERAGE } from '../../lib/engine/constants';
 import { useLocalStorage } from '../../lib/useLocalStorage';
+import { getUrlParam, setUrlParams } from '../../lib/useUrlParams';
 import type { PaintSurface } from '../../lib/engine/constants';
 
 const SURFACE_LABELS: Record<PaintSurface, string> = {
@@ -14,21 +16,28 @@ const SURFACE_LABELS: Record<PaintSurface, string> = {
 
 export default function PaintCalculator() {
   const [mode, setMode] = useState<'room' | 'area'>('room');
-  const [length, setLength] = useLocalStorage('paint_length', 12);
-  const [width, setWidth]   = useLocalStorage('paint_width', 12);
-  const [height, setHeight] = useLocalStorage('paint_height', 8);
+  const [length, setLength] = useLocalStorage('paint_length', Number(getUrlParam('l') ?? 12));
+  const [width, setWidth]   = useLocalStorage('paint_width',  Number(getUrlParam('w') ?? 12));
+  const [height, setHeight] = useLocalStorage('paint_height', Number(getUrlParam('h') ?? 8));
   const [wallArea, setWallArea] = useState(400);
-  const [doors, setDoors]       = useLocalStorage('paint_doors', 1);
-  const [windows, setWindows]   = useState(2);
-  const [coats, setCoats]       = useState(PAINT.DEFAULT_COATS);
-  const [surface, setSurface]   = useState<PaintSurface>(PAINT.DEFAULT_SURFACE);
+  const [doors, setDoors]       = useLocalStorage('paint_doors', Number(getUrlParam('doors') ?? 1));
+  const [windows, setWindows]   = useState(Number(getUrlParam('win') ?? 2));
+  const [coats, setCoats]       = useState(Number(getUrlParam('coats') ?? PAINT.DEFAULT_COATS));
+  const [surface, setSurface]   = useState<PaintSurface>((getUrlParam('surface') as PaintSurface | null) ?? PAINT.DEFAULT_SURFACE);
   const [waste, setWaste]       = useState(PAINT.DEFAULT_WASTE);
-  const [pricePerGallon, setPricePerGallon] = useState('');
+  const [pricePerGallon, setPricePerGallon] = useState(getUrlParam('price') ?? '');
 
   const roomWallArea = mode === 'room' ? 2 * (length + width) * height : wallArea;
   const result = calcPaint(roomWallArea, doors, windows, coats, surface, waste,
     pricePerGallon ? Number(pricePerGallon) : undefined);
   const hasArea = roomWallArea > 0;
+
+  const isFirstRender = useRef(true);
+  useEffect(() => {
+    if (isFirstRender.current) { isFirstRender.current = false; return; }
+    if (!hasArea) return;
+    setUrlParams({ l: length, w: width, h: height, doors, win: windows, coats, surface, ...(pricePerGallon ? { price: pricePerGallon } : {}) });
+  }, [length, width, height, doors, windows, coats, surface]);
 
   return (
     <div className="space-y-6">
@@ -127,7 +136,10 @@ export default function PaintCalculator() {
       {/* Result */}
       {hasArea && (
         <div className="result-box">
-          <h2 className="font-bold text-brand-800 text-lg mb-3">Your Paint Estimate</h2>
+          <div className="flex items-start justify-between mb-3 gap-3">
+            <h2 className="font-bold text-brand-800 text-lg">Your Paint Estimate</h2>
+            <ShareButton />
+          </div>
           <div className="grid grid-cols-2 gap-4 mb-4">
             <div className="bg-white rounded-lg p-4 text-center shadow-sm">
               <p className="text-3xl font-bold text-brand-700">{result.gallonsNeeded}</p>

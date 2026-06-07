@@ -1,0 +1,20 @@
+{
+  "name": "HomeMaterialCalc",
+  "short_name": "HMCalc",
+  "description": "Free material calculators for US homeowners — mulch, gravel, concrete, paint, and more.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "orientation": "portrait-primary",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" },
+    { "src": "/favicon.ico", "sizes": "16x16 32x32", "type": "image/x-icon" }
+  ],
+  "shortcuts": [
+    { "name": "Mulch Calculator",   "url": "/calculator/mulch",    "description": "Calculate bags and cubic yards of mulch" },
+    { "name": "Gravel Calculator",  "url": "/calculator/gravel",   "description": "Calculate tons and cubic yards of gravel" },
+    { "name": "Concrete Calculator","url": "/calculator/concrete",  "description": "Calculate bags or cubic yards of concrete" },
+    { "name": "Project Planner",    "url": "/calculator/project",  "description": "Full materials list for any project" }
+  ]
+}
