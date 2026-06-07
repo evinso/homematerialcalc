@@ -296,6 +296,35 @@ function typeLabel(type: string) {
     </div>
   </div>
 
+  <!-- ─── FORM SUBMISSIONS ─────────────────────────────────────────────── -->
+  <div class="section" id="submissions-section">
+    <div class="sec-header">
+      <span class="sec-title">📬 Form Submissions</span>
+      <button id="refresh-btn" onclick="loadSubmissions()" style="font-size:0.72rem;color:var(--blue);background:none;border:none;cursor:pointer;padding:0">↻ Yenile</button>
+    </div>
+    <div class="two-col" style="grid-template-columns:1fr 1fr 1fr">
+
+      <!-- Quote Requests -->
+      <div class="card">
+        <div class="card-title">🏗️ Quote Requests</div>
+        <div id="quotes-list"><div class="empty">Yükleniyor…</div></div>
+      </div>
+
+      <!-- Newsletter -->
+      <div class="card">
+        <div class="card-title">📧 Newsletter</div>
+        <div id="nl-list"><div class="empty">Yükleniyor…</div></div>
+      </div>
+
+      <!-- Contact -->
+      <div class="card">
+        <div class="card-title">💬 Contact</div>
+        <div id="contact-list"><div class="empty">Yükleniyor…</div></div>
+      </div>
+
+    </div>
+  </div>
+
   <!-- ─── PROGRESS BAR ───────────────────────────────────────────────── -->
   <div class="progress-wrap">
     <div class="progress-header">
@@ -659,7 +688,39 @@ function typeLabel(type: string) {
   }
   document.getElementById('btn').addEventListener('click', attempt);
   document.getElementById('pw').addEventListener('keydown', e => { if (e.key === 'Enter') attempt(); });
-  if (sessionStorage.getItem('_ak') === H) unlock();
+  if (sessionStorage.getItem('_ak') === H) { unlock(); loadSubmissions(); }
+
+  function fmtDate(iso) {
+    if (!iso) return '—';
+    const d = new Date(iso);
+    return d.toLocaleDateString('tr-TR', { day:'2-digit', month:'2-digit', year:'2-digit' }) + ' ' +
+           d.toLocaleTimeString('tr-TR', { hour:'2-digit', minute:'2-digit' });
+  }
+
+  function renderList(containerId, items, fields) {
+    const el = document.getElementById(containerId);
+    if (!items || items.length === 0) {
+      el.innerHTML = '<div class="empty">Henüz giriş yok</div>';
+      return;
+    }
+    el.innerHTML = items.map(item => `
+      <div class="row" style="flex-direction:column;align-items:flex-start;border-bottom:1px solid var(--border);padding:0.5rem 0.4rem">
+        ${fields.map(f => item[f] ? `<span style="font-size:0.74rem;color:${f==='email'?'var(--blue)':'var(--text)'}">${item[f]}</span>` : '').join('')}
+        <span style="font-size:0.64rem;color:var(--muted);margin-top:0.2rem">${fmtDate(item.date)}</span>
+      </div>
+    `).join('');
+  }
+
+  async function loadSubmissions() {
+    try {
+      const res = await fetch('/api/submissions?key=hmc_s3cr3t_2026');
+      if (!res.ok) { console.warn('Submissions API error', res.status); return; }
+      const { quotes, newsletters, contacts } = await res.json();
+      renderList('quotes-list', quotes, ['name','email','zip','page','project']);
+      renderList('nl-list', newsletters, ['email']);
+      renderList('contact-list', contacts, ['name','email','subject','message']);
+    } catch(e) { console.error('loadSubmissions:', e); }
+  }
 })();
 </script>
 
