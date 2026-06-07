@@ -8,6 +8,21 @@
   "runs": [
     {
       "date": "2026-06-07",
+      "timestamp": "2026-06-07T15:40:08.322Z",
+      "pagesPublished": [
+        {
+          "url": "/guide/summer-lawn-care-guide",
+          "label": "Summer Lawn Care Guide",
+          "type": "reference"
+        }
+      ],
+      "pendingBefore": 96,
+      "pendingAfter": 95,
+      "trigger": "scheduled",
+      "runBy": "evinso"
+    },
+    {
+      "date": "2026-06-07",
       "timestamp": "2026-06-07T11:27:53.182Z",
       "pagesPublished": [
         {
@@ -635,8 +650,8 @@
       "url": "/guide/summer-lawn-care-guide",
       "label": "Summer Lawn Care Guide",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-07"
     },
     {
       "url": "/guide/fall-yard-prep-checklist",
