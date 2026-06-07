@@ -8,6 +8,21 @@
   "runs": [
     {
       "date": "2026-06-07",
+      "timestamp": "2026-06-07T10:30:17.264Z",
+      "pagesPublished": [
+        {
+          "url": "/guide/how-to-build-a-patio",
+          "label": "How to Build a Patio",
+          "type": "guide"
+        }
+      ],
+      "pendingBefore": 71,
+      "pendingAfter": 70,
+      "trigger": "manual_dispatch",
+      "runBy": "evinso"
+    },
+    {
+      "date": "2026-06-07",
       "timestamp": "2026-06-07T10:17:18.019Z",
       "pagesPublished": [
         {
@@ -503,8 +518,8 @@
       "url": "/guide/how-to-build-a-patio",
       "label": "How to Build a Patio",
       "type": "guide",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-07"
     },
     {
       "url": "/guide/how-to-build-a-gravel-driveway",
