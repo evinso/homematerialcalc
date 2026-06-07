@@ -3,18 +3,18 @@ export const prerender = false;
 import type { APIRoute } from 'astro';
 import { Redis } from '@upstash/redis';
 
-const redis = new Redis({
-  url: import.meta.env.UPSTASH_REDIS_REST_URL,
-  token: import.meta.env.UPSTASH_REDIS_REST_TOKEN,
-});
-
 export const GET: APIRoute = async ({ request }) => {
   const url = new URL(request.url);
   const key = url.searchParams.get('key');
 
-  if (key !== import.meta.env.ADMIN_KEY) {
+  if (key !== process.env.ADMIN_KEY) {
     return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401 });
   }
+
+  const redis = new Redis({
+    url: process.env.UPSTASH_REDIS_REST_URL!,
+    token: process.env.UPSTASH_REDIS_REST_TOKEN!,
+  });
 
   const [quotes, newsletters, contacts] = await Promise.all([
     redis.lrange('hmc:quote', 0, 49),

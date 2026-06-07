@@ -3,13 +3,13 @@ export const prerender = false;
 import type { APIRoute } from 'astro';
 import { Redis } from '@upstash/redis';
 
-const redis = new Redis({
-  url: import.meta.env.UPSTASH_REDIS_REST_URL,
-  token: import.meta.env.UPSTASH_REDIS_REST_TOKEN,
-});
-
 export const POST: APIRoute = async ({ request }) => {
   try {
+    const redis = new Redis({
+      url: process.env.UPSTASH_REDIS_REST_URL!,
+      token: process.env.UPSTASH_REDIS_REST_TOKEN!,
+    });
+
     const body = await request.json();
     const { type, ...data } = body;
 
@@ -30,6 +30,7 @@ export const POST: APIRoute = async ({ request }) => {
       headers: { 'Content-Type': 'application/json' },
     });
   } catch (err) {
+    console.error('submit error:', err);
     return new Response(JSON.stringify({ error: 'Server error' }), { status: 500 });
   }
 };
