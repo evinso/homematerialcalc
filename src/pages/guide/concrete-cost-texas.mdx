@@ -1,0 +1,81 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How much does concrete cost per yard in Texas?', a: 'Ready-mix concrete in Texas costs $120–$155 per cubic yard for standard 3,000–4,000 PSI mixes. Dallas and Houston markets are typically $125–$150/yd; rural areas range from $115–$140/yd. Short-load fees apply for orders under 7 yards.' },
+  { q: 'How much does a concrete driveway cost in Texas?', a: 'A standard 2-car concrete driveway (600 sq ft) in Texas costs $2,800–$6,000 installed, or $4.50–$10 per sq ft. Texas weather allows year-round pours, which keeps labor rates competitive compared to northern states.' },
+  { q: 'Is concrete cheaper in Texas than other states?', a: 'Texas concrete prices are near the national average. Material costs ($120–$155/yd) are similar to other states, but labor tends to be slightly lower than coastal markets like California and New York. Local limestone aggregate keeps raw material costs stable.' },
+  { q: 'How much does a concrete patio cost in Texas?', a: 'A 12×16 ft concrete patio (192 sq ft) in Texas costs $1,100–$3,000 installed. Basic broom finish runs $5–$9/sq ft; stamped or colored concrete costs $10–$18/sq ft. Texas summer heat requires careful curing — ask contractors about wet curing or curing compounds.' },
+  { q: 'What PSI concrete should I use in Texas?', a: '3,000 PSI is standard for residential driveways and patios in most of Texas. Areas with expansive clay soils (DFW, Austin) benefit from 4,000 PSI concrete with fiber reinforcement or rebar, as the soil moves significantly with moisture changes.' },
+];
+
+export const related = [
+  { href: '/calculator/concrete', label: 'Concrete Calculator' },
+  { href: '/guide/how-much-does-concrete-cost', label: 'How Much Does Concrete Cost?' },
+  { href: '/guide/asphalt-vs-concrete-driveway', label: 'Asphalt vs Concrete Driveway' },
+  { href: '/guide/how-thick-should-concrete-slab-be', label: 'How Thick Should a Concrete Slab Be?' },
+];
+
+<GuideLayout
+  title="Concrete Cost in Texas — 2026 Price Guide (Dallas, Houston, Austin)"
+  description="Concrete prices in Texas: ready-mix cost per cubic yard, driveway and patio cost per sq ft in Dallas, Houston, and Austin. Local factors affecting Texas concrete prices in 2026."
+  h1="Concrete Cost in Texas — 2026 Price Guide"
+  intro="Texas is one of the largest concrete markets in the US, with competitive pricing and year-round pour conditions. Here are the current concrete costs for Dallas, Houston, Austin, and San Antonio, with project estimates for common residential work."
+  calculatorHref="/calculator/concrete"
+  calculatorLabel="Concrete Calculator — get cubic yards for your Texas project"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Concrete Cost in Texas' }]}
+>
+
+## Texas ready-mix concrete prices (2026)
+
+| Mix strength | Price per cubic yard | Common use |
+|-------------|---------------------|-----------|
+| 2,500 PSI | $115–$135 | Light foot traffic, walkways |
+| 3,000 PSI | $125–$150 | Standard driveways, patios |
+| 4,000 PSI | $140–$165 | Garages, heavy loads |
+| 5,000 PSI | $160–$190 | Commercial, structural |
+
+*Prices vary by city and supplier. Short-load fee: $50–$150 for orders under 7 yards.*
+
+## Prices by Texas city
+
+| City | 3,000 PSI (per cu yd) | Notes |
+|------|----------------------|-------|
+| Dallas-Fort Worth | $130–$155 | High clay soil — use 4,000 PSI |
+| Houston | $125–$150 | Active market, competitive pricing |
+| Austin | $135–$160 | High demand, slightly above state avg |
+| San Antonio | $120–$145 | Limestone aggregate widely available |
+| El Paso | $115–$140 | Lower cost of living market |
+| Lubbock/Amarillo | $115–$138 | Rural, lower labor rates |
+
+## Project cost estimates in Texas
+
+| Project | Size | Materials only | Installed (avg) |
+|---------|------|---------------|----------------|
+| Walkway | 3×20 ft | $150–$200 | $400–$900 |
+| Patio | 12×16 ft | $280–$370 | $1,100–$3,000 |
+| Driveway (1-car) | 10×20 ft | $465–$580 | $1,200–$3,000 |
+| Driveway (2-car) | 12×50 ft | $1,160–$1,450 | $2,800–$6,000 |
+| Garage floor | 20×20 ft | $1,550–$1,940 | $3,500–$8,000 |
+
+## Texas-specific considerations
+
+### Expansive clay soil (DFW and Austin)
+Texas clay soils expand and contract dramatically with moisture. This is the #1 cause of concrete cracking in DFW. Mitigation:
+- Use 4,000 PSI concrete minimum
+- Install rebar or fiber reinforcement
+- Ensure proper drainage away from slab
+- Consider post-tension cable systems for large slabs
+
+### Summer heat and curing
+Texas summer temperatures accelerate concrete setting. Contractors should:
+- Pour in early morning when possible
+- Use retarding admixtures in hot weather
+- Begin wet curing immediately after finishing
+- Cover with burlap and plastic sheeting
+
+### Caliche base
+Much of Texas has caliche (calcium carbonate hardpan) near the surface — an excellent natural base for concrete. In areas with caliche, subbase gravel needs may be reduced, lowering overall project cost.
+
+</GuideLayout>

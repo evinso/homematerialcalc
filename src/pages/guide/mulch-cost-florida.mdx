@@ -1,0 +1,78 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How much does mulch cost in Florida?', a: 'Bulk mulch in Florida costs $20–$45 per cubic yard delivered — lower than the national average due to the abundance of pine and cypress trees. Melaleuca mulch (an invasive species recycled as mulch) costs $15–$25/yd and is very common in South Florida.' },
+  { q: 'What type of mulch is best for Florida?', a: 'Melaleuca mulch, eucalyptus mulch, and pine bark are the most popular in Florida. Cypress mulch is available but less recommended — cypress swamps are ecologically sensitive and slow-growing. Pine straw (pine needle mulch) is excellent for North Florida gardens.' },
+  { q: 'How much mulch do I need per year in Florida?', a: 'Florida heat and year-round humidity break down organic mulch faster than cooler climates — plan on refreshing mulch every 6–12 months instead of annually. Applying 3–4 inches each cycle is recommended.' },
+  { q: 'Does Florida require specific mulch types near utilities?', a: 'Yes — the Florida Fire Code requires non-combustible mulch within 18 inches of a structure. Rock, pea gravel, or rubber mulch must be used in these zones. Organic mulch is fine elsewhere in the yard.' },
+  { q: 'When is the best time to mulch in Florida?', a: 'Florida has two ideal mulching windows: late February (before summer rainy season) and October (start of dry season). Year-round mulching is common given the warm climate. Avoid mulching during peak rainy season if beds have drainage issues — mulch can stay waterlogged.' },
+];
+
+export const related = [
+  { href: '/calculator/mulch', label: 'Mulch Calculator' },
+  { href: '/guide/how-much-does-mulch-cost', label: 'How Much Does Mulch Cost?' },
+  { href: '/guide/best-mulch-for-flower-beds', label: 'Best Mulch for Flower Beds' },
+  { href: '/guide/types-of-mulch', label: 'Types of Mulch' },
+];
+
+<GuideLayout
+  title="Mulch Cost in Florida — 2026 Price Guide (Miami, Orlando, Tampa)"
+  description="Mulch prices in Florida 2026: melaleuca, pine bark, and eucalyptus mulch cost per cubic yard in Miami, Orlando, and Tampa. Florida-specific mulch types and fire code requirements."
+  h1="Mulch Cost in Florida — 2026 Price Guide"
+  intro="Florida has some of the most affordable mulch in the US thanks to an abundance of local wood sources. Melaleuca mulch — made from an invasive tree — is a Florida specialty that costs less than half of cedar mulch. Here is what to expect for mulch prices and types across the state."
+  calculatorHref="/calculator/mulch"
+  calculatorLabel="Mulch Calculator — get cubic yards and bags for your Florida yard"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Mulch Cost in Florida' }]}
+>
+
+## Florida mulch prices by type (2026)
+
+| Mulch type | Bulk (per cu yd) | Availability |
+|-----------|-----------------|-------------|
+| Melaleuca mulch | $15–$28 | South Florida specialty |
+| Eucalyptus mulch | $20–$35 | Statewide |
+| Pine bark nuggets | $28–$45 | Statewide |
+| Shredded hardwood | $25–$40 | Statewide |
+| Pine straw (per bale) | $4–$7 | North Florida |
+| Cypress mulch | $30–$50 | Less recommended (eco concerns) |
+| Rubber mulch | $70–$120 | Playgrounds |
+
+## Prices by Florida city
+
+| City | Bulk hardwood (per cu yd) | Notes |
+|------|--------------------------|-------|
+| Miami/Ft. Lauderdale | $25–$42 | Strong market for melaleuca |
+| Orlando | $22–$38 | Competitive pricing |
+| Tampa/St. Pete | $20–$36 | Pine bark widely available |
+| Jacksonville | $18–$32 | Cheaper than South FL |
+| Tallahassee | $18–$30 | Pine straw very popular |
+
+## How much mulch per Florida yard?
+
+Florida's heat and humidity decompose mulch faster than northern states. **Plan for 2 applications per year** instead of 1.
+
+| Application frequency | Depth per app | Annual cu yd per 100 sq ft of bed |
+|----------------------|--------------|----------------------------------|
+| 1× per year | 3 inches | 0.93 |
+| 2× per year | 2 inches each | 1.23 |
+
+Use the [Mulch Calculator](/calculator/mulch) to get your exact quantity.
+
+## Florida fire code — mulch near structures
+
+Florida Fire Code (Section 315.4) requires:
+- **18 inches from structure:** Non-combustible ground cover only (rock, gravel, rubber mulch)
+- **Beyond 18 inches:** Any mulch type permitted
+
+This affects beds against the house foundation. Use pea gravel or river rock as a "mulch-free zone" strip along your foundation, then use organic mulch beyond that.
+
+## Florida-specific mulch tips
+
+- **Termites:** Avoid deep mulch (over 3 in) within 12 inches of your foundation — termites use mulch as a bridge. Rubber mulch or rock is safer near the house.
+- **Fungus:** Florida humidity causes "artillery fungus" (spores that stain siding) in wood mulch. Use pine bark or cypress if the bed is against the house.
+- **Weed pressure:** Florida weeds are aggressive year-round. A 3–4 inch mulch layer is more important here than in northern states.
+- **Irrigation:** Mulched beds in Florida need 25–40% less irrigation — significant savings on water bills.
+
+</GuideLayout>

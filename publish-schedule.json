@@ -470,7 +470,112 @@
       "publishedAt": null
     },
     {
-      "_section": "INDOOR EXPANSION — v2 (files written, drip publishing)"
+      "url": "/guide/how-to-build-a-patio",
+      "label": "How to Build a Patio",
+      "type": "guide",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/how-to-build-a-gravel-driveway",
+      "label": "How to Build a Gravel Driveway",
+      "type": "guide",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/how-to-build-a-raised-garden-bed",
+      "label": "How to Build a Raised Garden Bed",
+      "type": "guide",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/how-to-build-a-garden-path",
+      "label": "How to Build a Garden Path",
+      "type": "guide",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/how-to-reseed-a-lawn",
+      "label": "How to Reseed a Lawn",
+      "type": "guide",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/spring-lawn-and-garden-checklist",
+      "label": "Spring Lawn & Garden Checklist",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/summer-lawn-care-guide",
+      "label": "Summer Lawn Care Guide",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/fall-yard-prep-checklist",
+      "label": "Fall Yard Prep Checklist",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/winter-landscaping-prep",
+      "label": "Winter Landscaping Prep",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/concrete-cost-texas",
+      "label": "Concrete Cost in Texas",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/concrete-cost-california",
+      "label": "Concrete Cost in California",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/concrete-cost-new-york",
+      "label": "Concrete Cost in New York",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/mulch-cost-florida",
+      "label": "Mulch Cost in Florida",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/mulch-cost-by-state",
+      "label": "Mulch Cost by State",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/gravel-cost-by-state",
+      "label": "Gravel Cost by State",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "_section": "INDOOR EXPANSION \u2014 v2 (files written, drip publishing)"
     },
     {
       "url": "/calculator/paint",
@@ -536,7 +641,7 @@
       "publishedAt": null
     },
     {
-      "_section": "BATCH 3 — Project-specific & reference pages"
+      "_section": "BATCH 3 \u2014 Project-specific & reference pages"
     },
     {
       "url": "/guide/how-much-gravel-for-a-driveway",
@@ -623,7 +728,7 @@
       "publishedAt": null
     },
     {
-      "_section": "BATCH 4 — New calculators (lumber + paver)"
+      "_section": "BATCH 4 \u2014 New calculators (lumber + paver)"
     },
     {
       "url": "/calculator/lumber",
@@ -654,7 +759,7 @@
       "publishedAt": null
     },
     {
-      "_section": "BATCH 5 — New guide & reference pages"
+      "_section": "BATCH 5 \u2014 New guide & reference pages"
     },
     {
       "url": "/guide/how-much-sand-for-a-sandbox",
@@ -790,7 +895,7 @@
       "publishedAt": null
     },
     {
-      "_section": "BATCH 6 — Cost calculators"
+      "_section": "BATCH 6 \u2014 Cost calculators"
     },
     {
       "url": "/calculator/mulch-cost",
@@ -835,7 +940,7 @@
       "publishedAt": null
     },
     {
-      "_section": "BATCH 7 — EEAT + hub + technical pages"
+      "_section": "BATCH 7 \u2014 EEAT + hub + technical pages"
     },
     {
       "url": "/data-sources",
@@ -894,13 +999,13 @@
       "publishedAt": null
     },
     {
-      "_section": "BATCH 6 — Cost calculators"
+      "_section": "BATCH 6 \u2014 Cost calculators"
     },
     {
-      "_section": "BATCH 7 — EEAT + hub + technical pages"
+      "_section": "BATCH 7 \u2014 EEAT + hub + technical pages"
     },
     {
-      "_section": "FUTURE — not yet written"
+      "_section": "FUTURE \u2014 not yet written"
     }
   ]
 }

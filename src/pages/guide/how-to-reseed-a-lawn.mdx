@@ -1,0 +1,98 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'When is the best time to reseed a lawn?', a: 'Early fall (August–October) is the best time for cool-season grasses (fescue, bluegrass, rye) — soil is warm but air is cooling, reducing weed competition. Spring is the second-best option. For warm-season grasses (bermuda, zoysia), seed in late spring when soil temps exceed 65°F.' },
+  { q: 'How much topsoil do I need before reseeding?', a: 'For bare areas, add 1–2 inches of topsoil and rake level before seeding. For overseeding existing thin turf, no topsoil is needed. For a full lawn renovation (50%+ dead), till 2–4 inches of topsoil or compost into the top 4–6 inches of soil.' },
+  { q: 'Should I aerate before reseeding?', a: 'Yes. Core aeration before overseeding dramatically improves germination rates — the seed falls into the holes and makes direct contact with soil. Rent a core aerator for $80–$150/day. Skip the spike aerator (it compacts soil rather than relieving it).' },
+  { q: 'How long does it take to grow a lawn from seed?', a: 'Germination takes 7–21 days depending on grass type and soil temperature. An established, mowable lawn takes 6–10 weeks from seeding. Full density and durability takes one full growing season (spring to fall).' },
+  { q: 'Do I need to cover grass seed with topsoil?', a: 'No — grass seed needs light to germinate and should not be buried deeper than 1/4 inch. After seeding, lightly rake to make seed-to-soil contact. You can apply a thin layer (1/4 in) of peat moss or straw to retain moisture without burying the seed.' },
+];
+
+export const related = [
+  { href: '/calculator/sod', label: 'Sod Calculator' },
+  { href: '/calculator/topsoil', label: 'Topsoil Calculator' },
+  { href: '/guide/how-much-grass-seed-do-i-need', label: 'How Much Grass Seed Do I Need?' },
+  { href: '/guide/sod-vs-seed', label: 'Sod vs Seed' },
+];
+
+<GuideLayout
+  title="How to Reseed a Lawn — Complete Renovation Guide"
+  description="Complete lawn reseeding guide: when to seed, how much grass seed and topsoil you need, aeration, overseeding vs full renovation, and a week-by-week care schedule."
+  h1="How to Reseed a Lawn — Complete Project Guide"
+  intro="Whether you're overseeding thin patches or starting a full lawn renovation, the same fundamentals apply: right timing, good seed-to-soil contact, and consistent moisture. This guide covers every step from soil prep to the first mow."
+  calculatorHref="/calculator/sod"
+  calculatorLabel="Sod Calculator — compare sod vs seed for your lawn size"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'How to Reseed a Lawn' }]}
+>
+
+## Overseeding vs full renovation — which do you need?
+
+| Lawn condition | Recommended approach |
+|---------------|---------------------|
+| 70%+ healthy grass | Overseed thin areas |
+| 50–70% healthy | Full overseed after aeration |
+| Less than 50% healthy | Full renovation (till + reseed) |
+| Mostly weeds | Full renovation with herbicide first |
+
+## Material calculator
+
+### Grass seed
+
+| Grass type | Overseeding rate | New lawn rate |
+|-----------|-----------------|---------------|
+| Tall fescue | 3–4 lbs / 1,000 sq ft | 6–8 lbs |
+| Kentucky bluegrass | 1–1.5 lbs | 2–3 lbs |
+| Perennial ryegrass | 3–4 lbs | 6–8 lbs |
+| Bermudagrass | 0.5–1 lb | 1–2 lbs |
+
+### Topsoil (for bare areas)
+Area (sq ft) × Depth (in) ÷ 324 = cubic yards
+
+For 1,000 sq ft at 1 in: 1,000 × 1 ÷ 324 = **3.1 cu yd**
+
+### Starter fertilizer
+1 bag (typically 5,000–7,500 sq ft coverage) per application area.
+
+## Full lawn renovation — step by step
+
+### Week 1 — Kill existing vegetation
+Apply a non-selective herbicide (glyphosate) if the lawn is more than 50% weeds. Wait 7–14 days for vegetation to die and dry out before tilling.
+
+### Week 2 — Till and grade
+Till 4–6 inches deep. Break up clumps. Rake level, sloping away from the house at 1–2% grade. Add 1–2 inches of topsoil or compost and till in if soil is poor.
+
+### Week 3 — Seed and fertilize
+1. Apply starter fertilizer and rake into top 1 inch of soil
+2. Spread seed with a broadcast spreader in two passes (half north-south, half east-west)
+3. Rake lightly to ensure seed-to-soil contact
+4. Roll with a water-filled lawn roller to press seed into soil
+
+### Weeks 3–5 — Keep moist
+Water 2–3 times daily to keep the top 1 inch of soil continuously moist until germination. Never let the seedbed dry out — this kills germinating seeds. Once seedlings are 1 inch tall, reduce to once daily.
+
+### Week 6–8 — First mow
+Mow when grass reaches 3–4 inches tall. Set mower to 2.5–3 inches. Never remove more than 1/3 of blade height at once.
+
+## Overseeding an existing lawn
+
+1. Mow existing lawn short (1.5–2 inches)
+2. Dethatch if thatch layer exceeds 1/2 inch
+3. Core aerate (2–3 passes)
+4. Apply starter fertilizer
+5. Broadcast seed at overseeding rate
+6. Water daily until germination
+7. Resume normal mowing schedule at 4 weeks
+
+## Post-seeding calendar
+
+| Week | Task |
+|------|------|
+| 1–2 | Water 2–3×/day; no foot traffic |
+| 3 | Germination visible; reduce to 1×/day |
+| 4–5 | First fertilizer application (if not pre-applied) |
+| 6–8 | First mow at 3 in height |
+| 12 | Full normal lawn care resumes |
+
+</GuideLayout>

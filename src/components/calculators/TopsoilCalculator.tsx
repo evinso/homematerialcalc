@@ -3,15 +3,16 @@ import ShapeInput from '../ui/ShapeInput';
 import WasteSlider from '../ui/WasteSlider';
 import { calcTopsoil } from '../../lib/engine/calculators';
 import { TOPSOIL } from '../../lib/engine/constants';
+import { useLocalStorage } from '../../lib/useLocalStorage';
 import type { ShapeInput as EngineShape } from '../../lib/engine/geometry';
 
 const DEPTH_OPTIONS = [2, 4, 6, 8, 12];
 
 export default function TopsoilCalculator() {
   const [shape, setShape] = useState<EngineShape>({ type: 'rectangle', lengthFt: 0, widthFt: 0 });
-  const [depthIn, setDepthIn] = useState(TOPSOIL.DEFAULT_DEPTH_IN);
-  const [waste, setWaste] = useState(TOPSOIL.DEFAULT_WASTE);
-  const [pricePerCuYd, setPricePerCuYd] = useState('');
+  const [depthIn, setDepthIn] = useLocalStorage('topsoil_depth', TOPSOIL.DEFAULT_DEPTH_IN);
+  const [waste, setWaste] = useLocalStorage('topsoil_waste', TOPSOIL.DEFAULT_WASTE);
+  const [pricePerCuYd, setPricePerCuYd] = useLocalStorage('topsoil_price', '');
 
   const result = calcTopsoil(shape, depthIn, waste, pricePerCuYd ? Number(pricePerCuYd) : undefined);
   const hasArea = result.areaSqFt > 0;

@@ -1,0 +1,223 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AdSlot from '../components/ui/AdSlot.astro';
+---
+
+<BaseLayout
+  title="Material Prices — 2026 Cost Guide for Mulch, Gravel, Concrete & More"
+  description="Current 2026 material prices: mulch, gravel, concrete, topsoil, sand, sod, and paint cost per unit. National averages and regional ranges for all major home materials."
+>
+<div class="max-w-4xl mx-auto px-4 py-10">
+
+  <h1 class="text-3xl font-bold text-gray-900 mb-2">Material Prices — 2026 Cost Guide</h1>
+  <p class="text-gray-600 mb-2">National average prices for common landscaping and construction materials. Prices vary by region — use the calculator links to get a cost estimate for your project.</p>
+  <p class="text-xs text-gray-400 mb-8">Last updated: June 2026 · Based on national supplier and retail data</p>
+
+  <AdSlot slot="header-banner" className="mb-8" />
+
+  <!-- Landscaping -->
+  <section class="mb-10">
+    <h2 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">🌿 Landscaping Materials</h2>
+
+    <div class="calculator-card overflow-x-auto mb-6">
+      <h3 class="font-semibold text-gray-900 mb-3">Mulch</h3>
+      <table class="w-full text-sm">
+        <thead><tr class="border-b border-gray-200">
+          <th class="text-left py-2 font-medium text-gray-500">Type</th>
+          <th class="text-right py-2 font-medium text-gray-500">Bulk (per cu yd)</th>
+          <th class="text-right py-2 font-medium text-gray-500">Bag (2 cu ft)</th>
+        </tr></thead>
+        <tbody class="divide-y divide-gray-100">
+          {[
+            ['Shredded Hardwood', '$28–$50', '$4–$7'],
+            ['Cedar Mulch', '$40–$75', '$6–$10'],
+            ['Pine Bark Nuggets', '$35–$55', '$5–$9'],
+            ['Colored / Dyed', '$35–$65', '$5–$9'],
+            ['Pine Straw', '$25–$45 / yd', '$4–$7 / bale'],
+            ['Rubber Mulch', '$80–$160', '$12–$22'],
+          ].map(([type, bulk, bag]) => (
+            <tr>
+              <td class="py-2 text-gray-800">{type}</td>
+              <td class="py-2 text-right text-gray-700">{bulk}</td>
+              <td class="py-2 text-right text-gray-700">{bag}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p class="text-xs text-gray-400 mt-2">Bulk: landscape yard pickup. Add $50–$100 for delivery. <a href="/calculator/mulch" class="text-brand-600 hover:underline">Calculate mulch →</a></p>
+    </div>
+
+    <div class="calculator-card overflow-x-auto mb-6">
+      <h3 class="font-semibold text-gray-900 mb-3">Gravel & Stone</h3>
+      <table class="w-full text-sm">
+        <thead><tr class="border-b border-gray-200">
+          <th class="text-left py-2 font-medium text-gray-500">Type</th>
+          <th class="text-right py-2 font-medium text-gray-500">Per ton</th>
+          <th class="text-right py-2 font-medium text-gray-500">Per cu yd</th>
+        </tr></thead>
+        <tbody class="divide-y divide-gray-100">
+          {[
+            ['Crusher Run / Road Base', '$10–$22', '$15–$32'],
+            ['Crushed Stone (3/4 in)', '$15–$30', '$22–$42'],
+            ['Pea Gravel', '$25–$45', '$35–$65'],
+            ['Decomposed Granite', '$30–$50', '$42–$70'],
+            ['River Rock (small)', '$40–$75', '$55–$105'],
+            ['River Rock (large)', '$50–$90', '$70–$130'],
+            ['Limestone', '$12–$25', '$17–$35'],
+          ].map(([type, ton, cuyd]) => (
+            <tr>
+              <td class="py-2 text-gray-800">{type}</td>
+              <td class="py-2 text-right text-gray-700">{ton}</td>
+              <td class="py-2 text-right text-gray-700">{cuyd}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p class="text-xs text-gray-400 mt-2"><a href="/calculator/gravel" class="text-brand-600 hover:underline">Calculate gravel →</a> · <a href="/guide/gravel-cost-by-state" class="text-brand-600 hover:underline">Prices by state →</a></p>
+    </div>
+
+    <div class="calculator-card overflow-x-auto mb-6">
+      <h3 class="font-semibold text-gray-900 mb-3">Topsoil & Soil</h3>
+      <table class="w-full text-sm">
+        <thead><tr class="border-b border-gray-200">
+          <th class="text-left py-2 font-medium text-gray-500">Type</th>
+          <th class="text-right py-2 font-medium text-gray-500">Bulk (per cu yd)</th>
+          <th class="text-right py-2 font-medium text-gray-500">Bag (40 lb)</th>
+        </tr></thead>
+        <tbody class="divide-y divide-gray-100">
+          {[
+            ['Topsoil (bulk)', '$18–$40', '$5–$8'],
+            ['Garden Soil (bag only)', '—', '$7–$12'],
+            ['Compost', '$25–$55', '$8–$14'],
+            ['Raised Bed Mix', '$40–$80', '$10–$18'],
+          ].map(([type, bulk, bag]) => (
+            <tr>
+              <td class="py-2 text-gray-800">{type}</td>
+              <td class="py-2 text-right text-gray-700">{bulk}</td>
+              <td class="py-2 text-right text-gray-700">{bag}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p class="text-xs text-gray-400 mt-2"><a href="/calculator/topsoil" class="text-brand-600 hover:underline">Calculate topsoil →</a></p>
+    </div>
+
+    <div class="calculator-card overflow-x-auto">
+      <h3 class="font-semibold text-gray-900 mb-3">Sod</h3>
+      <table class="w-full text-sm">
+        <thead><tr class="border-b border-gray-200">
+          <th class="text-left py-2 font-medium text-gray-500">Type</th>
+          <th class="text-right py-2 font-medium text-gray-500">Per sq ft</th>
+          <th class="text-right py-2 font-medium text-gray-500">Per pallet (~450 sq ft)</th>
+        </tr></thead>
+        <tbody class="divide-y divide-gray-100">
+          {[
+            ['Bermuda', '$0.30–$0.55', '$135–$250'],
+            ['St. Augustine', '$0.35–$0.65', '$155–$290'],
+            ['Zoysia', '$0.40–$0.75', '$180–$335'],
+            ['Tall Fescue', '$0.35–$0.60', '$155–$270'],
+            ['Kentucky Bluegrass', '$0.40–$0.70', '$180–$315'],
+          ].map(([type, sqft, pallet]) => (
+            <tr>
+              <td class="py-2 text-gray-800">{type}</td>
+              <td class="py-2 text-right text-gray-700">{sqft}</td>
+              <td class="py-2 text-right text-gray-700">{pallet}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p class="text-xs text-gray-400 mt-2"><a href="/calculator/sod" class="text-brand-600 hover:underline">Calculate sod →</a></p>
+    </div>
+  </section>
+
+  <!-- Concrete -->
+  <section class="mb-10">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">🏗️ Concrete & Sand</h2>
+    <div class="grid sm:grid-cols-2 gap-6">
+
+      <div class="calculator-card overflow-x-auto">
+        <h3 class="font-semibold text-gray-900 mb-3">Concrete</h3>
+        <table class="w-full text-sm">
+          <thead><tr class="border-b border-gray-200">
+            <th class="text-left py-2 font-medium text-gray-500">Type</th>
+            <th class="text-right py-2 font-medium text-gray-500">Price</th>
+          </tr></thead>
+          <tbody class="divide-y divide-gray-100">
+            {[
+              ['Ready-mix 3,000 PSI', '$130–$160 / cu yd'],
+              ['Ready-mix 4,000 PSI', '$145–$175 / cu yd'],
+              ['Quikrete 80 lb bag', '$6–$10 / bag'],
+              ['Quikrete 60 lb bag', '$5–$8 / bag'],
+              ['Short-load fee', '$50–$150 / order'],
+            ].map(([type, price]) => (
+              <tr>
+                <td class="py-2 text-gray-800">{type}</td>
+                <td class="py-2 text-right text-gray-700">{price}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <p class="text-xs text-gray-400 mt-2"><a href="/calculator/concrete" class="text-brand-600 hover:underline">Calculate concrete →</a></p>
+      </div>
+
+      <div class="calculator-card overflow-x-auto">
+        <h3 class="font-semibold text-gray-900 mb-3">Sand</h3>
+        <table class="w-full text-sm">
+          <thead><tr class="border-b border-gray-200">
+            <th class="text-left py-2 font-medium text-gray-500">Type</th>
+            <th class="text-right py-2 font-medium text-gray-500">Price</th>
+          </tr></thead>
+          <tbody class="divide-y divide-gray-100">
+            {[
+              ['All-purpose (bulk)', '$25–$45 / cu yd'],
+              ['Paver sand (bulk)', '$28–$50 / cu yd'],
+              ['Play sand (50 lb bag)', '$6–$10 / bag'],
+              ['Mason sand (bulk)', '$25–$48 / cu yd'],
+            ].map(([type, price]) => (
+              <tr>
+                <td class="py-2 text-gray-800">{type}</td>
+                <td class="py-2 text-right text-gray-700">{price}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <p class="text-xs text-gray-400 mt-2"><a href="/calculator/sand" class="text-brand-600 hover:underline">Calculate sand →</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interior -->
+  <section class="mb-10">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">🎨 Interior Materials</h2>
+    <div class="calculator-card overflow-x-auto">
+      <h3 class="font-semibold text-gray-900 mb-3">Paint</h3>
+      <table class="w-full text-sm">
+        <thead><tr class="border-b border-gray-200">
+          <th class="text-left py-2 font-medium text-gray-500">Type</th>
+          <th class="text-right py-2 font-medium text-gray-500">Per gallon</th>
+          <th class="text-right py-2 font-medium text-gray-500">Coverage</th>
+        </tr></thead>
+        <tbody class="divide-y divide-gray-100">
+          {[
+            ['Standard interior (flat/eggshell)', '$25–$45', '350 sq ft'],
+            ['Premium interior', '$45–$75', '400 sq ft'],
+            ['Exterior paint', '$35–$70', '350 sq ft'],
+            ['Primer', '$20–$35', '250 sq ft'],
+            ['Ceiling paint', '$20–$40', '350 sq ft'],
+          ].map(([type, gal, cov]) => (
+            <tr>
+              <td class="py-2 text-gray-800">{type}</td>
+              <td class="py-2 text-right text-gray-700">{gal}</td>
+              <td class="py-2 text-right text-gray-700">{cov}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p class="text-xs text-gray-400 mt-2"><a href="/calculator/paint" class="text-brand-600 hover:underline">Calculate paint →</a></p>
+    </div>
+  </section>
+
+  <AdSlot slot="footer-banner" />
+
+</div>
+</BaseLayout>

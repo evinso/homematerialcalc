@@ -1,0 +1,96 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How much soil do I need to fill a raised bed?', a: 'A 4×8 ft raised bed at 12 inches deep needs 32 cubic feet — about 1.2 cubic yards. Use a mix of 60% topsoil, 30% compost, and 10% perlite or coarse sand. For a 4×4 bed at 12 inches: 0.6 cubic yards.' },
+  { q: 'What wood should I use for a raised garden bed?', a: 'Cedar and redwood are the top choices — both are naturally rot-resistant and last 15–20 years without treatment. Douglas fir is cheaper and lasts 5–7 years. Avoid pressure-treated lumber near vegetables; if you must use it, choose ACQ-treated wood (arsenic-free).' },
+  { q: 'How deep should a raised garden bed be?', a: 'Minimum 6 inches for flowers and lettuce. 12 inches is ideal for most vegetables. 18 inches for deep-rooted crops like tomatoes, carrots, and squash. Taller beds (24 in) reduce bending and are good for accessibility.' },
+  { q: 'Should I put cardboard at the bottom of a raised bed?', a: 'Yes — a layer of cardboard (remove tape and staples) at the bottom smothers grass and weeds beneath the bed and breaks down into organic matter within a season. It also keeps soil from washing out through the gaps.' },
+  { q: 'What is the best soil mix for a raised bed?', a: "Mel's Mix (from the book Square Foot Gardening) is widely recommended: 1/3 vermiculite, 1/3 blended compost, 1/3 peat moss. A simpler alternative: 60% topsoil, 30% compost, 10% perlite. Never fill with 100% native soil — it compacts and drains poorly." },
+];
+
+export const related = [
+  { href: '/calculator/topsoil', label: 'Topsoil Calculator' },
+  { href: '/guide/how-much-topsoil-for-raised-bed', label: 'How Much Topsoil for a Raised Bed?' },
+  { href: '/guide/topsoil-vs-garden-soil', label: 'Topsoil vs Garden Soil' },
+  { href: '/guide/how-much-mulch-do-i-need', label: 'How Much Mulch Do I Need?' },
+];
+
+<GuideLayout
+  title="How to Build a Raised Garden Bed — Materials, Soil Mix & Cost"
+  description="Complete raised garden bed guide: lumber sizes, soil volume calculations for 4×4, 4×8, and 4×12 beds, best soil mix recipe, costs, and step-by-step build instructions."
+  h1="How to Build a Raised Garden Bed — Complete Project Guide"
+  intro="A raised garden bed can be built in a single afternoon and produces vegetables for 10–20 years. This guide covers lumber selection, soil volume calculations, the best soil mix, and everything you need from hardware store to harvest."
+  calculatorHref="/calculator/topsoil"
+  calculatorLabel="Topsoil Calculator — get cubic yards and bags for your raised bed"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'How to Build a Raised Garden Bed' }]}
+>
+
+## Soil volume by bed size
+
+| Bed size | Depth | Cubic feet | Cubic yards | 40 lb bags |
+|----------|-------|------------|-------------|------------|
+| 4×4 ft | 6 in | 8 | 0.30 | 12 |
+| 4×4 ft | 12 in | 16 | 0.59 | 24 |
+| 4×8 ft | 6 in | 16 | 0.59 | 24 |
+| 4×8 ft | 12 in | 32 | 1.19 | 48 |
+| 4×12 ft | 12 in | 48 | 1.78 | 72 |
+| 4×8 ft | 18 in | 48 | 1.78 | 72 |
+
+*40 lb bag of garden soil ≈ 0.67 cu ft. For bulk orders, 1 cu yd = 27 cu ft.*
+
+## Lumber materials (standard 4×8 bed, 12 in tall)
+
+| Material | Quantity | Approx. cost |
+|----------|----------|-------------|
+| 2×6×8 ft cedar boards | 4 boards | $60–$100 |
+| 2×6×4 ft cedar boards | 4 boards | $30–$60 |
+| Corner posts (4×4×12 in) | 4 pieces | $20–$40 |
+| 3 in exterior screws (box) | 1 box | $8–$15 |
+| Cardboard (free) | 1 layer | $0 |
+| Landscape fabric (optional) | 32 sq ft | $8–$15 |
+| **Soil mix (see below)** | 1.2 cu yd | $80–$200 |
+| **Total** | | **$206–$430** |
+
+## Best soil mix recipe
+
+For 1 cubic yard of raised bed mix:
+
+- **0.6 cu yd (60%) topsoil** — provides minerals and weight
+- **0.3 cu yd (30%) compost** — feeds plants, improves drainage
+- **0.1 cu yd (10%) perlite or coarse sand** — prevents compaction
+
+This mix drains well, holds nutrients, and stays loose season after season. Add 2 inches of compost on top each spring.
+
+## Build steps
+
+### Step 1 — Choose your site
+Full sun (6+ hours/day) is ideal for most vegetables. Level ground makes construction easier. Keep it near a water source.
+
+### Step 2 — Cut and assemble the frame
+For a 4×8 bed: two 8-ft boards for the long sides, two 4-ft boards for the short sides. Stack two boards high for 12-inch depth. Screw boards to corner posts with 3-in exterior screws.
+
+### Step 3 — Position and level
+Set the frame in place. Check with a level. Use a rubber mallet to adjust corner posts into the ground for stability.
+
+### Step 4 — Line the bottom
+Lay cardboard inside (overlapping seams by 6 inches) to kill weeds. Wet the cardboard thoroughly.
+
+### Step 5 — Fill with soil mix
+Add soil in layers, tamping lightly. Leave 2 inches from the top to allow for watering and mulch. Water thoroughly after filling.
+
+### Step 6 — Mulch the top
+Add 2–3 inches of straw or wood chip mulch between plants to retain moisture and suppress weeds within the bed.
+
+## Best vegetables for raised beds
+
+| Vegetable | Min depth | Spacing |
+|-----------|----------|---------|
+| Lettuce, herbs | 6 in | 4–6 in |
+| Beans, peppers | 12 in | 6–12 in |
+| Tomatoes | 18 in | 18–24 in |
+| Carrots, beets | 12 in | 3–4 in |
+| Squash, cucumbers | 12 in | 18–24 in |
+
+</GuideLayout>

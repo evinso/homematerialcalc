@@ -1,0 +1,102 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How much does it cost to build a patio?', a: 'A DIY paver patio costs $3–$8 per sq ft in materials. A 12×16 ft patio (192 sq ft) runs $575–$1,535 in materials: gravel base, sand, pavers, and polymeric joint sand. Professional installation adds $8–$20 per sq ft in labor.' },
+  { q: 'How long does it take to build a 12×16 patio?', a: 'A 12×16 ft paver patio is a weekend project for 2 people — 8–10 hours total. Excavation takes 2–3 hours, base compaction 1–2 hours, sand screeding 1 hour, and paver laying 3–4 hours. The next morning: joint sand and sealing.' },
+  { q: 'Do I need a permit to build a patio?', a: 'Most ground-level paver patios do not require a permit. Raised decks, patios with roofs, and those over 200 sq ft may require one. Check with your local building department before starting.' },
+  { q: 'What is the best base for a paver patio?', a: '4 inches of compacted crushed stone (road base or #57 stone) topped with 1 inch of coarse bedding sand is the standard base for residential paver patios. Never skip the compacted gravel layer — it prevents settling and frost heave.' },
+  { q: 'Can I build a patio over grass?', a: 'No. You must excavate 6–8 inches of soil and replace it with compacted gravel base and sand. Laying pavers over grass leads to settling, uneven surfaces, and weed growth through gaps within 1–2 seasons.' },
+];
+
+export const related = [
+  { href: '/calculator/paver', label: 'Paver Calculator' },
+  { href: '/calculator/gravel', label: 'Gravel Calculator' },
+  { href: '/calculator/sand', label: 'Sand Calculator' },
+  { href: '/guide/how-to-lay-pavers', label: 'How to Lay Pavers' },
+];
+
+<GuideLayout
+  title="How to Build a Patio — Complete Materials & Cost Guide"
+  description="Complete guide to building a paver patio: full materials list, cubic yard calculations for gravel base and sand, paver count, costs, and step-by-step order of operations."
+  h1="How to Build a Patio — Complete Project Guide"
+  intro="Building a paver patio is one of the most rewarding DIY projects for homeowners. This guide covers every material you need, how much to buy, and the correct order of operations from excavation to finished surface."
+  calculatorHref="/calculator/paver"
+  calculatorLabel="Paver Calculator — get your exact paver count, gravel, and sand"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'How to Build a Patio' }]}
+>
+
+## Full materials list for a 12×16 ft patio
+
+| Material | Quantity | Approx. cost |
+|----------|----------|-------------|
+| Gravel base (4 in deep) | 2.4 cu yd | $75–$120 |
+| Bedding sand (1 in deep) | 0.6 cu yd | $25–$40 |
+| Pavers (4×8 in) | ~880 pieces | $350–$900 |
+| Edge restraints | ~56 linear ft | $45–$80 |
+| Polymeric joint sand | 2–3 bags | $60–$90 |
+| Landscape fabric (optional) | 200 sq ft | $20–$30 |
+| **Total materials** | | **$575–$1,260** |
+
+*Paver price varies widely by material (concrete vs. brick vs. natural stone).*
+
+## Step 1 — Plan and measure
+
+Mark your patio outline with stakes and string. Standard residential patios slope away from the house at 1/8 inch per foot (1% grade) for drainage.
+
+**Calculate your area:** Length × Width = square feet. A 12×16 ft patio = 192 sq ft.
+
+## Step 2 — Calculate materials
+
+### Gravel base
+**Formula:** Area (sq ft) × Depth (in) ÷ 324 = cubic yards
+
+192 sq ft × 4 in ÷ 324 = **2.37 cu yd** → order 2.5 cu yd
+
+### Bedding sand (always 1 inch)
+192 sq ft × 1 in ÷ 324 = **0.59 cu yd** → order 0.65 cu yd
+
+### Paver count (4×8 in standard brick paver)
+4×8 paver = 0.22 sq ft per paver → 192 sq ft ÷ 0.22 = 873 pavers
+Add 10% waste: **960 pavers**
+
+Use the [Paver Calculator](/calculator/paver) for other paver sizes.
+
+## Step 3 — Excavate
+
+Dig 6–8 inches below finished grade (4 in gravel + 1 in sand + 2.5 in paver thickness).
+
+Rent a plate compactor ($80–$120/day) and compact the native soil before adding any base material.
+
+## Step 4 — Install base layers
+
+1. Add compactable gravel in 2-inch lifts, compacting each layer
+2. Check grade with a level — maintain the 1% slope toward the yard
+3. Install edge restraints along all open edges
+4. Screed 1 inch of coarse sand level using 1-inch pipes as guides
+
+## Step 5 — Lay pavers
+
+Start at a 90° corner. Work outward in a running bond or herringbone pattern. Tap each paver with a rubber mallet. Check level every 4–5 rows.
+
+Cut edge pavers with a masonry saw or chisel. Pieces smaller than 1/3 of a full paver shift too easily — adjust your layout to avoid them.
+
+## Step 6 — Finish
+
+1. Compact the paver surface with a plate compactor (use rubber pad to protect surface)
+2. Spread polymeric sand and sweep into joints
+3. Compact again
+4. Mist lightly with water to activate the polymer binder
+5. Keep foot traffic off for 24 hours
+
+## Common size reference
+
+| Patio size | Gravel needed | Sand needed | 4×8 pavers (+ 10%) |
+|------------|---------------|-------------|---------------------|
+| 10×10 ft | 1.2 cu yd | 0.31 cu yd | 500 |
+| 12×16 ft | 2.4 cu yd | 0.59 cu yd | 960 |
+| 16×20 ft | 3.9 cu yd | 0.99 cu yd | 1,760 |
+| 20×24 ft | 5.9 cu yd | 1.48 cu yd | 2,640 |
+
+</GuideLayout>

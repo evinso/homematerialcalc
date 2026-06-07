@@ -1,0 +1,98 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'When should I apply mulch in spring?', a: 'Apply mulch in spring after the soil has warmed — typically late April through May in most US regions. Applying too early keeps cold soil from warming up. Wait until daytime temps are consistently above 50°F and perennials have broken dormancy.' },
+  { q: 'When should I fertilize my lawn in spring?', a: 'For cool-season grasses, apply a slow-release nitrogen fertilizer when the lawn starts actively growing — when soil temps reach 55°F, usually March–April. For warm-season grasses, wait until late April–May when temps consistently exceed 65°F. Do not fertilize dormant grass.' },
+  { q: 'Should I aerate in spring or fall?', a: 'Fall is the best time to aerate cool-season lawns — the grass recovers quickly in cool weather. Spring aeration works but the holes close slowly. For warm-season grasses, spring aeration is ideal, done just before the active growing season.' },
+  { q: 'How much mulch do I need to refresh my beds in spring?', a: 'To refresh mulch beds from 1 inch to 3 inches (adding 2 inches): 100 sq ft needs 0.62 cu yd or 9 bags. Most homes need 2–5 cubic yards for a full spring refresh. Measure your total bed area and use the Mulch Calculator for an exact count.' },
+  { q: 'When can I plant vegetables in spring?', a: 'Plant cool-season crops (lettuce, spinach, peas, broccoli) 4–6 weeks before last frost. Plant warm-season crops (tomatoes, peppers, squash) 1–2 weeks after last frost when soil temps reach 60°F. Find your last frost date at the USDA plant hardiness zone map.' },
+];
+
+export const related = [
+  { href: '/calculator/mulch', label: 'Mulch Calculator' },
+  { href: '/calculator/topsoil', label: 'Topsoil Calculator' },
+  { href: '/guide/best-mulch-for-flower-beds', label: 'Best Mulch for Flower Beds' },
+  { href: '/guide/how-to-reseed-a-lawn', label: 'How to Reseed a Lawn' },
+];
+
+<GuideLayout
+  title="Spring Lawn & Garden Checklist — What to Do and When"
+  description="Complete spring lawn and garden checklist: when to mulch, fertilize, aerate, overseed, and plant — with material quantities and timing guide for cool and warm season yards."
+  h1="Spring Lawn & Garden Checklist"
+  intro="Spring is the highest-impact time in the yard. Do the right tasks in the right order and your lawn and garden set up for the whole season. Here is a week-by-week checklist with the materials you will need."
+  calculatorHref="/calculator/mulch"
+  calculatorLabel="Mulch Calculator — get your spring bed refresh quantity"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Spring Lawn & Garden Checklist' }]}
+>
+
+## Spring task timeline
+
+| When | Task | Priority |
+|------|------|----------|
+| Soil temp 40°F+ | Remove winter mulch from perennials | High |
+| Soil temp 45°F+ | Apply pre-emergent weed control | High |
+| Soil temp 50°F+ | Overseed bare patches | High |
+| Soil temp 50°F+ | Apply mulch to beds | High |
+| Soil temp 55°F+ | Fertilize cool-season lawn | Medium |
+| After last frost | Plant cool-season annuals | Medium |
+| Soil temp 60°F+ | Plant warm-season vegetables | High |
+| As needed | Edge beds, trim shrubs | Low |
+
+*Check soil temperature with a $10 soil thermometer — air temperature is not reliable.*
+
+## Material quantities for a typical spring refresh
+
+### Mulch refresh (adding 2 inches to existing beds)
+- 200 sq ft of beds: **1.2 cu yd = 17 bags**
+- 400 sq ft: **2.5 cu yd = 34 bags**
+- 600 sq ft: **3.7 cu yd = 50 bags**
+
+**Rule:** sq ft × 2 in ÷ 324 = cubic yards
+
+### Topsoil for bare lawn patches
+- 100 sq ft at 1 in: **0.3 cu yd = 5 bags**
+- 500 sq ft at 1 in: **1.5 cu yd = 23 bags**
+
+### Grass seed for overseeding
+- 1,000 sq ft (tall fescue): **3–4 lbs**
+- 5,000 sq ft: **15–20 lbs**
+
+## Week-by-week spring checklist
+
+### Early spring (March–April, soil 40–50°F)
+- [ ] Rake leaves and debris from beds and lawn
+- [ ] Remove winter protection (burlap, mulch mounds) from shrubs
+- [ ] Clean and sharpen mower blades
+- [ ] Apply pre-emergent herbicide to lawn (before forsythia blooms — nature's signal)
+- [ ] Prune dead wood from shrubs and ornamental grasses
+- [ ] Divide and replant overgrown perennials
+
+### Mid spring (April–May, soil 50–60°F)
+- [ ] Apply 2–3 inches of mulch to all beds
+- [ ] Overseed bare and thin lawn areas
+- [ ] Apply starter fertilizer to seeded areas
+- [ ] Plant cool-season annuals and vegetables
+- [ ] Fertilize established lawn (slow-release nitrogen)
+- [ ] Aerate compacted lawn areas
+
+### Late spring (May–June, soil 60°F+)
+- [ ] Plant warm-season vegetables after last frost
+- [ ] First lawn mowing of the season (3 in height for most grasses)
+- [ ] Set up irrigation timer for the season
+- [ ] Apply pre-emergent to gravel paths and driveways
+- [ ] Inspect and clean gutters and downspouts
+
+## Spring mulching guide
+
+Fresh mulch every spring does four things: suppresses weeds, retains moisture, regulates soil temperature, and improves soil as it decomposes.
+
+**How to apply:**
+1. Pull old mulch back from plant stems (leave 2–3 in gap)
+2. Weed the bed thoroughly
+3. Apply fresh mulch to 2–3 in total depth
+4. Do not mix old and new mulch — the old layer is fine to leave as base
+5. Water in after applying
+
+</GuideLayout>

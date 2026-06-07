@@ -2,6 +2,7 @@ import { useState } from 'react';
 import WasteSlider from '../ui/WasteSlider';
 import { calcPaint } from '../../lib/engine/calculators';
 import { PAINT, PAINT_COVERAGE } from '../../lib/engine/constants';
+import { useLocalStorage } from '../../lib/useLocalStorage';
 import type { PaintSurface } from '../../lib/engine/constants';
 
 const SURFACE_LABELS: Record<PaintSurface, string> = {
@@ -13,11 +14,11 @@ const SURFACE_LABELS: Record<PaintSurface, string> = {
 
 export default function PaintCalculator() {
   const [mode, setMode] = useState<'room' | 'area'>('room');
-  const [length, setLength] = useState(12);
-  const [width, setWidth]   = useState(12);
-  const [height, setHeight] = useState(8);
+  const [length, setLength] = useLocalStorage('paint_length', 12);
+  const [width, setWidth]   = useLocalStorage('paint_width', 12);
+  const [height, setHeight] = useLocalStorage('paint_height', 8);
   const [wallArea, setWallArea] = useState(400);
-  const [doors, setDoors]       = useState(1);
+  const [doors, setDoors]       = useLocalStorage('paint_doors', 1);
   const [windows, setWindows]   = useState(2);
   const [coats, setCoats]       = useState(PAINT.DEFAULT_COATS);
   const [surface, setSurface]   = useState<PaintSurface>(PAINT.DEFAULT_SURFACE);

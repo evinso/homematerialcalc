@@ -1,0 +1,74 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How much does concrete cost per yard in California?', a: 'Ready-mix concrete in California costs $145–$200 per cubic yard — among the highest in the US. Los Angeles and Bay Area markets run $160–$200/yd; inland and Central Valley areas are lower at $140–$170/yd. High labor costs and environmental regulations drive prices up.' },
+  { q: 'How much does a concrete driveway cost in California?', a: 'A standard 2-car concrete driveway in California costs $4,500–$10,000 installed ($7–$17/sq ft). LA and Bay Area labor rates are significantly higher than the national average. Permits may be required depending on your city.' },
+  { q: 'Do I need a permit for a concrete driveway in California?', a: 'Many California cities require permits for new concrete driveways or patio slabs over 200 sq ft. Check with your local building department. Permit costs range from $150–$500. Some HOA communities also require approval before any hardscape work.' },
+  { q: 'Is concrete or pavers better for California driveways?', a: 'Both work well in California mild climate. Pavers are popular in Southern California — they allow water to permeate (meeting low-impact development requirements in some municipalities) and are easier to repair. Concrete is more durable and lower long-term maintenance.' },
+  { q: 'What is the best time to pour concrete in California?', a: 'Year-round pouring is possible in most of California. Avoid pouring during extreme heat (above 95°F) in inland areas — use retarding admixtures or pour in early morning. Coastal regions rarely have temperature concerns.' },
+];
+
+export const related = [
+  { href: '/calculator/concrete', label: 'Concrete Calculator' },
+  { href: '/guide/how-much-does-concrete-cost', label: 'How Much Does Concrete Cost?' },
+  { href: '/guide/asphalt-vs-concrete-driveway', label: 'Asphalt vs Concrete Driveway' },
+  { href: '/calculator/paver', label: 'Paver Calculator' },
+];
+
+<GuideLayout
+  title="Concrete Cost in California — 2026 Price Guide (LA, Bay Area, SD)"
+  description="Concrete prices in California 2026: ready-mix cost per cubic yard in Los Angeles, San Francisco, and San Diego. Driveway and patio cost per square foot with permit information."
+  h1="Concrete Cost in California — 2026 Price Guide"
+  intro="California has some of the highest concrete costs in the US, driven by labor rates, environmental regulations, and regional material costs. Here is a complete breakdown of what to expect for concrete projects in Los Angeles, the Bay Area, San Diego, and inland California."
+  calculatorHref="/calculator/concrete"
+  calculatorLabel="Concrete Calculator — get cubic yards for your California project"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Concrete Cost in California' }]}
+>
+
+## California ready-mix concrete prices (2026)
+
+| Mix strength | Price per cubic yard | Common use |
+|-------------|---------------------|-----------|
+| 2,500 PSI | $140–$165 | Light slabs, sidewalks |
+| 3,000 PSI | $150–$180 | Residential driveways, patios |
+| 4,000 PSI | $165–$195 | Garages, seismic zones |
+| 5,000 PSI | $185–$215 | Structural, commercial |
+
+## Prices by California region
+
+| Region | 3,000 PSI (per cu yd) | Notes |
+|--------|----------------------|-------|
+| Los Angeles | $160–$200 | High labor, traffic surcharges |
+| San Francisco Bay Area | $165–$205 | Highest costs in state |
+| San Diego | $155–$190 | Strong demand, competitive |
+| Sacramento | $145–$175 | More moderate inland pricing |
+| Central Valley (Fresno) | $140–$165 | Lower labor rates |
+| Inland Empire (Riverside) | $150–$180 | Between coastal and inland |
+
+## Project cost estimates in California
+
+| Project | Size | Materials only | Installed (avg) |
+|---------|------|---------------|----------------|
+| Walkway | 3×20 ft | $170–$235 | $600–$1,400 |
+| Patio | 12×16 ft | $360–$450 | $1,800–$4,500 |
+| Driveway (1-car) | 10×20 ft | $600–$720 | $2,000–$5,000 |
+| Driveway (2-car) | 12×50 ft | $1,500–$1,800 | $4,500–$10,000 |
+| Pool deck | 500 sq ft | $2,300–$2,800 | $6,000–$15,000 |
+
+## California-specific factors
+
+### Seismic considerations
+Earthquake-prone regions require stronger concrete and more rebar than national standards. For structural applications, 4,000 PSI with #4 rebar on 18-inch centers is typical. Residential driveways and patios are generally not seismically regulated.
+
+### Low-impact development (LID) requirements
+Many California cities require that new hardscape not increase stormwater runoff. Options include:
+- Pervious concrete (allows water through) — adds $2–$5/sq ft
+- Paver systems with permeable joints
+- Limiting total impervious coverage to a percentage of lot area
+
+### Contractor availability
+High demand in coastal markets means longer lead times (4–8 weeks for major projects). Get 3 quotes and expect significant price variation between contractors.
+
+</GuideLayout>

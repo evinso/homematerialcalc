@@ -1,0 +1,90 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'What state has the cheapest mulch?', a: 'States with abundant forests and wood processing industries — Pacific Northwest (OR, WA), Southeast (GA, FL, NC), and Midwest (MI, WI) — tend to have the lowest bulk mulch prices ($18–$35/cu yd). Drier states like Nevada, Arizona, and New Mexico have the highest prices ($45–$80/cu yd) due to less local wood supply.' },
+  { q: 'How much does bulk mulch delivery cost by state?', a: 'Mulch delivery typically costs $50–$150 per load regardless of state. Some areas charge by the mile beyond a base radius (typically 20 miles). In dense urban markets like NYC and LA, minimum order quantities and delivery fees can be higher ($100–$200 per delivery).' },
+  { q: 'Is dyed mulch cheaper or more expensive than natural mulch?', a: 'Dyed mulch (black, red, brown) is typically $5–$15 per cubic yard more expensive than undyed shredded hardwood. The dye is iron oxide-based and non-toxic. Dyed mulch fades over a season; natural mulch turns gray but blends with the landscape.' },
+  { q: 'How many cubic yards of mulch does an average yard need?', a: 'The average suburban home with 200–400 sq ft of garden beds needs 2–4 cubic yards of mulch per year at a 3-inch application depth. Larger properties with extensive foundation plantings may need 6–10 cubic yards.' },
+  { q: 'When is mulch cheapest to buy?', a: 'Mulch prices are lowest in late fall (October–November) and late winter (February) when demand drops. Many suppliers discount overstock in November. Spring mulch (March–May) is the most expensive due to peak demand.' },
+];
+
+export const related = [
+  { href: '/calculator/mulch', label: 'Mulch Calculator' },
+  { href: '/guide/how-much-does-mulch-cost', label: 'How Much Does Mulch Cost?' },
+  { href: '/guide/types-of-mulch', label: 'Types of Mulch' },
+  { href: '/guide/mulch-cost-florida', label: 'Mulch Cost in Florida' },
+];
+
+<GuideLayout
+  title="Mulch Cost by State — 2026 Price Guide for Bulk & Bagged Mulch"
+  description="Mulch prices by state in 2026: bulk shredded hardwood, cedar, and pine mulch cost per cubic yard across all US regions. Cheapest states for mulch and delivery cost guide."
+  h1="Mulch Cost by State — 2026 Price Guide"
+  intro="Mulch prices range from under $20 per cubic yard in forested states to over $60 in dry western markets. Here is a regional breakdown of bulk mulch prices, the best time to buy, and how to get the lowest price in your area."
+  calculatorHref="/calculator/mulch"
+  calculatorLabel="Mulch Calculator — get cubic yards for your project"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Mulch Cost by State' }]}
+>
+
+## Bulk mulch prices by US region (2026)
+
+### Southeast — Lowest prices
+*Abundant pine and hardwood forests*
+
+| State | Shredded hardwood | Cedar | Pine straw (bale) |
+|-------|-----------------|-------|-----------------|
+| Florida | $18–$35 | $35–$55 | $4–$7 |
+| Georgia | $20–$36 | $36–$56 | $4–$7 |
+| North Carolina | $20–$37 | $37–$58 | $4–$6 |
+| Alabama | $18–$33 | $33–$52 | $3–$6 |
+| Tennessee | $20–$36 | $36–$56 | $4–$7 |
+
+### Midwest
+| State | Shredded hardwood | Cedar | Pine bark |
+|-------|-----------------|-------|----------|
+| Illinois | $24–$40 | $40–$60 | $32–$52 |
+| Ohio | $23–$39 | $39–$59 | $30–$50 |
+| Michigan | $22–$38 | $38–$58 | $30–$50 |
+| Wisconsin | $21–$37 | $37–$57 | $28–$48 |
+
+### Northeast — Above average
+| State | Shredded hardwood | Cedar |
+|-------|-----------------|-------|
+| New York | $30–$50 | $50–$80 |
+| New Jersey | $30–$52 | $52–$82 |
+| Massachusetts | $32–$55 | $55–$85 |
+| Connecticut | $33–$57 | $57–$88 |
+
+### West
+| State | Shredded hardwood | Cedar |
+|-------|-----------------|-------|
+| California | $32–$58 | $55–$90 |
+| Washington | $25–$45 | $45–$70 |
+| Oregon | $24–$43 | $43–$68 |
+| Colorado | $30–$52 | $50–$78 |
+
+### Dry West — Most expensive
+| State | Shredded hardwood | Notes |
+|-------|-----------------|-------|
+| Nevada | $40–$68 | Imported from Pacific NW |
+| Arizona | $38–$65 | Limited local supply |
+| New Mexico | $35–$60 | Desert market |
+
+## Bagged mulch prices (national avg)
+
+| Bag size | Price range | Cost per cu yd equiv. |
+|----------|-------------|----------------------|
+| 2 cu ft bag | $4–$8 | $54–$108 |
+| 3 cu ft bag | $6–$12 | $54–$108 |
+
+Bagged mulch is **2–3× more expensive** than bulk in most markets. Buy bulk for any order over 1.5 cubic yards.
+
+## Best sources by state
+
+- **Southeast:** Local landscape yards and tree service companies. ChipDrop.com often provides free fresh wood chips.
+- **Midwest:** Co-op landscape supply yards frequently have the best bulk prices.
+- **Northeast:** Competition among suppliers is high in suburban markets — get 3 quotes.
+- **West:** Recycled wood chip mulch from municipal programs is often free or very cheap.
+
+</GuideLayout>

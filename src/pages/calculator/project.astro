@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCalculator from '../../components/calculators/ProjectCalculator';
+import AdSlot from '../../components/ui/AdSlot.astro';
+import CalcBreadcrumbs from '../../components/ui/CalcBreadcrumbs.astro';
+
+const related = [
+  { href: '/calculator/paver',   label: 'Paver Calculator' },
+  { href: '/calculator/gravel',  label: 'Gravel Calculator' },
+  { href: '/calculator/sand',    label: 'Sand Calculator' },
+  { href: '/calculator/topsoil', label: 'Topsoil Calculator' },
+  { href: '/guide/how-to-build-a-patio', label: 'How to Build a Patio' },
+  { href: '/guide/how-to-build-a-gravel-driveway', label: 'How to Build a Gravel Driveway' },
+  { href: '/guide/how-to-build-a-raised-garden-bed', label: 'How to Build a Raised Garden Bed' },
+];
+---
+
+<BaseLayout
+  title="Project Calculator — All Materials in One Place | HomeMaterialCalc"
+  description="Get every material you need for your project in one place. Paver patio, gravel driveway, raised garden bed, and garden path — full materials list with quantities and cost estimates."
+>
+  <div class="max-w-6xl mx-auto px-4 py-10">
+    <CalcBreadcrumbs crumbs={[{ label: 'Project Calculator' }]} />
+
+    <div class="grid lg:grid-cols-[1fr_340px] gap-10">
+
+      <!-- Left: calculator -->
+      <div>
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">Project Calculator</h1>
+        <p class="text-gray-600 mb-6">
+          Stop calculating one material at a time. Choose your project, enter the dimensions once,
+          and get the complete materials list — gravel, sand, pavers, soil — all in one place.
+        </p>
+
+        <ProjectCalculator client:load />
+
+        <AdSlot slot="after-result" className="mt-6" />
+
+        <div class="calculator-card mt-8">
+          <h2 class="font-semibold text-gray-900 mb-3">How to use this calculator</h2>
+          <ol class="space-y-2 text-sm text-gray-700 list-decimal list-inside">
+            <li>Select your project type above</li>
+            <li>Enter the length and width in feet</li>
+            <li>Review the complete materials list — all quantities are calculated for you</li>
+            <li>Use the individual calculators for more detail on specific materials</li>
+          </ol>
+        </div>
+
+        <div class="calculator-card mt-6">
+          <h2 class="font-semibold text-gray-900 mb-3">Projects covered</h2>
+          <div class="grid sm:grid-cols-2 gap-4 text-sm text-gray-700">
+            <div>
+              <p class="font-medium mb-1">🧱 Paver Patio</p>
+              <p class="text-gray-500">Gravel base (4 in), bedding sand (1 in), paver count, edge restraints, polymeric joint sand</p>
+            </div>
+            <div>
+              <p class="font-medium mb-1">🚗 Gravel Driveway</p>
+              <p class="text-gray-500">3-layer system: base stone (#2/#3), middle layer (#57), surface layer (crusher run) — total tons</p>
+            </div>
+            <div>
+              <p class="font-medium mb-1">🌱 Raised Garden Bed</p>
+              <p class="text-gray-500">Topsoil (60%) + compost (30%) + perlite (10%) mix — cubic yards and 40 lb bag count</p>
+            </div>
+            <div>
+              <p class="font-medium mb-1">🌿 Garden Path</p>
+              <p class="text-gray-500">Landscape fabric, pea gravel (2 in), plastic edging — for a standard 3 ft wide path</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="space-y-6">
+        <div class="calculator-card sticky top-24">
+          <h3 class="font-semibold text-gray-900 mb-3">Related calculators & guides</h3>
+          <ul class="space-y-2">
+            {related.map(r => (
+              <li><a href={r.href} class="text-sm text-brand-600 hover:underline">{r.label}</a></li>
+            ))}
+          </ul>
+        </div>
+        <AdSlot slot="sidebar" />
+      </aside>
+    </div>
+  </div>
+</BaseLayout>

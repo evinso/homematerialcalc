@@ -3,6 +3,7 @@ import ShapeInput from '../ui/ShapeInput';
 import WasteSlider from '../ui/WasteSlider';
 import { calcSand } from '../../lib/engine/calculators';
 import { SAND, SAND_DENSITIES } from '../../lib/engine/constants';
+import { useLocalStorage } from '../../lib/useLocalStorage';
 import type { SandType } from '../../lib/engine/constants';
 import type { ShapeInput as EngineShape } from '../../lib/engine/geometry';
 
@@ -17,10 +18,10 @@ const DEPTH_OPTIONS = [1, 2, 3, 4, 6];
 
 export default function SandCalculator() {
   const [shape, setShape] = useState<EngineShape>({ type: 'rectangle', lengthFt: 0, widthFt: 0 });
-  const [depthIn, setDepthIn] = useState(SAND.DEFAULT_DEPTH_IN);
-  const [sandType, setSandType] = useState<SandType>(SAND.DEFAULT_TYPE);
-  const [waste, setWaste] = useState(SAND.DEFAULT_WASTE);
-  const [pricePerTon, setPricePerTon] = useState('');
+  const [depthIn, setDepthIn] = useLocalStorage('sand_depth', SAND.DEFAULT_DEPTH_IN);
+  const [sandType, setSandType] = useLocalStorage<SandType>('sand_type', SAND.DEFAULT_TYPE);
+  const [waste, setWaste] = useLocalStorage('sand_waste', SAND.DEFAULT_WASTE);
+  const [pricePerTon, setPricePerTon] = useLocalStorage('sand_price', '');
 
   const result = calcSand(shape, depthIn, sandType, waste, pricePerTon ? Number(pricePerTon) : undefined);
   const hasArea = result.areaSqFt > 0;

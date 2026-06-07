@@ -1,0 +1,90 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How often should I water my lawn in summer?', a: 'Most lawns need 1–1.5 inches of water per week in summer, either from rain or irrigation. Water deeply 2–3 times per week rather than shallowly every day — deep watering encourages deep root growth. Early morning watering (before 10 AM) reduces evaporation and fungal disease.' },
+  { q: 'Should I fertilize my lawn in summer?', a: 'For warm-season grasses (bermuda, zoysia, St. Augustine), summer is the active growing season — fertilize every 6–8 weeks. For cool-season grasses (fescue, bluegrass), avoid summer fertilizing — it stresses the lawn. Cool-season lawns go semi-dormant in heat above 90°F.' },
+  { q: 'What height should I mow my lawn in summer?', a: 'Raise your mowing height in summer to 3–4 inches. Taller grass shades the soil, reduces moisture loss, and crowds out weeds. The "1/3 rule" always applies: never remove more than 1/3 of blade height in a single mowing.' },
+  { q: 'How much mulch do I need to add in summer?', a: 'If mulch has settled to less than 2 inches by midsummer, add 1–2 inches to bring it back to 3 inches. This is critical in hot climates — mulch keeps soil temperature 10–15°F cooler than unmulched ground and cuts watering needs by 25–50%.' },
+  { q: 'Should I water my lawn during a drought?', a: 'Healthy lawns can survive 4–6 weeks of drought by going dormant (turning brown). Dormancy is not death — most cool-season grasses recover when rain returns. If you choose to water during drought, provide a full 1 inch per week consistently. Inconsistent watering during drought is worse than none.' },
+];
+
+export const related = [
+  { href: '/calculator/mulch', label: 'Mulch Calculator' },
+  { href: '/guide/best-mulch-for-flower-beds', label: 'Best Mulch for Flower Beds' },
+  { href: '/guide/mulch-vs-rock-landscaping', label: 'Mulch vs Rock Landscaping' },
+  { href: '/guide/how-long-does-mulch-last', label: 'How Long Does Mulch Last?' },
+];
+
+<GuideLayout
+  title="Summer Lawn Care Guide — Watering, Mowing & Heat Stress Tips"
+  description="Summer lawn and garden care: how much to water, correct mowing height, summer mulching to reduce heat stress, fertilizing schedule for warm and cool-season grasses."
+  h1="Summer Lawn Care Guide"
+  intro="Summer is the hardest season for lawns and gardens. Heat stress, drought, and weeds peak at the same time. This guide covers the summer care routine that keeps your yard healthy through the hottest months without overworking it."
+  calculatorHref="/calculator/mulch"
+  calculatorLabel="Mulch Calculator — add summer mulch to protect plant roots from heat"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Summer Lawn Care Guide' }]}
+>
+
+## Summer lawn care by grass type
+
+| Grass type | Water/week | Mow height | Summer fertilize? |
+|-----------|-----------|-----------|-----------------|
+| Tall fescue | 1–1.5 in | 3.5–4 in | No |
+| Kentucky bluegrass | 1–1.5 in | 3–3.5 in | No |
+| Bermudagrass | 1 in | 1–2 in | Yes (monthly) |
+| Zoysiagrass | 0.5–1 in | 1.5–2 in | Yes (6 weeks) |
+| St. Augustine | 1–1.5 in | 3–4 in | Yes (6–8 weeks) |
+| Buffalo grass | 0.5 in | 3–4 in | No |
+
+## Watering guide
+
+### How much water?
+**1 inch per week** is the standard. To measure: set empty tuna cans around the lawn — run the sprinkler until they collect 1 inch of water, then time it.
+
+### When to water
+- **Best:** 5–9 AM (low evaporation, leaves dry before evening)
+- **Acceptable:** Evening (increased fungal disease risk)
+- **Avoid:** Midday (up to 40% evaporation loss)
+
+### Signs of drought stress
+- Footprints remain visible for more than 30 seconds (grass not springing back)
+- Grass blades fold or curl lengthwise
+- Color shifts from bright green to blue-gray
+
+## Summer mowing rules
+
+1. **Raise the blade** — 3.5–4 inches for cool-season, 1.5–2 inches for warm-season
+2. **Never cut wet grass** — spreads fungal disease
+3. **Keep blades sharp** — dull blades tear grass, creating jagged edges that brown quickly
+4. **Leave clippings** — mulched clippings return 25% of the nitrogen the lawn needs
+5. **Mow in shade** — late afternoon mowing is less stressful than midday for both you and the grass
+
+## Summer mulching — the single best thing you can do
+
+Mulch in garden beds does more work in summer than any other season:
+
+- Keeps soil temperature 10–15°F cooler than bare soil
+- Reduces watering frequency by 25–50%
+- Prevents soil from crusting and cracking
+- Suppresses summer weeds at peak germination
+
+**Check depth in June:** If mulch has settled to less than 2 inches, top up to 3 inches. Use the [Mulch Calculator](/calculator/mulch) to get the exact quantity.
+
+## Weed management in summer
+
+Summer is peak weed season. The best defense is thick grass and consistent mulch:
+
+- **Lawn weeds:** Do not apply broadleaf weed killer when temps exceed 90°F — it damages grass. Spot-treat in the cooler morning hours or wait for fall.
+- **Bed weeds:** A 3-inch mulch layer blocks 90% of weed germination. Hand-pull any breakthrough weeds before they set seed.
+- **Path/driveway weeds:** Apply a pre-emergent in late May to gravel paths and driveways.
+
+## Heat stress recovery
+
+If the lawn goes dormant (brown) during drought:
+- Do not fertilize, dethatch, or aerate — this damages dormant grass
+- Water minimally (0.5 in every 2–3 weeks) to keep crowns alive
+- Resume normal care when temperatures drop below 85°F consistently
+
+</GuideLayout>

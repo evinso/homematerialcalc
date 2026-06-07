@@ -1,0 +1,96 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How much gravel do I need for a driveway?', a: 'A standard 2-car driveway (12 ft wide × 50 ft long = 600 sq ft) at 4 inches deep needs 7.4 cubic yards or about 10–11 tons of crushed stone. Add 10% waste for a total order of about 8 cubic yards / 11–12 tons.' },
+  { q: 'How many layers of gravel does a driveway need?', a: 'A properly built gravel driveway has 3 layers: 4–6 inches of large base stone (#2 or #3 crushed stone), 2–3 inches of intermediate stone (#57), and 2 inches of surface stone (3/8 inch crushed gravel or pea gravel). Total depth: 8–11 inches for a new driveway.' },
+  { q: 'How long does a gravel driveway last?', a: 'A well-built gravel driveway lasts indefinitely with annual maintenance — regrading and adding 1–2 inches of fresh surface gravel every 3–5 years. Total stone is never truly "used up," it just migrates to the edges over time.' },
+  { q: 'How do I keep gravel from washing away?', a: 'Grade the driveway to crown in the center (higher in the middle than edges) so water runs off to the sides. Install drainage ditches alongside the driveway. Use angular crushed stone rather than rounded pea gravel — angular stone interlocks and stays in place better.' },
+  { q: 'What type of gravel is best for driveways?', a: 'Crusher run (also called road base or item 4) is the best base layer — it compacts hard like asphalt. For the top surface, 3/4 inch crushed stone or dense grade aggregate (DGA) is ideal. Avoid pea gravel and river rock — they shift under traffic.' },
+];
+
+export const related = [
+  { href: '/calculator/gravel', label: 'Gravel Calculator' },
+  { href: '/guide/how-much-gravel-for-a-driveway', label: 'How Much Gravel for a Driveway' },
+  { href: '/guide/how-much-does-gravel-cost', label: 'How Much Does Gravel Cost?' },
+  { href: '/guide/gravel-vs-crushed-stone', label: 'Gravel vs Crushed Stone' },
+];
+
+<GuideLayout
+  title="How to Build a Gravel Driveway — Materials, Layers & Cost Guide"
+  description="Complete gravel driveway guide: 3-layer system explained, how much stone per layer, total tons and cubic yards for any driveway size, plus cost breakdown and drainage tips."
+  h1="How to Build a Gravel Driveway — Complete Project Guide"
+  intro="A gravel driveway is one of the most durable and affordable driveway options available — if built with the right layered base. This guide covers the 3-layer system, exact material quantities, and how to do it right the first time."
+  calculatorHref="/calculator/gravel"
+  calculatorLabel="Gravel Calculator — get cubic yards and tons for your driveway"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'How to Build a Gravel Driveway' }]}
+>
+
+## The 3-layer system
+
+A gravel driveway that lasts needs three distinct layers, not just a single dump of stone:
+
+| Layer | Stone type | Depth | Purpose |
+|-------|-----------|-------|---------|
+| **Base** | #2 or #3 crushed stone (2–3 in pieces) | 4–6 in | Structural foundation, drainage |
+| **Middle** | #57 crushed stone (3/4 in) | 2–3 in | Binds base to surface, bridges gaps |
+| **Surface** | 3/4 in crusher run or DGA | 2 in | Driving surface, compacts firm |
+| **Total** | | **8–11 in** | |
+
+## Material quantities for common driveway sizes
+
+| Driveway size | Area | Each layer (cu yd) | **Total tons** |
+|---------------|------|--------------------|---------------|
+| 10×20 ft | 200 sq ft | ~0.8 | **~5 tons** |
+| 12×50 ft | 600 sq ft | ~2.5 | **~14 tons** |
+| 14×100 ft | 1,400 sq ft | ~5.7 | **~32 tons** |
+| 16×200 ft | 3,200 sq ft | ~13 | **~72 tons** |
+
+*Based on 4 in base + 2 in middle + 2 in surface = 8 in total. Crushed stone ≈ 1.4 tons/cu yd.*
+
+### Calculate your driveway
+
+**Step 1:** Length × Width = sq ft
+
+**Step 2:** Sq ft × Depth (in) ÷ 324 = cubic yards per layer
+
+**Step 3:** Cubic yards × 1.4 = tons
+
+Or use the [Gravel Calculator](/calculator/gravel) to get all three layers at once.
+
+## Step-by-step build process
+
+### Step 1 — Mark and excavate
+Stake your driveway edges. Excavate 8–11 inches below finished grade. Grade toward the center or edges for drainage — crown at center (2–3% slope to each side) is standard.
+
+### Step 2 — Install base layer
+Spread 4–6 inches of #2 or #3 crushed stone. Compact with a plate compactor or vibratory roller. This layer must be completely level and well-compacted before adding the next.
+
+### Step 3 — Add middle layer
+Spread 2–3 inches of #57 stone. Compact again. This layer fills voids in the base and provides a transition to the finer surface material.
+
+### Step 4 — Surface layer
+Spread 2 inches of 3/4 in crusher run or DGA. Compact thoroughly. This is the layer that will be compacted into a near-solid surface by vehicle traffic over time.
+
+### Step 5 — Edge restraints and drainage
+Install plastic or timber edging along both sides to keep gravel from migrating. Dig shallow drainage ditches alongside the driveway if the area doesn't drain naturally.
+
+## Maintenance schedule
+
+| Task | Frequency |
+|------|----------|
+| Regrade after winter | Every spring |
+| Add 1–2 in fresh surface stone | Every 3–5 years |
+| Clear drainage ditches | Every fall |
+| Fill ruts and low spots | As needed |
+
+## Cost estimate
+
+| Driveway size | Material cost | Professional grading |
+|---------------|--------------|---------------------|
+| 10×20 ft | $150–$400 | $300–$700 |
+| 12×50 ft | $450–$1,100 | $800–$2,000 |
+| 14×100 ft | $1,000–$2,500 | $2,000–$5,000 |
+
+</GuideLayout>

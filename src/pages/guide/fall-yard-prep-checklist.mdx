@@ -1,0 +1,94 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'Should I mulch my garden beds in fall?', a: 'Yes — fall is actually the most important time to mulch perennial beds. Apply 3–4 inches of mulch after the ground freezes (late November in most regions) to insulate roots from freeze-thaw cycles. This prevents frost heaving, which can lift shallow-rooted plants out of the ground.' },
+  { q: 'When should I seed grass in fall?', a: 'Seed cool-season grasses (fescue, bluegrass, rye) 6–8 weeks before the first hard frost. In most of the US, this is late August through early October. Seeding before soil temps drop below 50°F gives seeds time to germinate and establish before winter.' },
+  { q: 'Should I fertilize my lawn in fall?', a: 'Yes — fall is the most important fertilizer application of the year for cool-season grasses. Apply a winterizer fertilizer (high potassium, lower nitrogen) 4–6 weeks before the ground freezes. This strengthens roots and stores energy for early spring green-up.' },
+  { q: 'Should I leave leaves on my lawn over winter?', a: 'No. A thick layer of leaves left on the lawn over winter smothers grass, promotes snow mold, and creates habitat for pests. Shred leaves with a mulching mower and leave thin layers (they add organic matter), but rake and compost or bag heavy leaf cover.' },
+  { q: 'When should I stop watering and mowing in fall?', a: 'Continue mowing until grass stops growing (usually after the first frost). Gradually lower mowing height to 2–2.5 inches in the final 2–3 mowings to reduce snow mold risk. Continue watering until the ground freezes — roots are still growing even after the grass stops.' },
+];
+
+export const related = [
+  { href: '/calculator/mulch', label: 'Mulch Calculator' },
+  { href: '/guide/how-much-grass-seed-do-i-need', label: 'How Much Grass Seed Do I Need?' },
+  { href: '/guide/best-mulch-for-flower-beds', label: 'Best Mulch for Flower Beds' },
+  { href: '/guide/types-of-mulch', label: 'Types of Mulch' },
+];
+
+<GuideLayout
+  title="Fall Yard Prep Checklist — Lawn, Garden & Mulch Before Winter"
+  description="Complete fall yard prep checklist: when to mulch, overseed, fertilize, and winterize. Material quantities for fall mulching and seeding with timing guide by US region."
+  h1="Fall Yard Prep Checklist"
+  intro="Fall is the second most important season for your yard — the prep you do now determines how well your lawn and garden bounce back in spring. Here is the complete fall checklist with timing, material quantities, and what to prioritize."
+  calculatorHref="/calculator/mulch"
+  calculatorLabel="Mulch Calculator — get your fall winterizing mulch quantity"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Fall Yard Prep Checklist' }]}
+>
+
+## Fall task timeline by region
+
+| Region | First frost | Seed by | Winterize mulch |
+|--------|-----------|---------|----------------|
+| Zone 3–4 (MN, MT, ND) | Sept 15 | Aug 1 | Oct 15 |
+| Zone 5–6 (IL, OH, PA) | Oct 15 | Sept 1 | Nov 1 |
+| Zone 7 (VA, TN, OR) | Nov 1 | Sept 15 | Nov 15 |
+| Zone 8 (TX, GA, Pacific NW) | Nov 15 | Oct 1 | Dec 1 |
+| Zone 9–10 (FL, CA, AZ) | Rarely frosts | N/A | Not needed |
+
+## Material quantities
+
+### Fall mulch for winterizing perennial beds
+Apply after first hard freeze — typically 3–4 inches:
+
+| Bed area | 3 in depth | 4 in depth |
+|----------|-----------|-----------|
+| 100 sq ft | 0.93 cu yd | 1.23 cu yd |
+| 250 sq ft | 2.3 cu yd | 3.1 cu yd |
+| 500 sq ft | 4.6 cu yd | 6.2 cu yd |
+
+Best mulch for winterizing: straw, pine straw, or shredded leaves — these don't mat down and allow soil to breathe.
+
+### Fall grass seed
+Seed 6–8 weeks before first frost for best results:
+
+| Lawn area | Tall fescue (overseed) | Kentucky bluegrass |
+|-----------|----------------------|-------------------|
+| 1,000 sq ft | 3–4 lbs | 1–1.5 lbs |
+| 5,000 sq ft | 15–20 lbs | 5–8 lbs |
+| 10,000 sq ft | 30–40 lbs | 10–15 lbs |
+
+## Month-by-month fall checklist
+
+### September
+- [ ] Aerate and overseed lawn — the #1 fall priority for cool-season grass
+- [ ] Apply starter fertilizer after seeding
+- [ ] Plant spring bulbs (tulips, daffodils, crocus) while soil is still workable
+- [ ] Divide and transplant perennials
+- [ ] Clean up diseased plant material (do not compost)
+
+### October
+- [ ] Apply winterizer fertilizer to lawn (after last mow of the season)
+- [ ] Continue mowing until grass stops growing; lower blade in final cuts
+- [ ] Plant garlic for next year's harvest
+- [ ] Rake and shred leaves — compost or bag heavy layers
+- [ ] Drain and store garden hoses; shut off irrigation system
+- [ ] Clear annual beds; add compost
+
+### November
+- [ ] Apply winter mulch to perennial beds after first hard freeze
+- [ ] Protect tender shrubs with burlap wrap if needed
+- [ ] Drain and store fountains and water features
+- [ ] Apply gravel or sand to icy paths (not salt near lawn edges)
+- [ ] Clean and store garden tools — sharpen and oil before storing
+
+## Winterizing mulch — the right way
+
+**Do:** Apply 3–4 inches AFTER the ground freezes (not before). The goal is to keep the ground frozen, not to insulate it from freezing.
+
+**Do not:** Apply mulch right after a hard frost. Wait until the soil is consistently frozen. Early mulch traps warmth and can delay dormancy.
+
+**Best materials:** Straw or pine straw — loose, doesn't mat, easy to remove in spring. Avoid whole leaves (mat and smother) and wood chip mulch on shallow-rooted plants.
+
+</GuideLayout>

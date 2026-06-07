@@ -1,0 +1,85 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How much does concrete cost per yard in New York?', a: 'Ready-mix concrete in New York City costs $165–$215 per cubic yard — one of the highest prices in the US. Upstate New York is significantly cheaper at $135–$170/yd. Short-load fees, traffic surcharges, and high union labor rates all contribute to NYC costs.' },
+  { q: 'How much does a concrete driveway cost in New York?', a: 'A standard concrete driveway in New York City costs $6,000–$14,000 installed for a typical 2-car driveway (600 sq ft). Upstate New York averages $3,500–$7,500 for the same project. High labor costs, permitting, and access challenges in urban areas drive NYC prices significantly above national averages.' },
+  { q: 'Do I need a permit for concrete work in New York City?', a: 'Yes — most concrete work in NYC requires a Department of Buildings (DOB) permit. Sidewalk replacement requires a separate sidewalk permit. Permit applications must be filed by a licensed contractor. Permit costs range from $200–$1,500 depending on scope. Upstate NY municipalities vary widely.' },
+  { q: 'Is concrete work seasonal in New York?', a: 'Cold weather concrete is possible but adds cost. Contractors must heat the mix, tent the work area, and extend curing protection when temps drop below 40°F. Most New York contractors prefer to pour April through November. Expect premium pricing for winter pours.' },
+  { q: 'How thick should concrete be in New York for freeze-thaw resistance?', a: 'In New York, residential driveways and patios should be poured at minimum 4 inches thick (5 inches for driveways). Air-entrained concrete (specified by the contractor) is essential — it creates tiny air bubbles that give the concrete room to expand during freezing without cracking.' },
+];
+
+export const related = [
+  { href: '/calculator/concrete', label: 'Concrete Calculator' },
+  { href: '/guide/how-much-does-concrete-cost', label: 'How Much Does Concrete Cost?' },
+  { href: '/guide/how-long-does-concrete-take-to-dry', label: 'How Long Does Concrete Take to Dry?' },
+  { href: '/guide/concrete-mix-ratios', label: 'Concrete Mix Ratios' },
+];
+
+<GuideLayout
+  title="Concrete Cost in New York — 2026 Price Guide (NYC & Upstate)"
+  description="Concrete prices in New York 2026: ready-mix cost per cubic yard in NYC and upstate. Driveway, sidewalk, and patio cost per square foot — plus permit requirements and freeze-thaw guidance."
+  h1="Concrete Cost in New York — 2026 Price Guide"
+  intro="New York has some of the highest concrete costs in the nation, especially in New York City where union labor, traffic logistics, and high material costs combine. Here is a complete breakdown for NYC and upstate New York, covering driveways, patios, sidewalks, and what permits you need."
+  calculatorHref="/calculator/concrete"
+  calculatorLabel="Concrete Calculator — get cubic yards for your New York project"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Concrete Cost in New York' }]}
+>
+
+## New York ready-mix concrete prices (2026)
+
+| Mix strength | NYC / Long Island | Upstate NY |
+|-------------|------------------|-----------|
+| 2,500 PSI | $155–$185 | $128–$155 |
+| 3,000 PSI | $165–$200 | $138–$168 |
+| 4,000 PSI air-entrained | $180–$215 | $152–$182 |
+| 5,000 PSI | $200–$235 | $168–$200 |
+
+*Air-entrained concrete recommended for all exterior applications in New York freeze-thaw climate.*
+
+## Project cost estimates
+
+### New York City and Long Island
+
+| Project | Size | Installed cost |
+|---------|------|---------------|
+| Sidewalk (city requirement) | 5×20 ft | $1,500–$4,000 |
+| Patio | 12×16 ft | $3,000–$7,000 |
+| Driveway (1-car) | 10×20 ft | $3,500–$7,500 |
+| Driveway (2-car) | 12×50 ft | $6,000–$14,000 |
+| Garage floor | 20×20 ft | $6,500–$14,000 |
+
+### Upstate New York (Albany, Buffalo, Syracuse, Rochester)
+
+| Project | Size | Installed cost |
+|---------|------|---------------|
+| Patio | 12×16 ft | $1,500–$3,500 |
+| Driveway (2-car) | 12×50 ft | $3,500–$7,500 |
+| Garage floor | 20×20 ft | $3,500–$7,500 |
+
+## NYC-specific requirements
+
+### Sidewalk liability
+In New York City, property owners are responsible for maintaining the sidewalk in front of their property. The city can order repairs and bill the owner. Sidewalk replacement costs $12–$25/sq ft in NYC.
+
+### DOB permits
+- Concrete work over 250 sq ft typically requires a permit
+- Sidewalk permits are separate from other concrete permits
+- Use a licensed and insured contractor — unlicensed work risks stop-work orders
+
+### Access and logistics surcharges
+NYC concrete contractors often add:
+- Traffic/access surcharge: $300–$800
+- Pump truck requirement (no chute access): $600–$1,200
+- Short-load fee for small orders: $75–$200
+
+## Cold weather concrete in New York
+
+New York winters require cold weather concrete precautions:
+- **Below 40°F:** Warm mix water and aggregate; insulate forms
+- **Below 20°F:** Typically not poured (risk of freezing before strength develops)
+- **Spring/fall:** May pour with standard practices if temps stay above 40°F for 7 days
+- **Cost premium:** Cold weather pours add $150–$500 to project costs
+
+</GuideLayout>

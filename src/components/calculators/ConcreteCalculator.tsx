@@ -3,6 +3,7 @@ import ShapeInput from '../ui/ShapeInput';
 import WasteSlider from '../ui/WasteSlider';
 import { calcConcrete } from '../../lib/engine/calculators';
 import { CONCRETE, CONCRETE_BAGS } from '../../lib/engine/constants';
+import { useLocalStorage } from '../../lib/useLocalStorage';
 import type { ConcreteBagSize } from '../../lib/engine/constants';
 import type { ShapeInput as EngineShape } from '../../lib/engine/geometry';
 
@@ -16,10 +17,10 @@ const BAG_SIZES = [40, 50, 60, 80] as ConcreteBagSize[];
 export default function ConcreteCalculator() {
   const [projectType, setProjectType] = useState<ProjectType>('slab');
   const [shape, setShape] = useState<EngineShape>({ type: 'rectangle', lengthFt: 0, widthFt: 0 });
-  const [thicknessIn, setThicknessIn] = useState(CONCRETE.DEFAULT_THICKNESS_IN);
-  const [bagSize, setBagSize] = useState<ConcreteBagSize>(CONCRETE.DEFAULT_BAG_SIZE);
-  const [waste, setWaste] = useState(CONCRETE.DEFAULT_WASTE);
-  const [pricePerBag, setPricePerBag] = useState('');
+  const [thicknessIn, setThicknessIn] = useLocalStorage('concrete_thickness', CONCRETE.DEFAULT_THICKNESS_IN);
+  const [bagSize, setBagSize] = useLocalStorage<ConcreteBagSize>('concrete_bag', CONCRETE.DEFAULT_BAG_SIZE);
+  const [waste, setWaste] = useLocalStorage('concrete_waste', CONCRETE.DEFAULT_WASTE);
+  const [pricePerBag, setPricePerBag] = useLocalStorage('concrete_price', '');
 
   // Post hole state
   const [holeDiameterIn, setHoleDiameterIn] = useState(6);

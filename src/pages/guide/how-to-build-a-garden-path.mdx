@@ -1,0 +1,99 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'What is the best material for a garden path?', a: 'Pea gravel is the most popular DIY garden path material — cheap ($30–$55/cu yd), easy to install, and drains well. Stepping stones with gravel fill look great with low maintenance. Decomposed granite compacts into a firm surface. Mulch paths are softest underfoot but need annual replacement.' },
+  { q: 'How wide should a garden path be?', a: 'A single-person walking path should be at least 24 inches wide. For comfortable two-person passage or wheelbarrow access, 36–48 inches is better. Main paths to entries or from driveway to door are typically 48–60 inches wide.' },
+  { q: 'How deep should gravel be for a garden path?', a: 'For a gravel path: 2–3 inches of decorative gravel on top of a compacted base (1–2 inches of crushed stone or sand). Total depth 3–4 inches. Deeper is not better — loose gravel above 3 inches is uncomfortable to walk on.' },
+  { q: 'Do I need edging for a gravel path?', a: 'Yes. Edging (plastic, metal, timber, or brick) is essential for gravel paths. Without it, gravel migrates into lawn and garden beds within one season. Pound plastic edging at least 4 inches deep, leaving 1–2 inches above grade to contain the gravel.' },
+  { q: 'How much gravel do I need for a garden path?', a: 'A 36-inch wide path (3 ft) at 2 inches deep: 3 ft × length (ft) × 2 in ÷ 324 = cubic yards. For a 20-foot path: 3 × 20 × 2 ÷ 324 = 0.37 cubic yards, or about 6 bags of pea gravel.' },
+];
+
+export const related = [
+  { href: '/calculator/gravel', label: 'Gravel Calculator' },
+  { href: '/calculator/sand', label: 'Sand Calculator' },
+  { href: '/guide/pea-gravel-vs-river-rock', label: 'Pea Gravel vs River Rock' },
+  { href: '/guide/how-deep-should-gravel-be', label: 'How Deep Should Gravel Be?' },
+];
+
+<GuideLayout
+  title="How to Build a Garden Path — Gravel, Stepping Stones & Mulch"
+  description="Build a garden path with gravel, stepping stones, or mulch. Material quantities, edging guide, width recommendations, and cost for paths of any length — with a free gravel calculator."
+  h1="How to Build a Garden Path — Complete Project Guide"
+  intro="A well-built garden path defines your yard's layout and keeps feet dry year-round. This guide covers three common path styles — gravel, stepping stone, and mulch — with material quantities and step-by-step build instructions for each."
+  calculatorHref="/calculator/gravel"
+  calculatorLabel="Gravel Calculator — get cubic yards and bags for your path"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'How to Build a Garden Path' }]}
+>
+
+## Path style comparison
+
+| Style | Cost | Maintenance | Drainage | Comfort |
+|-------|------|------------|---------|---------|
+| Pea gravel | $$ | Low | Excellent | Good |
+| Stepping stones + gravel | $$$ | Low | Excellent | Best |
+| Decomposed granite | $$ | Low | Good | Good |
+| Wood chip mulch | $ | Medium (annual) | Good | Soft |
+| Flagstone | $$$$ | Very low | Good | Best |
+
+## Material calculator — gravel path
+
+**Formula:** Width (ft) × Length (ft) × Depth (in) ÷ 324 = cubic yards
+
+| Path (3 ft wide) | 2 in deep | 3 in deep |
+|-----------------|-----------|-----------|
+| 10 ft long | 0.19 cu yd | 0.28 cu yd |
+| 20 ft long | 0.37 cu yd | 0.56 cu yd |
+| 50 ft long | 0.93 cu yd | 1.39 cu yd |
+| 100 ft long | 1.85 cu yd | 2.78 cu yd |
+
+*1 cu yd ≈ 27 bags of 50 lb gravel*
+
+## Option 1 — Pea gravel path
+
+**Materials for 3 ft × 20 ft path:**
+- Landscape fabric: 60 sq ft ($8–$12)
+- Edging: 46 linear ft ($20–$40)
+- Pea gravel (2 in deep): 0.37 cu yd (~7 bags) ($25–$50)
+
+**Steps:**
+1. Mark path with stakes and string
+2. Excavate 3–4 inches of soil
+3. Tamp the soil base firm
+4. Lay landscape fabric (overlap seams 6 in, pin with staples)
+5. Install edging on both sides
+6. Pour and rake gravel to 2–3 inch depth
+
+## Option 2 — Stepping stones with gravel fill
+
+**Materials for 3 ft × 20 ft path:**
+- Stepping stones (18×18 in, spaced 24 in apart): ~10 stones ($80–$200)
+- Pea gravel fill: 0.37 cu yd ($25–$50)
+- Landscape fabric: 60 sq ft ($8–$12)
+- Edging: 46 linear ft ($20–$40)
+
+**Steps:**
+1. Lay stones at walking pace spacing (~24 in center to center)
+2. Set each stone on 1 in of leveling sand; check level
+3. Fill between with pea gravel to stone height
+
+## Option 3 — Wood chip mulch path
+
+**Materials for 3 ft × 20 ft path:**
+- Landscape fabric: 60 sq ft ($8–$12)
+- Edging: 46 linear ft ($20–$40)
+- Wood chip mulch (3 in deep): 0.56 cu yd ($20–$40)
+
+**Note:** Mulch paths are the cheapest to build but require 2–3 inches of fresh mulch each spring as the old material decomposes.
+
+## Edging options
+
+| Edging type | Cost per linear ft | Lifespan | Best for |
+|------------|-------------------|----------|---------|
+| Black plastic | $0.30–$0.60 | 10–15 yr | Curves, pea gravel |
+| Steel | $1.50–$3.00 | 20+ yr | Straight lines |
+| Timber/railroad tie | $1.00–$2.00 | 5–10 yr | Rustic, wide paths |
+| Brick | $2.00–$5.00 | Permanent | Formal gardens |
+
+</GuideLayout>

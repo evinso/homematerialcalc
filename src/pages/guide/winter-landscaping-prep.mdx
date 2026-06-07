@@ -1,0 +1,93 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How do I protect my driveway in winter?', a: 'For concrete driveways, apply a penetrating concrete sealer in fall (every 3–5 years) to prevent freeze-thaw cracking and salt damage. Avoid sodium chloride (rock salt) on concrete — it causes spalling. Use calcium chloride or sand instead. For gravel driveways, grade and add 1–2 inches of fresh surface stone before winter.' },
+  { q: 'Should I put gravel or sand on icy paths?', a: 'Sand provides traction without damaging plants or concrete. Pea gravel also works and can be swept back into beds after winter. Avoid rock salt near garden beds, lawn edges, or concrete — sodium damages soil structure and corrodes concrete over time. Calcium chloride works at lower temps and is safer for plants.' },
+  { q: 'How much sand do I need for winter traction on paths?', a: 'For a 3 ft wide path, 50 lbs of sand covers about 25–30 linear feet at a light traction layer. A bag costs $5–$8 and is sufficient for most home use. Buy 2–4 bags before winter and store in a dry location.' },
+  { q: 'Do I need to winterize my irrigation system?', a: 'Yes, if temperatures drop below 32°F in your area. Flush all water from the lines by blowing out with compressed air (professional service: $50–$100) or draining manually. Water left in pipes freezes and cracks fittings, valves, and backflow preventers.' },
+  { q: 'What should I do about ice on concrete?', a: 'Remove snow as soon as possible — packed snow becomes ice faster. Use a plastic shovel (metal blades scratch concrete). Apply calcium chloride before storms as a pre-treatment. After the season, clean residue and any salt stains with a diluted muriatic acid wash or concrete cleaner.' },
+];
+
+export const related = [
+  { href: '/calculator/gravel', label: 'Gravel Calculator' },
+  { href: '/calculator/concrete', label: 'Concrete Calculator' },
+  { href: '/guide/how-long-does-concrete-take-to-dry', label: 'How Long Does Concrete Take to Dry?' },
+  { href: '/guide/fall-yard-prep-checklist', label: 'Fall Yard Prep Checklist' },
+];
+
+<GuideLayout
+  title="Winter Landscaping Prep — Driveway, Path & Garden Protection Guide"
+  description="Prepare your driveway, paths, and garden for winter: concrete sealing, gravel driveway grading, traction materials for ice, irrigation winterizing, and plant protection guide."
+  h1="Winter Landscaping Prep Guide"
+  intro="Winter prep in November saves expensive repairs in spring. Concrete cracks, gravel washes, and irrigation lines burst when neglected before freezing temperatures arrive. This guide covers every material and task to protect your outdoor investment through winter."
+  calculatorHref="/calculator/gravel"
+  calculatorLabel="Gravel Calculator — order fresh driveway stone before winter"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Winter Landscaping Prep' }]}
+>
+
+## Winter prep checklist by surface
+
+### Concrete driveways and patios
+- [ ] Seal concrete with penetrating silane/siloxane sealer if not sealed in last 3–5 years
+- [ ] Fill cracks with flexible concrete caulk (prevents water infiltration + freeze expansion)
+- [ ] Clear debris from expansion joints
+- [ ] Stock calcium chloride or sand (avoid rock salt)
+
+**Concrete sealing:** 1 gallon covers 200–400 sq ft. A standard 600 sq ft driveway needs 2 gallons ($40–$80).
+
+### Gravel driveways
+- [ ] Grade the surface before freeze — ruts become permanent once frozen
+- [ ] Add 1–2 inches of fresh crusher run or 3/4 in crushed stone to thin areas
+- [ ] Clear drainage ditches and culverts before leaves plug them
+- [ ] Mark driveway edges with reflective stakes for snow plowing
+
+**Fresh surface stone:** 600 sq ft at 1.5 in deep = 2.8 cu yd = ~4 tons.
+
+### Garden beds
+- [ ] Apply 3–4 inches winter mulch after ground freezes (straw or pine straw)
+- [ ] Remove annuals and compost healthy plant material
+- [ ] Cut back perennials after frost — leave ornamental grasses for winter interest
+- [ ] Wrap tender evergreen shrubs with burlap (first 2–3 winters only)
+
+### Paths and walkways
+- [ ] Stock traction materials: sand, kitty litter, or calcium chloride
+- [ ] Apply pre-emergent to gravel paths (prevents spring weed explosion)
+- [ ] Clear drainage channels at path edges
+
+### Irrigation system
+- [ ] Shut off main water supply to irrigation
+- [ ] Blow out all zones with compressed air (or drain manually)
+- [ ] Insulate backflow preventer or bring inside
+- [ ] Drain and store all hoses
+
+## Ice control materials comparison
+
+| Material | Cost/50 lb | Effective to | Safe for plants | Safe for concrete |
+|----------|-----------|-------------|----------------|------------------|
+| Rock salt (NaCl) | $6–$10 | 20°F (-7°C) | No | No |
+| Calcium chloride | $15–$25 | -25°F (-32°C) | Moderate | Yes |
+| Magnesium chloride | $12–$20 | -13°F (-25°C) | Moderate | Yes |
+| Sand (traction only) | $4–$8 | Any temp | Yes | Yes |
+| Pea gravel (traction) | $6–$12 | Any temp | Yes | Yes |
+
+**Recommendation:** Use sand or pea gravel near lawn edges and garden beds. Use calcium chloride on concrete steps and walks.
+
+## What to do when temperatures drop below 20°F
+
+- Do NOT pour hot water on frozen locks or concrete — thermal shock cracks both
+- Keep calcium chloride pre-applied (it generates heat and prevents ice bonding)
+- Do not chip ice off concrete with metal tools — damages the surface
+- Water pipes most at risk: those in exterior walls and unheated garages
+
+## Spring repair costs to avoid with proper prep
+
+| Problem | Avg repair cost | Prevention |
+|---------|----------------|-----------|
+| Concrete crack (per linear ft) | $3–$8 | Seal + fill in fall |
+| Cracked irrigation fitting | $50–$200 | Blow out system |
+| Gravel path erosion | $100–$400 | Grade before freeze |
+| Frost-heaved paver patio | $500–$2,000 | Proper base depth |
+
+</GuideLayout>

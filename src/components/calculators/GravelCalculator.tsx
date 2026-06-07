@@ -3,6 +3,7 @@ import ShapeInput from '../ui/ShapeInput';
 import WasteSlider from '../ui/WasteSlider';
 import { calcGravel } from '../../lib/engine/calculators';
 import { GRAVEL, GRAVEL_DENSITIES } from '../../lib/engine/constants';
+import { useLocalStorage } from '../../lib/useLocalStorage';
 import type { GravelType } from '../../lib/engine/constants';
 import type { ShapeInput as EngineShape } from '../../lib/engine/geometry';
 
@@ -18,10 +19,10 @@ const DEPTH_OPTIONS = [1, 2, 3, 4, 6];
 
 export default function GravelCalculator() {
   const [shape, setShape] = useState<EngineShape>({ type: 'rectangle', lengthFt: 0, widthFt: 0 });
-  const [depthIn, setDepthIn] = useState(GRAVEL.DEFAULT_DEPTH_IN);
-  const [stoneType, setStoneType] = useState<GravelType>(GRAVEL.DEFAULT_TYPE);
-  const [waste, setWaste] = useState(GRAVEL.DEFAULT_WASTE);
-  const [pricePerTon, setPricePerTon] = useState('');
+  const [depthIn, setDepthIn] = useLocalStorage('gravel_depth', GRAVEL.DEFAULT_DEPTH_IN);
+  const [stoneType, setStoneType] = useLocalStorage<GravelType>('gravel_type', GRAVEL.DEFAULT_TYPE);
+  const [waste, setWaste] = useLocalStorage('gravel_waste', GRAVEL.DEFAULT_WASTE);
+  const [pricePerTon, setPricePerTon] = useLocalStorage('gravel_price', '');
 
   const result = calcGravel(shape, depthIn, stoneType, waste, pricePerTon ? Number(pricePerTon) : undefined);
   const hasArea = result.areaSqFt > 0;

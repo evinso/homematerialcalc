@@ -3,15 +3,16 @@ import ShapeInput from '../ui/ShapeInput';
 import WasteSlider from '../ui/WasteSlider';
 import { calcMulch } from '../../lib/engine/calculators';
 import { MULCH } from '../../lib/engine/constants';
+import { useLocalStorage } from '../../lib/useLocalStorage';
 import type { ShapeInput as EngineShape } from '../../lib/engine/geometry';
 
 const DEPTH_OPTIONS = [1, 2, 3, 4, 6];
 
 export default function MulchCalculator() {
   const [shape, setShape] = useState<EngineShape>({ type: 'rectangle', lengthFt: 0, widthFt: 0 });
-  const [depthIn, setDepthIn] = useState(MULCH.DEFAULT_DEPTH_IN);
-  const [waste, setWaste] = useState(MULCH.DEFAULT_WASTE);
-  const [pricePerBag, setPricePerBag] = useState('');
+  const [depthIn, setDepthIn] = useLocalStorage('mulch_depth', MULCH.DEFAULT_DEPTH_IN);
+  const [waste, setWaste] = useLocalStorage('mulch_waste', MULCH.DEFAULT_WASTE);
+  const [pricePerBag, setPricePerBag] = useLocalStorage('mulch_price', '');
 
   const result = calcMulch(shape, depthIn, waste, pricePerBag ? Number(pricePerBag) : undefined);
   const hasArea = result.areaSqFt > 0;

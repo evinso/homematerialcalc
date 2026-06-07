@@ -1,0 +1,93 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'What state has the cheapest gravel?', a: 'States with abundant limestone and granite quarries — Indiana, Ohio, Missouri, Kentucky, and Georgia — tend to have the lowest gravel prices ($15–$25 per ton). States that must import aggregate (Hawaii, Alaska, New England) have the highest prices ($35–$75 per ton).' },
+  { q: 'How much does gravel delivery cost?', a: 'Delivery costs $50–$150 per load within 20 miles for most suppliers. Some charge by the mile beyond a base radius. Full truckloads (10–20 tons) are often free delivery. Partial loads and short-haul deliveries carry the highest per-ton delivery charges.' },
+  { q: 'Is it cheaper to pick up gravel or have it delivered?', a: 'Pickup saves $50–$150 per load but requires access to a suitable vehicle (pickup truck can carry 0.5–1 ton max). For small orders under 1 ton, pickup makes sense. For driveway or landscaping projects over 2 tons, delivery is almost always more practical.' },
+  { q: 'How much does pea gravel cost per ton by state?', a: 'Pea gravel runs $25–$45 per ton in the Midwest and South. In the Pacific Northwest, expect $35–$60/ton. In California, $45–$80/ton. In New England, $50–$90/ton. Hawaii and Alaska can exceed $100/ton due to import costs.' },
+  { q: 'Why is gravel so expensive in some states?', a: 'Gravel prices are driven by local quarry proximity, fuel costs for transport, and regional demand. Areas without local quarries must truck aggregate long distances — each mile of transport adds cost. Crushed limestone is cheapest near limestone belt states (IN, OH, KY, MO, KS).' },
+];
+
+export const related = [
+  { href: '/calculator/gravel', label: 'Gravel Calculator' },
+  { href: '/guide/how-much-does-gravel-cost', label: 'How Much Does Gravel Cost?' },
+  { href: '/guide/pea-gravel-vs-river-rock', label: 'Pea Gravel vs River Rock' },
+  { href: '/guide/gravel-vs-crushed-stone', label: 'Gravel vs Crushed Stone' },
+];
+
+<GuideLayout
+  title="Gravel Cost by State — 2026 Price Guide for All 50 States"
+  description="Gravel prices by state in 2026: crushed stone, pea gravel, and river rock cost per ton and per cubic yard. Cheapest and most expensive states for gravel — with delivery cost guide."
+  h1="Gravel Cost by State — 2026 Price Guide"
+  intro="Gravel prices vary dramatically by state — from $15 per ton in limestone-rich Indiana to over $80 per ton in coastal California. Here is a state-by-state breakdown of what to expect for the most common gravel types."
+  calculatorHref="/calculator/gravel"
+  calculatorLabel="Gravel Calculator — get cubic yards and tons for your project"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Gravel Cost by State' }]}
+>
+
+## Gravel prices by US region (2026)
+
+### Midwest — Cheapest region
+*Abundant limestone and granite quarries*
+
+| State | Crushed stone (per ton) | Pea gravel (per ton) |
+|-------|------------------------|---------------------|
+| Indiana | $12–$22 | $22–$38 |
+| Ohio | $13–$23 | $23–$40 |
+| Illinois | $14–$25 | $25–$42 |
+| Missouri | $13–$22 | $22–$38 |
+| Michigan | $15–$28 | $28–$45 |
+
+### South — Below average cost
+| State | Crushed stone | Pea gravel |
+|-------|--------------|-----------|
+| Texas | $14–$28 | $28–$48 |
+| Georgia | $14–$26 | $26–$44 |
+| Florida | $18–$32 | $32–$55 |
+| Tennessee | $13–$24 | $24–$40 |
+| North Carolina | $15–$28 | $28–$48 |
+
+### Northeast — Above average cost
+*Longer transport distances, higher labor*
+
+| State | Crushed stone | Pea gravel |
+|-------|--------------|-----------|
+| New York | $22–$40 | $40–$70 |
+| New Jersey | $24–$42 | $42–$72 |
+| Massachusetts | $25–$45 | $45–$80 |
+| Connecticut | $26–$46 | $46–$82 |
+
+### West — High cost
+| State | Crushed stone | Pea gravel |
+|-------|--------------|-----------|
+| California | $25–$50 | $45–$80 |
+| Washington | $22–$40 | $40–$70 |
+| Oregon | $20–$38 | $35–$65 |
+| Colorado | $18–$35 | $32–$58 |
+| Arizona | $20–$38 | $35–$65 |
+
+### High-cost markets
+| State | Crushed stone | Why so expensive |
+|-------|--------------|----------------|
+| Hawaii | $55–$100+ | Island import costs |
+| Alaska | $50–$90+ | Remote logistics |
+
+## What drives regional price differences
+
+1. **Quarry proximity** — The single biggest factor. Each mile of truck transport adds cost.
+2. **Aggregate type** — Limestone states (IN, OH, KY) have lower costs than granite or basalt regions.
+3. **Fuel costs** — High diesel prices in 2022–2024 raised prices in transport-dependent states.
+4. **Local demand** — High construction activity markets (TX, FL, AZ) have competitive pricing despite distance.
+5. **Local regulations** — Some states restrict quarrying, limiting supply and raising prices.
+
+## How to get the best price
+
+- **Buy from a local landscape supply yard** (not a big-box store) for bulk pricing
+- **Coordinate with neighbors** to split a full-truck delivery and share the load fee
+- **Pick up if possible** — saves $50–$150 per load for small quantities
+- **Buy off-season** — late fall and winter often see lower demand and better prices
+- **Get 3 quotes** — prices vary 20–40% between suppliers in the same area
+
+</GuideLayout>

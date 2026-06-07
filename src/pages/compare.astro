@@ -1,0 +1,267 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AdSlot from '../components/ui/AdSlot.astro';
+import CompareTable from '../components/ui/CompareTable.astro';
+---
+
+<BaseLayout
+  title="Material Comparison Tool — Compare Mulch, Gravel, Concrete & More"
+  description="Compare home materials side by side: mulch vs rock, pea gravel vs river rock, asphalt vs concrete, sod vs seed, topsoil vs garden soil. Quick decision guide."
+>
+<div class="max-w-4xl mx-auto px-4 py-10">
+
+  <h1 class="text-3xl font-bold text-gray-900 mb-2">Material Comparison Tool</h1>
+  <p class="text-gray-600 mb-8">Select two materials to compare them side by side on cost, durability, best uses, and more.</p>
+
+  <!-- Selector -->
+  <div class="calculator-card mb-8">
+    <h2 class="font-semibold text-gray-900 mb-4">Choose a comparison</h2>
+    <div class="flex flex-wrap gap-2" id="comp-buttons">
+      {[
+        ['mulch-vs-rock',      'Mulch vs Rock'],
+        ['pea-vs-river',       'Pea Gravel vs River Rock'],
+        ['asphalt-vs-concrete','Asphalt vs Concrete'],
+        ['sod-vs-seed',        'Sod vs Seed'],
+        ['topsoil-vs-garden',  'Topsoil vs Garden Soil'],
+        ['cedar-vs-hardwood',  'Cedar vs Hardwood Mulch'],
+        ['gravel-vs-pavers',   'Gravel vs Pavers (driveway)'],
+        ['concrete-vs-pavers', 'Concrete vs Pavers (patio)'],
+      ].map(([id, label]) => (
+        <button
+          data-comp={id}
+          class="comp-btn px-4 py-2 rounded-lg border border-gray-300 text-sm text-gray-700 hover:border-brand-400 hover:text-brand-700 transition-colors"
+        >
+          {label}
+        </button>
+      ))}
+    </div>
+  </div>
+
+  <!-- Comparison panels (hidden by default, shown via JS) -->
+  <div id="comp-result" class="hidden">
+
+    <!-- Mulch vs Rock -->
+    <div data-panel="mulch-vs-rock" class="comp-panel hidden">
+      <CompareTable
+        a="Mulch"
+        b="Rock / Gravel"
+        rows={[
+          ['Upfront cost',   '$25–$60 / cu yd bulk', '$50–$150 / cu yd'],
+          ['Lifespan',       '1–3 years',             'Permanent'],
+          ['Moisture retention', 'Excellent',          'Poor'],
+          ['Soil improvement',   'Yes (as it breaks down)', 'None'],
+          ['Weed suppression',   'Good at 3 in',       'Good with fabric'],
+          ['Heat absorption',    'Low',                'High'],
+          ['Slope stability',    'Moderate',           'Good'],
+          ['Best for',           'Garden beds, trees', 'Driveways, slopes, desert'],
+        ]}
+        verdict="Choose mulch for plant health and soil improvement. Choose rock for permanent, low-maintenance coverage in hot or high-traffic areas."
+        aHref="/calculator/mulch"
+        bHref="/calculator/gravel"
+        guideHref="/guide/mulch-vs-rock-landscaping"
+      />
+    </div>
+
+    <!-- Pea Gravel vs River Rock -->
+    <div data-panel="pea-vs-river" class="comp-panel hidden">
+      <CompareTable
+        a="Pea Gravel"
+        b="River Rock"
+        rows={[
+          ['Size',          '3/8 inch (pea-sized)',   '1–5 inches'],
+          ['Cost (bulk)',   '$30–$55 / cu yd',        '$45–$130 / cu yd'],
+          ['Drainage',      'Good',                   'Excellent'],
+          ['Foot stability','Low (shifts easily)',    'Moderate'],
+          ['Appearance',    'Uniform, fine',          'Varied, decorative'],
+          ['Pool surrounds','Good',                   'Excellent (smooth)'],
+          ['Playgrounds',   'Excellent (cushioning)', 'Not recommended'],
+          ['Drainage beds', 'Moderate',               'Best choice'],
+        ]}
+        verdict="Pea gravel for playgrounds, paths, and fine-grade coverage. River rock for drainage, dry creek beds, and decorative borders."
+        aHref="/calculator/gravel"
+        bHref="/calculator/gravel"
+        guideHref="/guide/pea-gravel-vs-river-rock"
+      />
+    </div>
+
+    <!-- Asphalt vs Concrete -->
+    <div data-panel="asphalt-vs-concrete" class="comp-panel hidden">
+      <CompareTable
+        a="Asphalt"
+        b="Concrete"
+        rows={[
+          ['Install cost',    '$3–$5 / sq ft',        '$5–$10 / sq ft'],
+          ['Lifespan',        '20–30 years',           '30–50 years'],
+          ['Cold climates',   'Excellent',             'Fair (cracks)'],
+          ['Hot climates',    'Fair (softens)',        'Excellent'],
+          ['Maintenance',     'Seal every 3–5 yrs',   'Seal every 5–10 yrs'],
+          ['Repair ease',     'Easy, invisible',       'Hard to match'],
+          ['Curb appeal',     'Basic (black/gray)',    'Higher (decorative options)'],
+          ['Resale value',    'Moderate',              'Higher'],
+        ]}
+        verdict="Asphalt for cold climates and tight budgets. Concrete for hot climates, long-term value, and curb appeal."
+        aHref="/calculator/concrete"
+        bHref="/calculator/concrete"
+        guideHref="/guide/asphalt-vs-concrete-driveway"
+      />
+    </div>
+
+    <!-- Sod vs Seed -->
+    <div data-panel="sod-vs-seed" class="comp-panel hidden">
+      <CompareTable
+        a="Sod"
+        b="Grass Seed"
+        rows={[
+          ['Material cost',   '$0.40–$0.80 / sq ft',  '$0.05–$0.30 / sq ft'],
+          ['Usable lawn',     '4–6 weeks',             '8–12 weeks'],
+          ['Failure risk',    'Low',                   'Moderate'],
+          ['Variety choice',  'Limited',               'Wide'],
+          ['Best season',     'Any (with irrigation)', 'Early fall or spring'],
+          ['Slope use',       'Excellent',             'Poor (washes away)'],
+          ['Large areas',     'Expensive',             'Cost-effective'],
+          ['Immediate use',   'Yes (after rooting)',   'No'],
+        ]}
+        verdict="Sod for speed, slopes, and immediate use. Seed for large areas and budget-conscious projects."
+        aHref="/calculator/sod"
+        bHref="/calculator/sod"
+        guideHref="/guide/sod-vs-seed"
+      />
+    </div>
+
+    <!-- Topsoil vs Garden Soil -->
+    <div data-panel="topsoil-vs-garden" class="comp-panel hidden">
+      <CompareTable
+        a="Topsoil"
+        b="Garden Soil"
+        rows={[
+          ['Cost (bulk)',      '$15–$35 / cu yd',      '$5–$12 / 1 cu ft bag'],
+          ['Composition',     'Natural mineral soil',  'Topsoil + compost + amendments'],
+          ['Drainage',        'Moderate (varies)',     'Better (amended)'],
+          ['Nutrient content','Low to moderate',       'Higher'],
+          ['Raised beds',     'Not ideal alone',       'Excellent'],
+          ['Lawn grading',    'Best choice',           'Too loose, settles unevenly'],
+          ['Vegetable gardens','Mix with compost',     'Good'],
+          ['Bulk pricing',    'Much cheaper bulk',     'Bags only (costly at scale)'],
+        ]}
+        verdict="Topsoil for grading, fill, and lawn repair. Garden soil for raised beds and container planting."
+        aHref="/calculator/topsoil"
+        bHref="/calculator/topsoil"
+        guideHref="/guide/topsoil-vs-garden-soil"
+      />
+    </div>
+
+    <!-- Cedar vs Hardwood Mulch -->
+    <div data-panel="cedar-vs-hardwood" class="comp-panel hidden">
+      <CompareTable
+        a="Cedar Mulch"
+        b="Shredded Hardwood"
+        rows={[
+          ['Cost (bulk)',      '$40–$75 / cu yd',      '$28–$50 / cu yd'],
+          ['Lifespan',        '2–4 years',             '1–2 years'],
+          ['Pest repellent',  'Yes (natural oils)',    'No'],
+          ['Scent',           'Pleasant cedar',        'Neutral / earthy'],
+          ['Soil enrichment', 'Moderate',              'Good'],
+          ['Color retention', 'Better',                'Fades faster'],
+          ['Best for',        'Pest-prone areas, patios', 'General beds, economy'],
+          ['Moisture retention','Excellent',           'Excellent'],
+        ]}
+        verdict="Cedar for pest-prone areas and longevity. Hardwood for general-purpose use at lower cost."
+        aHref="/calculator/mulch"
+        bHref="/calculator/mulch"
+        guideHref="/guide/types-of-mulch"
+      />
+    </div>
+
+    <!-- Gravel vs Pavers (driveway) -->
+    <div data-panel="gravel-vs-pavers" class="comp-panel hidden">
+      <CompareTable
+        a="Gravel Driveway"
+        b="Paver Driveway"
+        rows={[
+          ['Install cost',    '$0.75–$3 / sq ft',     '$10–$25 / sq ft'],
+          ['Lifespan',        'Indefinite (top up)',   '25–50 years'],
+          ['Drainage',        'Excellent',             'Good (with gaps)'],
+          ['Maintenance',     'Annual regrading',      'Occasional re-leveling'],
+          ['Cold climate',    'Excellent',             'Good (flexible base)'],
+          ['Curb appeal',     'Low–moderate',          'High'],
+          ['Resale value',    'Low',                   'High'],
+          ['DIY-friendly',    'Yes',                   'Moderate (labor-intensive)'],
+        ]}
+        verdict="Gravel for rural/budget applications. Pavers for curb appeal, resale value, and long-term investment."
+        aHref="/calculator/gravel"
+        bHref="/calculator/paver"
+        guideHref="/guide/how-much-gravel-for-a-driveway"
+      />
+    </div>
+
+    <!-- Concrete vs Pavers (patio) -->
+    <div data-panel="concrete-vs-pavers" class="comp-panel hidden">
+      <CompareTable
+        a="Concrete Patio"
+        b="Paver Patio"
+        rows={[
+          ['Install cost',    '$5–$10 / sq ft',       '$8–$20 / sq ft'],
+          ['Lifespan',        '25–40 years',           '30–50 years'],
+          ['Repairability',   'Difficult to match',   'Remove & replace single pieces'],
+          ['Winter performance','Cracks over time',   'Flexes with freeze-thaw'],
+          ['Drainage',        'Slopes required',       'Permeable options available'],
+          ['Design flexibility','Stamped/colored',    'Unlimited patterns'],
+          ['DIY-friendly',    'Moderate',              'Yes'],
+          ['Maintenance',     'Seal every 5 yrs',     'Occasional re-leveling'],
+        ]}
+        verdict="Concrete for budget-conscious larger patios. Pavers for design flexibility, repairability, and cold climates."
+        aHref="/calculator/concrete"
+        bHref="/calculator/paver"
+        guideHref="/guide/how-to-build-a-patio"
+      />
+    </div>
+
+  </div>
+
+  <AdSlot slot="after-result" className="mt-8" />
+
+  <div class="mt-8 grid sm:grid-cols-2 gap-4">
+    <a href="/guide/mulch-vs-rock-landscaping" class="calculator-card hover:border-brand-300 transition-colors block">
+      <div class="text-brand-600 font-semibold mb-1">Mulch vs Rock →</div>
+      <p class="text-sm text-gray-600">Full guide with cost over 10 years</p>
+    </a>
+    <a href="/guide/pea-gravel-vs-river-rock" class="calculator-card hover:border-brand-300 transition-colors block">
+      <div class="text-brand-600 font-semibold mb-1">Pea Gravel vs River Rock →</div>
+      <p class="text-sm text-gray-600">Size, drainage, and best uses compared</p>
+    </a>
+    <a href="/guide/asphalt-vs-concrete-driveway" class="calculator-card hover:border-brand-300 transition-colors block">
+      <div class="text-brand-600 font-semibold mb-1">Asphalt vs Concrete →</div>
+      <p class="text-sm text-gray-600">Climate, cost, and lifespan breakdown</p>
+    </a>
+    <a href="/guide/sod-vs-seed" class="calculator-card hover:border-brand-300 transition-colors block">
+      <div class="text-brand-600 font-semibold mb-1">Sod vs Seed →</div>
+      <p class="text-sm text-gray-600">Timeline, cost, and failure risk compared</p>
+    </a>
+  </div>
+
+</div>
+</BaseLayout>
+
+---
+<!-- CompareTable component inline (Astro doesn't support function components in .astro files the same way) -->
+
+<script>
+const buttons = document.querySelectorAll('.comp-btn');
+const result = document.getElementById('comp-result')!;
+const panels = document.querySelectorAll('.comp-panel');
+
+buttons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const id = btn.getAttribute('data-comp');
+    buttons.forEach(b => b.classList.remove('border-brand-500', 'text-brand-700', 'bg-brand-50'));
+    btn.classList.add('border-brand-500', 'text-brand-700', 'bg-brand-50');
+    panels.forEach(p => p.classList.add('hidden'));
+    const panel = document.querySelector(`[data-panel="${id}"]`);
+    if (panel) {
+      panel.classList.remove('hidden');
+      result.classList.remove('hidden');
+      result.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
