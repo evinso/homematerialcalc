@@ -20,50 +20,43 @@ export function getStaticPaths() {
 
 const { l, w } = Astro.props as { l: number; w: number };
 const sqft = l * w;
+const COVERAGE = 350;
 
-// Standard assumptions
-const CEILING_HEIGHT = 8;    // ft
-const DOOR_AREA = 20;        // sq ft per door
-const WINDOW_AREA = 15;      // sq ft per window
-const COVERAGE = 350;        // sq ft per gallon
+const wallArea = 2 * (l + w) * 8;
+const netWall = Math.max(0, wallArea - 50);
+const ceilingArea = sqft;
 
-function calcPaint(l: number, w: number, ceilingH: number, doors: number, windows: number, coats: number) {
-  const wallArea = 2 * (l + w) * ceilingH;
-  const deductions = doors * DOOR_AREA + windows * WINDOW_AREA;
-  const netWall = Math.max(0, wallArea - deductions);
-  const ceilingArea = l * w;
-  const gallonsWall = Math.ceil((netWall * coats) / COVERAGE * 10) / 10;
-  const gallonsCeiling = Math.ceil((ceilingArea * coats) / COVERAGE * 10) / 10;
-  return { wallArea: Math.round(wallArea), netWall: Math.round(netWall), ceilingArea, gallonsWall, gallonsCeiling };
-}
+const gal = (area: number, coats: number) =>
+  Math.ceil(area * coats / COVERAGE * 10) / 10;
 
-// Standard room: 1 door, 2 windows, 8 ft ceiling
-const main1coat = calcPaint(l, w, CEILING_HEIGHT, 1, 2, 1);
-const main2coat = calcPaint(l, w, CEILING_HEIGHT, 1, 2, 2);
+const gal1coat = gal(netWall, 1);
+const gal2coat = gal(netWall, 2);
+const galCeil1 = gal(ceilingArea, 1);
+const extraPerFt = Math.ceil(2 * (l + w) / COVERAGE * 10) / 10;
 
 const rows = [
-  { label: '1 coat, walls only',          gallons: main1coat.gallonsWall },
-  { label: '2 coats, walls only',         gallons: main2coat.gallonsWall },
-  { label: '1 coat, walls + ceiling',     gallons: Math.ceil((main1coat.gallonsWall * 10 + main1coat.gallonsCeiling * 10) / 10) },
-  { label: '2 coats, walls + ceiling',    gallons: Math.ceil((main2coat.gallonsWall * 10 + main2coat.gallonsCeiling * 10) / 10) },
+  { label: '1 coat, walls only',      g: gal(netWall, 1) },
+  { label: '2 coats, walls only',      g: gal(netWall, 2) },
+  { label: '1 coat, walls + ceiling',  g: Math.ceil((gal(netWall,1) + gal(ceilingArea,1)) * 10) / 10 },
+  { label: '2 coats, walls + ceiling', g: Math.ceil((gal(netWall,2) + gal(ceilingArea,2)) * 10) / 10 },
 ];
 
 const faqs = [
   {
     q: `How many gallons of paint for a ${l}x${w} room?`,
-    a: `A ${l}×${w} ft room (${main1coat.wallArea} sq ft of wall area, minus 1 door and 2 windows = ${main1coat.netWall} sq ft) needs ${main1coat.gallonsWall} gallons for 1 coat or ${main2coat.gallonsWall} gallons for 2 coats of wall paint.`,
+    a: `A ${l}×${w} ft room has ${wallArea} sq ft of wall area. Subtract 1 door and 2 windows (50 sq ft) = ${netWall} sq ft. That's ${gal1coat} gallons for 1 coat or ${gal2coat} gallons for 2 coats.`,
   },
   {
     q: `Do I need to paint the ceiling in a ${l}x${w} room?`,
-    a: `The ceiling in a ${l}×${w} room is ${sqft} sq ft. That's ${main1coat.gallonsCeiling} gallons per coat of ceiling paint. Ceiling paint is typically white and sold separately from wall paint.`,
+    a: `The ceiling in a ${l}×${w} room is ${ceilingArea} sq ft — ${galCeil1} gallons per coat of ceiling paint. Ceiling paint is typically white and sold separately from wall paint.`,
   },
   {
     q: `How long will it take to paint a ${l}x${w} room?`,
-    a: `Most DIYers can paint a ${l}×${w} room in 4–8 hours for 2 coats — including prep, drying time between coats, and cleanup. Professional painters are faster but cost $200–$500 for a room this size.`,
+    a: `Most DIYers can paint a ${l}×${w} room in 4–8 hours for 2 coats including prep, drying time, and cleanup. Professionals cost $200–$500 for a room this size.`,
   },
   {
-    q: `What sheen of paint for a ${l}x${w} room?`,
-    a: `Bedrooms: eggshell or satin. Living rooms: eggshell. Bathrooms and kitchens: satin or semi-gloss (moisture resistance). Trim and doors: semi-gloss or gloss.`,
+    q: `What paint sheen for a ${l}x${w} room?`,
+    a: `Bedrooms: eggshell or satin. Living rooms: eggshell. Bathrooms and kitchens: satin or semi-gloss. Trim and doors: semi-gloss or gloss.`,
   },
 ];
 
@@ -76,14 +69,14 @@ const related = [
 ];
 
 const title = `How Much Paint for a ${l}×${w} Room? (Gallons Needed)`;
-const description = `A ${l}×${w} ft room needs ${main1coat.gallonsWall} gallons for 1 coat or ${main2coat.gallonsWall} gallons for 2 coats of wall paint (${main1coat.netWall} sq ft of net wall area). Ceiling separate.`;
+const description = `A ${l}×${w} ft room needs ${gal1coat} gallons for 1 coat or ${gal2coat} gallons for 2 coats of wall paint (${netWall} sq ft net wall area). Ceiling separate.`;
 ---
 
 <GuideLayout
   {title}
   {description}
   h1={`How Much Paint for a ${l}×${w} Room?`}
-  intro={`A ${l}×${w} foot room has ${main1coat.wallArea} sq ft of wall area. Subtract 1 door and 2 windows and you get ${main1coat.netWall} sq ft to paint — that's ${main1coat.gallonsWall} gallons for 1 coat or ${main2coat.gallonsWall} gallons for 2 coats of wall paint.`}
+  intro={`A ${l}×${w} foot room has ${wallArea} sq ft of wall area. Subtract 1 door and 2 windows and you get ${netWall} sq ft to paint — that's ${gal1coat} gallons for 1 coat or ${gal2coat} gallons for 2 coats of wall paint.`}
   calculatorHref="/calculator/paint"
   calculatorLabel="Paint Calculator — enter exact room dimensions, doors, and windows for a precise gallon count"
   faqs={faqs}
@@ -91,40 +84,49 @@ const description = `A ${l}×${w} ft room needs ${main1coat.gallonsWall} gallons
   breadcrumbs={[{ label: 'Guides' }, { label: `Paint for ${l}×${w} Room` }]}
 >
 
-## Answer at a glance — {l}×{w} ft room
+<p><em>Assumptions: 8 ft ceiling · 1 door (20 sq ft) · 2 windows (15 sq ft each) · 350 sq ft per gallon</em></p>
 
-Assumptions: 8 ft ceiling · 1 door (20 sq ft) · 2 windows (15 sq ft each) · 350 sq ft per gallon
+<h2>Answer at a glance — {l}×{w} ft room</h2>
 
-| What you're painting | Gallons needed |
-|---------------------|---------------|
-{rows.map(r => `| ${r.label} | **${r.gallons} gal** |`).join('\n')}
+<table>
+  <thead>
+    <tr><th>What you're painting</th><th>Gallons needed</th></tr>
+  </thead>
+  <tbody>
+    {rows.map(r => (
+      <tr>
+        <td>{r.label}</td>
+        <td><strong>{r.g} gal</strong></td>
+      </tr>
+    ))}
+  </tbody>
+</table>
 
-## How we calculated it
+<h2>How we calculated it</h2>
+<ol>
+  <li>Wall area = 2 × ({l} + {w}) × 8 ft = <strong>{wallArea} sq ft</strong></li>
+  <li>Deductions = 1 door (20 sq ft) + 2 windows (30 sq ft) = <strong>50 sq ft</strong></li>
+  <li>Net wall area = {wallArea} − 50 = <strong>{netWall} sq ft</strong></li>
+  <li>Gallons per coat = {netWall} ÷ 350 = <strong>{gal1coat} gal</strong></li>
+  <li>Two coats = <strong>{gal2coat} gal</strong></li>
+</ol>
+<p>Ceiling: {l} × {w} = <strong>{ceilingArea} sq ft</strong> → {galCeil1} gal per coat</p>
 
-1. Wall area = 2 × ({l} + {w}) × 8 ft = **{main1coat.wallArea} sq ft**
-2. Deductions = 1 door (20 sq ft) + 2 windows (30 sq ft) = **50 sq ft**
-3. Net wall area = {main1coat.wallArea} − 50 = **{main1coat.netWall} sq ft**
-4. Gallons per coat = {main1coat.netWall} ÷ 350 = **{main1coat.gallonsWall} gal**
-5. Two coats = **{main2coat.gallonsWall} gal**
+<h2>Adjust for your room</h2>
+<ul>
+  <li><strong>More or larger windows</strong> — each 15 sq ft window saves ~0.04 gallons per coat</li>
+  <li><strong>9 ft ceilings</strong> — adds {2 * (l + w)} sq ft more wall area ({extraPerFt} gal per coat extra)</li>
+  <li><strong>No door</strong> — add back 20 sq ft per missing door</li>
+  <li><strong>Dark color over light</strong> — may need a 3rd coat; buy extra accordingly</li>
+</ul>
 
-Ceiling area = {l} × {w} = **{sqft} sq ft** → {main1coat.gallonsCeiling} gal per coat
+<p>The <a href="/calculator/paint">Paint Calculator</a> lets you enter your exact window count, ceiling height, and number of coats.</p>
 
-## Adjust for your room
-
-The table above uses standard assumptions. Your room may differ:
-
-- **More windows or larger windows** — each 15 sq ft window saves about 0.04 gallons per coat
-- **Taller ceilings** — 9 ft ceilings add roughly {Math.round(2 * (l + w))} sq ft more wall area ({Math.ceil(2 * (l + w) / 350 * 10) / 10} gal per coat)
-- **Open-plan room or no doors** — add back 20 sq ft per missing door
-- **Dark color over light** — may need a 3rd coat; buy accordingly
-
-The [Paint Calculator](/calculator/paint) lets you enter your exact window count, ceiling height, and number of coats.
-
-## Paint buying tips
-
-- **Buy in 1-gallon cans** for {main2coat.gallonsWall <= 2 ? 'this room size — easier to store leftover' : 'the base amount, then a quart for touch-ups'}
-- **Keep a quart of the same color** for future touch-ups
-- **Same dye lot** — buy all cans in one trip; batch numbers affect color consistency
-- **Primer** — use a separate primer coat if painting over dark colors, stains, or new drywall
+<h2>Paint buying tips</h2>
+<ul>
+  <li>Buy all cans in one trip — batch numbers affect color consistency</li>
+  <li>Keep a quart of the same color for future touch-ups</li>
+  <li>Use a separate primer coat if painting over dark colors or new drywall</li>
+</ul>
 
 </GuideLayout>

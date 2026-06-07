@@ -75,47 +75,75 @@ const description = `For ${sqft} sq ft at 2 inches deep, you need ${main.bags} b
   breadcrumbs={[{ label: 'Guides' }, { label: `Sand for ${sqft} Sq Ft` }]}
 >
 
-## Answer at a glance — {sqft} sq ft
+<h2>Answer at a glance — {sqft} sq ft</h2>
 
-| Depth | Cu ft | Cu yards | 50 lb bags | Tons |
-|-------|-------|----------|-----------|------|
-{rows.map((r: any) => `| ${r.depth}" | ${r.cuFt} | ${r.cuYdWaste} cu yd | **${r.bags}** | ${r.tons} |`).join('\n')}
+<table>
+  <thead>
+    <tr><th>Depth</th><th>Cu ft</th><th>Cu yards</th><th>50 lb bags</th><th>Tons</th></tr>
+  </thead>
+  <tbody>
+    {rows.map((r: any) => (
+      <tr>
+        <td>{r.depth}"</td>
+        <td>{r.cuFt}</td>
+        <td>{r.cuYdWaste} cu yd</td>
+        <td><strong>{r.bags}</strong></td>
+        <td>{r.tons}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+<p><em>All counts include 10% waste, rounded up.</em></p>
 
-*All counts include 10% waste, rounded up.*
+<h2>How we calculated it</h2>
+<ol>
+  <li>Volume = {sqft} × 2 ÷ 12 = <strong>{main.cuFt} cu ft</strong></li>
+  <li>Cubic yards = {main.cuFt} ÷ 27 = <strong>{main.cuYd} cu yd</strong></li>
+  <li>With 10% waste = <strong>{main.cuYdWaste} cu yd</strong></li>
+  <li>50 lb bags (approx. 0.5 cu ft each) = <strong>{main.bags} bags</strong></li>
+  <li>Tons = {main.cuYdWaste} × 1.35 = <strong>{main.tons} tons</strong></li>
+</ol>
 
-## How we calculated it
+<h2>Compare nearby areas</h2>
 
-For {sqft} sq ft at 2 inches:
+<table>
+  <thead>
+    <tr><th>Area</th><th>At 1"</th><th>At 2" (paver base)</th><th>At 3"</th></tr>
+  </thead>
+  <tbody>
+    {nearby.map((n: any) => (
+      <tr>
+        <td>{n.area} sq ft</td>
+        <td>{n.d1.bags} bags</td>
+        <td><strong>{n.d2.bags} bags</strong></td>
+        <td>{n.d3.bags} bags</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
 
-1. Volume = {sqft} × 2 ÷ 12 = **{main.cuFt} cu ft**
-2. Cubic yards = {main.cuFt} ÷ 27 = **{main.cuYd} cu yd**
-3. With 10% waste = **{main.cuYdWaste} cu yd**
-4. 50 lb bags (approx. 0.5 cu ft each) = **{main.bags} bags**
-5. Tons = {main.cuYdWaste} × 1.35 = **{main.tons} tons**
+<h2>Sand depth guide by use</h2>
+<table>
+  <thead>
+    <tr><th>Application</th><th>Recommended depth</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Paver bedding layer</td><td>1–2 inches</td></tr>
+    <tr><td>Sandbox fill</td><td>8–12 inches</td></tr>
+    <tr><td>Under artificial turf</td><td>1–2 inches</td></tr>
+    <tr><td>Lawn leveling</td><td>0.5–1 inch</td></tr>
+    <tr><td>Pool base</td><td>2–4 inches</td></tr>
+  </tbody>
+</table>
 
-## Compare nearby areas
+<h2>Bags vs. bulk sand</h2>
+<p>
+  {isBulkBetter
+    ? `At ${main.cuYdWaste} cubic yards, get a bulk quote from a landscaping supplier. Bulk sand is significantly cheaper per cubic foot than bagged sand at this quantity.`
+    : `At ${main.cuYdWaste} cubic yards, buying ${main.bags} bags of 50 lb sand is the most convenient option. Bulk orders typically have a 1–2 yard minimum.`
+  }
+</p>
 
-| Area | At 1" | At 2" (paver base) | At 3" |
-|------|-------|-------------------|-------|
-{nearby.map((n: any) => `| ${n.area} sq ft | ${n.d1.bags} bags | **${n.d2.bags} bags** | ${n.d3.bags} bags |`).join('\n')}
-
-## Sand depth guide by use
-
-| Application | Recommended depth |
-|-------------|------------------|
-| Paver bedding layer | 1–2 inches |
-| Sandbox fill | 8–12 inches |
-| Under artificial turf | 1–2 inches |
-| Lawn leveling | 0.5–1 inch |
-| Pool base | 2–4 inches |
-
-## Bags vs. bulk sand
-
-{isBulkBetter
-  ? `At ${main.cuYdWaste} cubic yards, get a bulk quote from a landscaping supplier. Bulk sand is significantly cheaper per cubic foot than bagged sand at this quantity.`
-  : `At ${main.cuYdWaste} cubic yards, buying ${main.bags} bags of 50 lb sand is the most convenient option. Bulk orders typically have a 1–2 yard minimum.`
-}
-
-Use the [Sand Calculator](/calculator/sand) to enter your exact dimensions and depth for a precise result.
+<p>Use the <a href="/calculator/sand">Sand Calculator</a> to enter your exact dimensions and depth for a precise result.</p>
 
 </GuideLayout>

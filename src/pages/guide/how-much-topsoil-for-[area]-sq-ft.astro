@@ -76,47 +76,75 @@ const description = `For ${sqft} sq ft at 6 inches deep, you need ${main.cuYdWas
   breadcrumbs={[{ label: 'Guides' }, { label: `Topsoil for ${sqft} Sq Ft` }]}
 >
 
-## Answer at a glance — {sqft} sq ft
+<h2>Answer at a glance — {sqft} sq ft</h2>
 
-| Depth | Cu yards | 40 lb bags | 1 cu ft bags | Tons |
-|-------|----------|-----------|-------------|------|
-{rows.map((r: any) => `| ${r.depth}" | ${r.cuYdWaste} cu yd | **${r.bags40lb}** | ${r.bagsCuFt} | ${r.tons} |`).join('\n')}
+<table>
+  <thead>
+    <tr><th>Depth</th><th>Cu yards</th><th>40 lb bags</th><th>1 cu ft bags</th><th>Tons</th></tr>
+  </thead>
+  <tbody>
+    {rows.map((r: any) => (
+      <tr>
+        <td>{r.depth}"</td>
+        <td>{r.cuYdWaste} cu yd</td>
+        <td><strong>{r.bags40lb}</strong></td>
+        <td>{r.bagsCuFt}</td>
+        <td>{r.tons}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+<p><em>All counts include 10% waste, rounded up.</em></p>
 
-*All counts include 10% waste, rounded up.*
+<h2>How we calculated it</h2>
+<ol>
+  <li>Volume = {sqft} × 6 ÷ 12 = <strong>{main.cuFt} cu ft</strong></li>
+  <li>Cubic yards = {main.cuFt} ÷ 27 = <strong>{main.cuYd} cu yd</strong></li>
+  <li>With 10% waste = <strong>{main.cuYdWaste} cu yd</strong></li>
+  <li>40 lb bags (approx. 0.75 cu ft each) = <strong>{main.bags40lb} bags</strong></li>
+</ol>
 
-## How we calculated it
+<h2>Compare nearby areas</h2>
 
-For {sqft} sq ft at 6 inches:
+<table>
+  <thead>
+    <tr><th>Area</th><th>At 4" (top-dress)</th><th>At 6" (new lawn)</th><th>At 8" (garden)</th></tr>
+  </thead>
+  <tbody>
+    {nearby.map((n: any) => (
+      <tr>
+        <td>{n.area} sq ft</td>
+        <td>{n.d4.cuYdWaste} cu yd / {n.d4.bags40lb} bags</td>
+        <td><strong>{n.d6.cuYdWaste} cu yd / {n.d6.bags40lb} bags</strong></td>
+        <td>{n.d8.cuYdWaste} cu yd / {n.d8.bags40lb} bags</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
 
-1. Volume = {sqft} × 6 ÷ 12 = **{main.cuFt} cu ft**
-2. Cubic yards = {main.cuFt} ÷ 27 = **{main.cuYd} cu yd**
-3. With 10% waste = **{main.cuYdWaste} cu yd**
-4. 40 lb bags (approx. 0.75 cu ft each) = **{main.bags40lb} bags**
+<h2>Depth guide by use</h2>
+<table>
+  <thead>
+    <tr><th>Application</th><th>Recommended depth</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Overseeding / top-dressing</td><td>2 inches</td></tr>
+    <tr><td>Patching bare lawn spots</td><td>2–4 inches</td></tr>
+    <tr><td>New lawn from seed</td><td>4–6 inches</td></tr>
+    <tr><td>New lawn from sod</td><td>4–6 inches</td></tr>
+    <tr><td>Vegetable garden</td><td>8–12 inches</td></tr>
+    <tr><td>Raised bed (fill)</td><td>12–18 inches</td></tr>
+  </tbody>
+</table>
 
-## Compare nearby areas
+<h2>Bags vs. bulk topsoil</h2>
+<p>
+  {isBulkBetter
+    ? `At ${main.cuYdWaste} cubic yards, bulk topsoil is usually cheaper than bags. Get quotes from local landscaping suppliers — bulk topsoil typically runs $20–$50 per cubic yard vs. $5–$8 per 40 lb bag.`
+    : `For ${sqft} sq ft you need ${main.cuYdWaste} cubic yards — buying ${main.bags40lb} bags is the easy choice. Most suppliers require a 2-yard minimum for bulk delivery.`
+  }
+</p>
 
-| Area | At 4" (top-dress) | At 6" (new lawn) | At 8" (garden) |
-|------|-----------------|--------------------|---------------|
-{nearby.map((n: any) => `| ${n.area} sq ft | ${n.d4.cuYdWaste} cu yd / ${n.d4.bags40lb} bags | **${n.d6.cuYdWaste} cu yd / ${n.d6.bags40lb} bags** | ${n.d8.cuYdWaste} cu yd / ${n.d8.bags40lb} bags |`).join('\n')}
-
-## Depth guide by use
-
-| Application | Recommended depth |
-|-------------|------------------|
-| Overseeding / top-dressing | 2 inches |
-| Patching bare lawn spots | 2–4 inches |
-| New lawn from seed | 4–6 inches |
-| New lawn from sod | 4–6 inches |
-| Vegetable garden | 8–12 inches |
-| Raised bed (fill) | 12–18 inches |
-
-## Bags vs. bulk topsoil
-
-{isBulkBetter
-  ? `At ${main.cuYdWaste} cubic yards, bulk topsoil is usually cheaper than bags. Get quotes from local landscaping suppliers — bulk topsoil typically runs $20–$50 per cubic yard vs. $5–$8 per 40 lb bag.`
-  : `For ${sqft} sq ft you need ${main.cuYdWaste} cubic yards — buying ${main.bags40lb} bags is the easy choice. Most suppliers require a 2-yard minimum for bulk delivery.`
-}
-
-Use the [Topsoil Calculator](/calculator/topsoil) to enter your exact dimensions and get an instant bag count or cubic yard total.
+<p>Use the <a href="/calculator/topsoil">Topsoil Calculator</a> to enter your exact dimensions and get an instant bag count or cubic yard total.</p>
 
 </GuideLayout>

@@ -24,7 +24,6 @@ const depths = [1, 2, 3, 4, 6];
 const rows = depths.map(d => ({ depth: d, ...calcMulch(sqft, d) }));
 const main = calcMulch(sqft, 3);
 
-// Cross-reference nearby sizes
 const nearby = [sqft * 0.5, sqft * 0.75, sqft, sqft * 1.5, sqft * 2]
   .map(a => Math.round(a))
   .filter((a, i, arr) => a > 0 && arr.indexOf(a) === i);
@@ -41,12 +40,12 @@ const faqs = [
   {
     q: `Should I buy bags or bulk mulch for ${sqft} square feet?`,
     a: main.cuYd < 2
-      ? `At ${main.cuYd} cubic yards, bagged mulch is the convenient choice — ordering a partial yard of bulk isn't always available. Buy ${main.bags} bags and you're set.`
-      : `At ${main.cuYd} cubic yards, bulk delivery is usually cheaper than bags. Compare your local bulk price per yard vs. the bag cost (13.5 bags = 1 cu yd).`,
+      ? `At ${main.cuYd} cubic yards, bagged mulch is the convenient choice. Buying ${main.bags} bags is easier than ordering a partial yard of bulk.`
+      : `At ${main.cuYd} cubic yards, bulk delivery is usually cheaper. Compare your local bulk price per yard vs. bag cost (13.5 bags = 1 cu yd).`,
   },
   {
     q: `How do I measure ${sqft} square feet for mulching?`,
-    a: `Measure each bed's length and width in feet. Add up the areas. Subtract large plants, stones, or hardscape. A 5–10% waste factor covers edges and settling.`,
+    a: `Measure each bed's length and width in feet and multiply. Add up all beds. A 5–10% waste factor covers edges and settling.`,
   },
 ];
 
@@ -73,45 +72,72 @@ const description = `For ${sqft} sq ft at 3 inches deep, you need ${main.bags} b
   breadcrumbs={[{ label: 'Guides' }, { label: `Mulch for ${sqft} Sq Ft` }]}
 >
 
-## Answer at a glance — {sqft} sq ft
+<h2>Answer at a glance — {sqft} sq ft</h2>
 
-| Depth | Cu ft | Cu yards | 2 cu ft bags (with 5% waste) |
-|-------|-------|----------|------------------------------|
-{rows.map(r => `| ${r.depth} inch${r.depth > 1 ? 'es' : ''} | ${r.cuFt} | ${r.cuYd} | **${r.bags} bags** |`).join('\n')}
+<table>
+  <thead>
+    <tr><th>Depth</th><th>Cu ft</th><th>Cu yards</th><th>2 cu ft bags (with 5% waste)</th></tr>
+  </thead>
+  <tbody>
+    {rows.map(r => (
+      <tr>
+        <td>{r.depth} {r.depth === 1 ? 'inch' : 'inches'}</td>
+        <td>{r.cuFt}</td>
+        <td>{r.cuYd}</td>
+        <td><strong>{r.bags} bags</strong></td>
+      </tr>
+    ))}
+  </tbody>
+</table>
 
-## How we calculated it
+<h2>How we calculated it</h2>
 
-For {sqft} sq ft at 3 inches:
+<p>For {sqft} sq ft at 3 inches:</p>
+<ol>
+  <li>Volume = {sqft} × 3 ÷ 12 = <strong>{main.cuFt} cu ft</strong></li>
+  <li>Cubic yards = {main.cuFt} ÷ 27 = <strong>{main.cuYd} cu yd</strong></li>
+  <li>Bags (2 cu ft) = {main.cuYd} × 13.5 = {Math.round(main.cuYd * 13.5 * 10) / 10} → with 5% waste = <strong>{main.bags} bags</strong></li>
+</ol>
 
-1. Volume = {sqft} × 3 ÷ 12 = **{calcMulch(sqft, 3).cuFt} cu ft**
-2. Cubic yards = {calcMulch(sqft, 3).cuFt} ÷ 27 = **{main.cuYd} cu yd**
-3. Bags (2 cu ft) = {main.cuYd} × 13.5 = {Math.round(main.cuYd * 13.5 * 10) / 10} → with 5% waste = **{main.bags} bags**
+<h2>Compare nearby sizes</h2>
 
-## Compare nearby sizes
+<table>
+  <thead>
+    <tr><th>Area</th><th>At 2"</th><th>At 3"</th><th>At 4"</th></tr>
+  </thead>
+  <tbody>
+    {nearby.map(a => {
+      const m2 = calcMulch(a, 2);
+      const m3 = calcMulch(a, 3);
+      const m4 = calcMulch(a, 4);
+      return (
+        <tr>
+          <td>{a} sq ft</td>
+          <td>{m2.bags} bags</td>
+          <td><strong>{m3.bags} bags</strong></td>
+          <td>{m4.bags} bags</td>
+        </tr>
+      );
+    })}
+  </tbody>
+</table>
 
-| Area | At 2" | At 3" | At 4" |
-|------|-------|-------|-------|
-{nearby.map(a => {
-  const m2 = calcMulch(a, 2);
-  const m3 = calcMulch(a, 3);
-  const m4 = calcMulch(a, 4);
-  return `| ${a} sq ft | ${m2.bags} bags | **${m3.bags} bags** | ${m4.bags} bags |`;
-}).join('\n')}
+<h2>Depth guide</h2>
+<ul>
+  <li><strong>1–2 inches</strong> — top-dressing existing mulch, lightweight coverage</li>
+  <li><strong>3 inches</strong> — standard for flower beds, best weed suppression</li>
+  <li><strong>4 inches</strong> — new beds or heavy clay soil where drainage is poor</li>
+  <li><strong>6 inches</strong> — play areas, paths (not recommended for planted beds)</li>
+</ul>
 
-## Depth guide
+<h2>Bags vs. bulk</h2>
+<p>
+  {main.cuYd < 2
+    ? `For ${sqft} sq ft you need ${main.cuYd} cubic yards — well under 2 yards. Buying ${main.bags} bags from a garden center is easier than ordering bulk mulch, which most suppliers require a 2-yard minimum for delivery.`
+    : `For ${sqft} sq ft you need ${main.cuYd} cubic yards. If your local supplier charges less per yard in bulk than bags (≈13.5 bags per yard), bulk delivery saves money at this quantity.`
+  }
+</p>
 
-- **1–2 inches** — top-dressing existing mulch, lightweight coverage
-- **3 inches** — standard for flower beds, best weed suppression
-- **4 inches** — new beds or heavy clay soil where drainage is poor
-- **6 inches** — play areas, paths (not recommended for planted beds)
-
-## Bags vs. bulk
-
-{main.cuYd < 2
-  ? `For ${sqft} sq ft you need ${main.cuYd} cubic yards — well under 2 yards. Buying ${main.bags} bags from a garden center is easier than ordering bulk mulch, which most suppliers require a 2-yard minimum for delivery.`
-  : `For ${sqft} sq ft you need ${main.cuYd} cubic yards. If your local supplier charges less per yard in bulk than bags (≈13.5 bags per yard), bulk delivery saves money at this quantity.`
-}
-
-Use the [Mulch Calculator](/calculator/mulch) to enter your exact dimensions and get a precise bag count with an optional price estimate.
+<p>Use the <a href="/calculator/mulch">Mulch Calculator</a> to enter your exact dimensions and get a precise bag count with an optional price estimate.</p>
 
 </GuideLayout>

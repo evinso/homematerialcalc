@@ -41,7 +41,7 @@ const main = calcConcrete(sqft, 4);
 const faqs = [
   {
     q: `How many bags of concrete for a ${l}x${w} slab?`,
-    a: `A ${l}×${w} ft slab (${sqft} sq ft) at 4 inches thick needs ${main.bags80} bags of 80 lb concrete or ${main.bags60} bags of 60 lb. This includes a 10% waste factor.`,
+    a: `A ${l}×${w} ft slab (${sqft} sq ft) at 4 inches thick needs ${main.bags80} bags of 80 lb concrete or ${main.bags60} bags of 60 lb. Includes a 10% waste factor.`,
   },
   {
     q: `How many cubic yards of concrete for a ${l}x${w} slab?`,
@@ -82,43 +82,59 @@ const description = `A ${l}×${w} ft slab at 4 inches thick needs ${main.bags80}
   breadcrumbs={[{ label: 'Guides' }, { label: `Concrete for ${l}×${w} Slab` }]}
 >
 
-## Answer at a glance — {l}×{w} ft slab ({sqft} sq ft)
+<h2>Answer at a glance — {l}×{w} ft slab ({sqft} sq ft)</h2>
 
-| Thickness | Cu yards | 80 lb bags | 60 lb bags | 40 lb bags |
-|-----------|----------|-----------|-----------|-----------|
-{rows.map(r => `| ${r.thickness}" | ${r.cuYdWaste} cu yd | **${r.bags80}** | ${r.bags60} | ${r.bags40} |`).join('\n')}
+<table>
+  <thead>
+    <tr><th>Thickness</th><th>Cu yards</th><th>80 lb bags</th><th>60 lb bags</th><th>40 lb bags</th></tr>
+  </thead>
+  <tbody>
+    {rows.map(r => (
+      <tr>
+        <td>{r.thickness}"</td>
+        <td>{r.cuYdWaste} cu yd</td>
+        <td><strong>{r.bags80}</strong></td>
+        <td>{r.bags60}</td>
+        <td>{r.bags40}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+<p><em>All counts include 10% waste, rounded up.</em></p>
 
-*All counts include 10% waste, rounded up.*
+<h2>How we calculated it</h2>
+<ol>
+  <li>Area = {l} × {w} = <strong>{sqft} sq ft</strong></li>
+  <li>Volume = {sqft} × 4 ÷ 12 = <strong>{calcConcrete(sqft, 4).cuFt} cu ft</strong></li>
+  <li>Cubic yards = {calcConcrete(sqft, 4).cuFt} ÷ 27 = <strong>{calcConcrete(sqft, 4).cuYd} cu yd</strong></li>
+  <li>With 10% waste = <strong>{main.cuYdWaste} cu yd</strong></li>
+  <li>80 lb bags (45 per cu yd) → <strong>{main.bags80} bags</strong></li>
+</ol>
 
-## How we calculated it
+<h2>Bags vs. ready-mix</h2>
+<p>
+  {main.cuYdWaste < 1
+    ? `Your ${l}×${w} slab needs ${main.cuYdWaste} cubic yards — under 1 yard. Buying ${main.bags80} bags (80 lb) is the practical choice. A rented mixer makes the job easier for anything over 20 bags.`
+    : main.cuYdWaste < 3
+      ? `At ${main.cuYdWaste} cubic yards, get a ready-mix quote alongside bags. Minimum charges vary by supplier. If mixing yourself, plan for ${main.bags80} bags (80 lb) and a rented drum mixer.`
+      : `At ${main.cuYdWaste} cubic yards, ready-mix delivery is almost always cheaper and faster than bags. Budget for a pump truck if the pour site isn't truck-accessible.`
+  }
+</p>
 
-For a {l}×{w} ft slab at 4 inches:
+<h2>Thickness reference</h2>
+<table>
+  <thead>
+    <tr><th>Use</th><th>Recommended thickness</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Sidewalk, path</td><td>4 inches</td></tr>
+    <tr><td>Patio, shed base</td><td>4 inches</td></tr>
+    <tr><td>Driveway (cars)</td><td>5 inches</td></tr>
+    <tr><td>Driveway (trucks/RVs)</td><td>6 inches</td></tr>
+    <tr><td>Garage floor</td><td>4–6 inches + rebar</td></tr>
+  </tbody>
+</table>
 
-1. Area = {l} × {w} = **{sqft} sq ft**
-2. Volume = {sqft} × 4 ÷ 12 = **{calcConcrete(sqft, 4).cuFt} cu ft**
-3. Cubic yards = {calcConcrete(sqft, 4).cuFt} ÷ 27 = **{calcConcrete(sqft, 4).cuYd} cu yd**
-4. With 10% waste = **{main.cuYdWaste} cu yd**
-5. 80 lb bags (45 per cu yd) → **{main.bags80} bags**
-
-## Bags vs. ready-mix
-
-{main.cuYdWaste < 1
-  ? `Your ${l}×${w} slab needs ${main.cuYdWaste} cubic yards — under 1 yard. Buying ${main.bags80} bags (80 lb) is the practical choice. A rented mixer makes the job easier for anything over 20 bags.`
-  : main.cuYdWaste < 3
-    ? `At ${main.cuYdWaste} cubic yards, get a ready-mix quote alongside bags. Minimum charges vary by supplier. If mixing yourself, plan for ${main.bags80} bags (80 lb) and a rented drum mixer.`
-    : `At ${main.cuYdWaste} cubic yards, ready-mix delivery is almost always cheaper and faster than bags. Budget for a pump truck if the pour site isn't truck-accessible.`
-}
-
-## Thickness reference
-
-| Use | Recommended thickness |
-|-----|----------------------|
-| Sidewalk, path | 4 inches |
-| Patio, shed base | 4 inches |
-| Driveway (cars) | 5 inches |
-| Driveway (trucks/RVs) | 6 inches |
-| Garage floor | 4–6 inches + rebar |
-
-Use the [Concrete Calculator](/calculator/concrete) to enter your exact dimensions and get a precise bag count and cost estimate.
+<p>Use the <a href="/calculator/concrete">Concrete Calculator</a> to enter your exact dimensions and get a precise bag count and cost estimate.</p>
 
 </GuideLayout>
