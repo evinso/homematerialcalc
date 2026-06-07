@@ -8,6 +8,21 @@
   "runs": [
     {
       "date": "2026-06-07",
+      "timestamp": "2026-06-07T10:49:48.759Z",
+      "pagesPublished": [
+        {
+          "url": "/guide/how-to-build-a-garden-path",
+          "label": "How to Build a Garden Path",
+          "type": "guide"
+        }
+      ],
+      "pendingBefore": 68,
+      "pendingAfter": 67,
+      "trigger": "manual_dispatch",
+      "runBy": "evinso"
+    },
+    {
+      "date": "2026-06-07",
       "timestamp": "2026-06-07T10:46:33.217Z",
       "pagesPublished": [
         {
@@ -569,8 +584,8 @@
       "url": "/guide/how-to-build-a-garden-path",
       "label": "How to Build a Garden Path",
       "type": "guide",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-07"
     },
     {
       "url": "/guide/how-to-reseed-a-lawn",
