@@ -12,7 +12,7 @@ interface Props {
 const { title, description, canonicalUrl, ogImage } = Astro.props;
 const siteUrl = 'https://www.homematerialcalc.com';
 const canonical = canonicalUrl ?? siteUrl + Astro.url.pathname;
-const ogImageUrl = ogImage ?? `${siteUrl}/og-default.svg`;
+const ogImageUrl = ogImage ?? `${siteUrl}/og-default.png`;
 const isHome = Astro.url.pathname === '/';
 
 // Normalise trailing slash so /calculator/paint/ and /calculator/paint both match
