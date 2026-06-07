@@ -14,20 +14,21 @@ const outdoor = [
   { slug: 'asphalt',    label: 'Asphalt',      icon: '🛣️', unit: 'tons / cu yd' },
 ];
 
-const concrete = [
-  { slug: 'concrete',      label: 'Concrete',      icon: '🏗️', unit: 'bags / cu yd' },
-  { slug: 'concrete-cost', label: 'Concrete Cost',  icon: '💰', unit: 'price estimate' },
+const construction = [
+  { slug: 'concrete',      label: 'Concrete',       icon: '🏗️', unit: 'bags / cu yd'   },
+  { slug: 'concrete-cost', label: 'Concrete Cost',  icon: '💰', unit: 'price estimate'  },
+  { slug: 'fence',         label: 'Fence',          icon: '🚧', unit: 'posts + boards'  },
+  { slug: 'deck',          label: 'Deck',           icon: '🏡', unit: 'boards + joists' },
+  { slug: 'project',       label: 'Project Planner',icon: '📋', unit: 'full list'       },
 ];
 
 const interior = [
-  { slug: 'paint',       label: 'Paint',       icon: '🖌️', unit: 'gallons'       },
-  { slug: 'flooring',    label: 'Flooring',    icon: '🪵', unit: 'boxes'         },
-  { slug: 'tile',        label: 'Tile',        icon: '⬜', unit: 'tiles + thinset' },
-  { slug: 'drywall',     label: 'Drywall',     icon: '🔲', unit: 'sheets'        },
-  { slug: 'lumber',      label: 'Lumber',      icon: '🪚', unit: 'board feet'    },
-  { slug: 'insulation',  label: 'Insulation',  icon: '🏠', unit: 'bags / rolls'  },
-  { slug: 'fence',       label: 'Fence',       icon: '🚧', unit: 'posts + boards'},
-  { slug: 'deck',        label: 'Deck',        icon: '🏡', unit: 'boards + joists'},
+  { slug: 'paint',      label: 'Paint',      icon: '🖌️', unit: 'gallons'        },
+  { slug: 'flooring',   label: 'Flooring',   icon: '🪵', unit: 'boxes'          },
+  { slug: 'tile',       label: 'Tile',       icon: '⬜', unit: 'tiles + thinset'},
+  { slug: 'drywall',    label: 'Drywall',    icon: '🔲', unit: 'sheets'         },
+  { slug: 'lumber',     label: 'Lumber',     icon: '🪚', unit: 'board feet'     },
+  { slug: 'insulation', label: 'Insulation', icon: '🏠', unit: 'bags / rolls'   },
 ];
 
 const projectGuides = [
@@ -93,7 +94,7 @@ const webSiteSchema = {
   <section class="bg-gradient-to-b from-brand-50 to-white py-14 px-4">
     <div class="max-w-3xl mx-auto text-center">
       <div class="inline-flex items-center gap-2 bg-brand-100 text-brand-700 text-xs font-semibold px-3 py-1 rounded-full mb-4">
-        20 free calculators · Project planner · Compare tool · No signup
+        20 free calculators · Metric &amp; imperial · URL sharing · No signup
       </div>
       <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
         How Much Material Do You Need?
@@ -129,7 +130,7 @@ const webSiteSchema = {
   <section class="max-w-6xl mx-auto px-4 py-10">
     <h2 class="text-xl font-bold text-gray-900 mb-1">✨ New Tools</h2>
     <p class="text-sm text-gray-500 mb-5">Plan full projects, compare materials, and check 2026 prices — all in one place.</p>
-    <div class="grid sm:grid-cols-3 gap-4">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
 
       <a href="/calculator/project"
          class="group bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200 rounded-2xl p-5 hover:border-amber-400 hover:shadow-md transition-all">
@@ -172,7 +173,7 @@ const webSiteSchema = {
       <a href="/landscaping-calculators" class="text-xs text-brand-600 hover:underline">All landscaping →</a>
     </div>
     <p class="text-sm text-gray-500 mb-5">Mulch, gravel, topsoil, sand, sod, and pavers — in bags, cubic yards, or tons.</p>
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-3">
       {outdoor.map(({ slug, label, icon, unit }) => (
         <a href={`/calculator/${slug}`}
            class="bg-white border border-gray-200 rounded-xl p-4 hover:border-brand-400 hover:shadow-sm transition-all group text-center">
@@ -184,15 +185,15 @@ const webSiteSchema = {
     </div>
   </section>
 
-  <!-- ── CONCRETE ──────────────────────────────────────────────────────── -->
+  <!-- ── CONCRETE & CONSTRUCTION ─────────────────────────────────────── -->
   <section class="max-w-6xl mx-auto px-4 py-4">
     <div class="flex items-baseline gap-3 mb-1">
-      <h2 class="text-xl font-bold text-gray-900">🏗️ Concrete</h2>
+      <h2 class="text-xl font-bold text-gray-900">🏗️ Concrete & Construction</h2>
       <a href="/concrete-calculators" class="text-xs text-brand-600 hover:underline">All concrete →</a>
     </div>
-    <p class="text-sm text-gray-500 mb-5">Bag count (40, 60, or 80 lb) for slabs, post holes, and footings — plus cost estimator.</p>
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-      {concrete.map(({ slug, label, icon, unit }) => (
+    <p class="text-sm text-gray-500 mb-5">Concrete bags, fence posts, deck boards, and full project materials lists.</p>
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+      {construction.map(({ slug, label, icon, unit }) => (
         <a href={`/calculator/${slug}`}
            class="bg-white border border-gray-200 rounded-xl p-4 hover:border-brand-400 hover:shadow-sm transition-all group text-center">
           <div class="text-2xl mb-2">{icon}</div>
@@ -206,11 +207,11 @@ const webSiteSchema = {
   <!-- ── INTERIOR ──────────────────────────────────────────────────────── -->
   <section class="max-w-6xl mx-auto px-4 pt-4 pb-10">
     <div class="flex items-baseline gap-3 mb-1">
-      <h2 class="text-xl font-bold text-gray-900">🏠 Interior & Construction</h2>
+      <h2 class="text-xl font-bold text-gray-900">🏠 Interior</h2>
       <a href="/interior-calculators" class="text-xs text-brand-600 hover:underline">All interior →</a>
     </div>
-    <p class="text-sm text-gray-500 mb-5">Paint gallons, flooring boxes, tile count, drywall sheets, and lumber board feet.</p>
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+    <p class="text-sm text-gray-500 mb-5">Paint gallons, flooring boxes, tile count, drywall sheets, lumber board feet, and insulation.</p>
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
       {interior.map(({ slug, label, icon, unit }) => (
         <a href={`/calculator/${slug}`}
            class="bg-white border border-gray-200 rounded-xl p-4 hover:border-brand-400 hover:shadow-sm transition-all group text-center">
