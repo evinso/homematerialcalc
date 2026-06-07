@@ -8,6 +8,21 @@
   "runs": [
     {
       "date": "2026-06-07",
+      "timestamp": "2026-06-07T10:17:18.019Z",
+      "pagesPublished": [
+        {
+          "url": "/guide/how-much-does-concrete-cost",
+          "label": "How Much Does Concrete Cost?",
+          "type": "reference"
+        }
+      ],
+      "pendingBefore": 72,
+      "pendingAfter": 71,
+      "trigger": "manual_dispatch",
+      "runBy": "evinso"
+    },
+    {
+      "date": "2026-06-07",
       "timestamp": "2026-06-07T09:03:19.012Z",
       "pagesPublished": [
         {
@@ -481,8 +496,8 @@
       "url": "/guide/how-much-does-concrete-cost",
       "label": "How Much Does Concrete Cost?",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-07"
     },
     {
       "url": "/guide/how-to-build-a-patio",
