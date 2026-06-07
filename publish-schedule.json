@@ -8,6 +8,21 @@
   "runs": [
     {
       "date": "2026-06-07",
+      "timestamp": "2026-06-07T11:09:14.823Z",
+      "pagesPublished": [
+        {
+          "url": "/guide/how-to-reseed-a-lawn",
+          "label": "How to Reseed a Lawn",
+          "type": "guide"
+        }
+      ],
+      "pendingBefore": 67,
+      "pendingAfter": 66,
+      "trigger": "manual_dispatch",
+      "runBy": "evinso"
+    },
+    {
+      "date": "2026-06-07",
       "timestamp": "2026-06-07T10:49:48.759Z",
       "pagesPublished": [
         {
@@ -591,8 +606,8 @@
       "url": "/guide/how-to-reseed-a-lawn",
       "label": "How to Reseed a Lawn",
       "type": "guide",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-07"
     },
     {
       "url": "/guide/spring-lawn-and-garden-checklist",
