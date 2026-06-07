@@ -6,8 +6,13 @@ const pages = (schedule.pages as any[]).filter(p => p && p.url && p.status);
 const published = pages.filter(p => p.status === 'published').sort((a,b) => b.publishedAt?.localeCompare(a.publishedAt ?? '') ?? 0);
 const pending   = pages.filter(p => p.status === 'pending');
 const future    = pages.filter(p => p.status === 'future');
-const total     = published.length + pending.length;
-const progressPct = total > 0 ? Math.round((published.length / total) * 100) : 0;
+
+// Programmatic pages (dynamic routes, not in publish-schedule.json)
+const PROGRAMMATIC_COUNT = 50; // mulch×12 + gravel×5 + concrete×10 + topsoil×7 + sand×5 + paint×11
+
+const totalLive = published.length + PROGRAMMATIC_COUNT;
+const total     = totalLive + pending.length;
+const progressPct = total > 0 ? Math.round((totalLive / total) * 100) : 0;
 
 const today      = new Date().toISOString().split('T')[0];
 const lastRun    = (schedule as any).lastRun ?? '—';
@@ -254,8 +259,12 @@ function typeLabel(type: string) {
   <!-- ─── STAT GRID ─────────────────────────────────────────────────── -->
   <div class="stats">
     <div class="stat">
-      <div class="stat-n">{published.length}</div>
+      <div class="stat-n">{totalLive}</div>
       <div class="stat-l">Canlı sayfa</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n" style="color:var(--teal)">{PROGRAMMATIC_COUNT}</div>
+      <div class="stat-l">Programmatic</div>
     </div>
     <div class="stat">
       <div class="stat-n" style="color:var(--pink)">{pending.length}</div>
@@ -290,7 +299,7 @@ function typeLabel(type: string) {
   <!-- ─── PROGRESS BAR ───────────────────────────────────────────────── -->
   <div class="progress-wrap">
     <div class="progress-header">
-      <span class="progress-title">Yayın İlerlemesi — {published.length} / {total} sayfa</span>
+      <span class="progress-title">Yayın İlerlemesi — {totalLive} canlı / {total} toplam</span>
       <span class="progress-pct">{progressPct}%</span>
     </div>
     <div class="bar-bg">
@@ -301,6 +310,7 @@ function typeLabel(type: string) {
       <span>📖 <strong>{pubGuides.length}</strong> guide</span>
       <span>📋 <strong>{pubRefs.length}</strong> reference</span>
       <span>📄 <strong>{pubStatic.length}</strong> static</span>
+      <span>🔁 <strong>{PROGRAMMATIC_COUNT}</strong> programmatic</span>
       <span>⏳ <strong>{pending.length}</strong> pending</span>
       <span>Son yayın: <strong>{lastRun}</strong></span>
     </div>
