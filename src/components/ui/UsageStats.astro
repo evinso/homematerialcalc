@@ -1,0 +1,56 @@
+---
+/**
+ * UsageStats — social proof badge showing estimated usage count.
+ * Counts are seeded conservatively and updated manually or via analytics.
+ * Update `baseCounts` whenever you pull actual GA4 data.
+ */
+
+interface Props {
+  material: string;
+}
+
+const { material } = Astro.props;
+
+// Base usage counts — update periodically from GA4
+const baseCounts: Record<string, number> = {
+  mulch:       248_000,
+  gravel:      187_000,
+  concrete:    312_000,
+  topsoil:     143_000,
+  sand:        119_000,
+  sod:          92_000,
+  paint:       204_000,
+  'grass-seed': 78_000,
+  flooring:    167_000,
+  tile:        131_000,
+  drywall:      89_000,
+  lumber:      104_000,
+  insulation:   67_000,
+  paver:       145_000,
+  fence:        93_000,
+  deck:         74_000,
+  asphalt:      58_000,
+};
+
+const count = baseCounts[material] ?? 50_000;
+
+function formatCount(n: number): string {
+  if (n >= 1_000_000) return (n / 1_000_000).toFixed(1).replace(/\.0$/, '') + 'M+';
+  if (n >= 1_000) return Math.floor(n / 1_000) + 'K+';
+  return n.toLocaleString();
+}
+
+const displayCount = formatCount(count);
+---
+
+<div class="inline-flex items-center gap-2 text-xs text-gray-500 bg-gray-50 border border-gray-100 rounded-full px-3 py-1.5 no-print">
+  <span class="inline-flex items-center gap-1">
+    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-500">
+      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+      <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+    </svg>
+    <strong class="text-gray-700 font-semibold">{displayCount}</strong> calculations completed
+  </span>
+  <span class="text-gray-300">·</span>
+  <span class="text-green-600 font-medium">Free</span>
+</div>

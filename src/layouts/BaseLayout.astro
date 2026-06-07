@@ -14,8 +14,23 @@ const siteUrl = 'https://www.homematerialcalc.com';
 const rawPath = Astro.url.pathname;
 const normPath = rawPath === '/' ? '/' : (rawPath.endsWith('/') ? rawPath : rawPath + '/');
 const canonical = canonicalUrl ?? siteUrl + normPath;
-const ogImageUrl = ogImage ?? `${siteUrl}/og-default.png`;
 const isHome = Astro.url.pathname === '/';
+
+// Dynamic OG image: use /api/og for calculator and guide pages
+function buildOgUrl(): string {
+  if (ogImage) return ogImage;
+  const p = rawPath;
+  const type = p.startsWith('/calculator') ? 'calculator'
+    : p.startsWith('/guide') ? 'guide'
+    : 'default';
+  if (type === 'default') return `${siteUrl}/og-default.png`;
+  const sub = type === 'calculator'
+    ? 'Free calculator · instant estimate'
+    : 'Materials guide · HomeMaterialCalc';
+  const params = new URLSearchParams({ title, sub, type });
+  return `${siteUrl}/api/og?${params.toString()}`;
+}
+const ogImageUrl = buildOgUrl();
 
 // Normalise trailing slash so /calculator/paint/ and /calculator/paint both match
 const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';

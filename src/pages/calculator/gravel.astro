@@ -2,6 +2,9 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import GravelCalculator from '../../components/calculators/GravelCalculator';
 import AdSlot from '../../components/ui/AdSlot.astro';
+import WhereToBuy from '../../components/ui/WhereToBuy.astro';
+import ResultActions from '../../components/ui/ResultActions.astro';
+import UsageStats from '../../components/ui/UsageStats.astro';
 import CalcSchema from '../../components/ui/CalcSchema.astro';
 import CalcBreadcrumbs from '../../components/ui/CalcBreadcrumbs.astro';
 
@@ -31,10 +34,12 @@ const related = [
     <div class="grid lg:grid-cols-[1fr_380px] gap-10">
       <div>
         <h1 class="text-3xl font-bold text-gray-900 mb-2">Gravel & Crushed Stone Calculator</h1>
+        <UsageStats material="gravel" />
         <p class="text-gray-600 mb-6">Enter your project area, depth, and stone type to calculate how many cubic yards or tons of gravel you need.</p>
 
         <GravelCalculator client:load />
 
+        <ResultActions />
         <AdSlot slot="after-result" className="mt-6" />
 
         <div class="calculator-card mt-8">
@@ -104,6 +109,7 @@ const related = [
           </ul>
         </div>
 
+        <WhereToBuy material="gravel" />
         <AdSlot slot="sidebar" />
       </aside>
     </div>

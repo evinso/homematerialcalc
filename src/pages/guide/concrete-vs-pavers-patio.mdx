@@ -1,0 +1,88 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'Are pavers or concrete cheaper?', a: 'Concrete is cheaper upfront at $6–$12/sq ft installed vs. $8–$25/sq ft for pavers. However, concrete cracks over time and repair costs are high. Individual pavers can be replaced without repaving the whole surface, making long-term costs similar.' },
+  { q: 'Do pavers crack like concrete?', a: 'Individual pavers rarely crack because they flex with the ground. Concrete slabs crack as the ground settles and freezes. In freeze-thaw climates, pavers significantly outperform poured concrete.' },
+  { q: 'Which looks better — concrete or pavers?', a: 'Pavers offer more design variety (patterns, colors, shapes). Concrete can be stamped or colored but shows wear over time. Pavers generally look more upscale and are easier to keep looking good with individual replacement.' },
+  { q: 'How long do pavers last vs concrete?', a: 'Well-installed pavers last 50+ years with minimal maintenance. Concrete slabs typically need repair or replacement after 25–30 years. The paver base can also be reused if you ever redesign the patio.' },
+  { q: 'Are pavers slippery when wet?', a: 'Textured pavers are less slippery when wet than smooth concrete. Stamped concrete can be very slippery when wet unless a gritty sealer is applied. Both should be sealed periodically; unsealed concrete is more prone to staining.' },
+];
+
+export const related = [
+  { href: '/calculator/paver/', label: 'Paver Calculator' },
+  { href: '/calculator/paver-cost/', label: 'Paver Cost Calculator' },
+  { href: '/calculator/concrete-cost/', label: 'Concrete Cost Calculator' },
+  { href: '/guide/how-to-build-a-patio/', label: 'How to Build a Patio' },
+  { href: '/guide/how-to-lay-pavers/', label: 'How to Lay Pavers' },
+];
+
+<GuideLayout
+  title="Concrete vs Pavers for a Patio — Which Is Better? (2026)"
+  description="Concrete patio vs pavers compared: cost, durability, crack resistance, design options, and long-term maintenance. Which is right for your yard?"
+  h1="Concrete vs Pavers for a Patio"
+  intro="Concrete and pavers are the two most popular patio materials — and the right choice depends on your budget, climate, and how much design flexibility you want. Here is a direct comparison."
+  calculatorHref="/calculator/paver/"
+  calculatorLabel="Paver Calculator — get exact paver count, sand, and gravel for any patio"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Concrete vs Pavers' }]}
+  authorSlug="tom"
+>
+
+## Quick comparison
+
+| | Poured Concrete | Pavers |
+|---|---|---|
+| **Cost installed** | $6–$12/sq ft | $8–$25/sq ft |
+| **Crack resistance** | ❌ Cracks with settling | ✅ Flexes, rarely cracks |
+| **Freeze-thaw climate** | ❌ Poor | ✅ Excellent |
+| **Repairability** | ❌ Difficult (patch shows) | ✅ Replace individual units |
+| **Design variety** | Limited (stamp/color) | High (patterns, colors) |
+| **DIY-friendly** | ❌ Requires pros | ✅ Manageable DIY |
+| **Lifespan** | 25–30 years | 50+ years |
+| **Resale appeal** | Moderate | High |
+
+## Cost breakdown
+
+### Poured concrete patio (200 sq ft)
+- Concrete (4 inches): ~2.5 cu yd × $130 = $325
+- Labor and forming: $800–$1,500
+- **Total: $1,100–$1,800** ($5.50–$9/sq ft)
+
+### Paver patio (200 sq ft)
+- Pavers (concrete): $600–$1,200
+- Gravel base (4 in): ~$100–$180
+- Sand (1 in): ~$40–$70
+- Labor: $800–$2,000
+- **Total: $1,540–$3,450** ($7.70–$17.25/sq ft)
+
+## Durability and cracking
+
+This is where pavers decisively win. Concrete slabs crack as the ground beneath them settles, heaves with frost, or shifts with tree roots. A single crack in a concrete slab is nearly impossible to repair invisibly.
+
+Paver patios flex with ground movement. Individual pavers that settle can be releveled by removing them, adjusting the sand bed, and reinstalling — no visible repair.
+
+## Climate considerations
+
+In freeze-thaw climates (most of the US north of Zone 7), pavers are strongly preferred. Water infiltrates concrete joints and cracks, freezes, and expands — accelerating damage. The interlocking paver system handles freeze-thaw cycles far better.
+
+In mild climates (South, Southwest), concrete performs well and the cost savings are more significant.
+
+## When to choose concrete
+
+- Mild climate with no freeze-thaw cycles
+- Lowest upfront cost is the priority
+- You want a seamless look or prefer stamped concrete
+- The patio will carry heavy loads (hot tub, heavy furniture)
+
+## When to choose pavers
+
+- Freeze-thaw climate (most of the US)
+- You want design variety and a high-end look
+- Long-term ownership (10+ years)
+- You want the ability to repair without replacing the entire surface
+- Maximizing resale value
+
+Use the [Paver Calculator](/calculator/paver/) to estimate paver count, gravel, and sand, and the [Paver Cost Calculator](/calculator/paver-cost/) for a total price estimate.
+
+</GuideLayout>

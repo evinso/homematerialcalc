@@ -1,0 +1,117 @@
+---
+import ShareButton from './ShareButton';
+
+interface Props {
+  className?: string;
+}
+
+const { className = '' } = Astro.props;
+---
+
+<div class={`flex flex-wrap items-center gap-3 mt-4 ${className}`}>
+  <ShareButton client:load />
+
+  <!-- Email results button -->
+  <button
+    id="email-results-btn"
+    class="inline-flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-lg border border-gray-300 text-gray-600 bg-white hover:border-brand-400 hover:text-brand-700 transition-colors"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+    </svg>
+    Email results
+  </button>
+
+  <!-- Print button -->
+  <button
+    onclick="window.print()"
+    class="inline-flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-lg border border-gray-300 text-gray-600 bg-white hover:border-brand-400 hover:text-brand-700 transition-colors"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/>
+    </svg>
+    Print
+  </button>
+</div>
+
+<!-- Email modal -->
+<div id="email-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 no-print" aria-modal="true" role="dialog">
+  <div class="absolute inset-0 bg-black/40" id="email-modal-backdrop"></div>
+  <div class="relative bg-white rounded-2xl shadow-xl w-full max-w-sm p-6">
+    <h3 class="text-lg font-bold text-gray-900 mb-1">Email your results</h3>
+    <p class="text-sm text-gray-500 mb-4">We'll send you the calculator link so you can share or save your estimate.</p>
+    <form id="email-results-form" class="space-y-3">
+      <input
+        type="email"
+        id="email-results-input"
+        name="email"
+        placeholder="your@email.com"
+        required
+        class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-400"
+      />
+      <button
+        type="submit"
+        id="email-results-submit"
+        class="w-full bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm py-2.5 rounded-lg transition-colors"
+      >
+        Send link →
+      </button>
+    </form>
+    <p id="email-results-success" class="hidden text-sm text-green-700 font-medium text-center mt-3">✅ Link sent to your email!</p>
+    <button id="email-modal-close" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-xl leading-none">×</button>
+  </div>
+</div>
+
+<script>
+  const btn = document.getElementById('email-results-btn');
+  const modal = document.getElementById('email-modal');
+  const backdrop = document.getElementById('email-modal-backdrop');
+  const closeBtn = document.getElementById('email-modal-close');
+  const form = document.getElementById('email-results-form') as HTMLFormElement | null;
+  const submitBtn = document.getElementById('email-results-submit') as HTMLButtonElement | null;
+  const success = document.getElementById('email-results-success');
+
+  function openModal() { modal?.classList.remove('hidden'); }
+  function closeModal() {
+    modal?.classList.add('hidden');
+    form?.reset();
+    success?.classList.add('hidden');
+    if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Send link →'; }
+  }
+
+  btn?.addEventListener('click', openModal);
+  backdrop?.addEventListener('click', closeModal);
+  closeBtn?.addEventListener('click', closeModal);
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!submitBtn) return;
+    const email = (document.getElementById('email-results-input') as HTMLInputElement)?.value;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+    try {
+      await fetch('/api/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'email-results',
+          email,
+          url: window.location.href,
+          page: window.location.pathname,
+        }),
+      });
+      form.classList.add('hidden');
+      success?.classList.remove('hidden');
+    } catch {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send link →';
+    }
+  });
+</script>
+
+<style>
+  @media print {
+    nav, footer, aside, [data-ad], .no-print { display: none !important; }
+    .calculator-card { break-inside: avoid; }
+  }
+</style>

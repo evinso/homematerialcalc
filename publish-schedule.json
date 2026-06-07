@@ -892,7 +892,7 @@
       "publishedAt": null
     },
     {
-      "_section": "INDOOR EXPANSION — v2 (files written, drip publishing)"
+      "_section": "INDOOR EXPANSION \u2014 v2 (files written, drip publishing)"
     },
     {
       "url": "/calculator/paint",
@@ -958,7 +958,7 @@
       "publishedAt": null
     },
     {
-      "_section": "BATCH 3 — Project-specific & reference pages"
+      "_section": "BATCH 3 \u2014 Project-specific & reference pages"
     },
     {
       "url": "/guide/how-much-gravel-for-a-driveway",
@@ -1045,7 +1045,7 @@
       "publishedAt": null
     },
     {
-      "_section": "BATCH 4 — New calculators (lumber + paver)"
+      "_section": "BATCH 4 \u2014 New calculators (lumber + paver)"
     },
     {
       "url": "/calculator/lumber",
@@ -1076,7 +1076,7 @@
       "publishedAt": null
     },
     {
-      "_section": "BATCH 5 — New guide & reference pages"
+      "_section": "BATCH 5 \u2014 New guide & reference pages"
     },
     {
       "url": "/guide/how-much-sand-for-a-sandbox",
@@ -1212,7 +1212,7 @@
       "publishedAt": null
     },
     {
-      "_section": "BATCH 6 — Cost calculators"
+      "_section": "BATCH 6 \u2014 Cost calculators"
     },
     {
       "url": "/calculator/mulch-cost",
@@ -1257,7 +1257,7 @@
       "publishedAt": null
     },
     {
-      "_section": "BATCH 7 — EEAT + hub + technical pages"
+      "_section": "BATCH 7 \u2014 EEAT + hub + technical pages"
     },
     {
       "url": "/data-sources",
@@ -1316,13 +1316,13 @@
       "publishedAt": null
     },
     {
-      "_section": "BATCH 6 — Cost calculators"
+      "_section": "BATCH 6 \u2014 Cost calculators"
     },
     {
-      "_section": "BATCH 7 — EEAT + hub + technical pages"
+      "_section": "BATCH 7 \u2014 EEAT + hub + technical pages"
     },
     {
-      "_section": "FUTURE — not yet written"
+      "_section": "FUTURE \u2014 not yet written"
     },
     {
       "url": "/calculator/asphalt-cost",
@@ -1398,6 +1398,76 @@
       "url": "/calculator/insulation-cost",
       "label": "Insulation Cost Calculator",
       "type": "calculator",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/laminate-vs-hardwood-flooring",
+      "label": "Laminate vs Hardwood Flooring",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/vinyl-plank-vs-laminate-flooring",
+      "label": "Vinyl Plank vs Laminate Flooring",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/concrete-vs-pavers-patio",
+      "label": "Concrete vs Pavers for a Patio",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/blown-in-vs-batt-insulation",
+      "label": "Blown-In vs Batt Insulation",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/best-mulch-for-vegetable-gardens",
+      "label": "Best Mulch for Vegetable Gardens",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/best-gravel-for-drainage",
+      "label": "Best Gravel for Drainage",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/best-paint-for-bathroom",
+      "label": "Best Paint for Bathrooms",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/best-insulation-for-attic",
+      "label": "Best Insulation for Attics",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/best-flooring-for-dogs",
+      "label": "Best Flooring for Dogs",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/best-concrete-mix-for-fence-posts",
+      "label": "Best Concrete Mix for Fence Posts",
+      "type": "reference",
       "status": "pending",
       "publishedAt": null
     }

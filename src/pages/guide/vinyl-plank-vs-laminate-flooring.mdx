@@ -1,0 +1,80 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'Is vinyl plank or laminate flooring better?', a: 'Vinyl plank (LVP) is better for moisture-prone areas and easier DIY installation. Laminate looks more like real wood and is usually cheaper. For kitchens, bathrooms, and basements, LVP is the clear winner. For dry areas on a tight budget, laminate is the better value.' },
+  { q: 'Is LVP more expensive than laminate?', a: 'Generally yes — quality LVP costs $2–$7/sq ft vs. $1–$5/sq ft for laminate. However, premium LVP and budget laminate overlap significantly in the $2–$4/sq ft range.' },
+  { q: 'Can vinyl plank flooring be installed over tile?', a: 'Yes — LVP can float over existing tile (if flat and level) without removal. Laminate can also float over tile, but is more sensitive to surface irregularities and moisture coming up through grout lines.' },
+  { q: 'Which is more durable — LVP or laminate?', a: 'LVP is more durable in wet conditions. Laminate is harder (more resistant to surface scratches) but swells and delaminates if water gets under it. In dry areas with foot traffic and scratching concerns, laminate performs similarly or better.' },
+  { q: 'Does LVP feel hollow underfoot?', a: 'Budget LVP can feel hollow. Thick LVP (8mm+) with an attached underlayment significantly reduces hollow sound. Laminate with attached underlayment generally feels more solid. Both improve dramatically over a quality underlayment.' },
+];
+
+export const related = [
+  { href: '/calculator/flooring/', label: 'Flooring Calculator' },
+  { href: '/calculator/flooring-cost/', label: 'Flooring Cost Calculator' },
+  { href: '/guide/laminate-vs-hardwood-flooring/', label: 'Laminate vs Hardwood' },
+  { href: '/guide/how-much-flooring-do-i-need/', label: 'How Much Flooring Do I Need?' },
+];
+
+<GuideLayout
+  title="Vinyl Plank vs Laminate Flooring — Which Is Better? (2026)"
+  description="LVP vs laminate flooring compared: cost, water resistance, durability, installation, and which to choose for kitchens, basements, and living rooms."
+  h1="Vinyl Plank (LVP) vs Laminate Flooring"
+  intro="Vinyl plank (LVP) and laminate look nearly identical installed — but they behave very differently around water, under foot, and over time. Here is a direct comparison of both options."
+  calculatorHref="/calculator/flooring/"
+  calculatorLabel="Flooring Calculator — calculate square footage and boxes needed"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Vinyl Plank vs Laminate Flooring' }]}
+  authorSlug="dan"
+>
+
+## Quick comparison
+
+| | Luxury Vinyl Plank (LVP) | Laminate |
+|---|---|---|
+| **Cost (materials)** | $2–$7/sq ft | $1–$5/sq ft |
+| **Water resistance** | ✅ 100% waterproof | ⚠️ Water-resistant surface only |
+| **Core material** | PVC plastic | HDF (compressed wood fiber) |
+| **Feels underfoot** | Slightly soft | Harder, more natural |
+| **Scratch resistance** | Good | Excellent (harder surface) |
+| **Over concrete** | ✅ Ideal | ✅ OK with moisture barrier |
+| **Basements** | ✅ Yes | ⚠️ Risky |
+| **Looks like wood** | Very good | Very good |
+
+## Water resistance — the key difference
+
+**LVP is 100% waterproof.** The PVC core does not swell or warp when wet. It is ideal for kitchens, bathrooms, laundry rooms, and basements. You can mop it freely.
+
+**Laminate has a waterproof surface but a water-sensitive core.** If water gets into the seams and soaks the HDF core, it swells and delaminates permanently. Laminate is fine for dry areas with normal spills, but should not be used in wet rooms.
+
+## Cost comparison
+
+For a 300 sq ft room:
+- **Budget laminate** ($1.50/sq ft): ~$450 materials
+- **Mid-range LVP** ($4/sq ft): ~$1,200 materials
+- **Premium LVP** ($6/sq ft): ~$1,800 materials
+
+Installation cost is similar for both since both are floating floors.
+
+## Underfoot feel and acoustics
+
+Laminate feels harder and more natural underfoot — closer to hardwood. LVP has a slightly softer, more plastic feel, especially in thinner gauges. Both benefit significantly from quality underlayment.
+
+Thick LVP (8mm+) with attached underlayment closes the gap considerably. Laminate generally transmits more sound (click noise when walking).
+
+## Where each wins
+
+**Choose LVP for:**
+- Kitchens, bathrooms, laundry rooms
+- Basements and below-grade spaces
+- Homes with pets that have accidents
+- Anywhere you are worried about moisture
+
+**Choose laminate for:**
+- Dry living areas and bedrooms
+- Maximum budget savings
+- Rooms where you want the hardest surface
+
+Use the [Flooring Calculator](/calculator/flooring/) to measure your room, then the [Flooring Cost Calculator](/calculator/flooring-cost/) to compare total material costs side by side.
+
+</GuideLayout>

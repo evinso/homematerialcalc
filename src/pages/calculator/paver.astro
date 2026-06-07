@@ -2,6 +2,9 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PaverCalculator from '../../components/calculators/PaverCalculator';
 import AdSlot from '../../components/ui/AdSlot.astro';
+import WhereToBuy from '../../components/ui/WhereToBuy.astro';
+import ResultActions from '../../components/ui/ResultActions.astro';
+import UsageStats from '../../components/ui/UsageStats.astro';
 import CalcSchema from '../../components/ui/CalcSchema.astro';
 import CalcBreadcrumbs from '../../components/ui/CalcBreadcrumbs.astro';
 
@@ -32,10 +35,12 @@ const related = [
       <!-- Left: calculator -->
       <div>
         <h1 class="text-3xl font-bold text-gray-900 mb-2">Paver Calculator</h1>
+        <UsageStats material="paver" />
         <p class="text-gray-600 mb-6">Enter your patio or walkway dimensions and paver size to get the exact paver count, sand bedding layer, and compacted gravel base needed.</p>
 
         <PaverCalculator client:load />
 
+        <ResultActions />
         <AdSlot slot="after-result" className="mt-6" />
 
         <!-- Installation guide -->
@@ -128,6 +133,7 @@ const related = [
           </ul>
         </div>
 
+        <WhereToBuy material="paver" />
         <AdSlot slot="sidebar" />
       </aside>
     </div>

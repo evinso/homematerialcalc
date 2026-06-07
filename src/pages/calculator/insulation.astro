@@ -2,6 +2,9 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import InsulationCalculator from '../../components/calculators/InsulationCalculator';
 import AdSlot from '../../components/ui/AdSlot.astro';
+import WhereToBuy from '../../components/ui/WhereToBuy.astro';
+import ResultActions from '../../components/ui/ResultActions.astro';
+import UsageStats from '../../components/ui/UsageStats.astro';
 import CalcBreadcrumbs from '../../components/ui/CalcBreadcrumbs.astro';
 
 const related = [
@@ -21,8 +24,10 @@ const related = [
     <div class="grid lg:grid-cols-[1fr_320px] gap-10">
       <div>
         <h1 class="text-3xl font-bold text-gray-900 mb-2">Insulation Calculator</h1>
+        <UsageStats material="insulation" />
         <p class="text-gray-600 mb-6">Enter your area and location to find out how many bags or rolls of insulation you need to reach the recommended R-value. Covers attics, walls, crawlspaces, and basements.</p>
         <InsulationCalculator client:load />
+        <ResultActions />
         <AdSlot slot="after-result" className="mt-6" />
         <div class="calculator-card mt-8">
           <h2 class="font-semibold text-gray-900 mb-3">Recommended R-values by zone</h2>
@@ -57,6 +62,7 @@ const related = [
             ))}
           </ul>
         </div>
+        <WhereToBuy material="insulation" />
         <AdSlot slot="sidebar" />
       </aside>
     </div>

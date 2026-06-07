@@ -2,6 +2,9 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import DeckCalculator from '../../components/calculators/DeckCalculator';
 import AdSlot from '../../components/ui/AdSlot.astro';
+import WhereToBuy from '../../components/ui/WhereToBuy.astro';
+import ResultActions from '../../components/ui/ResultActions.astro';
+import UsageStats from '../../components/ui/UsageStats.astro';
 import CalcBreadcrumbs from '../../components/ui/CalcBreadcrumbs.astro';
 
 const related = [
@@ -22,8 +25,10 @@ const related = [
     <div class="grid lg:grid-cols-[1fr_320px] gap-10">
       <div>
         <h1 class="text-3xl font-bold text-gray-900 mb-2">Deck Calculator</h1>
+        <UsageStats material="deck" />
         <p class="text-gray-600 mb-6">Enter your deck dimensions to get the complete materials list — decking boards, joists, beams, footings, and concrete bags. Based on standard 16" OC framing.</p>
         <DeckCalculator client:load />
+        <ResultActions />
         <AdSlot slot="after-result" className="mt-6" />
         <div class="calculator-card mt-8">
           <h2 class="font-semibold text-gray-900 mb-3">Deck building notes</h2>
@@ -43,6 +48,7 @@ const related = [
             ))}
           </ul>
         </div>
+        <WhereToBuy material="deck" />
         <AdSlot slot="sidebar" />
       </aside>
     </div>

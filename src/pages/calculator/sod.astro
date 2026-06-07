@@ -2,6 +2,9 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SodCalculator from '../../components/calculators/SodCalculator';
 import AdSlot from '../../components/ui/AdSlot.astro';
+import WhereToBuy from '../../components/ui/WhereToBuy.astro';
+import ResultActions from '../../components/ui/ResultActions.astro';
+import UsageStats from '../../components/ui/UsageStats.astro';
 import CalcSchema from '../../components/ui/CalcSchema.astro';
 import CalcBreadcrumbs from '../../components/ui/CalcBreadcrumbs.astro';
 
@@ -29,10 +32,12 @@ const related = [
     <div class="grid lg:grid-cols-[1fr_380px] gap-10">
       <div>
         <h1 class="text-3xl font-bold text-gray-900 mb-2">Sod Calculator</h1>
+        <UsageStats material="sod" />
         <p class="text-gray-600 mb-6">Enter your lawn area to find out how many pieces and pallets of sod to buy, with the correct waste factor for your lawn's shape.</p>
 
         <SodCalculator client:load />
 
+        <ResultActions />
         <AdSlot slot="after-result" className="mt-6" />
 
         <div class="calculator-card mt-8">
@@ -98,6 +103,7 @@ const related = [
           </ul>
         </div>
 
+        <WhereToBuy material="sod" />
         <AdSlot slot="sidebar" />
       </aside>
     </div>

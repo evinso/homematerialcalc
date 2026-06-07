@@ -2,6 +2,9 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import FenceCalculator from '../../components/calculators/FenceCalculator';
 import AdSlot from '../../components/ui/AdSlot.astro';
+import WhereToBuy from '../../components/ui/WhereToBuy.astro';
+import ResultActions from '../../components/ui/ResultActions.astro';
+import UsageStats from '../../components/ui/UsageStats.astro';
 import CalcBreadcrumbs from '../../components/ui/CalcBreadcrumbs.astro';
 
 const related = [
@@ -22,8 +25,10 @@ const related = [
     <div class="grid lg:grid-cols-[1fr_320px] gap-10">
       <div>
         <h1 class="text-3xl font-bold text-gray-900 mb-2">Fence Calculator</h1>
+        <UsageStats material="fence" />
         <p class="text-gray-600 mb-6">Enter your fence length and type to get the complete materials list — posts, rails, pickets, concrete, and post caps. Standard 8-foot post spacing assumed.</p>
         <FenceCalculator client:load />
+        <ResultActions />
         <AdSlot slot="after-result" className="mt-6" />
         <div class="calculator-card mt-8">
           <h2 class="font-semibold text-gray-900 mb-3">Fence materials guide</h2>
@@ -43,6 +48,7 @@ const related = [
             ))}
           </ul>
         </div>
+        <WhereToBuy material="fence" />
         <AdSlot slot="sidebar" />
       </aside>
     </div>

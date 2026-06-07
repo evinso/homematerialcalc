@@ -1,0 +1,207 @@
+---
+/**
+ * WhereToBuy — retailer shopping links for each material.
+ *
+ * HOW TO ADD AFFILIATE IDs:
+ * - Amazon Associates: append &tag=YOUR-TAG-20 to each amazon URL
+ * - Home Depot Impact: replace the /s/ URL with your Impact tracking link
+ * - Lowe's (CJ): replace with your Commission Junction deep link
+ */
+
+interface Props {
+  material: string;
+}
+
+const { material } = Astro.props;
+
+interface RetailerLinks {
+  label: string;
+  priceNote: string;
+  retailers: { name: string; logo: string; href: string; cta: string }[];
+}
+
+const config: Record<string, RetailerLinks> = {
+  mulch: {
+    label: 'Mulch',
+    priceNote: 'Bags ~$4–$8 · Bulk ~$25–$60/cu yd',
+    retailers: [
+      { name: 'Home Depot', logo: 'HD', href: 'https://www.homedepot.com/s/mulch', cta: 'Shop Mulch' },
+      { name: "Lowe's", logo: 'LW', href: 'https://www.lowes.com/search?searchTerm=mulch', cta: 'Shop Mulch' },
+      { name: 'Amazon', logo: 'AZ', href: 'https://www.amazon.com/s?k=garden+mulch+bags', cta: 'Shop Mulch' },
+    ],
+  },
+  gravel: {
+    label: 'Gravel',
+    priceNote: 'Bags ~$4–$8 · Bulk ~$35–$75/ton',
+    retailers: [
+      { name: 'Home Depot', logo: 'HD', href: 'https://www.homedepot.com/s/gravel', cta: 'Shop Gravel' },
+      { name: "Lowe's", logo: 'LW', href: 'https://www.lowes.com/search?searchTerm=gravel', cta: 'Shop Gravel' },
+      { name: 'Amazon', logo: 'AZ', href: 'https://www.amazon.com/s?k=pea+gravel+bags', cta: 'Shop Gravel' },
+    ],
+  },
+  topsoil: {
+    label: 'Topsoil',
+    priceNote: 'Bags ~$5–$8 · Bulk ~$25–$50/cu yd',
+    retailers: [
+      { name: 'Home Depot', logo: 'HD', href: 'https://www.homedepot.com/s/topsoil', cta: 'Shop Topsoil' },
+      { name: "Lowe's", logo: 'LW', href: 'https://www.lowes.com/search?searchTerm=topsoil', cta: 'Shop Topsoil' },
+      { name: 'Amazon', logo: 'AZ', href: 'https://www.amazon.com/s?k=topsoil+bags', cta: 'Shop Topsoil' },
+    ],
+  },
+  sand: {
+    label: 'Sand',
+    priceNote: 'Bags ~$4–$7 · Bulk ~$25–$50/ton',
+    retailers: [
+      { name: 'Home Depot', logo: 'HD', href: 'https://www.homedepot.com/s/play+sand+bags', cta: 'Shop Sand' },
+      { name: "Lowe's", logo: 'LW', href: 'https://www.lowes.com/search?searchTerm=sand+bags', cta: 'Shop Sand' },
+      { name: 'Amazon', logo: 'AZ', href: 'https://www.amazon.com/s?k=sand+bags+construction', cta: 'Shop Sand' },
+    ],
+  },
+  sod: {
+    label: 'Sod',
+    priceNote: '~$0.30–$0.85/sq ft · $150–$450/pallet',
+    retailers: [
+      { name: 'Home Depot', logo: 'HD', href: 'https://www.homedepot.com/s/sod', cta: 'Shop Sod' },
+      { name: "Lowe's", logo: 'LW', href: 'https://www.lowes.com/search?searchTerm=sod', cta: 'Shop Sod' },
+      { name: 'Amazon', logo: 'AZ', href: 'https://www.amazon.com/s?k=sod+grass', cta: 'Shop Sod' },
+    ],
+  },
+  concrete: {
+    label: 'Concrete Mix',
+    priceNote: '80 lb bag ~$5–$8 · Ready-mix ~$120–$160/cu yd',
+    retailers: [
+      { name: 'Home Depot', logo: 'HD', href: 'https://www.homedepot.com/s/concrete+mix+80lb', cta: 'Shop Concrete' },
+      { name: "Lowe's", logo: 'LW', href: 'https://www.lowes.com/search?searchTerm=concrete+mix', cta: 'Shop Concrete' },
+      { name: 'Amazon', logo: 'AZ', href: 'https://www.amazon.com/s?k=concrete+mix+bags', cta: 'Shop Concrete' },
+    ],
+  },
+  'grass-seed': {
+    label: 'Grass Seed',
+    priceNote: '~$3–$8/lb · $30–$60 for 10 lb bag',
+    retailers: [
+      { name: 'Home Depot', logo: 'HD', href: 'https://www.homedepot.com/s/grass+seed', cta: 'Shop Seed' },
+      { name: "Lowe's", logo: 'LW', href: 'https://www.lowes.com/search?searchTerm=grass+seed', cta: 'Shop Seed' },
+      { name: 'Amazon', logo: 'AZ', href: 'https://www.amazon.com/s?k=grass+seed+lawn', cta: 'Shop Seed' },
+    ],
+  },
+  paint: {
+    label: 'Interior/Exterior Paint',
+    priceNote: 'Gallon ~$25–$55 · 5-gal ~$90–$180',
+    retailers: [
+      { name: 'Home Depot', logo: 'HD', href: 'https://www.homedepot.com/s/interior+paint+gallon', cta: 'Shop Paint' },
+      { name: "Lowe's", logo: 'LW', href: 'https://www.lowes.com/search?searchTerm=interior+paint', cta: 'Shop Paint' },
+      { name: 'Amazon', logo: 'AZ', href: 'https://www.amazon.com/s?k=interior+paint+gallon', cta: 'Shop Paint' },
+    ],
+  },
+  flooring: {
+    label: 'Flooring',
+    priceNote: 'Laminate ~$1–$5/sq ft · Hardwood ~$6–$15/sq ft',
+    retailers: [
+      { name: 'Home Depot', logo: 'HD', href: 'https://www.homedepot.com/s/laminate+flooring', cta: 'Shop Flooring' },
+      { name: "Lowe's", logo: 'LW', href: 'https://www.lowes.com/search?searchTerm=laminate+flooring', cta: 'Shop Flooring' },
+      { name: 'Amazon', logo: 'AZ', href: 'https://www.amazon.com/s?k=laminate+flooring', cta: 'Shop Flooring' },
+    ],
+  },
+  tile: {
+    label: 'Floor & Wall Tile',
+    priceNote: 'Ceramic ~$1–$3/sq ft · Porcelain ~$3–$8/sq ft',
+    retailers: [
+      { name: 'Home Depot', logo: 'HD', href: 'https://www.homedepot.com/s/floor+tile', cta: 'Shop Tile' },
+      { name: "Lowe's", logo: 'LW', href: 'https://www.lowes.com/search?searchTerm=floor+tile', cta: 'Shop Tile' },
+      { name: 'Amazon', logo: 'AZ', href: 'https://www.amazon.com/s?k=porcelain+floor+tile', cta: 'Shop Tile' },
+    ],
+  },
+  drywall: {
+    label: 'Drywall',
+    priceNote: '4×8 sheet ~$10–$18 · 4×12 ~$16–$26',
+    retailers: [
+      { name: 'Home Depot', logo: 'HD', href: 'https://www.homedepot.com/s/drywall+sheets', cta: 'Shop Drywall' },
+      { name: "Lowe's", logo: 'LW', href: 'https://www.lowes.com/search?searchTerm=drywall+sheets', cta: 'Shop Drywall' },
+      { name: 'Amazon', logo: 'AZ', href: 'https://www.amazon.com/s?k=drywall+joint+compound', cta: 'Shop Drywall' },
+    ],
+  },
+  lumber: {
+    label: 'Dimensional Lumber',
+    priceNote: '2×4×8 ~$4–$7 · 2×6×8 ~$7–$11',
+    retailers: [
+      { name: 'Home Depot', logo: 'HD', href: 'https://www.homedepot.com/s/2x4+lumber', cta: 'Shop Lumber' },
+      { name: "Lowe's", logo: 'LW', href: 'https://www.lowes.com/search?searchTerm=2x4+lumber', cta: 'Shop Lumber' },
+      { name: 'Amazon', logo: 'AZ', href: 'https://www.amazon.com/s?k=dimensional+lumber', cta: 'Shop Lumber' },
+    ],
+  },
+  insulation: {
+    label: 'Insulation',
+    priceNote: 'R-13 batt ~$0.30–$0.60/sq ft · Blown-in ~$0.80–$1.50/sq ft',
+    retailers: [
+      { name: 'Home Depot', logo: 'HD', href: 'https://www.homedepot.com/s/insulation+batts', cta: 'Shop Insulation' },
+      { name: "Lowe's", logo: 'LW', href: 'https://www.lowes.com/search?searchTerm=insulation', cta: 'Shop Insulation' },
+      { name: 'Amazon', logo: 'AZ', href: 'https://www.amazon.com/s?k=fiberglass+insulation+batts', cta: 'Shop Insulation' },
+    ],
+  },
+  paver: {
+    label: 'Pavers',
+    priceNote: 'Concrete pavers ~$0.50–$2/sq ft · Natural stone ~$5–$15/sq ft',
+    retailers: [
+      { name: 'Home Depot', logo: 'HD', href: 'https://www.homedepot.com/s/concrete+pavers', cta: 'Shop Pavers' },
+      { name: "Lowe's", logo: 'LW', href: 'https://www.lowes.com/search?searchTerm=concrete+pavers', cta: 'Shop Pavers' },
+      { name: 'Amazon', logo: 'AZ', href: 'https://www.amazon.com/s?k=concrete+pavers', cta: 'Shop Pavers' },
+    ],
+  },
+  fence: {
+    label: 'Fencing Materials',
+    priceNote: 'Cedar pickets ~$2–$5 each · Posts ~$8–$20',
+    retailers: [
+      { name: 'Home Depot', logo: 'HD', href: 'https://www.homedepot.com/s/fence+boards+cedar', cta: 'Shop Fencing' },
+      { name: "Lowe's", logo: 'LW', href: 'https://www.lowes.com/search?searchTerm=fence+boards', cta: 'Shop Fencing' },
+      { name: 'Amazon', logo: 'AZ', href: 'https://www.amazon.com/s?k=fence+post+hardware', cta: 'Shop Fencing' },
+    ],
+  },
+  deck: {
+    label: 'Deck Lumber & Hardware',
+    priceNote: 'Composite decking ~$3–$8/linear ft · Pressure-treated ~$1.50–$3',
+    retailers: [
+      { name: 'Home Depot', logo: 'HD', href: 'https://www.homedepot.com/s/composite+decking', cta: 'Shop Deck' },
+      { name: "Lowe's", logo: 'LW', href: 'https://www.lowes.com/search?searchTerm=composite+decking', cta: 'Shop Deck' },
+      { name: 'Amazon', logo: 'AZ', href: 'https://www.amazon.com/s?k=deck+screws+hardware', cta: 'Shop Deck' },
+    ],
+  },
+  asphalt: {
+    label: 'Asphalt & Driveway',
+    priceNote: 'Cold patch ~$15–$25/bag · Pro install ~$3–$7/sq ft',
+    retailers: [
+      { name: 'Home Depot', logo: 'HD', href: 'https://www.homedepot.com/s/asphalt+cold+patch', cta: 'Shop Asphalt' },
+      { name: "Lowe's", logo: 'LW', href: 'https://www.lowes.com/search?searchTerm=asphalt+cold+patch', cta: 'Shop Asphalt' },
+      { name: 'Amazon', logo: 'AZ', href: 'https://www.amazon.com/s?k=driveway+asphalt+patch', cta: 'Shop Asphalt' },
+    ],
+  },
+};
+
+const data = config[material];
+if (!data) return;
+---
+
+<div class="calculator-card">
+  <h3 class="font-semibold text-gray-900 mb-1">Where to Buy {data.label}</h3>
+  <p class="text-xs text-gray-500 mb-3">{data.priceNote}</p>
+  <div class="flex flex-col gap-2">
+    {data.retailers.map(r => (
+      <a
+        href={r.href}
+        target="_blank"
+        rel="nofollow noopener sponsored"
+        class="flex items-center gap-3 px-3 py-2 rounded-lg border border-gray-200 hover:border-brand-400 hover:bg-brand-50 transition-colors group"
+      >
+        <span class="w-8 h-8 rounded flex items-center justify-center text-xs font-bold bg-gray-100 text-gray-600 flex-shrink-0 group-hover:bg-brand-100">
+          {r.logo}
+        </span>
+        <span class="flex-1">
+          <span class="text-sm font-medium text-gray-800 group-hover:text-brand-700">{r.name}</span>
+        </span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400 group-hover:text-brand-500">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+        </svg>
+      </a>
+    ))}
+  </div>
+  <p class="text-xs text-gray-400 mt-3">Prices vary by location. Links may be affiliate links.</p>
+</div>

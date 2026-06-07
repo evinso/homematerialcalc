@@ -2,6 +2,9 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import FlooringCalculator from '../../components/calculators/FlooringCalculator';
 import AdSlot from '../../components/ui/AdSlot.astro';
+import WhereToBuy from '../../components/ui/WhereToBuy.astro';
+import ResultActions from '../../components/ui/ResultActions.astro';
+import UsageStats from '../../components/ui/UsageStats.astro';
 import CalcSchema from '../../components/ui/CalcSchema.astro';
 import CalcBreadcrumbs from '../../components/ui/CalcBreadcrumbs.astro';
 const related = [
@@ -27,8 +30,10 @@ const related = [
     <div class="grid lg:grid-cols-[1fr_380px] gap-10">
       <div>
         <h1 class="text-3xl font-bold text-gray-900 mb-2">Flooring Calculator</h1>
+        <UsageStats material="flooring" />
         <p class="text-gray-600 mb-6">Enter your room dimensions and the square footage per box to find out how many boxes of flooring to buy, with the right waste factor for your lay pattern.</p>
         <FlooringCalculator client:load />
+        <ResultActions />
         <AdSlot slot="after-result" className="mt-6" />
         <div class="calculator-card mt-8">
           <h2 class="font-bold text-gray-900 text-lg mb-3">How to measure for flooring</h2>
@@ -88,6 +93,7 @@ const related = [
             {related.map(r => (<li><a href={r.href} class="text-sm text-brand-600 hover:underline">{r.label}</a></li>))}
           </ul>
         </div>
+        <WhereToBuy material="flooring" />
         <AdSlot slot="sidebar" />
       </aside>
     </div>

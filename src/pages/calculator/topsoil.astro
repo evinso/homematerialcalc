@@ -2,6 +2,9 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import TopsoilCalculator from '../../components/calculators/TopsoilCalculator';
 import AdSlot from '../../components/ui/AdSlot.astro';
+import WhereToBuy from '../../components/ui/WhereToBuy.astro';
+import ResultActions from '../../components/ui/ResultActions.astro';
+import UsageStats from '../../components/ui/UsageStats.astro';
 import CalcSchema from '../../components/ui/CalcSchema.astro';
 import CalcBreadcrumbs from '../../components/ui/CalcBreadcrumbs.astro';
 
@@ -30,10 +33,12 @@ const related = [
     <div class="grid lg:grid-cols-[1fr_380px] gap-10">
       <div>
         <h1 class="text-3xl font-bold text-gray-900 mb-2">Topsoil Calculator</h1>
+        <UsageStats material="topsoil" />
         <p class="text-gray-600 mb-6">Enter your lawn or garden dimensions and desired depth to find out how many cubic yards or 40 lb bags of topsoil to buy.</p>
 
         <TopsoilCalculator client:load />
 
+        <ResultActions />
         <AdSlot slot="after-result" className="mt-6" />
 
         <div class="calculator-card mt-8">
@@ -99,6 +104,7 @@ const related = [
           </ul>
         </div>
 
+        <WhereToBuy material="topsoil" />
         <AdSlot slot="sidebar" />
       </aside>
     </div>

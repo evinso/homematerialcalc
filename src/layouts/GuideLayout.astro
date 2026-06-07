@@ -1,6 +1,8 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import AdSlot from '../components/ui/AdSlot.astro';
+import AuthorCard from '../components/ui/AuthorCard.astro';
+import { getAuthor } from '../data/authors';
 
 interface FAQ {
   q: string;
@@ -27,13 +29,17 @@ interface Props {
   related: { href: string; label: string }[];
   howToSteps?: HowToStep[];
   howToTotalTime?: string;
+  authorSlug?: string;
+  publishDate?: string;
 }
 
 const {
   title, description, h1, intro, canonicalUrl,
   faqs = [], breadcrumbs = [], calculatorHref, calculatorLabel, related,
-  howToSteps, howToTotalTime,
+  howToSteps, howToTotalTime, authorSlug, publishDate,
 } = Astro.props;
+
+const author = getAuthor(authorSlug ?? 'editorial');
 
 const site = 'https://www.homematerialcalc.com';
 const canonical = canonicalUrl ?? site + Astro.url.pathname;
@@ -68,13 +74,19 @@ const articleSchema = {
   headline: h1,
   description,
   url: canonical,
+  ...(publishDate ? { datePublished: publishDate, dateModified: publishDate } : {}),
   publisher: {
     '@type': 'Organization',
     name: 'HomeMaterialCalc',
     url: site,
     logo: { '@type': 'ImageObject', url: `${site}/og-default.png` },
   },
-  author: { '@type': 'Organization', name: 'HomeMaterialCalc' },
+  author: {
+    '@type': 'Person',
+    name: author.name,
+    jobTitle: author.title,
+    description: author.bio,
+  },
   mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
 };
 
@@ -140,7 +152,9 @@ const howToSchema = howToSteps && howToSteps.length > 0 ? {
             Print / PDF
           </button>
         </div>
-        <p class="text-lg text-gray-600 mb-6">{intro}</p>
+        <p class="text-lg text-gray-600 mb-4">{intro}</p>
+
+        <AuthorCard {author} {publishDate} />
 
         <!-- Calculator CTA -->
         <a href={calculatorHref}

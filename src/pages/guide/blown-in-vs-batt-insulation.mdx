@@ -1,0 +1,83 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'Is blown-in or batt insulation better for an attic?', a: 'Blown-in is generally better for attics. It achieves higher R-values, fills around joists and obstacles without gaps, and is faster to install. Batt insulation in attics is prone to gaps and compression that reduce effective R-value.' },
+  { q: 'Is blown-in insulation cheaper than batts?', a: 'Batt insulation is cheaper for walls ($0.30–$0.90/sq ft materials) since it installs in open stud bays. Blown-in for attics costs $0.80–$1.50/sq ft DIY or $1.50–$3/sq ft installed. For attics, blown-in is often worth the extra cost for better coverage.' },
+  { q: 'Can I install blown-in insulation myself?', a: 'Yes — most big-box stores rent blowing machines free with a minimum purchase of insulation bags. Two people and half a day is enough for most attics. Wall cavities require cutting holes and are harder DIY.' },
+  { q: 'What R-value do I need for my attic?', a: 'ENERGY STAR recommends R-38 to R-60 for attics depending on your climate zone. Zone 1–2 (South): R-38. Zone 3–4: R-49. Zone 5–8 (North): R-49 to R-60. Walls need R-13 to R-21 depending on framing.' },
+  { q: 'Does blown-in insulation settle over time?', a: 'Fiberglass blown-in settles 3–5% over time. Cellulose settles more (up to 20%) but accounts for this in initial depth requirements. Both maintain their R-value per inch after initial settling. Install to the labeled settled depth, not the poured depth.' },
+];
+
+export const related = [
+  { href: '/calculator/insulation/', label: 'Insulation Calculator' },
+  { href: '/calculator/insulation-cost/', label: 'Insulation Cost Calculator' },
+  { href: '/calculator/drywall-cost/', label: 'Drywall Cost Calculator' },
+  { href: '/guide/how-much-drywall-do-i-need/', label: 'How Much Drywall Do I Need?' },
+];
+
+<GuideLayout
+  title="Blown-In vs Batt Insulation — Which Is Better? (2026)"
+  description="Blown-in vs batt insulation compared: cost, R-value, coverage, DIY difficulty, and which to use for attics vs walls. 2026 price guide included."
+  h1="Blown-In vs Batt Insulation"
+  intro="Blown-in and batt insulation both deliver good thermal performance — but they work differently for different applications. Batts are ideal for open walls; blown-in excels in attics and existing spaces. Here is a direct comparison."
+  calculatorHref="/calculator/insulation/"
+  calculatorLabel="Insulation Calculator — estimate bags or rolls needed for any area"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Blown-In vs Batt Insulation' }]}
+  authorSlug="tom"
+>
+
+## Quick comparison
+
+| | Blown-In (Fiberglass/Cellulose) | Batt (Fiberglass/Mineral Wool) |
+|---|---|---|
+| **Best for** | Attics, existing walls | Open stud bays, new construction |
+| **Coverage** | ✅ No gaps around obstacles | ⚠️ Gaps common if not careful |
+| **R-value per inch** | R-2.2–R-3.8 | R-3.1–R-4.3 |
+| **DIY-friendly** | ✅ Attic: yes, Walls: hard | ✅ Easy in open walls |
+| **Materials cost** | $0.80–$1.50/sq ft | $0.30–$0.90/sq ft |
+| **Installed cost** | $1.50–$3/sq ft | $1–$2.50/sq ft |
+| **Settles over time** | ⚠️ 3–20% settling | ❌ Does not settle |
+| **Existing spaces** | ✅ Great | ❌ Requires tear-out |
+
+## Where each wins
+
+### Blown-in wins for attics
+Blown-in fills around joists, pipes, wiring, and blocking with no gaps. It is faster (1,000 sq ft attic in 2–3 hours) and achieves consistent R-value throughout. Renting a blowing machine from a home improvement store is free with a bag purchase minimum.
+
+### Batts win for new wall construction
+Batt insulation fits perfectly in standard 16" or 24" stud bays on new construction. Easier to cut around outlets and plumbing. No special equipment needed. Mineral wool batts (Rockwool) are the premium option — fire-resistant and provide excellent soundproofing.
+
+## Cost comparison
+
+For a 1,000 sq ft attic to R-38:
+
+**Blown-in fiberglass (12 inches):**
+- Materials: ~30–35 bags × $35 = $1,050–$1,225
+- Blower rental: free with purchase
+- **DIY total: ~$1,100–$1,250**
+- **Professionally installed: $1,500–$3,000**
+
+**Fiberglass batts (R-38 = two layers):**
+- Materials: ~$700–$900 for double layer
+- More labor-intensive to achieve even coverage
+- **DIY total: ~$700–$1,000**
+
+For walls (standard 2×4, R-13):
+- Batt insulation: $0.30–$0.60/sq ft materials
+- Blown-in wall: $1–$2/sq ft (requires drilling holes)
+
+## R-value considerations
+
+Both products deliver their labeled R-value when installed correctly. The real-world difference is that blown-in fills gaps that batts miss — especially around joists, blocking, and irregular framing. In attics, blown-in typically outperforms batts despite similar labeled R-values.
+
+## Climate recommendations
+
+- **Cold climates (Zone 5–8):** R-49 to R-60 attic, blown-in preferred for coverage
+- **Moderate climates (Zone 3–4):** R-38 to R-49, either works
+- **Warm climates (Zone 1–2):** R-30 to R-38, cost savings from batts more significant
+
+Use the [Insulation Calculator](/calculator/insulation/) to estimate bags or rolls, then the [Insulation Cost Calculator](/calculator/insulation-cost/) for a total price estimate.
+
+</GuideLayout>

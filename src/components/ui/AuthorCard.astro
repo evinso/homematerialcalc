@@ -1,0 +1,39 @@
+---
+import type { Author } from '../../data/authors';
+
+interface Props {
+  author: Author;
+  publishDate?: string; // ISO date string, e.g. "2026-06-07"
+}
+
+const { author, publishDate } = Astro.props;
+
+const displayDate = publishDate
+  ? new Date(publishDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+  : null;
+---
+
+<div class="flex items-start gap-3 py-4 border-t border-b border-gray-100 my-6 no-print">
+  <!-- Avatar -->
+  <div
+    class="w-11 h-11 rounded-full flex items-center justify-center text-sm font-bold text-white flex-shrink-0"
+    style={`background-color: ${author.color}`}
+    aria-hidden="true"
+  >
+    {author.avatar}
+  </div>
+
+  <!-- Info -->
+  <div class="min-w-0">
+    <div class="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
+      <span class="text-sm font-semibold text-gray-900">{author.name}</span>
+      <span class="text-xs text-gray-500">·</span>
+      <span class="text-xs text-gray-500">{author.title}</span>
+    </div>
+    <p class="text-xs text-gray-500 mt-0.5">{author.credentials}</p>
+    <p class="text-xs text-gray-600 mt-1 leading-relaxed">{author.bio}</p>
+    {displayDate && (
+      <p class="text-xs text-gray-400 mt-1">Updated {displayDate}</p>
+    )}
+  </div>
+</div>

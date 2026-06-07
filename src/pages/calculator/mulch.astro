@@ -2,6 +2,9 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import MulchCalculator from '../../components/calculators/MulchCalculator';
 import AdSlot from '../../components/ui/AdSlot.astro';
+import WhereToBuy from '../../components/ui/WhereToBuy.astro';
+import ResultActions from '../../components/ui/ResultActions.astro';
+import UsageStats from '../../components/ui/UsageStats.astro';
 import CalcSchema from '../../components/ui/CalcSchema.astro';
 import CalcBreadcrumbs from '../../components/ui/CalcBreadcrumbs.astro';
 
@@ -32,10 +35,12 @@ const related = [
       <!-- Left: calculator -->
       <div>
         <h1 class="text-3xl font-bold text-gray-900 mb-2">Mulch Calculator</h1>
+        <UsageStats material="mulch" />
         <p class="text-gray-600 mb-6">Enter your garden bed dimensions and depth to find out how many bags or cubic yards of mulch to buy.</p>
 
         <MulchCalculator client:load />
 
+        <ResultActions />
         <AdSlot slot="after-result" className="mt-6" />
 
         <!-- How to measure -->
@@ -114,6 +119,7 @@ const related = [
           </ul>
         </div>
 
+        <WhereToBuy material="mulch" />
         <AdSlot slot="sidebar" />
       </aside>
     </div>

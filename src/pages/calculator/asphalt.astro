@@ -2,6 +2,9 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import AsphaltCalculator from '../../components/calculators/AsphaltCalculator';
 import AdSlot from '../../components/ui/AdSlot.astro';
+import WhereToBuy from '../../components/ui/WhereToBuy.astro';
+import ResultActions from '../../components/ui/ResultActions.astro';
+import UsageStats from '../../components/ui/UsageStats.astro';
 import CalcBreadcrumbs from '../../components/ui/CalcBreadcrumbs.astro';
 
 const related = [
@@ -23,8 +26,10 @@ const related = [
     <div class="grid lg:grid-cols-[1fr_320px] gap-10">
       <div>
         <h1 class="text-3xl font-bold text-gray-900 mb-2">Asphalt Calculator</h1>
+        <UsageStats material="asphalt" />
         <p class="text-gray-600 mb-6">Enter your driveway, path, or parking area dimensions to calculate tons and cubic yards of asphalt needed — plus the gravel base estimate for new installations.</p>
         <AsphaltCalculator client:load />
+        <ResultActions />
         <AdSlot slot="after-result" className="mt-6" />
         <div class="calculator-card mt-8">
           <h2 class="font-semibold text-gray-900 mb-3">Asphalt quick reference</h2>
@@ -58,6 +63,7 @@ const related = [
             ))}
           </ul>
         </div>
+        <WhereToBuy material="asphalt" />
         <AdSlot slot="sidebar" />
       </aside>
     </div>

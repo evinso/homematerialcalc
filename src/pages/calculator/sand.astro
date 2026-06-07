@@ -2,6 +2,9 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SandCalculator from '../../components/calculators/SandCalculator';
 import AdSlot from '../../components/ui/AdSlot.astro';
+import WhereToBuy from '../../components/ui/WhereToBuy.astro';
+import ResultActions from '../../components/ui/ResultActions.astro';
+import UsageStats from '../../components/ui/UsageStats.astro';
 import CalcSchema from '../../components/ui/CalcSchema.astro';
 import CalcBreadcrumbs from '../../components/ui/CalcBreadcrumbs.astro';
 
@@ -30,10 +33,12 @@ const related = [
     <div class="grid lg:grid-cols-[1fr_380px] gap-10">
       <div>
         <h1 class="text-3xl font-bold text-gray-900 mb-2">Sand Calculator</h1>
+        <UsageStats material="sand" />
         <p class="text-gray-600 mb-6">Enter your project dimensions, depth, and sand type to calculate how many cubic yards, tons, or 50 lb bags of sand to buy.</p>
 
         <SandCalculator client:load />
 
+        <ResultActions />
         <AdSlot slot="after-result" className="mt-6" />
 
         <div class="calculator-card mt-8">
@@ -99,6 +104,7 @@ const related = [
           </ul>
         </div>
 
+        <WhereToBuy material="sand" />
         <AdSlot slot="sidebar" />
       </aside>
     </div>
