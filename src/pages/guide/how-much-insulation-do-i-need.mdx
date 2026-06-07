@@ -1,0 +1,89 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How many bags of insulation do I need for a 1,000 sq ft attic?', a: 'It depends on the target R-value and insulation type. For R-38 blown-in fiberglass, you need roughly 25–28 bags (25 lb bags) for 1,000 sq ft. Use the Insulation Calculator for exact bag counts based on your attic size and target R-value.' },
+  { q: 'How do I know what R-value I need?', a: 'The US Department of Energy recommends R-38 to R-60 for attics in most of the US (Climate Zones 3–7). Southern states (Florida, Texas coast) can use R-30. Northern states (Minnesota, Maine) should target R-60. Check the DOE Zone Map for your area.' },
+  { q: 'How much insulation do I need for a 2×4 wall?', a: 'A standard 2×4 wall cavity (3.5 inches deep) holds about R-13 to R-15 of fiberglass batt insulation. For 2×6 walls (5.5 inches), you can fit R-19 to R-21. One bag of 50-sq-ft batt covers about 50 sq ft of wall at one layer.' },
+  { q: 'How deep should blown-in insulation be in an attic?', a: 'For R-38, blown-in fiberglass needs about 14–15 inches. For R-49, about 19 inches. For R-60, about 24 inches. Blown-in cellulose is slightly denser: R-38 requires about 10–11 inches.' },
+  { q: 'Is blown-in or batt insulation better for an attic?', a: 'Blown-in is better for attics with existing insulation, irregular joist spacing, or obstructions. Batt insulation suits open, accessible attics with regular framing. Blown-in also seals air gaps more effectively and typically achieves a higher effective R-value.' },
+];
+
+export const related = [
+  { href: '/calculator/insulation', label: 'Insulation Calculator' },
+  { href: '/guide/blown-in-vs-batt-insulation', label: 'Blown-In vs Batt Insulation' },
+  { href: '/guide/best-insulation-for-attic', label: 'Best Insulation for Attic' },
+  { href: '/guide/insulation-r-value-guide', label: 'R-Value Guide by Climate Zone' },
+];
+
+<GuideLayout
+  title="How Much Insulation Do I Need? — Bags, Rolls & R-Value Guide"
+  description="Calculate how much insulation you need for attics, walls, and crawl spaces. Coverage tables for blown-in and batt insulation at every R-value, plus DOE zone recommendations."
+  h1="How Much Insulation Do I Need?"
+  intro="The amount of insulation depends on where you're insulating (attic, wall, crawl space), the target R-value for your climate zone, and the insulation type. Here's how to calculate it."
+  calculatorHref="/calculator/insulation"
+  calculatorLabel="Insulation Calculator — bags and rolls for your exact space"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'How Much Insulation Do I Need?' }]}
+  authorSlug="dan"
+  publishDate="2026-06-08">
+
+## The quick formula
+
+**Bags needed = (Area sq ft × Bags per sq ft at target R-value)**
+
+Each bag of blown-in fiberglass (25 lb) covers a specific sq ft at a specific R-value — check the coverage chart on the bag label or use the calculator below.
+
+## R-value recommendations by climate zone
+
+| DOE Zone | States (examples) | Attic R-value | Wall R-value |
+|----------|------------------|--------------|-------------|
+| Zone 1–2 | Hawaii, Florida (south) | R-30 | R-13 |
+| Zone 3 | Texas, Georgia, Arizona | R-38 | R-13 to R-15 |
+| Zone 4 | Virginia, Missouri, Kansas | R-38 to R-49 | R-13 to R-21 |
+| Zone 5 | Ohio, Pennsylvania, Colorado | R-49 | R-21 |
+| Zone 6 | Minnesota, Michigan | R-49 to R-60 | R-21 |
+| Zone 7 | Montana, Alaska interior | R-60 | R-21+ |
+
+## Blown-in fiberglass: bags per 1,000 sq ft
+
+| Target R-value | Depth needed | Bags per 1,000 sq ft |
+|---------------|-------------|---------------------|
+| R-19 | 7–8 in | 13–15 bags |
+| R-30 | 11–12 in | 20–22 bags |
+| R-38 | 14–15 in | 25–28 bags |
+| R-49 | 18–19 in | 32–36 bags |
+| R-60 | 23–24 in | 39–44 bags |
+
+*Based on standard 25 lb bags of blown-in fiberglass. Actual coverage varies by brand — check the bag label.*
+
+## Batt insulation: rolls per 1,000 sq ft
+
+| Type | R-value | Fits wall/cavity | Sq ft per bag/roll |
+|------|---------|-----------------|-------------------|
+| Fiberglass batt | R-13 | 2×4 wall | 40–50 sq ft |
+| Fiberglass batt | R-15 | 2×4 wall | 40–50 sq ft |
+| Fiberglass batt | R-19 | 2×6 wall | 40–50 sq ft |
+| Fiberglass batt | R-21 | 2×6 wall | 40–50 sq ft |
+| Fiberglass batt | R-38 | Attic floor (2 layers) | 40 sq ft |
+
+## How to measure your attic
+
+1. **Measure the floor area** — length × width in feet (measure the attic floor, not the roof pitch)
+2. **Check existing depth** — use a ruler to measure how deep any existing insulation is
+3. **Calculate the gap** — subtract existing R-value from target R-value to find what you need to add
+4. **Account for joist framing** — joists block some coverage; add 5–10% to your bag count
+
+## Attic insulation depth chart
+
+| Existing depth | Approx existing R-value (fiberglass) | Needs adding for R-49 |
+|---------------|--------------------------------------|----------------------|
+| 0 in | R-0 | Full R-49 |
+| 3.5 in | R-11 | R-38 more |
+| 6 in | R-19 | R-30 more |
+| 10 in | R-30 | R-19 more |
+| 14 in | R-44 | R-5 more |
+
+Use the [Insulation Calculator](/calculator/insulation) for your exact attic size, current R-value, and target R-value.
+
+</GuideLayout>

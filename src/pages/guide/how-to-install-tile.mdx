@@ -1,0 +1,95 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How many tiles do I need for a floor?', a: 'Divide total square footage by tile square footage, then add 10% for cuts and waste (15% for diagonal patterns). A 100 sq ft bathroom floor using 12×12 tiles needs about 110 tiles. Use the Tile Calculator for exact counts.' },
+  { q: 'What size tile is best for a small bathroom?', a: 'Larger tiles (12×24 or 12×12) actually make small rooms feel bigger because fewer grout lines create a less busy look. Very small mosaic tiles (1×1) work well for shower floors where slip resistance matters. Avoid 4×4 tiles in modern bathrooms — they tend to look dated.' },
+  { q: 'Do I need to use cement board under tile?', a: 'Yes for floors and wet areas. Cement board (1/4 or 1/2 inch) or uncoupling membrane (like Schluter Ditra) is required under tile in bathrooms and kitchens. Never tile directly over standard drywall in wet areas — it will fail within 1–2 years.' },
+  { q: 'How long does tile installation take?', a: 'A 100 sq ft bathroom floor takes an experienced DIYer 1–2 days: half a day for prep/layout, half a day for setting, plus drying time before grouting. Grout the next day. Factor in substrate preparation (cement board) as a separate step.' },
+  { q: 'How soon can I walk on new tile?', a: 'Wait 24 hours after setting tile before walking on it (with some weight-distributing shoes/boards). Grout after 24 hours. Do not get grout wet for 48–72 hours after grouting. Full cure of the thinset mortar takes 28 days, but light foot traffic is fine after 24 hours.' },
+];
+
+export const howToSteps = [
+  { name: 'Prepare the substrate', text: 'Remove existing flooring down to the subfloor. Check for soft spots — fix any squeaky or bouncy areas. Install 1/4 or 1/2-inch cement board over the subfloor, screwing every 6 inches into joists. Tape seams with fiberglass mesh and thinset. Allow to dry overnight.' },
+  { name: 'Plan the layout', text: 'Find the center of the room by snapping chalk lines between midpoints of opposite walls. Do a dry-lay test run from the center without adhesive. Adjust center point so cut tiles at walls are at least half a tile wide. Mark your reference lines on the substrate.' },
+  { name: 'Mix thinset mortar', text: 'Mix modified thinset to a peanut butter consistency — it holds a ridge when combed. Too wet and tiles won\'t bond; too dry and coverage is poor. Mix only what you can use in 30–45 minutes.' },
+  { name: 'Set the field tiles', text: 'Apply thinset with a notched trowel at a 45° angle. Spread in sections you can work in 20–30 minutes. Press tiles firmly into thinset with a slight twisting motion. Use plastic spacers for consistent grout lines. Check level frequently with a straightedge.' },
+  { name: 'Cut tiles for edges', text: 'Use a wet saw for straight cuts and a tile nipper or angle grinder for curves around pipes. Back-butter cut tiles (apply thinset to the back of the tile as well as the floor) for better adhesion on partial tiles.' },
+  { name: 'Allow thinset to cure', text: 'Let thinset dry for at least 24 hours before grouting. Don\'t walk on tiles during this time. Remove tile spacers before thinset fully cures if you accidentally left them in place.' },
+  { name: 'Apply grout', text: 'Choose sanded grout for joints wider than 1/8 inch; unsanded for narrower joints. Mix grout to a smooth consistency. Apply with a rubber grout float, pushing grout into joints at a diagonal angle. Remove excess by wiping diagonally with a damp sponge. Rinse sponge frequently.' },
+  { name: 'Seal the grout', text: 'After grout cures (24–72 hours), apply grout sealer with a small brush or applicator. Wipe excess off tile surfaces immediately. Reapply every 1–2 years in high-use areas like kitchens. Polished or dark tiles may also benefit from tile sealer.' },
+];
+
+export const related = [
+  { href: '/calculator/tile', label: 'Tile Calculator' },
+  { href: '/guide/how-much-tile-do-i-need', label: 'How Much Tile Do I Need?' },
+  { href: '/guide/tile-sizes-and-coverage', label: 'Tile Sizes and Coverage' },
+  { href: '/guide/how-many-tiles-for-a-bathroom', label: 'How Many Tiles for a Bathroom?' },
+];
+
+<GuideLayout
+  title="How to Install Tile — Step-by-Step Floor & Wall Tile Guide"
+  description="Complete guide to installing floor and wall tile: substrate prep, layout, thinset, cutting, grouting, and sealing. Includes tile count tables and grout joint size guide."
+  h1="How to Install Tile"
+  intro="Tile installation is one of the most rewarding DIY projects for bathrooms, kitchens, and mudrooms. Done correctly, tile lasts decades. The key is a solid substrate and a careful layout."
+  calculatorHref="/calculator/tile"
+  calculatorLabel="Tile Calculator — exact tile count for your floor or wall"
+  faqs={faqs}
+  related={related}
+  howToSteps={howToSteps}
+  howToTotalTime="PT16H"
+  breadcrumbs={[{ label: 'Guides' }, { label: 'How to Install Tile' }]}
+  authorSlug="tom"
+  publishDate="2026-06-08">
+
+## How much tile to buy
+
+| Room area | Standard size | Tiles needed (10% waste) |
+|-----------|--------------|--------------------------|
+| 50 sq ft | 12×12 in | 55 tiles |
+| 100 sq ft | 12×12 in | 110 tiles |
+| 100 sq ft | 12×24 in | 55 tiles |
+| 150 sq ft | 12×12 in | 165 tiles |
+| 200 sq ft | 18×18 in | 100 tiles |
+
+Add 15% waste for diagonal patterns. Use the [Tile Calculator](/calculator/tile) for exact counts.
+
+## What you'll need
+
+**Materials:**
+- Cement board (1/4" for floors; 1/2" for walls)
+- Modified thinset mortar
+- Tile (see calculator for count)
+- Tile spacers (1/8" for most floors; 1/16" for large-format tile)
+- Sanded or unsanded grout
+- Grout sealer
+
+**Tools:**
+- Wet tile saw (rental)
+- Notched trowel (3/8" V-notch for most tiles; 1/2" U-notch for large tiles)
+- Rubber grout float
+- Tile leveling clips (optional but great for large-format tile)
+- Level and straightedge
+- Rubber mallet
+
+## Grout joint size guide
+
+| Joint size | Best for | Grout type |
+|-----------|---------|-----------|
+| 1/16 inch | Rectified tile (precision edges) | Unsanded |
+| 1/8 inch | Most floor and wall tile | Unsanded |
+| 3/16 inch | Standard spacing | Sanded |
+| 1/4 inch | Rustic, handmade tile | Sanded |
+| 1/2 inch | Brick pattern, large format | Sanded |
+
+## Thinset coverage by trowel size
+
+| Notch size | Coverage per gallon | Tile size |
+|-----------|--------------------|---------:|
+| 3/16" V-notch | 50–60 sq ft | Up to 8×8 |
+| 1/4" square | 40–50 sq ft | 8×12, 12×12 |
+| 3/8" square | 30–40 sq ft | 12×12, 12×24 |
+| 1/2" square | 20–30 sq ft | 18×18, large format |
+
+Large-format tile (18×18 and bigger) also requires back-buttering — apply thinset to both the substrate AND the back of the tile for full coverage.
+
+</GuideLayout>

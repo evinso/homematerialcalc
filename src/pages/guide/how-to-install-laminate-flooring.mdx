@@ -1,0 +1,96 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How many boxes of laminate flooring do I need?', a: 'Divide total square footage by the coverage per box (typically 20–25 sq ft), then add 10% for waste (15% for diagonal installation). A 200 sq ft room needs roughly 9–11 boxes depending on box size. Use the Flooring Calculator for exact counts.' },
+  { q: 'Can I install laminate flooring myself?', a: 'Yes — laminate is one of the most DIY-friendly flooring options. The click-lock system requires no glue or nails. Basic tools (saw, tapping block, pull bar) and 1–2 days are enough to install laminate in an average room.' },
+  { q: 'Do I need underlayment under laminate flooring?', a: 'Yes. Underlayment provides cushioning, vapor barrier, and sound reduction. Most laminate comes with pre-attached underlayment; if not, roll out 3mm foam underlayment before installing. Never skip underlayment — it\'s also required by most manufacturers\' warranties.' },
+  { q: 'What direction should I run laminate flooring?', a: 'Run boards parallel to the longest wall or the primary light source (windows). In long narrow rooms, running perpendicular to the longest wall makes the room appear wider. Avoid running diagonal unless specifically desired — it creates significantly more waste.' },
+  { q: 'How long does laminate flooring need to acclimate?', a: 'Acclimate laminate flooring in the room where it will be installed for 48–72 hours before installation. Leave boxes in the room — boards absorb moisture from the ambient air and adjust to room temperature, preventing gaps or buckling after installation.' },
+];
+
+export const howToSteps = [
+  { name: 'Acclimate the flooring', text: 'Bring laminate boxes into the room 48–72 hours before installation. Store flat in the room at the same temperature and humidity conditions where the floor will live. Do not acclimate in an attached garage or utility space.' },
+  { name: 'Prepare the subfloor', text: 'Remove existing flooring. Clean and vacuum the subfloor. Check for high spots (sand down anything over 3/16" in 10 feet) and low spots (fill with floor leveling compound). A flat subfloor prevents hollow spots and clicking noises after installation.' },
+  { name: 'Install underlayment', text: 'Roll out foam underlayment with the vapor barrier facing down. Butt seams together (don\'t overlap) and tape seams. If your laminate already has attached underlayment, skip this step but still check that the subfloor is clean and dry.' },
+  { name: 'Plan the layout', text: 'Measure room width. Divide by plank width to see how wide the last row will be. If it\'s less than 2 inches, rip the first row to make both the first and last rows equal width. Snap a chalk line as your starting reference, set 1/4" from the wall.' },
+  { name: 'Install the first row', text: 'Place first row groove side facing the wall, tongue side out. Place 1/4-inch spacers between planks and wall on all sides (expansion gap). Click end joints together. For the last plank, measure and cut to length, leaving the expansion gap.' },
+  { name: 'Install remaining rows', text: 'Stagger end joints at least 12 inches between rows (cut the first plank of each alternating row to stagger). Angle the tongue into the previous row\'s groove and press down to lock. Use a tapping block to close any gaps — never hammer directly on the plank edge.' },
+  { name: 'Install the last row', text: 'Measure and rip the last row to width (minus 1/4" expansion gap). Use a pull bar to lock the last row into place since a tapping block won\'t fit against the wall.' },
+  { name: 'Install transitions and trim', text: 'Install T-molding at doorways, reducer strips at transitions to different flooring heights, and end caps at exterior doors. Install baseboards or base shoe (quarter round) to cover the expansion gap — nail into the wall, not the floor.' },
+];
+
+export const related = [
+  { href: '/calculator/flooring', label: 'Flooring Calculator' },
+  { href: '/guide/how-much-flooring-do-i-need', label: 'How Much Flooring Do I Need?' },
+  { href: '/guide/laminate-vs-hardwood-flooring', label: 'Laminate vs Hardwood Flooring' },
+  { href: '/guide/vinyl-plank-vs-laminate-flooring', label: 'Vinyl Plank vs Laminate Flooring' },
+];
+
+<GuideLayout
+  title="How to Install Laminate Flooring — Step-by-Step DIY Guide"
+  description="Complete guide to installing laminate flooring: acclimating, subfloor prep, layout, click-lock installation, and finishing. Includes box count tables and expansion gap guide."
+  h1="How to Install Laminate Flooring"
+  intro="Laminate flooring is the most beginner-friendly flooring you can install yourself. The floating click-lock system requires no glue or nails, and most rooms can be completed in a single day."
+  calculatorHref="/calculator/flooring"
+  calculatorLabel="Flooring Calculator — exact boxes and square feet for your room"
+  faqs={faqs}
+  related={related}
+  howToSteps={howToSteps}
+  howToTotalTime="PT8H"
+  breadcrumbs={[{ label: 'Guides' }, { label: 'How to Install Laminate Flooring' }]}
+  authorSlug="dan"
+  publishDate="2026-06-08">
+
+## How many boxes of laminate do you need?
+
+| Room area | Box coverage 20 sq ft | Box coverage 25 sq ft | With 10% waste |
+|-----------|----------------------|----------------------|----------------|
+| 100 sq ft | 5 boxes | 4 boxes | 5–6 boxes |
+| 150 sq ft | 8 boxes | 6 boxes | 8–9 boxes |
+| 200 sq ft | 10 boxes | 8 boxes | 11–12 boxes |
+| 300 sq ft | 15 boxes | 12 boxes | 16–18 boxes |
+
+Use the [Flooring Calculator](/calculator/flooring) with your exact room dimensions.
+
+## What you'll need
+
+**Materials:**
+- Laminate flooring (add 10% waste)
+- Foam underlayment (3mm, if not pre-attached to planks)
+- 1/4-inch plastic spacers (expansion gap)
+- Transition moldings (T-molding, reducers, end caps)
+- Baseboards or quarter-round shoe molding
+
+**Tools:**
+- Miter saw or circular saw (for length cuts)
+- Table saw or jigsaw (for width ripping)
+- Tapping block (wood block, not metal)
+- Pull bar (for last row)
+- Rubber mallet
+- Tape measure and chalk line
+- Knee pads
+
+**Time:** 1–2 days for an average 200 sq ft room (plus 48–72 hours acclimation)
+
+## Expansion gap guide
+
+Laminate flooring is a floating floor — it expands and contracts with temperature and humidity. The expansion gap prevents buckling:
+
+| Condition | Gap to maintain |
+|-----------|----------------|
+| Standard interior | 1/4 inch (6mm) |
+| Unusually dry or humid climate | 3/8 inch (10mm) |
+| Around any fixed object (posts, islands) | 1/4 inch minimum |
+| At doorways (covered by T-molding) | 1/4 inch |
+
+**Never nail, screw, or glue the flooring to the subfloor** — the floor must be free to move. Always nail base shoe molding into the wall, not down through the floor.
+
+## Common installation mistakes to avoid
+
+- **Skipping acclimation** — results in gaps in winter and buckling in summer
+- **Not checking subfloor flatness** — hollow spots create a springy feel and clicking sounds
+- **Leaving too small an expansion gap** — will buckle; too big and trim won't cover it
+- **Random stagger** — keep end joints at least 12 inches apart between rows
+- **Nailing base shoe into the floor** — prevents the floor from floating
+
+</GuideLayout>

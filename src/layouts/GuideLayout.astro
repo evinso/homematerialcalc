@@ -106,7 +106,7 @@ const howToSchema = howToSteps && howToSteps.length > 0 ? {
 } : null;
 ---
 
-<BaseLayout {title} {description} {canonicalUrl}>
+<BaseLayout {title} {description} {canonicalUrl} ogType="article" articlePublishedTime={publishDate} articleModifiedTime={publishDate}>
   <!-- Schema.org injected via Fragment; BaseLayout renders <slot /> in <head> area separately -->
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />

@@ -1,0 +1,108 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'Is tile or vinyl flooring cheaper?', a: 'Vinyl plank (LVP) is usually cheaper overall: $2–$7/sq ft installed vs $5–$15/sq ft for tile including labor. Tile material costs are similar, but professional installation is significantly more expensive due to the skill and time required.' },
+  { q: 'Is vinyl flooring as durable as tile?', a: 'Ceramic and porcelain tile outlasts vinyl — tile lasts 20–50+ years vs 10–25 years for quality LVP. However, tile is more brittle and chips or cracks under impact, while vinyl is flexible and resists impact damage. In high-traffic households, LVP often looks better longer because it hides wear.' },
+  { q: 'Can you put vinyl flooring over tile?', a: 'Yes — luxury vinyl plank can be installed directly over existing tile if the tile is flat, firmly adhered, and grout lines are less than 1/16 inch deep. Deeper grout lines may telegraph through the vinyl over time.' },
+  { q: 'Which is better for bathrooms — tile or vinyl?', a: 'Both work in bathrooms. Tile is the traditional choice and is completely waterproof. LVP (luxury vinyl plank) rated for wet areas is also 100% waterproof and more comfortable underfoot. The main advantage of tile in bathrooms is that grout won\'t swell or de-laminate in standing water if properly sealed.' },
+  { q: 'Is LVP or tile better for resale value?', a: 'Tile generally adds more resale value, particularly in bathrooms and kitchens. Buyers recognize quality tile and associate it with durability. That said, high-quality LVP (5mm+ wear layer) in neutral colors is well-accepted and does not hurt resale.' },
+];
+
+export const related = [
+  { href: '/calculator/tile', label: 'Tile Calculator' },
+  { href: '/calculator/flooring', label: 'Flooring Calculator' },
+  { href: '/guide/vinyl-plank-vs-laminate-flooring', label: 'Vinyl Plank vs Laminate Flooring' },
+  { href: '/guide/how-to-install-tile', label: 'How to Install Tile' },
+];
+
+<GuideLayout
+  title="Tile vs Vinyl Flooring — Which Is Better? Cost & Durability Guide"
+  description="Compare ceramic tile vs luxury vinyl plank (LVP) flooring for cost, durability, installation, and resale value. Find out which is better for bathrooms, kitchens, and living rooms."
+  h1="Tile vs Vinyl Flooring — Full Comparison"
+  intro="Ceramic tile and luxury vinyl plank (LVP) are two of the most popular hard flooring choices for kitchens and bathrooms. Both are waterproof and durable, but they differ significantly in cost, feel, and installation."
+  calculatorHref="/calculator/tile"
+  calculatorLabel="Tile Calculator — exact tile count for your floor"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Tile vs Vinyl Flooring' }]}
+  authorSlug="dan"
+  publishDate="2026-06-08">
+
+## Quick comparison
+
+| Factor | Ceramic/Porcelain Tile | Luxury Vinyl Plank (LVP) |
+|--------|----------------------|--------------------------|
+| Material cost | $1–$6/sq ft | $2–$8/sq ft |
+| Installation cost | $4–$10/sq ft (pro) | $1–$3/sq ft (pro) |
+| **Total installed** | **$5–$16/sq ft** | **$3–$11/sq ft** |
+| DIY difficulty | Hard | Easy–Moderate |
+| Lifespan | 20–50+ years | 10–25 years |
+| Water resistance | 100% (tile) / sealing needed (grout) | 100% waterproof |
+| Comfort underfoot | Hard and cold | Slightly cushioned |
+| Slip resistance | Varies (smooth can be slippery) | Good (texture built in) |
+| Resale value | High | Good–High |
+
+## Cost breakdown for 200 sq ft
+
+| | Tile | LVP |
+|-|------|-----|
+| Materials | $200–$1,200 | $400–$1,600 |
+| Installation (pro) | $800–$2,000 | $200–$600 |
+| Underlayment | $50–$100 (cement board) | $30–$60 |
+| **Total** | **$1,050–$3,300** | **$630–$2,260** |
+
+*Tile is competitive on materials, but labor is 2–4× more expensive.*
+
+## Choose tile when:
+
+- You want maximum longevity (50+ years with proper maintenance)
+- You're tiling a shower or wet area (tile is the most reliable wet area material)
+- You prefer the look of stone or natural materials
+- Resale value in a high-end market is a priority
+- The subfloor is solid concrete (no deflection concern)
+
+## Choose vinyl plank when:
+
+- Budget is a priority — LVP is significantly cheaper to install
+- You want a DIY-friendly project (no cement board, thinset, or grout skill needed)
+- The floor is over a wood subfloor (LVP handles deflection; tile can crack)
+- You're doing a basement, rental property, or high-traffic area
+- You want a warmer, quieter feel underfoot
+
+## Durability comparison
+
+**Tile strengths:**
+- Won't scratch from furniture or pet nails
+- Fireproof — important in kitchen areas
+- Doesn't fade in sunlight
+- Properly installed tile with sealed grout lasts decades
+
+**Tile weaknesses:**
+- Brittle — drops or impacts can chip or crack individual tiles
+- Grout lines absorb stains if not sealed regularly
+- Cold and hard underfoot — uncomfortable for long standing
+
+**LVP strengths:**
+- Flexible — resists cracking from drops and impacts
+- Consistent color throughout — no staining
+- Warmer and quieter than tile
+- Easy to replace individual planks if damaged
+
+**LVP weaknesses:**
+- Scratches under heavy abrasion (pet nails, furniture dragging)
+- Can dent under concentrated loads (stiletto heels, furniture legs)
+- Thinner products show subfloor imperfections
+- Lifespan shorter than quality tile
+
+## Best by room
+
+| Room | Best choice | Reason |
+|------|------------|--------|
+| Bathroom shower | Tile only | LVP is not suitable for shower walls |
+| Bathroom floor | Either | Both waterproof; LVP warmer, tile more durable |
+| Kitchen | Either | Tile harder-wearing; LVP easier on joints during cooking |
+| Basement | LVP | Better on concrete subfloor; tile OK but colder |
+| Living room | LVP | Warmer, quieter; tile less common |
+| Laundry room | Either | Tile preferred for heavy appliance areas |
+
+</GuideLayout>

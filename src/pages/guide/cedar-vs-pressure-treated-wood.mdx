@@ -1,0 +1,98 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'Is cedar or pressure treated wood better for a deck?', a: 'Cedar is the premium choice for visible deck boards — it looks better, stays cooler underfoot, and is easier to work with. Pressure treated lumber is standard for structural members (joists, posts, beams) because it\'s cheaper and code-required for ground contact. Many builders use PT for structure and cedar for the deck surface.' },
+  { q: 'How long does cedar wood last outdoors?', a: 'Properly maintained cedar lasts 20–40 years. Unfinished cedar turns gray within 1–3 years (attractive to some) and lasts 15–25 years. With stain or sealant applied every 2–3 years, cedar can last 30–40 years. Cedar heartwood has natural oils that resist rot and insects.' },
+  { q: 'How long does pressure treated wood last?', a: 'Modern ACQ pressure treated lumber is rated for 40+ years above ground and 30+ years for ground contact. Older CCA-treated lumber (pre-2004) typically lasted 50+ years. PT wood in continuous ground contact will eventually rot even with treatment — use concrete footings wherever possible.' },
+  { q: 'Can I use cedar in ground contact?', a: 'Cedar heartwood is naturally rot-resistant but is not rated for ground contact by building codes. For posts and anything buried or touching concrete, use pressure treated lumber rated for ground contact (UC4A or UC4B). Save cedar for above-ground applications.' },
+  { q: 'Which is cheaper — cedar or pressure treated?', a: 'Pressure treated lumber is typically 30–50% cheaper than cedar for the same dimensions. A 2×6×16 PT board costs $10–$18; the same in cedar costs $18–$35. For a full deck, PT structure + cedar decking often costs the same or slightly more than all-PT, but gives a much better finish.' },
+];
+
+export const related = [
+  { href: '/calculator/deck', label: 'Deck Calculator' },
+  { href: '/calculator/lumber', label: 'Lumber Calculator' },
+  { href: '/guide/how-to-build-a-patio', label: 'How to Build a Patio' },
+  { href: '/guide/how-much-lumber-do-i-need', label: 'How Much Lumber Do I Need?' },
+];
+
+<GuideLayout
+  title="Cedar vs Pressure Treated Wood — Which Is Better for Your Project?"
+  description="Compare cedar and pressure treated lumber for decks, fences, and outdoor projects. Cost comparison, lifespan, best applications, and when to use each type."
+  h1="Cedar vs Pressure Treated Wood"
+  intro="Cedar and pressure treated (PT) lumber are the two most common choices for outdoor wood projects. Both resist rot and insects — but through very different mechanisms and at different price points."
+  calculatorHref="/calculator/lumber"
+  calculatorLabel="Lumber Calculator — board feet and cost for your project"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Cedar vs Pressure Treated Wood' }]}
+  authorSlug="tom"
+  publishDate="2026-06-08">
+
+## Quick comparison
+
+| Factor | Cedar | Pressure Treated (PT) |
+|--------|-------|----------------------|
+| Cost (2×6×16) | $18–$35 | $10–$18 |
+| Lifespan (above ground) | 20–40 years | 40+ years |
+| Ground contact rated | No | Yes (UC4 rating) |
+| Appearance | Natural wood grain, reddish-brown | Green/brown tint, may have texture marks |
+| Workability | Easy — lightweight, sharp edges | Good — heavier, splits more if nailed when wet |
+| Chemical treatment | None — natural oils | ACQ, MCA, or CA-C preservatives |
+| Splinter risk | Low | Higher when old/weathered |
+| Maintenance | Stain every 2–3 years | Can go natural; staining extends life |
+| Smell | Pleasant cedar aroma | Chemical odor (fades in weeks) |
+
+## Cost for a 12×16 ft deck
+
+| Component | All Cedar | PT Structure + Cedar Surface | All PT |
+|-----------|-----------|------------------------------|--------|
+| Joists/beams (PT structure) | $800 | $600 | $600 |
+| Decking boards | $1,800 (cedar) | $1,800 (cedar) | $900 (PT) |
+| Posts/footings | $300 | $200 (PT) | $200 |
+| **Total materials** | **~$2,900** | **~$2,600** | **~$1,700** |
+
+*Prices vary by region and lumber market conditions. PT structure + cedar surface is the most popular professional choice.*
+
+## Where each is the right choice
+
+### Use cedar for:
+
+- **Deck surface boards** — looks better, feels better underfoot (PT gets rough as it ages)
+- **Fence pickets and rails** — where appearance matters and ground contact is minimal
+- **Pergola rafters and beams** — where aesthetics are important
+- **Raised garden beds** — cedar is safe for vegetables; some PT chemicals aren't recommended
+- **Interior woodworking** — cedar is a great choice for closet lining and interior projects
+
+### Use pressure treated for:
+
+- **Deck posts** — PT required by code for any post in or near ground
+- **Deck joists and beams** — PT is code-standard for deck framing
+- **Ground-contact applications** — fencing posts, bottom plates, landscape timbers
+- **Fence posts** — anything buried in the ground
+- **Structural framing** where appearances don't matter
+
+## Finishing and maintenance
+
+**Cedar:**
+- New cedar can be stained or sealed immediately
+- Apply oil-based semi-transparent stain for the longest protection
+- Re-stain every 2–3 years for maintained appearance
+- If left unfinished, cedar turns gray within 1–2 seasons (silver-gray look is popular)
+
+**Pressure treated:**
+- New PT lumber needs to dry 3–6 months before staining (high moisture content)
+- Apply water-repellent deck sealer once dry
+- Re-seal every 2–3 years to prevent cracking and splinters
+- Do not use oil-based stains on freshly treated wood — wait for the PT to dry
+
+## Health and safety
+
+Modern pressure treated lumber uses ACQ (Alkaline Copper Quaternary), MCA, or CA-C treatments — these replaced the older arsenic-based CCA treatment (banned for residential use in 2004). Modern PT is safe for residential use including:
+
+- ✅ Decks and play sets
+- ✅ Landscaping timbers
+- ✅ Fence posts
+
+**Not recommended** for direct food contact: some experts still recommend cedar or untreated wood for raised vegetable beds, though modern ACQ treatment is considered low-risk.
+
+</GuideLayout>

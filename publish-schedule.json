@@ -1470,6 +1470,97 @@
       "type": "reference",
       "status": "pending",
       "publishedAt": null
+    },
+    {
+      "url": "/guide/how-much-insulation-do-i-need",
+      "label": "How Much Insulation Do I Need?",
+      "type": "guide",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/insulation-r-value-guide",
+      "label": "Insulation R-Value Guide",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/how-much-does-insulation-cost",
+      "label": "How Much Does Insulation Cost?",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/how-to-insulate-an-attic",
+      "label": "How to Insulate an Attic",
+      "type": "guide",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/how-to-paint-a-room",
+      "label": "How to Paint a Room",
+      "type": "guide",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/how-to-pour-a-concrete-slab",
+      "label": "How to Pour a Concrete Slab",
+      "type": "guide",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/how-to-hang-drywall",
+      "label": "How to Hang Drywall",
+      "type": "guide",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/how-to-install-tile",
+      "label": "How to Install Tile",
+      "type": "guide",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/how-to-install-laminate-flooring",
+      "label": "How to Install Laminate Flooring",
+      "type": "guide",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/tile-vs-vinyl-flooring",
+      "label": "Tile vs Vinyl Flooring",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/spray-foam-vs-fiberglass-insulation",
+      "label": "Spray Foam vs Fiberglass Insulation",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/cedar-vs-pressure-treated-wood",
+      "label": "Cedar vs Pressure Treated Wood",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/artificial-grass-vs-sod",
+      "label": "Artificial Grass vs Sod",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
     }
   ]
 }

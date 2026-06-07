@@ -1,0 +1,87 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'Is artificial grass more expensive than sod?', a: 'Artificial grass costs $10–$20/sq ft installed vs $1–$3/sq ft for sod installed. For a 1,000 sq ft lawn, artificial grass runs $10,000–$20,000 vs $1,000–$3,000 for sod. However, artificial grass has near-zero maintenance costs over 15–25 years, while sod requires ongoing watering, mowing, and fertilizing.' },
+  { q: 'How long does artificial grass last?', a: 'Quality artificial grass lasts 15–25 years with proper care. The infill material (crumb rubber or sand) may need to be topped up every 5–10 years. UV-resistant products last longer; cheap artificial grass can fade and flatten within 5–8 years.' },
+  { q: 'Is artificial grass hot in summer?', a: 'Yes — artificial grass can get significantly hotter than natural grass. Surface temperatures can reach 150–180°F on a hot sunny day vs 80–90°F for natural grass. This is a major consideration in hot southern climates (Texas, Arizona, Nevada). Some newer products use cooling infills to reduce surface temperature.' },
+  { q: 'Does artificial grass need maintenance?', a: 'Minimal but not zero. Artificial grass needs: periodic brushing to keep blades upright, occasional infill top-up, rinsing to remove debris and pet waste, and removal of leaves or organic debris that can cause odor. Plan on 2–4 hours of maintenance per year vs 50+ hours for a natural lawn.' },
+  { q: 'Is artificial grass good for dogs?', a: 'Artificial grass is popular for dog runs and pet areas — it drains well, is easy to clean, and dogs can\'t dig it up. The main concern is odor from pet urine if the product doesn\'t drain quickly. Look for products with good drainage backing (10+ in/hr) and use enzyme cleaners for pet waste.' },
+];
+
+export const related = [
+  { href: '/calculator/sod', label: 'Sod Calculator' },
+  { href: '/calculator/grass-seed', label: 'Grass Seed Calculator' },
+  { href: '/guide/sod-vs-seed', label: 'Sod vs Seed' },
+  { href: '/guide/how-much-sod-do-i-need', label: 'How Much Sod Do I Need?' },
+];
+
+<GuideLayout
+  title="Artificial Grass vs Sod — Cost, Durability & Best Choice"
+  description="Compare artificial grass and natural sod for cost, lifespan, maintenance, and best use cases. Full cost breakdown per sq ft and 20-year ownership comparison."
+  h1="Artificial Grass vs Sod"
+  intro="Artificial grass and natural sod solve the same problem differently. Sod is far cheaper upfront but requires ongoing water, mowing, and care. Artificial grass costs more initially but nearly eliminates lawn maintenance."
+  calculatorHref="/calculator/sod"
+  calculatorLabel="Sod Calculator — pallets and cost for your lawn area"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Artificial Grass vs Sod' }]}
+  authorSlug="sarah"
+  publishDate="2026-06-08">
+
+## Quick comparison
+
+| Factor | Natural Sod | Artificial Grass |
+|--------|------------|-----------------|
+| Material cost | $0.30–$0.80/sq ft | $3–$8/sq ft |
+| Installation cost | $0.50–$1.50/sq ft (pro) | $5–$12/sq ft (pro) |
+| **Total installed** | **$1–$3/sq ft** | **$10–$20/sq ft** |
+| Lifespan | Ongoing (replant as needed) | 15–25 years |
+| Annual maintenance cost | $300–$1,500/year | $50–$200/year |
+| Water use | 1–2 inches/week | None |
+| Mowing | Weekly in season | None |
+| Summer temperature | Normal | Can get very hot (150–180°F) |
+| Pet-friendly | Yes (can wear out) | Yes (easy to clean) |
+| Environmental impact | Positive (oxygen, carbon sequestration) | Plastic product, hot in urban heat |
+
+## 20-year cost comparison for 1,000 sq ft
+
+| | Natural Sod | Artificial Grass |
+|-|------------|-----------------|
+| Initial installation | $1,500 | $15,000 |
+| Water (20 years, avg) | $3,000–$8,000 | $0 |
+| Mowing/fertilizing (20 yr) | $4,000–$10,000 | $0 |
+| Renovation/repair | $500–$2,000 | $1,000 (infill top-up) |
+| Replacement at end of life | — | $5,000–$10,000 |
+| **20-year total** | **$9,000–$21,500** | **$21,000–$26,000** |
+
+*In high-rainfall climates or homes with irrigation systems, sod's lifetime cost is closer to artificial grass over 20 years.*
+
+## Choose natural sod when:
+
+- Upfront cost is a priority — sod is 5–10× cheaper to install
+- You live in a high-rainfall area (low irrigation cost)
+- Pets play on the lawn frequently — natural grass can handle heavy dog traffic well
+- You want environmental benefits: oxygen production, carbon sequestration, cooler microclimate
+- Local water restrictions aren't a concern
+- Children play on the lawn — natural grass is softer and cooler
+
+## Choose artificial grass when:
+
+- Water restrictions or drought conditions make maintaining a lawn difficult
+- You want to permanently eliminate mowing, watering, and fertilizing
+- The area gets heavy shade where natural grass won't grow
+- You need a low-maintenance solution for a rental property or vacation home
+- You have a dog run or pet area that sees very heavy use
+- The area has poor drainage or soil where natural grass struggles
+
+## Climate considerations
+
+| Climate | Natural Sod | Artificial Grass |
+|---------|------------|-----------------|
+| Pacific Northwest (wet, mild) | Excellent — low irrigation | Unnecessary — grass grows easily |
+| Southwest (hot, dry) | Expensive — high water cost | Good choice — no water needed |
+| Southeast (hot, humid) | Good — warm-season grasses thrive | Hot — surface temps very high |
+| Midwest (cold winters) | Very good — grass goes dormant | Good — handles freeze/thaw cycles |
+| Northeast (moderate) | Very good | Reasonable choice |
+
+</GuideLayout>

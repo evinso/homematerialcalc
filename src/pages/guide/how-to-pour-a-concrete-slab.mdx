@@ -1,0 +1,96 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How thick should a concrete slab be?', a: 'A 4-inch slab is standard for patios, walkways, and shed floors. A 6-inch slab is used for garage floors and driveways that will support vehicle weight. Footings and structural slabs often require 8–12 inches — check local building codes.' },
+  { q: 'How many bags of concrete do I need for a 10×10 slab?', a: 'A 10×10 ft slab at 4 inches thick requires 1.23 cubic yards of concrete. Using 80 lb bags (0.6 cu ft each), you need about 56 bags. Using 60 lb bags (0.45 cu ft each), you need about 74 bags. For slabs over 1 cubic yard, ready-mix is cheaper.' },
+  { q: 'Can I pour concrete myself?', a: 'Yes for small slabs (under 1–2 cubic yards). Larger slabs are better done with ready-mix concrete delivered by truck, as hand-mixing is too slow — concrete starts setting in 30–60 minutes and a large slab needs to be poured and finished before the edges set.' },
+  { q: 'How long does concrete take to cure?', a: 'Concrete reaches 70% of its strength in 7 days and full design strength at 28 days. You can walk on it after 24–48 hours. Wait 7 days before driving vehicles on a slab. Curing time is longer in cold weather and faster in heat.' },
+  { q: 'Do I need rebar in a concrete slab?', a: 'Rebar or wire mesh is recommended for any slab exposed to vehicle loads or frost. For light-duty slabs (walkways, patios with no vehicle traffic in Zone 3+), 6×6 wire mesh is standard. Driveways and garage floors should have #3 or #4 rebar on 18-inch centers.' },
+];
+
+export const howToSteps = [
+  { name: 'Plan and get permits', text: 'Measure your slab area. Check if a permit is required (driveways and large slabs often need one). Locate underground utilities by calling 811 before any excavation.' },
+  { name: 'Excavate and grade', text: 'Excavate 8–10 inches deep: 4 in gravel base + 4 in concrete. Remove all organic material. Grade the subbase to slope slightly away from structures (1/8 inch per foot) for drainage.' },
+  { name: 'Build formwork', text: 'Set 2×4 or 2×6 lumber forms at the slab edges. Stake every 2–3 feet and check for level. For a 4-inch slab, use 2×4 forms; for 6-inch, use 2×6. Coat forms with form-release oil or vegetable oil so they don\'t stick to the concrete.' },
+  { name: 'Compact gravel base', text: 'Add 4 inches of compacted crushed stone (road base) and compact with a plate compactor. A solid base prevents settling and cracking. Do not skip this step.' },
+  { name: 'Install reinforcement', text: 'Place 6×6 wire mesh or rebar on 2-inch plastic chairs to hold reinforcement in the middle of the slab (not on the ground). Overlap wire mesh sheets by 6 inches and wire-tie rebar intersections.' },
+  { name: 'Pour and screed', text: 'Pour concrete and spread with a shovel or concrete rake. Use a 2×4 screed board, resting on the forms, to strike off the surface level. Work in sections and keep the mix moving — don\'t let any section start to set before screeding.' },
+  { name: 'Finish the surface', text: 'Float the surface with a bull float to embed aggregate and smooth the surface. Use a hand float for edges. Add a broom finish (drag a stiff broom across the wet surface) for traction. Cut control joints every 8–10 feet with a groover before the concrete hardens.' },
+  { name: 'Cure the concrete', text: 'Keep the concrete moist for 7 days: cover with plastic sheeting or wet burlap, or apply a liquid curing compound. In hot weather, mist with water. In cold weather, protect from frost with insulating blankets.' },
+];
+
+export const related = [
+  { href: '/calculator/concrete', label: 'Concrete Calculator' },
+  { href: '/guide/how-much-concrete-do-i-need', label: 'How Much Concrete Do I Need?' },
+  { href: '/guide/how-thick-should-concrete-slab-be', label: 'How Thick Should a Concrete Slab Be?' },
+  { href: '/guide/concrete-mix-ratios', label: 'Concrete Mix Ratios' },
+];
+
+<GuideLayout
+  title="How to Pour a Concrete Slab — Step-by-Step Guide"
+  description="Step-by-step guide to pouring a concrete slab: excavation, formwork, reinforcement, pouring, screeding, and curing. Includes bags-to-cubic-yards chart and thickness guide."
+  h1="How to Pour a Concrete Slab"
+  intro="Pouring a concrete slab is achievable as a DIY project for small areas (under 2 cubic yards). For patios, walkways, and shed pads, the process is straightforward with the right preparation."
+  calculatorHref="/calculator/concrete"
+  calculatorLabel="Concrete Calculator — exact bags or cubic yards for your slab"
+  faqs={faqs}
+  related={related}
+  howToSteps={howToSteps}
+  howToTotalTime="PT12H"
+  breadcrumbs={[{ label: 'Guides' }, { label: 'How to Pour a Concrete Slab' }]}
+  authorSlug="tom"
+  publishDate="2026-06-08">
+
+## How much concrete to buy
+
+| Slab size | 4 in thick | 6 in thick | 80 lb bags (4 in) |
+|-----------|-----------|-----------|------------------|
+| 6 × 6 ft | 0.44 cu yd | 0.67 cu yd | 20 bags |
+| 8 × 8 ft | 0.79 cu yd | 1.19 cu yd | 36 bags |
+| 10 × 10 ft | 1.23 cu yd | 1.85 cu yd | 56 bags |
+| 10 × 20 ft | 2.47 cu yd | 3.70 cu yd | Ready-mix recommended |
+| 12 × 12 ft | 1.78 cu yd | 2.67 cu yd | Ready-mix recommended |
+
+**Rule of thumb:** For slabs over 1.5 cubic yards, order ready-mix concrete. Mixing that many bags by hand is impractical — concrete begins setting in 30–60 minutes and you need the whole slab poured before any section starts to set.
+
+Use the [Concrete Calculator](/calculator/concrete) for your exact slab dimensions.
+
+## DIY vs. ready-mix concrete
+
+| Option | When to use | Approximate cost |
+|--------|------------|-----------------|
+| Bagged (80 lb bags) | Under 1 cubic yard | $5–$8/bag |
+| Bagged (60 lb bags) | Small patches, posts | $4–$6/bag |
+| Ready-mix truck | Over 1–1.5 cubic yards | $150–$200/cubic yard delivered |
+| Volumetric truck | Any size, flexible timing | $180–$250/cubic yard |
+
+Ready-mix is delivered in minimum loads of 1 cubic yard at most plants.
+
+## What you'll need
+
+**Materials:**
+- Concrete (bagged or ready-mix)
+- 2×4 lumber for forms
+- Gravel base (4 inches compacted)
+- Rebar or 6×6 wire mesh
+- Plastic chairs for reinforcement support
+- Curing compound or plastic sheeting
+
+**Tools:**
+- Excavation: shovel, plate compactor
+- Formwork: drill, stakes, string line, level
+- Pouring: concrete mixer (rental) or wheelbarrow, shovel, concrete rake
+- Finishing: bull float, hand float, edger, groover, stiff broom
+
+## Concrete slab thickness guide
+
+| Use | Recommended thickness | Reinforcement |
+|-----|----------------------|--------------|
+| Sidewalk / walkway | 4 inches | Wire mesh optional |
+| Patio | 4 inches | Wire mesh recommended |
+| Shed floor | 4 inches | Wire mesh |
+| Garage floor | 6 inches | #4 rebar 18" centers |
+| Driveway | 6 inches | #4 rebar 18" centers |
+| RV pad | 6 inches | #4 or #5 rebar |
+
+</GuideLayout>

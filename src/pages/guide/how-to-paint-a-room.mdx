@@ -1,0 +1,94 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How many gallons of paint do I need for a room?', a: 'An average 10×12 ft room with 8-ft ceilings needs about 2 gallons for 2 coats of wall paint. Larger rooms (12×16 ft) need 3 gallons. Use the Paint Calculator for your exact dimensions and number of coats.' },
+  { q: 'Should I use primer before painting a room?', a: 'Primer is necessary when: painting over a dark color with a light one, painting new drywall, covering stains, or painting over glossy surfaces. For same-color touch-ups or similar color changes, a self-priming paint works fine without a separate primer coat.' },
+  { q: 'How long does it take to paint a room?', a: 'A 12×12 ft bedroom takes 4–6 hours for an experienced painter doing 2 coats with dry time. For a first-timer doing proper prep, plan 6–10 hours spread across 2 days. Cutting in (edges) takes longer than rolling the field.' },
+  { q: 'What order do you paint a room?', a: 'Paint in this order: (1) ceiling first, (2) walls from top to bottom, (3) trim and doors last. Within each surface, cut in the edges with a brush before rolling the field. Always work wet-edge to wet-edge to avoid lap marks.' },
+  { q: 'How long to wait between coats of paint?', a: 'Most latex wall paints need 2–4 hours between coats. Check the label — "recoat time" is specified per product. In humid or cold conditions, add 1–2 hours. Rushing a second coat over a tacky first coat causes peeling.' },
+];
+
+export const howToSteps = [
+  { name: 'Prep the room', text: 'Remove furniture or push to center and cover with drop cloths. Remove outlet covers and switch plates. Fill holes and cracks with spackling compound, let dry, and sand smooth. Clean walls with a damp cloth to remove dust and grease.' },
+  { name: 'Tape and protect', text: 'Apply painter\'s tape along ceiling lines, trim, and window frames. Cover the floor with drop cloths or canvas. Use plastic sheeting for furniture you can\'t move.' },
+  { name: 'Prime if needed', text: 'Apply primer to new drywall, stain-blocked spots, or where you\'re making a dramatic color change. Allow primer to dry fully (2–4 hours) before painting. Lightly sand primer with 220-grit after drying for a smoother finish.' },
+  { name: 'Cut in the edges', text: 'Use a 2–2.5 inch angled brush to cut in a 2–3 inch band along the ceiling, corners, trim, and windows. Work in small sections (3–4 feet) and maintain a wet edge. Cutting in first makes rolling faster and cleaner.' },
+  { name: 'Roll the walls', text: 'Load a 9-inch roller with paint (avoid overloading). Roll in a W or M pattern, then fill in without lifting the roller. Work from top to bottom. Keep a wet edge by overlapping each pass while paint is still wet. Roll as close to cut-in lines as possible.' },
+  { name: 'Apply second coat', text: 'Let the first coat dry 2–4 hours. Apply a second coat following the same cut-in-then-roll order. The second coat goes faster since you\'re not covering bare wall. Most rooms require exactly 2 coats for full, even coverage.' },
+  { name: 'Remove tape and clean up', text: 'Remove painter\'s tape while the second coat is still slightly tacky (about 1 hour after finishing) — this prevents paint from peeling off with the tape. Pull tape back at a 45° angle. Touch up any bleeds with a small brush after everything dries.' },
+];
+
+export const related = [
+  { href: '/calculator/paint', label: 'Paint Calculator' },
+  { href: '/guide/how-much-paint-do-i-need', label: 'How Much Paint Do I Need?' },
+  { href: '/guide/paint-coverage-per-gallon', label: 'Paint Coverage per Gallon' },
+  { href: '/guide/paint-types-and-finishes', label: 'Paint Types and Finishes' },
+];
+
+<GuideLayout
+  title="How to Paint a Room — Step-by-Step Guide with Materials List"
+  description="Step-by-step guide to painting a room: prep, priming, cutting in, and rolling. Includes gallons needed by room size, drying times, and pro tips for a smooth finish."
+  h1="How to Paint a Room — Step-by-Step Guide"
+  intro="Painting a room is one of the best-value DIY projects a homeowner can do. With the right prep and technique, a weekend job can look professional. Here's how to do it right."
+  calculatorHref="/calculator/paint"
+  calculatorLabel="Paint Calculator — exact gallons for your room size"
+  faqs={faqs}
+  related={related}
+  howToSteps={howToSteps}
+  howToTotalTime="PT6H"
+  breadcrumbs={[{ label: 'Guides' }, { label: 'How to Paint a Room' }]}
+  authorSlug="dan"
+  publishDate="2026-06-08">
+
+## What you'll need
+
+**Materials:**
+- Interior latex paint (2 gallons for an average bedroom)
+- Painter's tape (2-inch width)
+- Primer (if painting new drywall or dramatic color change)
+- Spackling compound + 150/220-grit sandpaper
+- Drop cloths or canvas tarps
+
+**Tools:**
+- 9-inch roller and roller cover (3/8" nap for smooth walls; 1/2" nap for textured)
+- Paint tray and liner
+- 2–2.5 inch angled sash brush for cutting in
+- Roller extension pole (6 ft makes rolling walls faster)
+- Stir sticks
+
+**Time:** 4–8 hours for an average room (spread over 2 days with drying)  
+**Cost:** $60–$150 in materials for an average bedroom
+
+## How much paint to buy
+
+| Room size | Wall area (8 ft ceiling) | 2 coats |
+|-----------|--------------------------|---------|
+| 8 × 10 ft | 288 sq ft | 2 gallons |
+| 10 × 12 ft | 352 sq ft | 2 gallons |
+| 12 × 12 ft | 384 sq ft | 2–3 gallons |
+| 12 × 16 ft | 448 sq ft | 3 gallons |
+| 14 × 20 ft | 544 sq ft | 3–4 gallons |
+
+Standard paint covers 350 sq ft per gallon per coat. For ceiling paint, calculate length × width separately and add 1–2 gallons.
+
+Use the [Paint Calculator](/calculator/paint) for your exact room dimensions with openings subtracted.
+
+## Choosing the right paint finish
+
+| Finish | Sheen level | Best for |
+|--------|-------------|----------|
+| Flat/matte | None | Ceilings, low-traffic rooms |
+| Eggshell | Low | Living rooms, bedrooms |
+| Satin | Medium | Hallways, kids' rooms — easy to clean |
+| Semi-gloss | High | Trim, doors, bathrooms, kitchens |
+| Gloss | Very high | Trim, accent details |
+
+## Pro tips for a clean finish
+
+- **Never skip filling holes** — even small holes show through paint
+- **Sand between coats** — 220-grit removes any nibs or brush marks; wipe dust off before the next coat
+- **Don't skimp on tape** — spend 20 minutes taping properly to save an hour of touch-up work
+- **Keep a wet edge** — always roll into wet paint to avoid lap marks
+- **Buy 10% extra** — leftover paint is useful for touch-ups for years; keep it stored upside-down in a cool location
+
+</GuideLayout>

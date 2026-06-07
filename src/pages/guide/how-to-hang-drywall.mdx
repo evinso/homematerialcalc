@@ -1,0 +1,97 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How many sheets of drywall do I need for a room?', a: 'Divide total wall area by 32 sq ft (one 4×8 sheet). A 12×12 room with 8-ft ceilings has roughly 384 sq ft of walls — about 12 sheets, plus 5 sheets for the ceiling. Always add 10% for waste and cuts. Use the Drywall Calculator for exact counts.' },
+  { q: 'What thickness drywall should I use?', a: '1/2-inch drywall is standard for most walls and ceilings. 5/8-inch type X is required for fire-rated assemblies (attached garages, between floors in multi-family). 1/4-inch is used for curved walls. 3/8-inch is sometimes used for repair patches.' },
+  { q: 'Should I hang drywall horizontally or vertically?', a: 'Horizontal (landscape) is preferred for walls — it minimizes butt joints, the hardest to finish smoothly. Vertical hanging is acceptable and easier for beginners. On 8-ft ceilings, horizontal sheets span 3 studs (16-in spacing) with fewer seams.' },
+  { q: 'How far apart should drywall screws be?', a: 'On walls: 16 inches apart along field studs, 12 inches along edges and at corners. On ceilings: 12 inches along field joists, 8 inches along edges. Use 1-1/4 inch screws for 1/2-inch drywall on studs; 1-5/8 inch for thicker drywall.' },
+  { q: 'How long does it take to hang drywall in a room?', a: 'An experienced crew hangs about 800–1,000 sq ft per day. A DIYer in an average 12×12 room should plan 6–10 hours for hanging (not including taping and finishing). Ceiling work takes about twice as long as walls and is much harder.' },
+];
+
+export const howToSteps = [
+  { name: 'Measure and calculate', text: 'Measure all walls and the ceiling. Calculate total square footage and divide by 32 (sq ft per 4×8 sheet). Add 10% for waste. Note door and window openings — you\'ll cut around them rather than buying fewer sheets.' },
+  { name: 'Plan the layout', text: 'On walls, hang sheets horizontally with the factory edge facing up for easier taping. Stagger vertical seams so they don\'t align between rows. Mark stud locations on the floor and ceiling before sheets cover them.' },
+  { name: 'Hang the ceiling first', text: 'Always do the ceiling before walls — walls will support the edges of ceiling sheets. Use a drywall lift (rental) for ceilings; holding sheets overhead by hand is exhausting and leads to poor fastening. Drive screws every 12 inches into joists.' },
+  { name: 'Hang the walls', text: 'Start with the top row (upper half of wall). Measure and cut sheets to fit. Lift sheets tight against the ceiling and screw into studs. Then hang the lower row, butting it tight to the upper sheets. Drive screws 16 inches apart.' },
+  { name: 'Cut openings', text: 'Mark outlet boxes by pressing the box against the sheet to leave a chalk outline, or measure from the stud edge. Cut with a keyhole saw or oscillating tool. Cut door and window openings after hanging — it\'s easier than pre-cutting.' },
+  { name: 'Tape seams', text: 'Apply joint compound to all seams and embed paper tape or fiberglass mesh tape. Feather the compound 6–8 inches on each side of the seam. Let dry 24 hours. Apply a second and third coat, feathering wider each time (8 in, then 12 in). Sand smooth between coats.' },
+  { name: 'Finish corners and screws', text: 'Install metal corner bead on all outside corners. Apply 3 coats of joint compound over corner bead and screw dimples. Final coat should be feathered to an invisible edge. Sand with 120-grit on a pole sander after final coat dries.' },
+];
+
+export const related = [
+  { href: '/calculator/drywall', label: 'Drywall Calculator' },
+  { href: '/guide/how-much-drywall-do-i-need', label: 'How Much Drywall Do I Need?' },
+  { href: '/guide/drywall-thickness-guide', label: 'Drywall Thickness Guide' },
+  { href: '/guide/how-many-sheets-of-drywall-for-a-room', label: 'How Many Sheets for a Room?' },
+];
+
+<GuideLayout
+  title="How to Hang Drywall — Step-by-Step Guide for Walls & Ceilings"
+  description="Complete guide to hanging drywall: measuring, cutting, screwing, and finishing. Includes sheet count tables, screw spacing, and taping tips for a smooth finish."
+  h1="How to Hang Drywall"
+  intro="Hanging drywall is a fundamental skill for any room addition, renovation, or repair. With the right technique and tools, a homeowner can hang walls and ceilings that finish as smoothly as professional work."
+  calculatorHref="/calculator/drywall"
+  calculatorLabel="Drywall Calculator — exact sheet count for your room"
+  faqs={faqs}
+  related={related}
+  howToSteps={howToSteps}
+  howToTotalTime="PT8H"
+  breadcrumbs={[{ label: 'Guides' }, { label: 'How to Hang Drywall' }]}
+  authorSlug="tom"
+  publishDate="2026-06-08">
+
+## How many sheets do you need?
+
+| Room | Wall area | Ceiling | Total sheets (with 10% waste) |
+|------|----------|---------|-------------------------------|
+| 10 × 10 ft | 320 sq ft | 100 sq ft | 16 sheets |
+| 12 × 12 ft | 384 sq ft | 144 sq ft | 20 sheets |
+| 12 × 16 ft | 448 sq ft | 192 sq ft | 23 sheets |
+| 20 × 20 ft | 640 sq ft | 400 sq ft | 37 sheets |
+
+*Wall area = perimeter × ceiling height. One 4×8 sheet = 32 sq ft.*
+
+Use the [Drywall Calculator](/calculator/drywall) for your exact room with door and window openings subtracted.
+
+## What you'll need
+
+**Materials:**
+- Drywall sheets (1/2" for walls and ceilings; 5/8" type X for fire-rated)
+- 1-1/4" coarse-thread drywall screws (for 1/2" drywall)
+- Paper tape or fiberglass mesh tape
+- All-purpose joint compound (pre-mixed)
+- Metal corner bead for outside corners
+- Primer (after finishing, before painting)
+
+**Tools:**
+- T-square and utility knife for cutting
+- Drywall screw gun or drill with dimpler bit
+- Drywall lift (rental — essential for ceilings)
+- 6-inch, 10-inch, and 12-inch taping knives
+- Pole sander with 120-grit screens
+
+## Drywall thickness guide
+
+| Application | Thickness | Notes |
+|-------------|----------|-------|
+| Standard walls | 1/2 inch | Most common |
+| Standard ceilings | 1/2 inch | Use moisture-resistant in bathrooms |
+| Fire-rated (garage/between floors) | 5/8 inch Type X | Code required |
+| Curved walls | 1/4 inch | Bend in layers |
+| Repair patches | 1/4 or 3/8 inch | Match existing |
+| Bathroom/wet areas | 1/2 inch moisture-resistant | Or cement board for tile backer |
+
+## Finishing levels (drywall levels 0–5)
+
+The painting quality depends on the drywall finishing level:
+
+- **Level 0** — bare drywall, no tape (not suitable for painting)
+- **Level 1** — tape embedded in compound (fire-rated areas, above ceilings)
+- **Level 2** — tape plus one skim coat (garage, storage areas)
+- **Level 3** — tape + 2 coats, lightly sanded (behind texture)
+- **Level 4** — tape + 3 coats, sanded smooth (most painted walls)
+- **Level 5** — level 4 + skim coat (critical lighting, high gloss paint)
+
+For standard painted rooms, Level 4 finish is the target. Level 5 is used in rooms with flat/matte paint under raking light (entryways, great rooms).
+
+</GuideLayout>

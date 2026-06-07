@@ -1,0 +1,94 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How much does it cost to insulate a 1,500 sq ft attic?', a: 'Blown-in fiberglass DIY costs $400–$800 in materials for a 1,500 sq ft attic at R-38. Professional installation runs $1,200–$2,500 for the same job. Blown-in cellulose DIY is slightly cheaper: $300–$600 in materials.' },
+  { q: 'Is spray foam insulation worth the cost?', a: 'Closed-cell spray foam costs $1.50–$3.50 per sq ft (material only) versus $0.30–$0.50 for blown-in fiberglass. The payback period is typically 5–10 years in energy savings. It makes sense in crawl spaces, rim joists, and areas where moisture control matters.' },
+  { q: 'Can I install blown-in insulation myself?', a: 'Yes — most home improvement stores rent blowing machines for free with the purchase of bags. DIY blown-in is one of the highest-ROI home improvement projects: typical material cost for an attic is $300–$900, and energy savings often pay it back in 2–4 years.' },
+  { q: 'How much does wall insulation cost?', a: 'For new construction, fiberglass batt wall insulation costs $0.50–$1.00 per sq ft installed (DIY materials only). Professional installation adds $0.60–$1.00/sq ft in labor. Retrofit wall insulation (blowing into existing walls) runs $1.50–$3.00/sq ft professionally installed.' },
+  { q: 'Does insulation increase home value?', a: 'Properly insulated homes sell faster and for more in cold climates. The National Association of Realtors estimates attic insulation has an 80–100% cost recovery rate. Lower utility bills are a strong selling point in markets where heating costs are high.' },
+];
+
+export const related = [
+  { href: '/calculator/insulation', label: 'Insulation Calculator' },
+  { href: '/guide/how-much-insulation-do-i-need', label: 'How Much Insulation Do I Need?' },
+  { href: '/guide/insulation-r-value-guide', label: 'R-Value Guide by Climate Zone' },
+  { href: '/guide/blown-in-vs-batt-insulation', label: 'Blown-In vs Batt Insulation' },
+];
+
+<GuideLayout
+  title="How Much Does Insulation Cost? — 2026 Price Guide"
+  description="Insulation cost breakdown by type: blown-in, batt, spray foam, and rigid foam. Includes DIY vs. professional installation costs per sq ft and full-project estimates for 2026."
+  h1="How Much Does Insulation Cost?"
+  intro="Insulation costs range from $0.30 to $3.50 per square foot depending on type and whether you DIY or hire a contractor. Here's a full breakdown for 2026."
+  calculatorHref="/calculator/insulation"
+  calculatorLabel="Insulation Calculator — calculate bags and total project cost"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'How Much Does Insulation Cost?' }]}
+  authorSlug="dan"
+  publishDate="2026-06-08">
+
+## 2026 insulation cost by type
+
+| Type | DIY material cost | Installed (pro) | Best for |
+|------|------------------|-----------------|----------|
+| Blown-in fiberglass | $0.30–$0.50/sq ft | $0.80–$1.50/sq ft | Attic top-up |
+| Blown-in cellulose | $0.25–$0.40/sq ft | $0.70–$1.20/sq ft | Attic, retrofit walls |
+| Fiberglass batt (R-13) | $0.35–$0.60/sq ft | $0.90–$1.50/sq ft | Wall cavities |
+| Fiberglass batt (R-19) | $0.45–$0.70/sq ft | $1.00–$1.70/sq ft | 2×6 walls, floors |
+| Mineral wool batt | $0.60–$1.00/sq ft | $1.20–$2.00/sq ft | Walls, soundproofing |
+| Open-cell spray foam | N/A (not DIY) | $0.75–$1.50/sq ft | Walls, attic deck |
+| Closed-cell spray foam | N/A (not DIY) | $1.50–$3.50/sq ft | Crawl spaces, rim joists |
+| Rigid foam (EPS/XPS) | $0.25–$0.60/sq ft | $0.80–$1.50/sq ft | Continuous exterior, basement |
+
+*Prices vary by region, installer, and job size. Get 3 quotes for large projects.*
+
+## Full project cost estimates (2026)
+
+### Attic insulation (1,500 sq ft attic to R-49)
+
+| Approach | Total cost |
+|----------|-----------|
+| DIY blown-in fiberglass | $500–$1,000 |
+| DIY blown-in cellulose | $400–$800 |
+| Professional blown-in | $1,500–$3,000 |
+| Professional spray foam (open-cell) | $3,000–$6,000 |
+
+### Wall insulation (1,200 sq ft of wall area, 2×4 framing)
+
+| Approach | Total cost |
+|----------|-----------|
+| DIY fiberglass batt (new construction) | $500–$800 |
+| Professional batt (new construction) | $1,200–$2,000 |
+| Retrofit blown-in (existing walls) | $2,000–$4,000 professional |
+
+### Crawl space insulation (1,000 sq ft)
+
+| Approach | Total cost |
+|----------|-----------|
+| DIY fiberglass batt (floor) | $400–$700 |
+| Professional closed-cell spray foam (walls) | $2,500–$5,000 |
+
+## Is DIY insulation worth it?
+
+Blown-in attic insulation is one of the few home improvement projects where DIY almost always makes sense:
+
+- **Machine rental:** Most stores offer free blower rental with purchase of insulation bags
+- **Time:** A 1,000 sq ft attic takes 4–6 hours with two people
+- **Savings:** DIY saves $800–$2,000 vs. professional installation on a typical attic
+
+Wall and spray foam insulation are better left to pros due to precision requirements and equipment costs.
+
+## Energy savings payback
+
+| Project | Avg. annual savings | Payback (DIY) | Payback (pro) |
+|---------|--------------------|--------------|----|
+| Attic R-0 → R-49 | $200–$500/yr | 1–3 years | 3–8 years |
+| Attic R-19 → R-49 | $100–$250/yr | 2–5 years | 5–12 years |
+| Wall R-0 → R-13 | $150–$350/yr | 1–4 years | 4–10 years |
+
+*Based on national average natural gas and electricity costs. Savings are higher in colder climates.*
+
+Use the [Insulation Calculator](/calculator/insulation) to estimate exactly how many bags you need and total material cost.
+
+</GuideLayout>

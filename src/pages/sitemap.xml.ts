@@ -24,6 +24,7 @@ const PROGRAMMATIC_PAGES: string[] = [
   ...['4x4','6x6','8x8','10x16','12x12','12x20','16x16','20x20','20x40','24x24'].map(s => `/guide/how-many-bags-of-concrete-for-${s}-slab/`),
   ...[50,100,200,300,500,1000,2000].map(a => `/guide/how-much-topsoil-for-${a}-sq-ft/`),
   ...[50,100,200,300,500].map(a => `/guide/how-much-sand-for-${a}-sq-ft/`),
+  ...[100,200,500,1000,2000,5000,10000].map(a => `/guide/how-much-sod-for-${a}-sq-ft/`),
   ...['8x8','10x10','10x12','10x14','12x12','12x14','12x15','12x20','14x14','15x15','20x20'].map(s => `/guide/how-much-paint-for-${s}-room/`),
   // State × material pages (20 states × 4 materials = 80 pages)
   ...['mulch','gravel','topsoil','sand'].flatMap(m =>

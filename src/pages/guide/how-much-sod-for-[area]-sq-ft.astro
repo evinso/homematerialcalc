@@ -1,0 +1,147 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export function getStaticPaths() {
+  const areas = [100, 200, 500, 1000, 2000, 5000, 10000];
+  return areas.map(area => ({ params: { area: String(area) } }));
+}
+
+const { area } = Astro.params;
+const sqft = Number(area);
+
+const WASTE = 0.10;
+const PALLET_SQFT = 450;
+
+function calcSod(sqft: number, waste = WASTE) {
+  const withWaste = sqft * (1 + waste);
+  const pallets = Math.ceil(withWaste / PALLET_SQFT);
+  const rolls = Math.ceil(withWaste / 9); // standard roll = 9 sq ft
+  return {
+    sqftNeeded: Math.round(withWaste),
+    pallets,
+    rolls,
+    costLow: Math.round(withWaste * 0.30),
+    costHigh: Math.round(withWaste * 0.65),
+  };
+}
+
+const main = calcSod(sqft);
+const nearby = [Math.round(sqft * 0.5), Math.round(sqft * 0.75), sqft, Math.round(sqft * 1.5), Math.round(sqft * 2)]
+  .filter((a, i, arr) => a > 0 && arr.indexOf(a) === i);
+
+const faqs = [
+  {
+    q: `How many pallets of sod do I need for ${sqft} square feet?`,
+    a: `For ${sqft} sq ft with 10% waste, you need ${main.sqftNeeded} sq ft of sod — that's ${main.pallets} pallet${main.pallets > 1 ? 's' : ''} (at 450 sq ft per pallet). Most suppliers will deliver a partial pallet if you need less than one.`,
+  },
+  {
+    q: `How much does sod cost for ${sqft} square feet?`,
+    a: `Sod for ${sqft} sq ft typically costs $${main.costLow}–$${main.costHigh} in materials (at $0.30–$0.65/sq ft). Add $0.50–$1.50/sq ft for professional installation. Total installed cost is typically $${Math.round(main.sqftNeeded * 0.80)}–$${Math.round(main.sqftNeeded * 2.15)}.`,
+  },
+  {
+    q: `How many rolls of sod for ${sqft} square feet?`,
+    a: `A standard sod roll covers 9 sq ft (1.5 ft × 6 ft). For ${sqft} sq ft with 10% waste, you need ${main.rolls} rolls. For large areas, pallets (${PALLET_SQFT} sq ft each) are more cost-effective than individual rolls.`,
+  },
+  {
+    q: `How long does it take to lay sod for ${sqft} square feet?`,
+    a: `One person can lay roughly 300–400 sq ft of sod per hour. For ${sqft} sq ft, plan on ${Math.max(1, Math.round(sqft / 350))}–${Math.max(2, Math.ceil(sqft / 250))} hours of laying time, plus prep time (removing old grass, grading, fertilizing).`,
+  },
+];
+
+const related = [
+  { href: '/calculator/sod', label: 'Sod Calculator' },
+  { href: '/guide/how-much-sod-do-i-need', label: 'How Much Sod Do I Need?' },
+  { href: '/guide/sod-vs-seed', label: 'Sod vs Seed: Which Is Better?' },
+  { href: '/guide/how-many-square-feet-does-a-pallet-of-sod-cover', label: 'Sq Ft per Pallet of Sod' },
+];
+
+const title = `How Much Sod for ${sqft} Square Feet? (Pallets & Rolls)`;
+const description = `For ${sqft} sq ft with 10% waste, you need ${main.pallets} pallet${main.pallets > 1 ? 's' : ''} or ${main.rolls} rolls of sod. Full breakdown with cost estimate and installation tips.`;
+---
+
+<GuideLayout
+  {title}
+  {description}
+  h1={`How Much Sod for ${sqft} Square Feet?`}
+  intro={`For ${sqft} square feet, you need ${main.pallets} pallet${main.pallets > 1 ? 's' : ''} of sod (${main.sqftNeeded} sq ft with 10% waste included). Sod pallets cover 450 sq ft each and are the most cost-effective option for areas over 200 sq ft.`}
+  calculatorHref="/calculator/sod"
+  calculatorLabel="Sod Calculator — pallets, rolls, and cost for your lawn"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: `Sod for ${sqft} Sq Ft` }]}
+>
+
+<h2>Answer at a glance — {sqft} sq ft</h2>
+
+<table>
+  <thead>
+    <tr><th>Unit</th><th>Quantity (with 10% waste)</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Sq ft needed</td><td><strong>{main.sqftNeeded} sq ft</strong></td></tr>
+    <tr><td>Pallets (450 sq ft each)</td><td><strong>{main.pallets} pallet{main.pallets > 1 ? 's' : ''}</strong></td></tr>
+    <tr><td>Rolls (9 sq ft each)</td><td><strong>{main.rolls} rolls</strong></td></tr>
+    <tr><td>Material cost estimate</td><td><strong>${main.costLow}–${main.costHigh}</strong></td></tr>
+  </tbody>
+</table>
+
+<h2>How we calculated it</h2>
+
+<ol>
+  <li>Base area: {sqft} sq ft</li>
+  <li>With 10% waste: {sqft} × 1.10 = <strong>{main.sqftNeeded} sq ft</strong></li>
+  <li>Pallets needed: {main.sqftNeeded} ÷ 450 sq ft/pallet = <strong>{main.pallets} pallet{main.pallets > 1 ? 's' : ''}</strong></li>
+  <li>Cost at $0.30–$0.65/sq ft: <strong>${main.costLow}–${main.costHigh}</strong></li>
+</ol>
+
+<p>The 10% waste factor accounts for cutting around curves, edges, and obstacles. Increase to 15% for irregular shapes or lots of curves.</p>
+
+<h2>Compare nearby lawn sizes</h2>
+
+<table>
+  <thead>
+    <tr><th>Lawn area</th><th>Sq ft needed</th><th>Pallets</th><th>Cost (materials)</th></tr>
+  </thead>
+  <tbody>
+    {nearby.map(a => {
+      const s = calcSod(a);
+      return (
+        <tr>
+          <td>{a} sq ft</td>
+          <td>{s.sqftNeeded}</td>
+          <td><strong>{s.pallets}</strong></td>
+          <td>${s.costLow}–${s.costHigh}</td>
+        </tr>
+      );
+    })}
+  </tbody>
+</table>
+
+<h2>Pallets vs. rolls: which to order</h2>
+
+<table>
+  <thead>
+    <tr><th>Option</th><th>Coverage</th><th>Best for</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Pallet</td><td>450 sq ft</td><td>Most lawns over 200 sq ft — better price per sq ft</td></tr>
+    <tr><td>Roll</td><td>9 sq ft (1.5 × 6 ft)</td><td>Small patches, repairs, narrow strips</td></tr>
+    <tr><td>Big roll / slabs</td><td>16–25 sq ft</td><td>Mid-size projects, some garden centers</td></tr>
+  </tbody>
+</table>
+
+<p>For {sqft} sq ft, {main.pallets > 1 ? 'pallets are the most economical choice — buying by the pallet saves 20–40% vs. individual rolls.' : main.pallets === 1 ? 'a single pallet is the easiest option. If you need less than 450 sq ft, ask your supplier if they sell half-pallets.' : 'rolls may be your only option from a garden center, though some sod farms sell partial pallets.'}</p>
+
+<h2>Sod installation tips</h2>
+
+<ul>
+  <li><strong>Prepare the soil first</strong> — remove existing grass, till 4–6 inches, rake level, and apply starter fertilizer before laying sod</li>
+  <li><strong>Order fresh, lay same day</strong> — sod degrades within 24–48 hours of harvest; have the site ready before delivery</li>
+  <li><strong>Stagger the seams</strong> — lay rows in a brick-like offset pattern to avoid long straight seams where gaps form</li>
+  <li><strong>Water immediately and daily</strong> — new sod needs 1 inch of water per day for the first 2 weeks</li>
+  <li><strong>Don't walk on new sod</strong> — stay off for 2–3 weeks until roots establish</li>
+</ul>
+
+<p>Use the <a href="/calculator/sod">Sod Calculator</a> to enter your exact lawn dimensions and get a precise pallet count with cost estimate.</p>
+
+</GuideLayout>

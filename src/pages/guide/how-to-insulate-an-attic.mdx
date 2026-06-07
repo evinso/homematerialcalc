@@ -1,0 +1,114 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'Can I insulate my attic myself?', a: 'Yes. Blown-in insulation is a popular DIY project — most home improvement stores rent blowers for free with bag purchases. Batt insulation between joists is also very DIY-friendly. Spray foam is the exception and should be left to professionals.' },
+  { q: 'Should I remove old insulation before adding new?', a: 'Usually not. Unless the existing insulation is wet, moldy, or pest-damaged, you can add blown-in insulation on top of old batt or blown-in. Mixing types (e.g., batts on bottom, blown-in on top) is fine and common.' },
+  { q: 'Do I need to seal air leaks before insulating?', a: 'Yes — this is the most important step people skip. Sealing attic bypasses (around recessed lights, plumbing penetrations, top plates) with expanding foam or caulk before adding insulation can improve energy savings by 30–40% compared to insulation alone.' },
+  { q: 'How long does attic insulation last?', a: 'Fiberglass batt insulation lasts 80–100 years if kept dry. Blown-in fiberglass lasts 40–80 years. Cellulose can settle 20% over time — factor this into your depth target. Spray foam lasts 80+ years. Replace any insulation that is wet, moldy, or compressed.' },
+  { q: 'What safety gear do I need for attic insulation?', a: 'Always wear: N95 or P100 respirator (fiberglass particles), safety goggles, long sleeves and gloves (fiberglass irritates skin), and knee pads if crawling. Good lighting is essential — use a headlamp and portable work lights.' },
+];
+
+export const howToSteps = [
+  { name: 'Measure and calculate', text: 'Measure the attic floor area (length × width). Check existing insulation depth with a ruler. Use the Insulation Calculator to determine how many bags you need to reach your target R-value.' },
+  { name: 'Gather materials and equipment', text: 'Buy insulation bags. Rent a blower machine (often free with purchase). Purchase safety gear: N95 respirator, goggles, gloves, long-sleeve shirt. Get foam sealant, caulk gun, and cardboard baffles for soffit vents.' },
+  { name: 'Seal air leaks first', text: 'Before adding insulation, seal all attic bypasses with expanding foam: recessed light cans, plumbing and wire penetrations, top plate gaps, pull-down stair frames. This step is critical and often skipped — seal completely before starting insulation.' },
+  { name: 'Install baffles at eaves', text: 'Staple cardboard or foam baffles (rafter baffles) at each rafter bay near the eaves. Baffles create a channel to keep soffit vents clear of insulation, maintaining attic ventilation. Without baffles, blown-in can block vents and cause moisture problems.' },
+  { name: 'Mark your target depth', text: 'Cut 12-inch rulers from cardboard or use paint-stick depth gauges. Place one every 50–75 sq ft across the attic floor so you can verify depth as you blow insulation.' },
+  { name: 'Blow in the insulation', text: 'Start at the farthest point from the attic hatch and work back toward the opening. Hold the blower hose 12–18 inches above the joists and sweep slowly. Check depth against your markers. Work in overlapping rows for even coverage.' },
+  { name: 'Verify R-value and depth', text: 'Once done, check depth in at least 5–10 locations across the attic. Calculate final R-value: depth × R-value per inch for your product. Most fiberglass adds about R-2.5 per inch.' },
+];
+
+export const related = [
+  { href: '/calculator/insulation', label: 'Insulation Calculator' },
+  { href: '/guide/how-much-insulation-do-i-need', label: 'How Much Insulation Do I Need?' },
+  { href: '/guide/insulation-r-value-guide', label: 'R-Value Guide by Climate Zone' },
+  { href: '/guide/blown-in-vs-batt-insulation', label: 'Blown-In vs Batt Insulation' },
+];
+
+<GuideLayout
+  title="How to Insulate an Attic — Step-by-Step Guide (Blown-In & Batt)"
+  description="Step-by-step guide to insulating an attic with blown-in or batt insulation. Covers air sealing, baffles, depth targets, and safety. DIY-friendly with cost and time estimates."
+  h1="How to Insulate an Attic"
+  intro="Insulating an attic is one of the highest-ROI home improvement projects you can do. A properly insulated attic cuts heating and cooling costs by 10–50% and can be done in a weekend."
+  calculatorHref="/calculator/insulation"
+  calculatorLabel="Insulation Calculator — bags for your attic size and R-value"
+  faqs={faqs}
+  related={related}
+  howToSteps={howToSteps}
+  howToTotalTime="PT6H"
+  breadcrumbs={[{ label: 'Guides' }, { label: 'How to Insulate an Attic' }]}
+  authorSlug="dan"
+  publishDate="2026-06-08">
+
+## What you'll need
+
+**Materials:**
+- Blown-in insulation bags (fiberglass or cellulose)
+- Expanding foam sealant (Great Stuff or similar)
+- Rafter baffles / eave baffles
+- Depth markers (cardboard rulers or paint sticks)
+
+**Tools:**
+- Insulation blowing machine (rent free at most home centers with bag purchase)
+- N95 or P100 respirator
+- Safety goggles
+- Work gloves and long sleeves
+- Headlamp and work lights
+- Tape measure
+
+**Time:** 4–8 hours for a 1,000–1,500 sq ft attic with two people  
+**Cost:** $400–$900 in materials (DIY)
+
+## How much insulation to buy
+
+Use the [Insulation Calculator](/calculator/insulation) with your attic sq ft and target R-value. As a rule of thumb:
+
+- **R-38:** ~25–28 bags (25 lb bags) per 1,000 sq ft
+- **R-49:** ~32–36 bags per 1,000 sq ft
+- **R-60:** ~40–45 bags per 1,000 sq ft
+
+Add 10% for waste. The store can usually return unopened bags.
+
+## Step-by-step instructions
+
+### Step 1 — Measure and calculate
+Measure your attic floor area. Check existing insulation depth. Calculate how many bags you need for your target R-value zone (see [R-Value Guide](/guide/insulation-r-value-guide) if unsure).
+
+### Step 2 — Gather materials and equipment
+Most big box stores offer free blower rental when you buy a minimum number of bags (typically 10+). Buy safety gear before the day: N95 respirator, goggles, disposable coveralls or old clothes, and knee pads.
+
+### Step 3 — Seal air leaks first (critical step)
+This is the step most DIYers skip — and it makes the biggest difference. Before adding any insulation:
+
+- Seal all recessed light cans with fire-rated covers or foam
+- Seal around plumbing and electrical penetrations through the top plate
+- Seal the attic pull-down stair frame with weatherstripping and a rigid foam cover
+- Foam-seal the gap between interior partition wall top plates and the attic floor sheathing
+
+Air sealing before insulating improves results by 30–40% compared to insulation alone.
+
+### Step 4 — Install rafter baffles at eaves
+Staple foam or cardboard baffles at each rafter bay where the roof meets the exterior wall. Baffles maintain a clear airway from soffit vents to the ridge vent. Without them, blown-in insulation will block soffit vents and cause condensation and rot.
+
+### Step 5 — Mark your target depth
+Cut 12-inch strips of cardboard and label them with your target depth (e.g., "15 inches for R-38"). Staple one to a joist or lean one against a rafter every 6–8 feet across the attic. These depth gauges help you avoid under-insulating spots.
+
+### Step 6 — Blow in the insulation
+- Start at the far end of the attic and work backward toward the hatch
+- Hold the hose about 12–18 inches above the joists
+- Sweep in slow, overlapping rows
+- Check depth markers as you go
+- Aim slightly over target — insulation can settle 5–10%
+
+### Step 7 — Verify depth and R-value
+After finishing, measure depth in at least 8–10 spots. Calculate your actual R-value: **inches × R-per-inch for your product**. Standard blown-in fiberglass is R-2.2 to R-2.5 per inch at settled depth.
+
+## Common mistakes to avoid
+
+- **Skipping air sealing** — biggest mistake; insulation alone doesn't stop air infiltration
+- **Blocking soffit vents** — always install baffles before blowing
+- **Under-estimating bags** — buy 10% extra and return unopened ones
+- **Working without a respirator** — fiberglass particles are irritating and potentially harmful
+- **Covering junction boxes** — keep electrical junction boxes accessible, not buried under insulation
+
+</GuideLayout>

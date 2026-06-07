@@ -1,0 +1,84 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'What R-value do I need for my attic?', a: 'The DOE recommends R-38 to R-60 for attics depending on your climate zone. Most of the continental US (zones 3–6) needs R-38 to R-49. Cold northern states like Minnesota and Montana should target R-60.' },
+  { q: 'Is R-13 or R-15 better for 2×4 walls?', a: 'Both fit a 2×4 wall cavity (3.5 inches). R-15 provides about 15% more thermal resistance, which can meaningfully reduce heating costs in colder climates. The price difference is usually small, so R-15 is often worth it in Zones 4–7.' },
+  { q: 'Does higher R-value always mean better insulation?', a: 'Higher R-value means more thermal resistance per inch, but diminishing returns apply. Going from R-0 to R-19 saves far more energy than going from R-38 to R-49. Focus on hitting minimum DOE recommendations before over-insulating.' },
+  { q: 'What R-value does spray foam have?', a: 'Closed-cell spray foam delivers R-6 to R-7 per inch — the highest of any common insulation. Open-cell spray foam is R-3.5 to R-4 per inch. This makes closed-cell useful in tight spaces like rim joists or crawl space walls where depth is limited.' },
+  { q: 'Can I mix insulation types in my attic?', a: 'Yes. A common approach is to lay fiberglass batts between joists to R-19, then blow cellulose or fiberglass on top to reach R-49. This is often the most cost-effective method for deep attic insulation.' },
+];
+
+export const related = [
+  { href: '/calculator/insulation', label: 'Insulation Calculator' },
+  { href: '/guide/how-much-insulation-do-i-need', label: 'How Much Insulation Do I Need?' },
+  { href: '/guide/blown-in-vs-batt-insulation', label: 'Blown-In vs Batt Insulation' },
+  { href: '/guide/best-insulation-for-attic', label: 'Best Insulation for Attic' },
+];
+
+<GuideLayout
+  title="Insulation R-Value Guide — What R-Value Do You Need by Zone?"
+  description="R-value chart for attics, walls, floors, and crawl spaces by DOE climate zone. Includes R-values for fiberglass, cellulose, spray foam, and rigid foam insulation types."
+  h1="Insulation R-Value Guide"
+  intro="R-value measures thermal resistance — the higher the R-value, the better the insulation. What you need depends on your climate zone and where in the house you're insulating."
+  calculatorHref="/calculator/insulation"
+  calculatorLabel="Insulation Calculator — bags and rolls for your space"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Insulation R-Value Guide' }]}
+  authorSlug="dan"
+  publishDate="2026-06-08">
+
+## What is R-value?
+
+R-value is a material's resistance to heat flow. A wall with R-19 loses heat at roughly half the rate of a wall with R-10. Higher is better — but the location (attic, wall, floor) and your DOE climate zone determine the target.
+
+## DOE recommended R-values by zone
+
+### Attic insulation
+
+| Zone | States | Uninsulated attic | Add to existing |
+|------|--------|------------------|----------------|
+| 1–2 | Hawaii, S. Florida | R-30 | R-25 to R-30 |
+| 3 | Texas, Georgia, AZ | R-38 | R-25 to R-38 |
+| 4 | Virginia, MO, OR | R-38 to R-49 | R-38 |
+| 5 | OH, PA, CO, IL | R-49 | R-38 to R-49 |
+| 6 | MN, MI, WI | R-49 to R-60 | R-49 |
+| 7 | MT, ND, Alaska | R-60 | R-49 to R-60 |
+
+### Wall insulation (new construction)
+
+| Zone | Wood-frame wall | Continuous rigid foam |
+|------|-----------------|----------------------|
+| 1–3 | R-13 | Not required |
+| 4 | R-13 to R-15 | R-5 |
+| 5–8 | R-20 or R-13+R-5 | R-10 |
+
+### Floor and crawl space
+
+| Zone | Over unheated crawl | Crawl space walls |
+|------|--------------------|--------------------|
+| 1–3 | R-13 | R-5 |
+| 4–6 | R-19 to R-25 | R-10 |
+| 7–8 | R-30 | R-15 |
+
+## R-value by insulation material
+
+| Material | R-value per inch | Best for |
+|----------|-----------------|----------|
+| Blown-in fiberglass | R-2.5 | Attic top-up |
+| Blown-in cellulose | R-3.2 to R-3.8 | Attic, walls |
+| Fiberglass batt | R-3.1 to R-3.8 | Walls, floors |
+| Mineral wool batt | R-3.7 to R-4.2 | Walls, fire resistance |
+| Open-cell spray foam | R-3.5 to R-4 | Walls, rim joists |
+| Closed-cell spray foam | R-6 to R-7 | Crawl spaces, tight areas |
+| Rigid foam (EPS) | R-3.8 to R-4.2 | Continuous exterior |
+| Rigid foam (XPS) | R-5 | Below-grade, moisture |
+| Rigid foam (polyiso) | R-6 to R-6.5 | Roofs, walls |
+
+## Why R-value matters more in cold climates
+
+Going from an uninsulated attic (R-0) to R-19 saves roughly 50% of heat loss through the attic. Going from R-19 to R-38 saves another 25%. Each additional increment saves less. In Climate Zone 6, the payback period for going from R-38 to R-60 is typically 4–6 years in energy savings.
+
+Use the [Insulation Calculator](/calculator/insulation) to calculate exactly how many bags or rolls you need to hit your target R-value.
+
+</GuideLayout>

@@ -1,0 +1,91 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'Is spray foam insulation worth the cost?', a: 'For rim joists, crawl spaces, and attic roof decks, closed-cell spray foam provides significant air sealing benefits that fiberglass alone cannot match. The payback period is typically 5–10 years in energy savings. For attic floors, blown-in fiberglass is far more cost-effective.' },
+  { q: 'Can I apply spray foam insulation myself?', a: 'Small cracks and gaps: yes, with canned spray foam (Great Stuff). Full-cavity or roof deck spray foam requires professional equipment — DIY spray foam kits exist but are costly ($600–$900 for 200 sq ft) and tricky to apply evenly. Most homeowners hire pros for spray foam.' },
+  { q: 'What R-value does spray foam have?', a: 'Closed-cell spray foam delivers R-6 to R-7 per inch. Open-cell spray foam delivers R-3.5 to R-4 per inch. Fiberglass batt is R-3.1 to R-3.8 per inch. Blown-in fiberglass is R-2.2 to R-2.5 per inch.' },
+  { q: 'Is spray foam better than fiberglass for attic insulation?', a: 'Depends on where in the attic. For the attic floor (open attic): blown-in fiberglass at R-49 is the most cost-effective option and performs nearly as well as spray foam at a fraction of the cost. For an unvented conditioned attic (spraying the roof deck): spray foam is the right choice because it seals the envelope.' },
+  { q: 'How long does spray foam insulation last?', a: 'Spray foam insulation lasts 80+ years and does not settle, sag, or absorb moisture (closed-cell). Fiberglass batt lasts 80–100 years if kept dry and uncompressed. Both are effectively lifetime products under ideal conditions.' },
+];
+
+export const related = [
+  { href: '/calculator/insulation', label: 'Insulation Calculator' },
+  { href: '/guide/how-much-insulation-do-i-need', label: 'How Much Insulation Do I Need?' },
+  { href: '/guide/blown-in-vs-batt-insulation', label: 'Blown-In vs Batt Insulation' },
+  { href: '/guide/insulation-r-value-guide', label: 'R-Value Guide by Climate Zone' },
+];
+
+<GuideLayout
+  title="Spray Foam vs Fiberglass Insulation — Cost, R-Value & Best Use"
+  description="Compare spray foam (open-cell and closed-cell) vs fiberglass (batt and blown-in) insulation for cost per sq ft, R-value per inch, air sealing, and best applications."
+  h1="Spray Foam vs Fiberglass Insulation"
+  intro="Spray foam and fiberglass insulation both work — but for very different applications and at very different price points. The right choice depends on where you're insulating and your goals."
+  calculatorHref="/calculator/insulation"
+  calculatorLabel="Insulation Calculator — bags, rolls, and cost for your space"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'Spray Foam vs Fiberglass Insulation' }]}
+  authorSlug="dan"
+  publishDate="2026-06-08">
+
+## Quick comparison
+
+| Factor | Closed-Cell Spray Foam | Open-Cell Spray Foam | Fiberglass Batt | Blown-In Fiberglass |
+|--------|----------------------|---------------------|-----------------|---------------------|
+| R-value per inch | R-6 to R-7 | R-3.5 to R-4 | R-3.1 to R-3.8 | R-2.2 to R-2.5 |
+| Air sealing | Excellent | Good | Poor | Poor |
+| Vapor barrier | Yes (at 2"+) | No | No | No |
+| Installed cost | $1.50–$3.50/sq ft | $0.75–$1.50/sq ft | $0.90–$1.50/sq ft | $0.80–$1.50/sq ft |
+| DIY-friendly | No | No | Yes | Yes (with rented blower) |
+| Moisture resistance | Excellent | Moderate | Poor if wet | Poor if wet |
+
+## Cost comparison per 1,000 sq ft
+
+| Option | Installed cost | R-value achieved |
+|--------|---------------|-----------------|
+| Blown-in fiberglass (R-49) | $800–$1,500 | R-49 |
+| Fiberglass batt (R-19, walls) | $900–$1,500 | R-19 |
+| Open-cell spray foam (3") | $2,250–$4,500 | R-11 |
+| Closed-cell spray foam (3") | $4,500–$10,500 | R-20 |
+| Closed-cell spray foam (2") | $3,000–$7,000 | R-13 |
+
+*Spray foam achieves high performance per inch but not per dollar for large areas.*
+
+## Where each wins
+
+### Use spray foam for:
+
+- **Rim joists** — closed-cell spray foam seals the most air-leaky part of most homes in one step
+- **Crawl space walls** — closed-cell creates a vapor and air barrier together
+- **Unvented conditioned attics** (spraying the roof deck) — spray foam is the only practical option here
+- **Basement walls** — closed-cell handles moisture and insulates; rigid foam is an alternative
+- **Sealing penetrations** — canned spray foam is the best product for sealing around pipes, wires, and gaps
+
+### Use fiberglass for:
+
+- **Attic floors (vented attic)** — blown-in fiberglass at R-49 is the highest-ROI insulation project available
+- **Wall cavities (new construction)** — batt insulation is standard; spray foam costs 5–10× more for marginal improvement
+- **Retrofit walls (old homes)** — blown-in cellulose or fiberglass is blown through small holes, far cheaper than spray foam
+- **Large attic areas on a budget** — blown-in DIY is 50–70% cheaper than professional installation
+
+## Air sealing: the most important consideration
+
+The biggest difference between spray foam and fiberglass isn't R-value — it's air sealing. Fiberglass batt insulates but does not seal air gaps. Spray foam seals both.
+
+In an average US home, air infiltration accounts for 25–40% of heating and cooling costs. A well-air-sealed house with R-38 blown-in fiberglass will outperform a poorly air-sealed house with closed-cell spray foam in many cases.
+
+**The practical solution:** Air-seal the critical bypasses (rim joists, top plates, penetrations) with spray foam or caulk, then fill the rest of the attic with blown-in fiberglass. This hybrid approach delivers 80–90% of the air sealing benefit at 30–40% of the cost of spray foam everywhere.
+
+## Verdict by situation
+
+| Situation | Best choice |
+|-----------|------------|
+| Attic floor (adding R-value) | Blown-in fiberglass |
+| Rim joists | Closed-cell spray foam |
+| Crawl space walls | Closed-cell spray foam or rigid foam |
+| Wall cavities (new construction) | Fiberglass batt |
+| Retrofit walls (existing) | Blown-in cellulose |
+| Roof deck (conditioned attic) | Open or closed-cell spray foam |
+| Tight spaces, irregular shapes | Spray foam |
+
+</GuideLayout>
