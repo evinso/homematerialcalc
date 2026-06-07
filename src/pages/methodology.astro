@@ -7,7 +7,7 @@ const schema = {
   '@type': 'WebPage',
   name: 'Methodology & Sources — HomeMaterialCalc.com',
   description: 'How HomeMaterialCalc.com calculates material quantities: every formula, constant, and source used in our calculators.',
-  url: 'https://homematerialcalc.com/methodology',
+  url: 'https://www.homematerialcalc.com/methodology/',
 };
 ---
 
@@ -36,7 +36,7 @@ const schema = {
     <!-- Core formulas -->
     <section class="mb-10">
       <h2 class="text-xl font-bold text-gray-900 mb-4 border-b pb-2">Core Calculation Pattern</h2>
-      <p class="text-gray-700 mb-4">All calculators follow the same four-step pattern:</p>
+      <p class="text-gray-700 mb-4">All bulk material calculators follow the same four-step pattern:</p>
       <ol class="space-y-4">
         {[
           ['Compute area', 'Rectangle: L × W · Circle: π × r² · Triangle: 0.5 × base × height · Irregular: sum of sub-areas'],
@@ -64,7 +64,7 @@ const schema = {
     <section class="mb-10">
       <h2 class="text-xl font-bold text-gray-900 mb-4 border-b pb-2">Material Constants &amp; Sources</h2>
 
-      <div class="space-y-8">
+      <div class="space-y-10">
 
         <!-- Mulch -->
         <div>
@@ -206,6 +206,290 @@ const schema = {
           <p class="text-xs text-gray-500 mt-1">Default thickness: 4". Default waste: 10%. Post hole formula: π × r² × depth.</p>
         </div>
 
+        <!-- Grass Seed -->
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Grass Seed</h3>
+          <table class="w-full text-sm text-gray-700 border-collapse">
+            <thead class="bg-gray-50"><tr>
+              <th class="text-left p-2 border">Grass type</th>
+              <th class="text-left p-2 border">New lawn (lbs/1,000 sq ft)</th>
+              <th class="text-left p-2 border">Overseeding (lbs/1,000 sq ft)</th>
+              <th class="text-left p-2 border">Source</th>
+            </tr></thead>
+            <tbody>
+              {[
+                ['Tall Fescue','7','3.5','University extension service seeding guides'],
+                ['Fine Fescue','4.5','2','University extension service seeding guides'],
+                ['Kentucky Bluegrass','2.5','1.25','University extension service seeding guides'],
+                ['Perennial Ryegrass','7','3.5','University extension service seeding guides'],
+                ['Bermudagrass','1.5','0.75','University extension service seeding guides'],
+                ['Zoysia','1.5','0.75','University extension service seeding guides'],
+                ['Buffalograss','1.5','0.75','University extension service seeding guides'],
+              ].map(([t,n,o,s]) => (
+                <tr class="border-b">
+                  <td class="p-2 border font-medium">{t}</td>
+                  <td class="p-2 border">{n}</td>
+                  <td class="p-2 border">{o}</td>
+                  <td class="p-2 border text-gray-500">{s}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <p class="text-xs text-gray-500 mt-1">Default waste: 10%. Seeding rates assume good seed-to-soil contact. Confirm rates on your seed bag label.</p>
+        </div>
+
+        <!-- Paint -->
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Paint</h3>
+          <table class="w-full text-sm text-gray-700 border-collapse">
+            <thead class="bg-gray-50"><tr>
+              <th class="text-left p-2 border">Constant</th><th class="text-left p-2 border">Value</th><th class="text-left p-2 border">Source</th>
+            </tr></thead>
+            <tbody>
+              {[
+                ['Standard paint coverage','350 sq ft/gallon/coat','Sherwin-Williams / Benjamin Moore manufacturer average'],
+                ['Premium paint coverage','400 sq ft/gallon/coat','Manufacturer specification (high-hide formulas)'],
+                ['Primer coverage','250 sq ft/gallon/coat','Manufacturer average (higher absorption)'],
+                ['Textured surface coverage','275 sq ft/gallon/coat','Industry allowance for added surface area'],
+                ['Default coats','2','Standard industry recommendation for full coverage'],
+                ['Default waste','10%','Accounts for cut-in, roller waste, touch-ups'],
+                ['Door area deduction','21 sq ft','Standard 3 × 7 ft interior door'],
+                ['Window area deduction','15 sq ft','Standard 3 × 5 ft window'],
+              ].map(([c,v,s]) => (
+                <tr class="border-b"><td class="p-2 border font-medium">{c}</td><td class="p-2 border">{v}</td><td class="p-2 border text-gray-500">{s}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Flooring -->
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Flooring</h3>
+          <table class="w-full text-sm text-gray-700 border-collapse">
+            <thead class="bg-gray-50"><tr>
+              <th class="text-left p-2 border">Constant</th><th class="text-left p-2 border">Value</th><th class="text-left p-2 border">Source</th>
+            </tr></thead>
+            <tbody>
+              {[
+                ['Default box coverage','20 sq ft/box','Industry average for laminate/LVP; adjust per product label'],
+                ['Waste — straight lay','10%','NWFA (National Wood Flooring Association) guidelines'],
+                ['Waste — diagonal / complex','15%','NWFA guidelines for angled cuts'],
+              ].map(([c,v,s]) => (
+                <tr class="border-b"><td class="p-2 border font-medium">{c}</td><td class="p-2 border">{v}</td><td class="p-2 border text-gray-500">{s}</td></tr>
+              ))}
+            </tbody>
+          </table>
+          <p class="text-xs text-gray-500 mt-1">Always confirm actual box coverage from the product label — it varies by manufacturer and product line.</p>
+        </div>
+
+        <!-- Tile -->
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Tile</h3>
+          <table class="w-full text-sm text-gray-700 border-collapse">
+            <thead class="bg-gray-50"><tr>
+              <th class="text-left p-2 border">Tile size</th><th class="text-left p-2 border">Sq ft per tile</th><th class="text-left p-2 border">Notes</th>
+            </tr></thead>
+            <tbody>
+              {[
+                ['4" × 4"','0.111 sq ft',''],
+                ['6" × 6"','0.250 sq ft',''],
+                ['12" × 12"','1.000 sq ft','Most common'],
+                ['18" × 18"','2.250 sq ft',''],
+                ['24" × 24"','4.000 sq ft','Large format'],
+                ['3" × 6" (subway)','0.125 sq ft',''],
+                ['4" × 16" (subway)','0.444 sq ft',''],
+              ].map(([s,f,n]) => (
+                <tr class="border-b"><td class="p-2 border font-medium">{s}</td><td class="p-2 border">{f}</td><td class="p-2 border text-gray-500">{n}</td></tr>
+              ))}
+            </tbody>
+          </table>
+          <div class="mt-2 text-xs text-gray-500 space-y-0.5">
+            <p>Waste — straight lay: 10% · Diagonal: 15% (TCNA Handbook)</p>
+            <p>Thinset: 1 bag (50 lb) covers ~40 sq ft at 3/8" notched trowel (manufacturer average)</p>
+            <p>Grout: 1 bag (10 lb) covers ~50 sq ft, sanded, 1/8" joint, 12×12 tile</p>
+          </div>
+        </div>
+
+        <!-- Drywall -->
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Drywall</h3>
+          <table class="w-full text-sm text-gray-700 border-collapse">
+            <thead class="bg-gray-50"><tr>
+              <th class="text-left p-2 border">Constant</th><th class="text-left p-2 border">Value</th><th class="text-left p-2 border">Source</th>
+            </tr></thead>
+            <tbody>
+              {[
+                ['4×8 sheet area','32 sq ft','Standard sheet dimensions'],
+                ['4×12 sheet area','48 sq ft','Standard sheet dimensions'],
+                ['4×16 sheet area','64 sq ft','Standard sheet dimensions'],
+                ['Default waste','12%','GA-216 drywall installation standard allowance'],
+                ['Joint compound (3 coats)','1 gal per 100 sq ft','USG product specification average'],
+                ['Tape','1 roll (75 ft) per ~3 sheets','Industry standard'],
+                ['Door area deduction','21 sq ft','Standard 3×7 ft door'],
+                ['Window area deduction','15 sq ft','Standard 3×5 ft window'],
+              ].map(([c,v,s]) => (
+                <tr class="border-b"><td class="p-2 border font-medium">{c}</td><td class="p-2 border">{v}</td><td class="p-2 border text-gray-500">{s}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Lumber -->
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Lumber</h3>
+          <table class="w-full text-sm text-gray-700 border-collapse">
+            <thead class="bg-gray-50"><tr>
+              <th class="text-left p-2 border">Nominal size</th><th class="text-left p-2 border">Actual size</th><th class="text-left p-2 border">Board feet / 8-ft piece</th>
+            </tr></thead>
+            <tbody>
+              {[
+                ['2×4','1.5" × 3.5"','5.3 bf'],
+                ['2×6','1.5" × 5.5"','8.0 bf'],
+                ['2×8','1.5" × 7.25"','10.7 bf'],
+                ['2×10','1.5" × 9.25"','13.3 bf'],
+                ['2×12','1.5" × 11.25"','16.0 bf'],
+                ['1×4','0.75" × 3.5"','2.7 bf'],
+                ['1×6','0.75" × 5.5"','4.0 bf'],
+                ['4×4','3.5" × 3.5"','10.7 bf'],
+              ].map(([n,a,bf]) => (
+                <tr class="border-b"><td class="p-2 border font-medium">{n}</td><td class="p-2 border">{a}</td><td class="p-2 border">{bf}</td></tr>
+              ))}
+            </tbody>
+          </table>
+          <div class="mt-2 text-xs text-gray-500 space-y-0.5">
+            <p>Board feet formula: (Thickness" × Width" × Length ft) ÷ 12</p>
+            <p>Default waste: 10% · Stud spacing: 16" OC · Default wall height: 8 ft</p>
+          </div>
+        </div>
+
+        <!-- Insulation -->
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Insulation</h3>
+          <table class="w-full text-sm text-gray-700 border-collapse">
+            <thead class="bg-gray-50"><tr>
+              <th class="text-left p-2 border">Type</th>
+              <th class="text-left p-2 border">R-value per inch</th>
+              <th class="text-left p-2 border">Coverage per unit</th>
+              <th class="text-left p-2 border">Source</th>
+            </tr></thead>
+            <tbody>
+              {[
+                ['Fiberglass batts','R-3.2/in','40 sq ft per roll (R-13)','DOE / manufacturer specs'],
+                ['Mineral wool (Rockwool)','R-3.8/in','40 sq ft per package','DOE / manufacturer specs'],
+                ['Blown-in fiberglass','R-2.7/in','25 sq ft per 25 lb bag','DOE / manufacturer specs'],
+                ['Blown-in cellulose','R-3.6/in','30 sq ft per 30 lb bag','DOE / manufacturer specs'],
+                ['Spray foam (closed-cell)','R-6.5/in','Pro install — by board-ft','ASHRAE / DOE'],
+              ].map(([t,r,c,s]) => (
+                <tr class="border-b">
+                  <td class="p-2 border font-medium">{t}</td>
+                  <td class="p-2 border">{r}</td>
+                  <td class="p-2 border">{c}</td>
+                  <td class="p-2 border text-gray-500">{s}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <div class="mt-2 text-xs text-gray-500 space-y-0.5">
+            <p>Recommended R-values (ENERGY STAR): Attic R-49 · Wall R-21 · Crawlspace R-19 · Basement R-15</p>
+            <p>Default waste buffer: 10%</p>
+          </div>
+        </div>
+
+        <!-- Paver -->
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Pavers</h3>
+          <table class="w-full text-sm text-gray-700 border-collapse">
+            <thead class="bg-gray-50"><tr>
+              <th class="text-left p-2 border">Paver size</th><th class="text-left p-2 border">Sq ft per paver</th><th class="text-left p-2 border">Pavers per 100 sq ft</th>
+            </tr></thead>
+            <tbody>
+              {[
+                ['4" × 8" (brick)','0.222','450'],
+                ['6" × 6"','0.250','400'],
+                ['6" × 9"','0.375','267'],
+                ['12" × 12"','1.000','100'],
+                ['16" × 16"','1.778','56'],
+                ['12" × 24"','2.000','50'],
+                ['24" × 24"','4.000','25'],
+              ].map(([s,sf,p]) => (
+                <tr class="border-b"><td class="p-2 border font-medium">{s}</td><td class="p-2 border">{sf}</td><td class="p-2 border">{p}</td></tr>
+              ))}
+            </tbody>
+          </table>
+          <div class="mt-2 text-xs text-gray-500 space-y-0.5">
+            <p>Default waste: 10% · Sand bedding: 1" depth · Gravel base: 4" depth</p>
+            <p>Sand base formula: Area (sq ft) × 1/12 ÷ 27 = cubic yards</p>
+          </div>
+        </div>
+
+        <!-- Fence -->
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Fence</h3>
+          <table class="w-full text-sm text-gray-700 border-collapse">
+            <thead class="bg-gray-50"><tr>
+              <th class="text-left p-2 border">Constant</th><th class="text-left p-2 border">Value</th><th class="text-left p-2 border">Source</th>
+            </tr></thead>
+            <tbody>
+              {[
+                ['Post spacing','8 ft on-center','Standard residential fence spacing'],
+                ['Posts','Linear ft ÷ 8 + 1 (+ 1 per gate)','Mathematical from spacing'],
+                ['Concrete per post','2 bags (50 lb)','Standard for 4×4 post, 10–12" hole'],
+                ['Rails (6 ft fence)','2 rails per section','Standard'],
+                ['Rails (8 ft fence)','3 rails per section','Standard'],
+                ['Pickets (6" wide wood)','Linear ft × 1.6 × 1.05 waste','Mathematical + 5% waste'],
+                ['Chain link rolls','Linear ft ÷ 50 ft/roll','Standard roll length'],
+              ].map(([c,v,s]) => (
+                <tr class="border-b"><td class="p-2 border font-medium">{c}</td><td class="p-2 border">{v}</td><td class="p-2 border text-gray-500">{s}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Deck -->
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Deck</h3>
+          <table class="w-full text-sm text-gray-700 border-collapse">
+            <thead class="bg-gray-50"><tr>
+              <th class="text-left p-2 border">Constant</th><th class="text-left p-2 border">Value</th><th class="text-left p-2 border">Source</th>
+            </tr></thead>
+            <tbody>
+              {[
+                ['Decking waste','10%','Standard contractor allowance (NWFA)'],
+                ['Joist spacing','16" OC','IRC standard residential framing'],
+                ['Beam spacing','8 ft OC','Standard residential deck framing'],
+                ['Footings per beam span','1 per 8 ft of beam','Standard'],
+                ['Concrete bags per footing','1 bag (80 lb)','For standard 12" tube form'],
+                ['Screws per board×joist','2','Standard face-screw pattern'],
+              ].map(([c,v,s]) => (
+                <tr class="border-b"><td class="p-2 border font-medium">{c}</td><td class="p-2 border">{v}</td><td class="p-2 border text-gray-500">{s}</td></tr>
+              ))}
+            </tbody>
+          </table>
+          <p class="text-xs text-gray-500 mt-1">Check local building codes for footing depth (must go below frost line) and joist span tables before ordering materials.</p>
+        </div>
+
+        <!-- Asphalt -->
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Asphalt</h3>
+          <table class="w-full text-sm text-gray-700 border-collapse">
+            <thead class="bg-gray-50"><tr>
+              <th class="text-left p-2 border">Constant</th><th class="text-left p-2 border">Value</th><th class="text-left p-2 border">Source</th>
+            </tr></thead>
+            <tbody>
+              {[
+                ['Hot mix asphalt density','~145 lbs/cu ft = 1.96 tons/cu yd','Asphalt paving industry standard'],
+                ['Default waste','5%','Standard contractor overage'],
+                ['Gravel base depth','4 inches','Standard residential driveway base'],
+                ['Gravel base density','1.40 tons/cu yd','Crushed stone industry standard'],
+                ['Gravel waste','10%','Standard contractor overage'],
+              ].map(([c,v,s]) => (
+                <tr class="border-b"><td class="p-2 border font-medium">{c}</td><td class="p-2 border">{v}</td><td class="p-2 border text-gray-500">{s}</td></tr>
+              ))}
+            </tbody>
+          </table>
+          <p class="text-xs text-gray-500 mt-1">Asphalt thickness: 2" for paths/parking, 3" for residential driveways, 4" for heavy-use driveways.</p>
+        </div>
+
       </div>
     </section>
 
@@ -216,8 +500,10 @@ const schema = {
       <h2 class="text-xl font-bold text-gray-900 mb-3 border-b pb-2">Important Limitations</h2>
       <ul class="space-y-2 text-sm text-gray-700">
         <li class="flex gap-2"><span class="text-brand-600 font-bold flex-shrink-0">·</span>All density values are <strong>industry averages for dry material</strong>. Actual weight varies with moisture content, compaction, and specific product.</li>
-        <li class="flex gap-2"><span class="text-brand-600 font-bold flex-shrink-0">·</span>Bag yields are based on Quikrete specifications. Sakrete and other brands may differ slightly.</li>
+        <li class="flex gap-2"><span class="text-brand-600 font-bold flex-shrink-0">·</span>Concrete bag yields are based on Quikrete specifications. Sakrete and other brands may differ slightly.</li>
+        <li class="flex gap-2"><span class="text-brand-600 font-bold flex-shrink-0">·</span>Flooring box coverage (default 20 sq ft) varies widely by product — always confirm on the product label.</li>
         <li class="flex gap-2"><span class="text-brand-600 font-bold flex-shrink-0">·</span>Sod pallet coverage (450 sq ft) is a US industry standard. <strong>Confirm with your local sod farm</strong> before ordering.</li>
+        <li class="flex gap-2"><span class="text-brand-600 font-bold flex-shrink-0">·</span>Grass seed rates are for good growing conditions with proper seed-to-soil contact. Poor soil, shade, or slopes may require 10–20% more.</li>
         <li class="flex gap-2"><span class="text-brand-600 font-bold flex-shrink-0">·</span>Results are estimates. <strong>For large or critical orders, confirm quantities with your local supplier</strong> who can account for site-specific conditions.</li>
         <li class="flex gap-2"><span class="text-brand-600 font-bold flex-shrink-0">·</span>The waste factor default is a starting point. Adjust it in each calculator based on your actual project complexity.</li>
       </ul>
@@ -228,16 +514,25 @@ const schema = {
       <h2 class="text-xl font-bold text-gray-900 mb-3 border-b pb-2">Source References</h2>
       <ul class="text-sm text-gray-600 space-y-1.5">
         <li>Quikrete product data sheets (concrete bag yields) — quikrete.com</li>
+        <li>USG product specifications (drywall joint compound coverage)</li>
+        <li>NWFA (National Wood Flooring Association) installation guidelines (flooring waste)</li>
+        <li>TCNA Handbook (Tile Council of North America) — tile installation standards</li>
+        <li>DOE / ENERGY STAR insulation R-value recommendations by climate zone</li>
+        <li>ASHRAE standards (spray foam R-values)</li>
         <li>Aggregate and landscape supplier industry standards (gravel, sand, topsoil densities)</li>
         <li>US sod-farm industry standards (piece size, pallet coverage)</li>
-        <li>University extension service publications (mulch and soil depth recommendations)</li>
+        <li>University extension service publications (mulch depth, grass seed seeding rates)</li>
+        <li>Asphalt paving industry standard (hot mix density: 145 lbs/cu ft)</li>
+        <li>IRC (International Residential Code) — deck joist spacing, framing standards</li>
+        <li>GA-216 (Gypsum Association) — drywall installation standard</li>
+        <li>Sherwin-Williams / Benjamin Moore manufacturer coverage specs (paint)</li>
         <li>Volume identity: 1 cubic yard = 27 cubic feet (exact mathematical definition)</li>
       </ul>
     </section>
 
     <div class="bg-brand-50 border border-brand-200 rounded-xl p-5 text-sm text-gray-700">
       <p class="font-semibold text-brand-800 mb-1">Found an error?</p>
-      <p>If you believe a constant or formula is incorrect, please <a href="/contact" class="text-brand-600 hover:underline">contact us</a> with a source and we will review it promptly. Accuracy is the whole product.</p>
+      <p>If you believe a constant or formula is incorrect, please <a href="/contact/" class="text-brand-600 hover:underline">contact us</a> with a source and we will review it promptly. Accuracy is the whole product.</p>
     </div>
   </div>
 </BaseLayout>
