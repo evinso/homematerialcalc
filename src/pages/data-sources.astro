@@ -133,6 +133,93 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </table>
       </section>
 
+      <section>
+        <h2 class="text-xl font-bold text-gray-900 mb-4">Grass Seed</h2>
+        <table class="w-full border-collapse">
+          <thead><tr class="border-b-2 border-gray-200 text-left"><th class="py-2 pr-4 font-semibold text-gray-900">Grass type</th><th class="py-2 pr-4 font-semibold text-gray-900">New lawn (lbs/1k sq ft)</th><th class="py-2 font-semibold text-gray-900">Source</th></tr></thead>
+          <tbody class="divide-y divide-gray-100">
+            <tr><td class="py-2 pr-4">Tall Fescue</td><td class="py-2 pr-4 font-mono">7</td><td class="py-2">University extension service seeding guides</td></tr>
+            <tr><td class="py-2 pr-4">Kentucky Bluegrass</td><td class="py-2 pr-4 font-mono">2.5</td><td class="py-2">University extension service seeding guides</td></tr>
+            <tr><td class="py-2 pr-4">Perennial Ryegrass</td><td class="py-2 pr-4 font-mono">7</td><td class="py-2">University extension service seeding guides</td></tr>
+            <tr><td class="py-2 pr-4">Bermudagrass</td><td class="py-2 pr-4 font-mono">1.5</td><td class="py-2">University extension service seeding guides</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-gray-900 mb-4">Lumber</h2>
+        <table class="w-full border-collapse">
+          <thead><tr class="border-b-2 border-gray-200 text-left"><th class="py-2 pr-4 font-semibold text-gray-900">Constant</th><th class="py-2 pr-4 font-semibold text-gray-900">Value</th><th class="py-2 font-semibold text-gray-900">Source</th></tr></thead>
+          <tbody class="divide-y divide-gray-100">
+            <tr><td class="py-2 pr-4">Board feet formula</td><td class="py-2 pr-4 font-mono">(T" × W" × L ft) ÷ 12</td><td class="py-2">Standard lumber industry definition</td></tr>
+            <tr><td class="py-2 pr-4">2×4 actual size</td><td class="py-2 pr-4 font-mono">1.5" × 3.5"</td><td class="py-2">NHLA / lumber industry standard</td></tr>
+            <tr><td class="py-2 pr-4">2×6 actual size</td><td class="py-2 pr-4 font-mono">1.5" × 5.5"</td><td class="py-2">NHLA / lumber industry standard</td></tr>
+            <tr><td class="py-2 pr-4">Default waste</td><td class="py-2 pr-4 font-mono">10%</td><td class="py-2">Contractor standard overage</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-gray-900 mb-4">Insulation</h2>
+        <table class="w-full border-collapse">
+          <thead><tr class="border-b-2 border-gray-200 text-left"><th class="py-2 pr-4 font-semibold text-gray-900">Type</th><th class="py-2 pr-4 font-semibold text-gray-900">R-value/inch</th><th class="py-2 font-semibold text-gray-900">Source</th></tr></thead>
+          <tbody class="divide-y divide-gray-100">
+            <tr><td class="py-2 pr-4">Fiberglass batts</td><td class="py-2 pr-4 font-mono">R-3.2</td><td class="py-2">DOE / manufacturer specs</td></tr>
+            <tr><td class="py-2 pr-4">Mineral wool (Rockwool)</td><td class="py-2 pr-4 font-mono">R-3.8</td><td class="py-2">DOE / manufacturer specs</td></tr>
+            <tr><td class="py-2 pr-4">Blown-in fiberglass</td><td class="py-2 pr-4 font-mono">R-2.7</td><td class="py-2">DOE / manufacturer specs</td></tr>
+            <tr><td class="py-2 pr-4">Blown-in cellulose</td><td class="py-2 pr-4 font-mono">R-3.6</td><td class="py-2">DOE / manufacturer specs</td></tr>
+            <tr><td class="py-2 pr-4">Closed-cell spray foam</td><td class="py-2 pr-4 font-mono">R-6.5</td><td class="py-2">ASHRAE standards</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-gray-900 mb-4">Pavers</h2>
+        <table class="w-full border-collapse">
+          <thead><tr class="border-b-2 border-gray-200 text-left"><th class="py-2 pr-4 font-semibold text-gray-900">Constant</th><th class="py-2 pr-4 font-semibold text-gray-900">Value</th><th class="py-2 font-semibold text-gray-900">Source</th></tr></thead>
+          <tbody class="divide-y divide-gray-100">
+            <tr><td class="py-2 pr-4">Default waste</td><td class="py-2 pr-4 font-mono">10%</td><td class="py-2">Contractor standard</td></tr>
+            <tr><td class="py-2 pr-4">Sand bedding depth</td><td class="py-2 pr-4 font-mono">1 inch</td><td class="py-2">ICPI (Interlocking Concrete Pavement Institute) standard</td></tr>
+            <tr><td class="py-2 pr-4">Gravel base depth</td><td class="py-2 pr-4 font-mono">4 inches</td><td class="py-2">ICPI standard for residential patio</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-gray-900 mb-4">Fence</h2>
+        <table class="w-full border-collapse">
+          <thead><tr class="border-b-2 border-gray-200 text-left"><th class="py-2 pr-4 font-semibold text-gray-900">Constant</th><th class="py-2 pr-4 font-semibold text-gray-900">Value</th><th class="py-2 font-semibold text-gray-900">Source</th></tr></thead>
+          <tbody class="divide-y divide-gray-100">
+            <tr><td class="py-2 pr-4">Post spacing</td><td class="py-2 pr-4 font-mono">8 ft on-center</td><td class="py-2">Standard residential fence industry practice</td></tr>
+            <tr><td class="py-2 pr-4">Concrete per post</td><td class="py-2 pr-4 font-mono">2 bags (50 lb)</td><td class="py-2">Standard for 4×4 post in 10–12" hole</td></tr>
+            <tr><td class="py-2 pr-4">Picket formula</td><td class="py-2 pr-4 font-mono">Linear ft × 1.6 × 1.05</td><td class="py-2">Mathematical + 5% waste</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-gray-900 mb-4">Deck</h2>
+        <table class="w-full border-collapse">
+          <thead><tr class="border-b-2 border-gray-200 text-left"><th class="py-2 pr-4 font-semibold text-gray-900">Constant</th><th class="py-2 pr-4 font-semibold text-gray-900">Value</th><th class="py-2 font-semibold text-gray-900">Source</th></tr></thead>
+          <tbody class="divide-y divide-gray-100">
+            <tr><td class="py-2 pr-4">Joist spacing</td><td class="py-2 pr-4 font-mono">16 in OC</td><td class="py-2">IRC (International Residential Code)</td></tr>
+            <tr><td class="py-2 pr-4">Beam spacing</td><td class="py-2 pr-4 font-mono">8 ft OC</td><td class="py-2">Standard residential deck framing</td></tr>
+            <tr><td class="py-2 pr-4">Decking waste</td><td class="py-2 pr-4 font-mono">10%</td><td class="py-2">NWFA / contractor standard</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-gray-900 mb-4">Asphalt</h2>
+        <table class="w-full border-collapse">
+          <thead><tr class="border-b-2 border-gray-200 text-left"><th class="py-2 pr-4 font-semibold text-gray-900">Constant</th><th class="py-2 pr-4 font-semibold text-gray-900">Value</th><th class="py-2 font-semibold text-gray-900">Source</th></tr></thead>
+          <tbody class="divide-y divide-gray-100">
+            <tr><td class="py-2 pr-4">Hot mix density</td><td class="py-2 pr-4 font-mono">145 lbs/cu ft = 1.96 tons/cu yd</td><td class="py-2">Asphalt paving industry standard</td></tr>
+            <tr><td class="py-2 pr-4">Default waste</td><td class="py-2 pr-4 font-mono">5%</td><td class="py-2">Contractor standard overage</td></tr>
+          </tbody>
+        </table>
+      </section>
+
       <section class="bg-gray-50 rounded-xl p-5 text-gray-600">
         <p><strong>Note:</strong> All density and yield values are approximate averages. Actual weights vary with moisture content, compaction, and product. We recommend confirming quantities with your local supplier before placing a large order. See our <a href="/calculation-assumptions" class="text-brand-600 hover:underline">Calculation Assumptions</a> page for default values and rounding rules.</p>
       </section>

@@ -186,34 +186,303 @@ import AdSlot from '../components/ui/AdSlot.astro';
     </div>
   </section>
 
-  <!-- Interior -->
+  <!-- Grass Seed -->
   <section class="mb-10">
-    <h2 class="text-xl font-bold text-gray-900 mb-4">🎨 Interior Materials</h2>
+    <h2 class="text-xl font-bold text-gray-900 mb-4">🌱 Grass Seed</h2>
     <div class="calculator-card overflow-x-auto">
-      <h3 class="font-semibold text-gray-900 mb-3">Paint</h3>
       <table class="w-full text-sm">
         <thead><tr class="border-b border-gray-200">
           <th class="text-left py-2 font-medium text-gray-500">Type</th>
-          <th class="text-right py-2 font-medium text-gray-500">Per gallon</th>
-          <th class="text-right py-2 font-medium text-gray-500">Coverage</th>
+          <th class="text-right py-2 font-medium text-gray-500">Per lb</th>
+          <th class="text-right py-2 font-medium text-gray-500">Per 10 lb bag</th>
         </tr></thead>
         <tbody class="divide-y divide-gray-100">
           {[
-            ['Standard interior (flat/eggshell)', '$25–$45', '350 sq ft'],
-            ['Premium interior', '$45–$75', '400 sq ft'],
-            ['Exterior paint', '$35–$70', '350 sq ft'],
-            ['Primer', '$20–$35', '250 sq ft'],
-            ['Ceiling paint', '$20–$40', '350 sq ft'],
-          ].map(([type, gal, cov]) => (
+            ['Tall Fescue', '$3–$6', '$25–$50'],
+            ['Kentucky Bluegrass', '$6–$12', '$55–$110'],
+            ['Perennial Ryegrass', '$3–$5', '$25–$45'],
+            ['Bermudagrass', '$8–$15', '$70–$130'],
+            ['Zoysia', '$10–$18', '$90–$160'],
+            ['Fine Fescue', '$4–$7', '$35–$65'],
+          ].map(([type, lb, bag]) => (
             <tr>
               <td class="py-2 text-gray-800">{type}</td>
-              <td class="py-2 text-right text-gray-700">{gal}</td>
-              <td class="py-2 text-right text-gray-700">{cov}</td>
+              <td class="py-2 text-right text-gray-700">{lb}</td>
+              <td class="py-2 text-right text-gray-700">{bag}</td>
             </tr>
           ))}
         </tbody>
       </table>
-      <p class="text-xs text-gray-400 mt-2"><a href="/calculator/paint" class="text-brand-600 hover:underline">Calculate paint →</a></p>
+      <p class="text-xs text-gray-400 mt-2"><a href="/calculator/grass-seed/" class="text-brand-600 hover:underline">Calculate grass seed →</a></p>
+    </div>
+  </section>
+
+  <!-- Pavers -->
+  <section class="mb-10">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">🧱 Pavers</h2>
+    <div class="calculator-card overflow-x-auto">
+      <table class="w-full text-sm">
+        <thead><tr class="border-b border-gray-200">
+          <th class="text-left py-2 font-medium text-gray-500">Type</th>
+          <th class="text-right py-2 font-medium text-gray-500">Per sq ft (material)</th>
+          <th class="text-right py-2 font-medium text-gray-500">Installed (incl. labor)</th>
+        </tr></thead>
+        <tbody class="divide-y divide-gray-100">
+          {[
+            ['Concrete pavers (standard)', '$0.50–$2.00', '$8–$15/sq ft'],
+            ['Brick pavers', '$1.00–$3.00', '$10–$18/sq ft'],
+            ['Natural flagstone', '$5–$15', '$20–$40/sq ft'],
+            ['Porcelain pavers', '$4–$12', '$18–$35/sq ft'],
+            ['Permeable pavers', '$2–$6', '$12–$22/sq ft'],
+          ].map(([type, mat, inst]) => (
+            <tr>
+              <td class="py-2 text-gray-800">{type}</td>
+              <td class="py-2 text-right text-gray-700">{mat}</td>
+              <td class="py-2 text-right text-gray-700">{inst}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p class="text-xs text-gray-400 mt-2"><a href="/calculator/paver/" class="text-brand-600 hover:underline">Calculate pavers →</a></p>
+    </div>
+  </section>
+
+  <!-- Interior Materials -->
+  <section class="mb-10">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">🎨 Interior Materials</h2>
+    <div class="space-y-6">
+
+      <div class="calculator-card overflow-x-auto">
+        <h3 class="font-semibold text-gray-900 mb-3">Paint</h3>
+        <table class="w-full text-sm">
+          <thead><tr class="border-b border-gray-200">
+            <th class="text-left py-2 font-medium text-gray-500">Type</th>
+            <th class="text-right py-2 font-medium text-gray-500">Per gallon</th>
+            <th class="text-right py-2 font-medium text-gray-500">Coverage</th>
+          </tr></thead>
+          <tbody class="divide-y divide-gray-100">
+            {[
+              ['Standard interior (flat/eggshell)', '$25–$45', '350 sq ft'],
+              ['Premium interior (Benjamin Moore, SW)', '$45–$80', '400 sq ft'],
+              ['Exterior paint', '$35–$70', '350 sq ft'],
+              ['Primer', '$20–$35', '250 sq ft'],
+              ['Ceiling paint', '$20–$40', '350 sq ft'],
+            ].map(([type, gal, cov]) => (
+              <tr>
+                <td class="py-2 text-gray-800">{type}</td>
+                <td class="py-2 text-right text-gray-700">{gal}</td>
+                <td class="py-2 text-right text-gray-700">{cov}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <p class="text-xs text-gray-400 mt-2"><a href="/calculator/paint/" class="text-brand-600 hover:underline">Calculate paint →</a></p>
+      </div>
+
+      <div class="calculator-card overflow-x-auto">
+        <h3 class="font-semibold text-gray-900 mb-3">Flooring</h3>
+        <table class="w-full text-sm">
+          <thead><tr class="border-b border-gray-200">
+            <th class="text-left py-2 font-medium text-gray-500">Type</th>
+            <th class="text-right py-2 font-medium text-gray-500">Per sq ft (material)</th>
+          </tr></thead>
+          <tbody class="divide-y divide-gray-100">
+            {[
+              ['Laminate (budget)', '$1–$3'],
+              ['Laminate (mid-range)', '$3–$5'],
+              ['Luxury Vinyl Plank (LVP)', '$2–$7'],
+              ['Engineered hardwood', '$4–$10'],
+              ['Solid hardwood', '$6–$15'],
+              ['Bamboo', '$3–$8'],
+            ].map(([type, price]) => (
+              <tr>
+                <td class="py-2 text-gray-800">{type}</td>
+                <td class="py-2 text-right text-gray-700">{price}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <p class="text-xs text-gray-400 mt-2"><a href="/calculator/flooring/" class="text-brand-600 hover:underline">Calculate flooring →</a></p>
+      </div>
+
+      <div class="calculator-card overflow-x-auto">
+        <h3 class="font-semibold text-gray-900 mb-3">Tile</h3>
+        <table class="w-full text-sm">
+          <thead><tr class="border-b border-gray-200">
+            <th class="text-left py-2 font-medium text-gray-500">Type</th>
+            <th class="text-right py-2 font-medium text-gray-500">Per sq ft</th>
+          </tr></thead>
+          <tbody class="divide-y divide-gray-100">
+            {[
+              ['Ceramic (floor)', '$1–$4'],
+              ['Porcelain (floor)', '$3–$8'],
+              ['Natural stone (travertine, slate)', '$5–$15'],
+              ['Subway tile (ceramic)', '$2–$6'],
+              ['Large format (24×24)', '$4–$12'],
+            ].map(([type, price]) => (
+              <tr>
+                <td class="py-2 text-gray-800">{type}</td>
+                <td class="py-2 text-right text-gray-700">{price}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <p class="text-xs text-gray-400 mt-2"><a href="/calculator/tile/" class="text-brand-600 hover:underline">Calculate tile →</a></p>
+      </div>
+
+      <div class="calculator-card overflow-x-auto">
+        <h3 class="font-semibold text-gray-900 mb-3">Drywall</h3>
+        <table class="w-full text-sm">
+          <thead><tr class="border-b border-gray-200">
+            <th class="text-left py-2 font-medium text-gray-500">Type</th>
+            <th class="text-right py-2 font-medium text-gray-500">Per sheet</th>
+          </tr></thead>
+          <tbody class="divide-y divide-gray-100">
+            {[
+              ['4×8 standard (1/2")', '$10–$18'],
+              ['4×8 moisture-resistant', '$14–$22'],
+              ['4×12 standard', '$16–$26'],
+              ['Joint compound (1 gal)', '$10–$16'],
+              ['Tape (75 ft roll)', '$4–$8'],
+            ].map(([type, price]) => (
+              <tr>
+                <td class="py-2 text-gray-800">{type}</td>
+                <td class="py-2 text-right text-gray-700">{price}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <p class="text-xs text-gray-400 mt-2"><a href="/calculator/drywall/" class="text-brand-600 hover:underline">Calculate drywall →</a></p>
+      </div>
+
+      <div class="calculator-card overflow-x-auto">
+        <h3 class="font-semibold text-gray-900 mb-3">Lumber</h3>
+        <table class="w-full text-sm">
+          <thead><tr class="border-b border-gray-200">
+            <th class="text-left py-2 font-medium text-gray-500">Size</th>
+            <th class="text-right py-2 font-medium text-gray-500">Per 8-ft piece</th>
+          </tr></thead>
+          <tbody class="divide-y divide-gray-100">
+            {[
+              ['2×4 × 8 ft', '$4–$8'],
+              ['2×6 × 8 ft', '$7–$12'],
+              ['2×8 × 8 ft', '$10–$16'],
+              ['4×4 × 8 ft post', '$9–$16'],
+              ['1×6 × 8 ft', '$5–$9'],
+            ].map(([size, price]) => (
+              <tr>
+                <td class="py-2 text-gray-800">{size}</td>
+                <td class="py-2 text-right text-gray-700">{price}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <p class="text-xs text-gray-400 mt-2"><a href="/calculator/lumber/" class="text-brand-600 hover:underline">Calculate lumber →</a></p>
+      </div>
+
+      <div class="calculator-card overflow-x-auto">
+        <h3 class="font-semibold text-gray-900 mb-3">Insulation</h3>
+        <table class="w-full text-sm">
+          <thead><tr class="border-b border-gray-200">
+            <th class="text-left py-2 font-medium text-gray-500">Type</th>
+            <th class="text-right py-2 font-medium text-gray-500">Per sq ft (installed)</th>
+          </tr></thead>
+          <tbody class="divide-y divide-gray-100">
+            {[
+              ['Fiberglass batts (R-13)', '$0.30–$0.60'],
+              ['Mineral wool batts (R-15)', '$0.50–$1.00'],
+              ['Blown-in fiberglass (attic)', '$1.50–$3.00'],
+              ['Blown-in cellulose (attic)', '$1.50–$3.00'],
+              ['Spray foam (open-cell)', '$1.50–$3.50'],
+            ].map(([type, price]) => (
+              <tr>
+                <td class="py-2 text-gray-800">{type}</td>
+                <td class="py-2 text-right text-gray-700">{price}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <p class="text-xs text-gray-400 mt-2"><a href="/calculator/insulation/" class="text-brand-600 hover:underline">Calculate insulation →</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Construction -->
+  <section class="mb-10">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">🔨 Construction & Hardscape</h2>
+    <div class="grid sm:grid-cols-2 gap-6">
+
+      <div class="calculator-card overflow-x-auto">
+        <h3 class="font-semibold text-gray-900 mb-3">Fence</h3>
+        <table class="w-full text-sm">
+          <thead><tr class="border-b border-gray-200">
+            <th class="text-left py-2 font-medium text-gray-500">Type</th>
+            <th class="text-right py-2 font-medium text-gray-500">Per linear ft (installed)</th>
+          </tr></thead>
+          <tbody class="divide-y divide-gray-100">
+            {[
+              ['Wood privacy (6 ft)', '$18–$35'],
+              ['Vinyl privacy (6 ft)', '$25–$50'],
+              ['Chain link (4 ft)', '$12–$22'],
+              ['Split rail (2-rail)', '$10–$20'],
+            ].map(([type, price]) => (
+              <tr>
+                <td class="py-2 text-gray-800">{type}</td>
+                <td class="py-2 text-right text-gray-700">{price}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <p class="text-xs text-gray-400 mt-2"><a href="/calculator/fence/" class="text-brand-600 hover:underline">Calculate fence →</a></p>
+      </div>
+
+      <div class="calculator-card overflow-x-auto">
+        <h3 class="font-semibold text-gray-900 mb-3">Deck</h3>
+        <table class="w-full text-sm">
+          <thead><tr class="border-b border-gray-200">
+            <th class="text-left py-2 font-medium text-gray-500">Type</th>
+            <th class="text-right py-2 font-medium text-gray-500">Per sq ft (installed)</th>
+          </tr></thead>
+          <tbody class="divide-y divide-gray-100">
+            {[
+              ['Pressure-treated wood', '$15–$25'],
+              ['Cedar / redwood', '$25–$40'],
+              ['Composite decking', '$30–$55'],
+              ['PVC / synthetic', '$35–$60'],
+            ].map(([type, price]) => (
+              <tr>
+                <td class="py-2 text-gray-800">{type}</td>
+                <td class="py-2 text-right text-gray-700">{price}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <p class="text-xs text-gray-400 mt-2"><a href="/calculator/deck/" class="text-brand-600 hover:underline">Calculate deck →</a></p>
+      </div>
+
+      <div class="calculator-card overflow-x-auto">
+        <h3 class="font-semibold text-gray-900 mb-3">Asphalt</h3>
+        <table class="w-full text-sm">
+          <thead><tr class="border-b border-gray-200">
+            <th class="text-left py-2 font-medium text-gray-500">Type</th>
+            <th class="text-right py-2 font-medium text-gray-500">Price</th>
+          </tr></thead>
+          <tbody class="divide-y divide-gray-100">
+            {[
+              ['Hot mix (bulk, per ton)', '$80–$150'],
+              ['Residential driveway (installed)', '$3–$7/sq ft'],
+              ['Cold patch (50 lb bag)', '$15–$25'],
+              ['Driveway sealer (5 gal)', '$25–$60'],
+            ].map(([type, price]) => (
+              <tr>
+                <td class="py-2 text-gray-800">{type}</td>
+                <td class="py-2 text-right text-gray-700">{price}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <p class="text-xs text-gray-400 mt-2"><a href="/calculator/asphalt/" class="text-brand-600 hover:underline">Calculate asphalt →</a></p>
+      </div>
     </div>
   </section>
 
