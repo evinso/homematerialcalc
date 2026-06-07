@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import FlooringCalculator from '../../components/calculators/FlooringCalculator';
+import AdSlot from '../../components/ui/AdSlot.astro';
+import CalcSchema from '../../components/ui/CalcSchema.astro';
+
+const faqs = [
+  { q: 'How much does flooring cost?', a: 'Flooring costs vary widely: laminate $1–$5/sq ft, luxury vinyl plank $2–$7/sq ft, engineered hardwood $4–$12/sq ft, solid hardwood $6–$15/sq ft, tile $1–$20/sq ft.' },
+  { q: 'How much does it cost to floor a 12×12 room?', a: 'For a 144 sq ft room: laminate at $3/sq ft = $430 materials (10% waste included). LVP at $5/sq ft = $720. Hardwood at $8/sq ft = $1,150. Add $1–$4/sq ft for professional installation.' },
+  { q: 'Does flooring cost include underlayment and adhesive?', a: 'Our calculator covers flooring materials only. Add $0.25–$0.75/sq ft for underlayment, plus adhesive or fasteners if applicable. These details are in the calculator\'s output breakdown.' },
+  { q: 'Is it cheaper to install flooring yourself?', a: 'DIY installation saves $1–$4/sq ft in labor. For a 200 sq ft room that\'s $200–$800 savings. Floating floors (laminate, LVP) are most DIY-friendly. Hardwood and tile are better left to pros.' },
+];
+---
+
+<BaseLayout
+  title="Flooring Cost Calculator — Estimate Total Material Price | Free"
+  description="Calculate total flooring cost by entering room dimensions and price per square foot. 2026 US price ranges for laminate, LVP, hardwood, and tile flooring."
+>
+  <Fragment slot="head">
+    <CalcSchema
+      name="Flooring Cost Calculator"
+      description="Free flooring cost calculator — estimate boxes, square footage, and total price"
+      url="/calculator/flooring-cost"
+      crumbs={[{ label: 'Interior Calculators', href: '/interior-calculators' }, { label: 'Flooring Cost Calculator' }]}
+      faqs={faqs}
+    />
+  </Fragment>
+
+  <div class="max-w-6xl mx-auto px-4 py-10">
+    <nav class="text-sm text-gray-500 mb-4 flex flex-wrap gap-1" aria-label="Breadcrumb">
+      <a href="/" class="hover:text-brand-600">Home</a><span>›</span>
+      <a href="/interior-calculators/" class="hover:text-brand-600">Interior</a><span>›</span>
+      <span class="text-gray-700">Flooring Cost Calculator</span>
+    </nav>
+
+    <div class="grid lg:grid-cols-[1fr_360px] gap-10">
+      <div>
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">Flooring Cost Calculator</h1>
+        <p class="text-gray-600 mb-6">Enter your room dimensions and local price per square foot to estimate total flooring cost including waste factor.</p>
+
+        <FlooringCalculator client:load />
+        <AdSlot slot="after-result" className="mt-6" />
+
+        <div class="calculator-card mt-8">
+          <h2 class="font-bold text-gray-900 text-lg mb-3">How the cost is calculated</h2>
+          <ol class="space-y-2 text-sm text-gray-700">
+            <li class="flex gap-2"><span class="font-bold text-brand-600 flex-shrink-0">1.</span><span>Enter room dimensions → calculator outputs sq ft and boxes needed (with 10% waste).</span></li>
+            <li class="flex gap-2"><span class="font-bold text-brand-600 flex-shrink-0">2.</span><span>Enter your price per sq ft or per box → material cost = area × price.</span></li>
+            <li class="flex gap-2"><span class="font-bold text-brand-600 flex-shrink-0">3.</span><span>Add underlayment and transition strips → total materials estimate.</span></li>
+            <li class="flex gap-2"><span class="font-bold text-brand-600 flex-shrink-0">4.</span><span>Cost per sq ft = total ÷ floor area.</span></li>
+          </ol>
+        </div>
+
+        <div class="calculator-card mt-4">
+          <h2 class="font-bold text-gray-900 text-lg mb-3">2026 US flooring price ranges</h2>
+          <table class="w-full text-sm text-gray-700">
+            <thead><tr class="border-b"><th class="text-left pb-2 font-semibold">Material</th><th class="text-right pb-2 font-semibold">Per sq ft (materials)</th></tr></thead>
+            <tbody class="divide-y">
+              {[['Laminate','$1–$5'],['Luxury vinyl plank (LVP)','$2–$7'],['Engineered hardwood','$4–$12'],['Solid hardwood','$6–$15'],['Ceramic tile','$1–$10'],['Porcelain tile','$3–$20'],['Underlayment','$0.25–$0.75']].map(([p,v]) => (
+                <tr><td class="py-1.5">{p}</td><td class="py-1.5 text-right font-medium">{v}</td></tr>
+              ))}
+            </tbody>
+          </table>
+          <p class="text-xs text-gray-500 mt-2">Prices vary by brand and region. Enter your actual price for an accurate estimate.</p>
+        </div>
+
+        <div class="calculator-card mt-4">
+          <h2 class="font-bold text-gray-900 text-lg mb-4">Frequently Asked Questions</h2>
+          <div class="space-y-4">
+            {faqs.map(f => (
+              <div><h3 class="font-semibold text-gray-900 text-sm mb-1">{f.q}</h3><p class="text-sm text-gray-700">{f.a}</p></div>
+            ))}
+          </div>
+        </div>
+
+        <div class="mt-6 text-sm text-gray-500 border-t pt-4">
+          Just need the quantity? → <a href="/calculator/flooring/" class="text-brand-600 hover:underline">Flooring Calculator</a> ·
+          <a href="/guide/how-much-flooring-do-i-need/" class="text-brand-600 hover:underline">How Much Flooring Do I Need?</a>
+        </div>
+      </div>
+
+      <aside class="space-y-6">
+        <div class="calculator-card">
+          <h3 class="font-semibold text-gray-900 mb-3">Related calculators</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/calculator/flooring/" class="text-brand-600 hover:underline">Flooring Calculator (quantity only)</a></li>
+            <li><a href="/calculator/tile-cost/" class="text-brand-600 hover:underline">Tile Cost Calculator</a></li>
+            <li><a href="/calculator/paint-cost/" class="text-brand-600 hover:underline">Paint Cost Calculator</a></li>
+          </ul>
+        </div>
+        <AdSlot slot="sidebar" />
+      </aside>
+    </div>
+  </div>
+</BaseLayout>

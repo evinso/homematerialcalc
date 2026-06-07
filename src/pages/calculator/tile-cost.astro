@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TileCalculator from '../../components/calculators/TileCalculator';
+import AdSlot from '../../components/ui/AdSlot.astro';
+import CalcSchema from '../../components/ui/CalcSchema.astro';
+
+const faqs = [
+  { q: 'How much does tile cost?', a: 'Ceramic tile: $1–$10/sq ft. Porcelain: $3–$20/sq ft. Natural stone (marble, travertine): $5–$30/sq ft. Subway tile: $2–$8/sq ft. Grout and thinset add $0.50–$1.50/sq ft.' },
+  { q: 'How much does it cost to tile a bathroom?', a: 'A 50 sq ft bathroom floor in mid-range porcelain tile ($5/sq ft) costs about $275 in materials (with 10% waste). Add $200–$400 for thinset, grout, and supplies. Professional installation: $5–$15/sq ft extra.' },
+  { q: 'Does tile cost include grout and thinset?', a: 'Our tile calculator includes tile quantity. Thinset typically costs $15–$25 per 50 lb bag (covers 40–60 sq ft). Grout costs $10–$20 per bag. Enter these separately in the optional add-ons.' },
+  { q: 'Is porcelain or ceramic tile better value?', a: 'Ceramic is cheaper ($1–$10/sq ft) and easier to cut — great for walls and low-traffic areas. Porcelain ($3–$20/sq ft) is denser and more durable for floors, wet areas, and high-traffic spaces.' },
+];
+---
+
+<BaseLayout
+  title="Tile Cost Calculator — Bathroom & Floor Estimate | Free"
+  description="Calculate total tile cost by entering room dimensions and price per square foot. 2026 US price ranges for ceramic, porcelain, natural stone, and subway tile."
+>
+  <Fragment slot="head">
+    <CalcSchema
+      name="Tile Cost Calculator"
+      description="Free tile cost calculator — estimate tiles, square footage, and total price"
+      url="/calculator/tile-cost"
+      crumbs={[{ label: 'Interior Calculators', href: '/interior-calculators' }, { label: 'Tile Cost Calculator' }]}
+      faqs={faqs}
+    />
+  </Fragment>
+
+  <div class="max-w-6xl mx-auto px-4 py-10">
+    <nav class="text-sm text-gray-500 mb-4 flex flex-wrap gap-1" aria-label="Breadcrumb">
+      <a href="/" class="hover:text-brand-600">Home</a><span>›</span>
+      <a href="/interior-calculators/" class="hover:text-brand-600">Interior</a><span>›</span>
+      <span class="text-gray-700">Tile Cost Calculator</span>
+    </nav>
+
+    <div class="grid lg:grid-cols-[1fr_360px] gap-10">
+      <div>
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">Tile Cost Calculator</h1>
+        <p class="text-gray-600 mb-6">Enter your floor or wall dimensions and local tile price to estimate total cost including waste factor.</p>
+
+        <TileCalculator client:load />
+        <AdSlot slot="after-result" className="mt-6" />
+
+        <div class="calculator-card mt-8">
+          <h2 class="font-bold text-gray-900 text-lg mb-3">How the cost is calculated</h2>
+          <ol class="space-y-2 text-sm text-gray-700">
+            <li class="flex gap-2"><span class="font-bold text-brand-600 flex-shrink-0">1.</span><span>Enter area and tile size → calculator outputs tiles needed (with 10% waste).</span></li>
+            <li class="flex gap-2"><span class="font-bold text-brand-600 flex-shrink-0">2.</span><span>Enter your price per sq ft or per tile → material cost calculated.</span></li>
+            <li class="flex gap-2"><span class="font-bold text-brand-600 flex-shrink-0">3.</span><span>Add thinset, grout, and spacers → total materials estimate.</span></li>
+            <li class="flex gap-2"><span class="font-bold text-brand-600 flex-shrink-0">4.</span><span>Cost per sq ft = total ÷ area.</span></li>
+          </ol>
+        </div>
+
+        <div class="calculator-card mt-4">
+          <h2 class="font-bold text-gray-900 text-lg mb-3">2026 US tile price ranges</h2>
+          <table class="w-full text-sm text-gray-700">
+            <thead><tr class="border-b"><th class="text-left pb-2 font-semibold">Material</th><th class="text-right pb-2 font-semibold">Per sq ft</th></tr></thead>
+            <tbody class="divide-y">
+              {[['Ceramic (floor/wall)','$1–$10'],['Porcelain','$3–$20'],['Subway tile','$2–$8'],['Marble','$10–$30'],['Travertine','$5–$20'],['Thinset (per 50 lb bag)','$15–$25'],['Grout (per bag)','$10–$20']].map(([p,v]) => (
+                <tr><td class="py-1.5">{p}</td><td class="py-1.5 text-right font-medium">{v}</td></tr>
+              ))}
+            </tbody>
+          </table>
+          <p class="text-xs text-gray-500 mt-2">Prices vary by brand and region. Enter your actual price for an accurate estimate.</p>
+        </div>
+
+        <div class="calculator-card mt-4">
+          <h2 class="font-bold text-gray-900 text-lg mb-4">Frequently Asked Questions</h2>
+          <div class="space-y-4">
+            {faqs.map(f => (
+              <div><h3 class="font-semibold text-gray-900 text-sm mb-1">{f.q}</h3><p class="text-sm text-gray-700">{f.a}</p></div>
+            ))}
+          </div>
+        </div>
+
+        <div class="mt-6 text-sm text-gray-500 border-t pt-4">
+          Just need the quantity? → <a href="/calculator/tile/" class="text-brand-600 hover:underline">Tile Calculator</a> ·
+          <a href="/guide/how-much-tile-do-i-need/" class="text-brand-600 hover:underline">How Much Tile Do I Need?</a>
+        </div>
+      </div>
+
+      <aside class="space-y-6">
+        <div class="calculator-card">
+          <h3 class="font-semibold text-gray-900 mb-3">Related calculators</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/calculator/tile/" class="text-brand-600 hover:underline">Tile Calculator (quantity only)</a></li>
+            <li><a href="/calculator/flooring-cost/" class="text-brand-600 hover:underline">Flooring Cost Calculator</a></li>
+            <li><a href="/calculator/grout/" class="text-brand-600 hover:underline">Grout Calculator</a></li>
+          </ul>
+        </div>
+        <AdSlot slot="sidebar" />
+      </aside>
+    </div>
+  </div>
+</BaseLayout>

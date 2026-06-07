@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import DeckCalculator from '../../components/calculators/DeckCalculator';
+import AdSlot from '../../components/ui/AdSlot.astro';
+import CalcSchema from '../../components/ui/CalcSchema.astro';
+
+const faqs = [
+  { q: 'How much does a deck cost?', a: 'Pressure-treated wood decking materials cost $15–$25 per sq ft. Composite decking (Trex, TimberTech): $30–$60/sq ft in materials. Fully built by a contractor: $25–$70/sq ft depending on complexity.' },
+  { q: 'How much does a 12×16 deck cost?', a: 'A 12×16 ft deck (192 sq ft) in pressure-treated lumber costs $3,000–$5,000 in materials. Professionally built: $5,000–$14,000 depending on height, railings, and stairs.' },
+  { q: 'Is composite decking worth the extra cost?', a: 'Composite decking costs 2–3× more upfront than wood but lasts 25–30 years vs. 10–15 for treated wood, with no staining or sealing needed. Over 20 years, total cost is often similar.' },
+  { q: 'Does deck cost include footings and framing?', a: 'Our calculator includes decking boards and joists. Footings (concrete piers) add $50–$200 each. Ledger board, posts, beams, and railings are additional — plan for 2× the decking material cost for the full structure.' },
+];
+---
+
+<BaseLayout
+  title="Deck Cost Calculator — Boards, Joists & Total Price | Free"
+  description="Calculate total deck cost by entering deck dimensions and local price per square foot. 2026 US price ranges for wood, composite, and PVC decking."
+>
+  <Fragment slot="head">
+    <CalcSchema
+      name="Deck Cost Calculator"
+      description="Free deck cost calculator — estimate boards, joists, and total deck price"
+      url="/calculator/deck-cost"
+      crumbs={[{ label: 'Calculators', href: '/' }, { label: 'Deck Cost Calculator' }]}
+      faqs={faqs}
+    />
+  </Fragment>
+
+  <div class="max-w-6xl mx-auto px-4 py-10">
+    <nav class="text-sm text-gray-500 mb-4 flex flex-wrap gap-1" aria-label="Breadcrumb">
+      <a href="/" class="hover:text-brand-600">Home</a><span>›</span>
+      <span class="text-gray-700">Deck Cost Calculator</span>
+    </nav>
+
+    <div class="grid lg:grid-cols-[1fr_360px] gap-10">
+      <div>
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">Deck Cost Calculator</h1>
+        <p class="text-gray-600 mb-6">Enter your deck dimensions and local material price to estimate total cost for decking boards and structural framing.</p>
+
+        <DeckCalculator client:load />
+        <AdSlot slot="after-result" className="mt-6" />
+
+        <div class="calculator-card mt-8">
+          <h2 class="font-bold text-gray-900 text-lg mb-3">How the cost is calculated</h2>
+          <ol class="space-y-2 text-sm text-gray-700">
+            <li class="flex gap-2"><span class="font-bold text-brand-600 flex-shrink-0">1.</span><span>Enter deck dimensions and board width → calculator outputs decking boards and joists needed.</span></li>
+            <li class="flex gap-2"><span class="font-bold text-brand-600 flex-shrink-0">2.</span><span>Enter your price per sq ft or per board → material cost calculated.</span></li>
+            <li class="flex gap-2"><span class="font-bold text-brand-600 flex-shrink-0">3.</span><span>Add hardware, fasteners, and finishing costs → total materials estimate.</span></li>
+            <li class="flex gap-2"><span class="font-bold text-brand-600 flex-shrink-0">4.</span><span>Cost per sq ft = total ÷ deck area.</span></li>
+          </ol>
+        </div>
+
+        <div class="calculator-card mt-4">
+          <h2 class="font-bold text-gray-900 text-lg mb-3">2026 US decking price ranges</h2>
+          <table class="w-full text-sm text-gray-700">
+            <thead><tr class="border-b"><th class="text-left pb-2 font-semibold">Material</th><th class="text-right pb-2 font-semibold">Per sq ft (materials)</th></tr></thead>
+            <tbody class="divide-y">
+              {[['Pressure-treated wood','$15–$25'],['Cedar / redwood','$25–$40'],['Composite (Trex, etc.)','$30–$60'],['PVC / capped composite','$40–$70'],['Aluminum decking','$30–$50'],['Full build (installed)','$25–$70']].map(([p,v]) => (
+                <tr><td class="py-1.5">{p}</td><td class="py-1.5 text-right font-medium">{v}</td></tr>
+              ))}
+            </tbody>
+          </table>
+          <p class="text-xs text-gray-500 mt-2">Prices vary by region. Enter your actual price for an accurate estimate.</p>
+        </div>
+
+        <div class="calculator-card mt-4">
+          <h2 class="font-bold text-gray-900 text-lg mb-4">Frequently Asked Questions</h2>
+          <div class="space-y-4">
+            {faqs.map(f => (
+              <div><h3 class="font-semibold text-gray-900 text-sm mb-1">{f.q}</h3><p class="text-sm text-gray-700">{f.a}</p></div>
+            ))}
+          </div>
+        </div>
+
+        <div class="mt-6 text-sm text-gray-500 border-t pt-4">
+          Just need the quantity? → <a href="/calculator/deck/" class="text-brand-600 hover:underline">Deck Calculator</a> ·
+          <a href="/calculator/lumber-cost/" class="text-brand-600 hover:underline">Lumber Cost Calculator</a>
+        </div>
+      </div>
+
+      <aside class="space-y-6">
+        <div class="calculator-card">
+          <h3 class="font-semibold text-gray-900 mb-3">Related calculators</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/calculator/deck/" class="text-brand-600 hover:underline">Deck Calculator (quantity only)</a></li>
+            <li><a href="/calculator/lumber-cost/" class="text-brand-600 hover:underline">Lumber Cost Calculator</a></li>
+            <li><a href="/calculator/fence-cost/" class="text-brand-600 hover:underline">Fence Cost Calculator</a></li>
+          </ul>
+        </div>
+        <AdSlot slot="sidebar" />
+      </aside>
+    </div>
+  </div>
+</BaseLayout>

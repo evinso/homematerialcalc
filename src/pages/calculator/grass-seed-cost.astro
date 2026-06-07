@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import GrassSeedCalculator from '../../components/calculators/GrassSeedCalculator';
+import AdSlot from '../../components/ui/AdSlot.astro';
+import CalcSchema from '../../components/ui/CalcSchema.astro';
+
+const faqs = [
+  { q: 'How much does grass seed cost?', a: 'Grass seed costs $0.10–$0.50 per sq ft seeded, or $3–$8 per pound retail for quality varieties. A 5 lb bag covers 1,000–2,500 sq ft depending on grass type and seeding rate.' },
+  { q: 'How much does it cost to seed a 1,000 sq ft lawn?', a: 'Seed for 1,000 sq ft costs $15–$50 depending on variety. Add $30–$80 for starter fertilizer and $20–$50 for straw cover — total DIY cost roughly $65–$180.' },
+  { q: 'Is seeding cheaper than sod?', a: 'Yes — seeding costs 10–20× less than sod. Seed for 1,000 sq ft: $15–$50. Sod for 1,000 sq ft: $300–$850. The trade-off is 4–8 weeks for establishment vs. immediate coverage from sod.' },
+  { q: 'What\'s a good grass seed price?', a: 'Expect to pay $3–$6/lb for fescue or bluegrass mixes. Zoysia and bermuda grass seed cost $8–$15/lb. Bargain seed under $2/lb often has poor germination rates — spend more for certified seed.' },
+];
+---
+
+<BaseLayout
+  title="Grass Seed Cost Calculator — Estimate Lawn Seeding Price | Free"
+  description="Calculate total grass seed cost by entering lawn area and local price per pound or bag. 2026 US price ranges and comparison with sod installation."
+>
+  <Fragment slot="head">
+    <CalcSchema
+      name="Grass Seed Cost Calculator"
+      description="Free grass seed cost calculator — estimate pounds, bags, and total seeding price"
+      url="/calculator/grass-seed-cost"
+      crumbs={[{ label: 'Landscaping Calculators', href: '/landscaping-calculators' }, { label: 'Grass Seed Cost Calculator' }]}
+      faqs={faqs}
+    />
+  </Fragment>
+
+  <div class="max-w-6xl mx-auto px-4 py-10">
+    <nav class="text-sm text-gray-500 mb-4 flex flex-wrap gap-1" aria-label="Breadcrumb">
+      <a href="/" class="hover:text-brand-600">Home</a><span>›</span>
+      <a href="/landscaping-calculators/" class="hover:text-brand-600">Landscaping</a><span>›</span>
+      <span class="text-gray-700">Grass Seed Cost Calculator</span>
+    </nav>
+
+    <div class="grid lg:grid-cols-[1fr_360px] gap-10">
+      <div>
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">Grass Seed Cost Calculator</h1>
+        <p class="text-gray-600 mb-6">Enter your lawn area, seeding type, and local price per pound to estimate your total grass seed cost.</p>
+
+        <GrassSeedCalculator client:load />
+        <AdSlot slot="after-result" className="mt-6" />
+
+        <div class="calculator-card mt-8">
+          <h2 class="font-bold text-gray-900 text-lg mb-3">How the cost is calculated</h2>
+          <ol class="space-y-2 text-sm text-gray-700">
+            <li class="flex gap-2"><span class="font-bold text-brand-600 flex-shrink-0">1.</span><span>Enter area and seeding type (new lawn vs. overseeding) → calculator outputs pounds needed.</span></li>
+            <li class="flex gap-2"><span class="font-bold text-brand-600 flex-shrink-0">2.</span><span>Enter your price per pound → seed cost = pounds × price.</span></li>
+            <li class="flex gap-2"><span class="font-bold text-brand-600 flex-shrink-0">3.</span><span>Add optional starter fertilizer or straw cover cost → total project estimate.</span></li>
+            <li class="flex gap-2"><span class="font-bold text-brand-600 flex-shrink-0">4.</span><span>Cost per sq ft = total ÷ area (compare to sod).</span></li>
+          </ol>
+        </div>
+
+        <div class="calculator-card mt-4">
+          <h2 class="font-bold text-gray-900 text-lg mb-3">2026 US grass seed price ranges</h2>
+          <table class="w-full text-sm text-gray-700">
+            <thead><tr class="border-b"><th class="text-left pb-2 font-semibold">Variety</th><th class="text-right pb-2 font-semibold">Per pound</th></tr></thead>
+            <tbody class="divide-y">
+              {[['Fescue mix','$3–$6'],['Kentucky Bluegrass','$5–$9'],['Bermuda grass','$8–$15'],['Zoysia grass','$8–$15'],['Ryegrass','$2–$5'],['Starter fertilizer (per 1,000 sq ft)','$15–$30']].map(([p,v]) => (
+                <tr><td class="py-1.5">{p}</td><td class="py-1.5 text-right font-medium">{v}</td></tr>
+              ))}
+            </tbody>
+          </table>
+          <p class="text-xs text-gray-500 mt-2">Prices vary by region. Enter your actual price for an accurate estimate.</p>
+        </div>
+
+        <div class="calculator-card mt-4">
+          <h2 class="font-bold text-gray-900 text-lg mb-4">Frequently Asked Questions</h2>
+          <div class="space-y-4">
+            {faqs.map(f => (
+              <div><h3 class="font-semibold text-gray-900 text-sm mb-1">{f.q}</h3><p class="text-sm text-gray-700">{f.a}</p></div>
+            ))}
+          </div>
+        </div>
+
+        <div class="mt-6 text-sm text-gray-500 border-t pt-4">
+          Just need the quantity? → <a href="/calculator/grass-seed/" class="text-brand-600 hover:underline">Grass Seed Calculator</a> ·
+          <a href="/guide/how-much-grass-seed-do-i-need/" class="text-brand-600 hover:underline">How Much Grass Seed?</a> ·
+          <a href="/guide/sod-vs-seed/" class="text-brand-600 hover:underline">Sod vs Seed</a>
+        </div>
+      </div>
+
+      <aside class="space-y-6">
+        <div class="calculator-card">
+          <h3 class="font-semibold text-gray-900 mb-3">Related calculators</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/calculator/grass-seed/" class="text-brand-600 hover:underline">Grass Seed Calculator (quantity only)</a></li>
+            <li><a href="/calculator/sod-cost/" class="text-brand-600 hover:underline">Sod Cost Calculator</a></li>
+            <li><a href="/calculator/topsoil-cost/" class="text-brand-600 hover:underline">Topsoil Cost Calculator</a></li>
+          </ul>
+        </div>
+        <AdSlot slot="sidebar" />
+      </aside>
+    </div>
+  </div>
+</BaseLayout>

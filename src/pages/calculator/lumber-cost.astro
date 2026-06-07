@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import LumberCalculator from '../../components/calculators/LumberCalculator';
+import AdSlot from '../../components/ui/AdSlot.astro';
+import CalcSchema from '../../components/ui/CalcSchema.astro';
+
+const faqs = [
+  { q: 'How much does lumber cost?', a: 'Pressure-treated 2×4 (8 ft): $5–$10. Dimensional lumber 2×6 (8 ft): $6–$12. Plywood (4×8, 3/4"): $50–$80/sheet. Prices vary significantly by species, grade, and market conditions.' },
+  { q: 'How much does lumber cost per board foot?', a: 'Construction lumber (dimensional): $0.60–$1.50 per board foot. Hardwood (oak, maple, cherry): $4–$15 per board foot. Exotic hardwoods can reach $30–$50/bf. Softwood (pine, fir, cedar): $1–$4/bf.' },
+  { q: 'Why does lumber price fluctuate so much?', a: 'Lumber is a commodity tied to housing demand, supply chain, and tariffs. Prices peaked in 2021 at 4× normal levels and have since stabilized. Buying in late fall or winter often gets better prices.' },
+  { q: 'Does lumber cost include delivery?', a: 'Most lumber yards offer delivery for $50–$150 for a full load. Lumberyards often have free delivery above a minimum order ($500–$1,000). Enter delivery separately as an add-on.' },
+];
+---
+
+<BaseLayout
+  title="Lumber Cost Calculator — Board Feet & Total Price | Free"
+  description="Calculate total lumber cost by entering project dimensions and local price per board foot or per piece. 2026 US price ranges for dimensional and hardwood lumber."
+>
+  <Fragment slot="head">
+    <CalcSchema
+      name="Lumber Cost Calculator"
+      description="Free lumber cost calculator — estimate board feet and total project price"
+      url="/calculator/lumber-cost"
+      crumbs={[{ label: 'Interior Calculators', href: '/interior-calculators' }, { label: 'Lumber Cost Calculator' }]}
+      faqs={faqs}
+    />
+  </Fragment>
+
+  <div class="max-w-6xl mx-auto px-4 py-10">
+    <nav class="text-sm text-gray-500 mb-4 flex flex-wrap gap-1" aria-label="Breadcrumb">
+      <a href="/" class="hover:text-brand-600">Home</a><span>›</span>
+      <a href="/interior-calculators/" class="hover:text-brand-600">Interior</a><span>›</span>
+      <span class="text-gray-700">Lumber Cost Calculator</span>
+    </nav>
+
+    <div class="grid lg:grid-cols-[1fr_360px] gap-10">
+      <div>
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">Lumber Cost Calculator</h1>
+        <p class="text-gray-600 mb-6">Enter your project dimensions and local lumber price to estimate total board feet and material cost.</p>
+
+        <LumberCalculator client:load />
+        <AdSlot slot="after-result" className="mt-6" />
+
+        <div class="calculator-card mt-8">
+          <h2 class="font-bold text-gray-900 text-lg mb-3">How the cost is calculated</h2>
+          <ol class="space-y-2 text-sm text-gray-700">
+            <li class="flex gap-2"><span class="font-bold text-brand-600 flex-shrink-0">1.</span><span>Enter board dimensions and quantity → calculator outputs board feet needed.</span></li>
+            <li class="flex gap-2"><span class="font-bold text-brand-600 flex-shrink-0">2.</span><span>Enter your price per board foot or per piece → material cost calculated.</span></li>
+            <li class="flex gap-2"><span class="font-bold text-brand-600 flex-shrink-0">3.</span><span>Add hardware and fasteners → total materials estimate.</span></li>
+            <li class="flex gap-2"><span class="font-bold text-brand-600 flex-shrink-0">4.</span><span>Cost per board foot = total ÷ board feet (compare supplier quotes).</span></li>
+          </ol>
+        </div>
+
+        <div class="calculator-card mt-4">
+          <h2 class="font-bold text-gray-900 text-lg mb-3">2026 US lumber price ranges</h2>
+          <table class="w-full text-sm text-gray-700">
+            <thead><tr class="border-b"><th class="text-left pb-2 font-semibold">Species / type</th><th class="text-right pb-2 font-semibold">Per board foot</th></tr></thead>
+            <tbody class="divide-y">
+              {[['Pine / SPF (dimensional)','$0.60–$1.50'],['Pressure-treated pine','$0.80–$2.00'],['Cedar','$2–$5'],['Oak (hardwood)','$5–$12'],['Maple (hardwood)','$5–$10'],['Walnut','$10–$20'],['Plywood 3/4" (per sq ft)','$1.50–$2.50']].map(([p,v]) => (
+                <tr><td class="py-1.5">{p}</td><td class="py-1.5 text-right font-medium">{v}</td></tr>
+              ))}
+            </tbody>
+          </table>
+          <p class="text-xs text-gray-500 mt-2">Lumber prices fluctuate with market conditions. Enter your current local price for an accurate estimate.</p>
+        </div>
+
+        <div class="calculator-card mt-4">
+          <h2 class="font-bold text-gray-900 text-lg mb-4">Frequently Asked Questions</h2>
+          <div class="space-y-4">
+            {faqs.map(f => (
+              <div><h3 class="font-semibold text-gray-900 text-sm mb-1">{f.q}</h3><p class="text-sm text-gray-700">{f.a}</p></div>
+            ))}
+          </div>
+        </div>
+
+        <div class="mt-6 text-sm text-gray-500 border-t pt-4">
+          Just need the quantity? → <a href="/calculator/lumber/" class="text-brand-600 hover:underline">Lumber Calculator</a> ·
+          <a href="/guide/how-much-lumber-do-i-need/" class="text-brand-600 hover:underline">How Much Lumber Do I Need?</a>
+        </div>
+      </div>
+
+      <aside class="space-y-6">
+        <div class="calculator-card">
+          <h3 class="font-semibold text-gray-900 mb-3">Related calculators</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/calculator/lumber/" class="text-brand-600 hover:underline">Lumber Calculator (quantity only)</a></li>
+            <li><a href="/calculator/deck-cost/" class="text-brand-600 hover:underline">Deck Cost Calculator</a></li>
+            <li><a href="/calculator/fence-cost/" class="text-brand-600 hover:underline">Fence Cost Calculator</a></li>
+          </ul>
+        </div>
+        <AdSlot slot="sidebar" />
+      </aside>
+    </div>
+  </div>
+</BaseLayout>

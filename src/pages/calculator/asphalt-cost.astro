@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AsphaltCalculator from '../../components/calculators/AsphaltCalculator';
+import AdSlot from '../../components/ui/AdSlot.astro';
+import CalcSchema from '../../components/ui/CalcSchema.astro';
+
+const faqs = [
+  { q: 'How much does asphalt cost per ton?', a: 'Asphalt (hot-mix) runs $80–$150 per ton for materials. Installed (with grading and labor), expect $3–$7 per square foot for a driveway.' },
+  { q: 'How much does an asphalt driveway cost?', a: 'A standard 12×50 ft driveway at 3 inches deep needs about 8 tons. At $120/ton installed that\'s $960–$1,200 materials only, or $2,500–$5,000 fully installed.' },
+  { q: 'Is asphalt cheaper than concrete?', a: 'Asphalt is usually 30–50% cheaper than concrete upfront ($3–$7/sq ft vs. $6–$12/sq ft installed). However, asphalt needs sealing every 3–5 years, adding long-term cost.' },
+  { q: 'How many tons of asphalt do I need?', a: 'Enter your driveway dimensions in the calculator above — it converts square footage and depth to tons automatically. A rough rule: 1 ton covers about 80 sq ft at 1 inch thick.' },
+];
+---
+
+<BaseLayout
+  title="Asphalt Cost Calculator — Driveway Price Estimate | Free"
+  description="Calculate total asphalt cost by entering driveway dimensions and local price per ton. 2026 US price ranges for asphalt and comparison with concrete driveways."
+>
+  <Fragment slot="head">
+    <CalcSchema
+      name="Asphalt Cost Calculator"
+      description="Free asphalt cost calculator — estimate tons, cubic yards, and total driveway price"
+      url="/calculator/asphalt-cost"
+      crumbs={[{ label: 'Landscaping Calculators', href: '/landscaping-calculators' }, { label: 'Asphalt Cost Calculator' }]}
+      faqs={faqs}
+    />
+  </Fragment>
+
+  <div class="max-w-6xl mx-auto px-4 py-10">
+    <nav class="text-sm text-gray-500 mb-4 flex flex-wrap gap-1" aria-label="Breadcrumb">
+      <a href="/" class="hover:text-brand-600">Home</a><span>›</span>
+      <a href="/landscaping-calculators/" class="hover:text-brand-600">Landscaping</a><span>›</span>
+      <span class="text-gray-700">Asphalt Cost Calculator</span>
+    </nav>
+
+    <div class="grid lg:grid-cols-[1fr_360px] gap-10">
+      <div>
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">Asphalt Cost Calculator</h1>
+        <p class="text-gray-600 mb-6">Enter your driveway or path dimensions and local price per ton to estimate total asphalt material cost.</p>
+
+        <AsphaltCalculator client:load />
+        <AdSlot slot="after-result" className="mt-6" />
+
+        <div class="calculator-card mt-8">
+          <h2 class="font-bold text-gray-900 text-lg mb-3">How the cost is calculated</h2>
+          <ol class="space-y-2 text-sm text-gray-700">
+            <li class="flex gap-2"><span class="font-bold text-brand-600 flex-shrink-0">1.</span><span>Enter area and thickness → calculator outputs cubic yards and tons.</span></li>
+            <li class="flex gap-2"><span class="font-bold text-brand-600 flex-shrink-0">2.</span><span>Enter your price per ton → material cost = tons × price.</span></li>
+            <li class="flex gap-2"><span class="font-bold text-brand-600 flex-shrink-0">3.</span><span>Add optional delivery or spreading fee → total = material + fees.</span></li>
+            <li class="flex gap-2"><span class="font-bold text-brand-600 flex-shrink-0">4.</span><span>Cost per sq ft = total ÷ area (compare to contractor bids).</span></li>
+          </ol>
+        </div>
+
+        <div class="calculator-card mt-4">
+          <h2 class="font-bold text-gray-900 text-lg mb-3">2026 US asphalt price ranges</h2>
+          <table class="w-full text-sm text-gray-700">
+            <thead><tr class="border-b"><th class="text-left pb-2 font-semibold">Item</th><th class="text-right pb-2 font-semibold">Typical price</th></tr></thead>
+            <tbody class="divide-y">
+              {[['Hot-mix asphalt (per ton)','$80–$150'],['Driveway installed (per sq ft)','$3–$7'],['Asphalt sealing (per sq ft)','$0.15–$0.25'],['Gravel base (per sq ft)','$0.50–$1.50']].map(([p,v]) => (
+                <tr><td class="py-1.5">{p}</td><td class="py-1.5 text-right font-medium">{v}</td></tr>
+              ))}
+            </tbody>
+          </table>
+          <p class="text-xs text-gray-500 mt-2">Prices vary by region. Enter your actual price for an accurate estimate.</p>
+        </div>
+
+        <div class="calculator-card mt-4">
+          <h2 class="font-bold text-gray-900 text-lg mb-4">Frequently Asked Questions</h2>
+          <div class="space-y-4">
+            {faqs.map(f => (
+              <div><h3 class="font-semibold text-gray-900 text-sm mb-1">{f.q}</h3><p class="text-sm text-gray-700">{f.a}</p></div>
+            ))}
+          </div>
+        </div>
+
+        <div class="mt-6 text-sm text-gray-500 border-t pt-4">
+          Just need the quantity? → <a href="/calculator/asphalt/" class="text-brand-600 hover:underline">Asphalt Calculator</a> ·
+          <a href="/guide/asphalt-vs-concrete-driveway/" class="text-brand-600 hover:underline">Asphalt vs Concrete</a>
+        </div>
+      </div>
+
+      <aside class="space-y-6">
+        <div class="calculator-card">
+          <h3 class="font-semibold text-gray-900 mb-3">Related calculators</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/calculator/asphalt/" class="text-brand-600 hover:underline">Asphalt Calculator (quantity only)</a></li>
+            <li><a href="/calculator/concrete-cost/" class="text-brand-600 hover:underline">Concrete Cost Calculator</a></li>
+            <li><a href="/calculator/gravel-cost/" class="text-brand-600 hover:underline">Gravel Cost Calculator</a></li>
+          </ul>
+        </div>
+        <AdSlot slot="sidebar" />
+      </aside>
+    </div>
+  </div>
+</BaseLayout>

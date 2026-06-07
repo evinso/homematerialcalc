@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PaverCalculator from '../../components/calculators/PaverCalculator';
+import AdSlot from '../../components/ui/AdSlot.astro';
+import CalcSchema from '../../components/ui/CalcSchema.astro';
+
+const faqs = [
+  { q: 'How much do pavers cost?', a: 'Concrete pavers cost $0.50–$3 per piece or $3–$8 per square foot. Natural stone pavers (bluestone, flagstone) run $5–$25/sq ft. Installed cost with base prep: $8–$25/sq ft.' },
+  { q: 'How much does a 10×10 paver patio cost?', a: 'A 10×10 ft patio (100 sq ft) needs about 100 sq ft of pavers. At $4/sq ft in materials plus $25/sq ft installed labor, expect $2,900–$4,000 total. DIY materials only: $400–$800.' },
+  { q: 'Are pavers more expensive than concrete?', a: 'Pavers cost more upfront ($8–$25/sq ft installed vs. $6–$12/sq ft for concrete) but individual pavers can be replaced without repaving the whole surface — which saves long-term.' },
+  { q: 'What\'s included in paver installation cost?', a: 'Professional installation includes: excavation, 4–6" gravel base, 1" sand bedding, paver installation, and edge restraints. That\'s why labor doubles or triples the materials cost.' },
+];
+---
+
+<BaseLayout
+  title="Paver Cost Calculator — Patio & Driveway Price Estimate | Free"
+  description="Calculate total paver cost by entering patio dimensions and local price per square foot or per piece. 2026 US price ranges for concrete and natural stone pavers."
+>
+  <Fragment slot="head">
+    <CalcSchema
+      name="Paver Cost Calculator"
+      description="Free paver cost calculator — estimate pieces, square footage, and total patio price"
+      url="/calculator/paver-cost"
+      crumbs={[{ label: 'Landscaping Calculators', href: '/landscaping-calculators' }, { label: 'Paver Cost Calculator' }]}
+      faqs={faqs}
+    />
+  </Fragment>
+
+  <div class="max-w-6xl mx-auto px-4 py-10">
+    <nav class="text-sm text-gray-500 mb-4 flex flex-wrap gap-1" aria-label="Breadcrumb">
+      <a href="/" class="hover:text-brand-600">Home</a><span>›</span>
+      <a href="/landscaping-calculators/" class="hover:text-brand-600">Landscaping</a><span>›</span>
+      <span class="text-gray-700">Paver Cost Calculator</span>
+    </nav>
+
+    <div class="grid lg:grid-cols-[1fr_360px] gap-10">
+      <div>
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">Paver Cost Calculator</h1>
+        <p class="text-gray-600 mb-6">Enter your patio or driveway dimensions and local price per sq ft or per piece to estimate your total paver cost.</p>
+
+        <PaverCalculator client:load />
+        <AdSlot slot="after-result" className="mt-6" />
+
+        <div class="calculator-card mt-8">
+          <h2 class="font-bold text-gray-900 text-lg mb-3">How the cost is calculated</h2>
+          <ol class="space-y-2 text-sm text-gray-700">
+            <li class="flex gap-2"><span class="font-bold text-brand-600 flex-shrink-0">1.</span><span>Enter area and paver size → calculator outputs pieces and sq ft needed.</span></li>
+            <li class="flex gap-2"><span class="font-bold text-brand-600 flex-shrink-0">2.</span><span>Enter your price per piece or per sq ft → material cost = quantity × price.</span></li>
+            <li class="flex gap-2"><span class="font-bold text-brand-600 flex-shrink-0">3.</span><span>Add optional sand base, gravel, and delivery → total materials cost.</span></li>
+            <li class="flex gap-2"><span class="font-bold text-brand-600 flex-shrink-0">4.</span><span>Cost per sq ft = total ÷ area (compare to contractor bids).</span></li>
+          </ol>
+        </div>
+
+        <div class="calculator-card mt-4">
+          <h2 class="font-bold text-gray-900 text-lg mb-3">2026 US paver price ranges</h2>
+          <table class="w-full text-sm text-gray-700">
+            <thead><tr class="border-b"><th class="text-left pb-2 font-semibold">Product</th><th class="text-right pb-2 font-semibold">Per sq ft</th></tr></thead>
+            <tbody class="divide-y">
+              {[['Concrete pavers','$3–$8'],['Brick pavers','$4–$10'],['Travertine','$5–$15'],['Bluestone / flagstone','$5–$25'],['Installed (labor + materials)','$8–$25']].map(([p,v]) => (
+                <tr><td class="py-1.5">{p}</td><td class="py-1.5 text-right font-medium">{v}</td></tr>
+              ))}
+            </tbody>
+          </table>
+          <p class="text-xs text-gray-500 mt-2">Prices vary by region and paver type. Enter your actual price for an accurate estimate.</p>
+        </div>
+
+        <div class="calculator-card mt-4">
+          <h2 class="font-bold text-gray-900 text-lg mb-4">Frequently Asked Questions</h2>
+          <div class="space-y-4">
+            {faqs.map(f => (
+              <div><h3 class="font-semibold text-gray-900 text-sm mb-1">{f.q}</h3><p class="text-sm text-gray-700">{f.a}</p></div>
+            ))}
+          </div>
+        </div>
+
+        <div class="mt-6 text-sm text-gray-500 border-t pt-4">
+          Just need the quantity? → <a href="/calculator/paver/" class="text-brand-600 hover:underline">Paver Calculator</a> ·
+          <a href="/guide/how-many-pavers-do-i-need/" class="text-brand-600 hover:underline">How Many Pavers Do I Need?</a> ·
+          <a href="/guide/how-to-build-a-patio/" class="text-brand-600 hover:underline">How to Build a Patio</a>
+        </div>
+      </div>
+
+      <aside class="space-y-6">
+        <div class="calculator-card">
+          <h3 class="font-semibold text-gray-900 mb-3">Related calculators</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/calculator/paver/" class="text-brand-600 hover:underline">Paver Calculator (quantity only)</a></li>
+            <li><a href="/calculator/sand-cost/" class="text-brand-600 hover:underline">Sand Cost Calculator</a></li>
+            <li><a href="/calculator/gravel-cost/" class="text-brand-600 hover:underline">Gravel Cost Calculator</a></li>
+          </ul>
+        </div>
+        <AdSlot slot="sidebar" />
+      </aside>
+    </div>
+  </div>
+</BaseLayout>

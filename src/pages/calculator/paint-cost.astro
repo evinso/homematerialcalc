@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PaintCalculator from '../../components/calculators/PaintCalculator';
+import AdSlot from '../../components/ui/AdSlot.astro';
+import CalcSchema from '../../components/ui/CalcSchema.astro';
+
+const faqs = [
+  { q: 'How much does paint cost per gallon?', a: 'Standard interior latex paint: $20–$40/gallon. Premium paints (Benjamin Moore, Sherwin-Williams): $40–$80/gallon. Specialty (primer+paint, cabinet paint): $50–$100/gallon.' },
+  { q: 'How much does it cost to paint a room?', a: 'DIY materials for a 12×12 ft room (2 coats): $40–$120 in paint. Professionally painted, expect $200–$500 for a standard bedroom including labor and prep.' },
+  { q: 'How many gallons of paint do I need for a 12×12 room?', a: 'A 12×12 room with 8 ft ceilings has about 318 sq ft of paintable wall area. At 350 sq ft/gallon per coat, you need 1 gallon per coat — 2 gallons for 2 coats.' },
+  { q: 'Does primer cost extra?', a: 'Primer runs $15–$30/gallon and covers 300–400 sq ft per coat. For most repaints, a self-priming paint ($40–$70/gallon) eliminates the separate primer step and saves money.' },
+];
+---
+
+<BaseLayout
+  title="Paint Cost Calculator — Room Painting Estimate | Free"
+  description="Calculate total paint cost by entering room dimensions and local price per gallon. Includes 2026 US price ranges for all paint types and primer."
+>
+  <Fragment slot="head">
+    <CalcSchema
+      name="Paint Cost Calculator"
+      description="Free paint cost calculator — estimate gallons and total room painting cost"
+      url="/calculator/paint-cost"
+      crumbs={[{ label: 'Interior Calculators', href: '/interior-calculators' }, { label: 'Paint Cost Calculator' }]}
+      faqs={faqs}
+    />
+  </Fragment>
+
+  <div class="max-w-6xl mx-auto px-4 py-10">
+    <nav class="text-sm text-gray-500 mb-4 flex flex-wrap gap-1" aria-label="Breadcrumb">
+      <a href="/" class="hover:text-brand-600">Home</a><span>›</span>
+      <a href="/interior-calculators/" class="hover:text-brand-600">Interior</a><span>›</span>
+      <span class="text-gray-700">Paint Cost Calculator</span>
+    </nav>
+
+    <div class="grid lg:grid-cols-[1fr_360px] gap-10">
+      <div>
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">Paint Cost Calculator</h1>
+        <p class="text-gray-600 mb-6">Enter your room dimensions and local paint price to estimate total gallons needed and your total painting cost.</p>
+
+        <PaintCalculator client:load />
+        <AdSlot slot="after-result" className="mt-6" />
+
+        <div class="calculator-card mt-8">
+          <h2 class="font-bold text-gray-900 text-lg mb-3">How the cost is calculated</h2>
+          <ol class="space-y-2 text-sm text-gray-700">
+            <li class="flex gap-2"><span class="font-bold text-brand-600 flex-shrink-0">1.</span><span>Enter room dimensions, ceiling height, doors, and windows → calculator outputs net wall area and gallons needed.</span></li>
+            <li class="flex gap-2"><span class="font-bold text-brand-600 flex-shrink-0">2.</span><span>Enter your price per gallon → paint cost = gallons × price.</span></li>
+            <li class="flex gap-2"><span class="font-bold text-brand-600 flex-shrink-0">3.</span><span>Add ceiling paint if needed → total = wall paint + ceiling paint.</span></li>
+            <li class="flex gap-2"><span class="font-bold text-brand-600 flex-shrink-0">4.</span><span>Cost per sq ft (wall) = total ÷ wall area.</span></li>
+          </ol>
+        </div>
+
+        <div class="calculator-card mt-4">
+          <h2 class="font-bold text-gray-900 text-lg mb-3">2026 US paint price ranges</h2>
+          <table class="w-full text-sm text-gray-700">
+            <thead><tr class="border-b"><th class="text-left pb-2 font-semibold">Product</th><th class="text-right pb-2 font-semibold">Per gallon</th></tr></thead>
+            <tbody class="divide-y">
+              {[['Standard interior latex','$20–$40'],['Premium paint (BM, SW)','$40–$80'],['Primer','$15–$30'],['Ceiling paint','$20–$40'],['Cabinet / trim paint','$50–$100']].map(([p,v]) => (
+                <tr><td class="py-1.5">{p}</td><td class="py-1.5 text-right font-medium">{v}</td></tr>
+              ))}
+            </tbody>
+          </table>
+          <p class="text-xs text-gray-500 mt-2">Prices vary by brand and region. Enter your actual price for an accurate estimate.</p>
+        </div>
+
+        <div class="calculator-card mt-4">
+          <h2 class="font-bold text-gray-900 text-lg mb-4">Frequently Asked Questions</h2>
+          <div class="space-y-4">
+            {faqs.map(f => (
+              <div><h3 class="font-semibold text-gray-900 text-sm mb-1">{f.q}</h3><p class="text-sm text-gray-700">{f.a}</p></div>
+            ))}
+          </div>
+        </div>
+
+        <div class="mt-6 text-sm text-gray-500 border-t pt-4">
+          Just need the quantity? → <a href="/calculator/paint/" class="text-brand-600 hover:underline">Paint Calculator</a> ·
+          <a href="/guide/how-much-paint-do-i-need/" class="text-brand-600 hover:underline">How Much Paint Do I Need?</a> ·
+          <a href="/guide/paint-coverage-per-gallon/" class="text-brand-600 hover:underline">Paint Coverage per Gallon</a>
+        </div>
+      </div>
+
+      <aside class="space-y-6">
+        <div class="calculator-card">
+          <h3 class="font-semibold text-gray-900 mb-3">Related calculators</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/calculator/paint/" class="text-brand-600 hover:underline">Paint Calculator (quantity only)</a></li>
+            <li><a href="/calculator/flooring-cost/" class="text-brand-600 hover:underline">Flooring Cost Calculator</a></li>
+            <li><a href="/calculator/drywall-cost/" class="text-brand-600 hover:underline">Drywall Cost Calculator</a></li>
+          </ul>
+        </div>
+        <AdSlot slot="sidebar" />
+      </aside>
+    </div>
+  </div>
+</BaseLayout>

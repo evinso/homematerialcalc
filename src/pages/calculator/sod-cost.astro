@@ -3,60 +3,91 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import SodCalculator from '../../components/calculators/SodCalculator';
 import AdSlot from '../../components/ui/AdSlot.astro';
 import CalcSchema from '../../components/ui/CalcSchema.astro';
-import CalcBreadcrumbs from '../../components/ui/CalcBreadcrumbs.astro';
+
+const faqs = [
+  { q: 'How much does sod cost?', a: 'Sod costs $0.30–$0.85 per square foot, or $150–$450 per pallet (covers 450–500 sq ft). Kentucky Bluegrass and Zoysia are pricier; Bermuda and fescue are more affordable.' },
+  { q: 'How much sod does a pallet cover?', a: 'A standard pallet covers 450–500 sq ft. Some premium varieties come in 504 or 600 sq ft pallets. Check with your supplier before ordering.' },
+  { q: 'Should I install sod myself or hire a pro?', a: 'DIY sod installation costs just the sod price. Professional installation adds $1–$2/sq ft in labor, so a 1,000 sq ft lawn costs $500–$850 in sod plus $1,000–$2,000 installed.' },
+  { q: 'Does sod cost include delivery?', a: 'Usually not. Pallet delivery typically adds $50–$150. Sod is time-sensitive — it must be installed within 24–36 hours of delivery, so plan accordingly.' },
+];
 ---
 
 <BaseLayout
-  title="Sod Cost Calculator — Price per Pallet & Square Foot"
-  description="Calculate total sod cost by entering your lawn area and local price per pallet or square foot. Includes typical US price ranges for Bermuda, Zoysia, and Fescue."
+  title="Sod Cost Calculator — Estimate Price per Pallet | Free"
+  description="Calculate total sod cost by entering lawn area and local price per square foot or pallet. Includes 2026 US price ranges and DIY vs. professional installation comparison."
 >
   <Fragment slot="head">
-    <CalcSchema name="Sod Cost Calculator" crumbs={[{ label: "Landscaping Calculators", href: "/landscaping-calculators" }, { label: "Sod Cost Calculator" }]} description="Free sod cost calculator: enter your lawn area and price per pallet to estimate your total sod installation cost." url="/calculator/sod-cost" />
+    <CalcSchema
+      name="Sod Cost Calculator"
+      description="Free sod cost calculator — estimate pallets, square footage, and total price"
+      url="/calculator/sod-cost"
+      crumbs={[{ label: 'Landscaping Calculators', href: '/landscaping-calculators' }, { label: 'Sod Cost Calculator' }]}
+      faqs={faqs}
+    />
   </Fragment>
 
   <div class="max-w-6xl mx-auto px-4 py-10">
-    <nav class="text-sm text-gray-500 mb-4 flex gap-1">
+    <nav class="text-sm text-gray-500 mb-4 flex flex-wrap gap-1" aria-label="Breadcrumb">
       <a href="/" class="hover:text-brand-600">Home</a><span>›</span>
-      <a href="/landscaping-calculators" class="hover:text-brand-600">Landscaping</a><span>›</span>
+      <a href="/landscaping-calculators/" class="hover:text-brand-600">Landscaping</a><span>›</span>
       <span class="text-gray-700">Sod Cost Calculator</span>
     </nav>
-    <CalcBreadcrumbs crumbs={[{ label: "Landscaping Calculators", href: "/landscaping-calculators" }, { label: "Sod Cost Calculator" }]} />
+
     <div class="grid lg:grid-cols-[1fr_360px] gap-10">
       <div>
         <h1 class="text-3xl font-bold text-gray-900 mb-2">Sod Cost Calculator</h1>
-        <p class="text-gray-600 mb-2">Enter your lawn dimensions and local price per pallet to calculate your total sod cost.</p>
-        <p class="text-sm text-gray-500 mb-6" set:html="Enter your price in the <strong>"Price per pallet"</strong> field to get a cost estimate."></p>
+        <p class="text-gray-600 mb-6">Enter your lawn area and local sod price to estimate total cost by square foot or pallet, including delivery.</p>
 
         <SodCalculator client:load />
         <AdSlot slot="after-result" className="mt-6" />
 
         <div class="calculator-card mt-8">
-          <h2 class="font-bold text-gray-900 text-lg mb-3">Typical prices (US)</h2>
+          <h2 class="font-bold text-gray-900 text-lg mb-3">How the cost is calculated</h2>
+          <ol class="space-y-2 text-sm text-gray-700">
+            <li class="flex gap-2"><span class="font-bold text-brand-600 flex-shrink-0">1.</span><span>Enter your lawn area → calculator outputs sq ft, pieces, and pallets needed.</span></li>
+            <li class="flex gap-2"><span class="font-bold text-brand-600 flex-shrink-0">2.</span><span>Enter your price per sq ft or per pallet → material cost = quantity × price.</span></li>
+            <li class="flex gap-2"><span class="font-bold text-brand-600 flex-shrink-0">3.</span><span>Add optional delivery fee → total = material + delivery.</span></li>
+            <li class="flex gap-2"><span class="font-bold text-brand-600 flex-shrink-0">4.</span><span>Compare with seeding cost using the price per sq ft result.</span></li>
+          </ol>
+        </div>
+
+        <div class="calculator-card mt-4">
+          <h2 class="font-bold text-gray-900 text-lg mb-3">2026 US sod price ranges</h2>
           <table class="w-full text-sm text-gray-700">
-            <thead><tr class="border-b"><th class="text-left pb-1">Product</th><th class="text-right pb-1">Typical price</th></tr></thead>
+            <thead><tr class="border-b"><th class="text-left pb-2 font-semibold">Variety</th><th class="text-right pb-2 font-semibold">Per sq ft</th></tr></thead>
             <tbody class="divide-y">
-              <tr><td class="py-1.5">Bermuda sod (per pallet)</td><td class="py-1.5 text-right font-medium">$150–$350</td></tr>
-              <tr><td class="py-1.5">Zoysia sod (per pallet)</td><td class="py-1.5 text-right font-medium">$200–$450</td></tr>
-              <tr><td class="py-1.5">Fescue sod (per pallet)</td><td class="py-1.5 text-right font-medium">$150–$300</td></tr>
-              <tr><td class="py-1.5">St. Augustine (per pallet)</td><td class="py-1.5 text-right font-medium">$175–$400</td></tr>
+              {[['Bermuda grass','$0.30–$0.55'],['Tall fescue','$0.35–$0.60'],['Kentucky Bluegrass','$0.45–$0.75'],['Zoysia','$0.50–$0.85'],['St. Augustine','$0.40–$0.70'],['Delivery (per pallet)','$50–$150']].map(([p,v]) => (
+                <tr><td class="py-1.5">{p}</td><td class="py-1.5 text-right font-medium">{v}</td></tr>
+              ))}
             </tbody>
           </table>
-          <p class="text-xs text-gray-500 mt-2">Prices vary by region. Enter your actual local price above for an accurate estimate.</p>
+          <p class="text-xs text-gray-500 mt-2">Prices vary by region and variety. Enter your actual price for an accurate estimate.</p>
+        </div>
+
+        <div class="calculator-card mt-4">
+          <h2 class="font-bold text-gray-900 text-lg mb-4">Frequently Asked Questions</h2>
+          <div class="space-y-4">
+            {faqs.map(f => (
+              <div><h3 class="font-semibold text-gray-900 text-sm mb-1">{f.q}</h3><p class="text-sm text-gray-700">{f.a}</p></div>
+            ))}
+          </div>
         </div>
 
         <div class="mt-6 text-sm text-gray-500 border-t pt-4">
-          Quantity-only? Use the <a href="/calculator/sod" class="text-brand-600 hover:underline">Sod Calculator</a>
+          Just need the quantity? → <a href="/calculator/sod/" class="text-brand-600 hover:underline">Sod Calculator</a> ·
+          <a href="/guide/how-much-sod-do-i-need/" class="text-brand-600 hover:underline">How Much Sod Do I Need?</a> ·
+          <a href="/guide/sod-vs-seed/" class="text-brand-600 hover:underline">Sod vs Seed</a>
         </div>
       </div>
 
       <aside class="space-y-6">
         <div class="calculator-card">
-          <h3 class="font-semibold text-gray-900 mb-3">Related</h3>
+          <h3 class="font-semibold text-gray-900 mb-3">Related calculators</h3>
           <ul class="space-y-2 text-sm">
-            <li><a href="/calculator/sod" class="text-brand-600 hover:underline">Sod Calculator (quantity only)</a></li>
-            <li><a href="/guide/how-much-sod-do-i-need" class="text-brand-600 hover:underline">How Much Sod Do I Need?</a></li>
-            <li><a href="/guide/how-many-square-feet-does-a-pallet-of-sod-cover" class="text-brand-600 hover:underline">Sod Pallet Coverage</a></li>
-            <li><a href="/calculator/topsoil-cost" class="text-brand-600 hover:underline">Topsoil Cost Calculator</a></li>
+            <li><a href="/calculator/sod/" class="text-brand-600 hover:underline">Sod Calculator (quantity only)</a></li>
+            <li><a href="/calculator/grass-seed/" class="text-brand-600 hover:underline">Grass Seed Calculator</a></li>
+            <li><a href="/calculator/topsoil-cost/" class="text-brand-600 hover:underline">Topsoil Cost Calculator</a></li>
+            <li><a href="/guide/sod-vs-seed/" class="text-brand-600 hover:underline">Sod vs Seed Guide</a></li>
           </ul>
         </div>
         <AdSlot slot="sidebar" />

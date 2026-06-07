@@ -3,60 +3,89 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import TopsoilCalculator from '../../components/calculators/TopsoilCalculator';
 import AdSlot from '../../components/ui/AdSlot.astro';
 import CalcSchema from '../../components/ui/CalcSchema.astro';
-import CalcBreadcrumbs from '../../components/ui/CalcBreadcrumbs.astro';
+
+const faqs = [
+  { q: 'How much does topsoil cost?', a: 'Bagged topsoil costs $3–$7 per 40 lb bag (≈ 0.75 cu ft). Bulk topsoil delivered runs $25–$50 per cubic yard. Premium screened topsoil can reach $60/cu yd.' },
+  { q: 'How much topsoil do I need for a new lawn?', a: 'For a new lawn you need 4–6 inches. A 1,000 sq ft area at 6 inches needs about 18.5 cubic yards — roughly $650–$900 in bulk plus delivery.' },
+  { q: 'Is bulk topsoil cheaper than bags?', a: 'Yes, significantly. At $5/bag (0.75 cu ft) that\'s $180/cu yd in bags vs. $25–$50/cu yd delivered in bulk. For any project over 2 yards, bulk is worth it.' },
+  { q: 'What\'s the difference between topsoil and garden soil?', a: 'Topsoil is natural soil, good for fill and new lawns. Garden soil is enriched with compost for planting beds. Garden soil costs slightly more.' },
+];
 ---
 
 <BaseLayout
-  title="Topsoil Cost Calculator — Price per Cubic Yard & Bag"
-  description="Calculate total topsoil cost by entering your area, depth, and local price per cubic yard. Includes typical US price ranges for bulk and bagged topsoil."
+  title="Topsoil Cost Calculator — Estimate Price per Yard | Free"
+  description="Calculate total topsoil cost by entering area, depth, and local price per cubic yard or bag. Includes 2026 US price ranges and bulk vs. bag comparison."
 >
   <Fragment slot="head">
-    <CalcSchema name="Topsoil Cost Calculator" crumbs={[{ label: "Landscaping Calculators", href: "/landscaping-calculators" }, { label: "Topsoil Cost Calculator" }]} description="Free topsoil cost calculator: enter your area, depth, and price per cubic yard or bag to estimate your total topsoil cost." url="/calculator/topsoil-cost" />
+    <CalcSchema
+      name="Topsoil Cost Calculator"
+      description="Free topsoil cost calculator — estimate cubic yards, bags, and total price"
+      url="/calculator/topsoil-cost"
+      crumbs={[{ label: 'Landscaping Calculators', href: '/landscaping-calculators' }, { label: 'Topsoil Cost Calculator' }]}
+      faqs={faqs}
+    />
   </Fragment>
 
   <div class="max-w-6xl mx-auto px-4 py-10">
-    <nav class="text-sm text-gray-500 mb-4 flex gap-1">
+    <nav class="text-sm text-gray-500 mb-4 flex flex-wrap gap-1" aria-label="Breadcrumb">
       <a href="/" class="hover:text-brand-600">Home</a><span>›</span>
-      <a href="/landscaping-calculators" class="hover:text-brand-600">Landscaping</a><span>›</span>
+      <a href="/landscaping-calculators/" class="hover:text-brand-600">Landscaping</a><span>›</span>
       <span class="text-gray-700">Topsoil Cost Calculator</span>
     </nav>
-    <CalcBreadcrumbs crumbs={[{ label: "Landscaping Calculators", href: "/landscaping-calculators" }, { label: "Topsoil Cost Calculator" }]} />
+
     <div class="grid lg:grid-cols-[1fr_360px] gap-10">
       <div>
         <h1 class="text-3xl font-bold text-gray-900 mb-2">Topsoil Cost Calculator</h1>
-        <p class="text-gray-600 mb-2">Enter your project dimensions and local price per cubic yard to calculate your total topsoil cost.</p>
-        <p class="text-sm text-gray-500 mb-6" set:html="Enter your price in the <strong>"Price per cu yd"</strong> field to get a cost estimate."></p>
+        <p class="text-gray-600 mb-6">Enter your area, depth, and local price per cubic yard or bag to estimate your total topsoil cost including delivery.</p>
 
         <TopsoilCalculator client:load />
         <AdSlot slot="after-result" className="mt-6" />
 
         <div class="calculator-card mt-8">
-          <h2 class="font-bold text-gray-900 text-lg mb-3">Typical prices (US)</h2>
+          <h2 class="font-bold text-gray-900 text-lg mb-3">How the cost is calculated</h2>
+          <ol class="space-y-2 text-sm text-gray-700">
+            <li class="flex gap-2"><span class="font-bold text-brand-600 flex-shrink-0">1.</span><span>Enter area and depth → calculator outputs cubic yards and bags.</span></li>
+            <li class="flex gap-2"><span class="font-bold text-brand-600 flex-shrink-0">2.</span><span>Enter your price per cubic yard or per 40 lb bag → material cost = quantity × price.</span></li>
+            <li class="flex gap-2"><span class="font-bold text-brand-600 flex-shrink-0">3.</span><span>Add optional delivery fee → total = material + delivery.</span></li>
+            <li class="flex gap-2"><span class="font-bold text-brand-600 flex-shrink-0">4.</span><span>Cost per square foot = total ÷ area.</span></li>
+          </ol>
+        </div>
+
+        <div class="calculator-card mt-4">
+          <h2 class="font-bold text-gray-900 text-lg mb-3">2026 US topsoil price ranges</h2>
           <table class="w-full text-sm text-gray-700">
-            <thead><tr class="border-b"><th class="text-left pb-1">Product</th><th class="text-right pb-1">Typical price</th></tr></thead>
+            <thead><tr class="border-b"><th class="text-left pb-2 font-semibold">Product</th><th class="text-right pb-2 font-semibold">Typical price</th></tr></thead>
             <tbody class="divide-y">
-              <tr><td class="py-1.5">Bulk topsoil (per cu yd)</td><td class="py-1.5 text-right font-medium">$25–$50</td></tr>
-              <tr><td class="py-1.5">40 lb bag</td><td class="py-1.5 text-right font-medium">$3–$7</td></tr>
-              <tr><td class="py-1.5">Screened topsoil (premium)</td><td class="py-1.5 text-right font-medium">$40–$65/cu yd</td></tr>
-              <tr><td class="py-1.5">Delivery fee (typical)</td><td class="py-1.5 text-right font-medium">$50–$150</td></tr>
+              {[['40 lb bag (store)','$3–$7'],['Bulk topsoil (per cu yd)','$25–$50'],['Screened/premium topsoil','$40–$65/cu yd'],['Delivery fee','$50–$150']].map(([p,v]) => (
+                <tr><td class="py-1.5">{p}</td><td class="py-1.5 text-right font-medium">{v}</td></tr>
+              ))}
             </tbody>
           </table>
-          <p class="text-xs text-gray-500 mt-2">Prices vary by region. Enter your actual local price above for an accurate estimate.</p>
+          <p class="text-xs text-gray-500 mt-2">Prices vary by region. Enter your actual price for an accurate estimate.</p>
+        </div>
+
+        <div class="calculator-card mt-4">
+          <h2 class="font-bold text-gray-900 text-lg mb-4">Frequently Asked Questions</h2>
+          <div class="space-y-4">
+            {faqs.map(f => (
+              <div><h3 class="font-semibold text-gray-900 text-sm mb-1">{f.q}</h3><p class="text-sm text-gray-700">{f.a}</p></div>
+            ))}
+          </div>
         </div>
 
         <div class="mt-6 text-sm text-gray-500 border-t pt-4">
-          Quantity-only? Use the <a href="/calculator/topsoil" class="text-brand-600 hover:underline">Topsoil Calculator</a>
+          Just need the quantity? → <a href="/calculator/topsoil/" class="text-brand-600 hover:underline">Topsoil Calculator</a> ·
+          <a href="/guide/how-much-topsoil-do-i-need/" class="text-brand-600 hover:underline">How Much Topsoil Do I Need?</a>
         </div>
       </div>
 
       <aside class="space-y-6">
         <div class="calculator-card">
-          <h3 class="font-semibold text-gray-900 mb-3">Related</h3>
+          <h3 class="font-semibold text-gray-900 mb-3">Related calculators</h3>
           <ul class="space-y-2 text-sm">
-            <li><a href="/calculator/topsoil" class="text-brand-600 hover:underline">Topsoil Calculator (quantity only)</a></li>
-            <li><a href="/guide/how-much-topsoil-do-i-need" class="text-brand-600 hover:underline">How Much Topsoil Do I Need?</a></li>
-            <li><a href="/guide/topsoil-vs-garden-soil" class="text-brand-600 hover:underline">Topsoil vs Garden Soil</a></li>
-            <li><a href="/calculator/mulch-cost" class="text-brand-600 hover:underline">Mulch Cost Calculator</a></li>
+            <li><a href="/calculator/topsoil/" class="text-brand-600 hover:underline">Topsoil Calculator (quantity only)</a></li>
+            <li><a href="/calculator/mulch-cost/" class="text-brand-600 hover:underline">Mulch Cost Calculator</a></li>
+            <li><a href="/calculator/sand-cost/" class="text-brand-600 hover:underline">Sand Cost Calculator</a></li>
           </ul>
         </div>
         <AdSlot slot="sidebar" />

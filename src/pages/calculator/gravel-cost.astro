@@ -3,60 +3,91 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import GravelCalculator from '../../components/calculators/GravelCalculator';
 import AdSlot from '../../components/ui/AdSlot.astro';
 import CalcSchema from '../../components/ui/CalcSchema.astro';
-import CalcBreadcrumbs from '../../components/ui/CalcBreadcrumbs.astro';
+
+const faqs = [
+  { q: 'How much does gravel cost per ton?', a: 'Pea gravel: $35–$65/ton. Crushed stone (3/4"): $25–$45/ton. River rock: $40–$75/ton. Prices vary widely by stone type and region.' },
+  { q: 'How much does a gravel driveway cost?', a: 'A 12×50 ft driveway at 6 inches deep needs about 13 tons. At $40/ton plus $150 delivery that\'s roughly $670 for materials — before grading or edging.' },
+  { q: 'Is it cheaper to buy gravel by the ton or by the bag?', a: 'Bulk by the ton is almost always cheaper for any project over 1 ton. Bagged gravel at $5/50 lb bag = $200/ton vs. $35–$65/ton delivered in bulk.' },
+  { q: 'Does gravel price include delivery?', a: 'Usually not. Delivery adds $50–$200 depending on distance and supplier. Most suppliers have a minimum order of 5–10 tons for delivery.' },
+];
 ---
 
 <BaseLayout
-  title="Gravel Cost Calculator — Price per Ton & Cubic Yard"
-  description="Calculate total gravel cost by entering your project area, depth, stone type, and local price per ton. Includes typical US price ranges for all gravel types."
+  title="Gravel Cost Calculator — Estimate Price per Ton | Free"
+  description="Calculate total gravel cost by entering area, depth, stone type, and local price per ton or cubic yard. 2026 US price ranges for pea gravel, crushed stone, river rock."
 >
   <Fragment slot="head">
-    <CalcSchema name="Gravel Cost Calculator" crumbs={[{ label: "Landscaping Calculators", href: "/landscaping-calculators" }, { label: "Gravel Cost Calculator" }]} description="Free gravel cost calculator: enter your area, depth, stone type, and price per ton to get your total gravel cost." url="/calculator/gravel-cost" />
+    <CalcSchema
+      name="Gravel Cost Calculator"
+      description="Free gravel cost calculator — estimate tons, cubic yards, and total price"
+      url="/calculator/gravel-cost"
+      crumbs={[{ label: 'Landscaping Calculators', href: '/landscaping-calculators' }, { label: 'Gravel Cost Calculator' }]}
+      faqs={faqs}
+    />
   </Fragment>
 
   <div class="max-w-6xl mx-auto px-4 py-10">
-    <nav class="text-sm text-gray-500 mb-4 flex gap-1">
+    <nav class="text-sm text-gray-500 mb-4 flex flex-wrap gap-1" aria-label="Breadcrumb">
       <a href="/" class="hover:text-brand-600">Home</a><span>›</span>
-      <a href="/landscaping-calculators" class="hover:text-brand-600">Landscaping</a><span>›</span>
+      <a href="/landscaping-calculators/" class="hover:text-brand-600">Landscaping</a><span>›</span>
       <span class="text-gray-700">Gravel Cost Calculator</span>
     </nav>
-    <CalcBreadcrumbs crumbs={[{ label: "Landscaping Calculators", href: "/landscaping-calculators" }, { label: "Gravel Cost Calculator" }]} />
+
     <div class="grid lg:grid-cols-[1fr_360px] gap-10">
       <div>
         <h1 class="text-3xl font-bold text-gray-900 mb-2">Gravel Cost Calculator</h1>
-        <p class="text-gray-600 mb-2">Enter your project dimensions, stone type, and local price per ton or cubic yard to calculate your total gravel cost.</p>
-        <p class="text-sm text-gray-500 mb-6" set:html="Enter your price in the <strong>"Price per ton"</strong> field to get a cost estimate."></p>
+        <p class="text-gray-600 mb-6">Enter your project dimensions, stone type, and local price per ton to calculate your total gravel cost including delivery.</p>
 
         <GravelCalculator client:load />
         <AdSlot slot="after-result" className="mt-6" />
 
         <div class="calculator-card mt-8">
-          <h2 class="font-bold text-gray-900 text-lg mb-3">Typical prices (US)</h2>
+          <h2 class="font-bold text-gray-900 text-lg mb-3">How the cost is calculated</h2>
+          <ol class="space-y-2 text-sm text-gray-700">
+            <li class="flex gap-2"><span class="font-bold text-brand-600 flex-shrink-0">1.</span><span>Enter dimensions and depth → calculator outputs cubic yards and tons needed.</span></li>
+            <li class="flex gap-2"><span class="font-bold text-brand-600 flex-shrink-0">2.</span><span>Enter your price per ton or per cubic yard → material cost = quantity × unit price.</span></li>
+            <li class="flex gap-2"><span class="font-bold text-brand-600 flex-shrink-0">3.</span><span>Add optional delivery fee → total = material + delivery.</span></li>
+            <li class="flex gap-2"><span class="font-bold text-brand-600 flex-shrink-0">4.</span><span>Cost per square foot = total ÷ area (helps compare supplier quotes).</span></li>
+          </ol>
+        </div>
+
+        <div class="calculator-card mt-4">
+          <h2 class="font-bold text-gray-900 text-lg mb-3">2026 US gravel price ranges</h2>
           <table class="w-full text-sm text-gray-700">
-            <thead><tr class="border-b"><th class="text-left pb-1">Product</th><th class="text-right pb-1">Typical price</th></tr></thead>
+            <thead><tr class="border-b"><th class="text-left pb-2 font-semibold">Product</th><th class="text-right pb-2 font-semibold">Per ton</th></tr></thead>
             <tbody class="divide-y">
-              <tr><td class="py-1.5">Pea gravel (per ton)</td><td class="py-1.5 text-right font-medium">$35–$65</td></tr>
-              <tr><td class="py-1.5">Crushed stone 3/4" (per ton)</td><td class="py-1.5 text-right font-medium">$25–$45</td></tr>
-              <tr><td class="py-1.5">Crushed limestone (per ton)</td><td class="py-1.5 text-right font-medium">$25–$40</td></tr>
-              <tr><td class="py-1.5">River rock (per ton)</td><td class="py-1.5 text-right font-medium">$40–$75</td></tr>
+              {[['Pea gravel','$35–$65'],['Crushed stone 3/4"','$25–$45'],['Crushed limestone','$25–$40'],['River rock','$40–$75'],['Delivery fee','$50–$200']].map(([p,v]) => (
+                <tr><td class="py-1.5">{p}</td><td class="py-1.5 text-right font-medium">{v}</td></tr>
+              ))}
             </tbody>
           </table>
-          <p class="text-xs text-gray-500 mt-2">Prices vary by region. Enter your actual local price above for an accurate estimate.</p>
+          <p class="text-xs text-gray-500 mt-2">Prices vary by region. Enter your actual price for an accurate estimate.</p>
+        </div>
+
+        <div class="calculator-card mt-4">
+          <h2 class="font-bold text-gray-900 text-lg mb-4">Frequently Asked Questions</h2>
+          <div class="space-y-4">
+            {faqs.map(f => (
+              <div><h3 class="font-semibold text-gray-900 text-sm mb-1">{f.q}</h3><p class="text-sm text-gray-700">{f.a}</p></div>
+            ))}
+          </div>
         </div>
 
         <div class="mt-6 text-sm text-gray-500 border-t pt-4">
-          Quantity-only? Use the <a href="/calculator/gravel" class="text-brand-600 hover:underline">Gravel Calculator</a>
+          Just need the quantity? → <a href="/calculator/gravel/" class="text-brand-600 hover:underline">Gravel Calculator</a> ·
+          <a href="/guide/how-much-gravel-do-i-need/" class="text-brand-600 hover:underline">How Much Gravel Do I Need?</a> ·
+          <a href="/guide/how-much-does-gravel-cost/" class="text-brand-600 hover:underline">Gravel Cost Guide</a>
         </div>
       </div>
 
       <aside class="space-y-6">
         <div class="calculator-card">
-          <h3 class="font-semibold text-gray-900 mb-3">Related</h3>
+          <h3 class="font-semibold text-gray-900 mb-3">Related calculators</h3>
           <ul class="space-y-2 text-sm">
-            <li><a href="/calculator/gravel" class="text-brand-600 hover:underline">Gravel Calculator (quantity only)</a></li>
-            <li><a href="/guide/how-much-gravel-do-i-need" class="text-brand-600 hover:underline">How Much Gravel Do I Need?</a></li>
-            <li><a href="/calculator/sand-cost" class="text-brand-600 hover:underline">Sand Cost Calculator</a></li>
-            <li><a href="/guide/cubic-yards-to-tons" class="text-brand-600 hover:underline">Cubic Yards to Tons</a></li>
+            <li><a href="/calculator/gravel/" class="text-brand-600 hover:underline">Gravel Calculator (quantity only)</a></li>
+            <li><a href="/calculator/mulch-cost/" class="text-brand-600 hover:underline">Mulch Cost Calculator</a></li>
+            <li><a href="/calculator/sand-cost/" class="text-brand-600 hover:underline">Sand Cost Calculator</a></li>
+            <li><a href="/guide/cubic-yards-to-tons/" class="text-brand-600 hover:underline">Cubic Yards to Tons</a></li>
           </ul>
         </div>
         <AdSlot slot="sidebar" />
