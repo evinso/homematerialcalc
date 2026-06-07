@@ -5,11 +5,13 @@ import AdSlot from '../../components/ui/AdSlot.astro';
 import CalcBreadcrumbs from '../../components/ui/CalcBreadcrumbs.astro';
 
 const related = [
-  { href: '/calculator/sod',                    label: 'Sod Calculator' },
-  { href: '/calculator/topsoil',                label: 'Topsoil Calculator' },
-  { href: '/guide/how-much-grass-seed-do-i-need', label: 'How Much Grass Seed Do I Need?' },
-  { href: '/guide/sod-vs-seed',                 label: 'Sod vs Seed' },
-  { href: '/guide/how-to-reseed-a-lawn',        label: 'How to Reseed a Lawn' },
+  { href: '/calculator/grass-seed-cost/', label: '💰 Grass Seed Cost' },
+
+  { href: '/calculator/sod/',                    label: 'Sod Calculator' },
+  { href: '/calculator/topsoil/',                label: 'Topsoil Calculator' },
+  { href: '/guide/how-much-grass-seed-do-i-need/', label: 'How Much Grass Seed Do I Need?' },
+  { href: '/guide/sod-vs-seed/',                 label: 'Sod vs Seed' },
+  { href: '/guide/how-to-reseed-a-lawn/',        label: 'How to Reseed a Lawn' },
 ];
 ---
 
@@ -18,7 +20,7 @@ const related = [
   description="Free grass seed calculator: enter lawn size and grass type to get exact pounds needed for new lawns and overseeding. Covers fescue, bluegrass, ryegrass, bermuda, and zoysia."
 >
   <div class="max-w-6xl mx-auto px-4 py-10">
-    <CalcBreadcrumbs crumbs={[{ label: 'Landscaping Calculators', href: '/landscaping-calculators' }, { label: 'Grass Seed Calculator' }]} />
+    <CalcBreadcrumbs crumbs={[{ label: 'Landscaping Calculators', href: '/landscaping-calculators/' }, { label: 'Grass Seed Calculator' }]} />
     <div class="grid lg:grid-cols-[1fr_320px] gap-10">
       <div>
         <h1 class="text-3xl font-bold text-gray-900 mb-2">Grass Seed Calculator</h1>
