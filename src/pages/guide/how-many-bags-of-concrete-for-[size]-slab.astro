@@ -1,0 +1,124 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export function getStaticPaths() {
+  const slabs = [
+    { size: '4x4',   l: 4,  w: 4  },
+    { size: '6x6',   l: 6,  w: 6  },
+    { size: '8x8',   l: 8,  w: 8  },
+    { size: '10x16', l: 10, w: 16 },
+    { size: '12x12', l: 12, w: 12 },
+    { size: '12x20', l: 12, w: 20 },
+    { size: '16x16', l: 16, w: 16 },
+    { size: '20x20', l: 20, w: 20 },
+    { size: '20x40', l: 20, w: 40 },
+    { size: '24x24', l: 24, w: 24 },
+  ];
+  return slabs.map(s => ({ params: { size: s.size }, props: { l: s.l, w: s.w } }));
+}
+
+const { l, w } = Astro.props as { l: number; w: number };
+const sqft = l * w;
+
+function calcConcrete(sqft: number, thicknessIn: number, waste = 0.10) {
+  const cuFt = sqft * thicknessIn / 12;
+  const cuYd = cuFt / 27;
+  const cuYdWaste = cuYd * (1 + waste);
+  return {
+    cuFt: Math.round(cuFt * 100) / 100,
+    cuYd: Math.round(cuYd * 100) / 100,
+    cuYdWaste: Math.round(cuYdWaste * 100) / 100,
+    bags80: Math.ceil(cuYdWaste * 45),
+    bags60: Math.ceil(cuYdWaste * 60),
+    bags40: Math.ceil(cuYdWaste * 90),
+  };
+}
+
+const thicknesses = [3.5, 4, 5, 6];
+const rows = thicknesses.map(t => ({ thickness: t, ...calcConcrete(sqft, t) }));
+const main = calcConcrete(sqft, 4);
+
+const faqs = [
+  {
+    q: `How many bags of concrete for a ${l}x${w} slab?`,
+    a: `A ${l}×${w} ft slab (${sqft} sq ft) at 4 inches thick needs ${main.bags80} bags of 80 lb concrete or ${main.bags60} bags of 60 lb. This includes a 10% waste factor.`,
+  },
+  {
+    q: `How many cubic yards of concrete for a ${l}x${w} slab?`,
+    a: `At 4 inches thick: ${main.cuYdWaste} cubic yards (with 10% waste). At 6 inches: ${calcConcrete(sqft, 6).cuYdWaste} cu yd.`,
+  },
+  {
+    q: `Should I use ready-mix or bags for a ${l}x${w} slab?`,
+    a: main.cuYdWaste < 1
+      ? `At ${main.cuYdWaste} cubic yards, bags are the practical choice. Mixing ${main.bags80} bags (80 lb) by hand or with a rented mixer is manageable.`
+      : `At ${main.cuYdWaste} cubic yards, get a ready-mix quote. Most suppliers have a minimum order — compare the per-yard price vs. bag costs before deciding.`,
+  },
+  {
+    q: `How thick should a ${l}x${w} concrete slab be?`,
+    a: `For a patio or shed base: 4 inches. For a driveway with passenger cars: 5 inches. For heavy vehicles: 6 inches. Garages typically use 4–6 inches with wire mesh or rebar.`,
+  },
+];
+
+const related = [
+  { href: '/calculator/concrete', label: 'Concrete Calculator' },
+  { href: '/guide/how-much-concrete-do-i-need', label: 'How Much Concrete Do I Need?' },
+  { href: '/guide/how-many-bags-of-concrete-per-cubic-yard', label: 'Bags per Cubic Yard' },
+  { href: '/guide/how-thick-should-concrete-slab-be', label: 'How Thick Should a Slab Be?' },
+];
+
+const title = `How Many Bags of Concrete for a ${l}×${w} Slab? (${sqft} Sq Ft)`;
+const description = `A ${l}×${w} ft slab at 4 inches thick needs ${main.bags80} bags of 80 lb concrete (${main.cuYdWaste} cu yd with 10% waste). Full table for all thicknesses and bag sizes.`;
+---
+
+<GuideLayout
+  {title}
+  {description}
+  h1={`How Many Bags of Concrete for a ${l}×${w} Slab?`}
+  intro={`A ${l}×${w} foot slab — ${sqft} square feet — at the standard 4-inch thickness needs ${main.cuYdWaste} cubic yards of concrete: ${main.bags80} bags of 80 lb or ${main.bags60} bags of 60 lb, including 10% waste.`}
+  calculatorHref="/calculator/concrete"
+  calculatorLabel="Concrete Calculator — enter any slab size and thickness for exact bag count"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: `Concrete for ${l}×${w} Slab` }]}
+>
+
+## Answer at a glance — {l}×{w} ft slab ({sqft} sq ft)
+
+| Thickness | Cu yards | 80 lb bags | 60 lb bags | 40 lb bags |
+|-----------|----------|-----------|-----------|-----------|
+{rows.map(r => `| ${r.thickness}" | ${r.cuYdWaste} cu yd | **${r.bags80}** | ${r.bags60} | ${r.bags40} |`).join('\n')}
+
+*All counts include 10% waste, rounded up.*
+
+## How we calculated it
+
+For a {l}×{w} ft slab at 4 inches:
+
+1. Area = {l} × {w} = **{sqft} sq ft**
+2. Volume = {sqft} × 4 ÷ 12 = **{calcConcrete(sqft, 4).cuFt} cu ft**
+3. Cubic yards = {calcConcrete(sqft, 4).cuFt} ÷ 27 = **{calcConcrete(sqft, 4).cuYd} cu yd**
+4. With 10% waste = **{main.cuYdWaste} cu yd**
+5. 80 lb bags (45 per cu yd) → **{main.bags80} bags**
+
+## Bags vs. ready-mix
+
+{main.cuYdWaste < 1
+  ? `Your ${l}×${w} slab needs ${main.cuYdWaste} cubic yards — under 1 yard. Buying ${main.bags80} bags (80 lb) is the practical choice. A rented mixer makes the job easier for anything over 20 bags.`
+  : main.cuYdWaste < 3
+    ? `At ${main.cuYdWaste} cubic yards, get a ready-mix quote alongside bags. Minimum charges vary by supplier. If mixing yourself, plan for ${main.bags80} bags (80 lb) and a rented drum mixer.`
+    : `At ${main.cuYdWaste} cubic yards, ready-mix delivery is almost always cheaper and faster than bags. Budget for a pump truck if the pour site isn't truck-accessible.`
+}
+
+## Thickness reference
+
+| Use | Recommended thickness |
+|-----|----------------------|
+| Sidewalk, path | 4 inches |
+| Patio, shed base | 4 inches |
+| Driveway (cars) | 5 inches |
+| Driveway (trucks/RVs) | 6 inches |
+| Garage floor | 4–6 inches + rebar |
+
+Use the [Concrete Calculator](/calculator/concrete) to enter your exact dimensions and get a precise bag count and cost estimate.
+
+</GuideLayout>

@@ -1,0 +1,116 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export function getStaticPaths() {
+  const areas = [100, 200, 300, 500, 1000];
+  return areas.map(area => ({ params: { area: String(area) } }));
+}
+
+const { area } = Astro.params;
+const sqft = Number(area);
+
+function calcGravel(sqft: number, depthIn: number, waste = 0.10) {
+  const cuFt = sqft * depthIn / 12;
+  const cuYd = cuFt / 27;
+  const cuYdWaste = cuYd * (1 + waste);
+  const tons = cuYdWaste * 1.4; // ~1.4 tons/cu yd for pea gravel / crushed stone
+  return {
+    cuFt: Math.round(cuFt * 10) / 10,
+    cuYd: Math.round(cuYd * 100) / 100,
+    cuYdWaste: Math.round(cuYdWaste * 100) / 100,
+    tons: Math.round(tons * 10) / 10,
+  };
+}
+
+const depths = [2, 3, 4, 6];
+const rows = depths.map(d => ({ depth: d, ...calcGravel(sqft, d) }));
+const main = calcGravel(sqft, 4); // 4" standard for paths/borders
+
+const nearby = [sqft * 0.5, sqft * 0.75, sqft, sqft * 1.5, sqft * 2]
+  .map(a => Math.round(a))
+  .filter((a, i, arr) => a > 0 && arr.indexOf(a) === i);
+
+const faqs = [
+  {
+    q: `How much gravel do I need for ${sqft} square feet?`,
+    a: `For ${sqft} sq ft at 4 inches deep (standard for paths and borders), you need ${main.cuYdWaste} cubic yards or ${main.tons} tons of gravel (includes 10% waste).`,
+  },
+  {
+    q: `How many tons of gravel for ${sqft} square feet?`,
+    a: `At 4 inches deep: ${main.tons} tons. At 3 inches: ${calcGravel(sqft, 3).tons} tons. At 6 inches (driveway): ${calcGravel(sqft, 6).tons} tons. One cubic yard of gravel weighs about 1.4 tons.`,
+  },
+  {
+    q: `How many cubic yards of gravel for ${sqft} square feet?`,
+    a: `At 4 inches: ${main.cuYdWaste} cu yd (with 10% waste). At 2 inches: ${calcGravel(sqft, 2).cuYdWaste} cu yd. At 6 inches: ${calcGravel(sqft, 6).cuYdWaste} cu yd.`,
+  },
+  {
+    q: `What type of gravel is best for ${sqft === 1000 ? 'a large' : 'a'} ${sqft} sq ft area?`,
+    a: `For paths and borders, pea gravel (3/8") or decomposed granite works well. For driveways, use #57 crushed stone (3/4") for the base and pea gravel or screenings on top. For drainage, use #57 or #67 stone.`,
+  },
+];
+
+const related = [
+  { href: '/calculator/gravel', label: 'Gravel Calculator' },
+  { href: '/guide/how-much-gravel-do-i-need', label: 'How Much Gravel Do I Need?' },
+  { href: '/guide/how-much-gravel-for-a-driveway', label: 'Gravel for a Driveway' },
+  { href: '/guide/pea-gravel-vs-river-rock', label: 'Pea Gravel vs River Rock' },
+];
+
+const title = `How Much Gravel for ${sqft} Square Feet? (Tons & Cubic Yards)`;
+const description = `For ${sqft} sq ft at 4 inches deep, you need ${main.tons} tons or ${main.cuYdWaste} cubic yards of gravel. Full table for all depths with 10% waste included.`;
+---
+
+<GuideLayout
+  {title}
+  {description}
+  h1={`How Much Gravel for ${sqft} Square Feet?`}
+  intro={`For ${sqft} square feet at 4 inches deep — standard for paths, borders, and patios — you need ${main.cuYdWaste} cubic yards or ${main.tons} tons of gravel (with 10% waste).`}
+  calculatorHref="/calculator/gravel"
+  calculatorLabel="Gravel Calculator — enter dimensions and depth for exact tons and cubic yards"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: `Gravel for ${sqft} Sq Ft` }]}
+>
+
+## Answer at a glance — {sqft} sq ft
+
+| Depth | Cu ft | Cu yards | Tons (with 10% waste) |
+|-------|-------|----------|----------------------|
+{rows.map(r => `| ${r.depth} inches | ${r.cuFt} | ${r.cuYd} | **${r.tons} tons** |`).join('\n')}
+
+## How we calculated it
+
+For {sqft} sq ft at 4 inches:
+
+1. Volume = {sqft} × 4 ÷ 12 = **{calcGravel(sqft, 4).cuFt} cu ft**
+2. Cubic yards = {calcGravel(sqft, 4).cuFt} ÷ 27 = **{calcGravel(sqft, 4).cuYd} cu yd**
+3. With 10% waste = **{main.cuYdWaste} cu yd**
+4. Tons = {main.cuYdWaste} × 1.4 = **{main.tons} tons**
+
+Gravel density varies by type: pea gravel ≈ 1.35 tons/cu yd, crushed stone ≈ 1.5 tons/cu yd. The 1.4 figure is a reliable average.
+
+## Compare nearby sizes
+
+| Area | At 3" (paths) | At 4" (standard) | At 6" (driveway) |
+|------|--------------|-----------------|----------------|
+{nearby.map(a => {
+  const g3 = calcGravel(a, 3);
+  const g4 = calcGravel(a, 4);
+  const g6 = calcGravel(a, 6);
+  return `| ${a} sq ft | ${g3.tons} tons | **${g4.tons} tons** | ${g6.tons} tons |`;
+}).join('\n')}
+
+## Depth guide by use
+
+- **2–3 inches** — decorative coverage, flower beds, tree rings
+- **4 inches** — paths, patios, play areas (most common)
+- **6 inches** — driveways (base layer), high-traffic areas
+- **8–12 inches** — driveway full build (base + surface combined)
+
+## Ordering tips
+
+Gravel is sold by the ton or by the cubic yard depending on supplier. Always confirm which unit your quote uses before ordering. For {sqft} sq ft at 4 inches you need roughly {main.cuYdWaste} cu yd — if ordering by the ton, ask for {main.tons} tons.
+
+Use the [Gravel Calculator](/calculator/gravel) to enter your exact dimensions and get a precise tonnage with price estimate.
+
+</GuideLayout>

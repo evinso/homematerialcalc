@@ -1,0 +1,117 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export function getStaticPaths() {
+  const areas = [50, 150, 200, 250, 300, 400, 500, 600, 750, 1000, 1500, 2000];
+  return areas.map(area => ({ params: { area: String(area) } }));
+}
+
+const { area } = Astro.params;
+const sqft = Number(area);
+
+function calcMulch(sqft: number, depthIn: number, waste = 0.05) {
+  const cuFt = sqft * depthIn / 12;
+  const cuYd = cuFt / 27;
+  const bags = Math.ceil((cuFt / 2) * (1 + waste));
+  return {
+    cuFt: Math.round(cuFt * 10) / 10,
+    cuYd: Math.round(cuYd * 100) / 100,
+    bags,
+  };
+}
+
+const depths = [1, 2, 3, 4, 6];
+const rows = depths.map(d => ({ depth: d, ...calcMulch(sqft, d) }));
+const main = calcMulch(sqft, 3);
+
+// Cross-reference nearby sizes
+const nearby = [sqft * 0.5, sqft * 0.75, sqft, sqft * 1.5, sqft * 2]
+  .map(a => Math.round(a))
+  .filter((a, i, arr) => a > 0 && arr.indexOf(a) === i);
+
+const faqs = [
+  {
+    q: `How many bags of mulch for ${sqft} square feet at 3 inches?`,
+    a: `For ${sqft} sq ft at 3 inches deep, you need ${main.cuYd} cubic yards — that's ${main.bags} bags of 2 cu ft mulch (includes 5% waste). Round up if your beds have irregular edges.`,
+  },
+  {
+    q: `How many cubic yards of mulch for ${sqft} square feet?`,
+    a: `At 2 inches deep: ${calcMulch(sqft, 2).cuYd} cu yd. At 3 inches: ${main.cuYd} cu yd. At 4 inches: ${calcMulch(sqft, 4).cuYd} cu yd.`,
+  },
+  {
+    q: `Should I buy bags or bulk mulch for ${sqft} square feet?`,
+    a: main.cuYd < 2
+      ? `At ${main.cuYd} cubic yards, bagged mulch is the convenient choice — ordering a partial yard of bulk isn't always available. Buy ${main.bags} bags and you're set.`
+      : `At ${main.cuYd} cubic yards, bulk delivery is usually cheaper than bags. Compare your local bulk price per yard vs. the bag cost (13.5 bags = 1 cu yd).`,
+  },
+  {
+    q: `How do I measure ${sqft} square feet for mulching?`,
+    a: `Measure each bed's length and width in feet. Add up the areas. Subtract large plants, stones, or hardscape. A 5–10% waste factor covers edges and settling.`,
+  },
+];
+
+const related = [
+  { href: '/calculator/mulch', label: 'Mulch Calculator' },
+  { href: '/guide/how-much-mulch-do-i-need', label: 'How Much Mulch Do I Need?' },
+  { href: '/guide/how-many-bags-of-mulch-in-a-cubic-yard', label: 'Bags per Cubic Yard' },
+  { href: '/guide/how-much-does-mulch-cost', label: 'How Much Does Mulch Cost?' },
+];
+
+const title = `How Much Mulch for ${sqft} Square Feet? (Bags & Cubic Yards)`;
+const description = `For ${sqft} sq ft at 3 inches deep, you need ${main.bags} bags or ${main.cuYd} cubic yards of mulch. Full table for all depths with 5% waste included.`;
+---
+
+<GuideLayout
+  {title}
+  {description}
+  h1={`How Much Mulch for ${sqft} Square Feet?`}
+  intro={`For ${sqft} square feet at 3 inches deep — the standard mulch depth — you need ${main.cuYd} cubic yards, which equals ${main.bags} bags of 2 cu ft mulch (with 5% waste).`}
+  calculatorHref="/calculator/mulch"
+  calculatorLabel="Mulch Calculator — enter any area and depth for an exact bag count"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: `Mulch for ${sqft} Sq Ft` }]}
+>
+
+## Answer at a glance — {sqft} sq ft
+
+| Depth | Cu ft | Cu yards | 2 cu ft bags (with 5% waste) |
+|-------|-------|----------|------------------------------|
+{rows.map(r => `| ${r.depth} inch${r.depth > 1 ? 'es' : ''} | ${r.cuFt} | ${r.cuYd} | **${r.bags} bags** |`).join('\n')}
+
+## How we calculated it
+
+For {sqft} sq ft at 3 inches:
+
+1. Volume = {sqft} × 3 ÷ 12 = **{calcMulch(sqft, 3).cuFt} cu ft**
+2. Cubic yards = {calcMulch(sqft, 3).cuFt} ÷ 27 = **{main.cuYd} cu yd**
+3. Bags (2 cu ft) = {main.cuYd} × 13.5 = {Math.round(main.cuYd * 13.5 * 10) / 10} → with 5% waste = **{main.bags} bags**
+
+## Compare nearby sizes
+
+| Area | At 2" | At 3" | At 4" |
+|------|-------|-------|-------|
+{nearby.map(a => {
+  const m2 = calcMulch(a, 2);
+  const m3 = calcMulch(a, 3);
+  const m4 = calcMulch(a, 4);
+  return `| ${a} sq ft | ${m2.bags} bags | **${m3.bags} bags** | ${m4.bags} bags |`;
+}).join('\n')}
+
+## Depth guide
+
+- **1–2 inches** — top-dressing existing mulch, lightweight coverage
+- **3 inches** — standard for flower beds, best weed suppression
+- **4 inches** — new beds or heavy clay soil where drainage is poor
+- **6 inches** — play areas, paths (not recommended for planted beds)
+
+## Bags vs. bulk
+
+{main.cuYd < 2
+  ? `For ${sqft} sq ft you need ${main.cuYd} cubic yards — well under 2 yards. Buying ${main.bags} bags from a garden center is easier than ordering bulk mulch, which most suppliers require a 2-yard minimum for delivery.`
+  : `For ${sqft} sq ft you need ${main.cuYd} cubic yards. If your local supplier charges less per yard in bulk than bags (≈13.5 bags per yard), bulk delivery saves money at this quantity.`
+}
+
+Use the [Mulch Calculator](/calculator/mulch) to enter your exact dimensions and get a precise bag count with an optional price estimate.
+
+</GuideLayout>
