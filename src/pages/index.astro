@@ -4,44 +4,61 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const siteUrl = 'https://www.homematerialcalc.com';
 
 const outdoor = [
-  { slug: 'mulch',    label: 'Mulch',    icon: '🌿', unit: 'bags / cu yd', example: '10×12 ft bed at 3" = 14 bags' },
-  { slug: 'gravel',   label: 'Gravel',   icon: '🪨', unit: 'cu yd / tons',  example: '20×20 ft driveway at 3" = 3.7 cu yd' },
-  { slug: 'topsoil',  label: 'Topsoil',  icon: '🌱', unit: 'cu yd / bags',  example: '10×10 ft at 4" = 1.2 cu yd' },
-  { slug: 'sand',     label: 'Sand',     icon: '⏳', unit: 'cu yd / bags',  example: '12×12 paver base at 1" = 17 bags' },
-  { slug: 'sod',      label: 'Sod',      icon: '🌾', unit: 'pieces / pallets', example: '500 sq ft = 1.1 pallets' },
-  { slug: 'paver',    label: 'Pavers',   icon: '🧱', unit: 'pieces + base', example: '10×10 ft = 110 pieces (12×12")' },
+  { slug: 'mulch',    label: 'Mulch',    icon: '🌿', unit: 'bags / cu yd' },
+  { slug: 'gravel',   label: 'Gravel',   icon: '🪨', unit: 'cu yd / tons'  },
+  { slug: 'topsoil',  label: 'Topsoil',  icon: '🌱', unit: 'cu yd / bags'  },
+  { slug: 'sand',     label: 'Sand',     icon: '⏳', unit: 'cu yd / bags'  },
+  { slug: 'sod',      label: 'Sod',      icon: '🌾', unit: 'pieces / pallets' },
+  { slug: 'paver',    label: 'Pavers',   icon: '🧱', unit: 'pieces + base' },
 ];
 
 const concrete = [
-  { slug: 'concrete', label: 'Concrete', icon: '🏗️', unit: 'bags / cu yd', example: '10×10 slab at 4" = 56 bags (80 lb)' },
+  { slug: 'concrete',      label: 'Concrete',      icon: '🏗️', unit: 'bags / cu yd' },
+  { slug: 'concrete-cost', label: 'Concrete Cost',  icon: '💰', unit: 'price estimate' },
 ];
 
 const interior = [
-  { slug: 'paint',    label: 'Paint',    icon: '🖌️', unit: 'gallons',       example: '12×12 room, 2 coats = 2 gallons' },
-  { slug: 'flooring', label: 'Flooring', icon: '🪵', unit: 'boxes',         example: '120 sq ft = 6–7 boxes (20 sq ft/box)' },
-  { slug: 'tile',     label: 'Tile',     icon: '⬜', unit: 'tiles + thinset', example: '50 sq ft = 55 tiles (12×12")' },
-  { slug: 'drywall',  label: 'Drywall',  icon: '🔲', unit: 'sheets',        example: '12×12 room = 17 sheets (4×8)' },
-  { slug: 'lumber',   label: 'Lumber',   icon: '🪚', unit: 'board feet',    example: '20 studs 2×4×8 = 107 board feet' },
+  { slug: 'paint',    label: 'Paint',    icon: '🖌️', unit: 'gallons'       },
+  { slug: 'flooring', label: 'Flooring', icon: '🪵', unit: 'boxes'         },
+  { slug: 'tile',     label: 'Tile',     icon: '⬜', unit: 'tiles + thinset' },
+  { slug: 'drywall',  label: 'Drywall',  icon: '🔲', unit: 'sheets'        },
+  { slug: 'lumber',   label: 'Lumber',   icon: '🪚', unit: 'board feet'    },
 ];
 
-const guides = [
-  { href: '/guide/how-much-mulch-do-i-need',       label: 'How much mulch do I need?',    icon: '🌿' },
-  { href: '/guide/how-much-gravel-do-i-need',      label: 'How much gravel do I need?',   icon: '🪨' },
-  { href: '/guide/how-much-concrete-do-i-need',    label: 'How much concrete do I need?', icon: '🏗️' },
-  { href: '/guide/how-much-paint-do-i-need',       label: 'How much paint do I need?',    icon: '🖌️' },
-  { href: '/guide/how-much-topsoil-do-i-need',     label: 'How much topsoil do I need?',  icon: '🌱' },
-  { href: '/guide/cubic-yards-to-tons',             label: 'Cubic yards to tons',          icon: '⚖️' },
-  { href: '/guide/types-of-mulch',                  label: 'Types of mulch explained',     icon: '🌿' },
-  { href: '/guide/gravel-vs-crushed-stone',         label: 'Gravel vs crushed stone',      icon: '🪨' },
-  { href: '/guide/how-to-calculate-square-footage', label: 'How to calculate square footage', icon: '📐' },
+const projectGuides = [
+  { href: '/guide/how-to-build-a-patio',          label: 'Build a Paver Patio',      icon: '🧱', desc: 'Gravel, sand, pavers & costs' },
+  { href: '/guide/how-to-build-a-gravel-driveway',label: 'Build a Gravel Driveway',  icon: '🚗', desc: '3-layer system, tons & cost' },
+  { href: '/guide/how-to-build-a-raised-garden-bed', label: 'Build a Raised Garden Bed', icon: '🌱', desc: 'Soil mix, lumber & quantities' },
+  { href: '/guide/how-to-build-a-garden-path',    label: 'Build a Garden Path',      icon: '🌿', desc: 'Gravel, fabric & edging' },
+  { href: '/guide/how-to-reseed-a-lawn',          label: 'Reseed Your Lawn',         icon: '🌾', desc: 'Seed rates, timing & soil prep' },
+];
+
+const seasonal = [
+  { href: '/guide/spring-lawn-and-garden-checklist', label: 'Spring Checklist', icon: '🌸', desc: 'Mulch, seed & fertilizer timing' },
+  { href: '/guide/summer-lawn-care-guide',            label: 'Summer Care',     icon: '☀️', desc: 'Watering, mowing & heat tips' },
+  { href: '/guide/fall-yard-prep-checklist',          label: 'Fall Prep',       icon: '🍂', desc: 'Overseed, winterize & mulch' },
+  { href: '/guide/winter-landscaping-prep',           label: 'Winter Prep',     icon: '❄️', desc: 'Driveway, paths & plant protection' },
+];
+
+const popularGuides = [
+  { href: '/guide/how-much-mulch-do-i-need',          label: 'How much mulch do I need?',       icon: '🌿' },
+  { href: '/guide/how-much-gravel-do-i-need',         label: 'How much gravel do I need?',      icon: '🪨' },
+  { href: '/guide/how-much-concrete-do-i-need',       label: 'How much concrete do I need?',    icon: '🏗️' },
+  { href: '/guide/how-much-paint-do-i-need',          label: 'How much paint do I need?',       icon: '🖌️' },
+  { href: '/guide/asphalt-vs-concrete-driveway',      label: 'Asphalt vs concrete driveway',    icon: '🛣️' },
+  { href: '/guide/sod-vs-seed',                       label: 'Sod vs seed — which is better?',  icon: '🌾' },
+  { href: '/guide/mulch-vs-rock-landscaping',         label: 'Mulch vs rock landscaping',       icon: '🪨' },
+  { href: '/guide/how-long-does-concrete-take-to-dry',label: 'How long does concrete take to dry?', icon: '⏱️' },
+  { href: '/guide/how-to-calculate-square-footage',   label: 'How to calculate square footage', icon: '📐' },
 ];
 
 const faqs = [
   { q: 'How do I calculate how much mulch I need?', a: 'Multiply your bed length (ft) × width (ft) × depth (in) ÷ 324 to get cubic yards, then × 13.5 for 2 cu ft bags. The Mulch Calculator does this instantly for any shape.' },
   { q: 'How many bags of concrete for a 10×10 slab?', a: 'At 4 inches thick: 1.23 cubic yards = 56 bags of 80 lb concrete (with 10% waste). The Concrete Calculator covers any size, thickness, and bag weight.' },
   { q: 'How many gallons of paint for a room?', a: 'A 12×12 ft room with 8 ft ceilings needs about 2 gallons for 2 coats. The Paint Calculator subtracts doors and windows and handles multiple coats automatically.' },
-  { q: 'How many cubic yards of gravel do I need?', a: 'cu yd = Length (ft) × Width (ft) × Depth (in) ÷ 324. A 20×20 ft area at 3" = 3.7 cu yd. Add 10% for waste. The Gravel Calculator also gives you tons and cost.' },
-  { q: 'Are these calculators free?', a: 'Yes — all calculators are completely free with no signup. Every result shows the step-by-step breakdown so you can verify the math yourself.' },
+  { q: 'What is the Project Calculator?', a: 'The Project Calculator gives you every material you need for a complete project — patio, driveway, raised bed, or garden path — in one place. Enter dimensions once and get the full shopping list: gravel, sand, pavers, soil, and cost estimates.' },
+  { q: 'How does the material comparison tool work?', a: 'The Compare tool lets you pick two materials — like mulch vs rock or sod vs seed — and see a side-by-side table of cost, lifespan, maintenance, and best uses. It links to the full comparison guide for each pair.' },
+  { q: 'Are these calculators free?', a: 'Yes — all calculators are completely free with no signup required. Every result shows the step-by-step breakdown so you can verify the math yourself.' },
 ];
 
 const faqSchema = {
@@ -71,46 +88,79 @@ const webSiteSchema = {
   <section class="bg-gradient-to-b from-brand-50 to-white py-14 px-4">
     <div class="max-w-3xl mx-auto text-center">
       <div class="inline-flex items-center gap-2 bg-brand-100 text-brand-700 text-xs font-semibold px-3 py-1 rounded-full mb-4">
-        12 free calculators · No signup required
+        15 free calculators · Project planner · Compare tool · No signup
       </div>
       <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
         How Much Material Do You Need?
       </h1>
       <p class="mt-4 text-lg text-gray-600 max-w-xl mx-auto">
-        Enter your project dimensions — get the <strong>exact quantity to buy</strong> in bags,
+        Enter your dimensions — get the <strong>exact quantity to buy</strong> in bags,
         cubic yards, gallons, or pallets. Built for US homeowners and DIYers.
       </p>
 
-      <!-- Mini result preview -->
-      <div class="mt-8 max-w-sm mx-auto bg-white border border-gray-200 rounded-2xl shadow-sm p-4 text-left">
-        <p class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-3">Example — Mulch Calculator</p>
-        <div class="space-y-1.5 text-sm text-gray-600 mb-4">
-          <div class="flex justify-between"><span>Bed size</span><span class="font-medium text-gray-900">10 × 15 ft</span></div>
-          <div class="flex justify-between"><span>Depth</span><span class="font-medium text-gray-900">3 inches</span></div>
-        </div>
-        <div class="bg-brand-50 rounded-xl p-3 flex items-center justify-between">
-          <div>
-            <p class="text-xs text-brand-600 font-semibold">You need</p>
-            <p class="text-2xl font-black text-brand-800">21 bags</p>
-            <p class="text-xs text-brand-600">or 1.6 cubic yards</p>
-          </div>
-          <a href="/calculator/mulch" class="bg-brand-600 text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-brand-700 transition-colors">
-            Try it →
-          </a>
-        </div>
+      <!-- Quick-action buttons -->
+      <div class="mt-8 flex flex-wrap justify-center gap-3">
+        <a href="/calculator/mulch"
+           class="bg-brand-600 text-white font-semibold px-5 py-3 rounded-xl hover:bg-brand-700 transition-colors text-sm">
+          🌿 Mulch Calculator
+        </a>
+        <a href="/calculator/gravel"
+           class="bg-white border border-gray-300 text-gray-800 font-semibold px-5 py-3 rounded-xl hover:border-brand-400 hover:text-brand-700 transition-colors text-sm">
+          🪨 Gravel Calculator
+        </a>
+        <a href="/calculator/concrete"
+           class="bg-white border border-gray-300 text-gray-800 font-semibold px-5 py-3 rounded-xl hover:border-brand-400 hover:text-brand-700 transition-colors text-sm">
+          🏗️ Concrete Calculator
+        </a>
+        <a href="/calculator/project"
+           class="bg-amber-500 text-white font-semibold px-5 py-3 rounded-xl hover:bg-amber-600 transition-colors text-sm">
+          📋 Project Planner
+        </a>
       </div>
     </div>
   </section>
 
+  <!-- ── NEW TOOLS STRIP ─────────────────────────────────────────────────── -->
+  <section class="max-w-6xl mx-auto px-4 py-10">
+    <h2 class="text-xl font-bold text-gray-900 mb-1">✨ New Tools</h2>
+    <p class="text-sm text-gray-500 mb-5">Plan full projects, compare materials, and check 2026 prices — all in one place.</p>
+    <div class="grid sm:grid-cols-3 gap-4">
+
+      <a href="/calculator/project"
+         class="group bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200 rounded-2xl p-5 hover:border-amber-400 hover:shadow-md transition-all">
+        <div class="text-3xl mb-3">📋</div>
+        <h3 class="font-bold text-gray-900 mb-1 group-hover:text-amber-700">Project Calculator</h3>
+        <p class="text-sm text-gray-600 mb-3">Enter dimensions once — get the full materials list for patios, driveways, raised beds, and garden paths.</p>
+        <span class="text-xs font-semibold text-amber-700 bg-amber-100 px-2 py-1 rounded-full">4 project types</span>
+      </a>
+
+      <a href="/compare"
+         class="group bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-2xl p-5 hover:border-blue-400 hover:shadow-md transition-all">
+        <div class="text-3xl mb-3">⚖️</div>
+        <h3 class="font-bold text-gray-900 mb-1 group-hover:text-blue-700">Material Comparison</h3>
+        <p class="text-sm text-gray-600 mb-3">Mulch vs rock, sod vs seed, asphalt vs concrete — side-by-side tables on cost, lifespan, and best uses.</p>
+        <span class="text-xs font-semibold text-blue-700 bg-blue-100 px-2 py-1 rounded-full">8 comparisons</span>
+      </a>
+
+      <a href="/prices"
+         class="group bg-gradient-to-br from-green-50 to-emerald-50 border border-green-200 rounded-2xl p-5 hover:border-green-400 hover:shadow-md transition-all">
+        <div class="text-3xl mb-3">💵</div>
+        <h3 class="font-bold text-gray-900 mb-1 group-hover:text-green-700">2026 Price Guide</h3>
+        <p class="text-sm text-gray-600 mb-3">Current national average prices for mulch, gravel, concrete, topsoil, sod, sand, and paint — with regional ranges.</p>
+        <span class="text-xs font-semibold text-green-700 bg-green-100 px-2 py-1 rounded-full">Updated June 2026</span>
+      </a>
+    </div>
+  </section>
+
   <!-- ── OUTDOOR & LANDSCAPING ──────────────────────────────────────────── -->
-  <section class="max-w-6xl mx-auto px-4 pt-12 pb-4">
+  <section class="max-w-6xl mx-auto px-4 pt-4 pb-4">
     <div class="flex items-baseline gap-3 mb-1">
       <h2 class="text-xl font-bold text-gray-900">🌿 Outdoor & Landscaping</h2>
       <a href="/landscaping-calculators" class="text-xs text-brand-600 hover:underline">All landscaping →</a>
     </div>
     <p class="text-sm text-gray-500 mb-5">Mulch, gravel, topsoil, sand, sod, and pavers — in bags, cubic yards, or tons.</p>
     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-      {outdoor.map(({ slug, label, icon, unit, example }) => (
+      {outdoor.map(({ slug, label, icon, unit }) => (
         <a href={`/calculator/${slug}`}
            class="bg-white border border-gray-200 rounded-xl p-4 hover:border-brand-400 hover:shadow-sm transition-all group text-center">
           <div class="text-2xl mb-2">{icon}</div>
@@ -127,7 +177,7 @@ const webSiteSchema = {
       <h2 class="text-xl font-bold text-gray-900">🏗️ Concrete</h2>
       <a href="/concrete-calculators" class="text-xs text-brand-600 hover:underline">All concrete →</a>
     </div>
-    <p class="text-sm text-gray-500 mb-5">Bag count (40, 60, or 80 lb) for slabs, post holes, and footings.</p>
+    <p class="text-sm text-gray-500 mb-5">Bag count (40, 60, or 80 lb) for slabs, post holes, and footings — plus cost estimator.</p>
     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
       {concrete.map(({ slug, label, icon, unit }) => (
         <a href={`/calculator/${slug}`}
@@ -137,18 +187,11 @@ const webSiteSchema = {
           <p class="text-xs text-gray-400 mt-1">{unit}</p>
         </a>
       ))}
-      <!-- Cost companions teaser -->
-      <a href="/calculator/concrete-cost"
-         class="bg-gray-50 border border-dashed border-gray-300 rounded-xl p-4 hover:border-brand-400 hover:bg-white transition-all group text-center">
-        <div class="text-2xl mb-2">💰</div>
-        <p class="font-semibold text-gray-600 text-sm group-hover:text-brand-700">Concrete Cost</p>
-        <p class="text-xs text-gray-400 mt-1">price estimate</p>
-      </a>
     </div>
   </section>
 
   <!-- ── INTERIOR ──────────────────────────────────────────────────────── -->
-  <section class="max-w-6xl mx-auto px-4 pt-4 pb-12">
+  <section class="max-w-6xl mx-auto px-4 pt-4 pb-10">
     <div class="flex items-baseline gap-3 mb-1">
       <h2 class="text-xl font-bold text-gray-900">🏠 Interior & Construction</h2>
       <a href="/interior-calculators" class="text-xs text-brand-600 hover:underline">All interior →</a>
@@ -166,6 +209,52 @@ const webSiteSchema = {
     </div>
   </section>
 
+  <!-- ── PROJECT GUIDES ─────────────────────────────────────────────────── -->
+  <section class="bg-gray-50 py-12 px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex items-baseline gap-3 mb-1">
+        <h2 class="text-2xl font-bold text-gray-900">🔨 Complete Project Guides</h2>
+        <a href="/calculator/project" class="text-xs text-brand-600 hover:underline">Project calculator →</a>
+      </div>
+      <p class="text-sm text-gray-500 mb-6">Step-by-step guides with every material you need, exact quantities, and cost breakdowns.</p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {projectGuides.map(({ href, label, icon, desc }) => (
+          <a href={href}
+             class="bg-white border border-gray-200 rounded-xl p-4 hover:border-brand-400 hover:shadow-sm transition-all group">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="text-2xl">{icon}</span>
+              <h3 class="font-semibold text-gray-900 text-sm group-hover:text-brand-700">{label}</h3>
+            </div>
+            <p class="text-xs text-gray-500">{desc}</p>
+          </a>
+        ))}
+        <!-- CTA card -->
+        <a href="/calculator/project"
+           class="bg-amber-50 border border-amber-200 rounded-xl p-4 hover:border-amber-400 hover:shadow-sm transition-all group flex flex-col justify-center text-center">
+          <div class="text-2xl mb-2">📋</div>
+          <p class="font-semibold text-amber-800 text-sm group-hover:text-amber-900">Project Calculator</p>
+          <p class="text-xs text-amber-600 mt-1">Get all materials for your project in one place →</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SEASONAL GUIDES ─────────────────────────────────────────────────── -->
+  <section class="max-w-6xl mx-auto px-4 py-10">
+    <h2 class="text-xl font-bold text-gray-900 mb-1">📅 Seasonal Guides</h2>
+    <p class="text-sm text-gray-500 mb-5">Right task, right time — seasonal checklists for your lawn and garden.</p>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+      {seasonal.map(({ href, label, icon, desc }) => (
+        <a href={href}
+           class="bg-white border border-gray-200 rounded-xl p-4 hover:border-brand-400 hover:shadow-sm transition-all group text-center">
+          <div class="text-3xl mb-2">{icon}</div>
+          <p class="font-semibold text-gray-900 text-sm group-hover:text-brand-700">{label}</p>
+          <p class="text-xs text-gray-400 mt-1">{desc}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
   <!-- ── HOW IT WORKS ──────────────────────────────────────────────────── -->
   <section class="bg-gray-50 py-12 px-4">
     <div class="max-w-4xl mx-auto">
@@ -173,8 +262,8 @@ const webSiteSchema = {
       <div class="grid sm:grid-cols-3 gap-6">
         {[
           { n: '1', icon: '📏', title: 'Enter your dimensions', text: 'Length, width — and depth for bulk materials. Works for rectangles, circles, or irregular shapes.' },
-          { n: '2', icon: '⚙️', title: 'We do the math', text: 'Each calculator uses verified material constants — bag yields, densities, coverage rates — automatically.' },
-          { n: '3', icon: '🛒', title: 'Get your shopping list', text: 'See the exact quantity in the unit you buy: bags, cubic yards, gallons, boxes, or pallets. Add your price for cost.' },
+          { n: '2', icon: '⚙️', title: 'We do the math', text: 'Each calculator uses verified material constants — bag yields, densities, coverage rates. Your last values are saved automatically.' },
+          { n: '3', icon: '🛒', title: 'Get your shopping list', text: 'See the exact quantity in bags, cubic yards, gallons, or pallets. Print or save as PDF to take to the store.' },
         ].map(({ n, icon, title, text }) => (
           <div class="bg-white border border-gray-200 rounded-xl p-6">
             <div class="w-8 h-8 bg-brand-600 text-white rounded-full flex items-center justify-center font-bold text-sm mb-3">{n}</div>
@@ -189,13 +278,14 @@ const webSiteSchema = {
 
   <!-- ── TRUST STRIP ───────────────────────────────────────────────────── -->
   <section class="max-w-4xl mx-auto px-4 py-10">
-    <div class="grid sm:grid-cols-3 gap-4 text-center">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 text-center">
       {[
-        ['✅', 'Verified formulas', 'Constants from Quikrete, Scotts, industry standards — cited on the Data Sources page.'],
-        ['🆓', '100% free', 'No signup, no subscription. Every calculator is free forever.'],
-        ['📋', 'Step-by-step math', 'Every result shows the breakdown so you can check the calculation yourself.'],
+        ['✅', 'Verified formulas',    'Constants from Quikrete, Scotts, industry standards — cited on the Data Sources page.'],
+        ['🆓', '100% free',           'No signup, no subscription. Every calculator is free forever.'],
+        ['💾', 'Remembers your inputs','Your last depth, material type, and price are saved between visits.'],
+        ['🖨️', 'Print / save as PDF', 'Every guide page has a print button — take your materials list to the store.'],
       ].map(([icon, title, text]) => (
-        <div class="bg-brand-50 rounded-xl px-5 py-6">
+        <div class="bg-brand-50 rounded-xl px-4 py-5">
           <div class="text-2xl mb-2">{icon}</div>
           <p class="font-semibold text-gray-900 text-sm mb-1">{title}</p>
           <p class="text-xs text-gray-600">{text}</p>
@@ -204,13 +294,15 @@ const webSiteSchema = {
     </div>
   </section>
 
-  <!-- ── GUIDES ────────────────────────────────────────────────────────── -->
+  <!-- ── POPULAR GUIDES ────────────────────────────────────────────────── -->
   <section class="bg-gray-50 py-12 px-4">
     <div class="max-w-6xl mx-auto">
-      <h2 class="text-2xl font-bold text-gray-900 mb-2">Material Guides & Reference</h2>
+      <div class="flex items-baseline gap-3 mb-1">
+        <h2 class="text-2xl font-bold text-gray-900">Popular Guides & Reference</h2>
+      </div>
       <p class="text-sm text-gray-500 mb-6">Answers to the most common home project material questions.</p>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-        {guides.map(({ href, label, icon }) => (
+        {popularGuides.map(({ href, label, icon }) => (
           <a href={href}
              class="flex items-center gap-3 bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-700 hover:border-brand-400 hover:text-brand-700 transition-colors">
             <span class="text-lg flex-shrink-0">{icon}</span>
@@ -222,6 +314,8 @@ const webSiteSchema = {
         <a href="/landscaping-calculators" class="text-brand-600 hover:underline">All landscaping guides →</a>
         <a href="/interior-calculators"    class="text-brand-600 hover:underline">All interior guides →</a>
         <a href="/concrete-calculators"    class="text-brand-600 hover:underline">All concrete guides →</a>
+        <a href="/compare"                 class="text-brand-600 hover:underline">Compare materials →</a>
+        <a href="/prices"                  class="text-brand-600 hover:underline">2026 price guide →</a>
       </div>
     </div>
   </section>
