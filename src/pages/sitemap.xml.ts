@@ -16,21 +16,22 @@ const CHANGEFREQ: Record<string, string> = {
   '/methodology': 'yearly',
 };
 
-// Programmatic pages generated from dynamic routes — kept in sync with getStaticPaths in each file
+// Programmatic pages — kept in sync with getStaticPaths in each file
+// All URLs end with / to match canonical tags
 const PROGRAMMATIC_PAGES: string[] = [
-  // Mulch by area
-  ...[50,150,200,250,300,400,500,600,750,1000,1500,2000].map(a => `/guide/how-much-mulch-for-${a}-sq-ft`),
-  // Gravel by area
-  ...[100,200,300,500,1000].map(a => `/guide/how-much-gravel-for-${a}-sq-ft`),
-  // Concrete slabs
-  ...['4x4','6x6','8x8','10x16','12x12','12x20','16x16','20x20','20x40','24x24'].map(s => `/guide/how-many-bags-of-concrete-for-${s}-slab`),
-  // Topsoil by area
-  ...[50,100,200,300,500,1000,2000].map(a => `/guide/how-much-topsoil-for-${a}-sq-ft`),
-  // Sand by area
-  ...[50,100,200,300,500].map(a => `/guide/how-much-sand-for-${a}-sq-ft`),
-  // Paint by room size
-  ...['8x8','10x10','10x12','10x14','12x12','12x14','12x15','12x20','14x14','15x15','20x20'].map(s => `/guide/how-much-paint-for-${s}-room`),
+  ...[50,150,200,250,300,400,500,600,750,1000,1500,2000].map(a => `/guide/how-much-mulch-for-${a}-sq-ft/`),
+  ...[100,200,300,500,1000].map(a => `/guide/how-much-gravel-for-${a}-sq-ft/`),
+  ...['4x4','6x6','8x8','10x16','12x12','12x20','16x16','20x20','20x40','24x24'].map(s => `/guide/how-many-bags-of-concrete-for-${s}-slab/`),
+  ...[50,100,200,300,500,1000,2000].map(a => `/guide/how-much-topsoil-for-${a}-sq-ft/`),
+  ...[50,100,200,300,500].map(a => `/guide/how-much-sand-for-${a}-sq-ft/`),
+  ...['8x8','10x10','10x12','10x14','12x12','12x14','12x15','12x20','14x14','15x15','20x20'].map(s => `/guide/how-much-paint-for-${s}-room/`),
 ];
+
+// Ensure trailing slash on URL (homepage stays /)
+function withSlash(url: string): string {
+  if (url === '/') return '/';
+  return url.endsWith('/') ? url : url + '/';
+}
 
 function getPriority(url: string): string {
   if (url === '/') return '1.0';
@@ -53,12 +54,15 @@ function buildSitemap(): string {
 
   const published = getPublishedPages().filter(p => !EXCLUDE.has(p.url));
 
-  const publishedUrls = published.map(p => `  <url>
-    <loc>${SITE}${p.url}</loc>
+  const publishedUrls = published.map(p => {
+    const loc = SITE + withSlash(p.url);
+    return `  <url>
+    <loc>${loc}</loc>
     <lastmod>${p.publishedAt ?? today}</lastmod>
     <changefreq>${getChangefreq(p.url)}</changefreq>
     <priority>${getPriority(p.url)}</priority>
-  </url>`);
+  </url>`;
+  });
 
   const programmaticUrls = PROGRAMMATIC_PAGES.map(url => `  <url>
     <loc>${SITE}${url}</loc>

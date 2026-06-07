@@ -11,7 +11,9 @@ interface Props {
 
 const { title, description, canonicalUrl, ogImage } = Astro.props;
 const siteUrl = 'https://www.homematerialcalc.com';
-const canonical = canonicalUrl ?? siteUrl + Astro.url.pathname;
+const rawPath = Astro.url.pathname;
+const normPath = rawPath === '/' ? '/' : (rawPath.endsWith('/') ? rawPath : rawPath + '/');
+const canonical = canonicalUrl ?? siteUrl + normPath;
 const ogImageUrl = ogImage ?? `${siteUrl}/og-default.png`;
 const isHome = Astro.url.pathname === '/';
 

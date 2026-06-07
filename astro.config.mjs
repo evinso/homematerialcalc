@@ -13,4 +13,5 @@ export default defineConfig({
   ],
   output: 'hybrid',
   adapter: vercel(),
+  trailingSlash: 'always',
 });
