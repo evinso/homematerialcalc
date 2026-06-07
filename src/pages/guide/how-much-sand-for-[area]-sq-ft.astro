@@ -1,0 +1,121 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export function getStaticPaths() {
+  const areas = [50, 100, 200, 300, 500];
+
+  function calc(sqft: number, depthIn: number, waste = 0.10) {
+    const cuFt = sqft * depthIn / 12;
+    const cuYd = cuFt / 27;
+    const cuYdWaste = cuYd * (1 + waste);
+    return {
+      cuFt: Math.round(cuFt * 10) / 10,
+      cuYd: Math.round(cuYd * 100) / 100,
+      cuYdWaste: Math.round(cuYdWaste * 100) / 100,
+      bags: Math.ceil((cuFt * (1 + waste)) / 0.5),
+      tons: Math.round(cuYdWaste * 1.35 * 10) / 10,
+    };
+  }
+
+  return areas.map(sqft => {
+    const depths = [1, 2, 3, 4, 6];
+    const rows = depths.map(d => ({ depth: d, ...calc(sqft, d) }));
+    const main = calc(sqft, 2);
+    const nearby = [Math.round(sqft * 0.5), sqft, Math.round(sqft * 2)]
+      .filter((a, i, arr) => a > 0 && arr.indexOf(a) === i)
+      .map(a => ({ area: a, d1: calc(a, 1), d2: calc(a, 2), d3: calc(a, 3) }));
+    return {
+      params: { area: String(sqft) },
+      props: { sqft, rows, main, nearby, isBulkBetter: main.cuYdWaste >= 1.5 },
+    };
+  });
+}
+
+const { sqft, rows, main, nearby, isBulkBetter } = Astro.props as any;
+
+const faqs = [
+  {
+    q: `How much sand do I need for ${sqft} square feet?`,
+    a: `For ${sqft} sq ft at 2 inches deep (paver base leveling layer), you need ${main.cuYdWaste} cubic yards or ${main.bags} bags of 50 lb sand, including 10% waste.`,
+  },
+  {
+    q: `How many bags of sand for ${sqft} square feet?`,
+    a: `At 1 inch: ${rows[0].bags} bags (50 lb). At 2 inches: ${main.bags} bags. At 3 inches: ${rows[2].bags} bags. Each 50 lb bag covers about 0.5 cubic feet.`,
+  },
+  {
+    q: `How many tons of sand for ${sqft} square feet?`,
+    a: `At 2 inches: ${main.tons} tons. At 3 inches: ${rows[2].tons} tons. Sand weighs approximately 1.35 tons per cubic yard.`,
+  },
+  {
+    q: `What type of sand should I use for a ${sqft} sq ft area?`,
+    a: `For paver base: coarse or concrete sand. For a sandbox: washed play sand. For leveling under sod: Mason sand. Avoid fine beach sand for structural applications.`,
+  },
+];
+
+const related = [
+  { href: '/calculator/sand', label: 'Sand Calculator' },
+  { href: '/guide/how-much-sand-do-i-need', label: 'How Much Sand Do I Need?' },
+  { href: '/guide/how-much-sand-for-paver-base', label: 'Sand for a Paver Base' },
+  { href: '/guide/how-much-sand-for-a-sandbox', label: 'Sand for a Sandbox' },
+];
+
+const title = `How Much Sand for ${sqft} Square Feet? (Bags, Tons & Cubic Yards)`;
+const description = `For ${sqft} sq ft at 2 inches deep, you need ${main.bags} bags of 50 lb sand or ${main.cuYdWaste} cubic yards. Full depth table with 10% waste.`;
+---
+
+<GuideLayout
+  {title}
+  {description}
+  h1={`How Much Sand for ${sqft} Square Feet?`}
+  intro={`For ${sqft} square feet at 2 inches deep — the standard bedding layer for pavers — you need ${main.cuYdWaste} cubic yards of sand. That's ${main.bags} bags of 50 lb sand, with 10% waste included.`}
+  calculatorHref="/calculator/sand"
+  calculatorLabel="Sand Calculator — enter any area and depth for exact bags, tons, and cubic yards"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: `Sand for ${sqft} Sq Ft` }]}
+>
+
+## Answer at a glance — {sqft} sq ft
+
+| Depth | Cu ft | Cu yards | 50 lb bags | Tons |
+|-------|-------|----------|-----------|------|
+{rows.map((r: any) => `| ${r.depth}" | ${r.cuFt} | ${r.cuYdWaste} cu yd | **${r.bags}** | ${r.tons} |`).join('\n')}
+
+*All counts include 10% waste, rounded up.*
+
+## How we calculated it
+
+For {sqft} sq ft at 2 inches:
+
+1. Volume = {sqft} × 2 ÷ 12 = **{main.cuFt} cu ft**
+2. Cubic yards = {main.cuFt} ÷ 27 = **{main.cuYd} cu yd**
+3. With 10% waste = **{main.cuYdWaste} cu yd**
+4. 50 lb bags (approx. 0.5 cu ft each) = **{main.bags} bags**
+5. Tons = {main.cuYdWaste} × 1.35 = **{main.tons} tons**
+
+## Compare nearby areas
+
+| Area | At 1" | At 2" (paver base) | At 3" |
+|------|-------|-------------------|-------|
+{nearby.map((n: any) => `| ${n.area} sq ft | ${n.d1.bags} bags | **${n.d2.bags} bags** | ${n.d3.bags} bags |`).join('\n')}
+
+## Sand depth guide by use
+
+| Application | Recommended depth |
+|-------------|------------------|
+| Paver bedding layer | 1–2 inches |
+| Sandbox fill | 8–12 inches |
+| Under artificial turf | 1–2 inches |
+| Lawn leveling | 0.5–1 inch |
+| Pool base | 2–4 inches |
+
+## Bags vs. bulk sand
+
+{isBulkBetter
+  ? `At ${main.cuYdWaste} cubic yards, get a bulk quote from a landscaping supplier. Bulk sand is significantly cheaper per cubic foot than bagged sand at this quantity.`
+  : `At ${main.cuYdWaste} cubic yards, buying ${main.bags} bags of 50 lb sand is the most convenient option. Bulk orders typically have a 1–2 yard minimum.`
+}
+
+Use the [Sand Calculator](/calculator/sand) to enter your exact dimensions and depth for a precise result.
+
+</GuideLayout>

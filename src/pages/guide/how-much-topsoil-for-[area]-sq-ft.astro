@@ -1,0 +1,122 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export function getStaticPaths() {
+  const areas = [50, 100, 200, 300, 500, 1000, 2000];
+
+  function calc(sqft: number, depthIn: number, waste = 0.10) {
+    const cuFt = sqft * depthIn / 12;
+    const cuYd = cuFt / 27;
+    const cuYdWaste = cuYd * (1 + waste);
+    return {
+      cuFt: Math.round(cuFt * 10) / 10,
+      cuYd: Math.round(cuYd * 100) / 100,
+      cuYdWaste: Math.round(cuYdWaste * 100) / 100,
+      bags40lb: Math.ceil((cuFt * (1 + waste)) / 0.75),
+      bagsCuFt: Math.ceil(cuFt * (1 + waste)),
+      tons: Math.round(cuYdWaste * 1.1 * 10) / 10,
+    };
+  }
+
+  return areas.map(sqft => {
+    const depths = [2, 4, 6, 8, 12];
+    const rows = depths.map(d => ({ depth: d, ...calc(sqft, d) }));
+    const main = calc(sqft, 6);
+    const nearby = [Math.round(sqft * 0.5), sqft, Math.round(sqft * 2), Math.round(sqft * 4)]
+      .filter((a, i, arr) => a > 0 && arr.indexOf(a) === i)
+      .map(a => ({ area: a, d4: calc(a, 4), d6: calc(a, 6), d8: calc(a, 8) }));
+    return {
+      params: { area: String(sqft) },
+      props: { sqft, rows, main, nearby, isBulkBetter: main.cuYdWaste >= 2 },
+    };
+  });
+}
+
+const { sqft, rows, main, nearby, isBulkBetter } = Astro.props as any;
+
+const faqs = [
+  {
+    q: `How much topsoil do I need for ${sqft} square feet?`,
+    a: `For ${sqft} sq ft at 6 inches deep (standard for new lawn or garden beds), you need ${main.cuYdWaste} cubic yards or ${main.bags40lb} bags of 40 lb topsoil, with 10% waste included.`,
+  },
+  {
+    q: `How many cubic yards of topsoil for ${sqft} square feet?`,
+    a: `At 4 inches: ${rows[1].cuYdWaste} cu yd. At 6 inches: ${main.cuYdWaste} cu yd. At 8 inches: ${rows[3].cuYdWaste} cu yd. All include 10% waste.`,
+  },
+  {
+    q: `How many bags of topsoil for ${sqft} square feet?`,
+    a: `At 6 inches: ${main.bags40lb} bags of 40 lb topsoil (approx. 0.75 cu ft each) or ${main.bagsCuFt} bags of 1 cu ft topsoil. For areas over 2 cubic yards, bulk delivery is usually cheaper.`,
+  },
+  {
+    q: `How deep should I add topsoil for grass or a garden?`,
+    a: `For overseeding an existing lawn: 2 inches. For a new lawn: 4–6 inches. For vegetable gardens: 8–12 inches. For raised beds, fill the full depth with a topsoil/compost mix.`,
+  },
+];
+
+const related = [
+  { href: '/calculator/topsoil', label: 'Topsoil Calculator' },
+  { href: '/guide/how-much-topsoil-do-i-need', label: 'How Much Topsoil Do I Need?' },
+  { href: '/guide/how-much-topsoil-for-raised-bed', label: 'Topsoil for a Raised Bed' },
+  { href: '/guide/topsoil-vs-garden-soil', label: 'Topsoil vs Garden Soil' },
+];
+
+const title = `How Much Topsoil for ${sqft} Square Feet? (Bags & Cubic Yards)`;
+const description = `For ${sqft} sq ft at 6 inches deep, you need ${main.cuYdWaste} cubic yards or ${main.bags40lb} bags of 40 lb topsoil. Full depth table with 10% waste included.`;
+---
+
+<GuideLayout
+  {title}
+  {description}
+  h1={`How Much Topsoil for ${sqft} Square Feet?`}
+  intro={`For ${sqft} square feet at 6 inches deep — standard for a new lawn or garden bed — you need ${main.cuYdWaste} cubic yards of topsoil. That's ${main.bags40lb} bags (40 lb) or ${main.bagsCuFt} bags (1 cu ft), with 10% waste included.`}
+  calculatorHref="/calculator/topsoil"
+  calculatorLabel="Topsoil Calculator — enter any area and depth for exact bags or cubic yards"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: `Topsoil for ${sqft} Sq Ft` }]}
+>
+
+## Answer at a glance — {sqft} sq ft
+
+| Depth | Cu yards | 40 lb bags | 1 cu ft bags | Tons |
+|-------|----------|-----------|-------------|------|
+{rows.map((r: any) => `| ${r.depth}" | ${r.cuYdWaste} cu yd | **${r.bags40lb}** | ${r.bagsCuFt} | ${r.tons} |`).join('\n')}
+
+*All counts include 10% waste, rounded up.*
+
+## How we calculated it
+
+For {sqft} sq ft at 6 inches:
+
+1. Volume = {sqft} × 6 ÷ 12 = **{main.cuFt} cu ft**
+2. Cubic yards = {main.cuFt} ÷ 27 = **{main.cuYd} cu yd**
+3. With 10% waste = **{main.cuYdWaste} cu yd**
+4. 40 lb bags (approx. 0.75 cu ft each) = **{main.bags40lb} bags**
+
+## Compare nearby areas
+
+| Area | At 4" (top-dress) | At 6" (new lawn) | At 8" (garden) |
+|------|-----------------|--------------------|---------------|
+{nearby.map((n: any) => `| ${n.area} sq ft | ${n.d4.cuYdWaste} cu yd / ${n.d4.bags40lb} bags | **${n.d6.cuYdWaste} cu yd / ${n.d6.bags40lb} bags** | ${n.d8.cuYdWaste} cu yd / ${n.d8.bags40lb} bags |`).join('\n')}
+
+## Depth guide by use
+
+| Application | Recommended depth |
+|-------------|------------------|
+| Overseeding / top-dressing | 2 inches |
+| Patching bare lawn spots | 2–4 inches |
+| New lawn from seed | 4–6 inches |
+| New lawn from sod | 4–6 inches |
+| Vegetable garden | 8–12 inches |
+| Raised bed (fill) | 12–18 inches |
+
+## Bags vs. bulk topsoil
+
+{isBulkBetter
+  ? `At ${main.cuYdWaste} cubic yards, bulk topsoil is usually cheaper than bags. Get quotes from local landscaping suppliers — bulk topsoil typically runs $20–$50 per cubic yard vs. $5–$8 per 40 lb bag.`
+  : `For ${sqft} sq ft you need ${main.cuYdWaste} cubic yards — buying ${main.bags40lb} bags is the easy choice. Most suppliers require a 2-yard minimum for bulk delivery.`
+}
+
+Use the [Topsoil Calculator](/calculator/topsoil) to enter your exact dimensions and get an instant bag count or cubic yard total.
+
+</GuideLayout>
