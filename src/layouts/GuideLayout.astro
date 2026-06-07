@@ -54,18 +54,18 @@ const faqSchema = faqs.length > 0 ? {
   })),
 } : null;
 
-const breadcrumbSchema = breadcrumbs.length > 0 ? {
+const breadcrumbItems = [
+  { '@type': 'ListItem', name: 'Home', item: site + '/' },
+  ...breadcrumbs.map((b, i) => {
+    const itemUrl = b.href ? site + b.href : (i === breadcrumbs.length - 1 ? canonical : null);
+    return itemUrl ? { '@type': 'ListItem', name: b.label, item: itemUrl } : null;
+  }).filter(Boolean),
+].map((entry, idx) => ({ ...entry, position: idx + 1 }));
+
+const breadcrumbSchema = breadcrumbItems.length > 1 ? {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: site },
-    ...breadcrumbs.map((b, i) => ({
-      '@type': 'ListItem',
-      position: i + 2,
-      name: b.label,
-      item: b.href ? site + b.href : (i === breadcrumbs.length - 1 ? canonical : undefined),
-    })),
-  ],
+  itemListElement: breadcrumbItems,
 } : null;
 
 const articleSchema = {
