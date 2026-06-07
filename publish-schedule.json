@@ -4,8 +4,23 @@
     "pagesPerRun": 1,
     "minDaysBetweenRuns": 0
   },
-  "lastRun": "2026-06-06",
+  "lastRun": "2026-06-07",
   "runs": [
+    {
+      "date": "2026-06-07",
+      "timestamp": "2026-06-07T06:41:20.381Z",
+      "pagesPublished": [
+        {
+          "url": "/guide/how-many-square-feet-in-an-acre",
+          "label": "How Many Square Feet in an Acre?",
+          "type": "reference"
+        }
+      ],
+      "pendingBefore": 59,
+      "pendingAfter": 58,
+      "trigger": "scheduled",
+      "runBy": "evinso"
+    },
     {
       "date": "2026-06-06",
       "timestamp": "2026-06-06T23:03:44.381Z",
@@ -437,8 +452,8 @@
       "url": "/guide/how-many-square-feet-in-an-acre",
       "label": "How Many Square Feet in an Acre?",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-07"
     },
     {
       "url": "/guide/how-to-lay-pavers",
