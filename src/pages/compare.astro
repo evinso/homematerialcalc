@@ -240,28 +240,26 @@ import CompareTable from '../components/ui/CompareTable.astro';
   </div>
 
 </div>
+
+  <script>
+    const buttons = document.querySelectorAll('.comp-btn');
+    const result = document.getElementById('comp-result');
+    const panels = document.querySelectorAll('.comp-panel');
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('data-comp');
+        buttons.forEach(b => b.classList.remove('border-brand-500', 'text-brand-700', 'bg-brand-50'));
+        btn.classList.add('border-brand-500', 'text-brand-700', 'bg-brand-50');
+        panels.forEach(p => p.classList.add('hidden'));
+        const panel = document.querySelector(`[data-panel="${id}"]`);
+        if (panel && result) {
+          panel.classList.remove('hidden');
+          result.classList.remove('hidden');
+          result.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+
 </BaseLayout>
-
----
-<!-- CompareTable component inline (Astro doesn't support function components in .astro files the same way) -->
-
-<script>
-const buttons = document.querySelectorAll('.comp-btn');
-const result = document.getElementById('comp-result')!;
-const panels = document.querySelectorAll('.comp-panel');
-
-buttons.forEach(btn => {
-  btn.addEventListener('click', () => {
-    const id = btn.getAttribute('data-comp');
-    buttons.forEach(b => b.classList.remove('border-brand-500', 'text-brand-700', 'bg-brand-50'));
-    btn.classList.add('border-brand-500', 'text-brand-700', 'bg-brand-50');
-    panels.forEach(p => p.classList.add('hidden'));
-    const panel = document.querySelector(`[data-panel="${id}"]`);
-    if (panel) {
-      panel.classList.remove('hidden');
-      result.classList.remove('hidden');
-      result.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  });
-});
-</script>
