@@ -26,14 +26,17 @@ const displayDate = publishDate
   <!-- Info -->
   <div class="min-w-0">
     <div class="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
-      <span class="text-sm font-semibold text-gray-900">{author.name}</span>
+      <a href={`/author/${author.slug}/`} class="text-sm font-semibold text-gray-900 hover:text-brand-700 hover:underline">{author.name}</a>
       <span class="text-xs text-gray-500">·</span>
       <span class="text-xs text-gray-500">{author.title}</span>
     </div>
     <p class="text-xs text-gray-500 mt-0.5">{author.credentials}</p>
     <p class="text-xs text-gray-600 mt-1 leading-relaxed">{author.bio}</p>
-    {displayDate && (
-      <p class="text-xs text-gray-400 mt-1">Updated {displayDate}</p>
-    )}
+    <div class="flex flex-wrap items-center gap-3 mt-1.5">
+      {displayDate && (
+        <p class="text-xs text-gray-400">Published {displayDate}</p>
+      )}
+      <a href={`mailto:${author.email}`} class="text-xs text-brand-600 hover:underline">{author.email}</a>
+    </div>
   </div>
 </div>

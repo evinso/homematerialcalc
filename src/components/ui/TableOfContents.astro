@@ -1,0 +1,29 @@
+---
+interface Heading {
+  text: string;
+  slug: string;
+  level: 2 | 3;
+}
+
+interface Props {
+  headings: Heading[];
+}
+
+const { headings } = Astro.props;
+const h2s = headings.filter(h => h.level === 2);
+if (h2s.length < 3) return; // don't render TOC for short pages
+---
+
+{h2s.length >= 3 && (
+  <nav class="toc not-prose bg-gray-50 border border-gray-200 rounded-xl p-4 mb-8 no-print" aria-label="Table of contents">
+    <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">In this guide</p>
+    <ol class="space-y-1">
+      {h2s.map((h, i) => (
+        <li class="flex gap-2 text-sm">
+          <span class="text-gray-400 font-mono text-xs mt-0.5 flex-shrink-0">{String(i + 1).padStart(2, '0')}</span>
+          <a href={`#${h.slug}`} class="text-brand-600 hover:underline leading-snug">{h.text}</a>
+        </li>
+      ))}
+    </ol>
+  </nav>
+)}

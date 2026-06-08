@@ -1,0 +1,66 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How much does drywall cost per sheet?', a: 'A standard 4×8 ft sheet of 1/2-inch drywall costs $12–$18 at home improvement stores in 2026. 5/8-inch Type X (fire-rated) costs $15–$22 per sheet. Prices vary by region and fluctuate with gypsum supply. Buying in bulk (full pallet) saves 10–15%.' },
+  { q: 'How much does drywall installation cost?', a: 'Professional drywall installation (hanging and finishing to Level 4) costs $1.50–$3.50 per sq ft — or $1,500–$3,500 for a 1,000 sq ft area. Hanging alone (no finishing) costs $0.60–$1.00/sq ft. Full hang-and-finish including materials runs $2–$5/sq ft.' },
+  { q: 'How much does it cost to drywall a 12×12 room?', a: 'Drywalling a 12×12 ft room with 8-ft ceilings requires about 20 sheets of 4×8 drywall (~$240–$360 in materials). Add joint compound, tape, screws, and corner bead ($80–$150), and professional installation ($500–$900), for a total of $820–$1,410.' },
+  { q: 'Is it cheaper to do drywall yourself?', a: 'Yes — DIY drywall saves $0.60–$2.50/sq ft in labor. For a 1,000 sq ft area, that is $600–$2,500 in savings. The taping and finishing process (3 coats) is the most skill-intensive part. Hanging sheets is manageable for DIYers, especially with a rented drywall lift for ceilings.' },
+  { q: 'How much does it cost to finish a basement with drywall?', a: 'Drywalling a 1,000 sq ft unfinished basement typically costs $1,500–$4,000 for materials and professional installation. This includes hanging drywall on walls and ceilings, taping, and finishing to Level 4. DIY can reduce this to $600–$1,200 in materials only.' },
+  { q: 'How much does drywall mud and tape cost?', a: 'Pre-mixed joint compound (mud) costs $15–$25 for a 5-gallon bucket, which covers approximately 100–150 sq ft. Paper tape costs $5–$10 per roll. Mesh tape runs $8–$15 per roll. A typical 12×12 room needs 2–3 buckets of mud and 1 roll of tape.' },
+  { q: 'How many drywall sheets do I need for a room?', a: 'Divide total wall and ceiling square footage by 32 (sq ft per 4×8 sheet), then add 10% for waste. A 12×12 ft room with 8-ft ceilings has ~528 sq ft of surface area — about 18 sheets plus waste = 20 sheets. Use the Drywall Calculator for an exact count.' },
+];
+
+export const related = [
+  { href: '/calculator/drywall', label: 'Drywall Calculator' },
+  { href: '/guide/how-much-drywall-do-i-need', label: 'How Much Drywall Do I Need?' },
+  { href: '/guide/how-to-hang-drywall', label: 'How to Hang Drywall' },
+  { href: '/guide/drywall-thickness-guide', label: 'Drywall Thickness Guide' },
+  { href: '/guide/how-many-sheets-of-drywall-for-a-room', label: 'How Many Sheets for a Room?' },
+];
+
+<GuideLayout
+  title="How Much Does Drywall Cost? — 2026 Material & Installation Prices"
+  description="Drywall cost per sheet and per sq ft for materials and installation in 2026. Includes room estimates, hanging vs. finishing costs, and DIY vs. pro savings."
+  h1="How Much Does Drywall Cost?"
+  intro="Drywall costs depend on sheet quantity, thickness, finishing level, and whether you hang it yourself or hire a professional. Here is a complete price breakdown for 2026."
+  calculatorHref="/calculator/drywall"
+  calculatorLabel="Drywall Calculator — exact sheet count and cost for your room"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'How Much Does Drywall Cost?' }]}
+  authorSlug="dan"
+  publishDate="2026-06-09">
+
+## 2026 drywall material costs
+
+| Product | Size | Cost per sheet |
+|---------|------|---------------|
+| 1/2" standard | 4×8 ft | $12–$18 |
+| 1/2" standard | 4×12 ft | $18–$27 |
+| 5/8" Type X (fire-rated) | 4×8 ft | $15–$22 |
+| 1/4" (curved walls) | 4×8 ft | $10–$16 |
+| 1/2" moisture-resistant | 4×8 ft | $14–$20 |
+| Joint compound (5 gal) | — | $15–$25 |
+| Paper tape (75 ft) | — | $5–$10 |
+
+## Installation cost breakdown
+
+| Task | Cost per sq ft |
+|------|---------------|
+| Hanging only (no finishing) | $0.60–$1.00 |
+| Taping and finishing (3 coats) | $0.90–$2.50 |
+| Hang + finish (Level 4) | $1.50–$3.50 |
+| Full project with materials | $2.00–$5.00 |
+
+## Full project estimates
+
+| Space | Sq ft of drywall | Materials | Installed (pro) |
+|-------|-----------------|-----------|-----------------|
+| 12×12 room | ~528 sq ft | $240–$510 | $820–$1,800 |
+| 3-bedroom house | ~3,000 sq ft | $1,400–$2,700 | $4,500–$10,500 |
+| Basement (1,000 sq ft) | ~1,200 sq ft | $550–$1,000 | $1,800–$4,200 |
+| Garage (2-car, walls only) | ~600 sq ft | $280–$520 | $900–$2,100 |
+
+Use the [Drywall Calculator](/calculator/drywall) for your exact sheet count with room dimensions.
+
+</GuideLayout>

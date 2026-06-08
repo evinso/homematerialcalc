@@ -2,31 +2,68 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const calcs = [
-  { href: '/calculator/concrete', label: 'Concrete Calculator', desc: 'Bags (40, 60, 80 lb) or cubic yards for slabs, footings, and post holes.' },
-  { href: '/calculator/asphalt',  label: 'Asphalt Calculator',  desc: 'Tons and cubic yards of hot mix asphalt for driveways and parking areas.' },
-  { href: '/calculator/fence',    label: 'Fence Calculator',    desc: 'Posts, rails, pickets, and concrete bags for any fence length.' },
-  { href: '/calculator/deck',     label: 'Deck Calculator',     desc: 'Decking boards, joists, beams, footings, and concrete for any deck size.' },
+  { href: '/calculator/concrete',      label: 'Concrete Calculator',      desc: 'Bags (40, 60, 80 lb) or cubic yards for slabs, footings, and post holes.' },
+  { href: '/calculator/concrete-cost', label: 'Concrete Cost Calculator', desc: 'Estimate total cost for ready-mix or bagged concrete projects.' },
+  { href: '/calculator/fence',         label: 'Fence Calculator',         desc: 'Posts, rails, pickets, and concrete bags for any fence length.' },
+  { href: '/calculator/deck',          label: 'Deck Calculator',          desc: 'Decking boards, joists, beams, footings, and concrete for any deck size.' },
+  { href: '/calculator/asphalt',       label: 'Asphalt Calculator',       desc: 'Tons and cubic yards of hot mix asphalt for driveways and parking areas.' },
+  { href: '/calculator/paver',         label: 'Paver Calculator',         desc: 'Paver count, sand base, and gravel base for patios and walkways.' },
 ];
 
-const guides = [
-  { href: '/guide/how-much-concrete-do-i-need',         label: 'How Much Concrete Do I Need?' },
-  { href: '/guide/how-much-concrete-for-fence-posts',   label: 'How Much Concrete for Fence Posts?' },
-  { href: '/guide/how-much-concrete-for-a-slab',        label: 'How Much Concrete for a Slab?' },
-  { href: '/guide/how-many-bags-of-concrete-for-10x10-slab', label: 'Concrete Bags for a 10×10 Slab' },
+const howMuchGuides = [
+  { href: '/guide/how-much-concrete-do-i-need',              label: 'How Much Concrete Do I Need?' },
+  { href: '/guide/how-much-concrete-for-fence-posts',        label: 'Concrete for Fence Posts' },
+  { href: '/guide/how-much-concrete-for-a-slab',             label: 'Concrete for a Slab' },
+  { href: '/guide/how-many-bags-of-concrete-for-10x10-slab', label: 'Bags for a 10×10 Slab' },
+  { href: '/guide/how-many-pavers-do-i-need',                label: 'How Many Pavers Do I Need?' },
+];
+
+const projectGuides = [
+  { href: '/guide/how-to-pour-a-concrete-slab',  label: 'How to Pour a Concrete Slab' },
+  { href: '/guide/how-to-build-a-patio',         label: 'How to Build a Patio' },
+  { href: '/guide/how-to-lay-pavers',            label: 'How to Lay Pavers' },
+  { href: '/guide/how-to-build-a-gravel-driveway', label: 'How to Build a Gravel Driveway' },
+];
+
+const comparisons = [
+  { href: '/guide/asphalt-vs-concrete-driveway', label: 'Asphalt vs Concrete Driveway' },
+  { href: '/guide/concrete-vs-pavers-patio',     label: 'Concrete vs Pavers — Patio' },
+  { href: '/guide/cedar-vs-pressure-treated-wood', label: 'Cedar vs Pressure Treated Wood' },
+];
+
+const costGuides = [
+  { href: '/guide/how-much-does-concrete-cost', label: 'How Much Does Concrete Cost?' },
+  { href: '/guide/best-concrete-mix-for-fence-posts', label: 'Best Concrete Mix for Fence Posts' },
 ];
 
 const refs = [
   { href: '/guide/how-many-bags-of-concrete-per-cubic-yard', label: 'Concrete Bags per Cubic Yard' },
   { href: '/guide/how-thick-should-concrete-slab-be',        label: 'How Thick Should a Concrete Slab Be?' },
   { href: '/guide/concrete-mix-ratios',                      label: 'Concrete Mix Ratios' },
+  { href: '/guide/how-long-does-concrete-take-to-dry',       label: 'How Long Does Concrete Take to Dry?' },
   { href: '/guide/cubic-yards-to-tons',                      label: 'Cubic Yards to Tons' },
+  { href: '/guide/what-is-a-cubic-yard',                     label: 'What Is a Cubic Yard?' },
 ];
+
+const siteUrl = 'https://www.homematerialcalc.com';
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl + '/' },
+    { '@type': 'ListItem', position: 2, name: 'Concrete Calculators', item: siteUrl + '/concrete-calculators/' },
+  ],
+};
 ---
 
 <BaseLayout
-  title="Concrete Calculators — Bag Count, Slabs, Post Holes & Cubic Yards"
-  description="Free concrete calculators for slabs, footings, post holes, and steps. Get exact bag counts (40, 60, or 80 lb) or cubic yards for any concrete project."
+  title="Concrete Calculators — Bag Count, Slabs, Post Holes, Pavers & Cost"
+  description="Free concrete calculators for slabs, footings, post holes, and steps. Get exact bag counts (40, 60, or 80 lb), cubic yards, and cost estimates. Includes how-to guides and comparisons."
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
+
   <div class="max-w-5xl mx-auto px-4 py-12">
     <nav class="text-sm text-gray-500 mb-6 flex flex-wrap gap-1">
       <a href="/" class="hover:text-brand-600">Home</a>
@@ -34,8 +71,8 @@ const refs = [
       <span class="text-gray-700">Concrete Calculators</span>
     </nav>
 
-    <h1 class="text-3xl font-bold text-gray-900 mb-3">Concrete Calculators</h1>
-    <p class="text-gray-600 mb-10 text-lg max-w-2xl">Free concrete calculators for slabs, footings, and post holes. Choose your bag size (40, 60, or 80 lb) and get the exact count for any project.</p>
+    <h1 class="text-3xl font-bold text-gray-900 mb-3">Concrete & Construction Calculators</h1>
+    <p class="text-gray-600 mb-10 text-lg max-w-2xl">Free concrete calculators for slabs, footings, and post holes. Choose your bag size (40, 60, or 80 lb) and get the exact count for any project. Also covers pavers, asphalt, fences, and decks.</p>
 
     <section class="mb-12">
       <h2 class="text-xl font-bold text-gray-900 mb-4">Calculators</h2>
@@ -49,10 +86,37 @@ const refs = [
       </div>
     </section>
 
-    <section class="mb-12">
+    <section class="mb-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">How Much Do I Need?</h2>
+      <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-2 text-sm">
+        {howMuchGuides.map(g => (
+          <li><a href={g.href} class="text-brand-600 hover:underline">{g.label}</a></li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="mb-10">
       <h2 class="text-xl font-bold text-gray-900 mb-4">Project Guides</h2>
-      <ul class="grid sm:grid-cols-2 gap-2 text-sm">
-        {guides.map(g => (
+      <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-2 text-sm">
+        {projectGuides.map(g => (
+          <li><a href={g.href} class="text-brand-600 hover:underline">{g.label}</a></li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Compare Materials</h2>
+      <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-2 text-sm">
+        {comparisons.map(g => (
+          <li><a href={g.href} class="text-brand-600 hover:underline">{g.label}</a></li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Cost Guides</h2>
+      <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-2 text-sm">
+        {costGuides.map(g => (
           <li><a href={g.href} class="text-brand-600 hover:underline">{g.label}</a></li>
         ))}
       </ul>
@@ -60,7 +124,7 @@ const refs = [
 
     <section class="mb-10">
       <h2 class="text-xl font-bold text-gray-900 mb-4">Reference</h2>
-      <ul class="grid sm:grid-cols-2 gap-2 text-sm">
+      <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-2 text-sm">
         {refs.map(r => (
           <li><a href={r.href} class="text-brand-600 hover:underline">{r.label}</a></li>
         ))}

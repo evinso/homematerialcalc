@@ -1,0 +1,71 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How much does lumber cost per board foot?', a: 'Dimensional softwood lumber (pine, spruce, fir) costs $0.80–$2.50 per board foot in 2026. A standard 2×4×8 costs $4–$8; a 2×6×8 costs $6–$12; a 2×8×8 costs $9–$18. Hardwood lumber (oak, maple, cherry) costs $4–$15+ per board foot.' },
+  { q: 'Why is lumber so expensive right now?', a: 'Lumber prices peaked in 2021 and remain elevated due to ongoing supply chain factors, mill capacity constraints, and housing demand. 2×4 stud prices in 2026 run $4–$8, compared to $2–$3 before 2020. Prices fluctuate seasonally — spring/summer construction seasons push prices up.' },
+  { q: 'How much does a bundle of lumber cost?', a: 'A bundle (unit) of 2×4×8 studs typically contains 294 pieces and costs $800–$1,800 depending on current market prices. Individual studs sell for $4–$8 each. Buying by the bundle saves 10–20% vs. picking individual pieces.' },
+  { q: 'How much does pressure treated lumber cost vs. regular?', a: 'Pressure treated (PT) lumber costs 30–60% more than untreated dimensional lumber. A 2×6×8 PT board runs $8–$16 vs. $6–$12 for untreated. PT lumber is required by code for any structural member in ground contact, sill plates, and exterior decking framing.' },
+  { q: 'How much does it cost to frame a house?', a: 'Wood framing materials for a 2,000 sq ft house cost $25,000–$60,000. Complete framing labor + materials runs $50,000–$120,000 depending on design complexity and region. Per-square-foot framing costs are $25–$60/sq ft of finished space.' },
+  { q: 'How much lumber do I need for a deck?', a: 'A 12×16 ft deck (192 sq ft) requires approximately 300–400 linear feet of deck boards, plus 150–200 linear feet for joists, beams, and blocking. Total lumber cost runs $800–$2,500 depending on species (PT pine vs. cedar vs. composite). Use the Lumber Calculator for exact quantities.' },
+  { q: 'What is a board foot of lumber?', a: 'A board foot is the volume of wood in a piece 1 foot × 1 foot × 1 inch thick (144 cubic inches). To calculate: (thickness in inches × width in inches × length in feet) ÷ 12. A 2×6×8 ft board = (2 × 6 × 8) ÷ 12 = 8 board feet.' },
+];
+
+export const related = [
+  { href: '/calculator/lumber', label: 'Lumber Calculator' },
+  { href: '/guide/how-much-lumber-do-i-need', label: 'How Much Lumber Do I Need?' },
+  { href: '/guide/cedar-vs-pressure-treated-wood', label: 'Cedar vs Pressure Treated Wood' },
+  { href: '/calculator/deck', label: 'Deck Calculator' },
+];
+
+<GuideLayout
+  title="How Much Does Lumber Cost? — 2026 Price Guide by Size & Type"
+  description="Lumber prices per board foot in 2026: 2×4, 2×6, 2×8, pressure treated, cedar, and hardwood. Includes framing and deck project estimates with DIY vs. pro costs."
+  h1="How Much Does Lumber Cost?"
+  intro="Lumber prices depend on species, dimensions, treatment, and current market conditions. Here is a complete breakdown of lumber costs per board foot and per piece in 2026."
+  calculatorHref="/calculator/lumber"
+  calculatorLabel="Lumber Calculator — board feet and total cost for your project"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'How Much Does Lumber Cost?' }]}
+  authorSlug="tom"
+  publishDate="2026-06-09">
+
+## 2026 dimensional lumber prices (per piece)
+
+| Size | Length | Untreated | Pressure Treated |
+|------|--------|-----------|-----------------|
+| 2×4 | 8 ft | $4–$8 | $6–$11 |
+| 2×4 | 12 ft | $6–$12 | $9–$16 |
+| 2×6 | 8 ft | $6–$12 | $9–$18 |
+| 2×6 | 12 ft | $9–$18 | $14–$26 |
+| 2×8 | 8 ft | $9–$18 | $14–$26 |
+| 2×10 | 8 ft | $14–$24 | $19–$32 |
+| 2×12 | 8 ft | $18–$32 | $24–$42 |
+| 4×4 | 8 ft | $12–$22 | $16–$28 |
+| 6×6 | 8 ft | $22–$40 | $28–$50 |
+
+## Lumber cost by species
+
+| Species | Typical use | Cost per board ft |
+|---------|------------|------------------|
+| Pine/SPF (untreated) | Framing, interior | $0.80–$2.00 |
+| Pine/SPF (pressure treated) | Exterior, ground contact | $1.20–$3.00 |
+| Cedar | Decking, fencing | $2.00–$5.00 |
+| Redwood | Decking, outdoor | $3.00–$8.00 |
+| Douglas Fir | Structural beams | $1.50–$3.50 |
+| Oak (hardwood) | Furniture, trim | $5.00–$12.00 |
+| Maple (hardwood) | Cabinetry, flooring | $6.00–$15.00 |
+
+## Project material cost estimates (2026)
+
+| Project | Size | Lumber cost |
+|---------|------|------------|
+| Deck (PT framing + cedar decking) | 12×16 ft | $1,200–$2,800 |
+| Privacy fence | 6 ft × 100 ft | $800–$2,200 |
+| Shed framing | 10×12 ft | $400–$900 |
+| Room addition framing | 200 sq ft | $1,500–$4,000 |
+| Full house framing | 2,000 sq ft | $25,000–$60,000 |
+
+Use the [Lumber Calculator](/calculator/lumber) for board feet and cost for your specific project.
+
+</GuideLayout>

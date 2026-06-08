@@ -1,0 +1,66 @@
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export const faqs = [
+  { q: 'How much does tile cost per square foot?', a: 'Ceramic tile costs $1–$6/sq ft; porcelain tile $3–$10/sq ft; natural stone (marble, travertine) $5–$30+/sq ft; glass tile $7–$30/sq ft. Basic floor tile from big-box stores starts at $0.89/sq ft. Designer or imported tile can exceed $50/sq ft.' },
+  { q: 'How much does tile installation cost?', a: 'Professional tile installation costs $4–$10/sq ft for ceramic and porcelain, including cement board, thinset, tile, grout, and labor. Large-format tile (18×18 and up) adds $1–$3/sq ft due to leveling complexity. Total installed cost for a standard floor: $7–$18/sq ft.' },
+  { q: 'How much does it cost to tile a bathroom floor?', a: 'A standard 50 sq ft bathroom floor costs $350–$900 installed. Ceramic tile: $350–$600 total. Porcelain: $500–$900. Natural stone: $750–$2,000. These prices include cement board substrate, thinset, tile, grout, and professional installation.' },
+  { q: 'How much does it cost to tile a shower?', a: 'Tiling a standard 36×36 inch shower (walls and floor) costs $800–$2,500 installed. Costs depend heavily on tile type: ceramic (~$800–$1,200), porcelain (~$1,000–$1,800), natural stone or glass (~$1,500–$2,500+). Shower tile requires waterproofing membrane ($150–$300 extra).' },
+  { q: 'How much tile do I need for a 200 sq ft floor?', a: 'For 200 sq ft, add 10% waste: buy 220 sq ft of tile. Using 12×12 tiles, that is 220 pieces. Using 18×18 tiles, that is 98 pieces. For diagonal installation, add 15% waste instead of 10%. Use the Tile Calculator for exact counts based on your tile size and room shape.' },
+  { q: 'Is porcelain or ceramic tile cheaper?', a: 'Ceramic tile is generally cheaper than porcelain — $1–$6/sq ft vs $3–$10/sq ft for materials. Ceramic is easier to cut and install, reducing labor costs slightly. Porcelain is denser, more water-resistant, and better for high-traffic areas. For budget bathroom or kitchen floors, ceramic is the value choice.' },
+  { q: 'How much does backsplash tile cost?', a: 'Kitchen backsplash tile costs $5–$30/sq ft in materials. A standard backsplash (20–30 sq ft) costs $100–$900 in materials and $200–$500 to install professionally — total $300–$1,400. Subway tile is the most affordable option at $5–$10/sq ft; mosaic and glass tile run $15–$30+/sq ft.' },
+];
+
+export const related = [
+  { href: '/calculator/tile', label: 'Tile Calculator' },
+  { href: '/guide/how-much-tile-do-i-need', label: 'How Much Tile Do I Need?' },
+  { href: '/guide/how-to-install-tile', label: 'How to Install Tile' },
+  { href: '/guide/tile-sizes-and-coverage', label: 'Tile Sizes & Coverage' },
+  { href: '/guide/tile-vs-vinyl-flooring', label: 'Tile vs Vinyl Flooring' },
+];
+
+<GuideLayout
+  title="How Much Does Tile Cost? — 2026 Price Guide for Floor & Wall Tile"
+  description="Tile cost per square foot in 2026: ceramic, porcelain, natural stone, and glass. Includes installation costs for bathroom floors, shower walls, and kitchen backsplash."
+  h1="How Much Does Tile Cost?"
+  intro="Tile costs vary enormously by material, size, and installation complexity. Here is a complete breakdown of tile prices for floors, walls, and showers in 2026."
+  calculatorHref="/calculator/tile"
+  calculatorLabel="Tile Calculator — exact tile count and cost for your project"
+  faqs={faqs}
+  related={related}
+  breadcrumbs={[{ label: 'Guides' }, { label: 'How Much Does Tile Cost?' }]}
+  authorSlug="dan"
+  publishDate="2026-06-09">
+
+## 2026 tile cost by material
+
+| Tile type | Material cost/sq ft | Installed cost/sq ft |
+|-----------|--------------------|--------------------|
+| Ceramic (basic) | $1–$6 | $7–$13 |
+| Porcelain | $3–$10 | $9–$18 |
+| Subway tile (ceramic) | $2–$8 | $8–$16 |
+| Natural stone (travertine) | $5–$20 | $12–$30 |
+| Marble | $8–$30 | $16–$45 |
+| Glass mosaic | $7–$30 | $15–$45 |
+| Slate | $4–$14 | $11–$22 |
+| Quarry tile | $1.50–$4 | $6–$12 |
+
+## Project estimates
+
+| Project | Area | Ceramic (installed) | Porcelain (installed) |
+|---------|------|--------------------|-----------------------|
+| Bathroom floor (50 sq ft) | 50 sq ft | $350–$650 | $450–$900 |
+| Kitchen backsplash | 25 sq ft | $300–$700 | $425–$1,000 |
+| Shower (walls + floor) | 80 sq ft | $800–$1,400 | $1,100–$2,200 |
+| Kitchen floor | 200 sq ft | $1,400–$2,600 | $1,800–$3,600 |
+| Full bathroom (floor + shower) | 130 sq ft | $1,150–$2,050 | $1,550–$3,100 |
+
+## Key cost factors
+
+- **Tile size** — Large-format tile (18×18+) costs more to install ($1–$3/sq ft extra) due to leveling requirements
+- **Grout joint width** — Wider joints need more grout; rectified tile with tight joints (1/16") reduces grout cost
+- **Substrate** — Cement board adds $0.50–$1.00/sq ft vs. direct-bond to concrete
+- **Pattern** — Diagonal or herringbone patterns waste 15% vs. 10% for straight lay, increasing material cost
+
+Use the [Tile Calculator](/calculator/tile) to calculate how many tiles you need for your exact room size.
+
+</GuideLayout>

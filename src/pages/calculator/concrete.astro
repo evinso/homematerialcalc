@@ -25,7 +25,7 @@ const related = [
 >
 
   <Fragment slot="head">
-    <CalcSchema name="Concrete Calculator" crumbs={[{ label: "Concrete Calculators", href: "/concrete-calculators" }, { label: "Concrete Calculator" }]} description="Free concrete calculator for bags, cubic yards and cost" url="/calculator/concrete" />
+    <CalcSchema name="Concrete Calculator" crumbs={[{ label: "Concrete Calculators", href: "/concrete-calculators" }, { label: "Concrete Calculator" }]} description="Free concrete calculator for bags, cubic yards and cost" url="/calculator/concrete" lastUpdated="2026-06-09" />
   </Fragment>
   <div class="max-w-6xl mx-auto px-4 py-10">
     <script type="application/ld+json" set:html={JSON.stringify({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How many bags of concrete do I need for a 10\u00d710 slab?", "acceptedAnswer": {"@type": "Answer", "text": "At 4 inches thick, a 10\u00d710 slab needs 1.23 cubic yards \u2014 about 56 bags of 80 lb concrete, 74 bags of 60 lb, or 111 bags of 40 lb. Always add 10% extra."}}, {"@type": "Question", "name": "How many bags of 80 lb concrete in a cubic yard?", "acceptedAnswer": {"@type": "Answer", "text": "45 bags of 80 lb concrete make one cubic yard. Each 80 lb bag yields 0.60 cubic feet (27 cu ft \u00f7 0.60 = 45). For 60 lb bags: 60 per yard. For 40 lb: 90 per yard."}}, {"@type": "Question", "name": "How thick should a concrete slab be?", "acceptedAnswer": {"@type": "Answer", "text": "4 inches is standard for patios, sidewalks, and garage floors. Driveways need 5\u20136 inches. Post holes for fence posts typically need 6\u20138 inches of concrete."}}, {"@type": "Question", "name": "Should I use bags or ready-mix concrete?", "acceptedAnswer": {"@type": "Answer", "text": "For projects under 1 cubic yard (about 80 sq ft at 4 inches thick), bagged concrete is practical. For larger slabs, ready-mix truck delivery is significantly cheaper and faster."}}]})} />
@@ -34,6 +34,8 @@ const related = [
       <div>
         <h1 class="text-3xl font-bold text-gray-900 mb-2">Concrete Calculator</h1>
         <UsageStats material="concrete" />
+
+        <p class="text-xs text-gray-400 mb-4">Last updated: <time datetime="2026-06-09">June 2026</time> · Prices verified</p>
         <p class="text-gray-600 mb-6">Enter your slab dimensions or post hole size to find out how many bags of concrete to buy. Choose your bag size — 40, 60, or 80 lb.</p>
 
         <ConcreteCalculator client:load />

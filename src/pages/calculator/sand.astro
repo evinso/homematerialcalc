@@ -25,7 +25,7 @@ const related = [
 >
 
   <Fragment slot="head">
-    <CalcSchema name="Sand Calculator" crumbs={[{ label: "Landscaping Calculators", href: "/landscaping-calculators" }, { label: "Sand Calculator" }]} description="Free sand calculator for cubic yards, bags and cost" url="/calculator/sand" />
+    <CalcSchema name="Sand Calculator" crumbs={[{ label: "Landscaping Calculators", href: "/landscaping-calculators" }, { label: "Sand Calculator" }]} description="Free sand calculator for cubic yards, bags and cost" url="/calculator/sand" lastUpdated="2026-06-09" />
   </Fragment>
   <div class="max-w-6xl mx-auto px-4 py-10">
     <script type="application/ld+json" set:html={JSON.stringify({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How much sand do I need for a paver base?", "acceptedAnswer": {"@type": "Answer", "text": "The standard sand bedding layer for pavers is 1 inch deep. For a 10\u00d710 ft patio: 10 \u00d7 10 \u00d7 1 \u00f7 324 = 0.31 cubic yards, or about 17 bags of 50 lb sand."}}, {"@type": "Question", "name": "How many 50 lb bags of sand per cubic yard?", "acceptedAnswer": {"@type": "Answer", "text": "There are 54 bags of 50 lb sand in one cubic yard (27 cu ft \u00f7 0.5 cu ft per bag = 54 bags). A cubic yard of sand weighs about 2,700 lbs."}}, {"@type": "Question", "name": "How much sand do I need for a sandbox?", "acceptedAnswer": {"@type": "Answer", "text": "A 4\u00d74 ft sandbox at 6 inches deep needs 8 cu ft \u2014 about 16 bags of 50 lb play sand. Use washed play sand, not construction or masonry sand."}}, {"@type": "Question", "name": "How many cubic yards of sand do I need?", "acceptedAnswer": {"@type": "Answer", "text": "Cubic yards = Length (ft) \u00d7 Width (ft) \u00d7 Depth (in) \u00f7 324. Add 10% for waste. The Sand Calculator converts to tons and bags automatically."}}]})} />
@@ -34,6 +34,8 @@ const related = [
       <div>
         <h1 class="text-3xl font-bold text-gray-900 mb-2">Sand Calculator</h1>
         <UsageStats material="sand" />
+
+        <p class="text-xs text-gray-400 mb-4">Last updated: <time datetime="2026-06-09">June 2026</time> · Prices verified</p>
         <p class="text-gray-600 mb-6">Enter your project dimensions, depth, and sand type to calculate how many cubic yards, tons, or 50 lb bags of sand to buy.</p>
 
         <SandCalculator client:load />

@@ -26,7 +26,7 @@ const related = [
 >
 
   <Fragment slot="head">
-    <CalcSchema name="Gravel Calculator" crumbs={[{ label: "Landscaping Calculators", href: "/landscaping-calculators" }, { label: "Gravel Calculator" }]} description="Free gravel calculator for cubic yards, tons and cost" url="/calculator/gravel" />
+    <CalcSchema name="Gravel Calculator" crumbs={[{ label: "Landscaping Calculators", href: "/landscaping-calculators" }, { label: "Gravel Calculator" }]} description="Free gravel calculator for cubic yards, tons and cost" url="/calculator/gravel" lastUpdated="2026-06-09" />
   </Fragment>
   <div class="max-w-6xl mx-auto px-4 py-10">
     <script type="application/ld+json" set:html={JSON.stringify({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How many cubic yards of gravel do I need?", "acceptedAnswer": {"@type": "Answer", "text": "Cubic yards = Length (ft) \u00d7 Width (ft) \u00d7 Depth (in) \u00f7 324. For a 20\u00d720 ft driveway at 3 inches: 3.7 cubic yards. Add 10% for waste."}}, {"@type": "Question", "name": "How much does a cubic yard of gravel weigh?", "acceptedAnswer": {"@type": "Answer", "text": "Pea gravel and 3/4-inch crushed stone weigh about 2,800 lbs (1.40 tons) per cubic yard. Crushed limestone is about 3,000 lbs (1.50 tons)."}}, {"@type": "Question", "name": "How deep should I put gravel for a driveway?", "acceptedAnswer": {"@type": "Answer", "text": "A residential driveway needs 4\u20136 inches of compacted base plus 2\u20133 inches of surface gravel, totaling 6\u20139 inches. For a path or landscaping bed, 2\u20133 inches is enough."}}, {"@type": "Question", "name": "How many tons of gravel do I need?", "acceptedAnswer": {"@type": "Answer", "text": "Tons = Cubic yards \u00d7 material density. For 3/4-inch crushed stone: tons = cubic yards \u00d7 1.40. The Gravel Calculator converts automatically when you select your stone type."}}]})} />
@@ -35,6 +35,8 @@ const related = [
       <div>
         <h1 class="text-3xl font-bold text-gray-900 mb-2">Gravel & Crushed Stone Calculator</h1>
         <UsageStats material="gravel" />
+
+        <p class="text-xs text-gray-400 mb-4">Last updated: <time datetime="2026-06-09">June 2026</time> · Prices verified</p>
         <p class="text-gray-600 mb-6">Enter your project area, depth, and stone type to calculate how many cubic yards or tons of gravel you need.</p>
 
         <GravelCalculator client:load />

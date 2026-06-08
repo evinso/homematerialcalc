@@ -23,7 +23,7 @@ const related = [
 >
 
   <Fragment slot="head">
-    <CalcSchema name="Paint Calculator" crumbs={[{ label: "Interior Calculators", href: "/interior-calculators" }, { label: "Paint Calculator" }]} description="Free paint calculator for gallons, quarts and cost" url="/calculator/paint" />
+    <CalcSchema name="Paint Calculator" crumbs={[{ label: "Interior Calculators", href: "/interior-calculators" }, { label: "Paint Calculator" }]} description="Free paint calculator for gallons, quarts and cost" url="/calculator/paint" lastUpdated="2026-06-09" />
   </Fragment>
   <div class="max-w-6xl mx-auto px-4 py-10">
     <script type="application/ld+json" set:html={JSON.stringify({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How many gallons of paint do I need for a 12\u00d712 room?", "acceptedAnswer": {"@type": "Answer", "text": "A standard 12\u00d712 ft room with 8 ft ceilings needs about 1.5 gallons per coat \u2014 so 3 gallons for 2 coats. Subtract area for 2 standard doors (~42 sq ft) and 2 windows (~30 sq ft)."}}, {"@type": "Question", "name": "How many square feet does a gallon of paint cover?", "acceptedAnswer": {"@type": "Answer", "text": "One gallon of standard latex paint covers 350\u2013400 sq ft per coat on a smooth surface. Primer covers about 250 sq ft. Textured surfaces cover closer to 275 sq ft per gallon."}}, {"@type": "Question", "name": "How many coats of paint do I need?", "acceptedAnswer": {"@type": "Answer", "text": "Most projects need 2 coats. Going from a dark color to a light color may need 3 coats. New unpainted drywall needs 1 coat of primer plus 2 coats of paint."}}, {"@type": "Question", "name": "How do I calculate paint for a room?", "acceptedAnswer": {"@type": "Answer", "text": "Wall area = 2 \u00d7 (Length + Width) \u00d7 Height. Subtract ~21 sq ft per door and ~15 sq ft per window. Divide by 350 (coverage per gallon) and multiply by number of coats."}}]})} />
@@ -32,6 +32,8 @@ const related = [
       <div>
         <h1 class="text-3xl font-bold text-gray-900 mb-2">Paint Calculator</h1>
         <UsageStats material="paint" />
+
+        <p class="text-xs text-gray-400 mb-4">Last updated: <time datetime="2026-06-09">June 2026</time> · Prices verified</p>
         <p class="text-gray-600 mb-6">Enter your room length, width, and ceiling height to find out how many gallons of paint you need — including waste and multiple coats.</p>
         <PaintCalculator client:load />
         <ResultActions />

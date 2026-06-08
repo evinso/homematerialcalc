@@ -1,5 +1,6 @@
 ---
 const siteUrl = 'https://www.homematerialcalc.com';
+const today = new Date().toISOString().split('T')[0];
 
 interface Crumb { label: string; href?: string; }
 interface FAQ  { q: string; a: string; }
@@ -9,8 +10,9 @@ interface Props {
   url: string;
   crumbs?: Crumb[];
   faqs?: FAQ[];
+  lastUpdated?: string; // ISO date, defaults to build date
 }
-const { name, description, url, crumbs = [], faqs = [] } = Astro.props;
+const { name, description, url, crumbs = [], faqs = [], lastUpdated = today } = Astro.props;
 
 const webAppSchema = {
   '@context': 'https://schema.org',
@@ -21,8 +23,14 @@ const webAppSchema = {
   applicationCategory: 'UtilitiesApplication',
   operatingSystem: 'Web',
   browserRequirements: 'Requires JavaScript',
+  dateModified: lastUpdated,
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-  creator: { '@type': 'Organization', name: 'HomeMaterialCalc', url: siteUrl },
+  creator: {
+    '@type': 'Organization',
+    name: 'HomeMaterialCalc',
+    url: siteUrl,
+    email: 'editorial@homematerialcalc.com',
+  },
 };
 
 const breadcrumbSchema = crumbs.length > 0 ? {

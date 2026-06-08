@@ -22,7 +22,7 @@ const related = [
 >
 
   <Fragment slot="head">
-    <CalcSchema name="Flooring Calculator" crumbs={[{ label: "Interior Calculators", href: "/interior-calculators" }, { label: "Flooring Calculator" }]} description="Free flooring calculator for square feet, boxes and cost" url="/calculator/flooring" />
+    <CalcSchema name="Flooring Calculator" crumbs={[{ label: "Interior Calculators", href: "/interior-calculators" }, { label: "Flooring Calculator" }]} description="Free flooring calculator for square feet, boxes and cost" url="/calculator/flooring" lastUpdated="2026-06-09" />
   </Fragment>
   <div class="max-w-6xl mx-auto px-4 py-10">
     <script type="application/ld+json" set:html={JSON.stringify({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How many boxes of flooring do I need for a 12\u00d712 room?", "acceptedAnswer": {"@type": "Answer", "text": "A 12\u00d712 ft room (144 sq ft) with 10% waste needs 158 sq ft of flooring. If each box covers 20 sq ft, you need 8 boxes. If 25 sq ft per box: 7 boxes."}}, {"@type": "Question", "name": "How much extra flooring should I buy for waste?", "acceptedAnswer": {"@type": "Answer", "text": "Buy 10% extra for straight-lay patterns and 15% extra for diagonal patterns. Always buy from the same dye lot to ensure color consistency."}}, {"@type": "Question", "name": "How do I calculate flooring for a room?", "acceptedAnswer": {"@type": "Answer", "text": "Measure length \u00d7 width in feet to get square footage. Add 10% for waste. Divide by box coverage (found on the box label) and round up to whole boxes."}}, {"@type": "Question", "name": "What is the waste factor for diagonal flooring?", "acceptedAnswer": {"@type": "Answer", "text": "Diagonal (45\u00b0) flooring patterns require 15% extra material for cuts. Straight-lay and running-bond patterns need 10% extra. Always round up to full boxes."}}]})} />
@@ -31,6 +31,8 @@ const related = [
       <div>
         <h1 class="text-3xl font-bold text-gray-900 mb-2">Flooring Calculator</h1>
         <UsageStats material="flooring" />
+
+        <p class="text-xs text-gray-400 mb-4">Last updated: <time datetime="2026-06-09">June 2026</time> · Prices verified</p>
         <p class="text-gray-600 mb-6">Enter your room dimensions and the square footage per box to find out how many boxes of flooring to buy, with the right waste factor for your lay pattern.</p>
         <FlooringCalculator client:load />
         <ResultActions />

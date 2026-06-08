@@ -952,7 +952,7 @@
       "publishedAt": null
     },
     {
-      "_section": "INDOOR EXPANSION — v2 (files written, drip publishing)"
+      "_section": "INDOOR EXPANSION \u2014 v2 (files written, drip publishing)"
     },
     {
       "url": "/calculator/paint",
@@ -1018,7 +1018,7 @@
       "publishedAt": null
     },
     {
-      "_section": "BATCH 3 — Project-specific & reference pages"
+      "_section": "BATCH 3 \u2014 Project-specific & reference pages"
     },
     {
       "url": "/guide/how-much-gravel-for-a-driveway",
@@ -1105,7 +1105,7 @@
       "publishedAt": null
     },
     {
-      "_section": "BATCH 4 — New calculators (lumber + paver)"
+      "_section": "BATCH 4 \u2014 New calculators (lumber + paver)"
     },
     {
       "url": "/calculator/lumber",
@@ -1136,7 +1136,7 @@
       "publishedAt": null
     },
     {
-      "_section": "BATCH 5 — New guide & reference pages"
+      "_section": "BATCH 5 \u2014 New guide & reference pages"
     },
     {
       "url": "/guide/how-much-sand-for-a-sandbox",
@@ -1272,7 +1272,7 @@
       "publishedAt": null
     },
     {
-      "_section": "BATCH 6 — Cost calculators"
+      "_section": "BATCH 6 \u2014 Cost calculators"
     },
     {
       "url": "/calculator/mulch-cost",
@@ -1317,7 +1317,7 @@
       "publishedAt": null
     },
     {
-      "_section": "BATCH 7 — EEAT + hub + technical pages"
+      "_section": "BATCH 7 \u2014 EEAT + hub + technical pages"
     },
     {
       "url": "/data-sources",
@@ -1376,13 +1376,13 @@
       "publishedAt": null
     },
     {
-      "_section": "BATCH 6 — Cost calculators"
+      "_section": "BATCH 6 \u2014 Cost calculators"
     },
     {
-      "_section": "BATCH 7 — EEAT + hub + technical pages"
+      "_section": "BATCH 7 \u2014 EEAT + hub + technical pages"
     },
     {
-      "_section": "FUTURE — not yet written"
+      "_section": "FUTURE \u2014 not yet written"
     },
     {
       "url": "/calculator/asphalt-cost",
@@ -1618,6 +1618,55 @@
     {
       "url": "/guide/artificial-grass-vs-sod",
       "label": "Artificial Grass vs Sod",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/author/tom",
+      "label": "Tom Harrington \u2014 Licensed General Contractor",
+      "type": "static",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/author/sarah",
+      "label": "Sarah Mitchell \u2014 Certified Landscape Designer",
+      "type": "static",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/author/dan",
+      "label": "Dan Kowalski \u2014 Flooring & Interior Specialist",
+      "type": "static",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/how-much-does-flooring-cost",
+      "label": "How Much Does Flooring Cost?",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/how-much-does-drywall-cost",
+      "label": "How Much Does Drywall Cost?",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/how-much-does-lumber-cost",
+      "label": "How Much Does Lumber Cost?",
+      "type": "reference",
+      "status": "pending",
+      "publishedAt": null
+    },
+    {
+      "url": "/guide/how-much-does-tile-cost",
+      "label": "How Much Does Tile Cost?",
       "type": "reference",
       "status": "pending",
       "publishedAt": null

@@ -29,6 +29,35 @@ const STATE_PAGES: string[] = ['mulch','gravel','topsoil','sand'].flatMap(m =>
 );
 // Total state pages: 80
 
+// ── City × material pages ────────────────────────────────────────────────────
+// 4 materials × ~42 cities = 168 pages
+const CITY_SLUGS = [
+  'houston-tx','dallas-tx','san-antonio-tx','austin-tx',
+  'miami-fl','orlando-fl','tampa-fl','jacksonville-fl',
+  'los-angeles-ca','san-diego-ca','san-jose-ca','sacramento-ca',
+  'atlanta-ga','savannah-ga',
+  'charlotte-nc','raleigh-nc',
+  'columbus-oh','cleveland-oh',
+  'detroit-mi','grand-rapids-mi',
+  'philadelphia-pa','pittsburgh-pa',
+  'chicago-il',
+  'phoenix-az','tucson-az',
+  'seattle-wa','spokane-wa',
+  'nashville-tn','memphis-tn',
+  'indianapolis-in',
+  'kansas-city-mo','st-louis-mo',
+  'denver-co','colorado-springs-co',
+  'virginia-beach-va','richmond-va',
+  'baltimore-md',
+  'portland-or',
+  'milwaukee-wi','madison-wi',
+  'new-york-city-ny','buffalo-ny',
+];
+const CITY_PAGES: string[] = ['mulch','gravel','topsoil','sand'].flatMap(m =>
+  CITY_SLUGS.map(c => `/guide/${m}-cost-in-${c}/`)
+);
+// Total city pages: 4 × 42 = 168
+
 export async function GET() {
   const today = new Date().toISOString().split('T')[0];
 
@@ -46,11 +75,18 @@ export async function GET() {
     <priority>0.7</priority>
   </url>`);
 
-  const total = AREA_PAGES.length + STATE_PAGES.length;
+  const cityUrls = CITY_PAGES.map(url => `  <url>
+    <loc>${SITE}${url}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>`);
+
+  const total = AREA_PAGES.length + STATE_PAGES.length + CITY_PAGES.length;
 
   return new Response(`<?xml version="1.0" encoding="UTF-8"?>
-<!-- PROGRAMMATIC: ${total} dynamic pages (${AREA_PAGES.length} area/slab + ${STATE_PAGES.length} state×material) -->
+<!-- PROGRAMMATIC: ${total} dynamic pages (${AREA_PAGES.length} area/slab + ${STATE_PAGES.length} state×material + ${CITY_PAGES.length} city×material) -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${[...areaUrls, ...stateUrls].join('\n')}
+${[...areaUrls, ...stateUrls, ...cityUrls].join('\n')}
 </urlset>`, { headers: { 'Content-Type': 'application/xml; charset=utf-8' } });
 }

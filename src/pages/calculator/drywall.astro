@@ -21,7 +21,7 @@ const related = [
 >
 
   <Fragment slot="head">
-    <CalcSchema name="Drywall Calculator" crumbs={[{ label: "Interior Calculators", href: "/interior-calculators" }, { label: "Drywall Calculator" }]} description="Free drywall calculator for sheets and cost" url="/calculator/drywall" />
+    <CalcSchema name="Drywall Calculator" crumbs={[{ label: "Interior Calculators", href: "/interior-calculators" }, { label: "Drywall Calculator" }]} description="Free drywall calculator for sheets and cost" url="/calculator/drywall" lastUpdated="2026-06-09" />
   </Fragment>
   <div class="max-w-6xl mx-auto px-4 py-10">
     <script type="application/ld+json" set:html={JSON.stringify({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How many sheets of drywall do I need for a 12\u00d712 room?", "acceptedAnswer": {"@type": "Answer", "text": "A 12\u00d712 ft room with 8 ft ceilings needs about 17 sheets of 4\u00d78 drywall (walls + ceiling). This includes 12% waste for cutouts. Joint compound: ~2 gallons. Tape: ~6 rolls."}}, {"@type": "Question", "name": "What thickness drywall should I use?", "acceptedAnswer": {"@type": "Answer", "text": "1/2 inch for most interior walls and ceilings. 5/8 inch (Type X) for garage walls, fire-rated assemblies, and between garage and living space. Use moisture-resistant 1/2 inch in bathrooms."}}, {"@type": "Question", "name": "How much joint compound do I need?", "acceptedAnswer": {"@type": "Answer", "text": "Plan for about 1 gallon of pre-mixed joint compound per 100 sq ft of drywall for a 3-coat tape-and-finish job. A 4.5 gallon bucket covers approximately 450 sq ft."}}, {"@type": "Question", "name": "How do I calculate drywall for a room?", "acceptedAnswer": {"@type": "Answer", "text": "Wall area = Perimeter \u00d7 Wall height. Ceiling area = Length \u00d7 Width. Add both, subtract door (21 sq ft each) and window (15 sq ft each) areas, then add 12% waste. Divide by sheet size."}}]})} />
@@ -30,6 +30,8 @@ const related = [
       <div>
         <h1 class="text-3xl font-bold text-gray-900 mb-2">Drywall Calculator</h1>
         <UsageStats material="drywall" />
+
+        <p class="text-xs text-gray-400 mb-4">Last updated: <time datetime="2026-06-09">June 2026</time> · Prices verified</p>
         <p class="text-gray-600 mb-6">Enter your total wall area or room dimensions to find out how many sheets of drywall to buy, plus joint compound and tape.</p>
         <DrywallCalculator client:load />
         <ResultActions />

@@ -2,47 +2,100 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const calcs = [
-  { href: '/calculator/mulch',   label: 'Mulch Calculator',   desc: 'Bags or cubic yards for any bed size and depth.' },
-  { href: '/calculator/gravel',  label: 'Gravel Calculator',  desc: 'Cubic yards and tons for driveways, paths, and beds.' },
-  { href: '/calculator/topsoil', label: 'Topsoil Calculator', desc: 'Cubic yards or 40 lb bags for lawn and garden projects.' },
-  { href: '/calculator/sand',    label: 'Sand Calculator',    desc: 'Cubic yards and bags for paver bases, sandboxes, and fill.' },
-  { href: '/calculator/sod',     label: 'Sod Calculator',     desc: 'Pieces and pallets for any lawn shape, with waste factor.' },
+  { href: '/calculator/mulch',      label: 'Mulch Calculator',      desc: 'Bags or cubic yards for any bed size and depth.' },
+  { href: '/calculator/gravel',     label: 'Gravel Calculator',     desc: 'Cubic yards and tons for driveways, paths, and beds.' },
+  { href: '/calculator/topsoil',    label: 'Topsoil Calculator',    desc: 'Cubic yards or 40 lb bags for lawn and garden projects.' },
+  { href: '/calculator/sand',       label: 'Sand Calculator',       desc: 'Cubic yards and bags for paver bases, sandboxes, and fill.' },
+  { href: '/calculator/sod',        label: 'Sod Calculator',        desc: 'Pieces and pallets for any lawn shape, with waste factor.' },
   { href: '/calculator/paver',      label: 'Paver Calculator',      desc: 'Paver count, sand base, and gravel base for patios and paths.' },
   { href: '/calculator/grass-seed', label: 'Grass Seed Calculator', desc: 'Pounds and bags for new lawns and overseeding by grass type.' },
   { href: '/calculator/asphalt',    label: 'Asphalt Calculator',    desc: 'Tons and cubic yards for driveways and parking areas.' },
 ];
 
-const guides = [
-  { href: '/guide/how-much-mulch-do-i-need',       label: 'How Much Mulch Do I Need?' },
-  { href: '/guide/how-much-gravel-do-i-need',      label: 'How Much Gravel Do I Need?' },
-  { href: '/guide/how-much-topsoil-do-i-need',     label: 'How Much Topsoil Do I Need?' },
-  { href: '/guide/how-much-sand-do-i-need',        label: 'How Much Sand Do I Need?' },
-  { href: '/guide/how-much-sod-do-i-need',         label: 'How Much Sod Do I Need?' },
-  { href: '/guide/how-many-pavers-do-i-need',      label: 'How Many Pavers Do I Need?' },
-  { href: '/guide/how-much-gravel-for-a-driveway', label: 'How Much Gravel for a Driveway?' },
-  { href: '/guide/how-much-topsoil-for-raised-bed',label: 'How Much Topsoil for a Raised Bed?' },
-  { href: '/guide/how-much-sand-for-paver-base',   label: 'How Much Sand for a Paver Base?' },
-  { href: '/guide/how-much-sand-for-a-sandbox',    label: 'How Much Sand for a Sandbox?' },
-  { href: '/guide/how-much-gravel-for-a-french-drain', label: 'Gravel for a French Drain' },
+const howMuchGuides = [
+  { href: '/guide/how-much-mulch-do-i-need',         label: 'How Much Mulch Do I Need?' },
+  { href: '/guide/how-much-gravel-do-i-need',         label: 'How Much Gravel Do I Need?' },
+  { href: '/guide/how-much-topsoil-do-i-need',        label: 'How Much Topsoil Do I Need?' },
+  { href: '/guide/how-much-sand-do-i-need',           label: 'How Much Sand Do I Need?' },
+  { href: '/guide/how-much-sod-do-i-need',            label: 'How Much Sod Do I Need?' },
+  { href: '/guide/how-much-grass-seed-do-i-need',     label: 'How Much Grass Seed Do I Need?' },
+  { href: '/guide/how-many-pavers-do-i-need',         label: 'How Many Pavers Do I Need?' },
+  { href: '/guide/how-much-gravel-for-a-driveway',    label: 'Gravel for a Driveway' },
+  { href: '/guide/how-much-topsoil-for-raised-bed',   label: 'Topsoil for a Raised Bed' },
+  { href: '/guide/how-much-sand-for-paver-base',      label: 'Sand for a Paver Base' },
+  { href: '/guide/how-much-sand-for-a-sandbox',       label: 'Sand for a Sandbox' },
+  { href: '/guide/how-much-gravel-for-a-french-drain',label: 'Gravel for a French Drain' },
+];
+
+const projectGuides = [
+  { href: '/guide/how-to-build-a-patio',             label: 'How to Build a Patio' },
+  { href: '/guide/how-to-build-a-gravel-driveway',   label: 'How to Build a Gravel Driveway' },
+  { href: '/guide/how-to-build-a-raised-garden-bed', label: 'How to Build a Raised Garden Bed' },
+  { href: '/guide/how-to-build-a-garden-path',       label: 'How to Build a Garden Path' },
+  { href: '/guide/how-to-lay-pavers',                label: 'How to Lay Pavers' },
+  { href: '/guide/how-to-reseed-a-lawn',             label: 'How to Reseed a Lawn' },
+];
+
+const comparisons = [
+  { href: '/guide/mulch-vs-rock-landscaping',   label: 'Mulch vs Rock Landscaping' },
+  { href: '/guide/sod-vs-seed',                 label: 'Sod vs Seed' },
+  { href: '/guide/pea-gravel-vs-river-rock',    label: 'Pea Gravel vs River Rock' },
+  { href: '/guide/topsoil-vs-garden-soil',      label: 'Topsoil vs Garden Soil' },
+  { href: '/guide/artificial-grass-vs-sod',     label: 'Artificial Grass vs Sod' },
+  { href: '/guide/gravel-vs-crushed-stone',     label: 'Gravel vs Crushed Stone' },
+];
+
+const costGuides = [
+  { href: '/guide/how-much-does-mulch-cost',   label: 'How Much Does Mulch Cost?' },
+  { href: '/guide/how-much-does-gravel-cost',  label: 'How Much Does Gravel Cost?' },
+  { href: '/guide/mulch-cost-by-state',         label: 'Mulch Cost by State' },
+  { href: '/guide/gravel-cost-by-state',        label: 'Gravel Cost by State' },
+];
+
+const seasonalGuides = [
+  { href: '/guide/spring-lawn-and-garden-checklist', label: 'Spring Lawn & Garden Checklist' },
+  { href: '/guide/summer-lawn-care-guide',            label: 'Summer Lawn Care Guide' },
+  { href: '/guide/fall-yard-prep-checklist',          label: 'Fall Yard Prep Checklist' },
+  { href: '/guide/winter-landscaping-prep',           label: 'Winter Landscaping Prep' },
 ];
 
 const refs = [
-  { href: '/guide/cubic-yards-to-tons',               label: 'Cubic Yards to Tons' },
-  { href: '/guide/cubic-feet-to-cubic-yards',         label: 'Cubic Feet to Cubic Yards' },
+  { href: '/guide/cubic-yards-to-tons',                    label: 'Cubic Yards to Tons' },
+  { href: '/guide/cubic-feet-to-cubic-yards',              label: 'Cubic Feet to Cubic Yards' },
   { href: '/guide/how-many-bags-of-mulch-in-a-cubic-yard', label: 'Mulch Bags per Cubic Yard' },
   { href: '/guide/how-many-bags-of-sand-in-a-cubic-yard',  label: 'Sand Bags per Cubic Yard' },
-  { href: '/guide/topsoil-vs-garden-soil',            label: 'Topsoil vs Garden Soil' },
-  { href: '/guide/types-of-mulch',                    label: 'Types of Mulch' },
-  { href: '/guide/gravel-vs-crushed-stone',           label: 'Gravel vs Crushed Stone' },
-  { href: '/guide/how-deep-should-gravel-be',         label: 'How Deep Should Gravel Be?' },
-  { href: '/guide/how-long-does-mulch-last',          label: 'How Long Does Mulch Last?' },
+  { href: '/guide/how-much-does-a-yard-of-gravel-weigh',   label: 'How Much Does a Yard of Gravel Weigh?' },
+  { href: '/guide/how-much-does-a-yard-of-topsoil-weigh',  label: 'How Much Does a Yard of Topsoil Weigh?' },
+  { href: '/guide/how-much-does-a-yard-of-sand-weigh',     label: 'How Much Does a Yard of Sand Weigh?' },
+  { href: '/guide/how-many-square-feet-does-a-pallet-of-sod-cover', label: 'Sq Ft per Pallet of Sod' },
+  { href: '/guide/types-of-mulch',                         label: 'Types of Mulch' },
+  { href: '/guide/best-mulch-for-flower-beds',             label: 'Best Mulch for Flower Beds' },
+  { href: '/guide/best-mulch-for-vegetable-gardens',       label: 'Best Mulch for Vegetable Gardens' },
+  { href: '/guide/best-gravel-for-drainage',               label: 'Best Gravel for Drainage' },
+  { href: '/guide/how-deep-should-gravel-be',              label: 'How Deep Should Gravel Be?' },
+  { href: '/guide/how-long-does-mulch-last',               label: 'How Long Does Mulch Last?' },
+  { href: '/guide/how-many-square-feet-in-an-acre',        label: 'How Many Square Feet in an Acre?' },
 ];
+
+const siteUrl = 'https://www.homematerialcalc.com';
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl + '/' },
+    { '@type': 'ListItem', position: 2, name: 'Landscaping Calculators', item: siteUrl + '/landscaping-calculators/' },
+  ],
+};
 ---
 
 <BaseLayout
   title="Landscaping Material Calculators — Mulch, Gravel, Topsoil, Sand & More"
-  description="Free landscaping material calculators for US homeowners. Calculate mulch bags, gravel tons, topsoil cubic yards, sand, sod pallets, and pavers — instantly."
+  description="Free landscaping calculators for US homeowners. Calculate mulch bags, gravel tons, topsoil yards, sand, sod pallets, and pavers instantly. Includes guides, comparisons, and cost data."
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
+
   <div class="max-w-5xl mx-auto px-4 py-12">
     <nav class="text-sm text-gray-500 mb-6 flex flex-wrap gap-1">
       <a href="/" class="hover:text-brand-600">Home</a>
@@ -66,11 +119,51 @@ const refs = [
       </div>
     </section>
 
-    <!-- Guides -->
-    <section class="mb-12">
-      <h2 class="text-xl font-bold text-gray-900 mb-4">How-Much Guides</h2>
+    <!-- How-Much Guides -->
+    <section class="mb-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">How Much Do I Need?</h2>
+      <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-2 text-sm">
+        {howMuchGuides.map(g => (
+          <li><a href={g.href} class="text-brand-600 hover:underline">{g.label}</a></li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- Project Guides -->
+    <section class="mb-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Project Guides</h2>
+      <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-2 text-sm">
+        {projectGuides.map(g => (
+          <li><a href={g.href} class="text-brand-600 hover:underline">{g.label}</a></li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- Compare -->
+    <section class="mb-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Compare Materials</h2>
+      <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-2 text-sm">
+        {comparisons.map(g => (
+          <li><a href={g.href} class="text-brand-600 hover:underline">{g.label}</a></li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- Cost Guides -->
+    <section class="mb-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Cost Guides</h2>
+      <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-2 text-sm">
+        {costGuides.map(g => (
+          <li><a href={g.href} class="text-brand-600 hover:underline">{g.label}</a></li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- Seasonal -->
+    <section class="mb-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Seasonal Guides</h2>
       <ul class="grid sm:grid-cols-2 gap-2 text-sm">
-        {guides.map(g => (
+        {seasonalGuides.map(g => (
           <li><a href={g.href} class="text-brand-600 hover:underline">{g.label}</a></li>
         ))}
       </ul>
@@ -79,7 +172,7 @@ const refs = [
     <!-- Reference -->
     <section class="mb-10">
       <h2 class="text-xl font-bold text-gray-900 mb-4">Reference & Conversions</h2>
-      <ul class="grid sm:grid-cols-2 gap-2 text-sm">
+      <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-2 text-sm">
         {refs.map(r => (
           <li><a href={r.href} class="text-brand-600 hover:underline">{r.label}</a></li>
         ))}
@@ -87,7 +180,7 @@ const refs = [
     </section>
 
     <div class="border-t pt-6 text-sm text-gray-600 flex flex-wrap gap-4">
-      <a href="/concrete-calculators" class="text-brand-600 hover:underline">Concrete Calculators →</a>
+      <a href="/concrete-calculators" class="text-brand-600 hover:underline">Concrete & Construction Calculators →</a>
       <a href="/interior-calculators" class="text-brand-600 hover:underline">Interior Calculators →</a>
     </div>
   </div>

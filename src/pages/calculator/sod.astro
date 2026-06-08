@@ -24,7 +24,7 @@ const related = [
 >
 
   <Fragment slot="head">
-    <CalcSchema name="Sod Calculator" crumbs={[{ label: "Landscaping Calculators", href: "/landscaping-calculators" }, { label: "Sod Calculator" }]} description="Free sod calculator for pieces, pallets and cost" url="/calculator/sod" />
+    <CalcSchema name="Sod Calculator" crumbs={[{ label: "Landscaping Calculators", href: "/landscaping-calculators" }, { label: "Sod Calculator" }]} description="Free sod calculator for pieces, pallets and cost" url="/calculator/sod" lastUpdated="2026-06-09" />
   </Fragment>
   <div class="max-w-6xl mx-auto px-4 py-10">
     <script type="application/ld+json" set:html={JSON.stringify({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How many square feet does a pallet of sod cover?", "acceptedAnswer": {"@type": "Answer", "text": "A standard pallet covers approximately 450 square feet (about 170 pieces at 16\u00d724 inches each). Coverage varies by supplier \u2014 confirm with your local sod farm."}}, {"@type": "Question", "name": "How do I calculate how much sod I need?", "acceptedAnswer": {"@type": "Answer", "text": "Measure your lawn area in square feet (length \u00d7 width for rectangular sections). Add areas together for odd shapes. Add 5% waste for straight edges, 10% for curves."}}, {"@type": "Question", "name": "How many pieces of sod are in a pallet?", "acceptedAnswer": {"@type": "Answer", "text": "Most pallets hold approximately 170 pieces (2.67 sq ft each), totaling about 450 sq ft. Some suppliers sell 500 sq ft pallets \u2014 check the product listing."}}, {"@type": "Question", "name": "What is the best time to lay sod?", "acceptedAnswer": {"@type": "Answer", "text": "Spring and early fall are ideal for most US regions \u2014 moderate temperatures help sod root before summer heat or winter frost. Avoid laying during extreme heat or drought."}}]})} />
@@ -33,6 +33,8 @@ const related = [
       <div>
         <h1 class="text-3xl font-bold text-gray-900 mb-2">Sod Calculator</h1>
         <UsageStats material="sod" />
+
+        <p class="text-xs text-gray-400 mb-4">Last updated: <time datetime="2026-06-09">June 2026</time> · Prices verified</p>
         <p class="text-gray-600 mb-6">Enter your lawn area to find out how many pieces and pallets of sod to buy, with the correct waste factor for your lawn's shape.</p>
 
         <SodCalculator client:load />

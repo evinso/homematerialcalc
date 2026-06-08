@@ -25,7 +25,7 @@ const related = [
 >
 
   <Fragment slot="head">
-    <CalcSchema name="Paver Calculator" crumbs={[{ label: "Landscaping Calculators", href: "/landscaping-calculators" }, { label: "Paver Calculator" }]} description="Free paver calculator for patio paver count and cost" url="/calculator/paver" />
+    <CalcSchema name="Paver Calculator" crumbs={[{ label: "Landscaping Calculators", href: "/landscaping-calculators" }, { label: "Paver Calculator" }]} description="Free paver calculator for patio paver count and cost" url="/calculator/paver" lastUpdated="2026-06-09" />
   </Fragment>
   <div class="max-w-6xl mx-auto px-4 py-10">
     <script type="application/ld+json" set:html={JSON.stringify({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How many pavers do I need for a 10\u00d710 patio?", "acceptedAnswer": {"@type": "Answer", "text": "A 10\u00d710 ft patio (100 sq ft) with 10% waste needs: about 110 pieces of 12\u00d712 pavers, 495 pieces of 4\u00d78 brick pavers, or 62 pieces of 16\u00d716 pavers."}}, {"@type": "Question", "name": "How much sand do I need under pavers?", "acceptedAnswer": {"@type": "Answer", "text": "Use a 1-inch sand bedding layer. For 100 sq ft of patio: 0.31 cubic yards or about 17 bags of 50 lb sand. The Paver Calculator shows this automatically alongside the paver count."}}, {"@type": "Question", "name": "How deep should the gravel base be under pavers?", "acceptedAnswer": {"@type": "Answer", "text": "4 inches of compacted gravel for a patio or walkway, 6\u20138 inches for a driveway. Compact in 2-inch lifts with a plate compactor before adding the sand bedding layer."}}, {"@type": "Question", "name": "What is the best paver size for a patio?", "acceptedAnswer": {"@type": "Answer", "text": "12\u00d724 inch pavers are the most popular for modern patios \u2014 fewer grout lines and a sleek look. 12\u00d712 inch pavers are classic and forgiving to lay. 4\u00d78 brick pavers create a traditional look."}}]})} />
@@ -36,6 +36,8 @@ const related = [
       <div>
         <h1 class="text-3xl font-bold text-gray-900 mb-2">Paver Calculator</h1>
         <UsageStats material="paver" />
+
+        <p class="text-xs text-gray-400 mb-4">Last updated: <time datetime="2026-06-09">June 2026</time> · Prices verified</p>
         <p class="text-gray-600 mb-6">Enter your patio or walkway dimensions and paver size to get the exact paver count, sand bedding layer, and compacted gravel base needed.</p>
 
         <PaverCalculator client:load />

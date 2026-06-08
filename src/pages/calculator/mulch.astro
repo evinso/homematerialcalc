@@ -25,7 +25,7 @@ const related = [
 >
 
   <Fragment slot="head">
-    <CalcSchema name="Mulch Calculator" crumbs={[{ label: "Landscaping Calculators", href: "/landscaping-calculators" }, { label: "Mulch Calculator" }]} description="Free mulch calculator for bags, cubic yards and cost" url="/calculator/mulch" />
+    <CalcSchema name="Mulch Calculator" crumbs={[{ label: "Landscaping Calculators", href: "/landscaping-calculators" }, { label: "Mulch Calculator" }]} description="Free mulch calculator for bags, cubic yards and cost" url="/calculator/mulch" lastUpdated="2026-06-09" />
   </Fragment>
   <div class="max-w-6xl mx-auto px-4 py-10">
     <script type="application/ld+json" set:html={JSON.stringify({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How many bags of mulch do I need for 100 square feet?", "acceptedAnswer": {"@type": "Answer", "text": "At 3 inches deep, 100 sq ft needs 0.93 cubic yards \u2014 about 13 bags of 2 cu ft mulch. Round up to 14. At 2 inches: 9 bags. The Mulch Calculator computes this instantly for any size."}}, {"@type": "Question", "name": "How deep should I apply mulch?", "acceptedAnswer": {"@type": "Answer", "text": "Apply 2\u20133 inches for existing beds, 3\u20134 inches for new beds or heavy weed suppression. Never pile mulch more than 4 inches deep or against plant stems."}}, {"@type": "Question", "name": "How many bags of mulch are in a cubic yard?", "acceptedAnswer": {"@type": "Answer", "text": "There are 13.5 standard 2-cubic-foot bags in one cubic yard. If you need more than 2\u20133 yards, bulk delivery is usually cheaper than buying bags."}}, {"@type": "Question", "name": "How much does a cubic yard of mulch cover?", "acceptedAnswer": {"@type": "Answer", "text": "At 3 inches deep, 1 cubic yard covers 108 sq ft. At 2 inches: 162 sq ft. At 1 inch: 324 sq ft."}}]})} />
@@ -36,6 +36,8 @@ const related = [
       <div>
         <h1 class="text-3xl font-bold text-gray-900 mb-2">Mulch Calculator</h1>
         <UsageStats material="mulch" />
+
+        <p class="text-xs text-gray-400 mb-4">Last updated: <time datetime="2026-06-09">June 2026</time> · Prices verified</p>
         <p class="text-gray-600 mb-6">Enter your garden bed dimensions and depth to find out how many bags or cubic yards of mulch to buy.</p>
 
         <MulchCalculator client:load />

@@ -21,7 +21,7 @@ const related = [
 >
 
   <Fragment slot="head">
-    <CalcSchema name="Tile Calculator" crumbs={[{ label: "Interior Calculators", href: "/interior-calculators" }, { label: "Tile Calculator" }]} description="Free tile calculator for tile count, boxes and cost" url="/calculator/tile" />
+    <CalcSchema name="Tile Calculator" crumbs={[{ label: "Interior Calculators", href: "/interior-calculators" }, { label: "Tile Calculator" }]} description="Free tile calculator for tile count, boxes and cost" url="/calculator/tile" lastUpdated="2026-06-09" />
   </Fragment>
   <div class="max-w-6xl mx-auto px-4 py-10">
     <script type="application/ld+json" set:html={JSON.stringify({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How many 12\u00d712 tiles do I need for a 100 sq ft floor?", "acceptedAnswer": {"@type": "Answer", "text": "A 100 sq ft floor with 10% waste needs 110 sq ft of tile. At 1 tile per sq ft (12\u00d712 inches), that's 110 tiles. Always round up to whole boxes."}}, {"@type": "Question", "name": "How do I calculate how many tiles I need?", "acceptedAnswer": {"@type": "Answer", "text": "Divide your total area (in sq ft) by the square footage of one tile, then multiply by 1.10 for 10% waste (or 1.15 for diagonal patterns). Round up to full boxes."}}, {"@type": "Question", "name": "How much thinset do I need for tile?", "acceptedAnswer": {"@type": "Answer", "text": "One 50 lb bag of thinset covers approximately 40 sq ft with a 3/8-inch notched trowel. For large-format tiles (18\u00d718 and bigger), use a larger notch \u2014 coverage may be less."}}, {"@type": "Question", "name": "What tile size is best for a small bathroom?", "acceptedAnswer": {"@type": "Answer", "text": "12\u00d712 or 12\u00d724 tiles work well in most bathrooms \u2014 larger tiles create fewer grout lines and make the space feel bigger. 6\u00d76 tiles suit small shower floors where slip resistance matters."}}]})} />
@@ -30,6 +30,8 @@ const related = [
       <div>
         <h1 class="text-3xl font-bold text-gray-900 mb-2">Tile Calculator</h1>
         <UsageStats material="tile" />
+
+        <p class="text-xs text-gray-400 mb-4">Last updated: <time datetime="2026-06-09">June 2026</time> · Prices verified</p>
         <p class="text-gray-600 mb-6">Enter your floor or wall area and choose your tile size to get the exact tile count, thinset bags, and grout amount.</p>
         <TileCalculator client:load />
         <ResultActions />
