@@ -44,9 +44,7 @@ export const GET: APIRoute = async ({ request }) => {
     try {
       const content = readFileSync(file, 'utf-8');
       const { title, description } = extract(content);
-      if (title || description) {
-        pages.push({ path: '/' + relative(PAGES_DIR, file).replace(/\.(astro|mdx)$/, '').replace(/\/index$/, ''), title, description });
-      }
+      pages.push({ path: '/' + relative(PAGES_DIR, file).replace(/\.(astro|mdx)$/, '').replace(/\/index$/, ''), title, description });
     } catch {
       // skip unreadable files
     }
