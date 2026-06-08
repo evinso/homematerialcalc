@@ -2,9 +2,12 @@ import schedule from '../../publish-schedule.json';
 
 export type PageStatus = 'published' | 'pending' | 'future';
 
+export type PageType = 'calculator' | 'guide' | 'reference' | 'static';
+
 export interface ScheduledPage {
   url: string;
   label: string;
+  type: PageType;
   status: PageStatus;
   publishedAt: string | null;
 }

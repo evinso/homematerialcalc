@@ -1,10 +1,14 @@
 const SITE = 'https://www.homematerialcalc.com';
 
+// 3-tier sitemap structure:
+//   sitemap-live.xml         → all published pages (calculators, guides, references, static)
+//   sitemap-upcoming.xml     → pending pages (noindex now, indexed as they go live)
+//   sitemap-programmatic.xml → dynamic routes (area/slab/state pages, always live)
+
 const SITEMAPS = [
-  'sitemap-calculators.xml',
-  'sitemap-guides.xml',
+  'sitemap-live.xml',
+  'sitemap-upcoming.xml',
   'sitemap-programmatic.xml',
-  'sitemap-static.xml',
 ];
 
 export async function GET() {
@@ -14,12 +18,8 @@ export async function GET() {
     <lastmod>${today}</lastmod>
   </sitemap>`).join('\n');
 
-  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+  return new Response(`<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${entries}
-</sitemapindex>`;
-
-  return new Response(xml, {
-    headers: { 'Content-Type': 'application/xml; charset=utf-8' },
-  });
+</sitemapindex>`, { headers: { 'Content-Type': 'application/xml; charset=utf-8' } });
 }
