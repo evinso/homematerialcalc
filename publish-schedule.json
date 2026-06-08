@@ -8,6 +8,21 @@
   "runs": [
     {
       "date": "2026-06-08",
+      "timestamp": "2026-06-08T12:41:32.852Z",
+      "pagesPublished": [
+        {
+          "url": "/guide/concrete-cost-texas",
+          "label": "Concrete Cost in Texas",
+          "type": "reference"
+        }
+      ],
+      "pendingBefore": 116,
+      "pendingAfter": 115,
+      "trigger": "scheduled",
+      "runBy": "evinso"
+    },
+    {
+      "date": "2026-06-08",
       "timestamp": "2026-06-08T07:00:42.564Z",
       "pagesPublished": [
         {
@@ -701,8 +716,8 @@
       "url": "/guide/concrete-cost-texas",
       "label": "Concrete Cost in Texas",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-08"
     },
     {
       "url": "/guide/concrete-cost-california",
