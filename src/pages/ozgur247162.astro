@@ -5,11 +5,15 @@ const pages = (schedule.pages as any[]).filter(p => p && p.url && p.status);
 
 const published = pages.filter(p => p.status === 'published').sort((a,b) => b.publishedAt?.localeCompare(a.publishedAt ?? '') ?? 0);
 const pending   = pages.filter(p => p.status === 'pending');
-const future    = pages.filter(p => p.status === 'future');
 
-// Programmatic pages (dynamic routes, not in publish-schedule.json)
-// mulch×12 + gravel×5 + concrete-slabs×10 + topsoil×7 + sand×5 + paint×11 + sod×7 + state×material(4×20)×80
-const PROGRAMMATIC_COUNT = 137;
+// Programmatic pages (dynamic routes — NOT in publish-schedule.json)
+// area/slab: mulch×12 + gravel×5 + topsoil×7 + sand×5 + sod×7 + concrete-slabs×10 + paint×11 = 57
+// state×material: 4 materials × 20 states = 80
+// city×material: 4 materials × 42 cities = 168
+const PROG_AREA  = 57;
+const PROG_STATE = 80;
+const PROG_CITY  = 168;
+const PROGRAMMATIC_COUNT = PROG_AREA + PROG_STATE + PROG_CITY; // 305
 
 const totalLive = published.length + PROGRAMMATIC_COUNT;
 const total     = totalLive + pending.length;
@@ -17,14 +21,13 @@ const progressPct = total > 0 ? Math.round((totalLive / total) * 100) : 0;
 
 const today      = new Date().toISOString().split('T')[0];
 const lastRun    = (schedule as any).lastRun ?? '—';
-const runsPerDay = 4;   // 4 cron triggers per day
+const runsPerDay = 4;
 const pagesPerRun = (schedule.cadence as any).pagesPerRun ?? 1;
 const pagesPerDay = runsPerDay * pagesPerRun;
 
 const runs = ((schedule as any).runs ?? []) as any[];
 const recentRuns = runs.slice(0, 50);
 
-// ETA: 4 pages/day — page i (0-indexed) is published after ceil((i+1)/4) days
 function addDays(dateStr: string, n: number) {
   const d = new Date(dateStr + 'T00:00:00Z');
   d.setUTCDate(d.getUTCDate() + n);
@@ -35,7 +38,6 @@ const baseDate = lastRun !== '—' ? lastRun : today;
 const pendingWithETA = pending.map((p, i) => ({
   ...p,
   eta: addDays(baseDate, Math.ceil((i + 1) / pagesPerDay)),
-  slot: ((i % pagesPerDay) + 1),  // which run slot (1-4)
 }));
 
 const emptyDate = pending.length > 0
@@ -51,15 +53,7 @@ const pubStatic = byType(published, 'static');
 const pendCalcs = byType(pendingWithETA, 'calculator');
 const pendGuides= byType(pendingWithETA, 'guide');
 const pendRefs  = byType(pendingWithETA, 'reference');
-
-// Published grouped by date
-const byDate: Record<string, any[]> = {};
-for (const p of published) {
-  const d = p.publishedAt ?? 'unknown';
-  if (!byDate[d]) byDate[d] = [];
-  byDate[d].push(p);
-}
-const sortedDates = Object.keys(byDate).sort((a,b) => b.localeCompare(a));
+const pendStatic= byType(pendingWithETA, 'static');
 
 // Run stats
 const totalPagesPublishedByRuns = runs.reduce((s, r) => s + (r.pagesPublished?.length ?? 0), 0);
@@ -71,18 +65,55 @@ function triggerLabel(t: string) {
   if (t === 'manual_dispatch') return '▶️ Manuel';
   return '💻 Local';
 }
-function typeBadge(type: string) {
-  if (type === 'calculator') return 'badge-calc';
-  if (type === 'guide')      return 'badge-guide';
-  if (type === 'reference')  return 'badge-ref';
-  return 'badge-static';
-}
 function typeLabel(type: string) {
   if (type === 'calculator') return 'calc';
   if (type === 'guide')      return 'guide';
   if (type === 'reference')  return 'ref';
   return 'static';
 }
+
+// SEO improvement log (manual — add entries as work is done)
+const seoLog = [
+  { date: '2026-06-09', tag: 'Yazar', items: ['3 author sayfası (/author/tom, /sarah, /dan)', 'Person schema + email + expertise', 'AuthorCard → /author/ link', 'GuideLayout Person schema enriched'] },
+  { date: '2026-06-09', tag: 'Şehir', items: ['168 yeni şehir sayfası (4 materyal × 42 şehir)', 'Houston, Dallas, Miami, LA, Chicago, Atlanta…', 'Sitemap güncellendi: 305 programmatic'] },
+  { date: '2026-06-09', tag: 'Hub', items: ['landscaping-calculators: 7 seksiyon → tam içerik haritası', 'interior-calculators: 6 seksiyon + BreadcrumbList', 'concrete-calculators: 5 seksiyon + BreadcrumbList'] },
+  { date: '2026-06-09', tag: 'İçerik', items: ['4 yeni maliyet guide: flooring, drywall, lumber, tile', 'Table of Contents: tüm guide sayfalarına client-side TOC', 'FAQ genişletme: mulch/gravel/concrete cost sayfaları (9-10 FAQ)'] },
+  { date: '2026-06-09', tag: 'Calculator', items: ['17 calculator sayfasına dateModified schema', '"Last updated: June 2026" badge eklendi', 'CalcSchema: creator.email alanı eklendi'] },
+  { date: '2026-06-08', tag: 'Sitemap', items: ['3 katmanlı sitemap: live / upcoming / programmatic', 'sitemap-live.xml (57 yayında)', 'sitemap-upcoming.xml (pending sayfalar)', 'sitemap-programmatic.xml (305 dinamik)'] },
+  { date: '2026-06-08', tag: 'İçerik', items: ['13 yeni guide: insulation kümesi (4), how-to (5), comparison (4)', 'Sod alan bazlı sayfalar (7 boyut)', 'publish-schedule: 13 sayfa eklendi'] },
+  { date: '2026-06-07', tag: 'Teknik SEO', items: ['og:type="article" tüm guide sayfalarda', 'article:published_time + article:modified_time', '34 guide MDX dosyasına publishDate eklendi', 'BreadcrumbList item eksik hatası düzeltildi'] },
+];
+
+// Content inventory by hub
+const contentMap = {
+  landscaping: {
+    calcs: ['mulch','gravel','topsoil','sand','sod','paver','grass-seed','asphalt'],
+    guides: ['/guide/how-much-mulch-do-i-need','/guide/how-much-gravel-do-i-need','/guide/how-much-topsoil-do-i-need','/guide/how-much-sand-do-i-need','/guide/how-much-sod-do-i-need'],
+    howto: ['/guide/how-to-build-a-patio','/guide/how-to-build-a-gravel-driveway','/guide/how-to-build-a-raised-garden-bed','/guide/how-to-lay-pavers','/guide/how-to-reseed-a-lawn'],
+    compare: ['/guide/mulch-vs-rock-landscaping','/guide/sod-vs-seed','/guide/pea-gravel-vs-river-rock','/guide/artificial-grass-vs-sod'],
+    cost: ['/guide/how-much-does-mulch-cost','/guide/how-much-does-gravel-cost'],
+  },
+  interior: {
+    calcs: ['paint','flooring','tile','drywall','lumber','insulation'],
+    guides: ['/guide/how-much-paint-do-i-need','/guide/how-much-insulation-do-i-need'],
+    howto: ['/guide/how-to-paint-a-room','/guide/how-to-install-laminate-flooring','/guide/how-to-install-tile','/guide/how-to-hang-drywall','/guide/how-to-insulate-an-attic'],
+    compare: ['/guide/laminate-vs-hardwood-flooring','/guide/tile-vs-vinyl-flooring','/guide/spray-foam-vs-fiberglass-insulation'],
+    cost: ['/guide/how-much-does-flooring-cost','/guide/how-much-does-drywall-cost','/guide/how-much-does-lumber-cost','/guide/how-much-does-tile-cost','/guide/how-much-does-insulation-cost'],
+  },
+  concrete: {
+    calcs: ['concrete','concrete-cost','fence','deck','asphalt','paver'],
+    guides: ['/guide/how-much-concrete-do-i-need','/guide/how-much-concrete-for-a-slab'],
+    howto: ['/guide/how-to-pour-a-concrete-slab','/guide/how-to-build-a-patio','/guide/how-to-lay-pavers'],
+    compare: ['/guide/asphalt-vs-concrete-driveway','/guide/concrete-vs-pavers-patio','/guide/cedar-vs-pressure-treated-wood'],
+    cost: ['/guide/how-much-does-concrete-cost'],
+  },
+};
+
+const authors = [
+  { slug: 'tom', name: 'Tom Harrington', title: 'Licensed General Contractor', avatar: 'TH', color: '#2563eb', expertise: 'Concrete, Decks, Fences, Lumber' },
+  { slug: 'sarah', name: 'Sarah Mitchell', title: 'Certified Landscape Designer', avatar: 'SM', color: '#16a34a', expertise: 'Mulch, Gravel, Sod, Landscaping' },
+  { slug: 'dan', name: 'Dan Kowalski', title: 'Flooring & Interior Specialist', avatar: 'DK', color: '#9333ea', expertise: 'Flooring, Tile, Drywall, Paint, Insulation' },
+];
 ---
 
 <!doctype html>
@@ -107,22 +138,23 @@ function typeLabel(type: string) {
       --purple:  #a78bfa;
       --pink:    #f472b6;
       --teal:    #2dd4bf;
+      --orange:  #fb923c;
     }
     body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); min-height:100vh; padding: 2rem 1rem 4rem; font-size: 14px; }
-    .wrap { max-width: 1020px; margin: 0 auto; }
+    .wrap { max-width: 1100px; margin: 0 auto; }
 
-    /* ── header ── */
+    /* header */
     .header { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.25rem; }
     h1 { font-size: 1.4rem; font-weight: 800; color: var(--bright); }
     .sub { font-size: 0.78rem; color: var(--muted); margin-bottom: 2rem; }
 
-    /* ── stat grid ── */
-    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px,1fr)); gap: 0.75rem; margin-bottom: 1.5rem; }
+    /* stat grid */
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px,1fr)); gap: 0.75rem; margin-bottom: 1.5rem; }
     .stat { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1rem 0.75rem; }
-    .stat-n { font-size: 2rem; font-weight: 800; line-height: 1; color: var(--blue); }
-    .stat-l { font-size: 0.7rem; color: var(--muted); margin-top: 0.3rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    .stat-n { font-size: 1.9rem; font-weight: 800; line-height: 1; color: var(--blue); }
+    .stat-l { font-size: 0.68rem; color: var(--muted); margin-top: 0.3rem; text-transform: uppercase; letter-spacing: 0.04em; }
 
-    /* ── progress bar ── */
+    /* progress bar */
     .progress-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; }
     .progress-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.6rem; }
     .progress-title { font-size: 0.78rem; font-weight: 600; color: var(--text); }
@@ -133,11 +165,12 @@ function typeLabel(type: string) {
     .progress-meta span { font-size: 0.72rem; color: var(--muted); }
     .progress-meta strong { color: var(--text); }
 
-    /* ── two-col layout ── */
-    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
-    @media (max-width: 620px) { .two-col { grid-template-columns: 1fr; } }
+    /* two-col / three-col */
+    .two-col   { display: grid; grid-template-columns: 1fr 1fr;     gap: 1rem; margin-bottom: 1.5rem; }
+    .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+    @media (max-width: 700px) { .two-col, .three-col { grid-template-columns: 1fr; } }
 
-    /* ── card ── */
+    /* card */
     .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.25rem; }
     .card-title { font-size: 0.72rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.75rem; }
     .card-row { display: flex; justify-content: space-between; font-size: 0.78rem; padding: 0.25rem 0; border-bottom: 1px solid var(--border); }
@@ -145,49 +178,96 @@ function typeLabel(type: string) {
     .card-row-label { color: var(--muted); }
     .card-row-val { color: var(--bright); font-weight: 600; }
 
-    /* ── cron schedule ── */
+    /* prog breakdown bars */
+    .prog-bar-row { margin-bottom: 0.6rem; }
+    .prog-bar-label { display: flex; justify-content: space-between; font-size: 0.72rem; margin-bottom: 0.25rem; }
+    .prog-bar-label span:first-child { color: var(--text); }
+    .prog-bar-label span:last-child { color: var(--muted); }
+    .prog-mini-bg { background: var(--border); border-radius: 999px; height: 5px; overflow: hidden; }
+    .prog-mini-fill { height: 100%; border-radius: 999px; }
+
+    /* cron */
     .cron-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; }
     .cron-item { background: var(--border); border-radius: 8px; padding: 0.5rem; text-align: center; }
     .cron-tr { font-size: 1rem; font-weight: 800; color: var(--blue); }
     .cron-utc { font-size: 0.65rem; color: var(--muted); margin-top: 0.15rem; }
 
-    /* ── quick links ── */
-    .links-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px,1fr)); gap: 0.5rem; margin-bottom: 1.5rem; }
-    .link-btn { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 0.65rem 0.9rem; display: flex; align-items: center; gap: 0.5rem; font-size: 0.78rem; color: var(--text); text-decoration: none; transition: border-color 0.15s, color 0.15s; }
+    /* quick links */
+    .links-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px,1fr)); gap: 0.5rem; margin-bottom: 1.5rem; }
+    .link-btn { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 0.6rem 0.8rem; display: flex; align-items: center; gap: 0.5rem; font-size: 0.76rem; color: var(--text); text-decoration: none; transition: border-color 0.15s, color 0.15s; }
     .link-btn:hover { border-color: var(--blue); color: var(--blue); }
     .link-btn .ico { font-size: 1rem; flex-shrink: 0; }
 
-    /* ── section ── */
+    /* section */
     .section { margin-bottom: 2rem; }
     .sec-header { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; margin-bottom: 0.75rem; }
     .sec-title { font-size: 0.8rem; font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: 0.05em; }
     .sec-sub { font-size: 0.7rem; color: var(--muted); }
 
-    /* ── next-up strip ── */
+    /* SEO log */
+    .seo-log { display: flex; flex-direction: column; gap: 0.75rem; }
+    .seo-entry { display: grid; grid-template-columns: auto auto 1fr; gap: 0.5rem 0.75rem; align-items: start; }
+    .seo-date { font-size: 0.68rem; color: var(--muted); font-family: monospace; white-space: nowrap; padding-top: 0.15rem; }
+    .seo-tag { font-size: 0.62rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 999px; white-space: nowrap; background: #0c2240; color: var(--blue); }
+    .seo-tag.yazar  { background: #1a1040; color: var(--purple); }
+    .seo-tag.şehir  { background: #0c2214; color: var(--green); }
+    .seo-tag.hub    { background: #2a2008; color: var(--yellow); }
+    .seo-tag.içerik { background: #0f2010; color: #6ee7b7; }
+    .seo-tag.calc   { background: #1f0b0b; color: var(--pink); }
+    .seo-tag.sitemap{ background: #0c1a2e; color: var(--teal); }
+    .seo-tag.teknik { background: #1a0f28; color: var(--orange); }
+    .seo-items { display: flex; flex-direction: column; gap: 0.2rem; }
+    .seo-item { font-size: 0.74rem; color: var(--text); }
+
+    /* author cards */
+    .author-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 0.75rem; margin-bottom: 1.5rem; }
+    @media (max-width: 600px) { .author-cards { grid-template-columns: 1fr; } }
+    .author-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1rem; display: flex; gap: 0.75rem; align-items: flex-start; }
+    .author-avatar { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 800; color: white; flex-shrink: 0; }
+    .author-info { min-width: 0; }
+    .author-name { font-size: 0.82rem; font-weight: 700; color: var(--bright); }
+    .author-title { font-size: 0.7rem; color: var(--muted); margin-top: 0.1rem; }
+    .author-expertise { font-size: 0.68rem; color: var(--text); margin-top: 0.35rem; }
+    .author-link { font-size: 0.68rem; color: var(--blue); text-decoration: none; margin-top: 0.35rem; display: block; }
+    .author-link:hover { text-decoration: underline; }
+
+    /* content hub table */
+    .hub-table { width: 100%; border-collapse: collapse; font-size: 0.76rem; }
+    .hub-table th { color: var(--muted); font-weight: 600; text-align: left; padding: 0.3rem 0.5rem; border-bottom: 1px solid var(--border); font-size: 0.68rem; text-transform: uppercase; }
+    .hub-table td { padding: 0.35rem 0.5rem; border-bottom: 1px solid var(--border); color: var(--text); }
+    .hub-table tr:last-child td { border-bottom: none; }
+    .hub-table td:first-child { color: var(--bright); font-weight: 600; }
+    .hub-num { color: var(--blue); font-weight: 700; }
+
+    /* next-up strip */
     .next-strip { background: linear-gradient(135deg, #0c1c2e, #0f2540); border: 1px solid #1a3a5c; border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; }
     .next-label { font-size: 0.68rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem; }
     .next-pages { display: flex; flex-direction: column; gap: 0.35rem; }
-    .next-page-row { display: flex; align-items: center; gap: 0.6rem; font-size: 0.8rem; }
+    .next-page-row { display: flex; align-items: center; gap: 0.6rem; font-size: 0.8rem; flex-wrap: wrap; }
     .next-slot { font-size: 0.65rem; color: var(--muted); min-width: 3rem; }
     .next-url { color: var(--blue); font-family: monospace; font-size: 0.77rem; }
     .next-lbl { color: var(--muted); font-size: 0.72rem; }
 
-    /* ── run history ── */
+    /* run history */
     .run-card { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--border); border-radius: 10px; padding: 0.85rem 1rem; margin-bottom: 0.6rem; }
     .run-card.auto   { border-left-color: var(--blue); }
     .run-card.manual { border-left-color: var(--purple); }
-    .run-card.local  { border-left-color: var(--muted); }
     .run-top { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.5rem; }
     .run-date { font-size: 0.82rem; font-weight: 700; color: var(--bright); }
     .run-meta-row { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
-    .run-ts { font-size: 0.67rem; color: var(--muted); font-family: monospace; }
     .run-pages-list { display: flex; flex-direction: column; gap: 0.25rem; }
     .run-page { display: flex; align-items: center; gap: 0.5rem; font-size: 0.78rem; }
     .run-page-url { color: var(--text); font-family: monospace; font-size: 0.75rem; }
     .run-page-lbl { color: var(--muted); font-size: 0.7rem; }
-    .run-footer { font-size: 0.68rem; color: var(--muted); margin-top: 0.4rem; padding-top: 0.4rem; border-top: 1px solid var(--border); }
 
-    /* ── rows ── */
+    /* pending tabs */
+    .tab-row { display: flex; gap: 0.4rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
+    .tab { font-size: 0.72rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 999px; cursor: pointer; border: 1px solid var(--border); background: var(--surface); color: var(--muted); transition: all 0.15s; }
+    .tab.active { background: #0c2240; color: var(--blue); border-color: #1a3a5c; }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* rows */
     .row { display: flex; align-items: center; justify-content: space-between; padding: 0.4rem 0.6rem; border-radius: 7px; }
     .row:hover { background: rgba(255,255,255,0.03); }
     .row-left { min-width: 0; }
@@ -196,11 +276,11 @@ function typeLabel(type: string) {
     .row-right { display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0; margin-left: 0.75rem; }
     .row-eta { font-size: 0.69rem; color: var(--muted); white-space: nowrap; }
 
-    /* ── type blocks ── */
+    /* type blocks */
     .type-block { margin-bottom: 1rem; }
     .type-lbl { font-size: 0.68rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; padding: 0 0.6rem; margin-bottom: 0.3rem; }
 
-    /* ── badges ── */
+    /* badges */
     .badge { display: inline-block; padding: 0.1rem 0.45rem; border-radius: 999px; font-size: 0.65rem; font-weight: 700; white-space: nowrap; }
     .badge-calc   { background: #0c2240; color: #7dd3fc; }
     .badge-guide  { background: #0c2214; color: #86efac; }
@@ -210,28 +290,27 @@ function typeLabel(type: string) {
     .badge-pend   { background: #0c2240; color: #60a5fa; }
     .badge-auto   { background: #0c2240; color: var(--blue); }
     .badge-manual { background: #1a1040; color: var(--purple); }
-    .badge-local  { background: var(--border); color: var(--muted); }
 
-    /* ── misc ── */
+    /* misc */
     a { color: var(--blue); text-decoration: none; }
     a:hover { text-decoration: underline; }
     .empty { color: var(--muted); font-size: 0.78rem; padding: 0.75rem 0.6rem; }
     .checklist { display: flex; flex-direction: column; gap: 0.35rem; }
-    .check-row { display: flex; align-items: center; gap: 0.5rem; font-size: 0.78rem; }
-    .check-icon { font-size: 0.85rem; flex-shrink: 0; }
+    .check-row { display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.78rem; }
+    .check-icon { font-size: 0.85rem; flex-shrink: 0; margin-top: 0.05rem; }
     .check-done { color: var(--text); }
     .check-todo { color: var(--muted); }
     .divider { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+    .pill { display: inline-block; font-size: 0.62rem; font-weight: 700; padding: 0.1rem 0.45rem; border-radius: 999px; vertical-align: middle; }
 
-    /* ── password gate ── */
+    /* password gate */
     #gate { position:fixed; inset:0; z-index:9999; background:var(--bg); display:flex; align-items:center; justify-content:center; }
     .login-card { background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:2rem 2.5rem; width:100%; max-width:340px; }
     .login-title { font-size:1rem; font-weight:800; color:var(--bright); margin-bottom:0.25rem; text-align:center; }
     .login-sub { font-size:0.72rem; color:var(--muted); text-align:center; margin-bottom:1.5rem; }
     .login-input { width:100%; background:var(--bg); border:1px solid var(--border); border-radius:8px; color:var(--text); font-size:0.9rem; padding:0.65rem 0.85rem; outline:none; transition:border-color .15s; }
     .login-input:focus { border-color:var(--blue); }
-    .login-btn { width:100%; margin-top:0.75rem; background:var(--blue); color:#000; font-weight:700; font-size:0.85rem; border:none; border-radius:8px; padding:0.7rem; cursor:pointer; transition:background .15s; }
-    .login-btn:hover { background:#7dd3fc; }
+    .login-btn { width:100%; margin-top:0.75rem; background:var(--blue); color:#000; font-weight:700; font-size:0.85rem; border:none; border-radius:8px; padding:0.7rem; cursor:pointer; }
     .login-err { color:#f87171; font-size:0.75rem; margin-top:0.6rem; text-align:center; display:none; }
     #content { display:none; }
   </style>
@@ -253,15 +332,19 @@ function typeLabel(type: string) {
 
   <div class="header">
     <h1>HomeMaterialCalc · Admin</h1>
-    <span style="font-size:0.75rem;color:var(--muted)">Bugün: <strong style="color:var(--text)">{today}</strong></span>
+    <span style="font-size:0.75rem;color:var(--muted)">Bugün: <strong style="color:var(--text)">{today}</strong> &nbsp;·&nbsp; Son yayın: <strong style="color:var(--text)">{lastRun}</strong></span>
   </div>
-  <p class="sub">Yayın durumu · noindex · sadece sen görüyorsun</p>
+  <p class="sub">noindex · yayın takibi · SEO durumu · sadece sen görüyorsun</p>
 
-  <!-- ─── STAT GRID ─────────────────────────────────────────────────── -->
+  <!-- ─── STAT GRID ─────────────────────────────────────────────── -->
   <div class="stats">
     <div class="stat">
       <div class="stat-n">{totalLive}</div>
-      <div class="stat-l">Canlı sayfa</div>
+      <div class="stat-l">Toplam canlı</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n" style="color:var(--green)">{published.length}</div>
+      <div class="stat-l">Yayındaki sayfa</div>
     </div>
     <div class="stat">
       <div class="stat-n" style="color:var(--teal)">{PROGRAMMATIC_COUNT}</div>
@@ -269,7 +352,7 @@ function typeLabel(type: string) {
     </div>
     <div class="stat">
       <div class="stat-n" style="color:var(--pink)">{pending.length}</div>
-      <div class="stat-l">Sırada</div>
+      <div class="stat-l">Sırada (pending)</div>
     </div>
     <div class="stat">
       <div class="stat-n" style="color:var(--blue)">{pubCalcs.length}</div>
@@ -284,82 +367,50 @@ function typeLabel(type: string) {
       <div class="stat-l">Reference</div>
     </div>
     <div class="stat">
-      <div class="stat-n" style="color:var(--teal)">{runs.length}</div>
-      <div class="stat-l">Toplam run</div>
+      <div class="stat-n" style="color:var(--purple)">{emptyDate ? emptyDate.slice(5) : '—'}</div>
+      <div class="stat-l">Kuyruk biter</div>
     </div>
     <div class="stat">
       <div class="stat-n">{pagesPerDay}</div>
       <div class="stat-l">Sayfa / gün</div>
     </div>
-    <div class="stat">
-      <div class="stat-n" style="color:var(--purple)">{emptyDate ? emptyDate.slice(5) : '—'}</div>
-      <div class="stat-l">Kuyruk biter</div>
-    </div>
   </div>
 
-  <!-- ─── FORM SUBMISSIONS ─────────────────────────────────────────────── -->
-  <div class="section" id="submissions-section">
-    <div class="sec-header">
-      <span class="sec-title">📬 Form Submissions</span>
-      <button id="refresh-btn" onclick="loadSubmissions()" style="font-size:0.72rem;color:var(--blue);background:none;border:none;cursor:pointer;padding:0">↻ Yenile</button>
-    </div>
-    <div class="two-col" style="grid-template-columns:1fr 1fr 1fr">
-
-      <!-- Quote Requests -->
-      <div class="card">
-        <div class="card-title">🏗️ Quote Requests</div>
-        <div id="quotes-list"><div class="empty">Yükleniyor…</div></div>
-      </div>
-
-      <!-- Newsletter -->
-      <div class="card">
-        <div class="card-title">📧 Newsletter</div>
-        <div id="nl-list"><div class="empty">Yükleniyor…</div></div>
-      </div>
-
-      <!-- Contact -->
-      <div class="card">
-        <div class="card-title">💬 Contact</div>
-        <div id="contact-list"><div class="empty">Yükleniyor…</div></div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- ─── PROGRESS BAR ───────────────────────────────────────────────── -->
+  <!-- ─── PROGRESS BAR ────────────────────────────────────────── -->
   <div class="progress-wrap">
     <div class="progress-header">
       <span class="progress-title">Yayın İlerlemesi — {totalLive} canlı / {total} toplam</span>
       <span class="progress-pct">{progressPct}%</span>
     </div>
-    <div class="bar-bg">
-      <div class="bar-fill" style={`width:${progressPct}%`}></div>
-    </div>
+    <div class="bar-bg"><div class="bar-fill" style={`width:${progressPct}%`}></div></div>
     <div class="progress-meta">
-      <span>🔧 <strong>{pubCalcs.length}</strong> calculator</span>
+      <span>🔧 <strong>{pubCalcs.length}</strong> calc</span>
       <span>📖 <strong>{pubGuides.length}</strong> guide</span>
-      <span>📋 <strong>{pubRefs.length}</strong> reference</span>
+      <span>📋 <strong>{pubRefs.length}</strong> ref</span>
       <span>📄 <strong>{pubStatic.length}</strong> static</span>
       <span>🔁 <strong>{PROGRAMMATIC_COUNT}</strong> programmatic</span>
       <span>⏳ <strong>{pending.length}</strong> pending</span>
-      <span>Son yayın: <strong>{lastRun}</strong></span>
     </div>
   </div>
 
-  <!-- ─── TWO-COL: Cron Schedule + Run Stats ──────────────────────────── -->
+  <!-- ─── TWO-COL: Programmatic + Run Stats ──────────────────── -->
   <div class="two-col">
     <div class="card">
-      <div class="card-title">⏰ Yayın Saatleri (Türkiye)</div>
-      <div class="cron-grid">
-        {[['04:00','01:00'],['10:00','07:00'],['16:00','13:00'],['22:00','19:00']].map(([tr,utc]) => (
-          <div class="cron-item">
-            <div class="cron-tr">{tr}</div>
-            <div class="cron-utc">{utc} UTC</div>
-          </div>
-        ))}
+      <div class="card-title">🔁 Programmatic Sayfa Dağılımı ({PROGRAMMATIC_COUNT})</div>
+      <div class="prog-bar-row">
+        <div class="prog-bar-label"><span>Alan/boyut bazlı</span><span>{PROG_AREA} sayfa</span></div>
+        <div class="prog-mini-bg"><div class="prog-mini-fill" style={`width:${Math.round(PROG_AREA/PROGRAMMATIC_COUNT*100)}%;background:#38bdf8`}></div></div>
+        <div style="font-size:0.66rem;color:var(--muted);margin-top:0.2rem">mulch×12 · gravel×5 · topsoil×7 · sand×5 · sod×7 · slabs×10 · paint×11</div>
       </div>
-      <div style="margin-top:0.75rem;font-size:0.72rem;color:var(--muted)">
-        Her çalışma 1 sayfa yayınlar → günde 4 sayfa
+      <div class="prog-bar-row">
+        <div class="prog-bar-label"><span>State × materyal</span><span>{PROG_STATE} sayfa</span></div>
+        <div class="prog-mini-bg"><div class="prog-mini-fill" style={`width:${Math.round(PROG_STATE/PROGRAMMATIC_COUNT*100)}%;background:#4ade80`}></div></div>
+        <div style="font-size:0.66rem;color:var(--muted);margin-top:0.2rem">4 materyal × 20 eyalet</div>
+      </div>
+      <div class="prog-bar-row">
+        <div class="prog-bar-label"><span>City × materyal</span><span>{PROG_CITY} sayfa</span></div>
+        <div class="prog-mini-bg"><div class="prog-mini-fill" style={`width:${Math.round(PROG_CITY/PROGRAMMATIC_COUNT*100)}%;background:#a78bfa`}></div></div>
+        <div style="font-size:0.66rem;color:var(--muted);margin-top:0.2rem">4 materyal × 42 şehir (Houston, Dallas, Miami, LA…)</div>
       </div>
     </div>
     <div class="card">
@@ -367,32 +418,149 @@ function typeLabel(type: string) {
       <div class="card-row"><span class="card-row-label">Toplam run</span><span class="card-row-val">{runs.length}</span></div>
       <div class="card-row"><span class="card-row-label">⏰ Otomatik</span><span class="card-row-val">{autoRuns}</span></div>
       <div class="card-row"><span class="card-row-label">▶️ Manuel</span><span class="card-row-val">{manualRuns}</span></div>
-      <div class="card-row"><span class="card-row-label">Toplam yayınlanan (run'dan)</span><span class="card-row-val">{totalPagesPublishedByRuns}</span></div>
+      <div class="card-row"><span class="card-row-label">Toplam yayınlanan</span><span class="card-row-val">{totalPagesPublishedByRuns}</span></div>
       <div class="card-row"><span class="card-row-label">Kalan gün (tahmini)</span><span class="card-row-val">{Math.ceil(pending.length / pagesPerDay)}</span></div>
       <div class="card-row"><span class="card-row-label">Kuyruk biter</span><span class="card-row-val">{emptyDate ?? '—'}</span></div>
+      <div class="card-row" style="margin-top:0.5rem;padding-top:0.5rem;border-top:1px solid var(--border)">
+        <span class="card-row-label">⏰ Yayın saatleri (TR)</span>
+        <span class="card-row-val" style="font-size:0.68rem">04:00 · 10:00 · 16:00 · 22:00</span>
+      </div>
     </div>
   </div>
 
-  <!-- ─── QUICK LINKS ─────────────────────────────────────────────────── -->
+  <!-- ─── QUICK LINKS ────────────────────────────────────────── -->
   <div class="links-grid">
     <a href="https://www.homematerialcalc.com" target="_blank" class="link-btn"><span class="ico">🌐</span> Canlı site</a>
     <a href="https://vercel.com/ozgurs-projects-26c5cbf1/homematerialcalc" target="_blank" class="link-btn"><span class="ico">▲</span> Vercel</a>
     <a href="https://github.com/evinso/homematerialcalc/actions" target="_blank" class="link-btn"><span class="ico">⚙️</span> GitHub Actions</a>
     <a href="https://search.google.com/search-console" target="_blank" class="link-btn"><span class="ico">🔍</span> Search Console</a>
-    <a href="https://analytics.google.com" target="_blank" class="link-btn"><span class="ico">📈</span> Google Analytics</a>
+    <a href="https://analytics.google.com" target="_blank" class="link-btn"><span class="ico">📈</span> Analytics</a>
     <a href="https://www.google.com/adsense" target="_blank" class="link-btn"><span class="ico">💰</span> AdSense</a>
-    <a href="https://www.homematerialcalc.com/sitemap.xml" target="_blank" class="link-btn"><span class="ico">🗺️</span> Sitemap</a>
-    <a href="https://search.google.com/test/rich-results" target="_blank" class="link-btn"><span class="ico">🧪</span> Rich Results Test</a>
+    <a href="https://www.homematerialcalc.com/sitemap.xml" target="_blank" class="link-btn"><span class="ico">🗺️</span> Sitemap Index</a>
+    <a href="https://www.homematerialcalc.com/sitemap-live.xml" target="_blank" class="link-btn"><span class="ico">✅</span> Sitemap Live</a>
+    <a href="https://www.homematerialcalc.com/sitemap-upcoming.xml" target="_blank" class="link-btn"><span class="ico">⏳</span> Sitemap Upcoming</a>
+    <a href="https://www.homematerialcalc.com/sitemap-programmatic.xml" target="_blank" class="link-btn"><span class="ico">🔁</span> Sitemap Prog</a>
+    <a href="https://search.google.com/test/rich-results" target="_blank" class="link-btn"><span class="ico">🧪</span> Rich Results</a>
+    <a href="https://pagespeed.web.dev/analysis?url=https://www.homematerialcalc.com" target="_blank" class="link-btn"><span class="ico">⚡</span> PageSpeed</a>
   </div>
 
-  <!-- ─── ADSENSE CHECKLIST ─────────────────────────────────────────────── -->
-  <div class="two-col" style="margin-bottom:1.5rem;">
+  <!-- ─── FORM SUBMISSIONS ──────────────────────────────────── -->
+  <div class="section" id="submissions-section">
+    <div class="sec-header">
+      <span class="sec-title">📬 Form Submissions</span>
+      <button id="refresh-btn" onclick="loadSubmissions()" style="font-size:0.72rem;color:var(--blue);background:none;border:none;cursor:pointer;padding:0">↻ Yenile</button>
+    </div>
+    <div class="two-col" style="grid-template-columns:1fr 1fr 1fr">
+      <div class="card"><div class="card-title">🏗️ Quote Requests</div><div id="quotes-list"><div class="empty">Yükleniyor…</div></div></div>
+      <div class="card"><div class="card-title">📧 Newsletter</div><div id="nl-list"><div class="empty">Yükleniyor…</div></div></div>
+      <div class="card"><div class="card-title">💬 Contact</div><div id="contact-list"><div class="empty">Yükleniyor…</div></div></div>
+    </div>
+  </div>
+
+  <!-- ─── SEO İYİLEŞTİRME GÜNLÜĞÜ ─────────────────────────── -->
+  <div class="section">
+    <div class="sec-header">
+      <span class="sec-title">📈 SEO İyileştirme Günlüğü</span>
+      <span class="sec-sub">En yeni üstte</span>
+    </div>
+    <div class="card">
+      <div class="seo-log">
+        {seoLog.map(entry => (
+          <div class="seo-entry">
+            <span class="seo-date">{entry.date}</span>
+            <span class={`seo-tag ${entry.tag.toLowerCase()}`}>{entry.tag}</span>
+            <div class="seo-items">
+              {entry.items.map(item => (
+                <div class="seo-item">· {item}</div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── YAZAR SAYFАЛARI ───────────────────────────────────── -->
+  <div class="section">
+    <div class="sec-header">
+      <span class="sec-title">✍️ Yazar Sayfaları</span>
+      <span class="sec-sub">Person schema · E-E-A-T sinyali</span>
+    </div>
+    <div class="author-cards">
+      {authors.map(a => (
+        <div class="author-card">
+          <div class="author-avatar" style={`background-color:${a.color}`}>{a.avatar}</div>
+          <div class="author-info">
+            <div class="author-name">{a.name}</div>
+            <div class="author-title">{a.title}</div>
+            <div class="author-expertise">{a.expertise}</div>
+            <a href={`https://www.homematerialcalc.com/author/${a.slug}/`} target="_blank" class="author-link">/author/{a.slug}/ →</a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- ─── İÇERİK ENVANTERİ ─────────────────────────────────── -->
+  <div class="section">
+    <div class="sec-header">
+      <span class="sec-title">📦 İçerik Envanteri — Hub Bazında</span>
+      <span class="sec-sub">Canlı sayfalar</span>
+    </div>
+    <div class="card">
+      <table class="hub-table">
+        <thead>
+          <tr>
+            <th>Kategori</th>
+            <th>Calculator</th>
+            <th>How-Much</th>
+            <th>How-To</th>
+            <th>Compare</th>
+            <th>Maliyet</th>
+            <th>Toplam</th>
+          </tr>
+        </thead>
+        <tbody>
+          {[
+            { name: '🌿 Landscaping', ...contentMap.landscaping },
+            { name: '🏠 Interior', ...contentMap.interior },
+            { name: '🏗️ Concrete', ...contentMap.concrete },
+          ].map(hub => (
+            <tr>
+              <td>{hub.name}</td>
+              <td><span class="hub-num">{hub.calcs.length}</span></td>
+              <td><span class="hub-num">{hub.guides.length}</span></td>
+              <td><span class="hub-num">{hub.howto.length}</span></td>
+              <td><span class="hub-num">{hub.compare.length}</span></td>
+              <td><span class="hub-num">{hub.cost.length}</span></td>
+              <td style="color:var(--bright);font-weight:700">{hub.calcs.length + hub.guides.length + hub.howto.length + hub.compare.length + hub.cost.length}</td>
+            </tr>
+          ))}
+          <tr style="border-top:2px solid var(--border)">
+            <td style="color:var(--muted)">Toplam</td>
+            <td><span class="hub-num">{contentMap.landscaping.calcs.length + contentMap.interior.calcs.length + contentMap.concrete.calcs.length}</span></td>
+            <td><span class="hub-num">{contentMap.landscaping.guides.length + contentMap.interior.guides.length + contentMap.concrete.guides.length}</span></td>
+            <td><span class="hub-num">{contentMap.landscaping.howto.length + contentMap.interior.howto.length + contentMap.concrete.howto.length}</span></td>
+            <td><span class="hub-num">{contentMap.landscaping.compare.length + contentMap.interior.compare.length + contentMap.concrete.compare.length}</span></td>
+            <td><span class="hub-num">{contentMap.landscaping.cost.length + contentMap.interior.cost.length + contentMap.concrete.cost.length}</span></td>
+            <td style="color:var(--blue);font-weight:700">
+              {[contentMap.landscaping, contentMap.interior, contentMap.concrete]
+                .reduce((sum, hub) => sum + hub.calcs.length + hub.guides.length + hub.howto.length + hub.compare.length + hub.cost.length, 0)}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ─── CHECKLISTS ───────────────────────────────────────── -->
+  <div class="two-col">
     <div class="card">
       <div class="card-title">✅ AdSense Başvuru Kontrolü</div>
       <div class="checklist">
         {[
           [true,  'robots.txt canlı'],
-          [true,  'sitemap.xml canlı (www-https)'],
+          [true,  'sitemap.xml index (3 alt sitemap)'],
           [true,  'Canonical tag her sayfada'],
           [true,  '301 redirect non-www → www'],
           [true,  'Privacy Policy + Terms sayfaları'],
@@ -400,8 +568,9 @@ function typeLabel(type: string) {
           [true,  'Methodology + Data Sources (EEAT)'],
           [true,  'Cookie Policy + consent banner'],
           [true,  'GA4 aktif'],
-          [true,  `${published.length} canlı sayfa (25+ gerek)`],
+          [true,  `${published.length} yayında sayfa (25+ gerek)`],
           [true,  'ads.txt oluşturuldu'],
+          [true,  '3 yazar sayfası (E-E-A-T)'],
           [false, 'ads.txt içine publisher ID ekle (onaydan sonra)'],
           [false, 'AdSense başvurusu gönder'],
         ].map(([done, label]) => (
@@ -416,24 +585,23 @@ function typeLabel(type: string) {
       <div class="card-title">🔧 Teknik SEO Durumu</div>
       <div class="checklist">
         {[
-          [true,  'WebApplication schema (tüm calculator)'],
+          [true,  'WebApplication schema + dateModified (calculators)'],
           [true,  'Article + FAQ + BreadcrumbList (guides)'],
+          [true,  'HowTo schema (5 how-to rehberi)'],
+          [true,  'Person schema (yazar sayfaları)'],
           [true,  'Organization schema (homepage)'],
-          [true,  'BreadcrumbList schema (calculators)'],
-          [true,  'OG / Twitter Card meta (tüm sayfalar)'],
           [true,  'og:type="article" guide sayfalarda'],
-          [true,  'article:published_time / modified_time'],
+          [true,  'article:published_time + modified_time'],
           [true,  'publishDate — 34 guide MDX'],
           [true,  'BreadcrumbList item eksik hatası düzeltildi'],
-          [true,  'HowTo schema (5 how-to rehber)'],
+          [true,  'Table of Contents — tüm guide sayfalarda'],
+          [true,  'Hub sayfaları BreadcrumbList + iç linkleme'],
+          [true,  '3-tier sitemap (live / upcoming / programmatic)'],
+          [true,  '168 şehir bazlı programmatic sayfa'],
+          [true,  'Custom 404 + Accessibility sayfası'],
           [true,  'Search Console doğrulama meta'],
-          [true,  'Custom 404 sayfası'],
-          [true,  'Accessibility sayfası'],
-          [true,  'Cookie consent banner'],
-          [true,  'Mobile menu çalışıyor'],
-          [true,  'Newsletter signup (footer)'],
-          [true,  'Category hub sayfaları (3 adet)'],
-          [false, 'OG default PNG oluştur (SVG var)'],
+          [false, 'OG image per-page (şu an tek default)'],
+          [false, 'Core Web Vitals — React hydration optimize'],
         ].map(([done, label]) => (
           <div class="check-row">
             <span class="check-icon">{done ? '✅' : '⬜'}</span>
@@ -444,12 +612,12 @@ function typeLabel(type: string) {
     </div>
   </div>
 
-  <!-- ─── NEXT UP ──────────────────────────────────────────────────────── -->
+  <!-- ─── NEXT UP ───────────────────────────────────────────── -->
   {pendingWithETA.length > 0 && (
     <div class="next-strip">
-      <div class="next-label">Sonraki {Math.min(pendingWithETA.length, 8)} yayın</div>
+      <div class="next-label">Sonraki {Math.min(pendingWithETA.length, 10)} yayın</div>
       <div class="next-pages">
-        {pendingWithETA.slice(0, 8).map((p, i) => (
+        {pendingWithETA.slice(0, 10).map((p, i) => (
           <div class="next-page-row">
             <span class="next-slot">#{i+1} · {p.eta}</span>
             <span class={`badge badge-${p.type === 'calculator' ? 'calc' : p.type === 'guide' ? 'guide' : p.type === 'reference' ? 'ref' : 'static'}`}>
@@ -463,29 +631,23 @@ function typeLabel(type: string) {
     </div>
   )}
 
-  <!-- ─── RUN HISTORY ──────────────────────────────────────────────────── -->
+  <!-- ─── RUN HISTORY ───────────────────────────────────────── -->
   <div class="section">
     <div class="sec-header">
       <span class="sec-title">🕐 Yayın Geçmişi ({runs.length} run)</span>
       <span class="sec-sub">En yeni üstte</span>
     </div>
-
-    {recentRuns.length === 0 && (
-      <p class="empty">Henüz hiç run kaydedilmedi. İlk otomatik çalışmada burada görünecek.</p>
-    )}
-
+    {recentRuns.length === 0 && <p class="empty">Henüz hiç run kaydedilmedi.</p>}
     {recentRuns.map((run: any) => {
-      const cls = run.trigger === 'scheduled' ? 'auto' : run.trigger === 'manual_dispatch' ? 'manual' : 'local';
-      const badgeCls = run.trigger === 'scheduled' ? 'badge-auto' : run.trigger === 'manual_dispatch' ? 'badge-manual' : 'badge-local';
+      const cls = run.trigger === 'scheduled' ? 'auto' : 'manual';
+      const badgeCls = run.trigger === 'scheduled' ? 'badge-auto' : 'badge-manual';
       return (
         <div class={`run-card ${cls}`}>
           <div class="run-top">
             <span class="run-date">{run.timestamp?.replace('T',' ').replace(/\.\d{3}Z$/,' UTC') ?? run.date}</span>
             <div class="run-meta-row">
               <span class={`badge ${badgeCls}`}>{triggerLabel(run.trigger)}</span>
-              {run.runBy && run.runBy !== 'local' && (
-                <span style="font-size:0.68rem;color:var(--muted)">by {run.runBy}</span>
-              )}
+              {run.runBy && run.runBy !== 'local' && <span style="font-size:0.68rem;color:var(--muted)">by {run.runBy}</span>}
               <span style="font-size:0.68rem;color:var(--muted)">{run.pendingBefore} → {run.pendingAfter} pending</span>
             </div>
           </div>
@@ -507,158 +669,144 @@ function typeLabel(type: string) {
 
   <hr class="divider" />
 
-  <!-- ─── PENDING BY TYPE ─────────────────────────────────────────────── -->
+  <!-- ─── PENDING (TAB'LI) ──────────────────────────────────── -->
   <div class="section">
     <div class="sec-header">
       <span class="sec-title">⏳ Sırada ({pending.length} sayfa)</span>
-      <span class="sec-sub">{pendCalcs.length} calc · {pendGuides.length} guide · {pendRefs.length} ref</span>
+      <span class="sec-sub">{pendCalcs.length} calc · {pendGuides.length} guide · {pendRefs.length} ref · {pendStatic.length} static</span>
     </div>
 
-    {pending.length === 0 && <p class="empty">Sırada sayfa yok — tüm sayfalar yayında!</p>}
+    <div class="tab-row">
+      <button class="tab active" onclick="showTab('all')">Tümü ({pending.length})</button>
+      <button class="tab" onclick="showTab('calc')">Calculator ({pendCalcs.length})</button>
+      <button class="tab" onclick="showTab('guide')">Guide ({pendGuides.length})</button>
+      <button class="tab" onclick="showTab('ref')">Reference ({pendRefs.length})</button>
+      <button class="tab" onclick="showTab('static')">Static ({pendStatic.length})</button>
+    </div>
 
-    {pendCalcs.length > 0 && (
-      <div class="type-block">
-        <div class="type-lbl">🔧 Calculators ({pendCalcs.length})</div>
-        {pendCalcs.map((p: any) => (
-          <div class="row">
-            <div class="row-left">
-              <div class="row-url">{p.url}</div>
-              <div class="row-lbl">{p.label}</div>
-            </div>
-            <div class="row-right">
-              <span class="badge badge-calc">calc</span>
-              <span class="row-eta">{p.eta}</span>
-            </div>
-          </div>
-        ))}
-      </div>
-    )}
+    <!-- All -->
+    <div id="tab-all" class="tab-panel active">
+      {pending.length === 0 && <p class="empty">Sırada sayfa yok!</p>}
+      {pendCalcs.length > 0 && (
+        <div class="type-block">
+          <div class="type-lbl">🔧 Calculators ({pendCalcs.length})</div>
+          {pendCalcs.map((p: any) => (
+            <div class="row"><div class="row-left"><div class="row-url">{p.url}</div><div class="row-lbl">{p.label}</div></div>
+            <div class="row-right"><span class="badge badge-calc">calc</span><span class="row-eta">{p.eta}</span></div></div>
+          ))}
+        </div>
+      )}
+      {pendGuides.length > 0 && (
+        <div class="type-block">
+          <div class="type-lbl">📖 Guides ({pendGuides.length})</div>
+          {pendGuides.map((p: any) => (
+            <div class="row"><div class="row-left"><div class="row-url">{p.url}</div><div class="row-lbl">{p.label}</div></div>
+            <div class="row-right"><span class="badge badge-guide">guide</span><span class="row-eta">{p.eta}</span></div></div>
+          ))}
+        </div>
+      )}
+      {pendRefs.length > 0 && (
+        <div class="type-block">
+          <div class="type-lbl">📋 Reference ({pendRefs.length})</div>
+          {pendRefs.map((p: any) => (
+            <div class="row"><div class="row-left"><div class="row-url">{p.url}</div><div class="row-lbl">{p.label}</div></div>
+            <div class="row-right"><span class="badge badge-ref">ref</span><span class="row-eta">{p.eta}</span></div></div>
+          ))}
+        </div>
+      )}
+      {pendStatic.length > 0 && (
+        <div class="type-block">
+          <div class="type-lbl">📄 Static ({pendStatic.length})</div>
+          {pendStatic.map((p: any) => (
+            <div class="row"><div class="row-left"><div class="row-url">{p.url}</div><div class="row-lbl">{p.label}</div></div>
+            <div class="row-right"><span class="badge badge-static">static</span><span class="row-eta">{p.eta}</span></div></div>
+          ))}
+        </div>
+      )}
+    </div>
 
-    {pendGuides.length > 0 && (
-      <div class="type-block">
-        <div class="type-lbl">📖 Guides ({pendGuides.length})</div>
-        {pendGuides.map((p: any) => (
-          <div class="row">
-            <div class="row-left">
-              <div class="row-url">{p.url}</div>
-              <div class="row-lbl">{p.label}</div>
-            </div>
-            <div class="row-right">
-              <span class="badge badge-guide">guide</span>
-              <span class="row-eta">{p.eta}</span>
-            </div>
-          </div>
-        ))}
-      </div>
-    )}
+    <!-- Calculator only -->
+    <div id="tab-calc" class="tab-panel">
+      {pendCalcs.length === 0 ? <p class="empty">Sırada calculator yok</p> : pendCalcs.map((p: any) => (
+        <div class="row"><div class="row-left"><div class="row-url">{p.url}</div><div class="row-lbl">{p.label}</div></div>
+        <div class="row-right"><span class="badge badge-calc">calc</span><span class="row-eta">{p.eta}</span></div></div>
+      ))}
+    </div>
 
-    {pendRefs.length > 0 && (
-      <div class="type-block">
-        <div class="type-lbl">📋 Reference ({pendRefs.length})</div>
-        {pendRefs.map((p: any) => (
-          <div class="row">
-            <div class="row-left">
-              <div class="row-url">{p.url}</div>
-              <div class="row-lbl">{p.label}</div>
-            </div>
-            <div class="row-right">
-              <span class="badge badge-ref">ref</span>
-              <span class="row-eta">{p.eta}</span>
-            </div>
-          </div>
-        ))}
-      </div>
-    )}
+    <!-- Guide only -->
+    <div id="tab-guide" class="tab-panel">
+      {pendGuides.length === 0 ? <p class="empty">Sırada guide yok</p> : pendGuides.map((p: any) => (
+        <div class="row"><div class="row-left"><div class="row-url">{p.url}</div><div class="row-lbl">{p.label}</div></div>
+        <div class="row-right"><span class="badge badge-guide">guide</span><span class="row-eta">{p.eta}</span></div></div>
+      ))}
+    </div>
+
+    <!-- Reference only -->
+    <div id="tab-ref" class="tab-panel">
+      {pendRefs.length === 0 ? <p class="empty">Sırada reference yok</p> : pendRefs.map((p: any) => (
+        <div class="row"><div class="row-left"><div class="row-url">{p.url}</div><div class="row-lbl">{p.label}</div></div>
+        <div class="row-right"><span class="badge badge-ref">ref</span><span class="row-eta">{p.eta}</span></div></div>
+      ))}
+    </div>
+
+    <!-- Static only -->
+    <div id="tab-static" class="tab-panel">
+      {pendStatic.length === 0 ? <p class="empty">Sırada static yok</p> : pendStatic.map((p: any) => (
+        <div class="row"><div class="row-left"><div class="row-url">{p.url}</div><div class="row-lbl">{p.label}</div></div>
+        <div class="row-right"><span class="badge badge-static">static</span><span class="row-eta">{p.eta}</span></div></div>
+      ))}
+    </div>
   </div>
 
   <hr class="divider" />
 
-  <!-- ─── PUBLISHED BY TYPE ────────────────────────────────────────────── -->
+  <!-- ─── PUBLISHED ─────────────────────────────────────────── -->
   <div class="section">
     <div class="sec-header">
       <span class="sec-title">✅ Yayında ({published.length} sayfa)</span>
       <span class="sec-sub">{pubCalcs.length} calc · {pubGuides.length} guide · {pubRefs.length} ref · {pubStatic.length} static</span>
     </div>
-
     {pubCalcs.length > 0 && (
       <div class="type-block">
         <div class="type-lbl">🔧 Calculators</div>
         {pubCalcs.map((p: any) => (
-          <div class="row">
-            <div class="row-left">
-              <div class="row-url">
-                <a href={`https://www.homematerialcalc.com${p.url}`} target="_blank">{p.url}</a>
-              </div>
-              <div class="row-lbl">{p.label}</div>
-            </div>
-            <div class="row-right">
-              <span class="badge badge-calc">calc</span>
-              <span class="badge badge-live">live</span>
-              <span class="row-eta">{p.publishedAt}</span>
-            </div>
-          </div>
+          <div class="row"><div class="row-left">
+            <div class="row-url"><a href={`https://www.homematerialcalc.com${p.url}`} target="_blank">{p.url}</a></div>
+            <div class="row-lbl">{p.label}</div>
+          </div><div class="row-right"><span class="badge badge-live">live</span><span class="row-eta">{p.publishedAt}</span></div></div>
         ))}
       </div>
     )}
-
     {pubGuides.length > 0 && (
       <div class="type-block">
         <div class="type-lbl">📖 Guides</div>
         {pubGuides.map((p: any) => (
-          <div class="row">
-            <div class="row-left">
-              <div class="row-url">
-                <a href={`https://www.homematerialcalc.com${p.url}`} target="_blank">{p.url}</a>
-              </div>
-              <div class="row-lbl">{p.label}</div>
-            </div>
-            <div class="row-right">
-              <span class="badge badge-guide">guide</span>
-              <span class="badge badge-live">live</span>
-              <span class="row-eta">{p.publishedAt}</span>
-            </div>
-          </div>
+          <div class="row"><div class="row-left">
+            <div class="row-url"><a href={`https://www.homematerialcalc.com${p.url}`} target="_blank">{p.url}</a></div>
+            <div class="row-lbl">{p.label}</div>
+          </div><div class="row-right"><span class="badge badge-live">live</span><span class="row-eta">{p.publishedAt}</span></div></div>
         ))}
       </div>
     )}
-
     {pubRefs.length > 0 && (
       <div class="type-block">
         <div class="type-lbl">📋 Reference</div>
         {pubRefs.map((p: any) => (
-          <div class="row">
-            <div class="row-left">
-              <div class="row-url">
-                <a href={`https://www.homematerialcalc.com${p.url}`} target="_blank">{p.url}</a>
-              </div>
-              <div class="row-lbl">{p.label}</div>
-            </div>
-            <div class="row-right">
-              <span class="badge badge-ref">ref</span>
-              <span class="badge badge-live">live</span>
-              <span class="row-eta">{p.publishedAt}</span>
-            </div>
-          </div>
+          <div class="row"><div class="row-left">
+            <div class="row-url"><a href={`https://www.homematerialcalc.com${p.url}`} target="_blank">{p.url}</a></div>
+            <div class="row-lbl">{p.label}</div>
+          </div><div class="row-right"><span class="badge badge-live">live</span><span class="row-eta">{p.publishedAt}</span></div></div>
         ))}
       </div>
     )}
-
     {pubStatic.length > 0 && (
       <div class="type-block">
         <div class="type-lbl">📄 Static</div>
         {pubStatic.map((p: any) => (
-          <div class="row">
-            <div class="row-left">
-              <div class="row-url">
-                <a href={`https://www.homematerialcalc.com${p.url}`} target="_blank">{p.url}</a>
-              </div>
-              <div class="row-lbl">{p.label}</div>
-            </div>
-            <div class="row-right">
-              <span class="badge badge-static">static</span>
-              <span class="badge badge-live">live</span>
-            </div>
-          </div>
+          <div class="row"><div class="row-left">
+            <div class="row-url"><a href={`https://www.homematerialcalc.com${p.url}`} target="_blank">{p.url}</a></div>
+            <div class="row-lbl">{p.label}</div>
+          </div><div class="row-right"><span class="badge badge-live">live</span></div></div>
         ))}
       </div>
     )}
@@ -684,6 +832,7 @@ function typeLabel(type: string) {
     if (await digest(val) === H) {
       sessionStorage.setItem('_ak', H);
       unlock();
+      loadSubmissions();
     } else {
       const err = document.getElementById('err');
       err.style.display = 'block';
@@ -696,19 +845,23 @@ function typeLabel(type: string) {
   document.getElementById('pw').addEventListener('keydown', e => { if (e.key === 'Enter') attempt(); });
   if (sessionStorage.getItem('_ak') === H) { unlock(); loadSubmissions(); }
 
+  // Tab switching
+  window.showTab = function(tab) {
+    document.querySelectorAll('.tab-panel').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
+    document.getElementById('tab-' + tab)?.classList.add('active');
+    event?.target?.classList.add('active');
+  };
+
   function fmtDate(iso) {
     if (!iso) return '—';
     const d = new Date(iso);
     return d.toLocaleDateString('tr-TR', { day:'2-digit', month:'2-digit', year:'2-digit' }) + ' ' +
            d.toLocaleTimeString('tr-TR', { hour:'2-digit', minute:'2-digit' });
   }
-
   function renderList(containerId, items, fields) {
     const el = document.getElementById(containerId);
-    if (!items || items.length === 0) {
-      el.innerHTML = '<div class="empty">Henüz giriş yok</div>';
-      return;
-    }
+    if (!items || items.length === 0) { el.innerHTML = '<div class="empty">Henüz giriş yok</div>'; return; }
     el.innerHTML = items.map(item => `
       <div class="row" style="flex-direction:column;align-items:flex-start;border-bottom:1px solid var(--border);padding:0.5rem 0.4rem">
         ${fields.map(f => item[f] ? `<span style="font-size:0.74rem;color:${f==='email'?'var(--blue)':'var(--text)'}">${item[f]}</span>` : '').join('')}
@@ -716,17 +869,17 @@ function typeLabel(type: string) {
       </div>
     `).join('');
   }
-
   async function loadSubmissions() {
     try {
       const res = await fetch('/api/submissions?key=hmc_s3cr3t_2026');
-      if (!res.ok) { console.warn('Submissions API error', res.status); return; }
+      if (!res.ok) return;
       const { quotes, newsletters, contacts } = await res.json();
       renderList('quotes-list', quotes, ['name','email','zip','page','project']);
       renderList('nl-list', newsletters, ['email']);
       renderList('contact-list', contacts, ['name','email','subject','message']);
-    } catch(e) { console.error('loadSubmissions:', e); }
+    } catch(e) {}
   }
+  document.getElementById('refresh-btn')?.addEventListener('click', loadSubmissions);
 })();
 </script>
 
