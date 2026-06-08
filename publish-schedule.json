@@ -8,6 +8,21 @@
   "runs": [
     {
       "date": "2026-06-08",
+      "timestamp": "2026-06-08T21:59:31.490Z",
+      "pagesPublished": [
+        {
+          "url": "/guide/concrete-cost-new-york",
+          "label": "Concrete Cost in New York",
+          "type": "reference"
+        }
+      ],
+      "pendingBefore": 121,
+      "pendingAfter": 120,
+      "trigger": "scheduled",
+      "runBy": "evinso"
+    },
+    {
+      "date": "2026-06-08",
       "timestamp": "2026-06-08T17:27:41.056Z",
       "pagesPublished": [
         {
@@ -745,8 +760,8 @@
       "url": "/guide/concrete-cost-new-york",
       "label": "Concrete Cost in New York",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-08"
     },
     {
       "url": "/guide/mulch-cost-florida",
@@ -952,7 +967,7 @@
       "publishedAt": null
     },
     {
-      "_section": "INDOOR EXPANSION \u2014 v2 (files written, drip publishing)"
+      "_section": "INDOOR EXPANSION — v2 (files written, drip publishing)"
     },
     {
       "url": "/calculator/paint",
@@ -1018,7 +1033,7 @@
       "publishedAt": null
     },
     {
-      "_section": "BATCH 3 \u2014 Project-specific & reference pages"
+      "_section": "BATCH 3 — Project-specific & reference pages"
     },
     {
       "url": "/guide/how-much-gravel-for-a-driveway",
@@ -1105,7 +1120,7 @@
       "publishedAt": null
     },
     {
-      "_section": "BATCH 4 \u2014 New calculators (lumber + paver)"
+      "_section": "BATCH 4 — New calculators (lumber + paver)"
     },
     {
       "url": "/calculator/lumber",
@@ -1136,7 +1151,7 @@
       "publishedAt": null
     },
     {
-      "_section": "BATCH 5 \u2014 New guide & reference pages"
+      "_section": "BATCH 5 — New guide & reference pages"
     },
     {
       "url": "/guide/how-much-sand-for-a-sandbox",
@@ -1272,7 +1287,7 @@
       "publishedAt": null
     },
     {
-      "_section": "BATCH 6 \u2014 Cost calculators"
+      "_section": "BATCH 6 — Cost calculators"
     },
     {
       "url": "/calculator/mulch-cost",
@@ -1317,7 +1332,7 @@
       "publishedAt": null
     },
     {
-      "_section": "BATCH 7 \u2014 EEAT + hub + technical pages"
+      "_section": "BATCH 7 — EEAT + hub + technical pages"
     },
     {
       "url": "/data-sources",
@@ -1376,13 +1391,13 @@
       "publishedAt": null
     },
     {
-      "_section": "BATCH 6 \u2014 Cost calculators"
+      "_section": "BATCH 6 — Cost calculators"
     },
     {
-      "_section": "BATCH 7 \u2014 EEAT + hub + technical pages"
+      "_section": "BATCH 7 — EEAT + hub + technical pages"
     },
     {
-      "_section": "FUTURE \u2014 not yet written"
+      "_section": "FUTURE — not yet written"
     },
     {
       "url": "/calculator/asphalt-cost",
@@ -1624,21 +1639,21 @@
     },
     {
       "url": "/author/tom",
-      "label": "Tom Harrington \u2014 Licensed General Contractor",
+      "label": "Tom Harrington — Licensed General Contractor",
       "type": "static",
       "status": "pending",
       "publishedAt": null
     },
     {
       "url": "/author/sarah",
-      "label": "Sarah Mitchell \u2014 Certified Landscape Designer",
+      "label": "Sarah Mitchell — Certified Landscape Designer",
       "type": "static",
       "status": "pending",
       "publishedAt": null
     },
     {
       "url": "/author/dan",
-      "label": "Dan Kowalski \u2014 Flooring & Interior Specialist",
+      "label": "Dan Kowalski — Flooring & Interior Specialist",
       "type": "static",
       "status": "pending",
       "publishedAt": null
