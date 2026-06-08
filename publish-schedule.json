@@ -8,6 +8,21 @@
   "runs": [
     {
       "date": "2026-06-08",
+      "timestamp": "2026-06-08T17:27:41.056Z",
+      "pagesPublished": [
+        {
+          "url": "/guide/concrete-cost-california",
+          "label": "Concrete Cost in California",
+          "type": "reference"
+        }
+      ],
+      "pendingBefore": 115,
+      "pendingAfter": 114,
+      "trigger": "scheduled",
+      "runBy": "evinso"
+    },
+    {
+      "date": "2026-06-08",
       "timestamp": "2026-06-08T12:41:32.852Z",
       "pagesPublished": [
         {
@@ -723,8 +738,8 @@
       "url": "/guide/concrete-cost-california",
       "label": "Concrete Cost in California",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-08"
     },
     {
       "url": "/guide/concrete-cost-new-york",
