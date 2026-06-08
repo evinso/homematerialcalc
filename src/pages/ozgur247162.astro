@@ -8,7 +8,8 @@ const pending   = pages.filter(p => p.status === 'pending');
 const future    = pages.filter(p => p.status === 'future');
 
 // Programmatic pages (dynamic routes, not in publish-schedule.json)
-const PROGRAMMATIC_COUNT = 50; // mulch×12 + gravel×5 + concrete×10 + topsoil×7 + sand×5 + paint×11
+// mulch×12 + gravel×5 + concrete-slabs×10 + topsoil×7 + sand×5 + paint×11 + sod×7 + state×material(4×20)×80
+const PROGRAMMATIC_COUNT = 137;
 
 const totalLive = published.length + PROGRAMMATIC_COUNT;
 const total     = totalLive + pending.length;
@@ -420,6 +421,11 @@ function typeLabel(type: string) {
           [true,  'Organization schema (homepage)'],
           [true,  'BreadcrumbList schema (calculators)'],
           [true,  'OG / Twitter Card meta (tüm sayfalar)'],
+          [true,  'og:type="article" guide sayfalarda'],
+          [true,  'article:published_time / modified_time'],
+          [true,  'publishDate — 34 guide MDX'],
+          [true,  'BreadcrumbList item eksik hatası düzeltildi'],
+          [true,  'HowTo schema (5 how-to rehber)'],
           [true,  'Search Console doğrulama meta'],
           [true,  'Custom 404 sayfası'],
           [true,  'Accessibility sayfası'],
