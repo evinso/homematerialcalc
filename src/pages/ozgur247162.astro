@@ -1294,35 +1294,28 @@ const contentGaps = Object.entries(CALC_EXPECTED).map(([calc, expected]) => ({
   // ── PageSpeed ──────────────────────────────────────────────
   window.testPageSpeed = async function(path) {
     const box = document.getElementById('pagespeed-status');
-    box.innerHTML = '<div style="font-size:0.78rem;color:var(--muted);padding:1rem 0">⏳ Test ediliyor… (10-30 sn)</div>';
-    const url = encodeURIComponent('https://www.homematerialcalc.com' + path);
+    box.innerHTML = '<div style="font-size:0.78rem;color:var(--muted);padding:1rem 0">⏳ Test ediliyor… (10-30 sn sürebilir)</div>';
     try {
-      const r = await fetch(`https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${url}&strategy=mobile`);
+      const r = await fetch(`/api/admin/pagespeed/?path=${encodeURIComponent(path)}`);
       const d = await r.json();
-      const cats = d?.lighthouseResult?.categories;
-      const metrics = d?.lighthouseResult?.audits;
-      if (!cats) { box.innerHTML = '<div style="color:#f87171;font-size:0.78rem">API hatası</div>'; return; }
-
-      const score = n => Math.round((n || 0) * 100);
-      const cls = n => n >= 90 ? 'good' : n >= 50 ? 'ok' : 'bad';
-      const perf = score(cats.performance?.score);
-      const lcp  = metrics?.['largest-contentful-paint']?.displayValue || '—';
-      const cls2 = metrics?.['cumulative-layout-shift']?.displayValue || '—';
-      const fcp  = metrics?.['first-contentful-paint']?.displayValue || '—';
-      const tbt  = metrics?.['total-blocking-time']?.displayValue || '—';
-
+      if (!r.ok || d.error) {
+        box.innerHTML = `<div style="color:#f87171;font-size:0.78rem">❌ ${d.error || 'API hatası'}</div>`;
+        return;
+      }
+      const colorCls = n => n >= 90 ? 'good' : n >= 50 ? 'ok' : 'bad';
       box.innerHTML = `
         <div style="margin-bottom:0.5rem">
-          <div class="ps-score ${cls(perf)}">${perf}</div>
-          <div style="font-size:0.68rem;color:var(--muted);margin-top:0.15rem">Mobile · ${path}</div>
+          <div class="ps-score ${colorCls(d.performance)}">${d.performance}</div>
+          <div style="font-size:0.68rem;color:var(--muted);margin-top:0.15rem">Mobile · ${d.path}</div>
         </div>
-        <div class="ps-metric"><span class="ps-metric-name">LCP</span><span class="ps-metric-val">${lcp}</span></div>
-        <div class="ps-metric"><span class="ps-metric-name">FCP</span><span class="ps-metric-val">${fcp}</span></div>
-        <div class="ps-metric"><span class="ps-metric-name">CLS</span><span class="ps-metric-val">${cls2}</span></div>
-        <div class="ps-metric"><span class="ps-metric-name">TBT</span><span class="ps-metric-val">${tbt}</span></div>
+        <div class="ps-metric"><span class="ps-metric-name">LCP</span><span class="ps-metric-val">${d.lcp}</span></div>
+        <div class="ps-metric"><span class="ps-metric-name">FCP</span><span class="ps-metric-val">${d.fcp}</span></div>
+        <div class="ps-metric"><span class="ps-metric-name">CLS</span><span class="ps-metric-val">${d.cls}</span></div>
+        <div class="ps-metric"><span class="ps-metric-name">TBT</span><span class="ps-metric-val">${d.tbt}</span></div>
+        <div class="ps-metric"><span class="ps-metric-name">SI</span><span class="ps-metric-val">${d.si}</span></div>
       `;
     } catch(e) {
-      box.innerHTML = '<div style="color:#f87171;font-size:0.78rem">Bağlantı hatası</div>';
+      box.innerHTML = '<div style="color:#f87171;font-size:0.78rem">❌ Bağlantı hatası</div>';
     }
   };
 })();
