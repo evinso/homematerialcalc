@@ -4,8 +4,23 @@
     "pagesPerRun": 1,
     "minDaysBetweenRuns": 0
   },
-  "lastRun": "2026-06-07",
+  "lastRun": "2026-06-08",
   "runs": [
+    {
+      "date": "2026-06-08",
+      "timestamp": "2026-06-08T07:00:42.564Z",
+      "pagesPublished": [
+        {
+          "url": "/guide/winter-landscaping-prep",
+          "label": "Winter Landscaping Prep",
+          "type": "reference"
+        }
+      ],
+      "pendingBefore": 117,
+      "pendingAfter": 116,
+      "trigger": "scheduled",
+      "runBy": "evinso"
+    },
     {
       "date": "2026-06-07",
       "timestamp": "2026-06-07T21:34:02.905Z",
@@ -679,8 +694,8 @@
       "url": "/guide/winter-landscaping-prep",
       "label": "Winter Landscaping Prep",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-08"
     },
     {
       "url": "/guide/concrete-cost-texas",
