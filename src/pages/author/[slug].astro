@@ -43,6 +43,32 @@ const breadcrumbSchema = {
     { '@type': 'ListItem', position: 3, name: author.name, item: canonical },
   ],
 };
+
+const slugMap: Record<string, string> = {
+  'Concrete': '/calculator/concrete',
+  'Framing': '/calculator/lumber',
+  'Decks': '/calculator/deck',
+  'Fences': '/calculator/fence',
+  'Asphalt': '/calculator/asphalt',
+  'Pavers': '/calculator/paver',
+  'Lumber': '/calculator/lumber',
+  'Mulch': '/calculator/mulch',
+  'Gravel': '/calculator/gravel',
+  'Topsoil': '/calculator/topsoil',
+  'Sand': '/calculator/sand',
+  'Sod': '/calculator/sod',
+  'Grass Seed': '/calculator/grass-seed',
+  'Flooring': '/calculator/flooring',
+  'Tile': '/calculator/tile',
+  'Drywall': '/calculator/drywall',
+  'Paint': '/calculator/paint',
+  'Insulation': '/calculator/insulation',
+};
+
+const SKIP_TOPICS = new Set(['Material Calculators', 'Home Improvement', 'DIY Projects', 'Landscaping']);
+const calculatorLinks = author.expertise
+  .filter(e => !SKIP_TOPICS.has(e) && slugMap[e])
+  .map(e => ({ topic: e, href: slugMap[e] }));
 ---
 
 <BaseLayout
@@ -113,35 +139,11 @@ const breadcrumbSchema = {
     <div class="mb-10">
       <h2 class="text-base font-semibold text-gray-900 mb-4">Related Calculators</h2>
       <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-        {author.expertise.filter(e => e !== 'Material Calculators' && e !== 'Home Improvement' && e !== 'DIY Projects' && e !== 'Landscaping').map(topic => {
-          const slug_map: Record<string, string> = {
-            'Concrete': '/calculator/concrete',
-            'Framing': '/calculator/lumber',
-            'Decks': '/calculator/deck',
-            'Fences': '/calculator/fence',
-            'Asphalt': '/calculator/asphalt',
-            'Pavers': '/calculator/paver',
-            'Lumber': '/calculator/lumber',
-            'Mulch': '/calculator/mulch',
-            'Gravel': '/calculator/gravel',
-            'Topsoil': '/calculator/topsoil',
-            'Sand': '/calculator/sand',
-            'Sod': '/calculator/sod',
-            'Grass Seed': '/calculator/grass-seed',
-            'Flooring': '/calculator/flooring',
-            'Tile': '/calculator/tile',
-            'Drywall': '/calculator/drywall',
-            'Paint': '/calculator/paint',
-            'Insulation': '/calculator/insulation',
-          };
-          const href = slug_map[topic];
-          if (!href) return null;
-          return (
-            <a href={href} class="flex items-center gap-2 p-3 bg-white border border-gray-200 rounded-lg hover:border-brand-400 hover:text-brand-700 transition-colors text-sm font-medium text-gray-700">
-              <span>🧮</span> {topic} Calculator
-            </a>
-          );
-        })}
+        {calculatorLinks.map(({ topic, href }) => (
+          <a href={href} class="flex items-center gap-2 p-3 bg-white border border-gray-200 rounded-lg hover:border-brand-400 hover:text-brand-700 transition-colors text-sm font-medium text-gray-700">
+            <span>🧮</span> {topic} Calculator
+          </a>
+        ))}
       </div>
     </div>
 
