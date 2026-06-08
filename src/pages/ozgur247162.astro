@@ -871,13 +871,24 @@ const authors = [
   }
   async function loadSubmissions() {
     try {
-      const res = await fetch('/api/submissions?key=hmc_s3cr3t_2026');
-      if (!res.ok) return;
+      const res = await fetch('/api/submissions/?key=hmc_s3cr3t_2026');
+      if (!res.ok) {
+        ['quotes-list','nl-list','contact-list'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.innerHTML = `<div class="empty" style="color:#f87171">Hata: ${res.status}</div>`;
+        });
+        return;
+      }
       const { quotes, newsletters, contacts } = await res.json();
       renderList('quotes-list', quotes, ['name','email','zip','page','project']);
       renderList('nl-list', newsletters, ['email']);
       renderList('contact-list', contacts, ['name','email','subject','message']);
-    } catch(e) {}
+    } catch(e) {
+      ['quotes-list','nl-list','contact-list'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.innerHTML = `<div class="empty" style="color:#f87171">Bağlantı hatası</div>`;
+      });
+    }
   }
   document.getElementById('refresh-btn')?.addEventListener('click', loadSubmissions);
 })();

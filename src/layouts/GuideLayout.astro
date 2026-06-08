@@ -230,7 +230,7 @@ const howToSchema = howToSteps && howToSteps.length > 0 ? {
               btn.disabled = true; btn.textContent = 'Sending…';
               const fd = new FormData(form);
               const data = { type: 'quote', name: fd.get('name'), email: fd.get('email'), zip: fd.get('zip'), project: fd.get('project'), page: fd.get('page') };
-              await fetch('/api/submit', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+              await fetch('/api/submit/', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
               form.classList.add('hidden');
               document.getElementById('quote-success')?.classList.remove('hidden');
             });

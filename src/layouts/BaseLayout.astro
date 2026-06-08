@@ -430,7 +430,7 @@ const orgSchema = {
             document.getElementById('nl-form')?.addEventListener('submit', async (e) => {
               e.preventDefault();
               const email = (e.target as HTMLFormElement).email.value;
-              await fetch('/api/submit', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'newsletter', email }) });
+              await fetch('/api/submit/', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'newsletter', email }) });
               document.getElementById('nl-form')?.classList.add('hidden');
               document.getElementById('nl-ok')?.classList.remove('hidden');
             });
