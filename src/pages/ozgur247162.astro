@@ -1219,9 +1219,11 @@ const contentGaps = Object.entries(CALC_EXPECTED).map(([calc, expected]) => ({
       const data = await r.json();
       if (!r.ok) { wrap.innerHTML = `<p class="empty" style="color:var(--red)">❌ ${data.error}</p>`; return; }
 
-      const { total, dupTitles, dupDescs, missing } = data;
-      let html = `<div class="dup-summary">Toplam <strong>${total}</strong> sayfa tarandı — `;
+      const { total, dupTitles, dupDescs, missing, dynamicPages } = data;
       const issues = dupTitles.length + dupDescs.length + missing.length;
+      let html = `<div class="dup-summary">Toplam <strong>${total}</strong> sayfa tarandı`;
+      if (dynamicPages?.length) html += ` <span style="color:var(--muted);font-size:0.72rem">(${dynamicPages.length} dinamik route hariç)</span>`;
+      html += ' — ';
       html += issues === 0
         ? `<span style="color:var(--green)">✅ sorun yok</span>`
         : `<span style="color:var(--orange)">${issues} sorun bulundu</span>`;

@@ -21,13 +21,17 @@ function walk(dir: string): string[] {
   return results;
 }
 
-function extract(content: string): { title: string | null; description: string | null } {
-  // Match title="..." or title='...' — possibly multi-line
+const DYNAMIC_TITLE_RE  = /(?:const\s+title\s*=|title=\{)/;
+const DYNAMIC_DESC_RE   = /(?:const\s+description\s*=|description=\{)/;
+
+function extract(content: string): { title: string | null; description: string | null; dynamic: boolean } {
   const titleMatch = content.match(/title=["']([^"']+)["']/);
   const descMatch  = content.match(/description=["']([^"']+)["']/);
+  const isDynamic  = DYNAMIC_TITLE_RE.test(content) || DYNAMIC_DESC_RE.test(content);
   return {
-    title:       titleMatch  ? titleMatch[1].trim()  : null,
-    description: descMatch   ? descMatch[1].trim()   : null,
+    title:       titleMatch ? titleMatch[1].trim() : null,
+    description: descMatch  ? descMatch[1].trim()  : null,
+    dynamic:     isDynamic,
   };
 }
 
@@ -38,13 +42,13 @@ export const GET: APIRoute = async ({ request }) => {
   }
 
   const files = walk(PAGES_DIR);
-  const pages: { path: string; title: string | null; description: string | null }[] = [];
+  const pages: { path: string; title: string | null; description: string | null; dynamic: boolean }[] = [];
 
   for (const file of files) {
     try {
       const content = readFileSync(file, 'utf-8');
-      const { title, description } = extract(content);
-      pages.push({ path: '/' + relative(PAGES_DIR, file).replace(/\.(astro|mdx)$/, '').replace(/\/index$/, ''), title, description });
+      const { title, description, dynamic } = extract(content);
+      pages.push({ path: '/' + relative(PAGES_DIR, file).replace(/\.(astro|mdx)$/, '').replace(/\/index$/, ''), title, description, dynamic });
     } catch {
       // skip unreadable files
     }
@@ -80,14 +84,15 @@ export const GET: APIRoute = async ({ request }) => {
       paths,
     }));
 
-  const missing = pages.filter(p => !p.title || !p.description).map(p => ({
-    path: p.path,
-    missingTitle: !p.title,
-    missingDesc:  !p.description,
-  }));
+  // Dynamic pages have template-generated meta — not flagged as missing
+  const missing = pages
+    .filter(p => !p.dynamic && (!p.title || !p.description))
+    .map(p => ({ path: p.path, missingTitle: !p.title, missingDesc: !p.description }));
+
+  const dynamicPages = pages.filter(p => p.dynamic).map(p => p.path);
 
   return new Response(
-    JSON.stringify({ total: pages.length, dupTitles, dupDescs, missing }),
+    JSON.stringify({ total: pages.length, dupTitles, dupDescs, missing, dynamicPages }),
     { status: 200, headers: { 'Content-Type': 'application/json' } }
   );
 };
