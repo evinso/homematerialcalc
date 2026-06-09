@@ -4,8 +4,23 @@
     "pagesPerRun": 1,
     "minDaysBetweenRuns": 0
   },
-  "lastRun": "2026-06-08",
+  "lastRun": "2026-06-09",
   "runs": [
+    {
+      "date": "2026-06-09",
+      "timestamp": "2026-06-09T06:18:17.561Z",
+      "pagesPublished": [
+        {
+          "url": "/guide/mulch-cost-by-state",
+          "label": "Mulch Cost by State",
+          "type": "reference"
+        }
+      ],
+      "pendingBefore": 119,
+      "pendingAfter": 118,
+      "trigger": "scheduled",
+      "runBy": "evinso"
+    },
     {
       "date": "2026-06-08",
       "timestamp": "2026-06-08T22:45:01.824Z",
@@ -789,8 +804,8 @@
       "url": "/guide/mulch-cost-by-state",
       "label": "Mulch Cost by State",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-09"
     },
     {
       "url": "/guide/gravel-cost-by-state",
