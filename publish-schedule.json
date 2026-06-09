@@ -8,6 +8,21 @@
   "runs": [
     {
       "date": "2026-06-09",
+      "timestamp": "2026-06-09T16:39:14.966Z",
+      "pagesPublished": [
+        {
+          "url": "/guide/concrete-cost-ohio",
+          "label": "Concrete Cost in Ohio",
+          "type": "reference"
+        }
+      ],
+      "pendingBefore": 117,
+      "pendingAfter": 116,
+      "trigger": "scheduled",
+      "runBy": "evinso"
+    },
+    {
+      "date": "2026-06-09",
       "timestamp": "2026-06-09T11:29:47.033Z",
       "pagesPublished": [
         {
@@ -875,8 +890,8 @@
       "url": "/guide/concrete-cost-ohio",
       "label": "Concrete Cost in Ohio",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-09"
     },
     {
       "url": "/guide/concrete-cost-georgia",
