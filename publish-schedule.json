@@ -8,6 +8,21 @@
   "runs": [
     {
       "date": "2026-06-09",
+      "timestamp": "2026-06-09T21:58:23.497Z",
+      "pagesPublished": [
+        {
+          "url": "/guide/concrete-cost-georgia",
+          "label": "Concrete Cost in Georgia",
+          "type": "reference"
+        }
+      ],
+      "pendingBefore": 116,
+      "pendingAfter": 115,
+      "trigger": "scheduled",
+      "runBy": "evinso"
+    },
+    {
+      "date": "2026-06-09",
       "timestamp": "2026-06-09T16:39:14.966Z",
       "pagesPublished": [
         {
@@ -897,8 +912,8 @@
       "url": "/guide/concrete-cost-georgia",
       "label": "Concrete Cost in Georgia",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-09"
     },
     {
       "url": "/guide/concrete-cost-north-carolina",
