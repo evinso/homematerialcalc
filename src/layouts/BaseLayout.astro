@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import '@fontsource-variable/inter';
 import { getPendingPages } from '../lib/publishing';
 
 interface Props {
@@ -97,12 +98,6 @@ const orgSchema = {
     {isHome && (
       <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
     )}
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
     <title>{title}</title>
 
     <slot name="head" />
