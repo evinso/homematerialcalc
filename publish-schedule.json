@@ -8,6 +8,21 @@
   "runs": [
     {
       "date": "2026-06-09",
+      "timestamp": "2026-06-09T11:29:47.033Z",
+      "pagesPublished": [
+        {
+          "url": "/guide/gravel-cost-by-state",
+          "label": "Gravel Cost by State",
+          "type": "reference"
+        }
+      ],
+      "pendingBefore": 118,
+      "pendingAfter": 117,
+      "trigger": "scheduled",
+      "runBy": "evinso"
+    },
+    {
+      "date": "2026-06-09",
       "timestamp": "2026-06-09T06:18:17.561Z",
       "pagesPublished": [
         {
@@ -811,8 +826,8 @@
       "url": "/guide/gravel-cost-by-state",
       "label": "Gravel Cost by State",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-09"
     },
     {
       "url": "/calculator/grass-seed",
