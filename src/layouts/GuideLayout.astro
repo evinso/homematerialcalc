@@ -21,6 +21,7 @@ interface Props {
   description: string;
   h1: string;
   intro: string;
+  quickAnswer?: string;
   canonicalUrl?: string;
   faqs?: FAQ[];
   breadcrumbs?: Breadcrumb[];
@@ -34,7 +35,7 @@ interface Props {
 }
 
 const {
-  title, description, h1, intro, canonicalUrl,
+  title, description, h1, intro, quickAnswer, canonicalUrl,
   faqs = [], breadcrumbs = [], calculatorHref, calculatorLabel, related,
   howToSteps, howToTotalTime, authorSlug, publishDate,
 } = Astro.props;
@@ -156,6 +157,13 @@ const howToSchema = howToSteps && howToSteps.length > 0 ? {
           </button>
         </div>
         <p class="text-lg text-gray-600 mb-4">{intro}</p>
+
+        {quickAnswer && (
+          <div class="quick-answer-box">
+            <p class="quick-answer-label">Quick Answer</p>
+            <p class="quick-answer-text">{quickAnswer}</p>
+          </div>
+        )}
 
         <AuthorCard {author} {publishDate} />
 
