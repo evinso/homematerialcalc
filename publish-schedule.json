@@ -8,6 +8,21 @@
   "runs": [
     {
       "date": "2026-06-10",
+      "timestamp": "2026-06-10T22:19:43.313Z",
+      "pagesPublished": [
+        {
+          "url": "/guide/concrete-cost-washington",
+          "label": "Concrete Cost in Washington",
+          "type": "reference"
+        }
+      ],
+      "pendingBefore": 112,
+      "pendingAfter": 111,
+      "trigger": "scheduled",
+      "runBy": "evinso"
+    },
+    {
+      "date": "2026-06-10",
       "timestamp": "2026-06-10T17:30:35.027Z",
       "pagesPublished": [
         {
@@ -985,8 +1000,8 @@
       "url": "/guide/concrete-cost-washington",
       "label": "Concrete Cost in Washington",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-10"
     },
     {
       "url": "/guide/concrete-cost-tennessee",
