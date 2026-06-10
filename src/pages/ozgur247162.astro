@@ -626,15 +626,29 @@ const contentGaps = Object.entries(CALC_EXPECTED).map(([calc, expected]) => ({
           <p>Hangi sayfayı test etmek istiyorsun?</p>
         </div>
       </div>
-      <div style="display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:0.75rem">
-        {[
-          ['/', 'Ana Sayfa'],
-          ['/calculator/mulch/', 'Mulch'],
-          ['/calculator/concrete/', 'Concrete'],
-          ['/guide/how-much-mulch-do-i-need/', 'Mulch Guide'],
-        ].map(([path, label]) => (
-          <button class="btn btn-blue" style="font-size:0.68rem;padding:0.3rem 0.6rem" onclick={`testPageSpeed('${path}')`}>{label}</button>
-        ))}
+      <div style="margin-top:0.75rem">
+        <div style="font-size:0.68rem;color:var(--muted);margin-bottom:0.4rem">📱 Mobile</div>
+        <div style="display:flex;gap:0.4rem;flex-wrap:wrap;margin-bottom:0.75rem">
+          {[
+            ['/', 'Ana Sayfa'],
+            ['/calculator/mulch/', 'Mulch'],
+            ['/calculator/concrete/', 'Concrete'],
+            ['/guide/how-much-mulch-do-i-need/', 'Mulch Guide'],
+          ].map(([path, label]) => (
+            <button class="btn btn-blue" style="font-size:0.68rem;padding:0.3rem 0.6rem" onclick={`testPageSpeed('${path}','mobile')`}>{label}</button>
+          ))}
+        </div>
+        <div style="font-size:0.68rem;color:var(--muted);margin-bottom:0.4rem">🖥️ Desktop</div>
+        <div style="display:flex;gap:0.4rem;flex-wrap:wrap">
+          {[
+            ['/', 'Ana Sayfa'],
+            ['/calculator/mulch/', 'Mulch'],
+            ['/calculator/concrete/', 'Concrete'],
+            ['/guide/how-much-mulch-do-i-need/', 'Mulch Guide'],
+          ].map(([path, label]) => (
+            <button class="btn btn-orange" style="font-size:0.68rem;padding:0.3rem 0.6rem" onclick={`testPageSpeed('${path}','desktop')`}>{label}</button>
+          ))}
+        </div>
       </div>
     </div>
   </div>
@@ -1291,11 +1305,14 @@ const contentGaps = Object.entries(CALC_EXPECTED).map(([calc, expected]) => ({
   };
 
   // ── PageSpeed ──────────────────────────────────────────────
-  window.testPageSpeed = async function(path) {
+  window.testPageSpeed = async function(path, strategy = 'mobile') {
     const box = document.getElementById('pagespeed-status');
-    box.innerHTML = '<div style="font-size:0.78rem;color:var(--muted);padding:1rem 0">⏳ Test ediliyor… (10-30 sn sürebilir)</div>';
+    const label = strategy === 'desktop' ? '🖥️ Desktop' : '📱 Mobile';
+    box.innerHTML = `<div style="font-size:0.78rem;color:var(--muted);padding:1rem 0">⏳ ${label} test ediliyor… (10-30 sn sürebilir)</div>`;
     try {
-      const r = await fetch(`/api/admin/pagespeed/?path=${encodeURIComponent(path)}`);
+      const r = await fetch(`/api/admin/pagespeed/?path=${encodeURIComponent(path)}&strategy=${strategy}`, {
+        headers: { 'x-admin-key': AKEY },
+      });
       const d = await r.json();
       if (!r.ok || d.error) {
         box.innerHTML = `<div style="color:#f87171;font-size:0.78rem">❌ ${d.error || 'API hatası'}</div>`;
@@ -1305,7 +1322,7 @@ const contentGaps = Object.entries(CALC_EXPECTED).map(([calc, expected]) => ({
       box.innerHTML = `
         <div style="margin-bottom:0.5rem">
           <div class="ps-score ${colorCls(d.performance)}">${d.performance}</div>
-          <div style="font-size:0.68rem;color:var(--muted);margin-top:0.15rem">Mobile · ${d.path}</div>
+          <div style="font-size:0.68rem;color:var(--muted);margin-top:0.15rem">${label} · ${d.path}</div>
         </div>
         <div class="ps-metric"><span class="ps-metric-name">LCP</span><span class="ps-metric-val">${d.lcp}</span></div>
         <div class="ps-metric"><span class="ps-metric-name">FCP</span><span class="ps-metric-val">${d.fcp}</span></div>

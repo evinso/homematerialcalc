@@ -3,12 +3,13 @@ export const prerender = false;
 import type { APIRoute } from 'astro';
 
 export const GET: APIRoute = async ({ request }) => {
-  const url  = new URL(request.url);
-  const path = url.searchParams.get('path') ?? '/';
-  const key  = process.env.PAGESPEED_KEY ?? '';
+  const url      = new URL(request.url);
+  const path     = url.searchParams.get('path') ?? '/';
+  const strategy = url.searchParams.get('strategy') === 'desktop' ? 'desktop' : 'mobile';
+  const key      = process.env.PAGESPEED_KEY ?? '';
 
   const target  = encodeURIComponent(`https://www.homematerialcalc.com${path}`);
-  const apiUrl  = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${target}&strategy=mobile${key ? `&key=${key}` : ''}`;
+  const apiUrl  = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${target}&strategy=${strategy}${key ? `&key=${key}` : ''}`;
 
   try {
     const res  = await fetch(apiUrl, { signal: AbortSignal.timeout(30_000) });
@@ -28,6 +29,7 @@ export const GET: APIRoute = async ({ request }) => {
 
     return new Response(JSON.stringify({
       path,
+      strategy,
       performance: score(cats?.performance?.score),
       lcp:  audits?.['largest-contentful-paint']?.displayValue ?? '—',
       fcp:  audits?.['first-contentful-paint']?.displayValue ?? '—',
