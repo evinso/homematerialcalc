@@ -8,6 +8,21 @@
   "runs": [
     {
       "date": "2026-06-10",
+      "timestamp": "2026-06-10T17:30:35.027Z",
+      "pagesPublished": [
+        {
+          "url": "/guide/concrete-cost-arizona",
+          "label": "Concrete Cost in Arizona",
+          "type": "reference"
+        }
+      ],
+      "pendingBefore": 113,
+      "pendingAfter": 112,
+      "trigger": "scheduled",
+      "runBy": "evinso"
+    },
+    {
+      "date": "2026-06-10",
       "timestamp": "2026-06-10T11:47:21.828Z",
       "pagesPublished": [
         {
@@ -963,8 +978,8 @@
       "url": "/guide/concrete-cost-arizona",
       "label": "Concrete Cost in Arizona",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-10"
     },
     {
       "url": "/guide/concrete-cost-washington",
