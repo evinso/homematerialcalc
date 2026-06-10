@@ -8,6 +8,21 @@
   "runs": [
     {
       "date": "2026-06-10",
+      "timestamp": "2026-06-10T11:47:21.828Z",
+      "pagesPublished": [
+        {
+          "url": "/guide/concrete-cost-michigan",
+          "label": "Concrete Cost in Michigan",
+          "type": "reference"
+        }
+      ],
+      "pendingBefore": 114,
+      "pendingAfter": 113,
+      "trigger": "scheduled",
+      "runBy": "evinso"
+    },
+    {
+      "date": "2026-06-10",
       "timestamp": "2026-06-10T06:40:53.517Z",
       "pagesPublished": [
         {
@@ -941,8 +956,8 @@
       "url": "/guide/concrete-cost-michigan",
       "label": "Concrete Cost in Michigan",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-10"
     },
     {
       "url": "/guide/concrete-cost-arizona",
