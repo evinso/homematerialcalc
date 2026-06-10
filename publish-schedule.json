@@ -4,8 +4,23 @@
     "pagesPerRun": 1,
     "minDaysBetweenRuns": 0
   },
-  "lastRun": "2026-06-09",
+  "lastRun": "2026-06-10",
   "runs": [
+    {
+      "date": "2026-06-10",
+      "timestamp": "2026-06-10T06:40:53.517Z",
+      "pagesPublished": [
+        {
+          "url": "/guide/concrete-cost-north-carolina",
+          "label": "Concrete Cost in North Carolina",
+          "type": "reference"
+        }
+      ],
+      "pendingBefore": 115,
+      "pendingAfter": 114,
+      "trigger": "scheduled",
+      "runBy": "evinso"
+    },
     {
       "date": "2026-06-09",
       "timestamp": "2026-06-09T21:58:23.497Z",
@@ -919,8 +934,8 @@
       "url": "/guide/concrete-cost-north-carolina",
       "label": "Concrete Cost in North Carolina",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-10"
     },
     {
       "url": "/guide/concrete-cost-michigan",
