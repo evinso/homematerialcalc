@@ -4,8 +4,23 @@
     "pagesPerRun": 1,
     "minDaysBetweenRuns": 0
   },
-  "lastRun": "2026-06-10",
+  "lastRun": "2026-06-11",
   "runs": [
+    {
+      "date": "2026-06-11",
+      "timestamp": "2026-06-11T07:03:13.784Z",
+      "pagesPublished": [
+        {
+          "url": "/guide/concrete-cost-tennessee",
+          "label": "Concrete Cost in Tennessee",
+          "type": "reference"
+        }
+      ],
+      "pendingBefore": 111,
+      "pendingAfter": 110,
+      "trigger": "scheduled",
+      "runBy": "evinso"
+    },
     {
       "date": "2026-06-10",
       "timestamp": "2026-06-10T22:19:43.313Z",
@@ -1007,8 +1022,8 @@
       "url": "/guide/concrete-cost-tennessee",
       "label": "Concrete Cost in Tennessee",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-11"
     },
     {
       "url": "/guide/concrete-cost-indiana",
