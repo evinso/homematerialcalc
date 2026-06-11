@@ -24,9 +24,11 @@ const depths = [1, 2, 3, 4, 6];
 const rows = depths.map(d => ({ depth: d, ...calcMulch(sqft, d) }));
 const main = calcMulch(sqft, 3);
 
-const nearby = [sqft * 0.5, sqft * 0.75, sqft, sqft * 1.5, sqft * 2]
-  .map(a => Math.round(a))
-  .filter((a, i, arr) => a > 0 && arr.indexOf(a) === i);
+const VALID_AREAS = [50, 150, 200, 250, 300, 400, 500, 600, 750, 1000, 1500, 2000];
+const nearby = VALID_AREAS
+  .filter(a => a !== sqft)
+  .sort((a, b) => Math.abs(a - sqft) - Math.abs(b - sqft))
+  .slice(0, 5);
 
 const faqs = [
   {
@@ -112,7 +114,7 @@ const description = `For ${sqft} sq ft at 3 inches deep, you need ${main.bags} b
       const m4 = calcMulch(a, 4);
       return (
         <tr>
-          <td>{a} sq ft</td>
+          <td><a href={`/guide/how-much-mulch-for-${a}-sq-ft/`}>{a} sq ft</a></td>
           <td>{m2.bags} bags</td>
           <td><strong>{m3.bags} bags</strong></td>
           <td>{m4.bags} bags</td>

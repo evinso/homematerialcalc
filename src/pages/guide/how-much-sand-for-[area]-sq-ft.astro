@@ -21,8 +21,10 @@ export function getStaticPaths() {
     const depths = [1, 2, 3, 4, 6];
     const rows = depths.map(d => ({ depth: d, ...calc(sqft, d) }));
     const main = calc(sqft, 2);
-    const nearby = [Math.round(sqft * 0.5), sqft, Math.round(sqft * 2)]
-      .filter((a, i, arr) => a > 0 && arr.indexOf(a) === i)
+    const VALID_AREAS = [50, 100, 200, 300, 500];
+    const nearby = VALID_AREAS
+      .filter(a => a !== sqft)
+      .sort((a, b) => Math.abs(a - sqft) - Math.abs(b - sqft))
       .map(a => ({ area: a, d1: calc(a, 1), d2: calc(a, 2), d3: calc(a, 3) }));
     return {
       params: { area: String(sqft) },
@@ -113,7 +115,7 @@ const description = `For ${sqft} sq ft at 2 inches deep, you need ${main.bags} b
   <tbody>
     {nearby.map((n: any) => (
       <tr>
-        <td>{n.area} sq ft</td>
+        <td><a href={`/guide/how-much-sand-for-${n.area}-sq-ft/`}>{n.area} sq ft</a></td>
         <td>{n.d1.bags} bags</td>
         <td><strong>{n.d2.bags} bags</strong></td>
         <td>{n.d3.bags} bags</td>

@@ -25,9 +25,10 @@ const depths = [2, 3, 4, 6];
 const rows = depths.map(d => ({ depth: d, ...calcGravel(sqft, d) }));
 const main = calcGravel(sqft, 4);
 
-const nearby = [sqft * 0.5, sqft * 0.75, sqft, sqft * 1.5, sqft * 2]
-  .map(a => Math.round(a))
-  .filter((a, i, arr) => a > 0 && arr.indexOf(a) === i);
+const VALID_AREAS = [100, 200, 300, 500, 1000];
+const nearby = VALID_AREAS
+  .filter(a => a !== sqft)
+  .sort((a, b) => Math.abs(a - sqft) - Math.abs(b - sqft));
 
 const faqs = [
   {
@@ -113,7 +114,7 @@ const description = `For ${sqft} sq ft at 4 inches deep, you need ${main.tons} t
       const g6 = calcGravel(a, 6);
       return (
         <tr>
-          <td>{a} sq ft</td>
+          <td><a href={`/guide/how-much-gravel-for-${a}-sq-ft/`}>{a} sq ft</a></td>
           <td>{g3.tons} tons</td>
           <td><strong>{g4.tons} tons</strong></td>
           <td>{g6.tons} tons</td>

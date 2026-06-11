@@ -1,29 +1,6 @@
 ---
 import GuideLayout from '../../layouts/GuideLayout.astro';
-
-// 20 target states (high-population, high search volume)
-const STATES = [
-  { slug: 'texas',          name: 'Texas',          abbr: 'TX' },
-  { slug: 'florida',        name: 'Florida',        abbr: 'FL' },
-  { slug: 'california',     name: 'California',     abbr: 'CA' },
-  { slug: 'new-york',       name: 'New York',       abbr: 'NY' },
-  { slug: 'georgia',        name: 'Georgia',        abbr: 'GA' },
-  { slug: 'north-carolina', name: 'North Carolina', abbr: 'NC' },
-  { slug: 'ohio',           name: 'Ohio',           abbr: 'OH' },
-  { slug: 'michigan',       name: 'Michigan',       abbr: 'MI' },
-  { slug: 'pennsylvania',   name: 'Pennsylvania',   abbr: 'PA' },
-  { slug: 'illinois',       name: 'Illinois',       abbr: 'IL' },
-  { slug: 'arizona',        name: 'Arizona',        abbr: 'AZ' },
-  { slug: 'washington',     name: 'Washington',     abbr: 'WA' },
-  { slug: 'tennessee',      name: 'Tennessee',      abbr: 'TN' },
-  { slug: 'indiana',        name: 'Indiana',        abbr: 'IN' },
-  { slug: 'missouri',       name: 'Missouri',       abbr: 'MO' },
-  { slug: 'colorado',       name: 'Colorado',       abbr: 'CO' },
-  { slug: 'virginia',       name: 'Virginia',       abbr: 'VA' },
-  { slug: 'maryland',       name: 'Maryland',       abbr: 'MD' },
-  { slug: 'oregon',         name: 'Oregon',         abbr: 'OR' },
-  { slug: 'wisconsin',      name: 'Wisconsin',      abbr: 'WI' },
-];
+import { STATES, CITIES } from '../../data/locations';
 
 const MATERIALS: Record<string, {
   label: string; unit: string;
@@ -137,77 +114,10 @@ const MATERIALS: Record<string, {
 };
 
 export function getStaticPaths() {
-  const CITIES = [
-    { slug: 'houston-tx',          name: 'Houston',          stateName: 'Texas',          stateAbbr: 'TX' },
-    { slug: 'dallas-tx',           name: 'Dallas',           stateName: 'Texas',          stateAbbr: 'TX' },
-    { slug: 'san-antonio-tx',      name: 'San Antonio',      stateName: 'Texas',          stateAbbr: 'TX' },
-    { slug: 'austin-tx',           name: 'Austin',           stateName: 'Texas',          stateAbbr: 'TX' },
-    { slug: 'miami-fl',            name: 'Miami',            stateName: 'Florida',        stateAbbr: 'FL' },
-    { slug: 'orlando-fl',          name: 'Orlando',          stateName: 'Florida',        stateAbbr: 'FL' },
-    { slug: 'tampa-fl',            name: 'Tampa',            stateName: 'Florida',        stateAbbr: 'FL' },
-    { slug: 'jacksonville-fl',     name: 'Jacksonville',     stateName: 'Florida',        stateAbbr: 'FL' },
-    { slug: 'los-angeles-ca',      name: 'Los Angeles',      stateName: 'California',     stateAbbr: 'CA' },
-    { slug: 'san-diego-ca',        name: 'San Diego',        stateName: 'California',     stateAbbr: 'CA' },
-    { slug: 'san-jose-ca',         name: 'San Jose',         stateName: 'California',     stateAbbr: 'CA' },
-    { slug: 'sacramento-ca',       name: 'Sacramento',       stateName: 'California',     stateAbbr: 'CA' },
-    { slug: 'atlanta-ga',          name: 'Atlanta',          stateName: 'Georgia',        stateAbbr: 'GA' },
-    { slug: 'savannah-ga',         name: 'Savannah',         stateName: 'Georgia',        stateAbbr: 'GA' },
-    { slug: 'charlotte-nc',        name: 'Charlotte',        stateName: 'North Carolina', stateAbbr: 'NC' },
-    { slug: 'raleigh-nc',          name: 'Raleigh',          stateName: 'North Carolina', stateAbbr: 'NC' },
-    { slug: 'columbus-oh',         name: 'Columbus',         stateName: 'Ohio',           stateAbbr: 'OH' },
-    { slug: 'cleveland-oh',        name: 'Cleveland',        stateName: 'Ohio',           stateAbbr: 'OH' },
-    { slug: 'detroit-mi',          name: 'Detroit',          stateName: 'Michigan',       stateAbbr: 'MI' },
-    { slug: 'grand-rapids-mi',     name: 'Grand Rapids',     stateName: 'Michigan',       stateAbbr: 'MI' },
-    { slug: 'philadelphia-pa',     name: 'Philadelphia',     stateName: 'Pennsylvania',   stateAbbr: 'PA' },
-    { slug: 'pittsburgh-pa',       name: 'Pittsburgh',       stateName: 'Pennsylvania',   stateAbbr: 'PA' },
-    { slug: 'chicago-il',          name: 'Chicago',          stateName: 'Illinois',       stateAbbr: 'IL' },
-    { slug: 'phoenix-az',          name: 'Phoenix',          stateName: 'Arizona',        stateAbbr: 'AZ' },
-    { slug: 'tucson-az',           name: 'Tucson',           stateName: 'Arizona',        stateAbbr: 'AZ' },
-    { slug: 'seattle-wa',          name: 'Seattle',          stateName: 'Washington',     stateAbbr: 'WA' },
-    { slug: 'spokane-wa',          name: 'Spokane',          stateName: 'Washington',     stateAbbr: 'WA' },
-    { slug: 'nashville-tn',        name: 'Nashville',        stateName: 'Tennessee',      stateAbbr: 'TN' },
-    { slug: 'memphis-tn',          name: 'Memphis',          stateName: 'Tennessee',      stateAbbr: 'TN' },
-    { slug: 'indianapolis-in',     name: 'Indianapolis',     stateName: 'Indiana',        stateAbbr: 'IN' },
-    { slug: 'kansas-city-mo',      name: 'Kansas City',      stateName: 'Missouri',       stateAbbr: 'MO' },
-    { slug: 'st-louis-mo',         name: 'St. Louis',        stateName: 'Missouri',       stateAbbr: 'MO' },
-    { slug: 'denver-co',           name: 'Denver',           stateName: 'Colorado',       stateAbbr: 'CO' },
-    { slug: 'colorado-springs-co', name: 'Colorado Springs', stateName: 'Colorado',       stateAbbr: 'CO' },
-    { slug: 'virginia-beach-va',   name: 'Virginia Beach',   stateName: 'Virginia',       stateAbbr: 'VA' },
-    { slug: 'richmond-va',         name: 'Richmond',         stateName: 'Virginia',       stateAbbr: 'VA' },
-    { slug: 'baltimore-md',        name: 'Baltimore',        stateName: 'Maryland',       stateAbbr: 'MD' },
-    { slug: 'portland-or',         name: 'Portland',         stateName: 'Oregon',         stateAbbr: 'OR' },
-    { slug: 'milwaukee-wi',        name: 'Milwaukee',        stateName: 'Wisconsin',      stateAbbr: 'WI' },
-    { slug: 'madison-wi',          name: 'Madison',          stateName: 'Wisconsin',      stateAbbr: 'WI' },
-    { slug: 'new-york-city-ny',    name: 'New York City',    stateName: 'New York',       stateAbbr: 'NY' },
-    { slug: 'buffalo-ny',          name: 'Buffalo',          stateName: 'New York',       stateAbbr: 'NY' },
-  ];
-
-  const states = [
-    { slug: 'texas',          name: 'Texas',          abbr: 'TX' },
-    { slug: 'florida',        name: 'Florida',        abbr: 'FL' },
-    { slug: 'california',     name: 'California',     abbr: 'CA' },
-    { slug: 'new-york',       name: 'New York',       abbr: 'NY' },
-    { slug: 'georgia',        name: 'Georgia',        abbr: 'GA' },
-    { slug: 'north-carolina', name: 'North Carolina', abbr: 'NC' },
-    { slug: 'ohio',           name: 'Ohio',           abbr: 'OH' },
-    { slug: 'michigan',       name: 'Michigan',       abbr: 'MI' },
-    { slug: 'pennsylvania',   name: 'Pennsylvania',   abbr: 'PA' },
-    { slug: 'illinois',       name: 'Illinois',       abbr: 'IL' },
-    { slug: 'arizona',        name: 'Arizona',        abbr: 'AZ' },
-    { slug: 'washington',     name: 'Washington',     abbr: 'WA' },
-    { slug: 'tennessee',      name: 'Tennessee',      abbr: 'TN' },
-    { slug: 'indiana',        name: 'Indiana',        abbr: 'IN' },
-    { slug: 'missouri',       name: 'Missouri',       abbr: 'MO' },
-    { slug: 'colorado',       name: 'Colorado',       abbr: 'CO' },
-    { slug: 'virginia',       name: 'Virginia',       abbr: 'VA' },
-    { slug: 'maryland',       name: 'Maryland',       abbr: 'MD' },
-    { slug: 'oregon',         name: 'Oregon',         abbr: 'OR' },
-    { slug: 'wisconsin',      name: 'Wisconsin',      abbr: 'WI' },
-  ];
   const materialSlugs = ['mulch', 'gravel', 'topsoil', 'sand'];
   const paths = [];
   // State pages (existing)
-  for (const state of states) {
+  for (const state of STATES) {
     for (const mat of materialSlugs) {
       paths.push({ params: { material: mat, state: state.slug }, props: { locationName: state.name, locationAbbr: state.abbr, isCity: false, cityStateName: state.name } });
     }
@@ -238,6 +148,11 @@ const title = isCity
   ? `${mat.label} Cost in ${locationName} — 2026 Price Guide`
   : `${mat.label} Cost in ${locationName} — 2026 Price Guide`;
 const description = `Current ${mat.label.toLowerCase()} prices in ${locationName}: bagged and bulk rates, best local suppliers, and how much to order for your project. Updated 2026.`;
+
+// For state pages: cities in this state; for city pages: sibling cities in same state
+const citiesInState = CITIES.filter(c => c.stateName === (isCity ? cityStateName : locationName));
+// Other states for cross-linking (exclude current)
+const otherStates = STATES.filter(s => s.name !== (isCity ? cityStateName : locationName)).slice(0, 8);
 ---
 
 <GuideLayout
@@ -296,6 +211,24 @@ const description = `Current ${mat.label.toLowerCase()} prices in ${locationName
   <li><strong>Home Depot / Lowe's</strong> — Convenient for bagged {mat.label.toLowerCase()}, consistent pricing, no minimums.</li>
   <li><strong>Quarries and gravel pits</strong> — Lowest prices if you can haul yourself (pickup truck or trailer).</li>
   <li><strong>Online marketplaces</strong> — Facebook Marketplace and Craigslist sometimes have free or cheap {mat.label.toLowerCase()} from excess landscaping projects.</li>
+</ul>
+
+{citiesInState.length > 0 && (
+  <>
+    <h2>{mat.label} Cost by City in {isCity ? cityStateName : locationName}</h2>
+    <ul>
+      {citiesInState.map(c => (
+        <li><a href={`/guide/${material}-cost-in-${c.slug}/`}>{mat.label} Cost in {c.name}, {c.stateAbbr}</a></li>
+      ))}
+    </ul>
+  </>
+)}
+
+<h2>{mat.label} Cost in Other States</h2>
+<ul>
+  {otherStates.map(s => (
+    <li><a href={`/guide/${material}-cost-in-${s.slug}/`}>{mat.label} Cost in {s.name}</a></li>
+  ))}
 </ul>
 
 </GuideLayout>

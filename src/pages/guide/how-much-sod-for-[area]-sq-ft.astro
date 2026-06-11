@@ -26,8 +26,11 @@ function calcSod(sqft: number, waste = WASTE) {
 }
 
 const main = calcSod(sqft);
-const nearby = [Math.round(sqft * 0.5), Math.round(sqft * 0.75), sqft, Math.round(sqft * 1.5), Math.round(sqft * 2)]
-  .filter((a, i, arr) => a > 0 && arr.indexOf(a) === i);
+const VALID_AREAS = [100, 200, 500, 1000, 2000, 5000, 10000];
+const nearby = VALID_AREAS
+  .filter(a => a !== sqft)
+  .sort((a, b) => Math.abs(a - sqft) - Math.abs(b - sqft))
+  .slice(0, 5);
 
 const faqs = [
   {
@@ -107,7 +110,7 @@ const description = `For ${sqft} sq ft with 10% waste, you need ${main.pallets} 
       const s = calcSod(a);
       return (
         <tr>
-          <td>{a} sq ft</td>
+          <td><a href={`/guide/how-much-sod-for-${a}-sq-ft/`}>{a} sq ft</a></td>
           <td>{s.sqftNeeded}</td>
           <td><strong>{s.pallets}</strong></td>
           <td>${s.costLow}–${s.costHigh}</td>

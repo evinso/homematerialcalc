@@ -22,8 +22,11 @@ export function getStaticPaths() {
     const depths = [2, 4, 6, 8, 12];
     const rows = depths.map(d => ({ depth: d, ...calc(sqft, d) }));
     const main = calc(sqft, 6);
-    const nearby = [Math.round(sqft * 0.5), sqft, Math.round(sqft * 2), Math.round(sqft * 4)]
-      .filter((a, i, arr) => a > 0 && arr.indexOf(a) === i)
+    const VALID_AREAS = [50, 100, 200, 300, 500, 1000, 2000];
+    const nearby = VALID_AREAS
+      .filter(a => a !== sqft)
+      .sort((a, b) => Math.abs(a - sqft) - Math.abs(b - sqft))
+      .slice(0, 5)
       .map(a => ({ area: a, d4: calc(a, 4), d6: calc(a, 6), d8: calc(a, 8) }));
     return {
       params: { area: String(sqft) },
@@ -113,7 +116,7 @@ const description = `For ${sqft} sq ft at 6 inches deep, you need ${main.cuYdWas
   <tbody>
     {nearby.map((n: any) => (
       <tr>
-        <td>{n.area} sq ft</td>
+        <td><a href={`/guide/how-much-topsoil-for-${n.area}-sq-ft/`}>{n.area} sq ft</a></td>
         <td>{n.d4.cuYdWaste} cu yd / {n.d4.bags40lb} bags</td>
         <td><strong>{n.d6.cuYdWaste} cu yd / {n.d6.bags40lb} bags</strong></td>
         <td>{n.d8.cuYdWaste} cu yd / {n.d8.bags40lb} bags</td>
