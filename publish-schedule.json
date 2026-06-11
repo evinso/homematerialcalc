@@ -8,6 +8,21 @@
   "runs": [
     {
       "date": "2026-06-11",
+      "timestamp": "2026-06-11T17:41:13.785Z",
+      "pagesPublished": [
+        {
+          "url": "/guide/concrete-cost-missouri",
+          "label": "Concrete Cost in Missouri",
+          "type": "reference"
+        }
+      ],
+      "pendingBefore": 109,
+      "pendingAfter": 108,
+      "trigger": "scheduled",
+      "runBy": "evinso"
+    },
+    {
+      "date": "2026-06-11",
       "timestamp": "2026-06-11T12:17:32.167Z",
       "pagesPublished": [
         {
@@ -1051,8 +1066,8 @@
       "url": "/guide/concrete-cost-missouri",
       "label": "Concrete Cost in Missouri",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-11"
     },
     {
       "url": "/guide/concrete-cost-colorado",
