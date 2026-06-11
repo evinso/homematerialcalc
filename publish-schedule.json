@@ -8,6 +8,21 @@
   "runs": [
     {
       "date": "2026-06-11",
+      "timestamp": "2026-06-11T12:17:32.167Z",
+      "pagesPublished": [
+        {
+          "url": "/guide/concrete-cost-indiana",
+          "label": "Concrete Cost in Indiana",
+          "type": "reference"
+        }
+      ],
+      "pendingBefore": 110,
+      "pendingAfter": 109,
+      "trigger": "scheduled",
+      "runBy": "evinso"
+    },
+    {
+      "date": "2026-06-11",
       "timestamp": "2026-06-11T07:03:13.784Z",
       "pagesPublished": [
         {
@@ -1029,8 +1044,8 @@
       "url": "/guide/concrete-cost-indiana",
       "label": "Concrete Cost in Indiana",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-11"
     },
     {
       "url": "/guide/concrete-cost-missouri",
