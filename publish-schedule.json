@@ -8,6 +8,21 @@
   "runs": [
     {
       "date": "2026-06-12",
+      "timestamp": "2026-06-12T11:51:35.536Z",
+      "pagesPublished": [
+        {
+          "url": "/guide/concrete-cost-minnesota",
+          "label": "Concrete Cost in Minnesota",
+          "type": "reference"
+        }
+      ],
+      "pendingBefore": 106,
+      "pendingAfter": 105,
+      "trigger": "scheduled",
+      "runBy": "evinso"
+    },
+    {
+      "date": "2026-06-12",
       "timestamp": "2026-06-12T06:54:22.492Z",
       "pagesPublished": [
         {
@@ -1117,8 +1132,8 @@
       "url": "/guide/concrete-cost-minnesota",
       "label": "Concrete Cost in Minnesota",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-12"
     },
     {
       "url": "/guide/concrete-cost-south-carolina",
