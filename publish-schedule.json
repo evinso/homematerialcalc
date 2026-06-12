@@ -8,6 +8,21 @@
   "runs": [
     {
       "date": "2026-06-12",
+      "timestamp": "2026-06-12T16:54:30.995Z",
+      "pagesPublished": [
+        {
+          "url": "/guide/concrete-cost-south-carolina",
+          "label": "Concrete Cost in South Carolina",
+          "type": "reference"
+        }
+      ],
+      "pendingBefore": 105,
+      "pendingAfter": 104,
+      "trigger": "scheduled",
+      "runBy": "evinso"
+    },
+    {
+      "date": "2026-06-12",
       "timestamp": "2026-06-12T11:51:35.536Z",
       "pagesPublished": [
         {
@@ -1139,8 +1154,8 @@
       "url": "/guide/concrete-cost-south-carolina",
       "label": "Concrete Cost in South Carolina",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-12"
     },
     {
       "url": "/guide/concrete-cost-virginia",
