@@ -8,6 +8,21 @@
   "runs": [
     {
       "date": "2026-06-12",
+      "timestamp": "2026-06-12T21:59:38.439Z",
+      "pagesPublished": [
+        {
+          "url": "/guide/concrete-cost-virginia",
+          "label": "Concrete Cost in Virginia",
+          "type": "reference"
+        }
+      ],
+      "pendingBefore": 104,
+      "pendingAfter": 103,
+      "trigger": "scheduled",
+      "runBy": "evinso"
+    },
+    {
+      "date": "2026-06-12",
       "timestamp": "2026-06-12T16:54:30.995Z",
       "pagesPublished": [
         {
@@ -1161,8 +1176,8 @@
       "url": "/guide/concrete-cost-virginia",
       "label": "Concrete Cost in Virginia",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-12"
     },
     {
       "url": "/guide/concrete-cost-maryland",
