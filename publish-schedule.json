@@ -4,8 +4,23 @@
     "pagesPerRun": 1,
     "minDaysBetweenRuns": 0
   },
-  "lastRun": "2026-06-11",
+  "lastRun": "2026-06-12",
   "runs": [
+    {
+      "date": "2026-06-12",
+      "timestamp": "2026-06-12T06:54:22.492Z",
+      "pagesPublished": [
+        {
+          "url": "/guide/concrete-cost-wisconsin",
+          "label": "Concrete Cost in Wisconsin",
+          "type": "reference"
+        }
+      ],
+      "pendingBefore": 107,
+      "pendingAfter": 106,
+      "trigger": "scheduled",
+      "runBy": "evinso"
+    },
     {
       "date": "2026-06-11",
       "timestamp": "2026-06-11T22:13:36.243Z",
@@ -1095,8 +1110,8 @@
       "url": "/guide/concrete-cost-wisconsin",
       "label": "Concrete Cost in Wisconsin",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-12"
     },
     {
       "url": "/guide/concrete-cost-minnesota",
