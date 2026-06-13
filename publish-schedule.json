@@ -8,6 +8,21 @@
   "runs": [
     {
       "date": "2026-06-13",
+      "timestamp": "2026-06-13T10:37:35.677Z",
+      "pagesPublished": [
+        {
+          "url": "/guide/concrete-cost-louisiana",
+          "label": "Concrete Cost in Louisiana",
+          "type": "reference"
+        }
+      ],
+      "pendingBefore": 102,
+      "pendingAfter": 101,
+      "trigger": "scheduled",
+      "runBy": "evinso"
+    },
+    {
+      "date": "2026-06-13",
       "timestamp": "2026-06-13T06:31:06.723Z",
       "pagesPublished": [
         {
@@ -1205,8 +1220,8 @@
       "url": "/guide/concrete-cost-louisiana",
       "label": "Concrete Cost in Louisiana",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-13"
     },
     {
       "url": "/guide/concrete-cost-kentucky",
