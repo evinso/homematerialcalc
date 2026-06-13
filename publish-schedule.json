@@ -8,6 +8,21 @@
   "runs": [
     {
       "date": "2026-06-13",
+      "timestamp": "2026-06-13T21:36:11.721Z",
+      "pagesPublished": [
+        {
+          "url": "/guide/concrete-cost-oregon",
+          "label": "Concrete Cost in Oregon",
+          "type": "reference"
+        }
+      ],
+      "pendingBefore": 100,
+      "pendingAfter": 99,
+      "trigger": "scheduled",
+      "runBy": "evinso"
+    },
+    {
+      "date": "2026-06-13",
       "timestamp": "2026-06-13T15:47:03.658Z",
       "pagesPublished": [
         {
@@ -1249,8 +1264,8 @@
       "url": "/guide/concrete-cost-oregon",
       "label": "Concrete Cost in Oregon",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-13"
     },
     {
       "url": "/guide/concrete-cost-oklahoma",
