@@ -8,6 +8,21 @@
   "runs": [
     {
       "date": "2026-06-13",
+      "timestamp": "2026-06-13T15:47:03.658Z",
+      "pagesPublished": [
+        {
+          "url": "/guide/concrete-cost-kentucky",
+          "label": "Concrete Cost in Kentucky",
+          "type": "reference"
+        }
+      ],
+      "pendingBefore": 101,
+      "pendingAfter": 100,
+      "trigger": "scheduled",
+      "runBy": "evinso"
+    },
+    {
+      "date": "2026-06-13",
       "timestamp": "2026-06-13T10:37:35.677Z",
       "pagesPublished": [
         {
@@ -1227,8 +1242,8 @@
       "url": "/guide/concrete-cost-kentucky",
       "label": "Concrete Cost in Kentucky",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-13"
     },
     {
       "url": "/guide/concrete-cost-oregon",
