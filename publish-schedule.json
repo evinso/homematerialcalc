@@ -4,8 +4,23 @@
     "pagesPerRun": 1,
     "minDaysBetweenRuns": 0
   },
-  "lastRun": "2026-06-12",
+  "lastRun": "2026-06-13",
   "runs": [
+    {
+      "date": "2026-06-13",
+      "timestamp": "2026-06-13T06:31:06.723Z",
+      "pagesPublished": [
+        {
+          "url": "/guide/concrete-cost-maryland",
+          "label": "Concrete Cost in Maryland",
+          "type": "reference"
+        }
+      ],
+      "pendingBefore": 103,
+      "pendingAfter": 102,
+      "trigger": "scheduled",
+      "runBy": "evinso"
+    },
     {
       "date": "2026-06-12",
       "timestamp": "2026-06-12T21:59:38.439Z",
@@ -1183,8 +1198,8 @@
       "url": "/guide/concrete-cost-maryland",
       "label": "Concrete Cost in Maryland",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-13"
     },
     {
       "url": "/guide/concrete-cost-louisiana",
