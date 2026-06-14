@@ -4,8 +4,23 @@
     "pagesPerRun": 1,
     "minDaysBetweenRuns": 0
   },
-  "lastRun": "2026-06-13",
+  "lastRun": "2026-06-14",
   "runs": [
+    {
+      "date": "2026-06-14",
+      "timestamp": "2026-06-14T06:55:41.248Z",
+      "pagesPublished": [
+        {
+          "url": "/guide/concrete-cost-oklahoma",
+          "label": "Concrete Cost in Oklahoma",
+          "type": "reference"
+        }
+      ],
+      "pendingBefore": 99,
+      "pendingAfter": 98,
+      "trigger": "scheduled",
+      "runBy": "evinso"
+    },
     {
       "date": "2026-06-13",
       "timestamp": "2026-06-13T21:36:11.721Z",
@@ -1271,8 +1286,8 @@
       "url": "/guide/concrete-cost-oklahoma",
       "label": "Concrete Cost in Oklahoma",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-14"
     },
     {
       "url": "/guide/concrete-cost-nevada",
