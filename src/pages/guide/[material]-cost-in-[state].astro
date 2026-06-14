@@ -125,15 +125,15 @@ export function getStaticPaths() {
   // City pages (new)
   for (const city of CITIES) {
     for (const mat of materialSlugs) {
-      paths.push({ params: { material: mat, state: city.slug }, props: { locationName: `${city.name}, ${city.stateAbbr}`, locationAbbr: city.stateAbbr, isCity: true, cityStateName: city.stateName, cityName: city.name } });
+      paths.push({ params: { material: mat, state: city.slug }, props: { locationName: `${city.name}, ${city.stateAbbr}`, locationAbbr: city.stateAbbr, isCity: true, cityStateName: city.stateName, cityName: city.name, priceAdj: city.priceAdj, localNote: city.localNote } });
     }
   }
   return paths;
 }
 
 const { material, state: stateSlug } = Astro.params;
-const { locationName, locationAbbr, isCity, cityStateName, cityName } = Astro.props as {
-  locationName: string; locationAbbr: string; isCity: boolean; cityStateName: string; cityName?: string;
+const { locationName, locationAbbr, isCity, cityStateName, cityName, priceAdj, localNote } = Astro.props as {
+  locationName: string; locationAbbr: string; isCity: boolean; cityStateName: string; cityName?: string; priceAdj?: number; localNote?: string;
 };
 
 // For backward compat: stateName used in mat.faqs / mat.intro / mat.breakdown
@@ -142,8 +142,20 @@ const stateAbbr = locationAbbr;
 
 const mat = MATERIALS[material as keyof typeof MATERIALS];
 
+// Apply city price adjustment to breakdown rows
+function adjustPrice(val: string, adj: number): string {
+  if (!adj) return val;
+  return val.replace(/\$(\d+)/g, (_, n) => {
+    const adjusted = Math.round(Number(n) * (1 + adj / 100) / 5) * 5;
+    return `$${adjusted}`;
+  });
+}
+
 const faqs = mat.faqs(stateName);
-const breakdown = mat.breakdown(stateName);
+const rawBreakdown = mat.breakdown(stateName);
+const breakdown = isCity && priceAdj
+  ? rawBreakdown.map(r => ({ ...r, low: adjustPrice(r.low, priceAdj), high: adjustPrice(r.high, priceAdj) }))
+  : rawBreakdown;
 const title = isCity
   ? `${mat.label} Cost in ${locationName} — 2026 Price Guide`
   : `${mat.label} Cost in ${locationName} — 2026 Price Guide`;
@@ -187,6 +199,13 @@ const otherStates = STATES.filter(s => s.name !== (isCity ? cityStateName : loca
 </table>
 
 <p><em>Prices are typical ranges for {stateName}. Actual prices vary by county, supplier, and current market conditions. Always get 2–3 quotes for bulk orders.</em></p>
+
+{isCity && localNote && (
+  <div class="quick-answer-box" style="margin: 1.5rem 0">
+    <p class="quick-answer-label">Local Market Note</p>
+    <p class="quick-answer-text">{localNote}</p>
+  </div>
+)}
 
 <h2>Bags vs. Bulk in {stateName}</h2>
 
