@@ -8,6 +8,21 @@
   "runs": [
     {
       "date": "2026-06-14",
+      "timestamp": "2026-06-14T21:36:27.371Z",
+      "pagesPublished": [
+        {
+          "url": "/calculator/flooring",
+          "label": "Flooring Calculator",
+          "type": "calculator"
+        }
+      ],
+      "pendingBefore": 96,
+      "pendingAfter": 95,
+      "trigger": "scheduled",
+      "runBy": "evinso"
+    },
+    {
+      "date": "2026-06-14",
       "timestamp": "2026-06-14T15:54:57.234Z",
       "pagesPublished": [
         {
@@ -1354,8 +1369,8 @@
       "url": "/calculator/flooring",
       "label": "Flooring Calculator",
       "type": "calculator",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-14"
     },
     {
       "url": "/guide/how-much-flooring-do-i-need",
