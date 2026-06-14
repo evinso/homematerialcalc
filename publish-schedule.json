@@ -8,6 +8,21 @@
   "runs": [
     {
       "date": "2026-06-14",
+      "timestamp": "2026-06-14T15:54:57.234Z",
+      "pagesPublished": [
+        {
+          "url": "/guide/paint-coverage-per-gallon",
+          "label": "Paint Coverage per Gallon",
+          "type": "reference"
+        }
+      ],
+      "pendingBefore": 97,
+      "pendingAfter": 96,
+      "trigger": "scheduled",
+      "runBy": "evinso"
+    },
+    {
+      "date": "2026-06-14",
       "timestamp": "2026-06-14T11:07:54.169Z",
       "pagesPublished": [
         {
@@ -1332,8 +1347,8 @@
       "url": "/guide/paint-coverage-per-gallon",
       "label": "Paint Coverage per Gallon",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-14"
     },
     {
       "url": "/calculator/flooring",
