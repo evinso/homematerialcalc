@@ -8,6 +8,21 @@
   "runs": [
     {
       "date": "2026-06-14",
+      "timestamp": "2026-06-14T11:07:54.169Z",
+      "pagesPublished": [
+        {
+          "url": "/guide/concrete-cost-nevada",
+          "label": "Concrete Cost in Nevada",
+          "type": "reference"
+        }
+      ],
+      "pendingBefore": 98,
+      "pendingAfter": 97,
+      "trigger": "scheduled",
+      "runBy": "evinso"
+    },
+    {
+      "date": "2026-06-14",
       "timestamp": "2026-06-14T06:55:41.248Z",
       "pagesPublished": [
         {
@@ -1293,8 +1308,8 @@
       "url": "/guide/concrete-cost-nevada",
       "label": "Concrete Cost in Nevada",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-14"
     },
     {
       "_section": "INDOOR EXPANSION — v2 (files written, drip publishing)"
