@@ -1402,7 +1402,7 @@
       "publishedAt": "2026-06-14"
     },
     {
-      "_section": "INDOOR EXPANSION — v2 (files written, drip publishing)"
+      "_section": "INDOOR EXPANSION \u2014 v2 (files written, drip publishing)"
     },
     {
       "url": "/calculator/paint",
@@ -1464,631 +1464,631 @@
       "url": "/guide/how-much-drywall-do-i-need",
       "label": "How Much Drywall Do I Need?",
       "type": "guide",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
-      "_section": "BATCH 3 — Project-specific & reference pages"
+      "_section": "BATCH 3 \u2014 Project-specific & reference pages"
     },
     {
       "url": "/guide/how-much-gravel-for-a-driveway",
       "label": "How Much Gravel for a Driveway?",
       "type": "guide",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/how-much-topsoil-for-raised-bed",
       "label": "How Much Topsoil for a Raised Bed?",
       "type": "guide",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/how-much-sand-for-paver-base",
       "label": "How Much Sand for a Paver Base?",
       "type": "guide",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/how-much-concrete-for-fence-posts",
       "label": "How Much Concrete for Fence Posts?",
       "type": "guide",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/cubic-feet-to-cubic-yards",
       "label": "Cubic Feet to Cubic Yards",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/how-much-mulch-for-100-square-feet",
       "label": "Mulch for 100 Square Feet",
       "type": "guide",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/how-much-mulch-for-a-garden-bed",
       "label": "How Much Mulch for a Garden Bed?",
       "type": "guide",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/how-many-gallons-of-paint-for-a-bedroom",
       "label": "Gallons of Paint for a Bedroom",
       "type": "guide",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/how-many-tiles-for-a-bathroom",
       "label": "How Many Tiles for a Bathroom?",
       "type": "guide",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/how-many-sheets-of-drywall-for-a-room",
       "label": "Drywall Sheets for a Room",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/how-many-boxes-of-flooring-for-a-room",
       "label": "Flooring Boxes per Room",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/what-is-a-cubic-yard",
       "label": "What Is a Cubic Yard?",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
-      "_section": "BATCH 4 — New calculators (lumber + paver)"
+      "_section": "BATCH 4 \u2014 New calculators (lumber + paver)"
     },
     {
       "url": "/calculator/lumber",
       "label": "Lumber Calculator",
       "type": "calculator",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/how-much-lumber-do-i-need",
       "label": "How Much Lumber Do I Need?",
       "type": "guide",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/calculator/paver",
       "label": "Paver Calculator",
       "type": "calculator",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/how-many-pavers-do-i-need",
       "label": "How Many Pavers Do I Need?",
       "type": "guide",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
-      "_section": "BATCH 5 — New guide & reference pages"
+      "_section": "BATCH 5 \u2014 New guide & reference pages"
     },
     {
       "url": "/guide/how-much-sand-for-a-sandbox",
       "label": "How Much Sand for a Sandbox?",
       "type": "guide",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/how-much-gravel-for-a-french-drain",
       "label": "How Much Gravel for a French Drain?",
       "type": "guide",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/how-many-bags-of-sand-in-a-cubic-yard",
       "label": "Bags of Sand per Cubic Yard",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/square-feet-to-square-yards",
       "label": "Square Feet to Square Yards",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/linear-feet-to-square-feet",
       "label": "Linear Feet to Square Feet",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/topsoil-vs-garden-soil",
       "label": "Topsoil vs Garden Soil",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/types-of-mulch",
       "label": "Types of Mulch",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/gravel-vs-crushed-stone",
       "label": "Gravel vs Crushed Stone",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/how-deep-should-gravel-be",
       "label": "How Deep Should Gravel Be?",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/how-thick-should-concrete-slab-be",
       "label": "How Thick Should Concrete Slab Be?",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/how-long-does-mulch-last",
       "label": "How Long Does Mulch Last?",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/paint-types-and-finishes",
       "label": "Paint Types and Finishes",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/how-to-calculate-square-footage",
       "label": "How to Calculate Square Footage",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/tile-sizes-and-coverage",
       "label": "Tile Sizes and Coverage",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/drywall-thickness-guide",
       "label": "Drywall Thickness Guide",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/how-much-concrete-for-a-slab",
       "label": "How Much Concrete for a Slab?",
       "type": "guide",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/how-many-coats-of-paint",
       "label": "How Many Coats of Paint?",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/how-to-measure-a-room-for-flooring",
       "label": "How to Measure a Room for Flooring",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/concrete-mix-ratios",
       "label": "Concrete Mix Ratios",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
-      "_section": "BATCH 6 — Cost calculators"
+      "_section": "BATCH 6 \u2014 Cost calculators"
     },
     {
       "url": "/calculator/mulch-cost",
       "label": "Mulch Cost Calculator",
       "type": "calculator",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/calculator/gravel-cost",
       "label": "Gravel Cost Calculator",
       "type": "calculator",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/calculator/topsoil-cost",
       "label": "Topsoil Cost Calculator",
       "type": "calculator",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/calculator/sand-cost",
       "label": "Sand Cost Calculator",
       "type": "calculator",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/calculator/sod-cost",
       "label": "Sod Cost Calculator",
       "type": "calculator",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/calculator/concrete-cost",
       "label": "Concrete Cost Calculator",
       "type": "calculator",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
-      "_section": "BATCH 7 — EEAT + hub + technical pages"
+      "_section": "BATCH 7 \u2014 EEAT + hub + technical pages"
     },
     {
       "url": "/data-sources",
       "label": "Data Sources",
       "type": "static",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/how-it-works",
       "label": "How It Works",
       "type": "static",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/calculation-assumptions",
       "label": "Calculation Assumptions",
       "type": "static",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/landscaping-calculators",
       "label": "Landscaping Calculators Hub",
       "type": "static",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/concrete-calculators",
       "label": "Concrete Calculators Hub",
       "type": "static",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/interior-calculators",
       "label": "Interior Calculators Hub",
       "type": "static",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/cookie-policy",
       "label": "Cookie Policy",
       "type": "static",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/accessibility",
       "label": "Accessibility Statement",
       "type": "static",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
-      "_section": "BATCH 6 — Cost calculators"
+      "_section": "BATCH 6 \u2014 Cost calculators"
     },
     {
-      "_section": "BATCH 7 — EEAT + hub + technical pages"
+      "_section": "BATCH 7 \u2014 EEAT + hub + technical pages"
     },
     {
-      "_section": "FUTURE — not yet written"
+      "_section": "FUTURE \u2014 not yet written"
     },
     {
       "url": "/calculator/asphalt-cost",
       "label": "Asphalt Cost Calculator",
       "type": "calculator",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/calculator/grass-seed-cost",
       "label": "Grass Seed Cost Calculator",
       "type": "calculator",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/calculator/paver-cost",
       "label": "Paver Cost Calculator",
       "type": "calculator",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/calculator/paint-cost",
       "label": "Paint Cost Calculator",
       "type": "calculator",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/calculator/fence-cost",
       "label": "Fence Cost Calculator",
       "type": "calculator",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/calculator/deck-cost",
       "label": "Deck Cost Calculator",
       "type": "calculator",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/calculator/flooring-cost",
       "label": "Flooring Cost Calculator",
       "type": "calculator",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/calculator/tile-cost",
       "label": "Tile Cost Calculator",
       "type": "calculator",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/calculator/drywall-cost",
       "label": "Drywall Cost Calculator",
       "type": "calculator",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/calculator/lumber-cost",
       "label": "Lumber Cost Calculator",
       "type": "calculator",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/calculator/insulation-cost",
       "label": "Insulation Cost Calculator",
       "type": "calculator",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/laminate-vs-hardwood-flooring",
       "label": "Laminate vs Hardwood Flooring",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/vinyl-plank-vs-laminate-flooring",
       "label": "Vinyl Plank vs Laminate Flooring",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/concrete-vs-pavers-patio",
       "label": "Concrete vs Pavers for a Patio",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/blown-in-vs-batt-insulation",
       "label": "Blown-In vs Batt Insulation",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/best-mulch-for-vegetable-gardens",
       "label": "Best Mulch for Vegetable Gardens",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/best-gravel-for-drainage",
       "label": "Best Gravel for Drainage",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/best-paint-for-bathroom",
       "label": "Best Paint for Bathrooms",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/best-insulation-for-attic",
       "label": "Best Insulation for Attics",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/best-flooring-for-dogs",
       "label": "Best Flooring for Dogs",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/best-concrete-mix-for-fence-posts",
       "label": "Best Concrete Mix for Fence Posts",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/how-much-insulation-do-i-need",
       "label": "How Much Insulation Do I Need?",
       "type": "guide",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/insulation-r-value-guide",
       "label": "Insulation R-Value Guide",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/how-much-does-insulation-cost",
       "label": "How Much Does Insulation Cost?",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/how-to-insulate-an-attic",
       "label": "How to Insulate an Attic",
       "type": "guide",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/how-to-paint-a-room",
       "label": "How to Paint a Room",
       "type": "guide",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/how-to-pour-a-concrete-slab",
       "label": "How to Pour a Concrete Slab",
       "type": "guide",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/how-to-hang-drywall",
       "label": "How to Hang Drywall",
       "type": "guide",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/how-to-install-tile",
       "label": "How to Install Tile",
       "type": "guide",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/how-to-install-laminate-flooring",
       "label": "How to Install Laminate Flooring",
       "type": "guide",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/tile-vs-vinyl-flooring",
       "label": "Tile vs Vinyl Flooring",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/spray-foam-vs-fiberglass-insulation",
       "label": "Spray Foam vs Fiberglass Insulation",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/cedar-vs-pressure-treated-wood",
       "label": "Cedar vs Pressure Treated Wood",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/artificial-grass-vs-sod",
       "label": "Artificial Grass vs Sod",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/author/tom",
-      "label": "Tom Harrington — Licensed General Contractor",
+      "label": "Tom Harrington \u2014 Licensed General Contractor",
       "type": "static",
       "status": "pending",
       "publishedAt": null
     },
     {
       "url": "/author/sarah",
-      "label": "Sarah Mitchell — Certified Landscape Designer",
+      "label": "Sarah Mitchell \u2014 Certified Landscape Designer",
       "type": "static",
       "status": "pending",
       "publishedAt": null
     },
     {
       "url": "/author/dan",
-      "label": "Dan Kowalski — Flooring & Interior Specialist",
+      "label": "Dan Kowalski \u2014 Flooring & Interior Specialist",
       "type": "static",
       "status": "pending",
       "publishedAt": null
@@ -2097,29 +2097,29 @@
       "url": "/guide/how-much-does-flooring-cost",
       "label": "How Much Does Flooring Cost?",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/how-much-does-drywall-cost",
       "label": "How Much Does Drywall Cost?",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/how-much-does-lumber-cost",
       "label": "How Much Does Lumber Cost?",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/how-much-does-tile-cost",
       "label": "How Much Does Tile Cost?",
       "type": "reference",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     }
   ]
 }
