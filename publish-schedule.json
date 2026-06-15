@@ -4,8 +4,23 @@
     "pagesPerRun": 1,
     "minDaysBetweenRuns": 0
   },
-  "lastRun": "2026-06-14",
+  "lastRun": "2026-06-15",
   "runs": [
+    {
+      "date": "2026-06-15",
+      "timestamp": "2026-06-15T07:35:27.883Z",
+      "pagesPublished": [
+        {
+          "url": "/guide/how-much-flooring-do-i-need",
+          "label": "How Much Flooring Do I Need?",
+          "type": "guide"
+        }
+      ],
+      "pendingBefore": 95,
+      "pendingAfter": 94,
+      "trigger": "scheduled",
+      "runBy": "evinso"
+    },
     {
       "date": "2026-06-14",
       "timestamp": "2026-06-14T21:36:27.371Z",
@@ -1376,8 +1391,8 @@
       "url": "/guide/how-much-flooring-do-i-need",
       "label": "How Much Flooring Do I Need?",
       "type": "guide",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-15"
     },
     {
       "url": "/calculator/tile",
