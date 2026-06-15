@@ -8,6 +8,21 @@
   "runs": [
     {
       "date": "2026-06-15",
+      "timestamp": "2026-06-15T22:27:18.637Z",
+      "pagesPublished": [
+        {
+          "url": "/calculator/drywall",
+          "label": "Drywall Calculator",
+          "type": "calculator"
+        }
+      ],
+      "pendingBefore": 92,
+      "pendingAfter": 91,
+      "trigger": "scheduled",
+      "runBy": "evinso"
+    },
+    {
+      "date": "2026-06-15",
       "timestamp": "2026-06-15T18:45:22.091Z",
       "pagesPublished": [
         {
@@ -1442,8 +1457,8 @@
       "url": "/calculator/drywall",
       "label": "Drywall Calculator",
       "type": "calculator",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-15"
     },
     {
       "url": "/guide/how-much-drywall-do-i-need",
