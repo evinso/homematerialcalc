@@ -2076,22 +2076,22 @@
       "url": "/author/tom",
       "label": "Tom Harrington \u2014 Licensed General Contractor",
       "type": "static",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/author/sarah",
       "label": "Sarah Mitchell \u2014 Certified Landscape Designer",
       "type": "static",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/author/dan",
       "label": "Dan Kowalski \u2014 Flooring & Interior Specialist",
       "type": "static",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-16"
     },
     {
       "url": "/guide/how-much-does-flooring-cost",
@@ -2118,6 +2118,41 @@
       "url": "/guide/how-much-does-tile-cost",
       "label": "How Much Does Tile Cost?",
       "type": "reference",
+      "status": "published",
+      "publishedAt": "2026-06-16"
+    },
+    {
+      "url": "/guide",
+      "label": "Guides Hub",
+      "type": "static",
+      "status": "published",
+      "publishedAt": "2026-06-16"
+    },
+    {
+      "url": "/compare",
+      "label": "Compare Materials",
+      "type": "static",
+      "status": "published",
+      "publishedAt": "2026-06-16"
+    },
+    {
+      "url": "/calculator/project",
+      "label": "Project Planner",
+      "type": "calculator",
+      "status": "published",
+      "publishedAt": "2026-06-16"
+    },
+    {
+      "url": "/contact-success",
+      "label": "Contact Success",
+      "type": "static",
+      "status": "published",
+      "publishedAt": "2026-06-16"
+    },
+    {
+      "url": "/prices",
+      "label": "Prices",
+      "type": "static",
       "status": "published",
       "publishedAt": "2026-06-16"
     }
