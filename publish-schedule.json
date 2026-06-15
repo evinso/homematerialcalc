@@ -8,6 +8,21 @@
   "runs": [
     {
       "date": "2026-06-15",
+      "timestamp": "2026-06-15T18:45:22.091Z",
+      "pagesPublished": [
+        {
+          "url": "/guide/how-much-tile-do-i-need",
+          "label": "How Much Tile Do I Need?",
+          "type": "guide"
+        }
+      ],
+      "pendingBefore": 93,
+      "pendingAfter": 92,
+      "trigger": "scheduled",
+      "runBy": "evinso"
+    },
+    {
+      "date": "2026-06-15",
       "timestamp": "2026-06-15T14:33:30.124Z",
       "pagesPublished": [
         {
@@ -1420,8 +1435,8 @@
       "url": "/guide/how-much-tile-do-i-need",
       "label": "How Much Tile Do I Need?",
       "type": "guide",
-      "status": "pending",
-      "publishedAt": null
+      "status": "published",
+      "publishedAt": "2026-06-15"
     },
     {
       "url": "/calculator/drywall",
