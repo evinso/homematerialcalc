@@ -55,10 +55,20 @@ const faqSchema = faqs.length > 0 ? {
   })),
 } : null;
 
+// Fallback hrefs for common intermediate breadcrumb labels without explicit href
+const BREADCRUMB_FALLBACKS: Record<string, string> = {
+  'Guides': '/guide/',
+};
+
 const breadcrumbItems = [
   { '@type': 'ListItem', name: 'Home', item: site + '/' },
   ...breadcrumbs.map((b, i) => {
-    const itemUrl = b.href ? site + b.href : (i === breadcrumbs.length - 1 ? canonical : null);
+    const fallback = BREADCRUMB_FALLBACKS[b.label];
+    const itemUrl = b.href
+      ? site + b.href
+      : i === breadcrumbs.length - 1
+        ? canonical
+        : fallback ? site + fallback : null;
     return itemUrl ? { '@type': 'ListItem', name: b.label, item: itemUrl } : null;
   }).filter(Boolean),
 ].map((entry, idx) => ({ ...entry, position: idx + 1 }));
@@ -130,15 +140,18 @@ const howToSchema = howToSteps && howToSteps.length > 0 ? {
     {breadcrumbs.length > 0 && (
       <nav class="text-sm text-gray-500 mb-4 flex flex-wrap gap-1">
         <a href="/" class="hover:text-brand-600">Home</a>
-        {breadcrumbs.map((b, i) => (
-          <>
-            <span>›</span>
-            {b.href
-              ? <a href={b.href} class="hover:text-brand-600">{b.label}</a>
-              : <span class="text-gray-700">{b.label}</span>
-            }
-          </>
-        ))}
+        {breadcrumbs.map((b, i) => {
+          const resolvedHref = b.href ?? (i < breadcrumbs.length - 1 ? BREADCRUMB_FALLBACKS[b.label] : undefined);
+          return (
+            <>
+              <span>›</span>
+              {resolvedHref
+                ? <a href={resolvedHref} class="hover:text-brand-600">{b.label}</a>
+                : <span class="text-gray-700">{b.label}</span>
+              }
+            </>
+          );
+        })}
       </nav>
     )}
 

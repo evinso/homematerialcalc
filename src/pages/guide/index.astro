@@ -1,0 +1,109 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const categories = [
+  {
+    title: 'How Much Do I Need?',
+    guides: [
+      { href: '/guide/how-much-mulch-do-i-need/', label: 'How Much Mulch Do I Need?' },
+      { href: '/guide/how-much-gravel-do-i-need/', label: 'How Much Gravel Do I Need?' },
+      { href: '/guide/how-much-concrete-do-i-need/', label: 'How Much Concrete Do I Need?' },
+      { href: '/guide/how-much-topsoil-do-i-need/', label: 'How Much Topsoil Do I Need?' },
+      { href: '/guide/how-much-sand-do-i-need/', label: 'How Much Sand Do I Need?' },
+      { href: '/guide/how-much-sod-do-i-need/', label: 'How Much Sod Do I Need?' },
+      { href: '/guide/how-much-paint-do-i-need/', label: 'How Much Paint Do I Need?' },
+      { href: '/guide/how-much-flooring-do-i-need/', label: 'How Much Flooring Do I Need?' },
+      { href: '/guide/how-much-tile-do-i-need/', label: 'How Much Tile Do I Need?' },
+      { href: '/guide/how-much-drywall-do-i-need/', label: 'How Much Drywall Do I Need?' },
+      { href: '/guide/how-much-insulation-do-i-need/', label: 'How Much Insulation Do I Need?' },
+      { href: '/guide/how-much-lumber-do-i-need/', label: 'How Much Lumber Do I Need?' },
+    ],
+  },
+  {
+    title: 'Material Costs',
+    guides: [
+      { href: '/guide/how-much-does-mulch-cost/', label: 'How Much Does Mulch Cost?' },
+      { href: '/guide/how-much-does-concrete-cost/', label: 'How Much Does Concrete Cost?' },
+      { href: '/guide/how-much-does-gravel-cost/', label: 'How Much Does Gravel Cost?' },
+      { href: '/guide/how-much-does-flooring-cost/', label: 'How Much Does Flooring Cost?' },
+      { href: '/guide/how-much-does-tile-cost/', label: 'How Much Does Tile Cost?' },
+      { href: '/guide/how-much-does-drywall-cost/', label: 'How Much Does Drywall Cost?' },
+      { href: '/guide/how-much-does-insulation-cost/', label: 'How Much Does Insulation Cost?' },
+      { href: '/guide/how-much-does-lumber-cost/', label: 'How Much Does Lumber Cost?' },
+    ],
+  },
+  {
+    title: 'How-To Guides',
+    guides: [
+      { href: '/guide/how-to-build-a-patio/', label: 'How to Build a Patio' },
+      { href: '/guide/how-to-build-a-gravel-driveway/', label: 'How to Build a Gravel Driveway' },
+      { href: '/guide/how-to-pour-a-concrete-slab/', label: 'How to Pour a Concrete Slab' },
+      { href: '/guide/how-to-install-tile/', label: 'How to Install Tile' },
+      { href: '/guide/how-to-install-laminate-flooring/', label: 'How to Install Laminate Flooring' },
+      { href: '/guide/how-to-paint-a-room/', label: 'How to Paint a Room' },
+      { href: '/guide/how-to-hang-drywall/', label: 'How to Hang Drywall' },
+      { href: '/guide/how-to-insulate-an-attic/', label: 'How to Insulate an Attic' },
+      { href: '/guide/how-to-lay-pavers/', label: 'How to Lay Pavers' },
+      { href: '/guide/how-to-reseed-a-lawn/', label: 'How to Reseed a Lawn' },
+      { href: '/guide/how-to-build-a-raised-garden-bed/', label: 'How to Build a Raised Garden Bed' },
+    ],
+  },
+  {
+    title: 'Compare Materials',
+    guides: [
+      { href: '/guide/mulch-vs-rock-landscaping/', label: 'Mulch vs Rock Landscaping' },
+      { href: '/guide/sod-vs-seed/', label: 'Sod vs Seed' },
+      { href: '/guide/asphalt-vs-concrete-driveway/', label: 'Asphalt vs Concrete Driveway' },
+      { href: '/guide/laminate-vs-hardwood-flooring/', label: 'Laminate vs Hardwood Flooring' },
+      { href: '/guide/vinyl-plank-vs-laminate-flooring/', label: 'Vinyl Plank vs Laminate Flooring' },
+      { href: '/guide/tile-vs-vinyl-flooring/', label: 'Tile vs Vinyl Flooring' },
+      { href: '/guide/blown-in-vs-batt-insulation/', label: 'Blown-In vs Batt Insulation' },
+      { href: '/guide/pea-gravel-vs-river-rock/', label: 'Pea Gravel vs River Rock' },
+    ],
+  },
+  {
+    title: 'Reference',
+    guides: [
+      { href: '/guide/what-is-a-cubic-yard/', label: 'What Is a Cubic Yard?' },
+      { href: '/guide/cubic-feet-to-cubic-yards/', label: 'Cubic Feet to Cubic Yards' },
+      { href: '/guide/cubic-yards-to-tons/', label: 'Cubic Yards to Tons' },
+      { href: '/guide/how-to-calculate-square-footage/', label: 'How to Calculate Square Footage' },
+      { href: '/guide/paint-coverage-per-gallon/', label: 'Paint Coverage Per Gallon' },
+      { href: '/guide/insulation-r-value-guide/', label: 'Insulation R-Value Guide' },
+      { href: '/guide/concrete-mix-ratios/', label: 'Concrete Mix Ratios' },
+      { href: '/guide/how-thick-should-concrete-slab-be/', label: 'How Thick Should a Concrete Slab Be?' },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Material Guides — How Much Do I Need, Costs & How-To | HomeMaterialCalc"
+  description="Free guides for US homeowners: how much mulch, gravel, concrete, topsoil, paint, flooring, and tile you need. Includes cost guides, comparisons, and step-by-step how-to articles."
+>
+  <div class="max-w-5xl mx-auto px-4 py-10">
+    <nav class="text-sm text-gray-500 mb-6">
+      <a href="/" class="hover:text-brand-600">Home</a>
+      <span class="mx-1">›</span>
+      <span class="text-gray-700">Guides</span>
+    </nav>
+
+    <h1 class="text-3xl font-bold text-gray-900 mb-3">Material Guides</h1>
+    <p class="text-lg text-gray-600 mb-10">How-much, cost, and how-to guides for every home material project — mulch, gravel, concrete, paint, flooring, tile, and more.</p>
+
+    <div class="space-y-10">
+      {categories.map(cat => (
+        <div>
+          <h2 class="text-xl font-bold text-gray-900 mb-4 pb-2 border-b border-gray-200">{cat.title}</h2>
+          <ul class="grid sm:grid-cols-2 gap-2">
+            {cat.guides.map(g => (
+              <li>
+                <a href={g.href} class="text-brand-600 hover:underline text-sm">{g.label}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</BaseLayout>
