@@ -14,6 +14,10 @@ export async function GET() {
 
   const pages = getPendingPages();
 
+  if (pages.length === 0) {
+    return new Response('Not Found', { status: 404 });
+  }
+
   const urls = pages.map(p => `  <url>
     <loc>${SITE}${withSlash(p.url)}</loc>
     <lastmod>${today}</lastmod>
